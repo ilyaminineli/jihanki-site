@@ -42,6 +42,9 @@ Japan stay / shared field experience: **Julia Baranyuk**
 * Browser-local transaction receipts with print and text-export actions
 * Hidden service terminal, local event journal and inventory diagnostics
 * Cross-referenced memories, voice credits and geographic archive index
+* Non-destructive daily archive rotation with fragments retained as residue
+* Browser-local personal collection with repeat-purchase counts and JSON export
+* Ambient machine states with volume transitions, media ducking and visitor mute control
 * Rare, authored machine anomalies
 * Markdown documents, images, audio and video rendered inside the artifact viewer
 * Ambient JIHANKI loop and interface sound effects
@@ -96,7 +99,9 @@ JIHANKI/
 │   ├── inventory.js
 │   ├── relationships.js
 │   ├── geography.js
+│   ├── rotation.js
 │   ├── receipts.js
+│   ├── collection.js
 │   ├── audio.js
 │   ├── markdown.js
 │   ├── maintenance.js
@@ -122,7 +127,7 @@ Catalogue data only. It defines the archive records and connects them with their
 
 ### `js/`
 
-The runtime is separated by responsibility: category semantics, inventory rules, receipts, events, relationships, geography, audio, Markdown rendering, maintenance mode, anomalies, video presentation and the machine controller. The scripts are loaded in dependency order at the end of `index.html`.
+The runtime is separated by responsibility: category semantics, inventory rules, receipts, events, relationships, geography, daily archive rotation, personal collection, ambient audio states, Markdown rendering, maintenance mode, anomalies, video presentation and the machine controller. The scripts are loaded in dependency order at the end of `index.html`.
 
 ### `documents/`
 
@@ -170,7 +175,7 @@ The interface uses a small set of dedicated JIHANKI sounds:
 
 The background loop starts directly from the first user interaction. A WAV fallback is retained for older Safari versions that cannot reliably play Ogg Opus.
 
-Archive audio can play independently while the interface ambience remains underneath it at a lower level.
+The machine changes the loop's level and playback character across idle, browsing, reading, dispensing, service, rotation and collection states. Foreground archive audio gently ducks the machine loop rather than abruptly stopping it. Visitors can mute/unmute all machine sound from the CRT home screen or with the M key; the choice is stored locally.
 
 ## Adding an Archive Entry
 
@@ -319,3 +324,16 @@ The service terminal is an undocumented interaction: press HOME three times, COI
 ### Local data and privacy
 
 Receipts and event logs are stored in the visitor's browser using local storage. They are not sent to a server. Clearing browser storage removes that visitor-local history. The public archive and its stock definitions remain unchanged.
+
+
+### M28 — Archive rotation
+
+A date-based rotation surfaces one fragment from each of the eight machine categories. Up to three records from the previous day's rotation remain as RESIDUE. This only changes the current presentation: no archive record is deleted, rewritten or made inaccessible. The ordinary category selectors remain the complete archive.
+
+### M32 — Ambient machine states
+
+The original JIHANKI ambience loop transitions between idle, browsing, reading, dispensing, service, rotation, collection and anomaly profiles. Foreground archive media ducks the loop smoothly. A visitor-controlled mute preference is stored in the current browser. No sound begins before a user gesture.
+
+### M33 — Personal collection
+
+Successful purchases add the work and receipt code to a browser-local collection. Repeat purchases increment an acquisition count. Visitors can revisit collected memories, export the collection as JSON, or clear it locally. Collection data is not transmitted and is not shared between browsers or devices.
