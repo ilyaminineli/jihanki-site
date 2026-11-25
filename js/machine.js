@@ -222,7 +222,12 @@
 
   async function openItem(item, receipt) {
     if (!item) return;
-    if (!artifact.classList.contains("open")) lastFocusedElement = document.activeElement;
+    if (artifact.classList.contains("open")) {
+      artifactContent.querySelectorAll("audio,video").forEach(media => { try { media.pause(); } catch (_) {} });
+      window.JIHANKI_AUDIO.clearMedia();
+    } else {
+      lastFocusedElement = document.activeElement;
+    }
     activeArtifact = { item, receipt: receipt || null };
     const renderToken = ++artifactRenderToken;
     selectedId = item.id;
