@@ -292,7 +292,17 @@ The four released pieces below are the public renders from the same Aokigahara p
 
 ### 03 — SAIKO / REFLECTIVE
 
-[▶ PLAY SAIKO]## RELEASE
+[▶ PLAY SAIKO](../../media/music/fuji-sonicpi-03.opus)
+
+### 04 — VILLAGE / SOCIAL
+
+[▶ PLAY VILLAGE](../../media/music/fuji-sonicpi-04.opus)
+
+### 05 — SHRINE / RITUAL
+
+**Render pending.** The Shrine environment remains part of the album's five-part structure.
+
+## ALBUM RELEASE
 
 The album is presented through JIHANKI as a single work. A separate external HQ release link can be added when the release page is available.
 
