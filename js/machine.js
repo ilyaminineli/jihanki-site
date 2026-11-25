@@ -72,7 +72,7 @@
     artifact.setAttribute("aria-hidden", "true");
     artifactContent.querySelectorAll("audio,video").forEach(media => { try { media.pause(); } catch (_) {} });
     window.JIHANKI_AUDIO.clearMedia();
-    window.JIHANKI_AUDIO.setState(activeCategory ? "browsing" : "idle");
+    window.JIHANKI_AUDIO.setState(maintenanceActive ? "service" : (activeCategory ? "browsing" : "idle"));
   }
 
   async function renderBody(item) {
@@ -210,9 +210,9 @@
   }
 
   function showLocation(place) {
-    window.JIHANKI_AUDIO.setState("browsing");
     closeArtifact();
     activeCategory = null; selectedId = null;
+    window.JIHANKI_AUDIO.setState("browsing");
     const records = window.JIHANKI_GEOGRAPHY.entries(place);
     const html = records.map((item, index) => '<button class="archive-item" type="button" data-archive-id="' + esc(item.id) + '">' +
       String(index + 1).padStart(2, "0") + '&nbsp;&nbsp;' + esc(item.title) + stockTag(item) +
