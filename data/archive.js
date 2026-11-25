@@ -1286,8 +1286,11 @@ document.head.appendChild(archiveStyle);
 (function installRuntime(){
   const SOUND={
     button:"media/sound/jihanki-sfx/button-sound.opus",
+    buttonFallback:"media/sound/jihanki-sfx/button-sound.wav",
     coin:"media/sound/jihanki-sfx/entering-money.opus",
+    coinFallback:"media/sound/jihanki-sfx/entering-money.wav",
     home:"media/sound/jihanki-sfx/homebutton.opus",
+    homeFallback:"media/sound/jihanki-sfx/homebutton.wav",
     loop:"media/sound/jihanki-sfx/jihanki-music-loop.opus",
     loopFallback:"media/sound/jihanki-sfx/jihanki-music-loop.wav"
   };
@@ -1321,7 +1324,8 @@ document.head.appendChild(archiveStyle);
   }
   function sfx(name){
     const now=Date.now();if(now-lastSFX<45)return;lastSFX=now;
-    const a=new Audio(SOUND[name]);a.volume=name==="coin"?.55:.4;a.play().catch(()=>{});
+    const src=usingFallback&&SOUND[name+"Fallback"]?SOUND[name+"Fallback"]:SOUND[name];
+    const a=new Audio(src);a.volume=name==="coin"?.55:.4;a.play().catch(()=>{});
   }
   function stopForeground(){
     if(foreground){try{foreground.pause()}catch(_){}foreground=null}

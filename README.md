@@ -152,6 +152,7 @@ The interface uses a small set of dedicated JIHANKI sounds:
 * `homebutton.opus` — home/navigation interaction
 * `jihanki-music-loop.opus` — continuous background ambience on current Safari
 * `jihanki-music-loop.wav` — compatibility fallback for browsers without Ogg Opus support
+* WAV fallbacks for the button, coin and home effects on older Safari
 
 The background loop starts directly from the first user interaction. A WAV fallback is retained for older Safari versions that cannot reliably play Ogg Opus.
 
