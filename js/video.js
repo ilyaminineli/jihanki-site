@@ -4,6 +4,9 @@
       "A fictional yokai-documentary work presented as an homage to Japanese yokai folklore and ghost-story television. The film introduces six invented beings associated with Mount Fuji and deliberately uses the tone of a field documentary or late-night mystery programme. The names, folklore and documentary evidence are entirely fictional, forming part of the wider Fuji-region archive where real places and invented mythology overlap.",
     "mountain-remembers-mv":
       "A fragmentary audiovisual journey through the Fuji region, built from roads, forests, shrines, tunnels, lakes, vending machines, field recordings and traces of people encountered during the Japan expedition. It is deliberately not a conventional travel diary: places become characters and the boundary between physical landscape and remembered landscape becomes uncertain. The work connects Mount Fuji, the Fuji Five Lakes, Aokigahara, Saiko, Kawaguchiko, Shojiko, Motosuko, surrounding roads, shrines, tunnels and vending machines into one fictional audiovisual landscape.",
+
+    "endless-road":
+      "A journey-based music video featuring Iirai and Takismana, assembled from footage connected with the Japan trip. It belongs with the other travel-derived audiovisual works in this archive.",
     gonshan:
       "Experimental visual music inspired by Kitahara Hakushu’s Higanbana from Memories (1911). The musical language uses the In-sen pentatonic scale, while Takismana and Eugene provide UTAU voices. Newspaper fragments, footprints and crimson higanbana form a digital collage around frozen time and cyclical loss: grief becomes an endless ritual between the living and the dead.",
     tunnel:
