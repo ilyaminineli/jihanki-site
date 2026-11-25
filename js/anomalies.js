@@ -14,6 +14,8 @@
     lastAt = now;
     const message = RESPONSES[Math.floor(Math.random() * RESPONSES.length)];
     window.JIHANKI_EVENTS?.record("anomaly", { trigger, message: message[0] });
+    window.JIHANKI_AUDIO?.setState("anomaly", 2600);
+    window.JIHANKI_AUDIO?.sfx("button");
     const screen = document.getElementById("screen-content");
     if (screen) screen.innerHTML = '<div class="boot anomaly-screen"><div class="boot-title">' + window.JIHANKI_MARKDOWN.escape(message[0]) + '</div><div class="boot-subtitle">' + window.JIHANKI_MARKDOWN.escape(message[1]) + '</div><div class="boot-loading">JHK / SIGNAL UNSTABLE</div></div>';
     return true;
