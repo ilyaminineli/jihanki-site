@@ -35,16 +35,17 @@ Japan stay / shared field experience: **Julia Baranyuk**
 
 ## Features
 
-* Interactive vending-machine interface
-* Fixed internal machine coordinate system with responsive proportional scaling
-* Touch and mouse interaction
-* Archive/catalogue system
-* Markdown documents rendered directly inside the machine screen
-* Audio playback
-* Background JIHANKI music loop
-* Interface sound effects
-* Project notes, scripts, yokai documentation, and Sonic Pi material
-* Local media archive
+* Interactive vending-machine interface with a fixed 429 × 932 coordinate system
+* Explicit archive category mapping for all eight physical selectors
+* Stock states: NEW, AVAILABLE, LOW STOCK, SOLD OUT, RESTOCKING and ARCHIVED
+* Credit-based dispensing with selected-item and category-random purchase rules
+* Browser-local transaction receipts with print and text-export actions
+* Hidden service terminal, local event journal and inventory diagnostics
+* Cross-referenced memories, voice credits and geographic archive index
+* Rare, authored machine anomalies
+* Markdown documents, images, audio and video rendered inside the artifact viewer
+* Ambient JIHANKI loop and interface sound effects
+* Static deployment: no framework, build step, backend or visitor account
 * Works as a static site and can be served with any basic HTTP server
 
 ## Project Structure
@@ -59,7 +60,7 @@ JIHANKI/
 │   └── screen.css
 │
 ├── data/
-│   ├── archive.js
+│   ├── archive.js              # archive data only
 │   └── README.md
 │
 ├── documents/
@@ -89,6 +90,19 @@ JIHANKI/
 │   │       └── jihanki-music-loop.opus
 │   └── video/
 │
+├── js/
+│   ├── categories.js
+│   ├── events.js
+│   ├── inventory.js
+│   ├── relationships.js
+│   ├── geography.js
+│   ├── receipts.js
+│   ├── audio.js
+│   ├── markdown.js
+│   ├── maintenance.js
+│   ├── anomalies.js
+│   ├── video.js
+│   └── machine.js
 ├── index.html
 ├── info.md
 └── README.md
@@ -100,15 +114,15 @@ The application is intentionally simple.
 
 ### `index.html`
 
-The main application and vending-machine interface live here.
-
-It contains the machine UI, screen logic, interaction handling, archive display, audio behaviour, and responsive positioning.
+Contains the machine artwork, fixed-coordinate controls, CRT and artifact shell. Runtime code is loaded from the dedicated scripts below.
 
 ### `data/archive.js`
 
-This is the archive catalogue.
+Catalogue data only. It defines the archive records and connects them with their actual files. It does not install UI behaviour.
 
-It defines which documents and media are available to the JIHANKI interface and connects catalogue entries with their actual files.
+### `js/`
+
+The runtime is separated by responsibility: category semantics, inventory rules, receipts, events, relationships, geography, audio, Markdown rendering, maintenance mode, anomalies, video presentation and the machine controller. The scripts are loaded in dependency order at the end of `index.html`.
 
 ### `documents/`
 
@@ -252,11 +266,13 @@ ARCHIVE DATA
      ↓
 data/archive.js
      ↓
+CATEGORY / INVENTORY CONTRACTS
+     ↓
+FOCUSED RUNTIME MODULES
+     ↓
 DOCUMENTS / MEDIA
      ↓
-JIHANKI INTERFACE
-     ↓
-USER EXPERIENCE
+JIHANKI MACHINE
 ```
 
 The machine should remain visually and spatially stable while the archive itself continues to grow.
@@ -280,3 +296,26 @@ When modifying the project:
 **Experimental / actively developed.**
 
 JIHANKI is a living archive and interface. Its contents, visual design, sounds, documents, and interaction model are expected to evolve as new material is added.
+
+
+## Machine systems
+
+### Transactions and receipts
+
+A successful purchase creates a browser-local receipt with a unique per-browser archive code, original archive date, transaction timestamp and item category. Receipts can be printed or saved as text. The receipt history is local to the visitor's browser.
+
+### Stock and dispensing
+
+Stock status is authored in each archive record. Supported states are `new`, `available`, `low-stock`, `sold-out`, `restocking`, and `archived`. Unavailable items remain visible for inspection but are excluded from dispensing. On a static site, purchases do not decrement shared stock: stock status is maintained in the published catalogue.
+
+The dispenser first purchases the selected item. Without a selection, it draws randomly from available items in the active category; from the home screen it draws from the full available archive. One coin purchases one memory.
+
+The Aokigahara / Fuji Sonic Pi fifth environment (Shrine / Ritual) is represented as a RESTOCKING record linked to the consolidated pentalogy dossier.
+
+### Maintenance terminal
+
+The service terminal is an undocumented interaction: press HOME three times, COIN twice, then hold MEMORY / PICK UP for approximately 2.6 seconds. It exposes public archive metadata, stock diagnostics, visitor-local receipts and event logs. This is an Easter egg, not an authentication boundary; all shipped documents and code remain publicly accessible.
+
+### Local data and privacy
+
+Receipts and event logs are stored in the visitor's browser using local storage. They are not sent to a server. Clearing browser storage removes that visitor-local history. The public archive and its stock definitions remain unchanged.

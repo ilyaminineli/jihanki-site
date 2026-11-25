@@ -1,0 +1,77 @@
+/* Supplemental CRT, receipt and service-terminal styling. */
+#screen-content .archive{height:100%;max-height:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.38) rgba(255,255,255,.04);padding-right:7px}
+#screen-content .archive::-webkit-scrollbar{width:5px;display:block}
+#screen-content .archive::-webkit-scrollbar-track{background:rgba(255,255,255,.035)}
+#screen-content .archive::-webkit-scrollbar-thumb{background:rgba(255,255,255,.34)}
+#screen-content .archive-group{margin:10px 0 4px;padding:5px 0 4px;border-bottom:1px solid rgba(255,255,255,.13);font-size:7px;line-height:1.35;letter-spacing:.17em;color:rgba(255,255,255,.54);text-transform:uppercase}
+#screen-content .archive-item{padding:7px 5px;touch-action:manipulation}
+#screen-content .archive-description{margin:4px 0 0;color:rgba(255,255,255,.43);font-size:7px;line-height:1.45}
+.archive-stock{display:inline-block;margin-left:6px;padding:1px 3px;border:1px solid rgba(255,255,255,.15);font-size:6px;letter-spacing:.08em;opacity:.72}
+.archive-stock.status-restocking,.archive-stock.status-sold-out{border-style:dashed;color:#aaa}
+.archive-stock.status-new{color:#fff;border-color:rgba(255,255,255,.5)}
+#artifact-body,#artifact-content{min-height:0}
+.markdown-rendered{overflow-wrap:anywhere}
+.markdown-rendered p{margin:0 0 14px;line-height:1.65}
+.markdown-rendered h1,.markdown-rendered h2,.markdown-rendered h3{margin:18px 0 9px;line-height:1.25}
+.markdown-rendered ul,.markdown-rendered ol{padding-left:22px;margin:0 0 14px}
+.markdown-rendered li{margin:4px 0}
+.markdown-rendered hr{border:0;border-top:1px solid rgba(255,255,255,.12);margin:18px 0}
+.markdown-image{display:block;max-width:100%;max-height:300px;object-fit:contain;margin:0 0 16px}
+.markdown-audio{margin:18px 0;padding:10px 12px;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.025)}
+.markdown-audio-label{font-size:10px;letter-spacing:.1em;color:#aaa;margin-bottom:7px}
+.markdown-audio audio{width:100%}
+.markdown-link,.archive-external-link{color:inherit;text-decoration:underline}
+#artifact-body audio.artifact-audio,#artifact-body video.artifact-video,#artifact-body .markdown-audio audio{display:block;width:100%;max-width:620px;margin:18px auto;padding:7px;border:1px solid rgba(255,255,255,.13);border-radius:0;background:#050505;filter:grayscale(1) contrast(.92);box-shadow:inset 0 0 18px rgba(255,255,255,.025),0 0 16px rgba(0,0,0,.65)}
+#artifact-body audio.artifact-audio{height:46px}
+#artifact-body video.artifact-video{max-height:65vh;object-fit:contain}
+#artifact-body .artifact-media{display:block;max-width:100%;max-height:65vh;margin:16px auto;border:1px solid rgba(255,255,255,.12);filter:grayscale(.2) contrast(.95)}
+#artifact-body .artifact-caption{max-width:620px;margin:9px auto 0;color:rgba(255,255,255,.48);font-size:10px;line-height:1.55}
+.artifact-actions{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
+.artifact-actions button,.receipt-actions button,.service-button,.service-footer button{border:1px solid rgba(255,255,255,.18);background:#111;color:#ccc;padding:7px 9px;font:9px "Courier New",monospace;letter-spacing:.08em;cursor:pointer}
+.artifact-actions button:hover,.receipt-actions button:hover,.service-button:hover{background:#222;color:white}
+.artifact-unavailable{margin:12px 0;padding:10px;border:1px dashed rgba(255,255,255,.24);color:#aaa;font-size:10px;line-height:1.5}
+.artifact-relations,.artifact-locations{margin:18px 0;padding-top:10px;border-top:1px solid rgba(255,255,255,.1)}
+.artifact-section-label{display:block;margin-bottom:7px;color:#777;font-size:9px;letter-spacing:.14em}
+.relation-link,.location-link{display:inline-block;margin:3px 4px 3px 0;padding:5px 7px;border:1px solid rgba(255,255,255,.14);background:#0b0b0b;color:#ccc;font:9px "Courier New",monospace;cursor:pointer}
+.relation-link:hover,.location-link:hover{color:#fff;border-color:#777}
+.receipt-ticket{max-width:330px;margin:0 auto 20px;padding:16px 18px;background:#e9e7df;color:#181818;font:10px/1.5 "Courier New",monospace;box-shadow:0 7px 22px rgba(0,0,0,.45);position:relative}
+.receipt-ticket:after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:7px;background:linear-gradient(135deg,#e9e7df 50%,transparent 50%) 0 0/10px 10px repeat-x}
+.receipt-top{text-align:center;font-size:17px;font-weight:bold;letter-spacing:.12em}
+.receipt-top span{display:block;font-size:11px}
+.receipt-rule{border-top:1px dashed #777;margin:10px 0}
+.receipt-heading{text-align:center;font-weight:bold;letter-spacing:.13em;margin-bottom:12px}
+.receipt-row{display:flex;flex-direction:column;margin:7px 0;overflow-wrap:anywhere}
+.receipt-row span,.receipt-code-label{font-size:8px;color:#666;letter-spacing:.1em}
+.receipt-row strong{font-weight:bold}
+.receipt-code{text-align:center;font-size:17px;letter-spacing:.08em;font-weight:bold;margin:6px 0 10px;overflow-wrap:anywhere}
+.receipt-statement{text-align:center;font-weight:bold;letter-spacing:.08em}
+.receipt-actions{display:flex;justify-content:center;gap:8px;margin-top:12px}
+.receipt-actions button{border-color:#777;background:transparent;color:#222;padding:5px 8px}
+.service-terminal{height:100%;display:flex;flex-direction:column;font:7px/1.35 "Courier New",monospace;color:rgba(230,230,230,.82)}
+.service-head,.service-footer{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.14);letter-spacing:.08em}
+.service-footer{border-top:1px solid rgba(255,255,255,.14);border-bottom:0;margin-top:auto}
+.service-indicator{color:#aaa}
+.service-nav{display:flex;flex-wrap:wrap;gap:3px;padding:5px 0}
+.service-button{padding:4px 5px;font-size:6px}
+.service-current{padding:4px 0;border-bottom:1px solid rgba(255,255,255,.12);letter-spacing:.15em;color:#fff}
+.service-body{flex:1;min-height:0;overflow:auto;padding:5px 0}
+.service-record{display:block;width:100%;padding:5px 4px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;color:#ccc;font:7px/1.35 "Courier New",monospace}
+.service-record small{display:block;margin-top:2px;color:#777;font-size:6px;overflow-wrap:anywhere}
+.service-record-button{background:transparent;border-left:0;border-right:0;border-top:0;cursor:pointer}
+.service-note{padding:8px 4px;color:#777;line-height:1.5}
+.service-line{display:flex;justify-content:space-between;padding:3px 4px;border-bottom:1px solid rgba(255,255,255,.08)}
+.service-subhead{margin:8px 0 4px;color:#aaa;letter-spacing:.1em}
+.service-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.service-grid>div{padding:5px;border:1px solid rgba(255,255,255,.1);font-size:6px}
+.service-grid strong{display:block;margin-top:3px;font-size:12px}
+.service-footer button{padding:3px 6px;font-size:6px}
+.video-artifact{width:100%;max-width:900px;margin:auto}
+.video-artifact-meta{margin:0 0 8px;color:rgba(255,255,255,.35);font-size:8px;letter-spacing:.11em;text-transform:uppercase}
+.video-artifact-description{margin:0 0 16px;padding:13px 14px;border-left:2px solid rgba(255,255,255,.38);background:rgba(255,255,255,.025);color:rgba(255,255,255,.68);font:11px/1.65 "Courier New",monospace;max-height:34vh;overflow:auto}
+.video-artifact-description-label{display:block;margin-bottom:7px;color:rgba(255,255,255,.32);font-size:8px;letter-spacing:.16em;text-transform:uppercase}
+.video-artifact-voices{margin:-7px 0 13px;color:rgba(255,255,255,.42);font-size:8px;letter-spacing:.12em;text-transform:uppercase}
+.video-artifact-frame{display:block;width:100%;max-height:68vh;background:#000;border:1px solid rgba(255,255,255,.13);object-fit:contain}
+@media(max-width:560px){.video-artifact-description{font-size:10px;max-height:36vh}.video-artifact-frame{max-height:58vh}.receipt-ticket{max-width:280px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+.project-cover{display:block;width:min(100%,430px);max-height:48vh;object-fit:contain;margin:8px auto 18px;border:1px solid rgba(255,255,255,.13)}
