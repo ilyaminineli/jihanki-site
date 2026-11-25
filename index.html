@@ -674,7 +674,12 @@
                 /* no geometry change — viewport scaling handles it */
             }
         }
-    </style>
+    
+        .archive-external-link{color:#ddd;text-decoration:underline;letter-spacing:.08em;font-size:11px}
+        .voicebank-artifact{max-width:620px;margin:auto}
+        .voicebank-artifact .artifact-media{max-height:42vh}
+        .voicebank-subtitle,.voicebank-context{color:#999;font-size:11px;letter-spacing:.08em}
+        </style>
 </head>
 
 <body>
@@ -709,12 +714,12 @@
                 <span class="product-label">PHOTO</span>
             </button>
 
-            <button class="product" id="note" data-category="note">
-                <span class="product-label">NOTE</span>
+            <button class="product" id="note" data-category="utau">
+                <span class="product-label">UTAU</span>
             </button>
 
-            <button class="product" id="yokai" data-category="yokai">
-                <span class="product-label">妖怪</span>
+            <button class="product" id="yokai" data-category="text">
+                <span class="product-label">TEXT</span>
             </button>
 
             <button class="product" id="music" data-category="music">
@@ -725,8 +730,8 @@
                 <span class="product-label">SOUND</span>
             </button>
 
-            <button class="product" id="text" data-category="text">
-                <span class="product-label">TEXT</span>
+            <button class="product" id="text" data-category="text-index">
+                <span class="product-label">NOTES</span>
             </button>
 
             <button class="product" id="other" data-category="other">
@@ -798,70 +803,7 @@
         ========================================================= */
 
         const FALLBACK_ARCHIVE = [
-            {
-                id: "video-01",
-                title: "Documentation of Julia Baranyuk",
-                category: "video",
-                type: "video",
-                file: "media/video/eli.mp4",
-                date: "2026-07-22"
-            },
-            {
-                id: "yokai-01",
-                title: "富士山六大妖怪",
-                category: "yokai",
-                type: "text",
-                file: "documents/yokai/fuji-six-yokai.md",
-                date: "2026-08-01"
-            },
-            {
-                id: "music-01",
-                title: "Moonlit Koto Curse",
-                category: "music",
-                type: "audio",
-                file: "media/music/Moonlit Koto Curse.opus",
-                date: "2026-08-01"
-            },
-            {
-                id: "sound-01",
-                title: "Field Recording",
-                category: "sound",
-                type: "audio",
-                file: "media/sound/hellyea.opus",
-                date: "2026-07-22"
-            },
-            {
-                id: "photo-01",
-                title: "JIHANKI / Cover",
-                category: "photo",
-                type: "image",
-                file: "media/photo/cover1.png",
-                date: "2026-07-22"
-            },
-            {
-                id: "note-01",
-                title: "FIRST JIHANKI",
-                category: "note",
-                type: "text",
-                file: "documents/notes/first-jihanki.md",
-                date: "2026-07-22"
-            },
-            {
-                id: "note-02",
-                title: "ARCHIVE ROTATION",
-                category: "note",
-                type: "text",
-                file: "documents/notes/archive-rotation.md",
-                date: "2026-07-23"
-            },
-            {
-                id: "note-03",
-                title: "EXPEDITION 2026-07-22",
-                category: "note",
-                type: "text",
-                file: "documents/notes/expedition-2026-07-22.md",
-                date: "2026-07-22"
-            }
+            { id:"fallback", title:"Archive data unavailable", category:"text", type:"text", text:"The main data/archive.js file could not be loaded." }
         ];
 
         let archive = FALLBACK_ARCHIVE;
@@ -911,32 +853,12 @@
 
 
         function categoryItems(category) {
-            return archive.filter(item => {
+            const source = Array.isArray(window.JIHANKI_ARCHIVE) ? window.JIHANKI_ARCHIVE : archive;
+            return source.filter(item => {
                 const c = String(item.category || item.type || "").toLowerCase();
-
-                if (category === "note") {
-                    return c === "note" || c === "notes";
-                }
-
-                if (category === "yokai") {
-                    return c === "yokai" || c === "妖怪";
-                }
-
-                if (category === "text") {
-                    return c === "text" || c === "document";
-                }
-
-                if (category === "other") {
-                    return ![
-                        "video", "photo", "image",
-                        "note", "notes",
-                        "yokai", "妖怪",
-                        "music", "audio",
-                        "sound",
-                        "text", "document"
-                    ].includes(c);
-                }
-
+                if (category === "text-index") return c === "text";
+                if (category === "utau") return c === "utau" || c === "voicebank";
+                if (category === "other") return c === "other";
                 return c === category;
             });
         }
@@ -957,10 +879,7 @@
         function showCategory(category) {
             const items = categoryItems(category);
 
-            const title =
-                category === "yokai"
-                    ? "妖怪"
-                    : category.toUpperCase();
+            const title = category === "text-index" ? "NOTES" : category.toUpperCase();
 
             screenContent.innerHTML = `
         <div class="archive">
@@ -1029,8 +948,7 @@
 
             const title = escapeHTML(item.title || "UNTITLED");
             const date = escapeHTML(item.date || "");
-            const type = String(item.type || item.category || "")
-                .toLowerCase();
+            const type = String(item.type || item.category || "").toLowerCase();
 
             artifactContent.innerHTML = `
         <h1 class="artifact-title">${title}</h1>
@@ -1064,11 +982,15 @@
                 ["png", "jpg", "jpeg", "webp", "gif"].includes(extension)
             ) {
                 body.innerHTML = `
-            <img
-                class="artifact-media"
-                src="${escapeHTML(file)}"
-                alt="${title}">
+            <img class="artifact-media" src="${escapeHTML(file)}" alt="${title}">
         `;
+                return;
+            }
+
+            if (type === "voicebank") {
+                const image = item.image ? `<img class="artifact-media" src="${escapeHTML(item.image)}" alt="${title}">` : "";
+                const link = item.url ? `<p><a class="archive-external-link" href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">OPEN VOICEBANK RELEASE ↗</a></p>` : "";
+                body.innerHTML = `<div class="voicebank-artifact">${image}<p class="voicebank-subtitle">${escapeHTML(item.subtitle || "")}</p><p class="voicebank-context">${escapeHTML(item.context || "")}</p><div class="artifact-text">${escapeHTML(item.description || "")}</div>${link}</div>`;
                 return;
             }
 
