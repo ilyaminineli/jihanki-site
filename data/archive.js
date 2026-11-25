@@ -23,8 +23,8 @@ const ARCHIVE = {
     { id:"expedition-0722", title:"EXPEDITION 2026-07-22", date:"2026-07-22", type:"text", category:"note", author:"shared", file:"documents/notes/expedition-2026-07-22.md" },
   ],
   yokai: [{ id:"fuji-six-yokai", title:"富士山六体妖怪", date:"2026", type:"text", category:"yokai", author:"eli", project:"fuji-yokai", file:"documents/yokai/fuji-six-yokai.md" }],
-  music: [{ id:"moonlit-koto-curse", title:"Moonlit Koto Curse", date:"TEST", type:"audio", category:"music", author:"eli", file:"media/music/Moonlit%20Koto%20Curse.mp3" }],
-  sound: [{ id:"hellyea", title:"HELLYEA", date:"TEST FIELD RECORDING", type:"audio", category:"sound", author:"shared", file:"media/sound/hellyea.wav" }],
+  music: [{ id:"moonlit-koto-curse", title:"Moonlit Koto Curse", date:"TEST", type:"audio", category:"music", author:"eli", file:"media/music/Moonlit%20Koto%20Curse.opus" }],
+  sound: [{ id:"hellyea", title:"HELLYEA", date:"TEST FIELD RECORDING", type:"audio", category:"sound", author:"shared", file:"media/sound/hellyea.opus" }],
   text: [
     { id:"fuji-six-yokai-script", title:"FUJI SIX YOKAI — SCRIPT", date:"2026", type:"text", category:"text", author:"eli", project:"fuji-yokai", file:"documents/scripts/fuji-six-yokai-script.md" },
     { id:"aokigahara-project", title:"AOKIGAHARA — PROCEDURAL AMBIENT PENTALOGY", date:"2026", type:"project", category:"text", author:"eli", project:"aokigahara", projectPath:"projects/aokigahara/index.html", file:"documents/projects/aokigahara.md" },
@@ -58,7 +58,7 @@ archiveStyle.textContent = `
 document.head.appendChild(archiveStyle);
 
 (function installRuntime(){
-  const SOUND={button:"media/sound/jihanki-sfx/button-sound.wav",coin:"media/sound/jihanki-sfx/entering-money.wav",home:"media/sound/jihanki-sfx/homebutton.wav",loop:"media/sound/jihanki-sfx/jihanki-music-loop.wav"};
+  const SOUND={button:"media/sound/jihanki-sfx/button-sound.opus",coin:"media/sound/jihanki-sfx/entering-money.opus",home:"media/sound/jihanki-sfx/homebutton.opus",loop:"media/sound/jihanki-sfx/jihanki-music-loop.opus"};
   let ctx=null,buffer=null,source=null,gain=null,loading=null,started=false,muted=false,foreground=null,lastSFX=0;
   function audioContext(){if(!ctx){const C=window.AudioContext||window.webkitAudioContext;if(!C)return null;ctx=new C()}return ctx}
   async function loadLoop(){if(buffer)return buffer;if(loading)return loading;loading=fetch(SOUND.loop,{cache:"force-cache"}).then(r=>{if(!r.ok)throw new Error(`HTTP ${r.status}`);return r.arrayBuffer()}).then(b=>audioContext().decodeAudioData(b)).then(b=>{buffer=b;return b}).finally(()=>{loading=null});return loading}

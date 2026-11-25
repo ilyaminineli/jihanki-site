@@ -82,10 +82,10 @@ JIHANKI/
 │   ├── photo/
 │   ├── sound/
 │   │   └── jihanki-sfx/
-│   │       ├── button-sound.wav
-│   │       ├── entering-money.wav
-│   │       ├── homebutton.wav
-│   │       └── jihanki-music-loop.wav
+│   │       ├── button-sound.opus
+│   │       ├── entering-money.opus
+│   │       ├── homebutton.opus
+│   │       └── jihanki-music-loop.opus
 │   └── video/
 │
 ├── index.html
@@ -146,10 +146,10 @@ This is especially important on phones, where the machine must remain correctly 
 
 The interface uses a small set of dedicated JIHANKI sounds:
 
-* `button-sound.wav` — interface interaction
-* `entering-money.wav` — vending-machine interaction
-* `homebutton.wav` — home/navigation interaction
-* `jihanki-music-loop.wav` — continuous background ambience
+* `button-sound.opus` — interface interaction
+* `entering-money.opus` — vending-machine interaction
+* `homebutton.opus` — home/navigation interaction
+* `jihanki-music-loop.opus` — continuous background ambience
 
 The background loop is designed to continue seamlessly while archive material is explored.
 
@@ -210,10 +210,10 @@ with four associated audio renders in:
 
 ```text
 media/music/
-├── fuji-sonicpi-01.mp3
-├── fuji-sonicpi-02.mp3
-├── fuji-sonicpi-03.mp3
-└── fuji-sonicpi-04.mp3
+├── fuji-sonicpi-01.opus
+├── fuji-sonicpi-02.opus
+├── fuji-sonicpi-03.opus
+└── fuji-sonicpi-04.opus
 ```
 
 ## Running Locally

@@ -12,25 +12,25 @@ The Sonic Pi source code is intentionally not published here. JIHANKI stores the
 
 ## 01 — 青木ヶ原
 
-[▶ PLAY RENDER 01](../../media/music/fuji-sonicpi-01.mp3)
+[▶ PLAY RENDER 01](../../media/music/fuji-sonicpi-01.opus)
 
 Short description of the first piece.
 
 ## 02 — 西湖
 
-[▶ PLAY RENDER 02](../../media/music/fuji-sonicpi-02.mp3)
+[▶ PLAY RENDER 02](../../media/music/fuji-sonicpi-02.opus)
 
 Short description of the second piece.
 
 ## 03 — 村
 
-[▶ PLAY RENDER 03](../../media/music/fuji-sonicpi-03.mp3)
+[▶ PLAY RENDER 03](../../media/music/fuji-sonicpi-03.opus)
 
 Short description of the third piece.
 
 ## 04 — 富士山
 
-[▶ PLAY RENDER 04](../../media/music/fuji-sonicpi-04.mp3)
+[▶ PLAY RENDER 04](../../media/music/fuji-sonicpi-04.opus)
 
 Short description of the fourth piece.
 

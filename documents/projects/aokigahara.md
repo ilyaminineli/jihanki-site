@@ -282,19 +282,19 @@ The source Sonic Pi patches are not part of this public archive. JIHANKI stores 
 
 ### RENDER 01
 
-[▶ PLAY RENDER 01](../../media/music/fuji-sonicpi-01.mp3)
+[▶ PLAY RENDER 01](../../media/music/fuji-sonicpi-01.opus)
 
 ### RENDER 02
 
-[▶ PLAY RENDER 02](../../media/music/fuji-sonicpi-02.mp3)
+[▶ PLAY RENDER 02](../../media/music/fuji-sonicpi-02.opus)
 
 ### RENDER 03
 
-[▶ PLAY RENDER 03](../../media/music/fuji-sonicpi-03.mp3)
+[▶ PLAY RENDER 03](../../media/music/fuji-sonicpi-03.opus)
 
 ### RENDER 04
 
-[▶ PLAY RENDER 04](../../media/music/fuji-sonicpi-04.mp3)
+[▶ PLAY RENDER 04](../../media/music/fuji-sonicpi-04.opus)
 
 ## RELEASE
 
