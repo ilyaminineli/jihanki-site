@@ -11,11 +11,13 @@
     withdrawn: "WITHDRAWN"
   };
   function status(item) {
-    return String(item?.stock?.status || "available").toLowerCase();
+    const authored = String(item?.stock?.status || "available").toLowerCase();
+    const quantity = item?.stock?.quantity;
+    if (Number.isFinite(quantity) && quantity <= 0 && !["restocking", "archived", "withdrawn"].includes(authored)) return "sold-out";
+    return authored;
   }
   function isAvailable(item) {
-    const quantity = item?.stock?.quantity;
-    return !!item && !UNAVAILABLE.has(status(item)) && !(Number.isFinite(quantity) && quantity <= 0);
+    return !!item && !UNAVAILABLE.has(status(item));
   }
   function label(item) {
     return item?.stock?.label || LABELS[status(item)] || "UNCLASSIFIED";
