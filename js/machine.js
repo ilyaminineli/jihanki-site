@@ -61,8 +61,14 @@
   function acceptCoin(source) {
     window.JIHANKI_AUDIO.start();
     window.JIHANKI_AUDIO.sfx("coin");
+    if (credits >= 9) {
+      if (source === "artifact") artifactFeedback("CREDIT LIMIT REACHED — DISPENSE A MEMORY FIRST");
+      else showMessage("CREDIT LIMIT", "MAXIMUM 9 CREDITS", "DISPENSE A MEMORY FIRST");
+      window.JIHANKI_EVENTS.record("coin-rejected", { credits, reason: "credit-limit", source: source || "physical" });
+      return false;
+    }
     recordSequence("COIN");
-    credits = Math.min(credits + 1, 9);
+    credits += 1;
     updateCreditDisplay();
     window.JIHANKI_AUDIO.setState("dispensing", 850);
     if (Date.now() < serviceArmedUntil) {
@@ -390,6 +396,8 @@
   function exitMaintenance() {
     maintenanceActive = false;
     currentView = "idle";
+    activeCategory = null;
+    selectedId = null;
     showHome();
     window.JIHANKI_EVENTS.record("maintenance-closed", {});
   }
