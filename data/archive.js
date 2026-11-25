@@ -230,7 +230,35 @@ document.head.appendChild(archiveStyle);
   function markdownToHTML(markdown,base){const lines=String(markdown).replace(/\r\n?/g,"\n").split("\n");let html="",paragraph=[],list=null;const flush=()=>{if(paragraph.length){html+=`<p>${inlineMD(paragraph.join(" "),base)}</p>`;paragraph=[]}};const close=()=>{if(list)html+=`</${list}>`;list=null};for(const raw of lines){const line=raw.trim();if(!line){flush();close();continue}if(/^---+$/.test(line)){flush();close();html+="<hr>";continue}const h=line.match(/^(#{1,6})\s+(.*)$/);if(h){flush();close();const n=h[1].length;html+=`<h${n}>${inlineMD(h[2],base)}</h${n}>`;continue}const u=line.match(/^[-*+]\s+(.*)$/);if(u){flush();if(list!=="ul"){close();html+="<ul>";list="ul"}html+=`<li>${inlineMD(u[1],base)}</li>`;continue}const o=line.match(/^\d+\.\s+(.*)$/);if(o){flush();if(list!=="ol"){close();html+="<ol>";list="ol"}html+=`<li>${inlineMD(o[1],base)}</li>`;continue}close();paragraph.push(line)}flush();close();return html}
   function bindAudio(){document.querySelectorAll("#artifact-body audio").forEach(a=>{a.addEventListener("play",()=>{foreground=a;muteAmbient(true)});a.addEventListener("pause",()=>{if(foreground===a)muteAmbient(false)});a.addEventListener("ended",()=>{if(foreground===a){foreground=null;muteAmbient(false)}})})}
   async function openMarkdown(item,body){try{const r=await fetch(item.file,{cache:"no-cache"});if(!r.ok)throw new Error(`HTTP ${r.status}`);const md=await r.text(),doc=new URL(item.file,location.href),base=new URL("./",doc).href;body.innerHTML=`<div class="artifact-text markdown-rendered">${markdownToHTML(md,base)}</div>`;bindAudio()}catch(e){body.innerHTML=`<div class="artifact-text"><strong>MEMORY COULD NOT BE READ.</strong><br><br>${escapeHTML(item.file)}<br>${escapeHTML(e.message)}</div>`}}
-  window.openItem=async function(item){if(!item)return;sfx("button");stopForeground();startLoop();if(item.projectPath){window.location.href=item.projectPath;return}const artifact=document.getElementById("artifact"),content=document.getElementById("artifact-content");if(!artifact||!content)return;const title=escapeHTML(item.title||"UNTITLED"),meta=[item.author,item.date,item.category||item.type].filter(Boolean).map(escapeHTML).join(" / ");content.innerHTML=`<h1 class="artifact-title">${title}</h1><div class="artifact-meta">${meta}</div><div id="artifact-body">LOADING MEMORY...</div>`;artifact.classList.add("open");artifact.setAttribute("aria-hidden","false");const body=document.getElementById("artifact-body"),type=String(item.type||item.category||"").toLowerCase(),file=item.file||"",ext=file.split("?")[0].split(".").pop().toLowerCase();if(type==="image"||type==="photo"||/^(png|jpe?g|webp|gif)$/.test(ext)){body.innerHTML=`<img class="artifact-media" src="${escapeHTML(file)}" alt="${title}">`;return}if(type==="audio"||type==="music"||type==="sound"||/^(mp3|wav|ogg|m4a|aac|flac|opus)$/.test(ext)){body.innerHTML=`<audio class="artifact-audio" controls autoplay playsinline src="${escapeHTML(file)}"></audio>`;foreground=body.querySelector("audio");muteAmbient(true);foreground.addEventListener("play",()=>muteAmbient(true));foreground.addEventListener("pause",()=>muteAmbient(false));foreground.addEventListener("ended",()=>{foreground=null;muteAmbient(false)});return}if(type==="video"||/^(mp4|webm|mov)$/.test(ext)){body.innerHTML=`<video class="artifact-video" controls autoplay playsinline src="${escapeHTML(file)}"></video>`;foreground=body.querySelector("video");muteAmbient(true);foreground.addEventListener("play",()=>muteAmbient(true));foreground.addEventListener("pause",()=>muteAmbient(false));foreground.addEventListener("ended",()=>{foreground=null;muteAmbient(false)});return}await openMarkdown(item,body)};
+  window.openItem=async function(item){
+    if(!item)return;
+    sfx("button");stopForeground();startLoop();
+    const artifact=document.getElementById("artifact"),content=document.getElementById("artifact-content");
+    if(!artifact||!content)return;
+    const title=escapeHTML(item.title||"UNTITLED"),meta=[item.author,item.date,item.category||item.type].filter(Boolean).map(escapeHTML).join(" / ");
+    content.innerHTML=`<h1 class="artifact-title">${title}</h1><div class="artifact-meta">${meta}</div><div id="artifact-body">LOADING MEMORY...</div>`;
+    artifact.classList.add("open");artifact.setAttribute("aria-hidden","false");
+    const body=document.getElementById("artifact-body"),type=String(item.type||item.category||"").toLowerCase(),file=item.file||"",ext=file.split("?")[0].split(".").pop().toLowerCase();
+    if(type==="voicebank"){
+      const image=item.image?`<img class="artifact-media" src="${escapeHTML(item.image)}" alt="${title}">`:"";
+      const link=item.url?`<p><a class="markdown-link" href="${escapeHTML(item.url)}" target="_blank" rel="noopener noreferrer">OPEN VOICEBANK RELEASE ↗</a></p>`:"";
+      body.innerHTML=`<div class="artifact-text">${image}<p><strong>${escapeHTML(item.subtitle||"")}</strong></p><p>${escapeHTML(item.context||"")}</p><p>${escapeHTML(item.description||"")}</p>${link}</div>`;
+      return;
+    }
+    if(item.projectPath && type==="project"){body.innerHTML=`<p><a class="markdown-link" href="${escapeHTML(item.projectPath)}">OPEN PROJECT DOSSIER ↗</a></p>`;if(file)await openMarkdown(item,body);return;}
+    if(type==="image"||type==="photo"||/^(png|jpe?g|webp|gif)$/.test(ext)){body.innerHTML=`<img class="artifact-media" src="${escapeHTML(file)}" alt="${title}">`;return;}
+    if(type==="audio"||type==="music"||type==="sound"||/^(mp3|wav|ogg|m4a|aac|flac|opus)$/.test(ext)){
+      body.innerHTML=`<audio class="artifact-audio" controls autoplay playsinline preload="metadata" src="${escapeHTML(file)}"></audio>`;
+      foreground=body.querySelector("audio");muteAmbient(true);
+      foreground.addEventListener("play",()=>muteAmbient(true));foreground.addEventListener("pause",()=>muteAmbient(false));foreground.addEventListener("ended",()=>{foreground=null;muteAmbient(false)});return;
+    }
+    if(type==="video"||/^(mp4|webm|mov)$/.test(ext)){
+      body.innerHTML=`<video class="artifact-video" controls autoplay playsinline preload="metadata" src="${escapeHTML(file)}"></video>`;
+      foreground=body.querySelector("video");muteAmbient(true);
+      foreground.addEventListener("play",()=>muteAmbient(true));foreground.addEventListener("pause",()=>muteAmbient(false));foreground.addEventListener("ended",()=>{foreground=null;muteAmbient(false)});return;
+    }
+    if(file)await openMarkdown(item,body);else body.textContent=item.description||"NO DATA";
+  }
   document.addEventListener("pointerdown",e=>{startLoop();const b=e.target.closest&&e.target.closest("button");if(!b)return;if(b.id==="coin-button")sfx("coin");else if(b.id==="home-button")sfx("home");else sfx("button")},{passive:true});document.addEventListener("keydown",()=>startLoop(),{passive:true});window.JIHANKI_AUDIO={start:startLoop,duck:muteAmbient,sfx};
 })();
 
