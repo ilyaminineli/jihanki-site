@@ -66,3 +66,10 @@ The daily rotating selection is implemented in js/rotation.js. It chooses a date
 Personal collections are implemented in js/collection.js. Only successful purchases are collected. Stored records include the archive ID, title, date, category, acquisition timestamps, repeat count and associated receipt codes. They remain local to the browser and can be exported as JSON.
 
 Ambient machine profiles live in js/audio.js. The original ambience loop fades between machine states; the visitor can mute it without disabling visual interactions or archive playback controls.
+
+
+## Automated integrity checks
+
+Run `node scripts/validate-archive.mjs` to validate required record fields, unique IDs, category aliases, stock states, local media/document paths, curated relationship targets, HTML IDs and script dependencies. GitHub Actions runs the same check for pushes and pull requests.
+
+When adding a record, use `file` for the primary local document or media path. Do not use the obsolete `textFile` property.

@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,
-               maximum-scale=1.0, user-scalable=no,
-               viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>自販機 — JIHANKI</title>
 
@@ -702,6 +700,7 @@
                     <div class="boot-loading">SELECT A MEMORY</div>
                 </div>
             </div>
+            <div id="credit-display" class="credit-display" role="status" aria-live="polite" aria-atomic="true">CREDITS / 0</div>
         </div>
 
         <!-- Eight archive slots -->
@@ -761,8 +760,10 @@
 
     </div>
 
+    <div id="machine-announcer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
     <!-- Large artifact viewer -->
-    <div id="artifact" role="dialog" aria-modal="true" aria-label="JIHANKI archive memory" aria-hidden="true">
+    <div id="artifact" role="dialog" aria-modal="true" aria-label="JIHANKI archive memory" aria-hidden="true" tabindex="-1">
         <div class="artifact-window">
 
             <button id="artifact-close" type="button" aria-label="Close">

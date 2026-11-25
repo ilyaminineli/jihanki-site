@@ -95,3 +95,11 @@
 .collection-actions button:hover{color:#fff;background:#222}
 .service-terminal .collection-actions{justify-content:flex-start}
 @media(prefers-reduced-motion:reduce){.boot,.boot-loading{animation:none!important}}
+
+/* M35 / M38 — persistent credits, status announcements and accessible focus. */
+.credit-display{position:absolute;top:5px;right:7px;z-index:40;color:rgba(255,255,255,.56);font:6px "Courier New",monospace;letter-spacing:.1em;pointer-events:none;text-shadow:0 0 5px rgba(255,255,255,.3)}
+.artifact-credit-status{display:block;align-self:center;margin-right:auto;color:#888;font:9px "Courier New",monospace;letter-spacing:.08em}
+.artifact-feedback{min-height:1.4em;margin:12px 0 3px;color:#bbb;font:10px/1.5 "Courier New",monospace;letter-spacing:.04em}
+.artifact-actions{align-items:center}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+button:focus-visible,a:focus-visible{outline:2px solid #ddd!important;outline-offset:3px!important}

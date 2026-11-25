@@ -5,6 +5,9 @@
   const screen = document.getElementById("screen-content");
   const artifact = document.getElementById("artifact");
   const artifactContent = document.getElementById("artifact-content");
+  const artifactClose = document.getElementById("artifact-close");
+  const creditDisplay = document.getElementById("credit-display");
+  const announcer = document.getElementById("machine-announcer");
   const esc = value => window.JIHANKI_MARKDOWN.escape(value);
   const allItems = () => window.JIHANKI_ARCHIVE || [];
   const byId = id => {
@@ -16,6 +19,71 @@
   let credits = 0, selectedId = null, activeCategory = null, lastDispensed = null;
   let maintenanceActive = false, serviceArmedUntil = 0, serviceHoldTimer = null, serviceActivated = false;
   let controlSequence = [];
+  let currentView = "idle";
+  let activeArtifact = null;
+  let lastFocusedElement = null;
+  let artifactRenderToken = 0;
+
+  function announce(message) {
+    if (announcer) announcer.textContent = String(message || "");
+  }
+  function updateCreditDisplay() {
+    if (creditDisplay) creditDisplay.textContent = "CREDITS / " + credits;
+    const balance = artifactContent.querySelector(".artifact-credit-status");
+    if (balance) balance.textContent = "CREDIT BALANCE / " + credits;
+  }
+  function audioStateForView() {
+    if (maintenanceActive || currentView === "service") return "service";
+    return ({ category: "browsing", location: "browsing", rotation: "rotation", collection: "collection" })[currentView] || "idle";
+  }
+  function updateArtifactActions() {
+    const actions = artifactContent.querySelector(".artifact-actions");
+    if (!actions || !activeArtifact) return;
+    const item = activeArtifact.item, receipt = activeArtifact.receipt;
+    const live = allItems().some(record => String(record.id) === String(item.id));
+    const unavailable = !window.JIHANKI_INVENTORY.isAvailable(item);
+    let transaction = "";
+    if (live && !unavailable && !receipt) {
+      const action = credits > 0 ? "purchase-current" : "insert-credit-current";
+      const label = credits > 0 ? "DISPENSE THIS MEMORY · 1 CREDIT" : "INSERT 1 CREDIT";
+      transaction = '<button type="button" data-action="' + action + '">' + label + '</button>';
+    }
+    const dossier = item.projectPath
+      ? '<a class="markdown-link" href="' + esc(item.projectPath) + '" target="_blank" rel="noopener noreferrer">OPEN PROJECT DOSSIER ↗</a>'
+      : "";
+    actions.innerHTML = '<span class="artifact-credit-status">CREDIT BALANCE / ' + credits + '</span>' + transaction + dossier;
+  }
+  function artifactFeedback(message) {
+    const feedback = artifactContent.querySelector(".artifact-feedback");
+    if (feedback) feedback.textContent = String(message || "");
+    if (message) announce(message);
+  }
+  function acceptCoin(source) {
+    window.JIHANKI_AUDIO.start();
+    window.JIHANKI_AUDIO.sfx("coin");
+    if (credits >= 9) {
+      if (source === "artifact") artifactFeedback("CREDIT LIMIT REACHED — DISPENSE A MEMORY FIRST");
+      else showMessage("CREDIT LIMIT", "MAXIMUM 9 CREDITS", "DISPENSE A MEMORY FIRST");
+      window.JIHANKI_EVENTS.record("coin-rejected", { credits, reason: "credit-limit", source: source || "physical" });
+      return false;
+    }
+    recordSequence("COIN");
+    credits += 1;
+    updateCreditDisplay();
+    window.JIHANKI_AUDIO.setState("dispensing", 850);
+    if (Date.now() < serviceArmedUntil) {
+      if (source === "artifact") artifactFeedback("SERVICE SEQUENCE READY — HOLD MEMORY / PICK UP");
+      else showMessage("SERVICE SEQUENCE READY", "HOLD MEMORY / PICK UP", "INTERNAL SERVICE");
+    } else if (source === "artifact") {
+      artifactFeedback("COIN ACCEPTED — " + credits + " CREDIT" + (credits === 1 ? "" : "S") + " AVAILABLE");
+      updateArtifactActions();
+    } else {
+      showMessage("COIN ACCEPTED", credits + " CREDIT" + (credits === 1 ? "" : "S"), "PICK UP TO DISPENSE A MEMORY");
+    }
+    window.JIHANKI_EVENTS.record("coin-accepted", { credits, source: source || "physical" });
+    if (source !== "artifact" && window.JIHANKI_ANOMALIES.maybe("coin")) return true;
+    return false;
+  }
 
   function resizeJihanki() {
     const scale = Math.min(window.innerWidth / 429, window.innerHeight / 932);
@@ -26,22 +94,28 @@
   resizeJihanki();
 
   function showHome() {
+    currentView = "idle";
     window.JIHANKI_AUDIO.setState("idle");
+    updateCreditDisplay();
     const collectionCount = window.JIHANKI_COLLECTION.count();
     const rotation = window.JIHANKI_ROTATION.current();
     const muteLabel = window.JIHANKI_AUDIO.isMuted() ? "AMBIENCE / OFF" : "AMBIENCE / ON";
     screen.innerHTML = '<div class="boot"><div class="boot-japanese">自販機</div><div class="boot-title">JIHANKI</div><div class="boot-subtitle">MEMORY ARCHIVE</div><div class="boot-loading">SELECT A MEMORY</div>' +
       '<div class="home-actions"><button type="button" data-home-action="rotation">ROTATION / ' + rotation.items.length + '</button><button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button></div>' +
       '<button type="button" class="home-audio" data-home-action="audio">' + muteLabel + '</button></div>';
+    announce("JIHANKI home. " + collectionCount + " collected works. " + rotation.items.length + " rotation fragments.");
   }
   function showMessage(title, subtitle, footer) {
     screen.innerHTML = '<div class="boot"><div class="boot-title">' + esc(title) + '</div><div class="boot-subtitle">' + esc(subtitle || "") + '</div><div class="boot-loading">' + esc(footer || "") + '</div></div>';
+    announce([title, subtitle, footer].filter(Boolean).join(". "));
+    updateCreditDisplay();
   }
   function stockTag(item) {
     const status = window.JIHANKI_INVENTORY.status(item);
     return '<span class="archive-stock status-' + esc(status) + '">' + esc(window.JIHANKI_INVENTORY.label(item)) + '</span>';
   }
   function showCategory(category) {
+    currentView = "category";
     window.JIHANKI_AUDIO.setState("browsing");
     activeCategory = category === "text-index" ? "notes" : category;
     selectedId = null;
@@ -65,17 +139,25 @@
     screen.innerHTML = '<div class="archive"><div class="archive-header"><span class="archive-title">' + esc(title) + '</span><span class="archive-status">' + availableCount + ' / ' + list.length + ' AVAILABLE</span></div>' +
       (list.length ? body : '<div class="archive-item">NO MEMORY RECORDED</div>') + '</div>';
     window.JIHANKI_EVENTS.record("category-opened", { category: activeCategory, count: list.length });
+    announce(title + " archive. " + list.length + " records, " + availableCount + " available.");
+    updateCreditDisplay();
   }
 
   function closeArtifact() {
+    const wasOpen = artifact.classList.contains("open");
+    artifactRenderToken += 1;
     artifact.classList.remove("open");
     artifact.setAttribute("aria-hidden", "true");
     artifactContent.querySelectorAll("audio,video").forEach(media => { try { media.pause(); } catch (_) {} });
     window.JIHANKI_AUDIO.clearMedia();
-    window.JIHANKI_AUDIO.setState(maintenanceActive ? "service" : (activeCategory ? "browsing" : "idle"));
+    activeArtifact = null;
+    window.JIHANKI_AUDIO.setState(audioStateForView());
+    if (wasOpen && lastFocusedElement && lastFocusedElement.isConnected) lastFocusedElement.focus();
+    lastFocusedElement = null;
+    if (wasOpen) announce("Closed memory. Returned to " + currentView + ".");
   }
 
-  async function renderBody(item) {
+  async function renderBody(item, renderToken) {
     const body = document.getElementById("artifact-body");
     if (!body) return;
     const type = String(item.type || item.category || "").toLowerCase();
@@ -110,6 +192,7 @@
         const response = await fetch(file, { cache: "no-cache" });
         if (!response.ok) throw new Error("HTTP " + response.status);
         const markdown = await response.text();
+        if (renderToken !== artifactRenderToken || !artifact.classList.contains("open")) return;
         const base = new URL("./", new URL(file, location.href)).href;
         body.innerHTML = coverHTML + '<div class="artifact-text markdown-rendered">' + window.JIHANKI_MARKDOWN.render(markdown, base) + '</div>';
         window.JIHANKI_AUDIO.bindMedia(body);
@@ -139,6 +222,14 @@
 
   async function openItem(item, receipt) {
     if (!item) return;
+    if (artifact.classList.contains("open")) {
+      artifactContent.querySelectorAll("audio,video").forEach(media => { try { media.pause(); } catch (_) {} });
+      window.JIHANKI_AUDIO.clearMedia();
+    } else {
+      lastFocusedElement = document.activeElement;
+    }
+    activeArtifact = { item, receipt: receipt || null };
+    const renderToken = ++artifactRenderToken;
     selectedId = item.id;
     window.JIHANKI_AUDIO.start();
     if (receipt) {
@@ -160,13 +251,14 @@
       '<div id="artifact-body">LOADING MEMORY...</div>' +
       (unavailable ? '<div class="artifact-unavailable"><strong>' + esc(window.JIHANKI_INVENTORY.label(item)) + '</strong><br>' + esc(window.JIHANKI_INVENTORY.message(item)) + '</div>' : '') +
       renderRelations(item) +
-      '<div class="artifact-actions">' +
-      (!unavailable && !receipt && allItems().some(record => record.id === item.id) ? '<button type="button" data-action="purchase-current">DISPENSE THIS MEMORY · 1 CREDIT</button>' : '') +
-      (item.projectPath ? '<a class="markdown-link" href="' + esc(item.projectPath) + '" target="_blank" rel="noopener noreferrer">OPEN PROJECT DOSSIER ↗</a>' : '') +
-      '</div>';
+      '<div class="artifact-feedback" role="status" aria-live="polite"></div>' +
+      '<div class="artifact-actions"></div>';
     artifact.classList.add("open");
     artifact.setAttribute("aria-hidden", "false");
-    await renderBody(item);
+    updateArtifactActions();
+    artifactClose?.focus();
+    announce("Opened memory: " + (item.title || "Untitled") + ". " + (unavailable ? window.JIHANKI_INVENTORY.label(item) : "Credit balance " + credits) + ".");
+    await renderBody(item, renderToken);
   }
 
   function purchase(item) {
@@ -182,11 +274,17 @@
       return;
     }
     if (credits < 1) {
-      showMessage("NO CREDIT", "INSERT A COIN FIRST", "ONE COIN / ONE MEMORY");
+      if (artifact.classList.contains("open") && activeArtifact?.item?.id === item.id) {
+        artifactFeedback("NO CREDIT — INSERT A COIN BEFORE DISPENSING");
+        updateArtifactActions();
+      } else {
+        showMessage("NO CREDIT", "INSERT A COIN FIRST", "ONE COIN / ONE MEMORY");
+      }
       window.JIHANKI_EVENTS.record("purchase-blocked", { itemId: item.id, reason: "no-credit" });
       return;
     }
     credits -= 1;
+    updateCreditDisplay();
     lastDispensed = item.id;
     selectedId = item.id;
     const receipt = window.JIHANKI_RECEIPTS.create(item);
@@ -216,6 +314,7 @@
 
   function showLocation(place) {
     closeArtifact();
+    currentView = "location";
     activeCategory = null; selectedId = null;
     window.JIHANKI_AUDIO.setState("browsing");
     const records = window.JIHANKI_GEOGRAPHY.entries(place);
@@ -225,10 +324,13 @@
     screen.innerHTML = '<div class="archive"><div class="archive-header"><span class="archive-title">' + esc(place.toUpperCase()) + '</span><span class="archive-status">' + records.length + ' RECORDS</span></div>' +
       (records.length ? html : '<div class="archive-item">NO MEMORY RECORDED</div>') + '</div>';
     window.JIHANKI_EVENTS.record("location-opened", { place, count: records.length });
+    announce(place + ". " + records.length + " associated records.");
+    updateCreditDisplay();
   }
 
   function showRotation() {
     closeArtifact();
+    currentView = "rotation";
     activeCategory = null; selectedId = null;
     window.JIHANKI_AUDIO.setState("rotation");
     const current = window.JIHANKI_ROTATION.current();
@@ -245,10 +347,13 @@
       '<div class="archive-group">RESIDUE / PREVIOUS CYCLE</div>' + (old || '<div class="archive-item">NO RESIDUE RETAINED</div>') +
       '<div class="rotation-note">ROTATION CHANGES THE SURFACE, NOT THE ARCHIVE. ALL RECORDS REMAIN IN THEIR ORIGINAL CATEGORIES.</div></div>';
     window.JIHANKI_EVENTS.record("rotation-opened", { date: current.date, current: current.items.map(item => item.id), residue: residue.map(item => item.id) });
+    announce("Archive rotation for " + current.date + ". " + current.items.length + " current fragments and " + residue.length + " residue fragments.");
+    updateCreditDisplay();
   }
 
   function showCollection() {
     closeArtifact();
+    currentView = "collection";
     activeCategory = null; selectedId = null;
     window.JIHANKI_AUDIO.setState("collection");
     const records = window.JIHANKI_COLLECTION.all();
@@ -265,6 +370,8 @@
       (records.length ? html : '<div class="archive-item collection-empty">NO MEMORIES COLLECTED YET</div>') +
       '<div class="collection-actions"><button type="button" data-collection-action="export">EXPORT COLLECTION</button><button type="button" data-collection-action="clear">CLEAR</button></div></div>';
     window.JIHANKI_EVENTS.record("collection-opened", { works: records.length, acquisitions: window.JIHANKI_COLLECTION.totalPurchases() });
+    announce("Personal collection. " + records.length + " works. " + window.JIHANKI_COLLECTION.totalPurchases() + " acquisitions.");
+    updateCreditDisplay();
   }
 
   function recordSequence(key) {
@@ -282,15 +389,21 @@
 
   function enterMaintenance() {
     serviceArmedUntil = 0; maintenanceActive = true; serviceActivated = true;
+    currentView = "service";
     closeArtifact();
     window.JIHANKI_EVENTS.record("maintenance-opened", {});
     window.JIHANKI_AUDIO.setState("service");
     window.JIHANKI_AUDIO.sfx("home");
     window.JIHANKI_MAINTENANCE.render("overview");
+    announce("Internal service terminal.");
   }
 
   function exitMaintenance() {
-    maintenanceActive = false; showHome();
+    maintenanceActive = false;
+    currentView = "idle";
+    activeCategory = null;
+    selectedId = null;
+    showHome();
     window.JIHANKI_EVENTS.record("maintenance-closed", {});
   }
 
@@ -304,17 +417,7 @@
   });
 
   document.getElementById("coin-button").addEventListener("click", () => {
-    window.JIHANKI_AUDIO.start(); window.JIHANKI_AUDIO.sfx("coin");
-    recordSequence("COIN");
-    credits = Math.min(credits + 1, 9);
-    window.JIHANKI_AUDIO.setState("dispensing", 850);
-    if (Date.now() < serviceArmedUntil) {
-      showMessage("SERVICE SEQUENCE READY", "HOLD MEMORY / PICK UP", "INTERNAL SERVICE");
-    } else {
-      showMessage("COIN ACCEPTED", credits + " CREDIT" + (credits === 1 ? "" : "S"), "PICK UP TO DISPENSE A MEMORY");
-    }
-    window.JIHANKI_EVENTS.record("coin-accepted", { credits });
-    if (window.JIHANKI_ANOMALIES.maybe("coin")) return;
+    acceptCoin("physical");
   });
 
   document.getElementById("home-button").addEventListener("click", () => {
@@ -347,6 +450,11 @@
   artifactContent.addEventListener("click", event => {
     const target = event.target.closest("button,a");
     if (!target) return;
+    if (target.dataset.action === "insert-credit-current") {
+      acceptCoin("artifact");
+      updateArtifactActions();
+      return;
+    }
     if (target.dataset.action === "purchase-current") { purchase(byId(selectedId)); return; }
     if (target.dataset.relatedId) { const item = byId(target.dataset.relatedId); if (item) openItem(item); return; }
     if (target.dataset.place) { showLocation(target.dataset.place); return; }
@@ -413,7 +521,19 @@
   });
 
   document.addEventListener("keydown", event => {
-    if (event.key === "Escape" && artifact.classList.contains("open")) closeArtifact();
+    if (artifact.classList.contains("open") && event.key === "Tab") {
+      const focusable = [...artifact.querySelectorAll('button:not([disabled]),a[href],[tabindex]:not([tabindex="-1"])')]
+        .filter(node => node.getClientRects().length > 0);
+      if (focusable.length) {
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (event.shiftKey && (document.activeElement === first || !artifact.contains(document.activeElement))) {
+          event.preventDefault(); last.focus();
+        } else if (!event.shiftKey && (document.activeElement === last || !artifact.contains(document.activeElement))) {
+          event.preventDefault(); first.focus();
+        }
+      }
+    }
+    if (event.key === "Escape" && artifact.classList.contains("open")) { closeArtifact(); return; }
     if (event.key.toLowerCase() === "m" && !event.ctrlKey && !event.metaKey && !event.altKey &&
         !artifact.classList.contains("open") && !["INPUT","TEXTAREA"].includes(document.activeElement?.tagName)) {
       const muted = window.JIHANKI_AUDIO.toggleMute();
@@ -428,5 +548,6 @@
     getState() { return { credits, selectedId, activeCategory, maintenanceActive, ambient: window.JIHANKI_AUDIO.getState() }; }
   };
   window.JIHANKI_EVENTS.record("machine-booted", { items: allItems().length });
+  updateCreditDisplay();
   showHome();
 })();
