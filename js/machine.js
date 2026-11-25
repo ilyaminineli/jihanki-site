@@ -171,6 +171,11 @@
 
   function purchase(item) {
     if (!item) return;
+    if (!allItems().some(record => record.id === item.id)) {
+      showMessage("MEMORY NOT IN CIRCULATION", "THIS RECORD IS PRESERVED ONLY", "TRANSACTION CANCELLED");
+      window.JIHANKI_EVENTS.record("purchase-blocked", { itemId: item.id, reason: "not-in-live-catalogue" });
+      return;
+    }
     if (!window.JIHANKI_INVENTORY.isAvailable(item)) {
       showMessage(window.JIHANKI_INVENTORY.label(item), window.JIHANKI_INVENTORY.message(item), "MEMORY NOT DISPENSED");
       window.JIHANKI_EVENTS.record("purchase-blocked", { itemId: item.id, status: window.JIHANKI_INVENTORY.status(item) });
@@ -192,7 +197,7 @@
 
   function dispense() {
     if (selectedId) {
-      const selected = byId(selectedId);
+      const selected = allItems().find(item => String(item.id) === String(selectedId));
       if (selected) { purchase(selected); return; }
     }
     let pool = activeCategory ? window.JIHANKI_CATEGORIES.items(activeCategory) : allItems();

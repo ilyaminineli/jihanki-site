@@ -62,6 +62,7 @@
     record.purchaseCount = Number(record.purchaseCount || 0) + 1;
     if (!Array.isArray(record.receiptCodes)) record.receiptCodes = [];
     if (receipt?.code && !record.receiptCodes.includes(receipt.code)) record.receiptCodes.push(receipt.code);
+    record.receiptCodes = record.receiptCodes.slice(-100);
     write(records);
     window.JIHANKI_EVENTS?.record("collection-added", {
       itemId: item.id, purchaseCount: record.purchaseCount, receipt: receipt?.code || null,
