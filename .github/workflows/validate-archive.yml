@@ -1,0 +1,39 @@
+name: Validate JIHANKI archive
+
+on:
+  push:
+    paths:
+      - "data/**"
+      - "js/categories.js"
+      - "js/relationships.js"
+      - "index.html"
+      - "projects/aokigahara/**"
+      - "scripts/validate-archive.mjs"
+      - ".github/workflows/validate-archive.yml"
+  pull_request:
+    paths:
+      - "data/**"
+      - "js/categories.js"
+      - "js/relationships.js"
+      - "index.html"
+      - "projects/aokigahara/**"
+      - "scripts/validate-archive.mjs"
+      - ".github/workflows/validate-archive.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  integrity:
+    name: Archive and reference integrity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate archive, relationships and local assets
+        run: node scripts/validate-archive.mjs

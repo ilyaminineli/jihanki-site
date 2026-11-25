@@ -276,8 +276,8 @@
       const eg = document.getElementById('environment-grid'), al = document.getElementById('audio-list');
       p.environments.forEach((e, i) => {
          const card = document.createElement('article'); card.className = 'card env';
-         const audio = e.render ? `<audio controls preload="metadata" src="${e.render}"></audio>` : `<div class="time">RENDER PENDING</div>`;
-         card.innerHTML = `<div><div class="time">0${i + 1} / ${e.time}</div><h3>${e.title}</h3><p>${e.description}</p></div>${audio}`; eg.appendChild(card);
+         const availability = e.render ? "PUBLIC RENDER AVAILABLE BELOW" : "PUBLIC RENDER PENDING";
+         card.innerHTML = `<div><div class="time">0${i + 1} / ${e.time}</div><h3>${e.title}</h3><p>${e.description}</p></div><div class="env-output">${availability}</div>`; eg.appendChild(card);
          const row = document.createElement('div'); row.className = 'audio-row' + (e.render ? '' : ' pending');
          row.innerHTML = `<div><strong>0${i + 1} — ${e.title}</strong><small>${e.time} / ${e.description}</small></div>${e.render ? `<audio controls preload="metadata" src="${e.render}"></audio>` : `<small>RENDER PENDING</small>`}`; al.appendChild(row);
       });

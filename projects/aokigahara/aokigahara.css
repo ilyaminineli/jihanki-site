@@ -452,3 +452,6 @@ a {
 .release-cover{width:min(100%,320px);margin:24px 0 28px}
 .release-cover img{display:block;width:100%;height:auto;border:1px solid var(--line);box-shadow:0 10px 32px rgba(0,0,0,.35);filter:grayscale(.08) contrast(.97)}
 .release-cover figcaption{margin-top:7px;color:var(--muted);font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+
+/* Project cards point to the canonical audio players in the public-renders section. */
+.env-output{border-top:1px solid var(--line-soft);padding-top:9px;color:var(--muted);font-size:9px;letter-spacing:.12em}

@@ -38,7 +38,8 @@ Japan stay / shared field experience: **Julia Baranyuk**
 * Interactive vending-machine interface with a fixed 429 × 932 coordinate system
 * Explicit archive category mapping for all eight physical selectors
 * Stock states: NEW, AVAILABLE, LOW STOCK, SOLD OUT, RESTOCKING and ARCHIVED
-* Credit-based dispensing with selected-item and category-random purchase rules
+* Credit-based dispensing with a persistent balance and in-viewer coin insertion
+* Accessible memory dialog with keyboard focus management and live status announcements
 * Browser-local transaction receipts with print and text-export actions
 * Hidden service terminal, local event journal and inventory diagnostics
 * Cross-referenced memories, voice credits and geographic archive index
@@ -59,8 +60,10 @@ JIHANKI/
 │   └── jihanki.png
 │
 ├── css/
-│   ├── machine.css
-│   └── screen.css
+│   └── archive-system.css     # active supplemental CRT / archive / modal styles
+│
+# The fixed-coordinate machine skin and layout remain inline in index.html.
+# machine.css and screen.css are retained as standalone layout references.
 │
 ├── data/
 │   ├── archive.js              # archive data only
@@ -201,7 +204,9 @@ Example:
     title: "MY NEW ENTRY",
     date: "2026-08-14",
     type: "text",
-    textFile: "documents/notes/my-new-entry.md"
+    category: "notes",
+    group: "FIELD NOTES",
+    file: "documents/notes/my-new-entry.md"
 }
 ```
 
@@ -337,3 +342,17 @@ The original JIHANKI ambience loop transitions between idle, browsing, reading, 
 ### M33 — Personal collection
 
 Successful purchases add the work and receipt code to a browser-local collection. Repeat purchases increment an acquisition count. Visitors can revisit collected memories, export the collection as JSON, or clear it locally. Collection data is not transmitted and is not shared between browsers or devices.
+
+## Automated validation
+
+Run the repository integrity checks with Node.js 22 or later:
+
+```bash
+node scripts/validate-archive.mjs
+```
+
+The same check runs automatically on pushes and pull requests. It verifies archive IDs and required fields, physical category mappings, stock states, local media/document paths, curated relationships, duplicate HTML IDs and runtime script references. The check does not decode or recompress media files.
+
+## Roadmap
+
+The next development milestones are documented in [documents/roadmap/](documents/roadmap/README.md), from M35 machine interaction integrity through M40 visitor continuity.
