@@ -1,6 +1,7 @@
 window.AOKIGAHARA = {
-  title: "AOKIGAHARA",
-  subtitle: "PROCEDURAL AMBIENT PENTALOGY",
+  title: "AOKIGAHARA / FUJI SONIC PI",
+  subtitle: "PROCEDURAL AMBIENT PENTALOGY / 2026 ALBUM",
+  cover: "../../media/photo/releases/aokigahara_pentalogy.jpg",
   year: "2026",
   author: "ELI / ILYA MININ",
   engine: "SONIC PI",

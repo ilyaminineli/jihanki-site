@@ -734,8 +734,8 @@
                 <span class="product-label">NOTES</span>
             </button>
 
-            <button class="product" id="other" data-category="other">
-                <span class="product-label">OTHER</span>
+            <button class="product" id="other" data-category="performance">
+                <span class="product-label">PERFORMANCE</span>
             </button>
 
         </div>
@@ -853,16 +853,15 @@
 
 
         function categoryItems(category) {
-            const source = Array.isArray(window.JIHANKI_ARCHIVE) ? window.JIHANKI_ARCHIVE : archive;
-            return source.filter(item => {
+            return archive.filter(item => {
                 const c = String(item.category || item.type || "").toLowerCase();
-                if (category === "text-index") return c === "text";
+                if (category === "text-index") return c === "notes" || c === "note";
                 if (category === "utau") return c === "utau" || c === "voicebank";
-                if (category === "other") return c === "other";
+                if (category === "performance") return c === "performance";
+                if (category === "other") return false;
                 return c === category;
             });
         }
-
 
         function showHome() {
             screenContent.innerHTML = `

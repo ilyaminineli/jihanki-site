@@ -69,7 +69,8 @@ JIHANKI/
 │   │   └── first-jihanki.md
 │   │
 │   ├── projects/
-│   │   └── fuji-sonicpi.md
+│   │   ├── aokigahara.md
+│   │   └── fuji-sonicpi.md (historical pointer)
 │   │
 │   ├── scripts/
 │   │   └── fuji-six-yokai-script.md
@@ -149,9 +150,10 @@ The interface uses a small set of dedicated JIHANKI sounds:
 * `button-sound.opus` — interface interaction
 * `entering-money.opus` — vending-machine interaction
 * `homebutton.opus` — home/navigation interaction
-* `jihanki-music-loop.opus` — continuous background ambience
+* `jihanki-music-loop.opus` — continuous background ambience on current Safari
+* `jihanki-music-loop.wav` — compatibility fallback for browsers without Ogg Opus support
 
-The background loop is designed to continue seamlessly while archive material is explored.
+The background loop starts directly from the first user interaction. A WAV fallback is retained for older Safari versions that cannot reliably play Ogg Opus.
 
 Archive audio can play independently while the interface ambience remains underneath it at a lower level.
 
@@ -193,7 +195,7 @@ The repository currently contains material related to:
 * The first JIHANKI encounter
 * The July 2026 Japan expedition
 * Archive rotation / catalogue behaviour
-* Fuji-related Sonic Pi experiments
+* The Aokigahara / Fuji Sonic Pi procedural ambient pentalogy album
 * The Fuji Six Great Yokai project
 * Video scripts and research
 * Experimental music

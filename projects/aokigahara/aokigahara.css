@@ -448,3 +448,7 @@ a {
     font-size: 10px;
   }
 }
+
+.release-cover{width:min(100%,320px);margin:24px 0 28px}
+.release-cover img{display:block;width:100%;height:auto;border:1px solid var(--line);box-shadow:0 10px 32px rgba(0,0,0,.35);filter:grayscale(.08) contrast(.97)}
+.release-cover figcaption{margin-top:7px;color:var(--muted);font-size:9px;letter-spacing:.14em;text-transform:uppercase}

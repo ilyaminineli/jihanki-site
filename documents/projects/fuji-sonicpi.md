@@ -1,59 +1,11 @@
-# エリ・ミニン / 青木ヶ原
+# FUJI SONIC PI — CONSOLIDATED PROJECT NOTE
 
-![エリ・ミニン / 青木ヶ原 cover](../../media/photo/cover1.png)
+The Fuji Sonic Pi renders are part of **AOKIGAHARA — Procedural Ambient Pentalogy**, not a separate project or album.
 
-**2026 / project**
+The five environments and four currently published renders are documented together here:
 
-A public archive of the Fuji Sonic Pi works: finished renders, short notes, and links to the final high-quality releases.
+[OPEN AOKIGAHARA / FUJI SONIC PI](./aokigahara.md)
 
-The Sonic Pi source code is intentionally not published here. JIHANKI stores the audible result and the documentation around it.
+[OPEN THE INTERACTIVE ALBUM DOSSIER](../../projects/aokigahara/index.html)
 
----
-
-## 01 — 青木ヶ原
-
-[▶ PLAY RENDER 01](../../media/music/fuji-sonicpi-01.opus)
-
-Short description of the first piece.
-
-## 02 — 西湖
-
-[▶ PLAY RENDER 02](../../media/music/fuji-sonicpi-02.opus)
-
-Short description of the second piece.
-
-## 03 — 村
-
-[▶ PLAY RENDER 03](../../media/music/fuji-sonicpi-03.opus)
-
-Short description of the third piece.
-
-## 04 — 富士山
-
-[▶ PLAY RENDER 04](../../media/music/fuji-sonicpi-04.opus)
-
-Short description of the fourth piece.
-
----
-
-## NOTES
-
-The four MP3 files above are the public renders of the Fuji Sonic Pi work. The Markdown file is the place for the explanation, context, process notes, credits, dates and field-recording information.
-
-You can extend this page freely without changing the JIHANKI interface.
-
----
-
-## HQ RELEASE
-
-[LISTEN / DOWNLOAD THE HQ VERSION ON BANDCAMP](https://bandcamp.com/)
-
-> Replace the Bandcamp URL above with the actual release page.
-
----
-
-## CREDITS
-
-**Project:** エリ・ミニン / 青木ヶ原 
-**Year:** 2026  
-**Archive:** JIHANKI
+This file is retained as a historical pointer so older references remain understandable. The consolidated Aokigahara document and interactive dossier are the current source of truth.

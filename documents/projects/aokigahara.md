@@ -1,6 +1,8 @@
-# AOKIGAHARA — PROCEDURAL AMBIENT PENTALOGY
+# AOKIGAHARA / FUJI SONIC PI — PROCEDURAL AMBIENT PENTALOGY
 
-**2026 / ELI / SONIC PI**
+![Aokigahara / Fuji Sonic Pi album cover](../../media/photo/releases/aokigahara_pentalogy.jpg)
+
+**2026 / ELI / SONIC PI / ALBUM**
 
 [OPEN FULL AOKIGAHARA DOSSIER →](../../projects/aokigahara/index.html)
 
@@ -276,29 +278,23 @@ During dissolution:
 
 The forest does not become quiet because something externally silences it. It becomes unable to produce new events.
 
-## PUBLIC RENDERS
+## PUBLIC RENDERS — THE FUJI SONIC PI ALBUM
 
-The source Sonic Pi patches are not part of this public archive. JIHANKI stores the audible result and the documentation around it.
+The four released pieces below are the public renders from the same Aokigahara project. The fifth environment, Shrine, remains part of the pentalogy but has no public render yet.
 
-### RENDER 01
+### 01 — FUJISAN / GEOLOGICAL
 
-[▶ PLAY RENDER 01](../../media/music/fuji-sonicpi-01.opus)
+[▶ PLAY FUJISAN](../../media/music/fuji-sonicpi-01.opus)
 
-### RENDER 02
+### 02 — AOKIGAHARA / BIOLOGICAL
 
-[▶ PLAY RENDER 02](../../media/music/fuji-sonicpi-02.opus)
+[▶ PLAY AOKIGAHARA](../../media/music/fuji-sonicpi-02.opus)
 
-### RENDER 03
+### 03 — SAIKO / REFLECTIVE
 
-[▶ PLAY RENDER 03](../../media/music/fuji-sonicpi-03.opus)
+[▶ PLAY SAIKO]## RELEASE
 
-### RENDER 04
-
-[▶ PLAY RENDER 04](../../media/music/fuji-sonicpi-04.opus)
-
-## RELEASE
-
-HQ / final release: **Bandcamp link will be attached when the release page is ready.**
+The album is presented through JIHANKI as a single work. A separate external HQ release link can be added when the release page is available.
 
 ## STATUS
 
