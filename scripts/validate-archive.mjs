@@ -7,6 +7,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { createHash } from "node:crypto";
 import path from "node:path";
 import vm from "node:vm";
+import { validateRecordSchema } from "./archive-schema.mjs";
 
 const root = process.cwd();
 const issues = [];
@@ -39,6 +40,7 @@ try {
   if (!archive.length) report("Archive is empty or failed to initialise.");
   archive.forEach((record, index) => {
     const prefix = "Record " + (record.id || "#" + (index + 1)) + ": ";
+    validateRecordSchema(record).forEach(message => report(prefix + message));
     for (const field of ["id", "title", "type", "category"]) {
       if (!String(record[field] || "").trim()) report(prefix + "missing required field " + field);
     }
