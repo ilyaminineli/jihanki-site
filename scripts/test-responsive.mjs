@@ -36,8 +36,10 @@ const devices=[
 try{
   browser=await chromium.launch({headless:true,args:["--no-sandbox"]});
   for(const device of devices){
+    // Keep request-interception regressions deterministic; the dedicated offline test below
+    // uses its own context with service workers enabled.
     const context=await browser.newContext({viewport:{width:device.width,height:device.height},
-      deviceScaleFactor:device.isMobile?2:1,isMobile:device.isMobile,hasTouch:device.hasTouch});
+      deviceScaleFactor:device.isMobile?2:1,isMobile:device.isMobile,hasTouch:device.hasTouch,serviceWorkers:"block"});
     const page=await context.newPage(),errors=[];
     page.on("pageerror",error=>errors.push(error.message));
     await page.goto(BASE,{waitUntil:"domcontentloaded"});
