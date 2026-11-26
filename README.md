@@ -55,6 +55,7 @@ Japan stay / shared field experience: **Julia Baranyuk**
 * Archive search, offline shell cache and media metadata
 * Versioned browser-local collection import/export
 * Multi-layer audio installation mode using existing archive sounds
+* Static temporal archive with visitor-local time presentation and the complete dated catalogue
 * Markdown documents, images, audio and video rendered inside the artifact viewer
 * Ambient JIHANKI loop and interface sound effects
 * Static deployment: no framework, build step, backend or visitor account
@@ -114,6 +115,7 @@ JIHANKI/
 │   ├── receipts.js
 │   ├── collection.js
 │   ├── museum.js
+│   ├── temporal.js
 │   ├── audio.js
 │   ├── markdown.js
 │   ├── maintenance.js
@@ -362,6 +364,16 @@ node scripts/test-responsive.mjs
 ```
 
 The integrity and browser checks run automatically on pushes and pull requests. The browser suite emulates phone portrait, phone landscape, tablet and desktop layouts; it checks map overflow, keyboard modal focus, touch target geometry and offline shell/document recovery. Physical iOS Safari and Android Chrome testing remains a manual release check. It verifies archive IDs and required fields, physical category mappings, stock states, local media/document paths, curated relationships, duplicate HTML IDs and runtime script references. The check does not decode or recompress media files.
+
+## M49 — Visitor Memory Exchange
+
+M49 is design-only and is not enabled. The moderation and privacy model is documented in [M49 — Visitor Memory Exchange](documents/privacy/M49-VISITOR-MEMORY-EXCHANGE-PRIVACY-AND-MODERATION.md). No contribution form, upload endpoint or remote visitor profile exists. Implementation remains blocked until a backend, data region, named moderation operators, deletion process and legal/privacy review are approved.
+
+## M50 — Temporal Archive
+
+The temporal archive is a static view over the existing public catalogue. It uses the visitor's browser-local clock for restrained presentation and the original archive date field for chronology. Date precision is preserved, unknown dates stay separately visible, and missing years are shown as catalogue gaps rather than invented events.
+
+The module does not use a backend, network API, cookies, localStorage, IndexedDB or visitor profile. It does not change archive records, rotation rules or category availability. The complete archive remains accessible at every hour.
 
 ## Roadmap
 
