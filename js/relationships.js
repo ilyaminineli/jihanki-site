@@ -13,7 +13,8 @@
     ],
     "gonshan": [
       { id: "voice-takismana", kind: "shared-voice", label: "UTAU VOICE" },
-      { id: "voice-eugene", kind: "shared-voice", label: "UTAU VOICE" }
+      { id: "voice-eugene", kind: "shared-voice", label: "UTAU VOICE" },
+      { id: "daily-2026-07-22", kind: "field-origin", label: "FIELD ORIGIN" }
     ],
     "hotaru": [
       { id: "voice-takismana", kind: "shared-voice", label: "UTAU VOICE" },
