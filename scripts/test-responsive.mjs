@@ -118,7 +118,7 @@ try{
     await page.locator('[data-museum-tab="care"]').click();
     await page.evaluate(()=>{
       const before=window.JIHANKI_MUSEUM.stats();
-      try{window.JIHANKI_MUSEUM.importPayload({format:"JIHANKI-MUSEUM",version:1,kept:["x"],shelves:[],trail:[]});}
+      try{window.JIHANKI_MUSEUM.importPayload({format:"JIHANKI-MUSEUM",version:1,kept:["x"],shelves:[{id:"broken"}],trail:[]});}
       catch(_){}
       const after=window.JIHANKI_MUSEUM.stats();
       if(before.kept!==after.kept)throw new Error("Invalid museum backup changed the current museum.");
