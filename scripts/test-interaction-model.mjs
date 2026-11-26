@@ -70,9 +70,9 @@ no(step(state, "RECEIPT_SAVED", { receiptCode: "OTHER" }), "receipt-does-not-mat
 ok(step(state, "RECEIPT_SAVED", { receiptCode: "JHK-A" }));
 state = step(state, "RECEIPT_SAVED", { receiptCode: "JHK-A" }).state;
 assert.equal(state.transaction.status, "receipt-saved");
-ok(step(state, "RECEIPT_PRINTED", { receiptCode: "JHK-A" }));
-state = step(state, "RECEIPT_PRINTED", { receiptCode: "JHK-A" }).state;
-assert.equal(state.transaction.status, "receipt-printed");
+ok(step(state, "RECEIPT_PRINT_DIALOG_OPENED", { receiptCode: "JHK-A" }));
+state = step(state, "RECEIPT_PRINT_DIALOG_OPENED", { receiptCode: "JHK-A" }).state;
+assert.equal(state.transaction.status, "print-dialog-opened");
 
 state = model.createState();
 state = step(state, "INSERT_CREDIT").state;
@@ -97,10 +97,10 @@ state = model.createState();
 state = step(state, "OPEN_PANEL", { view: "temporal" }).state;
 assert.equal(state.view, "temporal");
 assert.equal(state.overlay, "panel");
-no(step(state, "OPEN_PANEL", { view: "service" }), "invalid-source-state");
+no(step(state, "OPEN_PANEL", { view: "service" }), "invalid-panel-view");
 state = step(state, "ENTER_SERVICE").state;
 assert.equal(state.view, "service");
 ok(step(state, "EXIT_SERVICE"));
-assert.equal(step(state, "EXIT_SERVICE").reason, "not-in-service");
+assert.equal(step(state, "EXIT_SERVICE").reason, "invalid-source-state");
 
 console.log("M35 interaction transition tests passed: views, overlays, credit, blocked stock, single-flight purchases, rollback, receipts and recovery.");
