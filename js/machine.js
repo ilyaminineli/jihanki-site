@@ -87,9 +87,10 @@
 
   function resizeJihanki() {
     const narrowPhone = window.innerWidth <= 560;
+    const shortLandscape = window.innerWidth > window.innerHeight && window.innerHeight < 620;
     const widthScale = Math.min(window.innerWidth / 429, 1);
     const fitScale = Math.min(window.innerWidth / 429, window.innerHeight / 932);
-    const scrollable = narrowPhone && (932 * widthScale + 24 > window.innerHeight);
+    const scrollable = (narrowPhone || shortLandscape) && (932 * widthScale + 24 > window.innerHeight);
     const scale = scrollable ? widthScale : fitScale;
     document.documentElement.classList.toggle("machine-scroll", scrollable);
     document.body.classList.toggle("compact-canvas", scrollable);

@@ -22,8 +22,8 @@ const server=createServer(async(req,res)=>{
       "content-length":body.length,"cache-control":"no-cache"});res.end(body);
   }catch(_){res.writeHead(404);res.end("Not found");}
 });
-await new Promise(resolve=>server.listen(0,"127.0.0.1",resolve));
-const BASE="http://127.0.0.1:"+server.address().port+"/";
+await new Promise(resolve=>server.listen(0,"0.0.0.0",resolve));
+const BASE="http://localhost:"+server.address().port+"/";
 let browser;const failures=[];
 const devices=[
   {name:"small-phone",width:320,height:640,isMobile:true,hasTouch:true},
