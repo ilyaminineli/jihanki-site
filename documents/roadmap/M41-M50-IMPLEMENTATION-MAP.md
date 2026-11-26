@@ -19,7 +19,7 @@ Purpose: this document extends the M35–M40 foundation and is the active implem
 ## M41 — Media integrity, manifest and offline shell
 
 **Priority:** P0  
-**Status:** Implemented baseline; deployment and CI verification pending  
+**Status:** Implemented baseline; CI integrity suite and GitHub Pages deployment verified  
 **Depends on:** M36, M37
 
 ### Goal
