@@ -374,7 +374,44 @@ try{
     const everyTrackPaused=await installRows.locator("audio").evaluateAll(audios=>audios.every(audio=>audio.paused));
     assert(!soundState.running&&everyTrackPaused,
       device.name+": STOP did not pause every installation layer");
+
+    // The modal focus cycle must include native form controls, not only buttons and links.
+    await page.evaluate(()=>{
+      const tail=document.createElement("input");
+      tail.type="text";
+      tail.id="dialog-focus-trap-tail";
+      tail.setAttribute("aria-label","Focus trap regression control");
+      document.querySelector("#artifact-content").append(tail);
+      tail.focus();
+    });
+    await page.keyboard.press("Tab");
+    assert(await page.evaluate(()=>document.activeElement.id==="artifact-close"),
+      device.name+": Tab escaped the dialog after a native form control");
+    await page.keyboard.press("Shift+Tab");
+    assert(await page.evaluate(()=>document.activeElement.id==="dialog-focus-trap-tail"),
+      device.name+": Shift+Tab did not wrap to the last native form control");
     await page.keyboard.press("Escape");
+    await page.route("**/missing-test-image.png*",route=>route.fulfill({status:404,body:"missing"}));
+    await page.route("**/assets/placeholder.png*",route=>route.fulfill({status:404,body:"missing"}));
+    await page.evaluate(()=>{
+      window.__originalMapRender=window.JIHANKI_MAP.render;
+      window.JIHANKI_MAP.render=()=>'<div class="memory-map-panel"><figure class="markdown-image-frame">'+
+        '<img class="markdown-image" src="missing-test-image.png" alt="Broken image regression">'+
+        '<span class="artifact-media-status" role="status" aria-live="polite"></span></figure></div>';
+      window.JIHANKI_MACHINE.openMap("geography");
+    });
+    await page.waitForFunction(()=>document.querySelector(".markdown-image-frame .artifact-media-status")?.textContent.includes("IMAGE AND PLACEHOLDER UNAVAILABLE"));
+    assert(await page.locator(".markdown-image-frame [data-media-retry]").count()===1,
+      device.name+": broken panel image did not expose an image-specific retry");
+    await page.locator(".markdown-image-frame [data-media-retry]").click();
+    await page.waitForFunction(()=>document.querySelector(".markdown-image-frame .artifact-media-status")?.textContent.includes("IMAGE AND PLACEHOLDER UNAVAILABLE"));
+    await page.keyboard.press("Escape");
+    await page.unroute("**/missing-test-image.png*");
+    await page.unroute("**/assets/placeholder.png*");
+    await page.evaluate(()=>{
+      if(window.__originalMapRender)window.JIHANKI_MAP.render=window.__originalMapRender;
+      delete window.__originalMapRender;
+    });
 
     // Populate a local collection fixture, then exercise the private museum through its UI.
     await page.evaluate(()=>{
