@@ -75,7 +75,7 @@ This milestone does not author, transcode or replace the user's source videos. T
 
 # M37 — Archive schema and automated validation
 
-**Status:** Partial — type-aware contracts and valid/invalid fixtures added; full repository validation pending  
+**Status:** Partial — type-aware contracts, valid/invalid fixtures and full CI verification implemented; Markdown-link validation remains  
 **Depends on:** M25–M34; supports every future content milestone.
 
 ## Goal
@@ -93,7 +93,7 @@ Make the archive a trustworthy source of truth. New records should fail validati
 
 1. Move all content records and pending records into the archive data source; runtime modules should not invent or migrate editorial content.
 2. Extend the documented contracts to any new record types introduced by future archive work.
-3. Add checks for Markdown relative links and strengthen media-manifest consistency coverage.
+3. Add checks for Markdown relative links and retain media-manifest consistency coverage.
 4. Expand fixtures whenever fields or types are added or migrated.
 6. Keep migration scripts explicit, versioned and removable after migration.
 
