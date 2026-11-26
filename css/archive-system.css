@@ -911,3 +911,52 @@ button,input,select { touch-action:manipulation; }
   .museum-toolbar { grid-template-columns:1fr 1fr; }.museum-toolbar label:first-child { grid-column:1 / -1; }
   .museum-create-shelf>div { flex-direction:column; }.museum-artifact-tools button { min-height:44px; }
 }
+
+
+/* M50 — static chronology and visitor-local time */
+.temporal-archive { color:#ddd; font-family:"Courier New",monospace; }
+.temporal-now { display:grid; gap:7px; padding:14px; border:1px solid rgba(255,255,255,.17);
+  background:linear-gradient(130deg,rgba(255,255,255,.06),transparent 70%),#0d0d0d; }
+.temporal-now>span,.temporal-companion>span,.temporal-range>span,.temporal-timeline-heading {
+  color:#777; font-size:9px; letter-spacing:.13em; }
+.temporal-now>strong { font-size:25px; font-weight:400; letter-spacing:.12em; }
+.temporal-now p { margin:0; color:#bbb; font-size:11px; }
+.temporal-now small { color:#666; font-size:8px; line-height:1.5; }
+.temporal-companion { margin:12px 0 18px; padding:12px; border:1px solid rgba(255,255,255,.13); }
+.temporal-companion>p,.temporal-range p,.temporal-footnote { color:#777; font-size:9px; line-height:1.6; }
+.temporal-summary { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:5px; margin:12px 0; }
+.temporal-summary>div { display:grid; gap:7px; min-width:0; padding:10px 8px; border:1px solid rgba(255,255,255,.1); background:#0d0d0d; }
+.temporal-summary span { color:#777; font-size:8px; line-height:1.35; letter-spacing:.08em; }
+.temporal-summary strong { color:#eee; font-size:18px; font-weight:400; }
+.temporal-range { margin:13px 0 20px; padding:12px; border-left:2px solid rgba(255,255,255,.25); background:rgba(255,255,255,.025); }
+.temporal-range>strong { display:block; margin-top:7px; color:#ddd; font-size:11px; font-weight:400; overflow-wrap:anywhere; }
+.temporal-timeline-heading { margin:20px 0 8px; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,.14); }
+.temporal-year,.temporal-unplaced { margin:0 0 7px; border:1px solid rgba(255,255,255,.12); background:#0d0d0d; }
+.temporal-year>summary,.temporal-unplaced>summary { display:flex; justify-content:space-between; align-items:center; gap:10px; min-height:48px;
+  padding:10px; color:#ddd; cursor:pointer; list-style:none; }
+.temporal-year>summary::-webkit-details-marker,.temporal-unplaced>summary::-webkit-details-marker { display:none; }
+.temporal-year>summary>span { font-size:17px; letter-spacing:.08em; }
+.temporal-year>summary>small,.temporal-unplaced>summary>small { color:#777; font-size:8px; letter-spacing:.08em; }
+.temporal-month { padding:0 10px 10px; }
+.temporal-month h3 { margin:8px 0 5px; padding-top:9px; border-top:1px solid rgba(255,255,255,.08);
+  color:#777; font-size:8px; font-weight:400; letter-spacing:.13em; }
+.temporal-record { display:grid; width:100%; gap:5px; margin:0 0 5px; padding:10px; text-align:left;
+  border:1px solid rgba(255,255,255,.09); background:#101010; color:#ddd; cursor:pointer; }
+.temporal-record-date,.temporal-record small { color:#777; font-size:8px; letter-spacing:.07em; }
+.temporal-record strong { font:11px/1.45 "Courier New",monospace; overflow-wrap:anywhere; }
+.temporal-record:hover { background:#1b1b1b; color:#fff; }
+.temporal-gap { display:flex; align-items:center; gap:12px; min-height:48px; margin:0 0 7px; padding:10px;
+  border:1px dashed rgba(255,255,255,.13); color:#666; }
+.temporal-gap strong { color:#888; font-size:15px; font-weight:400; }
+.temporal-gap span { font-size:8px; line-height:1.5; letter-spacing:.05em; }
+.temporal-unplaced { padding-bottom:5px; }
+.temporal-unplaced>.temporal-record { width:calc(100% - 20px); margin-left:10px; }
+.temporal-empty { padding:14px; color:#777; border:1px dashed rgba(255,255,255,.14); font-size:10px; line-height:1.6; }
+.temporal-footnote { margin:18px 0 2px; padding-top:12px; border-top:1px solid rgba(255,255,255,.1); }
+@media(max-width:560px) {
+  .temporal-summary { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .temporal-summary>div { padding:8px 5px; }
+  .temporal-summary span { font-size:7px; }
+  .temporal-summary strong { font-size:16px; }
+  .temporal-year>summary,.temporal-unplaced>summary { min-height:48px; }
+}
