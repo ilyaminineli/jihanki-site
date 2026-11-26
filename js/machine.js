@@ -71,16 +71,33 @@
     actions.innerHTML = '<span class="artifact-credit-status">CREDIT BALANCE / ' + credits + '</span>' + transaction + dossier + museumTools + returnToMuseum;
   }
   function artifactFeedback(message) {
-    const feedback = artifactContent.querySelector(".artifact-feedback");
+    let feedback = artifactContent.querySelector(".artifact-feedback");
+    if (!feedback && artifact.classList.contains("open")) {
+      feedback = document.createElement("div");
+      feedback.className = "artifact-feedback";
+      feedback.setAttribute("role", "status");
+      feedback.setAttribute("aria-live", "polite");
+      artifactContent.appendChild(feedback);
+    }
     if (feedback) feedback.textContent = String(message || "");
     if (message) announce(message);
+  }
+  function showInteractionFeedback(title, subtitle, footer) {
+    if (artifact.classList.contains("open")) {
+      artifactFeedback([title, subtitle, footer].filter(Boolean).join(" — "));
+      updateArtifactActions();
+      return;
+    }
+    showMessage(title, subtitle, footer);
   }
   function acceptCoin(source) {
     window.JIHANKI_AUDIO.start();
     window.JIHANKI_AUDIO.sfx("coin");
+    const feedbackInArtifact = source === "artifact" || artifact.classList.contains("open");
     if (credits >= 9) {
-      if (source === "artifact") artifactFeedback("CREDIT LIMIT REACHED — DISPENSE A MEMORY FIRST");
+      if (feedbackInArtifact) artifactFeedback("CREDIT LIMIT REACHED — DISPENSE A MEMORY FIRST");
       else showMessage("CREDIT LIMIT", "MAXIMUM 9 CREDITS", "DISPENSE A MEMORY FIRST");
+      updateArtifactActions();
       window.JIHANKI_EVENTS.record("coin-rejected", { credits, reason: "credit-limit", source: source || "physical" });
       return false;
     }
@@ -89,16 +106,16 @@
     updateCreditDisplay();
     window.JIHANKI_AUDIO.setState("dispensing", 850);
     if (Date.now() < serviceArmedUntil) {
-      if (source === "artifact") artifactFeedback("SERVICE SEQUENCE READY — HOLD MEMORY / PICK UP");
+      if (feedbackInArtifact) artifactFeedback("SERVICE SEQUENCE READY — HOLD MEMORY / PICK UP");
       else showMessage("SERVICE SEQUENCE READY", "HOLD MEMORY / PICK UP", "INTERNAL SERVICE");
-    } else if (source === "artifact") {
+    } else if (feedbackInArtifact) {
       artifactFeedback("COIN ACCEPTED — " + credits + " CREDIT" + (credits === 1 ? "" : "S") + " AVAILABLE");
       updateArtifactActions();
     } else {
       showMessage("COIN ACCEPTED", credits + " CREDIT" + (credits === 1 ? "" : "S"), "PICK UP TO DISPENSE A MEMORY");
     }
     window.JIHANKI_EVENTS.record("coin-accepted", { credits, source: source || "physical" });
-    if (source !== "artifact" && window.JIHANKI_ANOMALIES.maybe("coin")) return true;
+    if (!feedbackInArtifact && source !== "artifact" && window.JIHANKI_ANOMALIES.maybe("coin")) return true;
     return false;
   }
 
@@ -407,17 +424,17 @@
   function purchase(item) {
     if (!item) return;
     if (!allItems().some(record => record.id === item.id)) {
-      showMessage("MEMORY NOT IN CIRCULATION", "THIS RECORD IS PRESERVED ONLY", "TRANSACTION CANCELLED");
+      showInteractionFeedback("MEMORY NOT IN CIRCULATION", "THIS RECORD IS PRESERVED ONLY", "TRANSACTION CANCELLED");
       window.JIHANKI_EVENTS.record("purchase-blocked", { itemId: item.id, reason: "not-in-live-catalogue" });
       return;
     }
     if (!window.JIHANKI_INVENTORY.isAvailable(item)) {
-      showMessage(window.JIHANKI_INVENTORY.label(item), window.JIHANKI_INVENTORY.message(item), "MEMORY NOT DISPENSED");
+      showInteractionFeedback(window.JIHANKI_INVENTORY.label(item), window.JIHANKI_INVENTORY.message(item), "MEMORY NOT DISPENSED");
       window.JIHANKI_EVENTS.record("purchase-blocked", { itemId: item.id, status: window.JIHANKI_INVENTORY.status(item) });
       return;
     }
     if (credits < 1) {
-      if (artifact.classList.contains("open") && activeArtifact?.item?.id === item.id) {
+      if (artifact.classList.contains("open")) {
         artifactFeedback("NO CREDIT — INSERT A COIN BEFORE DISPENSING");
         updateArtifactActions();
       } else {
@@ -453,8 +470,8 @@
     if (!pool.length) {
       const categoryItems = activeCategory ? window.JIHANKI_CATEGORIES.items(activeCategory) : allItems();
       const unavailable = categoryItems.find(item => !window.JIHANKI_INVENTORY.isAvailable(item));
-      if (unavailable) showMessage(window.JIHANKI_INVENTORY.label(unavailable), window.JIHANKI_INVENTORY.message(unavailable), "SELECT ANOTHER MEMORY");
-      else showMessage("SOLD OUT", "NO MEMORY IN STOCK", "PLEASE RETURN LATER");
+      if (unavailable) showInteractionFeedback(window.JIHANKI_INVENTORY.label(unavailable), window.JIHANKI_INVENTORY.message(unavailable), "SELECT ANOTHER MEMORY");
+      else showInteractionFeedback("SOLD OUT", "NO MEMORY IN STOCK", "PLEASE RETURN LATER");
       return;
     }
     const item = window.JIHANKI_PERSONALITY?.choose(pool, lastDispensed) || pool[Math.floor(Math.random() * pool.length)];
