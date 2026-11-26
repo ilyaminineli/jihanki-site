@@ -1,0 +1,188 @@
+{
+  "valid": [
+    {
+      "label": "video with optional voice credits",
+      "record": {
+        "id": "fixture-video",
+        "title": "VIDEO",
+        "type": "video",
+        "category": "video",
+        "date": "2026-11-27",
+        "file": "media/video/example.mp4",
+        "voices": [
+          "Artist A"
+        ]
+      }
+    },
+    {
+      "label": "image",
+      "record": {
+        "id": "fixture-image",
+        "title": "IMAGE",
+        "type": "image",
+        "category": "photo",
+        "date": "2026",
+        "file": "media/photo/example.jpg"
+      }
+    },
+    {
+      "label": "voicebank",
+      "record": {
+        "id": "fixture-voicebank",
+        "title": "VOICEBANK",
+        "type": "voicebank",
+        "category": "utau",
+        "image": "media/photo/voicebank.png",
+        "url": "https://example.org/release"
+      }
+    },
+    {
+      "label": "project with dossier and project page",
+      "record": {
+        "id": "fixture-project",
+        "title": "PROJECT",
+        "type": "project",
+        "category": "music",
+        "file": "documents/projects/example.md",
+        "projectPath": "projects/example/index.html"
+      }
+    },
+    {
+      "label": "audio",
+      "record": {
+        "id": "fixture-audio",
+        "title": "AUDIO",
+        "type": "audio",
+        "category": "sound",
+        "file": "media/sound/example.opus"
+      }
+    },
+    {
+      "label": "text",
+      "record": {
+        "id": "fixture-text",
+        "title": "TEXT",
+        "type": "text",
+        "category": "notes",
+        "file": "documents/notes/example.md"
+      }
+    },
+    {
+      "label": "performance video",
+      "record": {
+        "id": "fixture-performance",
+        "title": "PERFORMANCE",
+        "type": "video",
+        "category": "performance",
+        "file": "media/video/performance.mp4"
+      }
+    },
+    {
+      "label": "undated record",
+      "record": {
+        "id": "fixture-undated",
+        "title": "UNDATED",
+        "type": "text",
+        "category": "notes",
+        "file": "documents/notes/undated.md"
+      }
+    }
+  ],
+  "invalid": [
+    {
+      "label": "video missing media",
+      "record": {
+        "id": "bad-video",
+        "title": "VIDEO",
+        "type": "video",
+        "category": "video"
+      },
+      "contains": "video records require a non-empty file field"
+    },
+    {
+      "label": "voicebank missing cover",
+      "record": {
+        "id": "bad-voicebank",
+        "title": "VOICEBANK",
+        "type": "voicebank",
+        "category": "utau"
+      },
+      "contains": "voicebank records require a non-empty image field"
+    },
+    {
+      "label": "unknown record type",
+      "record": {
+        "id": "bad-type",
+        "title": "OTHER",
+        "type": "unknown",
+        "category": "other"
+      },
+      "contains": "unsupported record type"
+    },
+    {
+      "label": "impossible date",
+      "record": {
+        "id": "bad-date",
+        "title": "DATE",
+        "type": "text",
+        "category": "notes",
+        "file": "notes.md",
+        "date": "2026-02-30"
+      },
+      "contains": "real YYYY-MM-DD date"
+    },
+    {
+      "label": "malformed voice credits",
+      "record": {
+        "id": "bad-voices",
+        "title": "VOICES",
+        "type": "video",
+        "category": "video",
+        "file": "video.mp4",
+        "voices": [
+          "Artist",
+          4
+        ]
+      },
+      "contains": "voices must be an array"
+    },
+    {
+      "label": "unsafe URL scheme",
+      "record": {
+        "id": "bad-url",
+        "title": "URL",
+        "type": "voicebank",
+        "category": "utau",
+        "image": "cover.png",
+        "url": "javascript:alert(1)"
+      },
+      "contains": "HTTP or HTTPS"
+    },
+    {
+      "label": "negative stock",
+      "record": {
+        "id": "bad-stock",
+        "title": "STOCK",
+        "type": "text",
+        "category": "notes",
+        "file": "notes.md",
+        "stock": {
+          "status": "available",
+          "quantity": -1
+        }
+      },
+      "contains": "non-negative number"
+    },
+    {
+      "label": "wrong performance type",
+      "record": {
+        "id": "bad-performance",
+        "title": "PERFORMANCE",
+        "type": "audio",
+        "category": "performance",
+        "file": "audio.opus"
+      },
+      "contains": "performance category records must use type video"
+    }
+  ]
+}\n
