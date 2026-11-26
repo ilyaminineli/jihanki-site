@@ -602,19 +602,24 @@
     if(action==="import"){artifactContent.querySelector("#museum-import-file")?.click();return;}
     if(action==="export-collection"){window.JIHANKI_COLLECTION.exportFile();return;}
     if(action==="import-collection"){artifactContent.querySelector("#collection-import-file")?.click();return;}
+    if(action==="reset-preferences"){
+      if(window.confirm("Reset museum view preference only?")){
+        museum.resetPreferences();openMuseum("overview");announce("Museum view preference reset.");
+      }
+      return;
+    }
     const actions={
       "clear-kept":["Clear saved works from this browser's museum?",()=>museum.clearKept()],
       "clear-shelves":["Delete all personal shelves? Works and souvenirs remain.",()=>museum.clearShelves()],
       "clear-trail":["Clear the local visit trail? Saved works and shelves remain.",()=>museum.clearTrail()],
       "clear-collection":["Clear collected works and souvenir objects? Receipts, shelves, saved works and visit trail remain.",()=>window.JIHANKI_COLLECTION.clear()],
-      "reset-personality":["Reset machine personality only? Museum, collection and receipts remain.",()=>window.JIHANKI_PERSONALITY.reset()],
-      "reset-preferences":["Reset museum view preference only?",()=>museum.resetPreferences()]
+      "reset-personality":["Reset machine personality only? Museum, collection and receipts remain.",()=>window.JIHANKI_PERSONALITY.reset()]
     };
     const selected=actions[action];if(!selected)return;
     if(window.confirm(selected[0])){selected[1]();openMuseum(museumTab);announce("Selected local data cleared.");}
   }
 
-  function recordSequence(key) {  function recordSequence(key) {
+  function recordSequence(key) {
     const now = Date.now();
     controlSequence = controlSequence.filter(entry => now - entry.at < 7000);
     controlSequence.push({ key, at: now });
