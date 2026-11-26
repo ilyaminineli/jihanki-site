@@ -57,12 +57,14 @@ Make media understandable before playback and keep the machine operable on more 
 4. Keep large video delivery behind an explicit visitor playback action.
 5. Audit small portrait, small landscape, high zoom, keyboard-only operation, screen-reader naming and reduced-motion behaviour.
 6. In short landscape, allow vertical scrolling rather than shrinking the machine until controls become unusable.
+7. Calculate the 429 × 932 scale before first paint and recalculate against the visual viewport on resize/orientation changes.
 
 ### Acceptance criteria
 - Broken images have a visible fallback and retry.
 - Media duration is shown only after the browser reports metadata; unknown values are not invented.
 - Visitors can zoom and keyboard-operate every primary control.
 - The short-landscape layout remains scrollable and controls retain focus visibility.
+- Mobile portrait/landscape starts with the same scale the controller will maintain after boot; no initial unscaled frame is exposed.
 - Manual device testing is recorded separately from automated validation.
 - CI emulates small-phone portrait, phone landscape, tablet and desktop viewports, checks touch geometry and map overflow, and performs offline reload plus cached-document reads.
 - Physical confirmation remains required on iOS Safari and Android Chrome; browser emulation is not a substitute for hardware testing.
@@ -170,16 +172,18 @@ Turn a successful purchase into a unique, portable artifact rather than only a h
 Make the personal collection a browsable personal museum, with clear separation between saved works, objects, receipts and machine preferences.
 
 ### Scope
-1. Add museum sections for collected works, serialized objects, kept works, visit trail and custom shelves.
+1. Add collection sections for acquired works, serialized objects, saved works, one visit trail and custom shelves.
 2. Search, filter and sort collected works; browse each souvenir independently.
 3. Allow visitors to keep individual archive works and create up to 12 named shelves.
-4. Add a bounded local visit trail and return-to-museum navigation from an opened work.
-5. Export/import museum data separately from purchase collection data, validating before additive merge.
-6. Provide independent clear/reset actions for kept works, shelves, trail, machine personality and collection/objects.
-7. Never claim cloud synchronisation without an approved backend.
+4. Add a bounded local visit trail and return-to-collection navigation from an opened work.
+5. Keep visit history in this single trail; remove the separate Machine Memory screen because it duplicated recent visits. Adaptive machine behaviour remains internal.
+6. Export/import collection data separately from purchase receipts, validating before additive merge.
+7. Provide independent clear/reset actions for saved works, shelves, trail, machine personality and collection/objects.
+8. Never claim cloud synchronisation without an approved backend.
 
 ### Acceptance criteria
-- Collection works, collectible objects, kept works, visit trail and custom shelves can be browsed separately.
+- Acquired works, collectible objects, saved works, one visit trail and custom shelves can be browsed separately.
+- No separate Machine Memory panel duplicates the collection's Visit Trail.
 - Museum backup/import is independent of the work/object collection backup.
 - Clearing trail, keeps, shelves or works/objects does not silently clear receipts or other domains.
 - Imported museum backups are validated and merged without replacing existing local data.
@@ -188,7 +192,7 @@ Make the personal collection a browsable personal museum, with clear separation 
 ## M48 — Audio installation mode
 
 **Priority:** P2  
-**Status:** Implemented baseline; listening/device review pending  
+**Status:** Live selection/restart fixes implemented; listening/device review pending  
 **Depends on:** M32, M36, M42
 
 ### Goal
@@ -197,15 +201,19 @@ Allow the archive to function as a visitor-operated sound installation using exi
 ### Scope
 1. Select several audio items from the music and sound archive.
 2. Control each selected layer's volume and loop state.
-3. Start and stop all layers from explicit visitor actions.
-4. Duck machine ambience while installation layers play, and restore it when they stop.
-5. Avoid automatic playback before a visitor gesture.
+3. Add or remove a layer immediately when its selection checkbox changes during playback.
+4. Make Start restart from the current checked selection and ensure unchecked layers never keep playing.
+5. Stop and rewind every layer from an explicit visitor action.
+6. Duck machine ambience while installation layers play, and restore it when they stop.
+7. Avoid automatic playback before a visitor gesture.
 
 ### Acceptance criteria
 - No audio begins merely by opening the installation panel.
 - Start, stop, volume and loop controls are keyboard accessible.
-- Stopping the installation releases every audio element.
-- Existing machine ambience remains independently muteable.
+- Unchecking a layer pauses and rewinds it immediately; checking it while running starts it.
+- Restart reconciles all selected, unchecked, volume and loop values from the current controls.
+- Stopping or closing the panel releases every audio element.
+- The Sound Lab is visually promoted on the home screen; existing machine ambience remains independently muteable.
 
 ## M49 — Visitor memory exchange
 
@@ -255,10 +263,11 @@ Let the machine's available fragments and tone shift with local time and the arc
 
 ### Visual direction
 
-The TIME ARCHIVE uses a monochrome editorial index inspired by the structure of documentary contact sheets: an oversized outlined ARCHIVIO masthead, compact MAPPA / RANDOM / TIMELINE navigation, year anchors, month labels and a tiled image/text register. It uses only image files already referenced by the JIHANKI catalogue; it does not import photographs from the visual reference. Image cards are grayscale in the index and open the original archive records. The layout collapses to a two-column contact sheet and then a single-column lead panel on narrow screens.
+The CHRONOLOGY uses a monochrome editorial index inspired by the structure of documentary contact sheets: an oversized outlined ARCHIVIO masthead, compact MAPPA / RANDOM / TIMELINE navigation, year anchors, month labels and a tiled image/text register. It uses only image files already referenced by the JIHANKI catalogue; it does not import photographs from the visual reference. Image cards are grayscale in the index and open the original archive records. The layout collapses to a two-column contact sheet and then a single-column lead panel on narrow screens.
 
 ### Implemented behaviour
-- A TIME ARCHIVE action opens the complete newest-first chronology, grouped by year and month.
+- A CHRONOLOGY action opens the complete newest-first date index, grouped by year and month.
+- The introduction explains that this is the archive's date index, not a diary of visitor activity; the hourly echo is a browser-local reading suggestion.
 - The visitor-local hour, constrained by its day-part, selects one existing catalogue fragment as an hourly echo. The interface explicitly states that this does not imply the work was originally recorded at that hour.
 - Every chronological entry opens its original archive record.
 - Date precision and original catalogue values are preserved; unplaced entries remain available.
