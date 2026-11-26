@@ -77,6 +77,30 @@ node scripts/build-media-manifest.mjs --check
 
 The validator confirms that catalogue paths exist and every referenced media file is represented in the manifest. The manifest hash is an integrity fingerprint, not a cryptographic authorship signature.
 
+## Repository-wide integrity checks
+
+The static archive is validated at two levels:
+
+- `scripts/archive-schema.mjs` validates per-type catalogue fields.
+- `scripts/markdown-links.mjs` scans repository Markdown links, images and local HTML targets, checks file/directory destinations and validates local Markdown-heading and HTML anchors.
+- `scripts/media-manifest.mjs` compares the manifest with the exact files under `media/`, checks canonical paths, duplicate entries, untracked/stale files, byte sizes and Git blob SHA-1 fingerprints.
+- `scripts/validate-archive.mjs` combines the live archive, category and relationship checks with media, Markdown, HTML ID, image and runtime-script checks.
+
+Run the focused fixtures and integrated validator from the repository root:
+
+```sh
+node scripts/test-archive-schema.mjs
+node scripts/test-interaction-model.mjs
+node scripts/test-markdown-links.mjs
+node scripts/test-media-manifest.mjs
+node scripts/validate-archive.mjs
+node scripts/build-media-manifest.mjs --check
+```
+
+A valid manifest must list every file under `media/` exactly once. After adding, removing or replacing a media file, rebuild it with `node scripts/build-media-manifest.mjs`, then rerun the check. The Git blob SHA-1 is an integrity fingerprint, not an authorship signature.
+
+The Markdown scanner ignores code examples, accepts external links without trying to fetch them, and checks local relative destinations and fragments. It uses GitHub-compatible heading slugs so existing roadmap anchors stay valid.
+
 ## Visitor-local data
 
 Receipts, event logs, personality state, museum state, collection records and collectible objects are saved in separate browser-local storage domains. They are never transmitted by the static site. Collection exports are versioned and include serialized objects; imports are validated before additive merge. Museum exports use a separate versioned format for kept works, shelves and visit trail; imports are validated before additive merge.
@@ -87,6 +111,6 @@ The daily rotating selection is implemented in js/rotation.js. Personal collecti
 
 ## Automated integrity checks
 
-Run node scripts/test-archive-schema.mjs to exercise valid and invalid per-type record fixtures, then run node scripts/validate-archive.mjs to validate the live catalogue, required record fields, optional field shapes, unique IDs, category aliases, stock states, local media/document paths, curated relationship targets, HTML IDs, runtime scripts and media manifest checksums. GitHub Actions first runs `node --check` over the runtime modules, service worker and Node scripts, then validates the media manifest, archive references, responsive viewports, touch targets, map overflow and offline recovery.
+Run the focused schema, interaction, Markdown and media-manifest fixtures above, then run `node scripts/validate-archive.mjs` for the integrated repository scan. GitHub Actions runs these fixtures, the six-viewport interaction/offline Playwright suite, and the integrated validator.
 
 When adding a record, use file for the primary local document or media path. Do not use the obsolete textFile property.
