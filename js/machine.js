@@ -165,9 +165,20 @@
     const extension = file.split("?")[0].split(".").pop().toLowerCase();
     const title = esc(item.title || "UNTITLED");
     if (item.type === "voicebank" || item.machineCategory === "utau" && item.image) {
-      const image = item.image ? '<img class="artifact-media" src="' + esc(item.image) + '" alt="' + title + '">' : "";
+      const image = item.image ? '<figure class="voicebank-image"><img class="artifact-media" src="' + esc(item.image) + '" alt="' + title + '" loading="eager" decoding="async"><figcaption class="artifact-media-status" aria-live="polite"></figcaption></figure>' : "";
       const link = item.url ? '<p><a class="markdown-link" href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer">OPEN VOICEBANK RELEASE ↗</a></p>' : "";
       body.innerHTML = image + '<p class="voicebank-subtitle">' + esc(item.subtitle || "") + '</p><p class="voicebank-context">' + esc(item.context || "") + '</p><div class="artifact-text">' + esc(item.description || "") + '</div>' + link;
+      const portrait = body.querySelector(".voicebank-image img");
+      if (portrait) {
+        portrait.addEventListener("error", () => {
+          const status = body.querySelector(".voicebank-image .artifact-media-status");
+          if (status) status.innerHTML = '<span>IMAGE COULD NOT BE LOADED.</span> <button type="button" data-media-retry>RETRY</button>';
+        }, { once: true });
+        portrait.addEventListener("load", () => {
+          const status = body.querySelector(".voicebank-image .artifact-media-status");
+          if (status) status.textContent = "";
+        }, { once: true });
+      }
       return;
     }
     const coverHTML = item.image && (type === "project" || type === "audio") ? '<img class="project-cover" src="' + esc(item.image) + '" alt="' + title + '">' : "";
@@ -306,7 +317,7 @@
   function dispense() {
     // Explicitly selected catalogue items are purchased as selected.
     // The physical PICK UP button with no selection chooses a fresh random memory.
-    if (selectedId && currentView !== "idle") {
+    if (selectedId && currentView !== "idle" && activeArtifact?.item?.id === selectedId) {
       const selected = allItems().find(item => String(item.id) === String(selectedId));
       if (selected) { purchase(selected); return; }
     }
@@ -466,7 +477,7 @@
   artifactContent.addEventListener("click", event => {
     const retry = event.target.closest("[data-media-retry]");
     if (retry) {
-      const failedImage = artifactContent.querySelector("#artifact-body .artifact-photo img");
+      const failedImage = artifactContent.querySelector("#artifact-body img.artifact-media");
       if (failedImage) {
         const base = failedImage.getAttribute("src").split(/[?#]/)[0];
         failedImage.src = base + "?retry=" + Date.now();
