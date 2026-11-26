@@ -17,11 +17,11 @@ The roadmap makes the machine dependable before increasing its complexity. Exist
 | [M46](./M41-M50-IMPLEMENTATION-MAP.md#m46--collectible-memory-objects-and-portable-collection) | Collectible memory objects | Implemented baseline |
 | [M47](./M41-M50-IMPLEMENTATION-MAP.md#m47--collection-exploration-and-visitor-continuity) | Visitor continuity | Implemented baseline |
 | [M48](./M41-M50-IMPLEMENTATION-MAP.md#m48--audio-installation-mode) | Audio installation mode | Implemented baseline |
-| [M49](./M41-M50-IMPLEMENTATION-MAP.md#m49--visitor-memory-exchange) | Moderated visitor memory exchange | Privacy/moderation design drafted; implementation blocked |
+| [M49](./M41-M50-IMPLEMENTATION-MAP.md#m49--visitor-memory-exchange) | Moderated visitor memory exchange | Supabase Pro / Frankfurt selected; people/legal gates pending |
 | [M50](./M41-M50-IMPLEMENTATION-MAP.md#m50--temporal-archive) | Temporal archive | Static/browser-local baseline implemented |
 
 ## Implementation order
 
-P0 media integrity and device reliability remain the release gate. The visitor-facing feature work is layered on the archive foundation: M43 discovery, M44 place map, M45 evolving behaviour, M46 collectible objects, then M48 audio installation. M49 now has a written privacy, consent, moderation and abuse-prevention model, but implementation remains blocked until the backend, data region, moderation owners, deletion process and legal/privacy review are approved. M50 is implemented without a backend and remains entirely static/browser-local.
+P0 media integrity and device reliability remain the release gate. The visitor-facing feature work is layered on the archive foundation: M43 discovery, M44 place map, M45 evolving behaviour, M46 collectible objects, then M48 audio installation. M49 has a written privacy, consent, moderation and abuse-prevention model, and its preferred backend target is Supabase Pro / Frankfurt. Implementation remains blocked until the service owner and moderators are named, the DPA/transfer review is complete, the project is provisioned and deletion/restore controls are demonstrated. M50 is implemented without a backend and remains entirely static/browser-local.
 
 Implementation statuses describe code coverage, not an assertion that every browser/device acceptance test has passed.
