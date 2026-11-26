@@ -174,8 +174,47 @@ try{
     await page.locator("#archive-search-input").fill("Fuji");
     assert(await page.locator("[data-search-open]").count()>0,device.name+": search returned no Fuji records");
     await page.keyboard.press("Escape");
-    await page.locator('[data-home-action="personality"]').click();
-    assert(await page.locator("#artifact[aria-hidden='false']").count()===1,device.name+": machine memory panel failed");
+    // SOUND LAB is the primary creative tool; its transport always follows the visible checkbox state.
+    assert(await page.locator('[data-home-action="personality"]').count()===0,
+      device.name+": redundant Machine Memory entry should not appear on the home screen");
+    await page.locator('[data-home-action="installation"]').click();
+    const installRows=page.locator(".installation-track");
+    assert(await installRows.count()>0,device.name+": Sound Lab has no source fragments");
+    const firstInstallRow=installRows.first();
+    const firstInstallId=await firstInstallRow.getAttribute("data-install-track");
+    await page.locator('[data-install-action="start"]').click();
+    await page.waitForFunction(()=>window.JIHANKI_SOUNDSCAPE.getState(document.querySelector(".sound-installation")).running);
+    const firstInstallCheckbox=firstInstallRow.locator("[data-install-select]");
+    await firstInstallCheckbox.uncheck();
+    await page.waitForFunction(id=>{
+      const row=document.querySelector('[data-install-track="'+id+'"]');
+      return row&&!row.querySelector("[data-install-select]").checked&&row.querySelector("audio").paused;
+    },firstInstallId);
+    let soundState=await page.evaluate(()=>window.JIHANKI_SOUNDSCAPE.getState(document.querySelector(".sound-installation")));
+    assert(!soundState.selectedIds.includes(firstInstallId)&&!soundState.activeIds.includes(firstInstallId),
+      device.name+": unchecked source remained in the running installation");
+    await firstInstallCheckbox.check();
+    await page.waitForFunction(id=>window.JIHANKI_SOUNDSCAPE.getState(document.querySelector(".sound-installation")).selectedIds.includes(id),firstInstallId);
+    const firstInstallAudio=firstInstallRow.locator("audio");
+    const firstInstallLoop=firstInstallRow.locator("[data-install-loop]");
+    await firstInstallLoop.uncheck();
+    assert(await firstInstallAudio.evaluate(audio=>audio.loop===false),
+      device.name+": loop checkbox did not update the live audio element");
+    const firstInstallVolume=firstInstallRow.locator("[data-install-volume]");
+    await firstInstallVolume.fill("0");
+    assert(await firstInstallAudio.evaluate(audio=>audio.volume===0),
+      device.name+": volume slider did not update immediately");
+    // Restart reconciles all rows and must not resurrect a removed source.
+    await firstInstallCheckbox.uncheck();
+    await page.locator('[data-install-action="start"]').click();
+    await page.waitForFunction(()=>window.JIHANKI_SOUNDSCAPE.getState(document.querySelector(".sound-installation")).running);
+    soundState=await page.evaluate(()=>window.JIHANKI_SOUNDSCAPE.getState(document.querySelector(".sound-installation")));
+    assert(!soundState.selectedIds.includes(firstInstallId)&&!soundState.activeIds.includes(firstInstallId),
+      device.name+": restart reintroduced a source that is unchecked");
+    await page.locator('[data-install-action="stop"]').click();
+    soundState=await page.evaluate(()=>window.JIHANKI_SOUNDSCAPE.getState(document.querySelector(".sound-installation")));
+    assert(!soundState.running&&await installRows.locator("audio:not(:paused)").count()===0,
+      device.name+": STOP did not pause every installation layer");
     await page.keyboard.press("Escape");
 
     // Populate a local collection fixture, then exercise the private museum through its UI.
