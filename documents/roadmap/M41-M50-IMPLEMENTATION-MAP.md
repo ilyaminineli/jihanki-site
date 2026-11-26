@@ -144,7 +144,7 @@ Turn a successful purchase into a unique, portable artifact rather than only a h
 ### Scope
 1. Generate a unique serialized memory object per successful receipt.
 2. Give each object a category stamp, archive reference, acquisition date and short inscription.
-3. Show the object in its memory viewer and personal collection.
+3. Show the object in its memory viewer and in a separate browsable object list within the personal collection.
 4. Allow the visitor to save an object as a small text artifact.
 5. Upgrade collection export to version 2, including objects.
 6. Support import of version 1 and version 2 files. Validate before merging; malformed imports must not mutate local data.
@@ -154,6 +154,7 @@ Turn a successful purchase into a unique, portable artifact rather than only a h
 - Each successful receipt has one collectible object.
 - The object points back to its source record and receipt code.
 - Collection data remains browser-local.
+- Every collected object can be opened and saved independently of its source work.
 - Version 1 exports remain importable.
 - Import never deletes current records or visitor receipts.
 

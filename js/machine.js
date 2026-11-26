@@ -227,6 +227,8 @@
   function bindMediaMetadata(body) {
     const media = body.querySelector("audio,video"); if (!media) return;
     media.addEventListener("loadedmetadata", () => {
+      const status = body.querySelector(".media-load-status");
+      if (status) status.textContent = "";
       const target = body.querySelector("[data-media-duration]");
       if (target) {
         const seconds = Number(media.duration);
@@ -235,11 +237,11 @@
           target.textContent = minutes + ":" + String(remainder).padStart(2, "0");
         } else target.textContent = "LIVE / UNKNOWN";
       }
-    }, { once: true });
+    });
     media.addEventListener("error", () => {
       const status = body.querySelector(".media-load-status");
       if (status) status.innerHTML = 'MEDIA COULD NOT BE LOADED. <button type="button" data-media-retry>RETRY</button>';
-    }, { once: true });
+    });
   }
 
   async function renderBody(item, renderToken) {
@@ -258,15 +260,16 @@
         portrait.addEventListener("error", () => {
           const status = body.querySelector(".voicebank-image .artifact-media-status");
           if (status) status.innerHTML = '<span>IMAGE COULD NOT BE LOADED.</span> <button type="button" data-media-retry>RETRY</button>';
-        }, { once: true });
+        });
         portrait.addEventListener("load", () => {
           const status = body.querySelector(".voicebank-image .artifact-media-status");
           if (status) status.textContent = "";
-        }, { once: true });
+        });
       }
       return;
     }
-    const coverHTML = item.image && (type === "project" || type === "audio") ? '<img class="project-cover" src="' + esc(item.image) + '" alt="' + title + '" loading="lazy" decoding="async">' : "";
+    const coverHTML = item.image && (type === "project" || type === "audio") ?
+      '<figure class="project-cover-frame"><img class="project-cover artifact-media" src="' + esc(item.image) + '" alt="' + title + '" loading="lazy" decoding="async"><figcaption class="artifact-media-status" aria-live="polite"></figcaption></figure>' : "";
     if (type === "video" || /^(mp4|webm|mov)$/.test(extension)) {
       body.innerHTML = (window.JIHANKI_VIDEO ? window.JIHANKI_VIDEO.render(item) :
         '<video class="artifact-video" controls playsinline preload="metadata" src="' + esc(file) + '"></video>') +
@@ -286,11 +289,11 @@
       photo.addEventListener("error", () => {
         const status = body.querySelector(".artifact-media-status");
         if (status) status.innerHTML = '<span>IMAGE COULD NOT BE LOADED.</span> <button type="button" data-media-retry>RETRY</button>';
-      }, { once: true });
+      });
       photo.addEventListener("load", () => {
         const status = body.querySelector(".artifact-media-status");
         if (status) status.textContent = "";
-      }, { once: true });
+      });
       return;
     }
     if (file) {
@@ -301,6 +304,14 @@
         if (renderToken !== artifactRenderToken || !artifact.classList.contains("open")) return;
         const base = new URL("./", new URL(file, location.href)).href;
         body.innerHTML = coverHTML + '<div class="artifact-text markdown-rendered">' + window.JIHANKI_MARKDOWN.render(markdown, base) + '</div>';
+        const cover = body.querySelector(".project-cover");
+        if (cover) {
+          const status = body.querySelector(".project-cover-frame .artifact-media-status");
+          cover.addEventListener("error", () => {
+            if (status) status.innerHTML = '<span>IMAGE COULD NOT BE LOADED.</span> <button type="button" data-media-retry>RETRY</button>';
+          });
+          cover.addEventListener("load", () => { if (status) status.textContent = ""; });
+        }
         window.JIHANKI_AUDIO.bindMedia(body);
         return;
       } catch (error) {
