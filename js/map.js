@@ -4,7 +4,7 @@
   const POSITIONS={
     "Lake Saiko":[37,43],"Aokigahara":[30,64],"Fuji Five Lakes":[52,26],"Kawaguchiko":[64,45],
     "Mount Fuji":[50,78],"Uno-Misaki Tunnel":[15,45],"Yamanashi":[77,68],"Tokyo":[86,10],
-    "Ryugu Cave":[18,15],"Koyodai":[30,25],"Shrine":[66,78],"Shrines":[73,59],
+    "Ryugu Cave":[18,15],"Koyodai":[30,25],"Shrine":[66,78],"Shrines":[82,48],
     "Haneda":[91,34],"Shinjuku":[76,20]
   };
   function associationLines(places){
