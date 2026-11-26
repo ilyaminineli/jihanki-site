@@ -46,8 +46,8 @@
   }
   function transactionConfirmationMarkup() {
     const transaction = interactionState.transaction;
-    if (!transaction?.receiptCode || !["dispensed", "receipt-saved", "print-dialog-opened"].includes(transaction.status)) return "";
-    const label = transaction.status === "receipt-saved" ? "RECEIPT SAVED" :
+    if (!transaction?.receiptCode || !["dispensed", "receipt-download-started", "print-dialog-opened"].includes(transaction.status)) return "";
+    const label = transaction.status === "receipt-download-started" ? "RECEIPT DOWNLOAD STARTED" :
       transaction.status === "print-dialog-opened" ? "PRINT DIALOG OPENED" : "MEMORY DISPENSED / RECEIPT CREATED";
     return '<div class="transaction-confirmation" role="status" aria-live="polite" data-transaction-confirmation>' +
       label + ' / ' + esc(transaction.receiptCode) + '</div>';
@@ -56,7 +56,7 @@
     const target = artifactContent.querySelector("[data-transaction-confirmation]");
     if (!target) return;
     const transaction = interactionState.transaction;
-    target.textContent = (transaction.status === "receipt-saved" ? "RECEIPT SAVED" :
+    target.textContent = (transaction.status === "receipt-download-started" ? "RECEIPT DOWNLOAD STARTED" :
       transaction.status === "print-dialog-opened" ? "PRINT DIALOG OPENED" : "MEMORY DISPENSED / RECEIPT CREATED") +
       " / " + transaction.receiptCode;
   }
@@ -1013,13 +1013,13 @@
     if (item) openItem(item);
   });
 
-  window.addEventListener("jihanki:receipt-saved", event => {
+  window.addEventListener("jihanki:receipt-download-started", event => {
     const code = event.detail?.receiptCode;
-    const outcome = applyTransition("RECEIPT_SAVED", { receiptCode: code });
+    const outcome = applyTransition("RECEIPT_DOWNLOAD_STARTED", { receiptCode: code });
     if (outcome.accepted) {
-      window.JIHANKI_EVENTS.record("receipt-saved", { code });
+      window.JIHANKI_EVENTS.record("receipt-download-started", { code });
       refreshTransactionConfirmation();
-      announce("Receipt saved: " + code + ".");
+      announce("Receipt download started: " + code + ".");
     }
   });
   window.addEventListener("jihanki:receipt-printed", event => {
