@@ -1,13 +1,13 @@
 # M49 — Visitor Memory Exchange
 ## Privacy, consent, moderation and abuse-prevention design
 
-**Status:** Design baseline drafted; implementation blocked  
+**Status:** Privacy/moderation design complete; Supabase Pro in Frankfurt selected as preferred target; implementation still blocked  
 **Scope:** This document is a product and operational design, not a privacy notice, legal opinion or deployed moderation service.  
 **Current behaviour:** JIHANKI remains a static archive. No contribution form, upload endpoint, moderation API or remote visitor profile is created by this milestone.
 
 ## 1. Decision and release boundary
 
-M49 may only proceed after the project has selected a backend and hosting region, named the people responsible for moderation and privacy requests, approved the public rules and consent copy, and demonstrated the complete removal and retention process.
+M49 may only proceed after the selected Supabase Pro / Frankfurt target has passed the provider/DPA review, the production project is provisioned by a named service owner, the people responsible for moderation and privacy requests are appointed, the public rules and consent copy are approved, and the complete removal and retention process is demonstrated. The detailed provider and operating decision is recorded in [M49 — Backend and Moderation-Operations Decision](M49-BACKEND-AND-MODERATION-OPERATIONS-DECISION.md).
 
 The static archive must remain fully usable when an exchange service is unavailable, disabled or intentionally not configured. A failed submission must never be silently stored in the visitor's museum, event log or browser storage as a substitute.
 
@@ -166,19 +166,19 @@ These are design targets, not claims about a provider's current defaults. If a p
 
 Before launch, the operator must publish a real contact route for privacy and safety requests. That route must be monitored and must not be fabricated or silently pointed at a personal social account.
 
-## 10. Backend and deployment requirements
+## 10. Backend and deployment decision
 
-The backend is not chosen by this document. Evaluate candidate providers against:
+The preferred v1 target is **Supabase Pro in eu-central-1 (Central EU / Frankfurt)**. The detailed comparison, deployment boundaries, moderator roles, operating cadence, retention mapping and activation checklist are recorded in [M49 — Backend and Moderation-Operations Decision](M49-BACKEND-AND-MODERATION-OPERATIONS-DECISION.md).
 
-- Hosting and database region; data-transfer and subprocessor terms.
-- Configurable access-log retention and ability to avoid raw IP/body logging.
-- Encryption in transit and at rest, backups and deletion guarantees.
-- Moderator authentication with MFA, role separation and auditable decisions.
-- Private queue access and an API that never exposes pending content.
-- Rate limiting, queue caps, export and deletion tooling, incident response and service availability.
-- Cost and a realistic maintenance owner.
+Use PostgreSQL, Supabase Auth for invite-only moderators, and regional Edge Functions for the public contribution interface and private moderation actions. Keep the static GitHub Pages archive separate. Do not enable Storage, Realtime, visitor accounts or direct anonymous table access.
 
-Keep public reading, submission, moderation and deletion privileges separated. The browser may hold only the public read interface and submit capability; it must never receive administrative credentials. If the chosen service cannot support these boundaries, do not launch M49.
+All public and privileged access passes through narrowly scoped server-side functions. Moderator actions require an active server-side moderator role and MFA assurance level aal2. No privileged key or moderation credential may appear in the browser or repository. Public reads return only escaped PUBLISHED fields; pending, rejected, quarantined, withdrawn, expired and removed records remain private.
+
+This is a **preferred backend selection, not a deployed service**. The Supabase account/project has not been provisioned. The service owner must review the current DPA, subprocessor register, data-transfer terms, access logs, backup deletion, support processing and exact region before creating the production project. Supabase documents some operational processing outside a project's selected region; a Frankfurt database does not mean every processing activity is confined to Frankfurt or the EU.
+
+Supabase Pro currently advertises daily backups retained for 7 days and platform logs retained for 7 days. Application logs must remain content-free. Any database restore is treated as a publication incident: public reads stay disabled until an external tombstone manifest has been applied and verified.
+
+Cloudflare Workers + D1 with EU jurisdiction remains a lower-cost alternative, but it was not selected for v1 because it leaves more custom moderator identity, queue, audit and retention operations to build. Cloudflare's stricter traffic/log localization features require its Enterprise Data Localization Suite. Revisit the decision if the Supabase regional-processing review is unacceptable or its costs/terms change.
 
 ## 11. Visitor-facing transparency
 
@@ -190,21 +190,27 @@ The public exchange should display an editorial note that fragments are visitor 
 
 ## 12. M49 release gates
 
-All boxes below must be completed before implementation is enabled:
+The backend target and initial operating model are selected, but the service is not activated. Complete every remaining gate before implementation is enabled:
 
-- [ ] Select a backend and data region after reviewing provider logs, subprocessors, retention and backup behaviour.
-- [ ] Name a moderation lead and backup reviewer; confirm their capacity and review schedule.
-- [ ] Publish the content policy, operator contact and incident-response procedure.
-- [ ] Obtain legal/privacy review of consent, adult-only self-attestation, publication licence, withdrawal and cross-border processing for the actual operator and service jurisdictions.
-- [ ] Verify server-side text validation, output escaping, CSP, CSRF, rate limits, queue caps and fail-closed behaviour.
-- [ ] Demonstrate that pending/rejected records never reach public reads, search, CDN caches or static exports.
-- [ ] Demonstrate withdrawal from live output and deletion from backups within the disclosed schedule.
-- [ ] Test moderator MFA, role separation, audit trail, compromise response and report handling.
-- [ ] Run abuse cases for spam floods, personal-data submission, malicious markup, non-consensual content and coordinated reporting.
-- [ ] Approve the visitor-facing consent, privacy and withdrawal copy.
+- [x] Select a preferred backend and exact target region: Supabase Pro, eu-central-1 (Frankfurt).
+- [x] Define the server-side data-access boundary, invite-only moderator identity, MFA, retention and fail-closed architecture.
+- [x] Define moderator roles, review cadence, queue limits and the two-person review rule.
+- [ ] Explicitly nominate the service owner.
+- [ ] Explicitly nominate the moderation lead and independent backup moderator.
+- [ ] Supply a real, monitored privacy/safety contact route and public service hours.
+- [ ] Have the service owner review the current Supabase DPA, subprocessors, transfers, support access, logs and backup behaviour with qualified privacy/legal advice.
+- [ ] Provision the production project in the exact selected region and confirm billing ownership.
+- [ ] Invite moderator accounts; enforce TOTP MFA; require aal2 and server-side role checks for every privileged operation.
+- [ ] Verify server-side text validation, output escaping, CSP, CSRF protections, rate limits, queue caps and fail-closed behaviour.
+- [ ] Demonstrate that pending/rejected/quarantined records never reach public reads, search, CDN caches or static exports.
+- [ ] Demonstrate withdrawal, expiry, deletion tombstones and a safe backup-restore drill.
+- [ ] Test moderator role separation, audit trail, compromise response, reports and a two-person moderation decision.
+- [ ] Approve visitor-facing consent, privacy, withdrawal and service-hours copy.
 
-Until then, M49 remains a written design only. No contribution API, client form, anonymous upload or hidden collection endpoint should be added.
+Until every unchecked item is complete, M49 remains a written design and selected target only. No contribution API, client form, anonymous upload or hidden storage path should be enabled.
 
 ## 13. Open decisions
 
-The project still needs to decide the backend vendor and region, the named operator, the real privacy contact, the moderation hours, whether 18+ self-attestation meets applicable requirements, and whether the proposed retention schedule is technically and legally supportable. These decisions cannot be inferred from the current static repository.
+The technical backend target is selected, but the people and legal/operational commitments are not yet supplied. Still required: the named service owner, named moderation lead, independent backup moderator, actual privacy/safety contact, service hours, acceptance of the Supabase DPA and transfer terms, and a qualified review of whether adult-only self-attestation and the proposed licence/retention rules are adequate for the actual operator and jurisdictions.
+
+No person is presumed to accept a moderation role, and no contact address should be invented. These are explicit launch blockers, not configuration details to fill in automatically.
