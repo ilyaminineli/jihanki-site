@@ -4,7 +4,7 @@ The roadmap makes the machine dependable before increasing its complexity. Exist
 
 | Milestone | Focus | Status |
 | --- | --- | --- |
-| [M35](./ROADMAP.md#m35--machine-interaction-integrity) | Machine interaction integrity | Baseline fixes in progress |
+| [M35](./ROADMAP.md#m35--machine-interaction-integrity) | Machine interaction integrity | Modal-safe transaction feedback tested; transition matrix remains |
 | [M36](./ROADMAP.md#m36--media-delivery-and-preservation) | Media delivery and preservation | Source-video compression pending |
 | [M37](./ROADMAP.md#m37--archive-schema-and-automated-validation) | Archive schema and automated validation | Validator and CI baseline added |
 | [M38](./ROADMAP.md#m38--accessibility-and-device-robustness) | Accessibility and device robustness | Baseline fixes in progress |
