@@ -709,7 +709,13 @@
 }
 
 button:focus-visible,
-a:focus-visible {
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+audio[controls]:focus-visible,
+video[controls]:focus-visible,
+[contenteditable="true"]:focus-visible {
     outline: 2px solid #ddd !important;
     outline-offset: 3px !important
 }
@@ -782,6 +788,12 @@ a:focus-visible {
 .media-metadata b { color:#bbb; font-weight:400; }.media-load-status { margin:5px 0; color:#aaa; font-size:10px; }
 .media-load-status button,.artifact-media-status button { border:1px solid #555; background:#111; color:#ddd; padding:5px 8px; cursor:pointer; font:9px "Courier New",monospace; margin-left:6px; }
 .artifact-media-status { display:block; margin:8px 0; color:#aaa; font-size:10px; }
+.markdown-image-frame { display:block; }
+.temporal-record-media > .temporal-image-status {
+  position:absolute; z-index:2; right:4px; bottom:4px; left:4px;
+  margin:0; padding:3px 4px; background:rgba(0,0,0,.82);
+  color:#ddd; font:7px/1.35 "Courier New",monospace; text-align:left;
+}
 .voicebank-image,.artifact-photo { margin:0; }.memory-map-panel button:hover,.search-result:hover,.archaeology-node:hover { background:#1b1b1b; color:#fff; }
 .sound-installation h2 { font-size:18px; letter-spacing:.1em; font-weight:400; margin:10px 0 6px; }
 .sound-installation>p { color:#777; font-size:11px; line-height:1.6; }
