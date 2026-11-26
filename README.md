@@ -91,6 +91,9 @@ JIHANKI/
 │   ├── scripts/
 │   │   └── fuji-six-yokai-script.md
 │   │
+│   ├── privacy/
+│   │   └── M49-VISITOR-MEMORY-EXCHANGE-PRIVACY-AND-MODERATION.md
+│   │
 │   └── yokai/
 │       └── fuji-six-yokai.md
 │
