@@ -108,8 +108,8 @@ In Japanese aesthetics, the firefly (hotaru) is a symbol of mono no aware—the 
 
 Hotaru is a conceptual audiovisual exploration that combines the aesthetics of liminal spaces with the experimental sounds of VocalSynth (UTAU).
 
-Music and lyrics: Takismana (Yulia Baranyuk)
-Video: Takismana (Yulia Baranyuk)—dance, editing
+Music and lyrics: Takismana
+Video: Takismana—dance, editing
 Varvara Andreeva—cinematographer
 
 6. Shiki
