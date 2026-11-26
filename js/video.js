@@ -1,5 +1,5 @@
 (function () {
-const D = {
+  const D = {
     "fuji-six-yokai-video":
       "A fictional yokai-documentary work presented as an homage to Japanese yokai folklore and ghost-story television. The film introduces six invented beings associated with Mount Fuji and deliberately uses the tone of a field documentary or late-night mystery programme. The names, folklore and documentary evidence are entirely fictional, forming part of the wider Fuji-region archive where real places and invented mythology overlap.",
     "mountain-remembers-mv":

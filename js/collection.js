@@ -28,7 +28,7 @@
     }
   }
   function all() {
-    return read().slice().sort((a,b) => String(b.lastCollectedAt || "").localeCompare(String(a.lastCollectedAt || "")));
+    return read().slice().sort((a, b) => String(b.lastCollectedAt || "").localeCompare(String(a.lastCollectedAt || "")));
   }
   function add(item, receipt) {
     if (!item?.id) return null;
@@ -94,7 +94,7 @@
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob), link = document.createElement("a");
     link.href = url;
-    link.download = "jihanki-collection-" + new Date().toISOString().slice(0,10) + ".json";
+    link.download = "jihanki-collection-" + new Date().toISOString().slice(0, 10) + ".json";
     document.body.appendChild(link); link.click(); link.remove();
     URL.revokeObjectURL(url);
     window.JIHANKI_EVENTS?.record("collection-exported", { records: records.length });

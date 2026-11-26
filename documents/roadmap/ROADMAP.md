@@ -1,0 +1,210 @@
+# M35 — Machine interaction integrity
+
+**Status:** Baseline fixes in progress  
+**Depends on:** M25–M34.
+
+## Goal
+
+Make every machine interaction legible and reversible. A visitor should always understand the current screen, credit balance, selected memory and next available action.
+
+## Baseline changes
+
+- Keep the credit balance visible in the CRT and memory viewer.
+- Allow one credit to be inserted from the open memory viewer, so the visitor does not have to close the viewer to reach the physical COIN control.
+- Keep insufficient-credit feedback inside the viewer instead of writing it to the obscured CRT.
+- Track the actual machine view (idle, category, location, rotation, collection, service) and restore the matching ambient profile after closing a memory.
+- Ignore stale asynchronous Markdown responses after another memory has been opened or the viewer has closed.
+
+## Remaining scope
+
+1. Define one explicit interaction transition table for boot, browse, select, insert credit, dispense, read, close, service and recovery.
+2. Make repeated coin presses, rapid item changes and simultaneous media playback deterministic.
+3. Ensure every failed transaction preserves the selected item and remaining credit.
+4. Add a small transaction confirmation state that distinguishes credit accepted, memory dispensed and receipt saved.
+5. Add interaction tests for each transition, including no-credit, sold-out, archived and restocking records.
+
+## Acceptance criteria
+
+- No visible action produces feedback behind an open modal.
+- A memory can be purchased without losing the selected record.
+- Credit counts never become negative and remain consistent across screen changes.
+- Closing a memory restores the precise screen and ambient state from which it was opened.
+- A slow document response cannot replace the content of a newer selection.
+- Every transaction has one unambiguous outcome and a corresponding receipt or failure event.
+
+# M36 — Media delivery and preservation
+
+**Status:** Planned; waiting for the source-video compression pass  
+**Depends on:** M25 portability and M35 interaction integrity.
+
+## Goal
+
+Separate archival masters from files served to visitors. JIHANKI should remain a preservation archive without forcing every visitor to download the largest production files.
+
+## Scope
+
+1. Preserve original video, audio and image masters outside any destructive web-optimisation workflow.
+2. Create web delivery encodes at agreed quality and resolution targets. Do not replace masters with derivatives.
+3. Add a media manifest that records archive ID, source path, delivery path, codec, dimensions, duration, file size and checksum.
+4. Generate poster frames for videos and appropriately sized image derivatives for the archive viewer.
+5. Prefer efficient formats with a reliable fallback where browser support requires it.
+6. Keep metadata-only or lighter defaults for large media, and do not fetch full media until a visitor requests playback.
+7. Add a repository size report and a per-asset budget warning to CI.
+
+## Delivery profiles
+
+- **Preview:** small poster or short preview for discovery.
+- **Web:** standard visitor playback, tuned for common desktop and mobile connections.
+- **Master:** preserved source, not automatically served by the machine interface.
+
+The final codec, resolution and bitrate should be chosen after comparing the compressed outputs on actual devices and listening to the audio/video quality. No fixed bitrate should be applied blindly across all footage.
+
+## Acceptance criteria
+
+- Every public media record resolves to a delivery derivative.
+- Every derivative maps back to a preserved master.
+- Video pages display a poster before playback.
+- No full-resolution video is downloaded just by opening a category list.
+- The published payload stays within the selected hosting budget.
+- Compression does not silently change the archive's source files or creative masters.
+
+## Boundary
+
+This milestone does not author, transcode or replace the user's source videos. The compression pass should happen first; the website can then adopt the resulting derivatives and manifest.
+
+# M37 — Archive schema and automated validation
+
+**Status:** Validator and CI baseline added  
+**Depends on:** M25–M34; supports every future content milestone.
+
+## Goal
+
+Make the archive a trustworthy source of truth. New records should fail validation before they become broken visitor experiences.
+
+## Baseline changes
+
+- Add a dependency-free Node.js validator.
+- Check required fields, unique IDs, category mapping, stock status, local file/image/project paths, curated relationship targets, duplicate HTML IDs and runtime script paths.
+- Run the validator automatically in GitHub Actions for relevant pushes and pull requests.
+- Correct the README authoring example to use the file property, not the unsupported textFile property.
+
+## Remaining scope
+
+1. Move all content records and pending records into the archive data source; runtime modules should not invent or migrate editorial content.
+2. Define a documented schema for project, voicebank, image, video, audio, text and performance records.
+3. Validate optional fields by record type (for example, media paths, voice credits, project dossiers and archive dates).
+4. Add checks for Markdown relative links and media-manifest consistency.
+5. Add fixtures for valid and invalid archive records.
+6. Keep migration scripts explicit, versioned and removable after migration.
+
+## Acceptance criteria
+
+- The archive source contains every visitor-facing record.
+- Runtime modules never add, rename or delete editorial records.
+- Invalid IDs, categories, stock states, relationships and local paths fail CI.
+- Each record type has a clear contract and a useful validation message.
+- The README and data guide show examples that match the actual renderer.
+
+# M38 — Accessibility and device robustness
+
+**Status:** Baseline fixes in progress  
+**Depends on:** M35; benefits from M37.
+
+## Goal
+
+Preserve the fixed physical-machine composition while making the interface usable across touch, keyboard, screen-reader and zoom contexts.
+
+## Baseline changes
+
+- Remove viewport settings that disable user zoom.
+- Add a status announcement region for screen and transaction changes.
+- Move focus into the memory dialog, trap Tab navigation while it is open and restore focus on close.
+- Add visible keyboard focus treatment.
+- Keep reduced-motion preferences respected.
+
+## Remaining scope
+
+1. Test the 429 × 932 composition on narrow phones, short landscape screens, tablets and desktop displays.
+2. Check that the machine can be operated without a pointer.
+3. Add explicit accessible names and state descriptions to physical controls and archive items where visible labels are not sufficient.
+4. Verify focus order, high-contrast visibility, text scaling and browser zoom.
+5. Ensure long archive lists and modal media can be reached without trapping the visitor in nested scroll regions.
+6. Test sound controls and media playback with keyboard and assistive technology.
+
+## Acceptance criteria
+
+- The visitor can zoom the page.
+- Every action is keyboard reachable and has a visible focus indicator.
+- The memory viewer receives focus, contains focus while open and restores focus on close.
+- Screen and transaction changes are announced without reading the entire archive list aloud.
+- No required content is clipped at supported viewport sizes.
+- Reduced-motion preferences suppress non-essential animations.
+
+# M39 — Deep archive discovery
+
+**Status:** Planned  
+**Depends on:** M30 relationships, M31 geography, M37 archive schema.
+
+## Goal
+
+Let the archive be discovered through its internal relationships rather than through category lists alone. Discovery should feel like moving through traces of a place, a sound or a memory.
+
+## Scope
+
+1. Extend the existing thematic photo groups into a curated visual index with stable themes, captions and meaningful sequence.
+2. Surface visual fragments that are not currently in the main catalogue through a deliberate secondary layer. Do not expose every source photograph indiscriminately.
+3. Build paths across video works, UTAU voices, music, sound fragments, production notes and locations.
+4. Add temporal trails through the Japan expedition, preserving gaps and uncertain chronology instead of inventing missing events.
+5. Allow an archive item to have several kinds of relationship: shared voice, shared project, shared location, source material, response or thematic echo.
+6. Add contextual ways to continue exploring from the artifact viewer without replacing the machine's physical controls.
+
+## Design principles
+
+- A relationship must have editorial meaning; avoid automatically connecting everything that shares a broad category.
+- Distinguish factual location and production credits from fictional or conceptual relationships.
+- Themed photographs should remain grouped by what the image contains or evokes, not merely by photographer.
+- Missing fragments and uncertain records may remain visibly incomplete.
+
+## Acceptance criteria
+
+- Visitors can move between related records without repeatedly returning to the category selector.
+- Every relationship has an explicit kind and valid target.
+- The photo index remains curated and thematic.
+- The expedition trail does not invent missing dates or locations.
+- Discovery adds depth without turning the machine into a conventional portfolio or search-results page.
+
+# M40 — Visitor continuity
+
+**Status:** Planned  
+**Depends on:** M29 event journal, M33 collection, M35 interaction integrity and M37 validation.
+
+## Goal
+
+Allow the machine to remember a visitor's path across sessions while keeping that memory transparent, portable and local by default.
+
+## Scope
+
+1. Add versioned import and restore for the personal collection and, separately, selected machine preferences.
+2. Preserve a visitor's recently opened records and optional exploration path locally.
+3. Allow a visitor to resume an unfinished path or revisit a previous sequence of memories.
+4. Keep receipts, collection records, mute preferences and exploration history as distinct data domains.
+5. Add explicit export, clear and reset controls with clear descriptions of what each action affects.
+6. Add migration handling when the archive schema changes, retaining snapshots for removed records.
+7. Keep all visitor state in the browser unless a separately specified backend and consent model are approved.
+
+## Privacy and preservation principles
+
+- No account or tracking service is required.
+- Do not transmit collection records or browsing history.
+- Export files should identify their format and version.
+- Import should validate the file before changing existing local data.
+- Clearing one data domain must not silently erase the others.
+- A removed archive entry may remain readable in a collection snapshot, but must not become purchasable again.
+
+## Acceptance criteria
+
+- A collection can be exported and imported on another browser.
+- Unsupported or malformed imports leave current visitor data unchanged.
+- Visitor state is versioned and can be migrated.
+- Receipts, collection, preferences and history can be cleared independently.
+- The site makes no claim of cross-device synchronisation while storage remains browser-local.

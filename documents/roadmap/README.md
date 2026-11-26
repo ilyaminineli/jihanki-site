@@ -3,7 +3,7 @@
 The roadmap follows the machine's internal logic: make the existing experience dependable before increasing its complexity. Milestones are sequenced, but creative work can proceed independently when it does not weaken preservation or runtime integrity.
 
 | Milestone | Focus | Status |
-|---|---|---|
+| --- | --- | --- |
 | [M35](./M35-machine-interaction-integrity.md) | Machine interaction integrity | Baseline fixes in progress |
 | [M36](./M36-media-delivery-and-preservation.md) | Media delivery and preservation | Planned; source-video compression pending |
 | [M37](./M37-archive-schema-and-validation.md) | Archive schema and automated validation | Validator and CI added |

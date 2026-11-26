@@ -28,14 +28,14 @@ Compositional principles
 Overview
 The project is organised as a network of child patches rather than as a linear arrangement. Each patch represents a process or layer of an imagined environment. The patches may operate independently, but they can exchange shared parameters such as activity, memory reliability, event density, instability, spatial movement, and ritual intensity.
 Process categories
-Category	Function	Audible result
-Environmental field	Maintains spatial and spectral continuity	drones, filtered noise, resonance
-Ecological processes	Produces activity at different temporal scales	pulses, textures, microscopic events
-Memory processes	Stores and recalls previous material	returning fragments and altered motifs
-Human-trace processes	Introduces indirect signs of people	distant movement, voices, boats, objects
-Rhythmic processes	Generates local temporal behaviour	irregular pulses and ghost events
-Ritual processes	Organises repetition into cultural-like patterns	bells, calls, responses, ceremonial gestures
-Dissolution process	Reduces the system's capacity for new activity	sparse residue, spectral darkening, silence
+Category Function Audible result
+Environmental field Maintains spatial and spectral continuity drones, filtered noise, resonance
+Ecological processes Produces activity at different temporal scales pulses, textures, microscopic events
+Memory processes Stores and recalls previous material returning fragments and altered motifs
+Human-trace processes Introduces indirect signs of people distant movement, voices, boats, objects
+Rhythmic processes Generates local temporal behaviour irregular pulses and ghost events
+Ritual processes Organises repetition into cultural-like patterns bells, calls, responses, ceremonial gestures
+Dissolution process Reduces the system's capacity for new activity sparse residue, spectral darkening, silence
 Shared-state model
 A possible shared state is:
 activity                0.0–1.0   current event capacity
@@ -74,12 +74,12 @@ This produces a form of temporal ecology in which geological, biological, human,
 Inter-Track Architecture
 Five temporal environments
 The tracks form a geographic and conceptual system.
-Track	Environment	Memory type	Primary time scale	Human presence	Core state
-青木ヶ原	Forest	Ecological	Biological	Indirect	Recall
-西湖	Lake	Reflective	Fluid	Traces	Reflection
-村	Village	Collective	Social	Strong but absent	Forgetting
-富士山	Mountain	Geological	Deep time	Minimal	Pressure
-神社	Shrine	Ritual	Cyclical	Intentional	Invocation
+Track Environment Memory type Primary time scale Human presence Core state
+青木ヶ原 Forest Ecological Biological Indirect Recall
+西湖 Lake Reflective Fluid Traces Reflection
+村 Village Collective Social Strong but absent Forgetting
+富士山 Mountain Geological Deep time Minimal Pressure
+神社 Shrine Ritual Cyclical Intentional Invocation
 Shared vocabulary
 The tracks may share slow procedural evolution, probabilistic events, memory fragments, spatial movement, long reverberation, sparse bells, resonant percussion, drones, micro-rhythm, and silence. Their meanings must remain different: the same bell can be a distant reflection in Saiko, an abandoned routine in the Village, or an intentional gesture in the Shrine.
 Project geography

@@ -24,7 +24,6 @@ Every item is only a fragment.
 
 The user should never be completely sure whether they are viewing documentation, fiction, memory, field recording, reconstruction, or an accidental trace.
 
-
 ## Machine implementation
 
 The current static-site implementation gives the rotation a date-based cycle. Each cycle surfaces one record from each of the eight physical archive categories, and up to three records from the preceding cycle remain as **RESIDUE**. The rotation changes what is foregrounded, not what exists: category browsing continues to expose the complete catalogue, and no source document or media file is overwritten.

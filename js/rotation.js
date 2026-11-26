@@ -2,7 +2,7 @@
    The visible rotation changes daily; the underlying catalogue is never hidden or edited. */
 (function () {
   const DAY = 86400000;
-  const CATEGORY_ORDER = ["video","photo","utau","text","music","sound","notes","performance"];
+  const CATEGORY_ORDER = ["video", "photo", "utau", "text", "music", "sound", "notes", "performance"];
   const LIMIT = 8;
 
   function dateKey(date) {

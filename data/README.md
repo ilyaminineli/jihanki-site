@@ -23,7 +23,7 @@ Example fields:
 The eight physical selectors are mapped explicitly in js/categories.js:
 
 | Selector | Catalogue categories |
-|---|---|
+| --- | --- |
 | VIDEO | video |
 | PHOTO | photo, image |
 | UTAU | utau, voicebank |
@@ -58,7 +58,6 @@ Photo group values are thematic groupings (for example, Machines after dark and 
 
 Receipts and machine event logs are saved in the visitor's browser. They are not fields in archive.js and do not alter the published catalogue.
 
-
 ## Presentation and visitor memory
 
 The daily rotating selection is implemented in js/rotation.js. It chooses a date-stable fragment from each physical category and keeps a small residue from the preceding cycle. This is a presentation layer only: the complete catalogue remains available from the physical category selectors.
@@ -66,7 +65,6 @@ The daily rotating selection is implemented in js/rotation.js. It chooses a date
 Personal collections are implemented in js/collection.js. Only successful purchases are collected. Stored records include the archive ID, title, date, category, acquisition timestamps, repeat count and associated receipt codes. They remain local to the browser and can be exported as JSON.
 
 Ambient machine profiles live in js/audio.js. The original ambience loop fades between machine states; the visitor can mute it without disabling visual interactions or archive playback controls.
-
 
 ## Automated integrity checks
 

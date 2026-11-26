@@ -20,7 +20,7 @@
       const collection = window.JIHANKI_COLLECTION;
       const ambient = window.JIHANKI_AUDIO?.getState() || { state: "unknown", muted: false };
       body = '<div class="service-grid"><div>ARCHIVE ITEMS<strong>' + all.length + '</strong></div><div>TRANSACTIONS<strong>' + receipts.length + '</strong></div><div>EVENTS<strong>' + events.length + '</strong></div><div>COLLECTED WORKS<strong>' + (collection?.count() || 0) + '</strong></div></div>' +
-        '<div class="service-subhead">STOCK SUMMARY</div>' + Object.entries(summary).map(([k,v]) => '<div class="service-line"><span>' + esc(k.toUpperCase()) + '</span><strong>' + v + '</strong></div>').join("") +
+        '<div class="service-subhead">STOCK SUMMARY</div>' + Object.entries(summary).map(([k, v]) => '<div class="service-line"><span>' + esc(k.toUpperCase()) + '</span><strong>' + v + '</strong></div>').join("") +
         '<div class="service-subhead">ROTATION / ' + esc(rotation.date) + '</div><div class="service-line"><span>FEATURED FRAGMENTS</span><strong>' + rotation.featured + '</strong></div><div class="service-line"><span>RESIDUE</span><strong>' + rotation.residue + '</strong></div>' +
         '<div class="service-subhead">AMBIENT STATE</div><div class="service-line"><span>' + esc(ambient.state.toUpperCase()) + '</span><strong>' + (ambient.muted ? 'MUTED' : 'ACTIVE') + '</strong></div>' +
         '<div class="service-note">LOCAL SERVICE TERMINAL / VISITOR DATA STAYS IN THIS BROWSER</div>';
@@ -56,12 +56,12 @@
     } else if (section === "receipts") {
       body = receipts.slice().reverse().map(receipt => '<div class="service-record"><span>' + esc(receipt.title) + '</span><small>' + esc(receipt.code) + ' · ' + esc(receipt.purchasedLabel) + '</small></div>').join("") || '<div class="service-note">NO TRANSACTIONS RECORDED</div>';
     } else if (section === "log") {
-      body = events.slice().reverse().slice(0,100).map(event => '<div class="service-record"><span>' + esc(event.type.toUpperCase()) + '</span><small>' + esc(new Date(event.at).toLocaleString()) + ' · ' + esc(event.detail?.itemId || event.detail?.message || "") + '</small></div>').join("") || '<div class="service-note">NO SYSTEM EVENTS RECORDED</div>';
+      body = events.slice().reverse().slice(0, 100).map(event => '<div class="service-record"><span>' + esc(event.type.toUpperCase()) + '</span><small>' + esc(new Date(event.at).toLocaleString()) + ' · ' + esc(event.detail?.itemId || event.detail?.message || "") + '</small></div>').join("") || '<div class="service-note">NO SYSTEM EVENTS RECORDED</div>';
     } else if (section === "geography") {
       body = (window.JIHANKI_GEOGRAPHY?.places() || []).map(place => '<button class="service-record service-record-button" type="button" data-maint-place="' + esc(place.name) + '"><span>' + esc(place.name) + '</span><small>' + esc(place.count + " RECORDS · " + place.description) + '</small></button>').join("") || '<div class="service-note">NO LOCATION RECORDS</div>';
     }
     screen.innerHTML = '<div class="service-terminal"><div class="service-head"><span>JHK / INTERNAL SERVICE</span><span class="service-indicator">● ACTIVE</span></div><div class="service-nav">' +
-      sections.map(([label,key]) => button(label,key)).join("") +
+      sections.map(([label, key]) => button(label, key)).join("") +
       '</div><div class="service-current">' + esc((section || "overview").toUpperCase()) + '</div><div class="service-body">' + body + '</div><div class="service-footer"><span>LOCAL ARCHIVE / SERVICE MODE</span><button type="button" data-maint-exit>EXIT</button></div></div>';
   }
   window.JIHANKI_MAINTENANCE = { render };

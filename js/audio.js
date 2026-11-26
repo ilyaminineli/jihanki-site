@@ -13,14 +13,14 @@
     loopFallback: "media/sound/jihanki-sfx/jihanki-music-loop.wav"
   };
   const PROFILES = {
-    idle:       { volume: 0.095, rate: 1.000 },
-    browsing:   { volume: 0.070, rate: 0.995 },
-    reading:    { volume: 0.040, rate: 0.985 },
+    idle: { volume: 0.095, rate: 1.000 },
+    browsing: { volume: 0.070, rate: 0.995 },
+    reading: { volume: 0.040, rate: 0.985 },
     dispensing: { volume: 0.145, rate: 1.010 },
-    service:    { volume: 0.035, rate: 0.975 },
-    rotation:   { volume: 0.060, rate: 0.990 },
+    service: { volume: 0.035, rate: 0.975 },
+    rotation: { volume: 0.060, rate: 0.990 },
     collection: { volume: 0.060, rate: 0.990 },
-    anomaly:    { volume: 0.025, rate: 0.970 }
+    anomaly: { volume: 0.025, rate: 0.970 }
   };
   const MUTE_KEY = "jihanki.audio.muted.v1";
   const loop = new Audio();
@@ -36,7 +36,7 @@
   let stateGeneration = 0;
   const activeMedia = new Set();
 
-  try { muted = localStorage.getItem(MUTE_KEY) === "1"; } catch (_) {}
+  try { muted = localStorage.getItem(MUTE_KEY) === "1"; } catch (_) { }
   loop.src = fallback ? SOUND.loopFallback : SOUND.loop;
   loop.muted = muted;
   loop.volume = PROFILES.idle.volume;
@@ -61,8 +61,8 @@
     if (!loop.paused) return;
     try {
       const promise = loop.play();
-      if (promise?.catch) promise.catch(() => {});
-    } catch (_) {}
+      if (promise?.catch) promise.catch(() => { });
+    } catch (_) { }
   }
   function setState(next, durationMs) {
     const state = PROFILES[next] ? next : "idle";
@@ -72,7 +72,7 @@
     if (state !== machineState) {
       machineState = state;
       const profile = PROFILES[state];
-      try { loop.playbackRate = profile.rate; } catch (_) {}
+      try { loop.playbackRate = profile.rate; } catch (_) { }
       window.JIHANKI_EVENTS?.record("ambient-state-changed", { from: previous, to: state });
     }
     const generation = ++stateGeneration;
@@ -86,7 +86,7 @@
   }
   function toggleMute(forceValue) {
     muted = typeof forceValue === "boolean" ? forceValue : !muted;
-    try { localStorage.setItem(MUTE_KEY, muted ? "1" : "0"); } catch (_) {}
+    try { localStorage.setItem(MUTE_KEY, muted ? "1" : "0"); } catch (_) { }
     loop.muted = muted;
     window.JIHANKI_EVENTS?.record(muted ? "ambient-muted" : "ambient-unmuted", {});
     return muted;
@@ -119,15 +119,15 @@
       const audio = new Audio(src);
       audio.volume = name === "coin" ? 0.55 : 0.4;
       const promise = audio.play();
-      if (promise?.catch) promise.catch(() => {});
-    } catch (_) {}
+      if (promise?.catch) promise.catch(() => { });
+    } catch (_) { }
   }
 
   // Gentle envelope keeps transitions audible without abrupt level jumps.
   window.setInterval(() => {
     const target = targetVolume();
     const next = loop.volume + (target - loop.volume) * 0.16;
-    try { loop.volume = Math.abs(target - next) < 0.001 ? target : next; } catch (_) {}
+    try { loop.volume = Math.abs(target - next) < 0.001 ? target : next; } catch (_) { }
   }, 60);
 
   window.JIHANKI_AUDIO = {

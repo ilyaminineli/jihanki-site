@@ -148,7 +148,7 @@
     artifactRenderToken += 1;
     artifact.classList.remove("open");
     artifact.setAttribute("aria-hidden", "true");
-    artifactContent.querySelectorAll("audio,video").forEach(media => { try { media.pause(); } catch (_) {} });
+    artifactContent.querySelectorAll("audio,video").forEach(media => { try { media.pause(); } catch (_) { } });
     window.JIHANKI_AUDIO.clearMedia();
     activeArtifact = null;
     window.JIHANKI_AUDIO.setState(audioStateForView());
@@ -223,7 +223,7 @@
   async function openItem(item, receipt) {
     if (!item) return;
     if (artifact.classList.contains("open")) {
-      artifactContent.querySelectorAll("audio,video").forEach(media => { try { media.pause(); } catch (_) {} });
+      artifactContent.querySelectorAll("audio,video").forEach(media => { try { media.pause(); } catch (_) { } });
       window.JIHANKI_AUDIO.clearMedia();
     } else {
       lastFocusedElement = document.activeElement;
@@ -501,7 +501,7 @@
       if (maintenanceCollectionAction.dataset.maintCollectionAction === "export") {
         window.JIHANKI_COLLECTION.exportFile();
       } else if (maintenanceCollectionAction.dataset.maintCollectionAction === "clear" &&
-          window.confirm("Clear this browser's JIHANKI collection? Receipts will remain unchanged.")) {
+        window.confirm("Clear this browser's JIHANKI collection? Receipts will remain unchanged.")) {
         window.JIHANKI_COLLECTION.clear();
       }
       window.JIHANKI_MAINTENANCE.render("collection");
@@ -535,7 +535,7 @@
     }
     if (event.key === "Escape" && artifact.classList.contains("open")) { closeArtifact(); return; }
     if (event.key.toLowerCase() === "m" && !event.ctrlKey && !event.metaKey && !event.altKey &&
-        !artifact.classList.contains("open") && !["INPUT","TEXTAREA"].includes(document.activeElement?.tagName)) {
+      !artifact.classList.contains("open") && !["INPUT", "TEXTAREA"].includes(document.activeElement?.tagName)) {
       const muted = window.JIHANKI_AUDIO.toggleMute();
       window.JIHANKI_EVENTS.record("ambient-control", { muted, source: "keyboard" });
       if (maintenanceActive) window.JIHANKI_MAINTENANCE.render("ambient");

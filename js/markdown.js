@@ -1,6 +1,6 @@
 /* Small safe Markdown renderer for the archive's intentionally simple dialect. */
 (function () {
-  const esc = value => String(value ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+  const esc = value => String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
   function safeURL(path, base) {
     const raw = String(path || "").trim();
     if (/^(javascript|data):/i.test(raw)) return "#";

@@ -77,6 +77,6 @@ The final website deliberately preserves the feeling of a machine rather than pr
 Lake Saiko, Fujikawaguchiko, Yamanashi, Japan  
 Artist-in-residence founded in April 2019
 
-Official site: https://saikoneon.com/
+Official site: <https://saikoneon.com/>
 
 The project should be understood as originating from the specific experience of being at Saiko and moving through its surrounding landscape, together with Julia Baranyuk, rather than as an abstract website concept designed independently of the journey.

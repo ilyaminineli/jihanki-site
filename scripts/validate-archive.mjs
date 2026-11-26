@@ -57,7 +57,7 @@ try {
       const normalized = path.normalize(String(target).replace(/\\/g, "/"));
       const resolved = path.resolve(root, normalized);
       if (path.isAbsolute(String(target)) || normalized.startsWith("..") ||
-          (resolved !== root && !resolved.startsWith(root + path.sep))) {
+        (resolved !== root && !resolved.startsWith(root + path.sep))) {
         report(prefix + field + " escapes the repository: " + target);
       } else if (!existsSync(resolved)) {
         report(prefix + field + " does not resolve: " + target);

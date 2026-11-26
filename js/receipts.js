@@ -2,7 +2,7 @@
 (function () {
   const KEY = "jihanki.receipts.v1";
   const SEQ = "jihanki.receipt-sequence.v1";
-  const esc = value => String(value ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+  const esc = value => String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
   function all() {
     try { const value = JSON.parse(localStorage.getItem(KEY) || "[]"); return Array.isArray(value) ? value : []; }
     catch (_) { return []; }
@@ -10,7 +10,7 @@
   function create(item) {
     const now = new Date();
     let seq = 1;
-    try { seq = Number(localStorage.getItem(SEQ) || "0") + 1; localStorage.setItem(SEQ, String(seq)); } catch (_) {}
+    try { seq = Number(localStorage.getItem(SEQ) || "0") + 1; localStorage.setItem(SEQ, String(seq)); } catch (_) { }
     const year = String(now.getFullYear()).slice(-2);
     const nonce = Math.random().toString(36).slice(2, 7).toUpperCase();
     const code = "JHK-" + year + "-" + String(seq).padStart(4, "0") + "-" + nonce;
@@ -21,7 +21,7 @@
       purchasedLabel: now.toLocaleString(), author: item.author || "ARCHIVE",
       statement: "MEMORY PRESERVED."
     };
-    try { const list = all(); list.push(receipt); localStorage.setItem(KEY, JSON.stringify(list.slice(-500))); } catch (_) {}
+    try { const list = all(); list.push(receipt); localStorage.setItem(KEY, JSON.stringify(list.slice(-500))); } catch (_) { }
     window.JIHANKI_EVENTS?.record("receipt-generated", { code, itemId: item.id });
     return receipt;
   }
@@ -52,7 +52,7 @@
   function download(id) {
     const receipt = get(id); if (!receipt) return false;
     window.JIHANKI_EVENTS?.record("receipt-exported", { code: receipt.code });
-    const text = ["自販機 / JIHANKI","PURCHASE RECEIPT","ITEM: " + receipt.title,"CATEGORY: " + receipt.category,"ARCHIVE DATE: " + receipt.archiveDate,"TRANSACTION: " + receipt.purchasedLabel,"ARCHIVE CODE: " + receipt.code,receipt.statement].join("\n");
+    const text = ["自販機 / JIHANKI", "PURCHASE RECEIPT", "ITEM: " + receipt.title, "CATEGORY: " + receipt.category, "ARCHIVE DATE: " + receipt.archiveDate, "TRANSACTION: " + receipt.purchasedLabel, "ARCHIVE CODE: " + receipt.code, receipt.statement].join("\n");
     const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob), a = document.createElement("a");
     a.href = url; a.download = receipt.code + ".txt"; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url); return true;

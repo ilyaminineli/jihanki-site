@@ -26,7 +26,7 @@
   window.JIHANKI_EVENTS = {
     record,
     all: read,
-    clear() { try { localStorage.removeItem(KEY); } catch (_) {} },
+    clear() { try { localStorage.removeItem(KEY); } catch (_) { } },
     count() { return read().length; }
   };
 })();

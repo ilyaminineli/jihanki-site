@@ -18,7 +18,7 @@ The project therefore grew directly from the place and the journey rather than b
 
 SAIKONEON describes itself as a space for research, creation, collaboration, and exchange between creators from different fields, situated in the natural environment around Lake Saiko and Mount Fuji. The JIHANKI project belongs to that particular environment: lake, forest, roads, tunnels, small settlements, shrines, and isolated infrastructure all became part of the archive's source material.
 
-Official residency site: https://saikoneon.com/
+Official residency site: <https://saikoneon.com/>
 
 The original field note is preserved in:
 
@@ -307,7 +307,6 @@ When modifying the project:
 
 JIHANKI is a living archive and interface. Its contents, visual design, sounds, documents, and interaction model are expected to evolve as new material is added.
 
-
 ## Machine systems
 
 ### Transactions and receipts
@@ -329,7 +328,6 @@ The service terminal is an undocumented interaction: press HOME three times, COI
 ### Local data and privacy
 
 Receipts and event logs are stored in the visitor's browser using local storage. They are not sent to a server. Clearing browser storage removes that visitor-local history. The public archive and its stock definitions remain unchanged.
-
 
 ### M28 — Archive rotation
 
