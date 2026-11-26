@@ -4,9 +4,9 @@ The roadmap makes the machine dependable before increasing its complexity. Exist
 
 | Milestone | Focus | Status |
 | --- | --- | --- |
-| [M35](./ROADMAP.md#m35--machine-interaction-integrity) | Machine interaction integrity | Modal-safe transaction feedback tested; transition matrix remains |
+| [M35](./ROADMAP.md#m35--machine-interaction-integrity) | Machine interaction integrity | Explicit view/overlay and purchase transaction model; CI verified |
 | [M36](./ROADMAP.md#m36--media-delivery-and-preservation) | Media delivery and preservation | Source-video compression pending |
-| [M37](./ROADMAP.md#m37--archive-schema-and-automated-validation) | Archive schema and automated validation | Type-aware contracts and fixtures verified in CI; Markdown-link audit remains |
+| [M37](./ROADMAP.md#m37--archive-schema-and-automated-validation) | Archive schema and automated validation | Typed schemas, Markdown link/anchor checks and exact media coverage; CI verified |
 | [M38](./ROADMAP.md#m38--accessibility-and-device-robustness) | Accessibility and device robustness | Baseline fixes in progress |
 | [M39](./ROADMAP.md#m39--deep-archive-discovery) | Deep archive discovery | Partially implemented by M43–M44 |
 | [M40](./ROADMAP.md#m40--visitor-continuity) | Visitor continuity | Partially implemented by M46 |
