@@ -38,13 +38,13 @@ Japan stay / shared field experience: **Julia Baranyuk**
 * Interactive vending-machine interface with a fixed 429 × 932 coordinate system
 * Explicit archive category mapping for all eight physical selectors
 * Stock states: NEW, AVAILABLE, LOW STOCK, SOLD OUT, RESTOCKING and ARCHIVED
-* Credit-based dispensing with a persistent balance and in-viewer coin insertion
+* Credit-based dispensing with a visible coin-token balance; accumulated tokens shrink slightly and each dispensed memory consumes one
 * Accessible memory dialog with keyboard focus management and live status announcements
 * Browser-local transaction receipts with print and text-export actions
 * Hidden service terminal, local event journal and inventory diagnostics
 * Cross-referenced memories, voice credits and geographic archive index
 * Non-destructive daily archive rotation with fragments retained as residue
-* Browser-local personal museum with collected works, serialized objects, saved shelves and visit trail
+* Browser-local collection with acquired works, serialized objects, saved works, thematic shelves and one unified visit trail
 * Browser-local collection and museum backup/restore with separate clear controls
 * Ambient machine states with volume transitions, media ducking and visitor mute control
 * Rare, authored machine anomalies
@@ -54,8 +54,8 @@ Japan stay / shared field experience: **Julia Baranyuk**
 * Serialized collectible memory objects linked to purchase receipts
 * Archive search, offline shell cache and media metadata
 * Versioned browser-local collection import/export
-* Multi-layer audio installation mode using existing archive sounds
-* Static temporal archive with visitor-local time presentation, monochrome photographic contact sheets and the complete dated catalogue
+* Prominent Sound Lab with immediate layer selection/removal, per-track volume/loop controls and reliable restart/stop transport
+* Static Chronology with visitor-local hourly reading suggestion, monochrome photographic contact sheets and the complete dated catalogue
 * Markdown documents, images, audio and video rendered inside the artifact viewer
 * Ambient JIHANKI loop and interface sound effects
 * Static deployment: no framework, build step, backend or visitor account
@@ -179,6 +179,10 @@ The vending machine is designed around a fixed internal coordinate system so tha
 The machine scales proportionally rather than being independently stretched in width and height.
 
 This is especially important on phones, where the machine must remain correctly mapped to its visual buttons and screen.
+
+## Sound Lab
+
+Sound Lab is the main creative entry on the machine's home screen. Visitors can combine existing local archive audio into a layered installation. While it is running, checking a source adds that layer immediately and unchecking it pauses and rewinds it. The Start button rebuilds the mix from the current checked sources; Stop pauses every layer. Each source has its own volume and loop controls. Playback requires an explicit visitor action.
 
 ## Audio
 
@@ -369,13 +373,15 @@ node scripts/test-responsive.mjs
 
 The integrity and browser checks run automatically on pushes and pull requests. The browser suite emulates phone portrait, phone landscape, tablet and desktop layouts; it checks map overflow, keyboard modal focus, touch target geometry and offline shell/document recovery. Physical iOS Safari and Android Chrome testing remains a manual release check. It verifies archive IDs and required fields, physical category mappings, stock states, local media/document paths, curated relationships, duplicate HTML IDs and runtime script references. The check does not decode or recompress media files.
 
+Machine Memory is no longer a separate visitor screen. Its adaptive behaviour remains internal to the machine; the single Visit Trail lives inside Collection.
+
 ## M49 — Visitor Memory Exchange
 
 M49 is not enabled. The privacy and moderation model is documented in [M49 — Visitor Memory Exchange](documents/privacy/M49-VISITOR-MEMORY-EXCHANGE-PRIVACY-AND-MODERATION.md), and the preferred backend/operations target is recorded in [M49 — Backend and Moderation-Operations Decision](documents/privacy/M49-BACKEND-AND-MODERATION-OPERATIONS-DECISION.md). Supabase Pro in Frankfurt is selected as the preferred target, but no provider project or submission endpoint has been provisioned. Launch remains blocked until the service owner, moderation lead, independent backup, privacy contact and legal/vendor review are in place.
 
-## M50 — Temporal Archive
+## M50 — Chronology
 
-The temporal archive is a static editorial index over the existing public catalogue, with an oversized outlined ARCHIVIO masthead, MAPPA / RANDOM / TIMELINE navigation and monochrome contact sheets built only from catalogue-owned image files. It uses the visitor's browser-local clock for restrained presentation and the original archive date field for chronology. Date precision is preserved, unknown dates stay separately visible, and missing years are shown as catalogue gaps rather than invented events.
+Chronology is a static date index over the existing public catalogue, with an oversized outlined ARCHIVIO masthead, MAPPA / RANDOM / TIMELINE navigation and monochrome contact sheets built only from catalogue-owned image files. The years and months come from the original date field. It is not a diary of the visitor's visits. A separate hourly echo offers one existing fragment selected by the browser's local clock; that suggestion does not alter dates, rotation or visit history. Date precision is preserved, unknown dates stay separately visible, and missing years are shown as catalogue gaps rather than invented events.
 
 The module does not use a backend, network API, cookies, localStorage, IndexedDB or visitor profile. It does not change archive records, rotation rules or category availability. The complete archive remains accessible at every hour.
 
