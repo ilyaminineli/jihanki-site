@@ -100,7 +100,9 @@ assert.equal(state.overlay, "panel");
 no(step(state, "OPEN_PANEL", { view: "service" }), "invalid-panel-view");
 state = step(state, "ENTER_SERVICE").state;
 assert.equal(state.view, "service");
-ok(step(state, "EXIT_SERVICE"));
-assert.equal(step(state, "EXIT_SERVICE").reason, "invalid-source-state");
+outcome = step(state, "EXIT_SERVICE");
+ok(outcome); state = outcome.state;
+assert.equal(state.view, "idle");
+no(step(state, "EXIT_SERVICE"), "invalid-source-state");
 
 console.log("M35 interaction transition tests passed: views, overlays, credit, blocked stock, single-flight purchases, rollback, receipts and recovery.");
