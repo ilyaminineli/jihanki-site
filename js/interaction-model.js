@@ -23,8 +23,8 @@
     PURCHASE_COMPLETE: { from: ["pending"], transaction: "dispensed" },
     PURCHASE_ABORT: { from: ["pending"], transaction: "failed", refundsReservedCredit: true },
     RECOVER: { from: "*", transaction: "failed", refundsPendingCredit: true },
-    RECEIPT_SAVED: { from: ["dispensed", "receipt-printed"], transaction: "receipt-saved" },
-    RECEIPT_PRINTED: { from: ["dispensed", "receipt-saved"], transaction: "receipt-printed" }
+    RECEIPT_SAVED: { from: ["dispensed", "print-dialog-opened"], transaction: "receipt-saved" },
+    RECEIPT_PRINT_DIALOG_OPENED: { from: ["dispensed", "receipt-saved"], transaction: "print-dialog-opened" }
   });
 
   function createState() {
@@ -63,7 +63,7 @@
 
     if (Array.isArray(definition.from) && !definition.from.includes(
       event === "PURCHASE_COMPLETE" || event === "PURCHASE_ABORT" ||
-      event === "RECEIPT_SAVED" || event === "RECEIPT_PRINTED"
+      event === "RECEIPT_SAVED" || event === "RECEIPT_PRINT_DIALOG_OPENED"
         ? state.transaction.status : state.view
     )) return result(state, false, "invalid-source-state");
 
@@ -172,14 +172,14 @@
         return result(state, false, "nothing-to-recover");
 
       case "RECEIPT_SAVED":
-      case "RECEIPT_PRINTED": {
+      case "RECEIPT_PRINT_DIALOG_OPENED": {
         const allowed = event === "RECEIPT_SAVED"
-          ? ["dispensed", "receipt-printed"] : ["dispensed", "receipt-saved"];
+          ? ["dispensed", "print-dialog-opened"] : ["dispensed", "receipt-saved"];
         if (!allowed.includes(state.transaction.status) ||
             !payload.receiptCode || String(payload.receiptCode) !== state.transaction.receiptCode) {
           return result(state, false, "receipt-does-not-match-current-transaction");
         }
-        state.transaction = { ...state.transaction, status: event === "RECEIPT_SAVED" ? "receipt-saved" : "receipt-printed" };
+        state.transaction = { ...state.transaction, status: event === "RECEIPT_SAVED" ? "receipt-saved" : "print-dialog-opened" };
         return result(state, true);
       }
 
