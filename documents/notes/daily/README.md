@@ -21,8 +21,9 @@ The files in this directory are intentionally chronological. They preserve the p
 - [2026-08-01 — Entering Fuji](./2026-08-01.md)
 - [2026-08-02 — Hanabi](./2026-08-02.md)
 - [2026-08-03 — Machines / Memory / The Hidden History](./2026-08-03.md)
+- [2026-08-18 — Last Morning on the Boards](./2026-08-18.md)
 
-> **Date note:** the source document explicitly prints date headings through 2026-07-26 and then 2026-07-31. The 2026-07-27 and 2026-07-28 chapters are ported from the chronological sections in the uploaded reconstruction, which explicitly labels those sections. No 2026-07-30 chapter is invented because the source does not provide one.
+> **Date note:** the source document explicitly prints date headings through 2026-07-26 and then 2026-07-31. The 2026-07-27 and 2026-07-28 chapters are ported from the chronological sections in the uploaded reconstruction, which explicitly labels those sections. No 2026-07-30 chapter is invented because the source does not provide one. The later chat export is sparse for 2026-08-04 through 2026-08-17 and omits most attached media, so no daily chapters are inferred for that interval.
 
 ## Core mutation of the project
 
