@@ -55,7 +55,7 @@ Japan stay / shared field experience: **Julia Baranyuk**
 * Archive search, offline shell cache and media metadata
 * Versioned browser-local collection import/export
 * Multi-layer audio installation mode using existing archive sounds
-* Static temporal archive with visitor-local time presentation and the complete dated catalogue
+* Static temporal archive with visitor-local time presentation, monochrome photographic contact sheets and the complete dated catalogue
 * Markdown documents, images, audio and video rendered inside the artifact viewer
 * Ambient JIHANKI loop and interface sound effects
 * Static deployment: no framework, build step, backend or visitor account
@@ -375,7 +375,7 @@ M49 is not enabled. The privacy and moderation model is documented in [M49 — V
 
 ## M50 — Temporal Archive
 
-The temporal archive is a static view over the existing public catalogue. It uses the visitor's browser-local clock for restrained presentation and the original archive date field for chronology. Date precision is preserved, unknown dates stay separately visible, and missing years are shown as catalogue gaps rather than invented events.
+The temporal archive is a static editorial index over the existing public catalogue, with an oversized outlined ARCHIVIO masthead, MAPPA / RANDOM / TIMELINE navigation and monochrome contact sheets built only from catalogue-owned image files. It uses the visitor's browser-local clock for restrained presentation and the original archive date field for chronology. Date precision is preserved, unknown dates stay separately visible, and missing years are shown as catalogue gaps rather than invented events.
 
 The module does not use a backend, network API, cookies, localStorage, IndexedDB or visitor profile. It does not change archive records, rotation rules or category availability. The complete archive remains accessible at every hour.
 
