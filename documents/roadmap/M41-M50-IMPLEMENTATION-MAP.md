@@ -247,13 +247,13 @@ Let the machine's available fragments and tone shift with local time and the arc
 1. Build a complete chronology directly from source catalogue date values, preserving day-, month- and year-only precision.
 2. Keep undated or unparsed records visible in a separate section; do not assign invented dates.
 3. Show missing years between dated records as gaps in the catalogue, not as claims about unrecorded events.
-4. Use the visitor's local clock for restrained presentational variation and a deterministic day-part echo.
+4. Use the visitor's local clock for restrained presentational variation and a deterministic hourly echo within the current day-part.
 5. Keep the implementation static and browser-local, without network calls, cookies, local storage or visitor profiles.
 6. Keep every archive record reachable and preserve the original category selectors and archive rotation.
 
 ### Implemented behaviour
 - A TIME ARCHIVE action opens the complete newest-first chronology, grouped by year and month.
-- A visitor-local day-part selects one existing catalogue fragment as an hourly echo. The interface explicitly states that this does not imply the work was originally recorded at that hour.
+- The visitor-local hour, constrained by its day-part, selects one existing catalogue fragment as an hourly echo. The interface explicitly states that this does not imply the work was originally recorded at that hour.
 - Every chronological entry opens its original archive record.
 - Date precision and original catalogue values are preserved; unplaced entries remain available.
 - The local clock is read at render time only. No temporal preference or clock value is persisted or transmitted.
