@@ -44,7 +44,7 @@ Establish a manifest-backed inventory for all media files, verify file size and 
 ## M42 — Delivery, responsive access and media metadata
 
 **Priority:** P0/P1  
-**Status:** Partial implementation; manual browser audit pending  
+**Status:** Automated Playwright viewport/offline tests implemented; physical device audit remains manual  
 **Depends on:** M35, M36, M38, M41
 
 ### Goal
@@ -64,6 +64,8 @@ Make media understandable before playback and keep the machine operable on more 
 - Visitors can zoom and keyboard-operate every primary control.
 - The short-landscape layout remains scrollable and controls retain focus visibility.
 - Manual device testing is recorded separately from automated validation.
+- CI emulates small-phone portrait, phone landscape, tablet and desktop viewports, checks touch geometry and map overflow, and performs offline reload plus cached-document reads.
+- Physical confirmation remains required on iOS Safari and Android Chrome; browser emulation is not a substitute for hardware testing.
 
 ## M43 — Memory archaeology, archive search and relationship graph
 

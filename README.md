@@ -348,15 +348,18 @@ The original JIHANKI ambience loop transitions between idle, browsing, reading, 
 
 Successful purchases add the work and receipt code to a browser-local collection. Repeat purchases increment an acquisition count. Visitors can revisit collected memories, export the collection as JSON, or clear it locally. Collection data is not transmitted and is not shared between browsers or devices.
 
-## Automated validation
+## Automated validation and device emulation
 
-Run the repository integrity checks with Node.js 22 or later:
+Run the repository integrity checks with Node.js 22 or later. CI also runs responsive/offline Chromium checks with Playwright:
 
 ```bash
 node scripts/validate-archive.mjs
+npm install --no-save playwright
+npx playwright install chromium
+node scripts/test-responsive.mjs
 ```
 
-The same check runs automatically on pushes and pull requests. It verifies archive IDs and required fields, physical category mappings, stock states, local media/document paths, curated relationships, duplicate HTML IDs and runtime script references. The check does not decode or recompress media files.
+The integrity and browser checks run automatically on pushes and pull requests. The browser suite emulates phone portrait, phone landscape, tablet and desktop layouts; it checks map overflow, keyboard modal focus, touch target geometry and offline shell/document recovery. Physical iOS Safari and Android Chrome testing remains a manual release check. It verifies archive IDs and required fields, physical category mappings, stock states, local media/document paths, curated relationships, duplicate HTML IDs and runtime script references. The check does not decode or recompress media files.
 
 ## Roadmap
 

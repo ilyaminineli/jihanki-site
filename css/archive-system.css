@@ -812,3 +812,43 @@ a:focus-visible {
 @media(max-height:620px) and (orientation:landscape) {
   body.compact-landscape { overflow-y:auto; height:auto; min-height:100%; }
 }
+
+
+/* M42 — device access, map composition and media recovery */
+html.machine-scroll,html.machine-scroll body {
+  height:auto; min-height:100%; overflow-x:hidden; overflow-y:auto; overscroll-behavior-y:contain;
+}
+body.compact-canvas { overflow-x:hidden; overflow-y:auto; }
+button,input,select { touch-action:manipulation; }
+#coin-button,#home-button { width:60px!important; height:60px!important; border-color:transparent!important; background:transparent!important; }
+#coin-button { left:351.5px!important; top:423px!important; }
+#home-button { left:351.5px!important; top:646px!important; }
+#coin-button:hover,#home-button:hover,#coin-button:focus-visible,#home-button:focus-visible {
+  background:rgba(255,255,255,.035)!important; border-color:rgba(255,255,255,.2)!important;
+}
+.artifact-window { max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 16px);
+  overscroll-behavior:contain; -webkit-overflow-scrolling:touch; }
+.map-canvas { isolation:isolate; }
+.map-place-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px; margin-top:10px; }
+.map-place-list button { display:flex; align-items:center; gap:8px; min-height:42px; margin:0; padding:8px;
+  text-align:left; width:100%; font-size:9px; overflow-wrap:anywhere; }
+.map-place-list button>span { color:#777; flex:0 0 20px; }
+.map-place-list button>strong { flex:1; font-weight:400; }
+.map-place-list button>small { color:#777; white-space:nowrap; }
+.map-pin-index { display:none; }
+@media(max-width:560px) {
+  .map-canvas { min-height:270px; }
+  .map-pin { display:flex; align-items:center; justify-content:center; width:36px; height:36px; min-width:36px; padding:0;
+    border:1px solid rgba(255,255,255,.55); border-radius:50%; background:rgba(0,0,0,.88); }
+  .map-pin-index { display:block; color:#eee; font-size:9px; letter-spacing:.05em; }
+  .map-pin-dot,.map-pin strong,.map-pin small { display:none; }
+  .map-place-list { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .map-place-list button { min-height:46px; }
+  .map-toolbar { align-items:flex-start; flex-wrap:wrap; }
+  .map-mode-switch button { min-height:40px; min-width:64px; }
+  .artifact-window { padding-bottom:calc(15px + env(safe-area-inset-bottom)); }
+}
+@media(orientation:landscape) and (max-height:620px) {
+  html.machine-scroll,html.machine-scroll body { overflow-y:auto; }
+  .artifact-window { max-height:calc(100dvh - 12px); }
+}

@@ -86,18 +86,26 @@
   }
 
   function resizeJihanki() {
-    const shortLandscape = window.innerWidth > window.innerHeight && window.innerHeight < 620;
-    document.body.classList.toggle("compact-landscape", shortLandscape);
-    const scale = shortLandscape ? Math.min(window.innerWidth / 429, 1) : Math.min(window.innerWidth / 429, window.innerHeight / 932);
+    const narrowPhone = window.innerWidth <= 560;
+    const widthScale = Math.min(window.innerWidth / 429, 1);
+    const fitScale = Math.min(window.innerWidth / 429, window.innerHeight / 932);
+    const scrollable = narrowPhone && (932 * widthScale + 24 > window.innerHeight);
+    const scale = scrollable ? widthScale : fitScale;
+    document.documentElement.classList.toggle("machine-scroll", scrollable);
+    document.body.classList.toggle("compact-canvas", scrollable);
     document.documentElement.style.setProperty("--scale", scale);
     const viewport = document.getElementById("viewport");
-    if (shortLandscape) {
-      viewport.style.position = "absolute"; viewport.style.top = "12px";
+    if (scrollable) {
+      viewport.style.position = "absolute";
+      viewport.style.top = "12px";
       viewport.style.transform = "translateX(-50%) scale(" + scale + ")";
       viewport.style.transformOrigin = "top center";
       document.body.style.minHeight = Math.ceil(932 * scale + 24) + "px";
     } else {
-      viewport.style.position = ""; viewport.style.top = ""; viewport.style.transform = ""; viewport.style.transformOrigin = "";
+      viewport.style.position = "";
+      viewport.style.top = "";
+      viewport.style.transform = "";
+      viewport.style.transformOrigin = "";
       document.body.style.minHeight = "";
     }
   }
@@ -244,6 +252,28 @@
     });
   }
 
+  function bindImageFallback(image) {
+    if (!image) return;
+    const original = image.getAttribute("src") || "";
+    image.dataset.originalSrc = original;
+    const status = image.closest("figure")?.querySelector(".artifact-media-status");
+    image.addEventListener("error", () => {
+      if (!image.dataset.placeholderTried && original !== "assets/placeholder.png") {
+        image.dataset.placeholderTried = "1";
+        if (status) status.textContent = "IMAGE UNAVAILABLE / SHOWING ARCHIVE PLACEHOLDER";
+        image.src = "assets/placeholder.png";
+      } else if (status) {
+        status.innerHTML = 'IMAGE AND PLACEHOLDER UNAVAILABLE. <button type="button" data-media-retry>RETRY ORIGINAL</button>';
+      }
+    });
+    image.addEventListener("load", () => {
+      if (status && !image.dataset.placeholderTried) status.textContent = "";
+    });
+  }
+
+  const machineImage = document.getElementById("machine-image");
+  if (machineImage) bindImageFallback(machineImage);
+
   async function renderBody(item, renderToken) {
     const body = document.getElementById("artifact-body");
     if (!body) return;
@@ -255,17 +285,7 @@
       const image = item.image ? '<figure class="voicebank-image"><img class="artifact-media" src="' + esc(item.image) + '" alt="' + title + '" loading="eager" decoding="async"><figcaption class="artifact-media-status" aria-live="polite"></figcaption></figure>' : "";
       const link = item.url ? '<p><a class="markdown-link" href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer">OPEN VOICEBANK RELEASE ↗</a></p>' : "";
       body.innerHTML = image + '<p class="voicebank-subtitle">' + esc(item.subtitle || "") + '</p><p class="voicebank-context">' + esc(item.context || "") + '</p><div class="artifact-text">' + esc(item.description || "") + '</div>' + link;
-      const portrait = body.querySelector(".voicebank-image img");
-      if (portrait) {
-        portrait.addEventListener("error", () => {
-          const status = body.querySelector(".voicebank-image .artifact-media-status");
-          if (status) status.innerHTML = '<span>IMAGE COULD NOT BE LOADED.</span> <button type="button" data-media-retry>RETRY</button>';
-        });
-        portrait.addEventListener("load", () => {
-          const status = body.querySelector(".voicebank-image .artifact-media-status");
-          if (status) status.textContent = "";
-        });
-      }
+      bindImageFallback(body.querySelector(".voicebank-image img"));
       return;
     }
     const coverHTML = item.image && (type === "project" || type === "audio") ?
@@ -285,15 +305,7 @@
       body.innerHTML = '<figure class="artifact-photo"><img class="artifact-media" src="' + esc(file) + '" alt="' + title + '" loading="eager" decoding="async">' +
         (item.description ? '<figcaption class="artifact-caption">' + esc(item.description) + '</figcaption>' : '') +
         '<figcaption class="artifact-media-status" aria-live="polite"></figcaption></figure>';
-      const photo = body.querySelector("img");
-      photo.addEventListener("error", () => {
-        const status = body.querySelector(".artifact-media-status");
-        if (status) status.innerHTML = '<span>IMAGE COULD NOT BE LOADED.</span> <button type="button" data-media-retry>RETRY</button>';
-      });
-      photo.addEventListener("load", () => {
-        const status = body.querySelector(".artifact-media-status");
-        if (status) status.textContent = "";
-      });
+      bindImageFallback(body.querySelector("img"));
       return;
     }
     if (file) {
@@ -304,14 +316,7 @@
         if (renderToken !== artifactRenderToken || !artifact.classList.contains("open")) return;
         const base = new URL("./", new URL(file, location.href)).href;
         body.innerHTML = coverHTML + '<div class="artifact-text markdown-rendered">' + window.JIHANKI_MARKDOWN.render(markdown, base) + '</div>';
-        const cover = body.querySelector(".project-cover");
-        if (cover) {
-          const status = body.querySelector(".project-cover-frame .artifact-media-status");
-          cover.addEventListener("error", () => {
-            if (status) status.innerHTML = '<span>IMAGE COULD NOT BE LOADED.</span> <button type="button" data-media-retry>RETRY</button>';
-          });
-          cover.addEventListener("load", () => { if (status) status.textContent = ""; });
-        }
+        bindImageFallback(body.querySelector(".project-cover"));
         window.JIHANKI_AUDIO.bindMedia(body);
         return;
       } catch (error) {
@@ -607,8 +612,9 @@
       const failedImage = artifactContent.querySelector("#artifact-body img.artifact-media");
       const failedMedia = artifactContent.querySelector("#artifact-body audio, #artifact-body video");
       if (failedImage) {
-        const base = failedImage.getAttribute("src").split(/[?#]/)[0];
-        failedImage.src = base + "?retry=" + Date.now();
+        const base = failedImage.dataset.originalSrc || failedImage.getAttribute("src").split(/[?#]/)[0];
+        delete failedImage.dataset.placeholderTried;
+        failedImage.src = base + (base.includes("?") ? "&" : "?") + "retry=" + Date.now();
         const status = artifactContent.querySelector(".artifact-media-status");
         if (status) status.textContent = "RETRYING IMAGE LOAD…";
       } else if (failedMedia) {
