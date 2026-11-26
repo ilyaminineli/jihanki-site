@@ -87,6 +87,43 @@ try{
     await page.locator('[data-home-action="personality"]').click();
     assert(await page.locator("#artifact[aria-hidden='false']").count()===1,device.name+": machine memory panel failed");
     await page.keyboard.press("Escape");
+
+    // Populate a local collection fixture, then exercise the private museum through its UI.
+    await page.evaluate(()=>{
+      const item=window.JIHANKI_ARCHIVE[0];
+      window.JIHANKI_COLLECTION.add(item,{code:"MUSEUM-TEST-"+item.id});
+    });
+    await page.locator('[data-home-action="collection"]').click();
+    await page.locator('[data-museum-tab="overview"]').waitFor();
+    await page.locator('[data-museum-tab="works"]').click();
+    const firstWork=page.locator("[data-museum-open]").first();
+    await firstWork.waitFor();
+    await firstWork.click();
+    await page.locator("[data-museum-keep]").click();
+    await page.keyboard.press("Escape");
+    await page.locator('[data-home-action="collection"]').click();
+    await page.locator('[data-museum-tab="kept"]').click();
+    assert(await page.locator("[data-museum-open]").count()===1,device.name+": kept work not visible in museum");
+    await page.locator('[data-museum-tab="shelves"]').click();
+    await page.locator("#museum-shelf-name").fill("Night journeys");
+    await page.locator("[data-museum-create-shelf]").click();
+    await page.locator('[data-museum-tab="works"]').click();
+    await page.locator("[data-museum-open]").first().click();
+    await page.locator("[data-museum-shelf]").selectOption({label:"Night journeys"});
+    await page.locator("[data-museum-add-shelf]").click();
+    await page.keyboard.press("Escape");
+    await page.locator('[data-home-action="collection"]').click();
+    await page.locator('[data-museum-tab="shelves"]').click();
+    assert(await page.getByText("Night journeys").count()>0,device.name+": custom shelf was not retained");
+    await page.locator('[data-museum-tab="care"]').click();
+    await page.evaluate(()=>{
+      const before=window.JIHANKI_MUSEUM.stats();
+      try{window.JIHANKI_MUSEUM.importPayload({format:"JIHANKI-MUSEUM",version:1,kept:["x"],shelves:[],trail:[]});}
+      catch(_){}
+      const after=window.JIHANKI_MUSEUM.stats();
+      if(before.kept!==after.kept)throw new Error("Invalid museum backup changed the current museum.");
+    });
+    await page.keyboard.press("Escape");
     assert(errors.length===0,device.name+": browser errors: "+errors.join(" | "));
     console.log("PASS "+device.name+" "+device.width+"x"+device.height+" / "+map.keyCount+" map locations / "+Math.round(geometry.coin.width)+"px COIN target");
     await context.close();

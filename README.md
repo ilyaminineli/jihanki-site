@@ -44,7 +44,8 @@ Japan stay / shared field experience: **Julia Baranyuk**
 * Hidden service terminal, local event journal and inventory diagnostics
 * Cross-referenced memories, voice credits and geographic archive index
 * Non-destructive daily archive rotation with fragments retained as residue
-* Browser-local personal collection with repeat-purchase counts and JSON export
+* Browser-local personal museum with collected works, serialized objects, saved shelves and visit trail
+* Browser-local collection and museum backup/restore with separate clear controls
 * Ambient machine states with volume transitions, media ducking and visitor mute control
 * Rare, authored machine anomalies
 * Memory archaeology with typed links between works, voices, notes and places
@@ -112,6 +113,7 @@ JIHANKI/
 │   ├── rotation.js
 │   ├── receipts.js
 │   ├── collection.js
+│   ├── museum.js
 │   ├── audio.js
 │   ├── markdown.js
 │   ├── maintenance.js

@@ -61,11 +61,11 @@ The validator confirms that catalogue paths exist and every referenced media fil
 
 ## Visitor-local data
 
-Receipts, event logs, personality state, collection records and collectible objects are saved in separate browser-local storage domains. They are never transmitted by the static site. Collection exports are versioned and include serialized objects; imports are validated before additive merge.
+Receipts, event logs, personality state, museum state, collection records and collectible objects are saved in separate browser-local storage domains. They are never transmitted by the static site. Collection exports are versioned and include serialized objects; imports are validated before additive merge. Museum exports use a separate versioned format for kept works, shelves and visit trail; imports are validated before additive merge.
 
 ## Presentation and visitor memory
 
-The daily rotating selection is implemented in js/rotation.js. Personal collection and souvenirs live in js/collection.js. Local visitor interaction patterns drive the limited machine personality in js/personality.js. They do not affect the published catalogue.
+The daily rotating selection is implemented in js/rotation.js. Personal collection and souvenirs live in js/collection.js. The visitor-specific museum — kept works, custom shelves, visit trail and its own backup format — lives in js/museum.js. Local visitor interaction patterns drive the limited machine personality in js/personality.js. They do not affect the published catalogue.
 
 ## Automated integrity checks
 

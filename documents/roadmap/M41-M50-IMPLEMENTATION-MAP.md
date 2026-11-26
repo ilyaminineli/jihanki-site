@@ -163,22 +163,26 @@ Turn a successful purchase into a unique, portable artifact rather than only a h
 ## M47 — Collection exploration and visitor continuity
 
 **Priority:** P2  
-**Status:** Planned  
+**Status:** Implemented baseline  
 **Depends on:** M40, M43, M46
 
 ### Goal
 Make the personal collection a browsable personal museum, with clear separation between saved works, objects, receipts and machine preferences.
 
 ### Scope
-1. Add object-specific browsing and filters.
-2. Provide independent import/export/reset controls for collection and selected preferences.
-3. Preserve a small, optional recently visited trail.
-4. Explain exactly which data each reset affects.
-5. Never claim cloud synchronisation without an approved backend.
+1. Add museum sections for collected works, serialized objects, kept works, visit trail and custom shelves.
+2. Search, filter and sort collected works; browse each souvenir independently.
+3. Allow visitors to keep individual archive works and create up to 12 named shelves.
+4. Add a bounded local visit trail and return-to-museum navigation from an opened work.
+5. Export/import museum data separately from purchase collection data, validating before additive merge.
+6. Provide independent clear/reset actions for kept works, shelves, trail, machine personality and collection/objects.
+7. Never claim cloud synchronisation without an approved backend.
 
 ### Acceptance criteria
-- Collection objects can be browsed independently of receipts.
-- The visitor can export, import and clear each data domain deliberately.
+- Collection works, collectible objects, kept works, visit trail and custom shelves can be browsed separately.
+- Museum backup/import is independent of the work/object collection backup.
+- Clearing trail, keeps, shelves or works/objects does not silently clear receipts or other domains.
+- Imported museum backups are validated and merged without replacing existing local data.
 - No visitor profile is transmitted.
 
 ## M48 — Audio installation mode
