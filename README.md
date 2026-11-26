@@ -8,7 +8,7 @@ The site is intentionally built as a lightweight static web application: no fram
 
 ## Origin — SAIKONEON / Lake Saiko
 
-JIHANKI began at **SAIKONEON**, an artist-in-residence on the shore of Lake Saiko in Yamanashi, Japan, during the July 2026 Japan stay of **Ilya Minin (Eli) and Julia Baranyuk**.
+JIHANKI began at **SAIKONEON**, an artist-in-residence on the shore of Lake Saiko in Yamanashi, Japan, during the July 2026 Japan stay of **Ilya Minin (Eli) and Takismana**.
 
 The project grew out of nighttime walks, field observation, and encounters with ordinary infrastructure around Saiko. The first JIHANKI encounter was a vending machine seen at night near SAIKONEON. In the darkness, the machine stopped feeling like a simple commercial device and began to read as an isolated illuminated object — a small interface between a person and an otherwise quiet landscape.
 
