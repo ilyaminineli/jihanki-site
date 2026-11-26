@@ -58,8 +58,8 @@
     const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob), a = document.createElement("a");
     a.href = url; a.download = receipt.code + ".txt"; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
-    window.JIHANKI_EVENTS?.record("receipt-saved", { code: receipt.code });
-    window.dispatchEvent(new CustomEvent("jihanki:receipt-saved", { detail: { receiptCode: receipt.code } }));
+    window.JIHANKI_EVENTS?.record("receipt-download-started", { code: receipt.code });
+    window.dispatchEvent(new CustomEvent("jihanki:receipt-download-started", { detail: { receiptCode: receipt.code } }));
     return true;
   }
   window.JIHANKI_RECEIPTS = { all, create, get, markup, print, download };
