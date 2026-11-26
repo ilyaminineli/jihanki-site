@@ -82,7 +82,7 @@ ok(outcome); state = outcome.state;
 assert.equal(state.credits, 1);
 assert.equal(state.purchasePending, false);
 assert.equal(state.transaction.status, "failed");
-no(step(state, "PURCHASE_ABORT", { itemId: "record-a" }), "no-matching-pending-purchase");
+no(step(state, "PURCHASE_ABORT", { itemId: "record-a" }), "invalid-source-state");
 
 state = model.createState();
 state = step(state, "INSERT_CREDIT").state;
