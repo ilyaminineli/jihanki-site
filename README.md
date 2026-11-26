@@ -92,7 +92,8 @@ JIHANKI/
 │   │   └── fuji-six-yokai-script.md
 │   │
 │   ├── privacy/
-│   │   └── M49-VISITOR-MEMORY-EXCHANGE-PRIVACY-AND-MODERATION.md
+│   │   ├── M49-VISITOR-MEMORY-EXCHANGE-PRIVACY-AND-MODERATION.md
+│   │   └── M49-BACKEND-AND-MODERATION-OPERATIONS-DECISION.md
 │   │
 │   └── yokai/
 │       └── fuji-six-yokai.md
@@ -370,7 +371,7 @@ The integrity and browser checks run automatically on pushes and pull requests. 
 
 ## M49 — Visitor Memory Exchange
 
-M49 is design-only and is not enabled. The moderation and privacy model is documented in [M49 — Visitor Memory Exchange](documents/privacy/M49-VISITOR-MEMORY-EXCHANGE-PRIVACY-AND-MODERATION.md). No contribution form, upload endpoint or remote visitor profile exists. Implementation remains blocked until a backend, data region, named moderation operators, deletion process and legal/privacy review are approved.
+M49 is not enabled. The privacy and moderation model is documented in [M49 — Visitor Memory Exchange](documents/privacy/M49-VISITOR-MEMORY-EXCHANGE-PRIVACY-AND-MODERATION.md), and the preferred backend/operations target is recorded in [M49 — Backend and Moderation-Operations Decision](documents/privacy/M49-BACKEND-AND-MODERATION-OPERATIONS-DECISION.md). Supabase Pro in Frankfurt is selected as the preferred target, but no provider project or submission endpoint has been provisioned. Launch remains blocked until the service owner, moderation lead, independent backup, privacy contact and legal/vendor review are in place.
 
 ## M50 — Temporal Archive
 
