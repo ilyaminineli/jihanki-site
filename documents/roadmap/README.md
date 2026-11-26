@@ -16,9 +16,9 @@ The roadmap makes the machine dependable before increasing its complexity. Exist
 | [M45](./M41-M50-IMPLEMENTATION-MAP.md#m45--machine-personality-and-evolving-behaviour) | Machine personality | Implemented baseline |
 | [M46](./M41-M50-IMPLEMENTATION-MAP.md#m46--collectible-memory-objects-and-portable-collection) | Collectible memory objects | Implemented baseline |
 | [M47](./M41-M50-IMPLEMENTATION-MAP.md#m47--collection-exploration-and-visitor-continuity) | Visitor continuity | Implemented baseline |
-| [M48](./M41-M50-IMPLEMENTATION-MAP.md#m48--audio-installation-mode) | Audio installation mode | Implemented baseline |
+| [M48](./M41-M50-IMPLEMENTATION-MAP.md#m48--audio-installation-mode) | Audio installation mode | Live selection/restart fixes implemented |
 | [M49](./M41-M50-IMPLEMENTATION-MAP.md#m49--visitor-memory-exchange) | Moderated visitor memory exchange | Supabase Pro / Frankfurt selected; people/legal gates pending |
-| [M50](./M41-M50-IMPLEMENTATION-MAP.md#m50--temporal-archive) | Temporal archive | Static/browser-local baseline implemented |
+| [M50](./M41-M50-IMPLEMENTATION-MAP.md#m50--temporal-archive) | Chronology | Static/browser-local baseline with editorial contact sheets |
 
 ## Implementation order
 
