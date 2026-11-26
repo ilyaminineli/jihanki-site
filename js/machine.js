@@ -35,7 +35,7 @@
   }
   function audioStateForView() {
     if (maintenanceActive || currentView === "service") return "service";
-    return ({ category: "browsing", location: "browsing", rotation: "rotation", collection: "collection", museum: "collection", exploration: "browsing" })[currentView] || "idle";
+    return ({ category: "browsing", location: "browsing", rotation: "rotation", collection: "collection", museum: "collection", exploration: "browsing", temporal: "idle" })[currentView] || "idle";
   }
   function updateArtifactActions() {
     const actions = artifactContent.querySelector(".artifact-actions");
@@ -193,7 +193,7 @@
 
   function openTemporalArchive() {
     if (!window.JIHANKI_TEMPORAL) return;
-    openSystemPanel("TEMPORAL ARCHIVE", window.JIHANKI_TEMPORAL.render(), "rotation");
+    openSystemPanel("TEMPORAL ARCHIVE", window.JIHANKI_TEMPORAL.render(), "idle");
     currentView = "temporal";
   }
 
