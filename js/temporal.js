@@ -199,6 +199,9 @@
           '<small>READ IN THIS BROWSER / NOT TRANSMITTED / NOT SAVED</small></section>'+
         '<div class="temporal-locality"><span>THE ARCHIVE IS NOT A CLOCK</span><strong>'+all.length+' FRAGMENTS</strong>'+
           '<p>Time changes the order of attention, never the underlying record.</p><small>RECORDED RANGE / '+escapeHtml(range)+'</small></div></div>'+
+      '<section class="temporal-purpose"><strong>WHAT IS CHRONOLOGY?</strong>'+
+        '<p>This is a date index of the records preserved in JIHANKI, not a diary of your visits. Open a year or month to browse its original entries.</p>'+
+        '<p>THE HOURLY ECHO is one reading suggestion selected by this browser\'s local clock. It does not change an archive date, the daily rotation or your visit history.</p></section>'+
       companionMarkup+
       '<div class="temporal-summary"><span>'+all.length+' RECORDS</span><span>'+imageCount+' IMAGE SOURCES</span>'+
       '<span>'+dated.length+' DATED / '+unplaced.length+' UNPLACED</span></div>'+
