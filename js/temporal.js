@@ -101,7 +101,7 @@
     const category=String(item.machineCategory||item.category||item.type||"ARCHIVE").replace(/[-_]/g," ").toUpperCase();
     const source=localAsset(item);
     const media=source
-      ? '<span class="temporal-record-media"><img src="'+escapeHtml(source)+'" alt="" loading="lazy" decoding="async"></span>'
+      ? '<span class="temporal-record-media"><img src="'+escapeHtml(source)+'" alt="" loading="lazy" decoding="async"><span class="artifact-media-status temporal-image-status" role="status" aria-live="polite"></span></span>'
       : '<span class="temporal-record-media temporal-record-placeholder" aria-hidden="true"><span>JHK</span><small>' +
         escapeHtml(String(index == null ? item.id : String(index+1).padStart(2,"0"))) + '</small></span>';
     return '<button class="temporal-record'+(source?' temporal-record--image':'')+'" type="button" data-temporal-open="'+escapeHtml(item.id)+'" aria-label="Open '+escapeHtml(item.title||"Untitled")+', '+escapeHtml(recordedDate)+'">'+
