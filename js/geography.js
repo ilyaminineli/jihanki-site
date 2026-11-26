@@ -15,7 +15,8 @@
     "daily-2026-07-24": ["Tokyo"], "daily-2026-07-25": ["Uno-Misaki Tunnel"],
     "daily-2026-07-26": ["Yamanashi", "Shrines"],
     "daily-2026-07-27": ["Mount Fuji", "Yamanashi"],
-    "daily-2026-07-28": ["Tokyo"], "daily-2026-07-29": ["Ryugu Cave", "Koyodai"]
+    "daily-2026-07-28": ["Tokyo"], "daily-2026-07-29": ["Ryugu Cave", "Koyodai"],
+    "daily-2026-08-18": ["Lake Saiko"]
   };
   const PLACES = {
     "Mount Fuji": "Mountain and surrounding landscape records",
