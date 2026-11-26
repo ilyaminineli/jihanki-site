@@ -39,6 +39,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Check JavaScript syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          for source in js/*.js sw.js scripts/*.mjs; do
+            node --check "$source"
+          done
       - name: Validate media manifest
         run: node scripts/build-media-manifest.mjs --check
       - name: Validate archive, relationships and local assets

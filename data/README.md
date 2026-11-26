@@ -69,6 +69,6 @@ The daily rotating selection is implemented in js/rotation.js. Personal collecti
 
 ## Automated integrity checks
 
-Run node scripts/validate-archive.mjs to validate required record fields, unique IDs, category aliases, stock states, local media/document paths, curated relationship targets, HTML IDs, runtime scripts and media manifest checksums. GitHub Actions runs the same checks for pushes and pull requests.
+Run node scripts/validate-archive.mjs to validate required record fields, unique IDs, category aliases, stock states, local media/document paths, curated relationship targets, HTML IDs, runtime scripts and media manifest checksums. GitHub Actions first runs `node --check` over the runtime modules, service worker and Node scripts, then checks the media manifest and archive references on pushes and pull requests.
 
 When adding a record, use file for the primary local document or media path. Do not use the obsolete textFile property.
