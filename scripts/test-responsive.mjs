@@ -243,7 +243,8 @@ try{
     assert(await page.locator(".museum-content .museum-row").count()===0,
       device.name+": duplicate recent-visit list remains on Collection overview");
     await page.locator('[data-museum-tab="trail"]').click();
-    assert(await page.locator(".museum-row").count()===1,
+    const expectedTrailRows=await page.evaluate(()=>Math.min(100,window.JIHANKI_MUSEUM.trail().length));
+    assert(expectedTrailRows>0&&await page.locator(".museum-row").count()===expectedTrailRows,
       device.name+": Visit Trail is not available as the single history view");
     await page.locator('[data-museum-tab="works"]').click();
     const firstWork=page.locator("[data-museum-open]").first();
