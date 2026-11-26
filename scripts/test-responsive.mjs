@@ -76,6 +76,7 @@ try{
     await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().credits===1);
     assert(await page.locator("#credit-display [data-credit-token]").count()===1,
       device.name+": dispensing a memory did not consume one visible coin");
+    await page.keyboard.press("Escape");
     await page.locator("#memory-button").click();
     await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().credits===0);
     assert(await page.locator("#credit-display [data-credit-token]").count()===0,
