@@ -183,8 +183,18 @@
       return;
     }
     if (type === "image" || type === "photo" || /^(png|jpe?g|webp|gif)$/.test(extension)) {
-      body.innerHTML = '<figure class="artifact-photo"><img class="artifact-media" src="' + esc(file) + '" alt="' + title + '">' +
-        (item.description ? '<figcaption class="artifact-caption">' + esc(item.description) + '</figcaption>' : '') + '</figure>';
+      body.innerHTML = '<figure class="artifact-photo"><img class="artifact-media" src="' + esc(file) + '" alt="' + title + '" loading="eager" decoding="async">' +
+        (item.description ? '<figcaption class="artifact-caption">' + esc(item.description) + '</figcaption>' : '') +
+        '<figcaption class="artifact-media-status" aria-live="polite"></figcaption></figure>';
+      const photo = body.querySelector("img");
+      photo.addEventListener("error", () => {
+        const status = body.querySelector(".artifact-media-status");
+        if (status) status.innerHTML = '<span>IMAGE COULD NOT BE LOADED.</span> <button type="button" data-media-retry>RETRY</button>';
+      }, { once: true });
+      photo.addEventListener("load", () => {
+        const status = body.querySelector(".artifact-media-status");
+        if (status) status.textContent = "";
+      }, { once: true });
       return;
     }
     if (file) {
@@ -294,13 +304,19 @@
   }
 
   function dispense() {
-    if (selectedId) {
+    // Explicitly selected catalogue items are purchased as selected.
+    // The physical PICK UP button with no selection chooses a fresh random memory.
+    if (selectedId && currentView !== "idle") {
       const selected = allItems().find(item => String(item.id) === String(selectedId));
       if (selected) { purchase(selected); return; }
     }
     let pool = activeCategory ? window.JIHANKI_CATEGORIES.items(activeCategory) : allItems();
     pool = window.JIHANKI_INVENTORY.available(pool);
-    if (pool.length > 1 && lastDispensed) pool = pool.filter(item => item.id !== lastDispensed).concat(pool.filter(item => item.id === lastDispensed).slice(0, 0));
+    // Avoid an immediate repeat when there is more than one available record.
+    if (pool.length > 1 && lastDispensed) {
+      const withoutPrevious = pool.filter(item => item.id !== lastDispensed);
+      if (withoutPrevious.length) pool = withoutPrevious;
+    }
     if (!pool.length) {
       const categoryItems = activeCategory ? window.JIHANKI_CATEGORIES.items(activeCategory) : allItems();
       const unavailable = categoryItems.find(item => !window.JIHANKI_INVENTORY.isAvailable(item));
@@ -448,6 +464,17 @@
   document.getElementById("artifact-close").addEventListener("click", closeArtifact);
   artifact.addEventListener("click", event => { if (event.target === artifact) closeArtifact(); });
   artifactContent.addEventListener("click", event => {
+    const retry = event.target.closest("[data-media-retry]");
+    if (retry) {
+      const failedImage = artifactContent.querySelector("#artifact-body .artifact-photo img");
+      if (failedImage) {
+        const base = failedImage.getAttribute("src").split(/[?#]/)[0];
+        failedImage.src = base + "?retry=" + Date.now();
+        const status = artifactContent.querySelector(".artifact-media-status");
+        if (status) status.textContent = "RETRYING IMAGE LOAD…";
+      }
+      return;
+    }
     const target = event.target.closest("button,a");
     if (!target) return;
     if (target.dataset.action === "insert-credit-current") {
