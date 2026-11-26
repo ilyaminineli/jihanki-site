@@ -114,9 +114,10 @@
     const now=localMoment(new Date());
     const dayPool=ordered(all);
     const companion=dayPool.length?dayPool[hash(now.dayKey+":"+now.hour+":"+now.phase+":"+dayPool.length)%dayPool.length]:null;
-    const exact=dated.filter(entry=>entry.parsed.precision==="day");
-    const firstDate=exact.length?exact.map(entry=>entry.parsed.raw).sort()[0]:null;
-    const lastDate=exact.length?exact.map(entry=>entry.parsed.raw).sort().slice(-1)[0]:null;
+    const dateOrder=dated.map(entry=>entry.parsed).sort((a,b)=>
+      (a.year*10000+a.month*100+a.day)-(b.year*10000+b.month*100+b.day));
+    const firstDate=dateOrder.length?dateLabel(dateOrder[0]):null;
+    const lastDate=dateOrder.length?dateLabel(dateOrder[dateOrder.length-1]):null;
 
     let chronology="";
     if (!dated.length) {
@@ -152,7 +153,7 @@
       ? '<div class="temporal-companion"><span>AN ECHO FOR THIS HOUR / '+now.time+'</span>'+recordButton(companion)+
         '<p>This is a presentational selection made from the public catalogue. It does not claim that the work was recorded at this hour.</p></div>'
       : '<div class="temporal-empty">THE ARCHIVE HAS NO RECORDS TO SURFACE.</div>';
-    const range=firstDate&&lastDate?firstDate+" — "+lastDate:(dated.length?"DATES RECORDED AT YEAR OR MONTH PRECISION":"NO FULL DATES RECORDED");
+    const range=firstDate&&lastDate?firstDate+" — "+lastDate:"NO DATED RECORDS";
     const unplacedMarkup=unplaced.length
       ? '<details class="temporal-unplaced"><summary><span>UNPLACED / DATE NOT PARSED</span><small>'+unplaced.length+' RECORD'+(unplaced.length===1?"":"S")+'</small></summary>'+ordered(unplaced).map(recordButton).join("")+'</details>'
       : "";
