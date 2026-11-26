@@ -77,6 +77,81 @@ try{
     assert(Math.abs(geometry.canvas.width-429*expectedScale)<2,
       device.name+": rendered machine width does not match the calculated scale");
 
+    // M35: keep failed transaction feedback in the active viewer and preserve credit/selection.
+    const transactionId=await page.evaluate(()=>{
+      const item=window.JIHANKI_ARCHIVE.find(record=>window.JIHANKI_INVENTORY.isAvailable(record));
+      if(!item)throw new Error("No available record for transaction regression test.");
+      return item.id;
+    });
+    const transactionBaseline=await page.evaluate(()=>({
+      receipts:window.JIHANKI_RECEIPTS.all().length,
+      selected:window.JIHANKI_MACHINE.getState().selectedId
+    }));
+    await page.evaluate(id=>{
+      const item=window.JIHANKI_ARCHIVE.find(record=>record.id===id);
+      window.JIHANKI_MACHINE.openItem(item);
+    },transactionId);
+    await page.locator("#artifact.open [data-action='insert-credit-current']").waitFor();
+    await page.locator("#artifact.open [data-action='insert-credit-current']").click();
+    await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().credits===1);
+    const machineScreenBeforeBlock=await page.locator("#screen-content").innerHTML();
+    await page.evaluate(id=>{
+      const item=window.JIHANKI_ARCHIVE.find(record=>record.id===id);
+      window.__transactionOriginalStock=item.stock?{...item.stock}:null;
+      item.stock={...(item.stock||{}),status:"sold-out"};
+      window.JIHANKI_MACHINE.purchase(item);
+    },transactionId);
+    await page.waitForFunction(()=>document.querySelector(".artifact-feedback")?.textContent.includes("SOLD OUT"));
+    const blockedTransaction=await page.evaluate(()=>({
+      credits:window.JIHANKI_MACHINE.getState().credits,
+      selectedId:window.JIHANKI_MACHINE.getState().selectedId,
+      receipts:window.JIHANKI_RECEIPTS.all().length,
+      blocked:window.JIHANKI_EVENTS.all().some(event=>event.type==="purchase-blocked"&&event.detail?.status==="sold-out")
+    }));
+    assert(blockedTransaction.credits===1,device.name+": sold-out transaction consumed a credit");
+    assert(blockedTransaction.selectedId===transactionId,device.name+": failed transaction lost the selected memory");
+    assert(blockedTransaction.receipts===transactionBaseline.receipts&&blockedTransaction.blocked,
+      device.name+": failed transaction generated a receipt or omitted its failure event");
+    assert(await page.locator("#screen-content").innerHTML()===machineScreenBeforeBlock,
+      device.name+": failed transaction replaced the machine screen behind the open viewer");
+    await page.evaluate(id=>{
+      const item=window.JIHANKI_ARCHIVE.find(record=>record.id===id);
+      if(window.__transactionOriginalStock===null)delete item.stock;
+      else item.stock=window.__transactionOriginalStock;
+      delete window.__transactionOriginalStock;
+      window.JIHANKI_MACHINE.openItem(item);
+    },transactionId);
+    await page.locator("#artifact.open [data-action='purchase-current']").waitFor();
+    await page.locator("#artifact.open [data-action='purchase-current']").click();
+    await page.locator(".receipt-ticket").waitFor();
+    const completedTransaction=await page.evaluate(id=>{
+      const events=window.JIHANKI_EVENTS.all().map(event=>event.type);
+      return{
+        credits:window.JIHANKI_MACHINE.getState().credits,
+        selectedId:window.JIHANKI_MACHINE.getState().selectedId,
+        receiptCount:window.JIHANKI_RECEIPTS.all().length,
+        collected:window.JIHANKI_COLLECTION.contains(id),
+        order:["coin-accepted","receipt-generated","collection-added","memory-dispensed"].map(type=>events.lastIndexOf(type))
+      };
+    },transactionId);
+    assert(completedTransaction.credits===0&&completedTransaction.selectedId===transactionId,
+      device.name+": successful dispense left an inconsistent credit or selection state");
+    assert(completedTransaction.receiptCount===transactionBaseline.receipts+1&&completedTransaction.collected,
+      device.name+": successful dispense did not produce one receipt and one collection record");
+    assert(completedTransaction.order.every((index,i,array)=>index>=0&&(i===0||index>array[i-1])),
+      device.name+": transaction events were not recorded in credit/receipt/collection/dispense order");
+    await page.evaluate(id=>window.JIHANKI_MACHINE.purchase(window.JIHANKI_ARCHIVE.find(record=>record.id===id)),transactionId);
+    await page.waitForFunction(()=>document.querySelector(".artifact-feedback")?.textContent.includes("NO CREDIT"));
+    const retryState=await page.evaluate(()=>({
+      credits:window.JIHANKI_MACHINE.getState().credits,
+      receipts:window.JIHANKI_RECEIPTS.all().length,
+      selectedId:window.JIHANKI_MACHINE.getState().selectedId
+    }));
+    assert(retryState.credits===0&&retryState.receipts===transactionBaseline.receipts+1&&retryState.selectedId===transactionId,
+      device.name+": a no-credit retry altered the completed transaction");
+    await page.keyboard.press("Escape");
+    await page.locator("#home-button").click();
+
     // A credit is a spendable token: the pile shrinks as more are inserted and decrements on dispensing.
     await page.locator("#coin-button").click();
     await page.locator("#coin-button").click();
