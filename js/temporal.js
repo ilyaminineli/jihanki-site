@@ -1,14 +1,22 @@
-/* M50 — Temporal archive. Static catalogue + the visitor's local clock only.
-   No network calls, cookies, localStorage, IndexedDB or visitor profile are used. */
+/* M50 — Temporal archive.
+   Static catalogue + visitor-local clock. No requests, cookies or persistent visitor state. */
 (function () {
   "use strict";
 
   const MONTHS = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+  const IMAGE_EXT = /\.(?:jpe?g|png|webp|gif|svg)$/i;
 
   function escapeHtml(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, char => ({
       "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
     })[char]);
+  }
+
+  function localAsset(item) {
+    const candidate = String(item?.image || (IMAGE_EXT.test(String(item?.file || "")) ? item.file : "") || "").trim();
+    if (!candidate || !candidate.startsWith("media/") || candidate.split("/").includes("..") ||
+        /^[a-z][a-z0-9+.-]*:/i.test(candidate) || candidate.startsWith("//")) return "";
+    return encodeURI(candidate).replace(/#/g,"%23").replace(/\?/g,"%3F");
   }
 
   function parseDate(value) {
@@ -26,7 +34,9 @@
     match = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/);
     if (!match) return null;
     const year = Number(match[1]), month = Number(match[2]), day = Number(match[3]);
-    const check = new Date(Date.UTC(year,month-1,day));
+    const check = new Date(0);
+    check.setUTCHours(0,0,0,0);
+    check.setUTCFullYear(year,month-1,day);
     if (check.getUTCFullYear() !== year || check.getUTCMonth() !== month-1 || check.getUTCDate() !== day) return null;
     return {year,month,day,precision:"day",raw};
   }
@@ -35,23 +45,24 @@
     if (!parsed) return "DATE NOT PARSED";
     if (parsed.precision === "year") return parsed.year + " / YEAR ONLY";
     if (parsed.precision === "month") return MONTHS[parsed.month-1] + " " + parsed.year + " / MONTH ONLY";
-    const date = new Date(Date.UTC(parsed.year,parsed.month-1,parsed.day));
+    const date = new Date(0);
+    date.setUTCHours(0,0,0,0);
+    date.setUTCFullYear(parsed.year,parsed.month-1,parsed.day);
     return new Intl.DateTimeFormat(undefined,{day:"numeric",month:"short",year:"numeric",timeZone:"UTC"}).format(date).toUpperCase();
   }
 
   function localMoment(now) {
     const hour = now.getHours();
-    let phase = "DAY";
+    let phase = "NIGHT";
     if (hour >= 5 && hour <= 7) phase = "DAWN";
     else if (hour >= 8 && hour <= 11) phase = "MORNING";
     else if (hour >= 12 && hour <= 16) phase = "AFTERNOON";
     else if (hour >= 17 && hour <= 20) phase = "EVENING";
-    else phase = "NIGHT";
     return {
       phase,
       date: new Intl.DateTimeFormat(undefined,{weekday:"long",day:"numeric",month:"long",year:"numeric"}).format(now),
       time: new Intl.DateTimeFormat(undefined,{hour:"2-digit",minute:"2-digit"}).format(now),
-      hour: hour,
+      hour,
       dayKey: now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+String(now.getDate()).padStart(2,"0")
     };
   }
@@ -84,14 +95,19 @@
     });
   }
 
-  function recordButton(item) {
+  function recordButton(item, index) {
     const parsed=parseDate(item.date);
-    const rawDate=parsed ? dateLabel(parsed) : (item.date ? "DATE AS RECORDED / "+String(item.date) : "DATE NOT RECORDED");
+    const recordedDate=parsed ? dateLabel(parsed) : (item.date ? "DATE AS RECORDED / "+String(item.date) : "DATE NOT RECORDED");
     const category=String(item.machineCategory||item.category||item.type||"ARCHIVE").replace(/[-_]/g," ").toUpperCase();
-    return '<button class="temporal-record" type="button" data-temporal-open="'+escapeHtml(item.id)+'">'+
-      '<span class="temporal-record-date">'+escapeHtml(rawDate)+'</span>'+
+    const source=localAsset(item);
+    const media=source
+      ? '<span class="temporal-record-media"><img src="'+escapeHtml(source)+'" alt="" loading="lazy" decoding="async"></span>'
+      : '<span class="temporal-record-media temporal-record-placeholder" aria-hidden="true"><span>JHK</span><small>' +
+        escapeHtml(String(index == null ? item.id : String(index+1).padStart(2,"0"))) + '</small></span>';
+    return '<button class="temporal-record'+(source?' temporal-record--image':'')+'" type="button" data-temporal-open="'+escapeHtml(item.id)+'" aria-label="Open '+escapeHtml(item.title||"Untitled")+', '+escapeHtml(recordedDate)+'">'+
+      media+'<span class="temporal-record-copy"><span class="temporal-record-date">'+escapeHtml(recordedDate)+'</span>'+
       '<strong>'+escapeHtml(item.title||"UNTITLED")+'</strong>'+
-      '<small>'+escapeHtml(category)+'</small></button>';
+      '<small>'+escapeHtml(category)+(item.author?' / '+escapeHtml(String(item.author).toUpperCase()):'')+'</small></span></button>';
   }
 
   function render() {
@@ -113,7 +129,8 @@
     const lowestYear=yearNumbers.length?yearNumbers[yearNumbers.length-1]:null;
     const now=localMoment(new Date());
     const dayPool=ordered(all);
-    const companion=dayPool.length?dayPool[hash(now.dayKey+":"+now.hour+":"+now.phase+":"+dayPool.length)%dayPool.length]:null;
+    const companion=dayPool.length ? dayPool[hash(now.dayKey+":"+now.hour+":"+now.phase+":"+dayPool.length)%dayPool.length] : null;
+    const imageCount=all.filter(item=>!!localAsset(item)).length;
     const dateOrder=dated.map(entry=>entry.parsed).sort((a,b)=>
       (a.year*10000+a.month*100+a.day)-(b.year*10000+b.month*100+b.day));
     const firstDate=dateOrder.length?dateLabel(dateOrder[0]):null;
@@ -143,32 +160,51 @@
             return kb-ka || String(a.item.title||"").localeCompare(String(b.item.title||""));
           });
           const label=key==="00"?"YEAR-ONLY DATES":MONTHS[Number(key)-1];
-          records+='<div class="temporal-month"><h3>'+label+'</h3>'+monthEntries.map(entry=>recordButton(entry.item)).join("")+'</div>';
+          records+='<section class="temporal-month"><header class="temporal-month-header"><h3>'+label+'</h3><small>'+
+            monthEntries.length+' RECORD'+(monthEntries.length===1?"":"S")+'</small></header>'+
+            '<div class="temporal-contact-sheet">'+monthEntries.map((entry,index)=>recordButton(entry.item,index)).join("")+'</div></section>';
         });
-        chronology+='<details class="temporal-year" '+(year===latestYear?"open":"")+'><summary><span>'+year+'</span><small>'+entries.length+' RECORD'+(entries.length===1?"":"S")+'</small></summary>'+records+'</details>';
+        chronology+='<details class="temporal-year" '+(year===latestYear?"open":"")+'><summary>'+
+          '<span class="temporal-year-number">'+year+'</span><span class="temporal-year-meta"><strong>'+entries.length+
+          ' ARCHIVE RECORDS</strong><small>OPEN YEAR / CONTACT SHEET</small></span></summary>'+
+          '<div class="temporal-year-body"><div class="temporal-year-stamp" aria-hidden="true">'+String(year).slice(-2)+'</div>'+
+          '<div class="temporal-year-months">'+records+'</div></div></details>';
       }
     }
 
     const companionMarkup=companion
-      ? '<div class="temporal-companion"><span>AN ECHO FOR THIS HOUR / '+now.time+'</span>'+recordButton(companion)+
-        '<p>This is a presentational selection made from the public catalogue. It does not claim that the work was recorded at this hour.</p></div>'
+      ? '<section class="temporal-echo"><div class="temporal-section-label"><span>AN ECHO FOR THIS HOUR</span><strong>'+escapeHtml(now.time)+' / '+escapeHtml(now.phase)+'</strong></div>'+
+        recordButton(companion)+'<p>A present-day selection from the catalogue. It is not a recording-time claim.</p></section>'
       : '<div class="temporal-empty">THE ARCHIVE HAS NO RECORDS TO SURFACE.</div>';
     const range=firstDate&&lastDate?firstDate+" — "+lastDate:"NO DATED RECORDS";
     const unplacedMarkup=unplaced.length
-      ? '<details class="temporal-unplaced"><summary><span>UNPLACED / DATE NOT PARSED</span><small>'+unplaced.length+' RECORD'+(unplaced.length===1?"":"S")+'</small></summary>'+ordered(unplaced).map(recordButton).join("")+'</details>'
+      ? '<details class="temporal-unplaced"><summary><span>UNPLACED / DATE NOT PARSED</span><small>'+unplaced.length+' RECORD'+(unplaced.length===1?"":"S")+'</small></summary>'+
+        '<div class="temporal-contact-sheet">'+ordered(unplaced).map((item,index)=>recordButton(item,index)).join("")+'</div></details>'
       : "";
 
     return '<section class="temporal-archive">'+
-      '<div class="temporal-now"><span>VISITOR-LOCAL TIME / PRESENTATION ONLY</span><strong>'+escapeHtml(now.phase)+'</strong>'+
-      '<p>'+escapeHtml(now.date)+' · '+escapeHtml(now.time)+'</p><small>THE CLOCK IS READ IN THIS BROWSER AND IS NOT SENT TO A SERVER.</small></div>'+
+      '<div class="temporal-marquee" aria-hidden="true"><span>JIHANKI ARCHIVE / FIELD INDEX / SOUND / IMAGE / PLACE / MEMORY / JIHANKI ARCHIVE / FIELD INDEX / SOUND / IMAGE / PLACE / MEMORY /</span></div>'+
+      '<header class="temporal-masthead">'+
+        '<div class="temporal-kicker"><span>JHK / FIELD ARCHIVE</span><span>CHRONOLOGICAL REGISTER / VOL. 01</span></div>'+
+        '<h1 class="temporal-wordmark"><span>ARCHIVIO</span></h1>'+
+        '<div class="temporal-subline"><span>THE MACHINE REMEMBERS</span><span>SAIKO / FUJI / AOKIGAHARA / JAPAN</span></div>'+
+        '<nav class="temporal-nav" aria-label="Archive navigation">'+
+          '<button type="button" data-temporal-map>MAPPA ↗</button>'+
+          '<button type="button" data-temporal-random>RANDOM ↗</button>'+
+          '<button type="button" data-temporal-scroll>TIMELINE ↓</button>'+
+        '</nav></header>'+
+      '<div class="temporal-lead-grid">'+
+        '<section class="temporal-now"><span class="temporal-section-label">VISITOR-LOCAL TIME / PRESENTATION ONLY</span>'+
+          '<strong>'+escapeHtml(now.phase)+'</strong><p>'+escapeHtml(now.date)+' / '+escapeHtml(now.time)+'</p>'+
+          '<small>READ IN THIS BROWSER / NOT TRANSMITTED / NOT SAVED</small></section>'+
+        '<div class="temporal-locality"><span>THE ARCHIVE IS NOT A CLOCK</span><strong>77 / '+all.length+' FRAGMENTS</strong>'+
+          '<p>Time changes the order of attention, never the underlying record.</p><small>RECORDED RANGE / '+escapeHtml(range)+'</small></div></div>'+
       companionMarkup+
-      '<div class="temporal-summary"><div><span>CATALOGUE</span><strong>'+all.length+'</strong></div>'+
-      '<div><span>DATED RECORDS</span><strong>'+dated.length+'</strong></div>'+
-      '<div><span>UNPLACED / UNDATED</span><strong>'+unplaced.length+'</strong></div></div>'+
-      '<div class="temporal-range"><span>RECORDED CHRONOLOGY</span><strong>'+escapeHtml(range)+'</strong>'+
-      '<p>Dates are shown at the precision supplied by the archive. Missing years remain visible as gaps; no events or recording times are inferred.</p></div>'+
-      '<div class="temporal-timeline-heading">ARCHIVE CHRONOLOGY / NEWEST FIRST</div>'+chronology+unplacedMarkup+
-      '<p class="temporal-footnote">TIME CHANGES THIS VIEW ONLY. THE COMPLETE CATALOGUE, ORIGINAL DATES AND CATEGORY SELECTORS REMAIN UNCHANGED.</p>'+
+      '<div class="temporal-summary"><span>'+all.length+' RECORDS</span><span>'+imageCount+' IMAGE SOURCES</span>'+
+      '<span>'+dated.length+' DATED / '+unplaced.length+' UNPLACED</span></div>'+
+      '<div id="temporal-timeline" class="temporal-timeline-heading"><div><span>01 / CHRONOLOGICAL INDEX</span><strong>TIMELINE</strong></div>'+
+        '<small>NEWEST FIRST / ORIGINAL DATES ONLY</small></div>'+chronology+unplacedMarkup+
+      '<p class="temporal-footnote">ALL RECORDS REMAIN AVAILABLE. DATE PRECISION IS PRESERVED. MISSING YEARS ARE SHOWN AS GAPS, NOT AS EVENTS.</p>'+
       '</section>';
   }
 
@@ -178,6 +214,7 @@
     stats() {
       const all=catalogue(), dated=all.filter(item=>parseDate(item.date));
       return {total:all.length,dated:dated.length,unplaced:all.length-dated.length,
+        images:all.filter(item=>!!localAsset(item)).length,
         years:[...new Set(dated.map(item=>parseDate(item.date).year))].sort((a,b)=>a-b)};
     },
     localPhase() { return localMoment(new Date()).phase; }
