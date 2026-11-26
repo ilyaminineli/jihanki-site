@@ -210,8 +210,8 @@ Allow the archive to function as a visitor-operated sound installation using exi
 ## M49 — Visitor memory exchange
 
 **Priority:** P2 / backend-dependent  
-**Status:** Proposed; not implemented  
-**Depends on:** privacy and moderation design, backend selection
+**Status:** Privacy and moderation design drafted; implementation blocked by release gates  
+**Depends on:** approved moderation model, backend/data-region selection, named moderation owners and legal/privacy review
 
 ### Goal
 Allow visitors to contribute an anonymous memory fragment without exposing the archive to unmoderated uploads.
@@ -225,26 +225,45 @@ Allow visitors to contribute an anonymous memory fragment without exposing the a
 ### Boundary
 This cannot be implemented securely with the current static-only architecture. It requires a separately selected backend, moderation workflow and privacy policy.
 
+**Design reference:** [M49 — Visitor Memory Exchange: Privacy, Consent, Moderation and Abuse Prevention](../privacy/M49-VISITOR-MEMORY-EXCHANGE-PRIVACY-AND-MODERATION.md).
+
+The first-release model is text-first and anonymous: maximum 500 characters, optional association with one existing archive ID, no arbitrary links or media uploads, no accounts or public handles, and explicit consent. Every contribution remains private until a human moderator approves it. Automated checks may triage but may never publish. Pending, rejected and quarantined material is excluded from public reads. A one-time withdrawal key supports contributor-initiated removal without an account.
+
+The design sets bounded retention targets, rate limits, rotating keyed anti-abuse identifiers, moderator MFA and role separation, report handling, backup deletion and incident response. Photographs, uploaded audio, comments, direct messages and public profiles are deferred.
+
+M49 remains **design-only**. No frontend submission form, upload endpoint, API client, analytics event or hidden storage path may be added until every release gate in the design document is complete.
+
 ## M50 — Temporal archive
 
 **Priority:** P2  
-**Status:** Planned  
+**Status:** Implemented static/browser-local baseline  
 **Depends on:** M28, M43, M45
 
 ### Goal
-Let the machine's available fragments and tone shift with local time and the archive's own chronology.
+Let the machine's available fragments and tone shift with local time and the archive's own chronology, without changing the source catalogue.
 
 ### Scope
-1. Use visitor-local time only for gentle presentational variation.
-2. Preserve original archive dates and gaps.
-3. Surface evening/night fragments without hiding daytime material.
-4. Connect date-based rotation to the expedition timeline.
-5. Keep all time-based variations reversible and non-destructive.
+1. Build a complete chronology directly from source catalogue date values, preserving day-, month- and year-only precision.
+2. Keep undated or unparsed records visible in a separate section; do not assign invented dates.
+3. Show missing years between dated records as gaps in the catalogue, not as claims about unrecorded events.
+4. Use the visitor's local clock for restrained presentational variation and a deterministic day-part echo.
+5. Keep the implementation static and browser-local, without network calls, cookies, local storage or visitor profiles.
+6. Keep every archive record reachable and preserve the original category selectors and archive rotation.
+
+### Implemented behaviour
+- A TIME ARCHIVE action opens the complete newest-first chronology, grouped by year and month.
+- A visitor-local day-part selects one existing catalogue fragment as an hourly echo. The interface explicitly states that this does not imply the work was originally recorded at that hour.
+- Every chronological entry opens its original archive record.
+- Date precision and original catalogue values are preserved; unplaced entries remain available.
+- The local clock is read at render time only. No temporal preference or clock value is persisted or transmitted.
 
 ### Acceptance criteria
-- Time changes presentation, never the underlying catalogue.
-- No missing chronology is invented.
-- The complete archive remains reachable at every hour.
+- Time changes presentation, never the underlying catalogue or original record dates.
+- All source catalogue entries appear in the chronology, including undated and unplaced entries.
+- Year-only records are not assigned invented months or days.
+- Missing years and unknown dates remain visible without invented chronology.
+- The local clock is not transmitted or persisted; no backend or visitor profile is used.
+- The complete archive and original category selectors remain reachable at every hour.
 
 ## Cross-cutting technical rules
 
