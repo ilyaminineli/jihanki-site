@@ -1,5 +1,7 @@
-const SHELL_CACHE="jihanki-shell-v2";
-const RUNTIME_CACHE="jihanki-runtime-v2";
+// Bump both cache namespaces when the app shell changes so existing visitors do not
+// receive stale runtime assets after the next service-worker update.
+const SHELL_CACHE="jihanki-shell-v3";
+const RUNTIME_CACHE="jihanki-runtime-v3";
 const SHELL=[
   "./","./index.html","./assets/jihanki.png","./assets/placeholder.png","./css/archive-system.css",
   "./data/archive.js","./js/categories.js","./js/events.js","./js/inventory.js","./js/relationships.js",
@@ -39,7 +41,10 @@ self.addEventListener("fetch",event=>{
   }
   if(!/\.(html|js|css|md|json|png|jpe?g|webp|gif|svg|txt|opus|wav|ogg|mp3)$/i.test(pathname))return;
   event.respondWith(caches.open(RUNTIME_CACHE).then(async cache=>{
-    const cached=await cache.match(request);
+    // The shell cache is the first-visit offline fallback; runtime entries are added
+    // only after a visitor has requested the corresponding resource.
+    const shell=await caches.open(SHELL_CACHE);
+    const cached=await cache.match(request)||await shell.match(request);
     const refresh=fetch(request).then(async response=>{
       if(response.ok&&response.type==="basic"){
         const size=Number(response.headers.get("content-length")||0);
@@ -49,6 +54,6 @@ self.addEventListener("fetch",event=>{
       return response;
     });
     if(cached){event.waitUntil(refresh.catch(()=>null));return cached;}
-    return refresh.catch(()=>Response.error());
+    return refresh.catch(()=>shell.match(request).then(response=>response||Response.error()));
   }));
 });
