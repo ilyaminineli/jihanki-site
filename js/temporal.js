@@ -197,7 +197,7 @@
         '<section class="temporal-now"><span class="temporal-section-label">VISITOR-LOCAL TIME / PRESENTATION ONLY</span>'+
           '<strong>'+escapeHtml(now.phase)+'</strong><p>'+escapeHtml(now.date)+' / '+escapeHtml(now.time)+'</p>'+
           '<small>READ IN THIS BROWSER / NOT TRANSMITTED / NOT SAVED</small></section>'+
-        '<div class="temporal-locality"><span>THE ARCHIVE IS NOT A CLOCK</span><strong>77 / '+all.length+' FRAGMENTS</strong>'+
+        '<div class="temporal-locality"><span>THE ARCHIVE IS NOT A CLOCK</span><strong>'+all.length+' FRAGMENTS</strong>'+
           '<p>Time changes the order of attention, never the underlying record.</p><small>RECORDED RANGE / '+escapeHtml(range)+'</small></div></div>'+
       companionMarkup+
       '<div class="temporal-summary"><span>'+all.length+' RECORDS</span><span>'+imageCount+' IMAGE SOURCES</span>'+
