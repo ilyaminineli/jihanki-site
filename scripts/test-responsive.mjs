@@ -47,6 +47,7 @@ try{
       const box=selector=>{const r=document.querySelector(selector).getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom};};
       return{width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth,scrollHeight:document.documentElement.scrollHeight,
         canvas:box("#viewport"),coin:box("#coin-button"),home:box("#home-button"),products:document.querySelectorAll(".product").length,
+        scale:Number(getComputedStyle(document.documentElement).getPropertyValue("--scale")),
         scrollMode:document.documentElement.classList.contains("machine-scroll")};
     });
     assert(geometry.products===8,device.name+": expected eight physical selectors");
@@ -54,6 +55,32 @@ try{
     assert(geometry.canvas.x>=-1&&geometry.canvas.right<=device.width+1,device.name+": machine clipped horizontally");
     assert(geometry.coin.width>=43&&geometry.coin.height>=43,device.name+": COIN hit target too small");
     assert(geometry.home.width>=43&&geometry.home.height>=43,device.name+": HOME hit target too small");
+    const widthScale=Math.min(device.width/429,1);
+    const fitScale=Math.min(widthScale,device.height/932,1);
+    const shouldScroll=(device.width<=560||(device.width>device.height&&device.height<620))&&
+      (932*widthScale+24>device.height);
+    const expectedScale=shouldScroll?widthScale:fitScale;
+    assert(Math.abs(geometry.scale-expectedScale)<0.012,
+      device.name+": machine scale is inconsistent with the 429 x 932 coordinate system");
+    assert(Math.abs(geometry.canvas.width-429*expectedScale)<2,
+      device.name+": rendered machine width does not match the calculated scale");
+
+    // A credit is a spendable token: the pile shrinks as more are inserted and decrements on dispensing.
+    await page.locator("#coin-button").click();
+    await page.locator("#coin-button").click();
+    const coinPile=await page.evaluate(()=>[...document.querySelectorAll("#credit-display [data-credit-token]")]
+      .map(token=>parseFloat(getComputedStyle(token).width)));
+    assert(coinPile.length===2,device.name+": two inserted credits were not drawn as two coin tokens");
+    assert(coinPile[0]>coinPile[1],device.name+": accumulated coin tokens do not progressively shrink");
+    await page.locator("#memory-button").click();
+    await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().credits===1);
+    assert(await page.locator("#credit-display [data-credit-token]").count()===1,
+      device.name+": dispensing a memory did not consume one visible coin");
+    await page.locator("#memory-button").click();
+    await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().credits===0);
+    assert(await page.locator("#credit-display [data-credit-token]").count()===0,
+      device.name+": the final credit token remained after dispensing");
+    await page.keyboard.press("Escape");
     // M50 is a static catalogue view: every source record appears once in the chronology,
     // while the visitor-local clock is presentation-only and creates no persistent state.
     const temporalStateBefore=await page.evaluate(()=>({keys:Object.keys(localStorage).sort().join("|"),events:window.JIHANKI_EVENTS.count()}));
@@ -69,12 +96,15 @@ try{
       images:document.querySelectorAll(".temporal-year .temporal-record--image img").length,
       phase:document.querySelector(".temporal-now>strong")?.textContent||"",
       localNote:document.querySelector(".temporal-now small")?.textContent||"",
+      explanation:document.querySelector(".temporal-purpose")?.textContent||"",
       title:document.querySelector(".temporal-wordmark")?.textContent?.trim()||"",
       nav:[...document.querySelectorAll(".temporal-nav button")].map(button=>button.textContent.trim())
     }));
     assert(temporalView.records===temporalStats.total,device.name+": chronology does not expose every record");
     assert(temporalView.images===temporalStats.images,device.name+": contact sheet omitted source imagery");
     assert(temporalView.title==="ARCHIVIO",device.name+": archival masthead missing");
+    assert(temporalView.explanation.includes("not a diary of your visits")&&temporalView.explanation.includes("reading suggestion"),
+      device.name+": chronology purpose is not explained to visitors");
     assert(temporalView.nav.join("|").includes("MAPPA")&&temporalView.nav.join("|").includes("RANDOM")&&
       temporalView.nav.join("|").includes("TIMELINE"),device.name+": archive navigation incomplete");
     assert(["DAWN","MORNING","AFTERNOON","DAY","EVENING","NIGHT"].includes(temporalView.phase),
