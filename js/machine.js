@@ -103,15 +103,17 @@
   }
 
   function resizeJihanki() {
-    const narrowPhone = window.innerWidth <= 560;
-    const shortLandscape = window.innerWidth > window.innerHeight && window.innerHeight < 620;
-    const widthScale = Math.min(window.innerWidth / 429, 1);
-    const fitScale = Math.min(window.innerWidth / 429, window.innerHeight / 932);
-    const scrollable = (narrowPhone || shortLandscape) && (932 * widthScale + 24 > window.innerHeight);
+    const width = Math.max(1, document.documentElement.clientWidth || window.innerWidth || 429);
+    const height = Math.max(1, window.visualViewport?.height || window.innerHeight || 932);
+    const narrowPhone = width <= 560;
+    const shortLandscape = width > height && height < 620;
+    const widthScale = Math.min(width / 429, 1);
+    const fitScale = Math.min(width / 429, height / 932, 1);
+    const scrollable = (narrowPhone || shortLandscape) && (932 * widthScale + 24 > height);
     const scale = scrollable ? widthScale : fitScale;
     document.documentElement.classList.toggle("machine-scroll", scrollable);
     document.body.classList.toggle("compact-canvas", scrollable);
-    document.documentElement.style.setProperty("--scale", scale);
+    document.documentElement.style.setProperty("--scale", String(scale));
     const viewport = document.getElementById("viewport");
     if (scrollable) {
       viewport.style.position = "absolute";
@@ -129,6 +131,7 @@
   }
   window.addEventListener("resize", resizeJihanki);
   window.addEventListener("orientationchange", resizeJihanki);
+  window.visualViewport?.addEventListener("resize", resizeJihanki);
   resizeJihanki();
 
   function showHome() {
