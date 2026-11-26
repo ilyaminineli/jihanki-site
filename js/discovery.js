@@ -10,11 +10,15 @@
       .filter(entry=>entry.score>0).sort((a,b)=>b.score-a.score||String(a.item.title).localeCompare(String(b.item.title))).slice(0,40).map(entry=>entry.item);
   }
   function links(item){
-    if(!item)return[];const result=(window.JIHANKI_RELATIONSHIPS?.links(item)||[]).filter(link=>link.item);
-    const placeNames=window.JIHANKI_GEOGRAPHY?.locations(item)||[];
+    if(!item)return[];
+    const result=(window.JIHANKI_RELATIONSHIPS?.links(item)||[]).filter(link=>link.item);
+    // Broad fallback labels are not evidence of a shared physical place.
+    const broadLabels=new Set(["Japan / 2026 expedition"]);
+    const placeNames=(window.JIHANKI_GEOGRAPHY?.locations(item)||[]).filter(place=>!broadLabels.has(place));
     (window.JIHANKI_ARCHIVE||[]).forEach(candidate=>{
       if(candidate.id===item.id||result.some(link=>link.id===candidate.id))return;
-      const shared=(window.JIHANKI_GEOGRAPHY?.locations(candidate)||[]).filter(place=>placeNames.includes(place));
+      const shared=(window.JIHANKI_GEOGRAPHY?.locations(candidate)||[])
+        .filter(place=>!broadLabels.has(place)&&placeNames.includes(place));
       if(shared.length)result.push({id:candidate.id,item:candidate,kind:"shared-place",label:"SHARED PLACE",evidence:shared.slice(0,2).join(" · ")});
     });
     return result.slice(0,12);

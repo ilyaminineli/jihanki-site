@@ -14,7 +14,7 @@ async function fingerprint(pathname){
   return{size:bytes.length,gitBlobSha:createHash("sha1").update(Buffer.concat([Buffer.from("blob "+bytes.length+"\0"),bytes])).digest("hex")};
 }
 const files=[];
-for(const pathname of(await walk(mediaRoot)).sort()){
+for(const pathname of(await walk(mediaRoot)).sort((a, b) => a.localeCompare(b))){
   const relative=path.relative(root,pathname).split(path.sep).join("/");
   files.push({path:relative,...await fingerprint(pathname)});
 }

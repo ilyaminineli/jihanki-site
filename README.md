@@ -47,6 +47,13 @@ Japan stay / shared field experience: **Julia Baranyuk**
 * Browser-local personal collection with repeat-purchase counts and JSON export
 * Ambient machine states with volume transitions, media ducking and visitor mute control
 * Rare, authored machine anomalies
+* Memory archaeology with typed links between works, voices, notes and places
+* Schematic memory map with place-index and archive-network modes
+* Local, evolving machine personality with weighted rediscovery
+* Serialized collectible memory objects linked to purchase receipts
+* Archive search, offline shell cache and media metadata
+* Versioned browser-local collection import/export
+* Multi-layer audio installation mode using existing archive sounds
 * Markdown documents, images, audio and video rendered inside the artifact viewer
 * Ambient JIHANKI loop and interface sound effects
 * Static deployment: no framework, build step, backend or visitor account
@@ -353,4 +360,4 @@ The same check runs automatically on pushes and pull requests. It verifies archi
 
 ## Roadmap
 
-The next development milestones are documented in [documents/roadmap/](documents/roadmap/README.md), from M35 machine interaction integrity through M40 visitor continuity.
+The next development milestones are documented in [documents/roadmap/](documents/roadmap/README.md), from M35 machine interaction integrity through M50 temporal archive, including the active M41–M50 implementation map.

@@ -152,7 +152,10 @@
     openSystemPanel("MEMORY ARCHAEOLOGY", '<div class="exploration-return"><button type="button" data-panel-back="' + esc(item.id) +
       '">← RETURN TO MEMORY</button></div>' + window.JIHANKI_DISCOVERY.renderGraph(item.id));
   }
-  function openSoundscape() { openSystemPanel("SOUND INSTALLATION", window.JIHANKI_SOUNDSCAPE.render(), "reading"); }
+  function openSoundscape() {
+    openSystemPanel("SOUND INSTALLATION", window.JIHANKI_SOUNDSCAPE.render(), "reading");
+    window.JIHANKI_AUDIO.bindMedia(artifactContent);
+  }
 
   function stockTag(item) {
     const status = window.JIHANKI_INVENTORY.status(item);
@@ -248,7 +251,7 @@
       }
       return;
     }
-    const coverHTML = item.image && (type === "project" || type === "audio") ? '<img class="project-cover" src="' + esc(item.image) + '" alt="' + title + '">' : "";
+    const coverHTML = item.image && (type === "project" || type === "audio") ? '<img class="project-cover" src="' + esc(item.image) + '" alt="' + title + '" loading="lazy" decoding="async">' : "";
     if (type === "video" || /^(mp4|webm|mov)$/.test(extension)) {
       body.innerHTML = (window.JIHANKI_VIDEO ? window.JIHANKI_VIDEO.render(item) :
         '<video class="artifact-video" controls playsinline preload="metadata" src="' + esc(file) + '"></video>') +

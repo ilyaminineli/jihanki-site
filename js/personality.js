@@ -10,9 +10,14 @@
     state.recent=[id,...state.recent.filter(value=>value!==id)].slice(0,LIMIT);save();
   }
   window.addEventListener("jihanki:event",event=>{
-    const detail=event.detail||{};if(!["memory-opened","memory-dispensed"].includes(detail.type))return;
-    const id=detail.detail?.itemId,item=(window.JIHANKI_ARCHIVE||[]).find(record=>record.id===id);
-    remember(id,item?.machineCategory||item?.category,detail.type==="memory-dispensed");
+    const detail=event.detail||{};
+    const id=detail.detail?.itemId;
+    if(detail.type==="memory-dispensed"){
+      state.purchases+=1;save();return;
+    }
+    if(detail.type!=="memory-opened")return;
+    const item=(window.JIHANKI_ARCHIVE||[]).find(record=>record.id===id);
+    remember(id,item?.machineCategory||item?.category,false);
   });
   function choose(pool,avoidId){
     const candidates=(pool||[]).filter(item=>item&&item.id!==avoidId),list=candidates.length?candidates:(pool||[]);
