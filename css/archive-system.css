@@ -1380,3 +1380,16 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 @media(prefers-reduced-motion:reduce) {
   .installation-track { transition:none; }
 }
+
+
+/* M35 — explicit transaction result inside the active memory viewer. */
+.transaction-confirmation {
+    margin: 8px 0 14px;
+    padding: 8px 10px;
+    border-left: 2px solid rgba(255, 255, 255, .42);
+    background: rgba(255, 255, 255, .035);
+    color: #ddd;
+    font: 9px/1.5 "Courier New", monospace;
+    letter-spacing: .08em;
+    overflow-wrap: anywhere
+}
