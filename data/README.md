@@ -19,6 +19,24 @@ Example fields:
 
 Optional metadata should describe only known facts: locations, related archive IDs, production context, people and source material. Do not invent geographic coordinates or recording durations.
 
+## Type-specific record contracts
+
+The validator in `scripts/archive-schema.mjs` checks the runtime record shape without requiring optional editorial context.
+
+| `type` | Required source field | Optional type-specific context |
+| --- | --- | --- |
+| `video` | `file` | `voices` may list credited voice sources |
+| `image` | `file` | `description` and thematic `group` |
+| `voicebank` | `image` | `subtitle`, `context` and external `url` |
+| `project` | `file` | `image` and `projectPath` |
+| `audio` | `file` | `voices` and production context |
+| `text` | `file` | `project` and editorial grouping |
+| `video` in category `performance` | `file` | Performance context remains explicitly editorial |
+
+Common fields are `id`, `title`, `type` and `category`. `date` is optional so an undated work can remain unplaced; when present it must be a year (`YYYY`), month (`YYYY-MM`) or real calendar date (`YYYY-MM-DD`). The validator checks the shape of optional `voices`, `stock` and `metadata` fields, validates HTTP(S) URLs and continues to check local paths separately.
+
+The contract does not require invented dates, locations, durations, voice credits or other provenance. Add or change a record type deliberately: update the contract and its valid/invalid fixtures in `scripts/fixtures/archive-schema.json` together.
+
 ## Physical category mapping
 
 The eight physical selectors are mapped explicitly in js/categories.js:
