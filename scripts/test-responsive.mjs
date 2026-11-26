@@ -154,8 +154,8 @@ try{
       page.locator(".receipt-ticket [data-receipt-action='download']").click()
     ]);
     assert(receiptDownload.suggestedFilename().endsWith(".txt"),device.name+": receipt export used an unexpected filename");
-    await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().transaction.status==="receipt-saved");
-    assert((await page.locator("[data-transaction-confirmation]").textContent()).includes("RECEIPT SAVED"),
+    await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().transaction.status==="receipt-download-started");
+    assert((await page.locator("[data-transaction-confirmation]").textContent()).includes("RECEIPT DOWNLOAD STARTED"),
       device.name+": receipt-save outcome was not confirmed in the viewer");
     await page.evaluate(id=>window.JIHANKI_MACHINE.purchase(window.JIHANKI_ARCHIVE.find(record=>record.id===id)),transactionId);
     await page.waitForFunction(()=>document.querySelector(".artifact-feedback")?.textContent.includes("NO CREDIT"));
