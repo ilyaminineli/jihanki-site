@@ -1243,3 +1243,140 @@ button,input,select { touch-action:manipulation; }
   .temporal-marquee span { animation:none; }
   .temporal-record-media img { transition:none; }
 }
+
+
+/* M48 — Sound Lab is the primary creative tool on the CRT home screen. */
+.home-boot .boot-loading { margin-top:12px; max-width:210px; }
+.home-primary { display:grid; gap:3px; width:min(100%,214px); margin:7px auto 0; }
+.home-primary button {
+  min-height:24px;
+  width:100%;
+  padding:5px 8px;
+  border:1px solid rgba(255,255,255,.7);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+  font:700 8px/1 "Courier New",monospace;
+  letter-spacing:.12em;
+  cursor:pointer;
+  box-shadow:inset 0 0 10px rgba(255,255,255,.035),0 0 8px rgba(255,255,255,.08);
+}
+.home-primary button:hover,.home-primary button:focus-visible { background:#eee; color:#080808; }
+.home-primary small { color:#777; font:5px/1.3 "Courier New",monospace; letter-spacing:.08em; }
+.home-boot .home-actions {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:3px;
+  width:min(100%,214px);
+  margin:5px auto 0;
+}
+.home-boot .home-actions button { min-width:0; min-height:20px; padding:3px 2px; font-size:5px; }
+.home-archive-tools {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  margin:4px auto 0;
+  color:#666;
+  font:5px/1.2 "Courier New",monospace;
+  letter-spacing:.08em;
+}
+.home-archive-tools button {
+  padding:2px 3px;
+  border:0;
+  background:transparent;
+  color:#999;
+  font:inherit;
+  letter-spacing:inherit;
+  cursor:pointer;
+}
+.home-archive-tools button:hover,.home-archive-tools button:focus-visible { color:#fff; text-decoration:underline; }
+.home-boot .home-audio { margin-top:2px; }
+
+/* Credit tokens are a live representation of spendable balance.
+   Each additional coin is slightly smaller; dispensing removes one token. */
+.credit-display {
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:4px;
+  min-height:14px;
+  white-space:nowrap;
+}
+.credit-token-stack { display:inline-flex; align-items:center; direction:rtl; min-height:12px; }
+.credit-token {
+  display:inline-block;
+  flex:0 0 var(--token-size);
+  width:var(--token-size);
+  height:var(--token-size);
+  margin-left:-2px;
+  border:1px solid rgba(240,240,240,.72);
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 32%,#eee 0 12%,#aaa 34%,#4e4e4e 76%,#171717 100%);
+  box-shadow:0 0 3px rgba(255,255,255,.25);
+}
+.credit-count { color:rgba(255,255,255,.7); }
+
+/* Sound Lab — readable source cards, clear state and immediate controls. */
+.sound-installation { color:#ddd; }
+.sound-lab-masthead { display:flex; justify-content:space-between; align-items:center; gap:8px; color:#777;
+  font:8px "Courier New",monospace; letter-spacing:.12em; }
+.sound-lab-masthead span:last-child { text-align:right; }
+.sound-installation h2 { margin:12px 0 6px; color:#f1f1f1; font-size:21px; letter-spacing:.1em; font-weight:400; }
+.sound-lab-explainer { color:#aaa!important; font-size:11px; line-height:1.65!important; }
+.sound-lab-instructions { display:grid; gap:4px; margin:12px 0; padding:9px 10px; border-left:2px solid #bbb; background:#101010; }
+.sound-lab-instructions strong { color:#eee; font-size:9px; letter-spacing:.12em; }
+.sound-lab-instructions span { color:#777; font-size:8px; line-height:1.4; }
+.installation-tracks { gap:7px; margin:12px 0; }
+.installation-track { padding:9px; border:1px solid rgba(255,255,255,.15); transition:border-color .15s,background .15s; }
+.installation-track[data-install-playing="true"] { border-color:rgba(255,255,255,.65); background:#151515; }
+.installation-track[data-install-playing="pending"] { border-color:rgba(255,255,255,.35); }
+.installation-select { display:grid!important; grid-template-columns:24px minmax(0,1fr) 22px; align-items:center!important;
+  min-height:44px; gap:8px!important; cursor:pointer; }
+.installation-select input,.installation-loop input { width:17px; height:17px; accent-color:#ddd; }
+.installation-track-copy { display:grid; gap:4px; min-width:0; }
+.installation-track-copy strong { color:#eee; font:12px/1.35 "Courier New",monospace; overflow-wrap:anywhere; }
+.installation-track-copy small { color:#777; font-size:8px; letter-spacing:.08em; }
+.installation-index { color:#777; font:9px "Courier New",monospace; text-align:right; }
+.installation-track-controls { display:flex; align-items:center; flex-wrap:wrap; gap:8px 12px; padding:7px 0 0 32px; border-top:1px solid rgba(255,255,255,.08); }
+.installation-volume,.installation-loop { display:inline-flex; align-items:center; gap:6px; margin:0; color:#888; font-size:8px; }
+.installation-volume input { width:100px; accent-color:#ddd; }
+.installation-loop { min-height:32px; }
+.installation-track-status { margin-left:auto; color:#777; font:7px "Courier New",monospace; letter-spacing:.06em; }
+.installation-transport { position:sticky; bottom:0; z-index:3; padding:10px 0 3px; background:linear-gradient(180deg,rgba(8,8,8,0),#080808 20%); }
+.installation-actions { display:grid; grid-template-columns:minmax(0,1fr) 76px; gap:7px; }
+.installation-actions button { min-height:44px; padding:9px; border:1px solid rgba(255,255,255,.35); background:#171717; color:#eee; }
+.installation-actions button:first-child { background:#eee; color:#080808; font-weight:700; }
+.installation-actions button:hover { border-color:#fff; }
+.installation-status { min-height:2.8em; color:#999; font:8px/1.5 "Courier New",monospace; }
+
+/* One visit-history interface: Collection owns the trail; Machine Memory is no longer a second screen. */
+.museum-trail-preview { display:grid; gap:8px; margin:14px 0; padding:12px; border:1px solid rgba(255,255,255,.15); background:#0d0d0d; }
+.museum-trail-preview>div { display:flex; align-items:baseline; justify-content:space-between; gap:8px; flex-wrap:wrap; }
+.museum-trail-preview>div span { color:#aaa; font-size:9px; letter-spacing:.1em; }
+.museum-trail-preview>div strong { color:#777; font-size:8px; font-weight:400; }
+.museum-trail-preview p { margin:0; color:#777; font-size:10px; line-height:1.55; }
+.museum-trail-preview button { min-height:42px; padding:8px 10px; border:1px solid rgba(255,255,255,.2); background:#111; color:#ddd;
+  text-align:left; font:9px "Courier New",monospace; cursor:pointer; }
+.museum-tabs button { min-height:40px; }
+.museum-tabs button[aria-pressed="true"] { color:#fff; border-color:rgba(255,255,255,.65); }
+
+/* Mobile scaling is established before the controller's first resize callback. */
+html.machine-scroll #viewport {
+  position:absolute;
+  top:12px;
+  transform:translateX(-50%) scale(var(--scale,1));
+  transform-origin:top center;
+}
+html.machine-scroll body { min-height:calc(100vh + 24px); }
+@media(max-width:560px) {
+  .home-primary { width:100%; }
+  .home-boot .home-actions { width:100%; }
+  .installation-track-controls { padding-left:0; }
+  .installation-volume { flex:1 1 150px; }
+  .installation-volume input { flex:1; min-width:80px; }
+  .installation-track-status { flex:1 1 100%; margin-left:0; }
+  .installation-actions { grid-template-columns:minmax(0,1fr) 68px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .installation-track { transition:none; }
+}
