@@ -75,7 +75,7 @@ This milestone does not author, transcode or replace the user's source videos. T
 
 # M37 — Archive schema and automated validation
 
-**Status:** Validator and CI baseline added  
+**Status:** Partial — type-aware contracts and valid/invalid fixtures added; full repository validation pending  
 **Depends on:** M25–M34; supports every future content milestone.
 
 ## Goal
@@ -85,17 +85,16 @@ Make the archive a trustworthy source of truth. New records should fail validati
 ## Baseline changes
 
 - Add a dependency-free Node.js validator.
-- Check required fields, unique IDs, category mapping, stock status, local file/image/project paths, curated relationship targets, duplicate HTML IDs and runtime script paths.
+- Check required fields, type-aware media/document fields, optional voice/date/stock/metadata shapes, unique IDs, category mapping, stock status, local paths, curated relationship targets, duplicate HTML IDs and runtime script paths.
 - Run the validator automatically in GitHub Actions for relevant pushes and pull requests.
 - Correct the README authoring example to use the file property, not the unsupported textFile property.
 
 ## Remaining scope
 
 1. Move all content records and pending records into the archive data source; runtime modules should not invent or migrate editorial content.
-2. Define a documented schema for project, voicebank, image, video, audio, text and performance records.
-3. Validate optional fields by record type (for example, media paths, voice credits, project dossiers and archive dates).
-4. Add checks for Markdown relative links and media-manifest consistency.
-5. Add fixtures for valid and invalid archive records.
+2. Extend the documented contracts to any new record types introduced by future archive work.
+3. Add checks for Markdown relative links and strengthen media-manifest consistency coverage.
+4. Expand fixtures whenever fields or types are added or migrated.
 6. Keep migration scripts explicit, versioned and removable after migration.
 
 ## Acceptance criteria
