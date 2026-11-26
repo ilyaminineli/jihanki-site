@@ -97,8 +97,10 @@ export function validateRecordSchema(record) {
       errors.push("metadata must be an object when provided");
     } else {
       for (const field of ["locations", "related"]) {
-        if (record.metadata[field] !== undefined && !Array.isArray(record.metadata[field])) {
-          errors.push("metadata." + field + " must be an array when provided");
+        if (record.metadata[field] !== undefined &&
+            (!Array.isArray(record.metadata[field]) ||
+             record.metadata[field].some(value => typeof value !== "string" || !value.trim()))) {
+          errors.push("metadata." + field + " must be an array of non-empty strings when provided");
         }
       }
     }
