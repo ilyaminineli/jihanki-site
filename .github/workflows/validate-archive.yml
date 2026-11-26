@@ -52,6 +52,10 @@ jobs:
         run: node scripts/test-archive-schema.mjs
       - name: Test machine interaction transitions
         run: node scripts/test-interaction-model.mjs
+      - name: Test Markdown link validation fixtures
+        run: node scripts/test-markdown-links.mjs
+      - name: Test media manifest integrity fixtures
+        run: node scripts/test-media-manifest.mjs
       - name: Install Playwright Chromium
         run: |
           npm install --no-save playwright
