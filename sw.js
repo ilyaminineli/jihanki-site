@@ -5,7 +5,7 @@ const SHELL=[
   "./data/archive.js","./js/categories.js","./js/events.js","./js/inventory.js","./js/relationships.js",
   "./js/geography.js","./js/rotation.js","./js/temporal.js","./js/receipts.js","./js/collection.js","./js/museum.js","./js/audio.js",
   "./js/markdown.js","./js/maintenance.js","./js/anomalies.js","./js/video.js","./js/personality.js",
-  "./js/discovery.js","./js/map.js","./js/soundscape.js","./js/machine.js"
+  "./js/discovery.js","./js/map.js","./js/soundscape.js","./js/interaction-model.js","./js/machine.js"
 ];
 self.addEventListener("install",event=>{
   event.waitUntil(caches.open(SHELL_CACHE).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting()));
