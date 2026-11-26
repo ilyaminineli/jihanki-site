@@ -197,8 +197,11 @@ try{
     // A delayed failure from an older Markdown request must not overwrite the newer selection.
     const markdownRace=await page.evaluate(()=>{
       const items=window.JIHANKI_ARCHIVE.filter(item=>typeof item.file==="string"&&item.file.endsWith(".md"));
-      if(items.length<2)return{skipped:true};
-      return{oldId:items[0].id,newId:items[1].id,newTitle:items[1].title,oldFile:items[0].file};
+      const oldItem=items.find((item,index)=>items.slice(index+1).some(other=>other.file!==item.file))||
+        items.find(item=>items.some(other=>other.file!==item.file));
+      const newItem=oldItem&&items.find(item=>item.file!==oldItem.file);
+      if(!oldItem||!newItem)return{skipped:true};
+      return{oldId:oldItem.id,newId:newItem.id,newTitle:newItem.title,oldFile:oldItem.file,newFile:newItem.file};
     });
     if(!markdownRace.skipped){
       await page.route("**/"+markdownRace.oldFile,async route=>{
