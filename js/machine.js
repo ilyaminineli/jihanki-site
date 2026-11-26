@@ -29,7 +29,15 @@
     if (announcer) announcer.textContent = String(message || "");
   }
   function updateCreditDisplay() {
-    if (creditDisplay) creditDisplay.textContent = "CREDITS / " + credits;
+    if (creditDisplay) {
+      const tokens = Array.from({length:credits}, (_,index) => {
+        const size = Math.max(4.5,12-index*0.8);
+        return '<i class="credit-token" data-credit-token aria-hidden="true" style="--token-size:'+size+'px"></i>';
+      }).join("");
+      creditDisplay.innerHTML = '<span class="credit-token-stack" aria-hidden="true">'+tokens+'</span>' +
+        '<span class="credit-count">CREDITS / '+credits+'</span>';
+      creditDisplay.setAttribute("aria-label","Credits / "+credits);
+    }
     const balance = artifactContent.querySelector(".artifact-credit-status");
     if (balance) balance.textContent = "CREDIT BALANCE / " + credits;
   }
@@ -131,15 +139,18 @@
     const rotation = window.JIHANKI_ROTATION.current();
     const muteLabel = window.JIHANKI_AUDIO.isMuted() ? "AMBIENCE / OFF" : "AMBIENCE / ON";
     const machineLine = window.JIHANKI_PERSONALITY?.homeLine() || "SELECT A MEMORY";
-    screen.innerHTML = '<div class="boot"><div class="boot-japanese">自販機</div><div class="boot-title">JIHANKI</div><div class="boot-subtitle">MEMORY ARCHIVE</div><div class="boot-loading">' + esc(machineLine) + '</div>' +
-      '<div class="home-actions"><button type="button" data-home-action="rotation">ROTATION / ' + rotation.items.length + '</button>' +
-      '<button type="button" data-home-action="temporal">TIME ARCHIVE</button>' +
-      '<button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button>' +
-      '<button type="button" data-home-action="map">MEMORY MAP</button><button type="button" data-home-action="search">SEARCH</button>' +
-      '<button type="button" data-home-action="installation">SOUND LAB</button>' +
-      '<button type="button" data-home-action="personality">MACHINE MEMORY</button></div>' +
+    screen.innerHTML = '<div class="boot home-boot"><div class="boot-japanese">自販機</div><div class="boot-title">JIHANKI</div><div class="boot-subtitle">MEMORY ARCHIVE</div><div class="boot-loading">' + esc(machineLine) + '</div>' +
+      '<div class="home-primary"><button type="button" data-home-action="installation">ENTER SOUND LAB ↗</button>' +
+        '<small>BUILD AN INSTALLATION FROM ARCHIVE SOUND</small></div>' +
+      '<div class="home-actions">' +
+        '<button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button>' +
+        '<button type="button" data-home-action="map">MEMORY MAP</button>' +
+        '<button type="button" data-home-action="search">SEARCH</button></div>' +
+      '<div class="home-archive-tools"><span>ARCHIVE</span>' +
+        '<button type="button" data-home-action="rotation">ROTATION / ' + rotation.items.length + '</button>' +
+        '<button type="button" data-home-action="temporal">CHRONOLOGY</button></div>' +
       '<button type="button" class="home-audio" data-home-action="audio">' + muteLabel + '</button></div>';
-    announce("JIHANKI home. " + collectionCount + " collected works. " + rotation.items.length + " rotation fragments. " + machineLine);
+    announce("JIHANKI home. Sound Lab, collection, memory map, search and archive chronology. " + collectionCount + " collected works. " + machineLine);
   }
   function showMessage(title, subtitle, footer) {
     screen.innerHTML = '<div class="boot"><div class="boot-title">' + esc(title) + '</div><div class="boot-subtitle">' + esc(subtitle || "") + '</div><div class="boot-loading">' + esc(footer || "") + '</div></div>';
@@ -176,24 +187,9 @@
     openSystemPanel("SOUND INSTALLATION", window.JIHANKI_SOUNDSCAPE.render(), "reading");
     window.JIHANKI_AUDIO.bindMedia(artifactContent);
   }
-  function openMachineMemory() {
-    const profile = window.JIHANKI_PERSONALITY?.profile() || { opened: 0, purchases: 0, frequentCategory: null, recent: [] };
-    const recent = profile.recent.map(id => byId(id)).filter(Boolean);
-    const rows = recent.map(item => '<button type="button" class="archaeology-node" data-related-id="' + esc(item.id) + '">' +
-      '<span class="archaeology-node-copy"><strong>' + esc(item.title) + '</strong><small>RECENTLY VISITED</small></span></button>').join("");
-    const content = '<div class="personality-grid"><div><span>MEMORY OPENINGS</span><strong>' + Number(profile.opened) + '</strong></div>' +
-      '<div><span>PURCHASES</span><strong>' + Number(profile.purchases) + '</strong></div>' +
-      '<div><span>FREQUENT CATEGORY</span><strong>' + esc((profile.frequentCategory || "NONE").toUpperCase()) + '</strong></div></div>' +
-      '<div class="archaeology-branch-label">RECENTLY REMEMBERED / ' + recent.length + '</div>' +
-      (rows || '<div class="exploration-empty">THE MACHINE HAS NOT STORED A ROUTE YET.</div>') +
-      '<div class="personality-actions"><p>THIS MEMORY IS STORED ONLY IN THIS BROWSER.</p>' +
-      '<button type="button" data-personality-reset>RESET MACHINE MEMORY</button></div>';
-    openSystemPanel("MACHINE MEMORY", content);
-  }
-
   function openTemporalArchive() {
     if (!window.JIHANKI_TEMPORAL) return;
-    openSystemPanel("TEMPORAL ARCHIVE", window.JIHANKI_TEMPORAL.render(), "idle");
+    openSystemPanel("CHRONOLOGY / 2026", window.JIHANKI_TEMPORAL.render(), "idle");
     currentView = "temporal";
   }
 
@@ -235,6 +231,9 @@
     artifactRenderToken += 1;
     artifact.classList.remove("open");
     artifact.setAttribute("aria-hidden", "true");
+    if (artifactContent.querySelector(".sound-installation")) {
+      window.JIHANKI_SOUNDSCAPE.dispose(artifactContent);
+    }
     artifactContent.querySelectorAll("audio,video").forEach(media => { try { media.pause(); } catch (_) { } });
     window.JIHANKI_AUDIO.clearMedia();
     activeArtifact = null;
@@ -515,7 +514,7 @@
   }
 
   function museumTabMarkup(tab) {
-    const tabs=[["overview","OVERVIEW"],["works","WORKS"],["objects","OBJECTS"],["kept","KEPT"],["trail","TRAIL"],["shelves","SHELVES"],["care","CARE"]];
+    const tabs=[["overview","OVERVIEW"],["works","WORKS"],["objects","OBJECTS"],["kept","SAVED"],["trail","VISIT TRAIL"],["shelves","SHELVES"],["care","CARE"]];
     return '<nav class="museum-tabs" aria-label="Personal museum sections">'+tabs.map(([id,label])=>
       '<button type="button" data-museum-tab="'+id+'" aria-pressed="'+(tab===id?"true":"false")+'">'+label+'</button>').join("")+'</nav>';
   }
@@ -525,13 +524,13 @@
     const storage=museum.storageAvailable?"LOCAL / SAVED IN THIS BROWSER":"SESSION ONLY / STORAGE UNAVAILABLE";
     let content="";
     if(tab==="overview"){
-      const recent=museum.trail().slice(-5).reverse();
-      const recentMarkup=recent.map(entry=>'<button class="museum-row" type="button" data-museum-open="'+esc(entry.id)+'"><span>'+esc(entry.title)+'</span><small>'+
-        esc(new Date(entry.visitedAt).toLocaleString())+'</small></button>').join("");
-      content='<div class="museum-intro"><span>JHK / PRIVATE ARCHIVE</span><p>A small museum assembled from the memories you have chosen to keep and the fragments you have visited.</p></div>'+
+      const trailCount=museum.trail().length;
+      content='<div class="museum-intro"><span>JHK / YOUR PRIVATE COLLECTION</span><p>Works you have dispensed, fragments you have chosen to save, collectible objects and a single visit trail. Everything stays in this browser.</p></div>'+
         '<div class="museum-stats"><div><span>COLLECTED WORKS</span><strong>'+records.length+'</strong></div><div><span>OBJECTS</span><strong>'+objects.length+
-        '</strong></div><div><span>KEPT</span><strong>'+stats.kept+'</strong></div><div><span>VISITS</span><strong>'+stats.visits+'</strong></div></div>'+
-        '<div class="museum-section-heading">RECENTLY REMEMBERED</div>'+(recentMarkup||'<div class="collection-empty">YOUR VISIT TRAIL IS EMPTY.</div>')+
+        '</strong></div><div><span>SAVED</span><strong>'+stats.kept+'</strong></div><div><span>VISITS</span><strong>'+stats.visits+'</strong></div></div>'+
+        '<section class="museum-trail-preview"><div><span>YOUR VISIT TRAIL</span><strong>'+trailCount+' RECORDED FRAGMENTS</strong></div>'+
+        '<p>A chronological list of the memories you have opened. This is the only visit-history view; the separate Machine Memory screen has been removed.</p>'+
+        '<button type="button" data-museum-tab="trail">OPEN VISIT TRAIL ↗</button></section>'+
         '<div class="museum-storage-note">'+storage+' / NOTHING IS SENT TO A SERVER.</div>';
     } else if(tab==="works"){
       const pref=museum.preferences(),categories=[...new Set(records.map(record=>String(record.category||"archive").toLowerCase()))].sort();
@@ -591,7 +590,7 @@
   }
   function openMuseum(tab){
     museumTab=["overview","works","objects","kept","trail","shelves","care"].includes(tab)?tab:"overview";
-    openSystemPanel("MY PERSONAL MUSEUM",museumRender(museumTab),"collection");
+    openSystemPanel("MY COLLECTION",museumRender(museumTab),"collection");
     currentView="museum";window.JIHANKI_MUSEUM.setView(museumTab);
     window.JIHANKI_EVENTS.record("museum-opened",{tab:museumTab});
   }
@@ -777,14 +776,6 @@
     if (openMapButton) { openMap(openMapButton.dataset.openMap); return; }
     const objectDownload = event.target.closest("[data-collectible-download]");
     if (objectDownload) { window.JIHANKI_COLLECTION.downloadObject(objectDownload.dataset.collectibleDownload); return; }
-    const personalityReset = event.target.closest("[data-personality-reset]");
-    if (personalityReset) {
-      if (window.confirm("Reset only this browser's JIHANKI machine memory? Collection and receipts will remain unchanged.")) {
-        window.JIHANKI_PERSONALITY.reset();
-        openMachineMemory();
-      }
-      return;
-    }
     const installAction = event.target.closest("[data-install-action]");
     if (installAction) {
       if (installAction.dataset.installAction === "start") window.JIHANKI_SOUNDSCAPE.start(artifactContent);
@@ -888,7 +879,6 @@
       if (action === "map") { openMap("geography"); return; }
       if (action === "search") { openSearch(); return; }
       if (action === "installation") { openSoundscape(); return; }
-      if (action === "personality") { openMachineMemory(); return; }
       if (action === "audio") {
         const muted = window.JIHANKI_AUDIO.toggleMute();
         window.JIHANKI_EVENTS.record("ambient-control", { muted });
@@ -973,7 +963,7 @@
 
   window.JIHANKI_MACHINE = {
     openItem, purchase, dispense, showCategory, showLocation, showRotation, showCollection,
-    openSearch, openMap, openArchaeology, openSoundscape, openMachineMemory, openMuseum, openTemporalArchive,
+    openSearch, openMap, openArchaeology, openSoundscape, openMuseum, openTemporalArchive,
     getState() { return { credits, selectedId, activeCategory, currentView, maintenanceActive, ambient: window.JIHANKI_AUDIO.getState() }; }
   };
   window.JIHANKI_EVENTS.record("machine-booted", { items: allItems().length });
