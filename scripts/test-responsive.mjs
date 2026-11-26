@@ -469,6 +469,18 @@ try{
   page.on("pageerror",error=>errors.push(error.message));
   await page.goto(BASE,{waitUntil:"domcontentloaded"});
   await page.evaluate(async()=>navigator.serviceWorker.ready);
+  await page.waitForFunction(()=>!!navigator.serviceWorker.controller);
+  // Before the runtime cache is populated by a second page load, a first controlled
+  // offline request must still be served by the precached application shell.
+  await context.setOffline(true);
+  const firstVisitShell=await page.evaluate(async path=>{
+    const response=await fetch(path,{cache:"no-store"});
+    const source=await response.text();
+    return{ok:response.ok,hasInteractionModel:source.includes("JIHANKI_INTERACTION")};
+  },"js/interaction-model.js");
+  assert(firstVisitShell.ok&&firstVisitShell.hasInteractionModel,
+    "pre-cached shell script unavailable offline on the first controlled visit");
+  await context.setOffline(false);
   await page.reload({waitUntil:"domcontentloaded"});
   await page.waitForFunction(()=>!!navigator.serviceWorker.controller);
   const markdownPath=await page.evaluate(()=>{
