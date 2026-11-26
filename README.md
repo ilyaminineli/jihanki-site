@@ -31,7 +31,7 @@ documents/notes/first-jihanki.md
 **JIHANKI — Interactive Archive**  
 Concept, archive, interface, documentation and development: **Ilya Minin (Eli)**  
 Origin / field experience: **SAIKONEON, Lake Saiko, Japan**  
-Japan stay / shared field experience: **Julia Baranyuk**
+Japan stay / shared field experience: **Takismana**
 
 ## Features
 
