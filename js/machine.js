@@ -48,7 +48,7 @@
     const transaction = interactionState.transaction;
     if (!transaction?.receiptCode || !["dispensed", "receipt-saved", "receipt-printed"].includes(transaction.status)) return "";
     const label = transaction.status === "receipt-saved" ? "RECEIPT SAVED" :
-      transaction.status === "receipt-printed" ? "RECEIPT PRINTED" : "MEMORY DISPENSED / RECEIPT CREATED";
+      transaction.status === "print-dialog-opened" ? "PRINT DIALOG OPENED" : "MEMORY DISPENSED / RECEIPT CREATED";
     return '<div class="transaction-confirmation" role="status" aria-live="polite" data-transaction-confirmation>' +
       label + ' / ' + esc(transaction.receiptCode) + '</div>';
   }
@@ -57,7 +57,7 @@
     if (!target) return;
     const transaction = interactionState.transaction;
     target.textContent = (transaction.status === "receipt-saved" ? "RECEIPT SAVED" :
-      transaction.status === "receipt-printed" ? "RECEIPT PRINTED" : "MEMORY DISPENSED / RECEIPT CREATED") +
+      transaction.status === "print-dialog-opened" ? "PRINT DIALOG OPENED" : "MEMORY DISPENSED / RECEIPT CREATED") +
       " / " + transaction.receiptCode;
   }
   function updateCreditDisplay() {
@@ -1024,11 +1024,11 @@
   });
   window.addEventListener("jihanki:receipt-printed", event => {
     const code = event.detail?.receiptCode;
-    const outcome = applyTransition("RECEIPT_PRINTED", { receiptCode: code });
+    const outcome = applyTransition("RECEIPT_PRINT_DIALOG_OPENED", { receiptCode: code });
     if (outcome.accepted) {
-      window.JIHANKI_EVENTS.record("receipt-print-confirmed", { code });
+      window.JIHANKI_EVENTS.record("receipt-print-dialog-opened", { code });
       refreshTransactionConfirmation();
-      announce("Receipt sent to printer: " + code + ".");
+      announce("Receipt print dialog opened: " + code + ".");
     }
   });
 
