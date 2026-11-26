@@ -201,7 +201,7 @@ try{
     assert(await firstInstallAudio.evaluate(audio=>audio.loop===false),
       device.name+": loop checkbox did not update the live audio element");
     const firstInstallVolume=firstInstallRow.locator("[data-install-volume]");
-    await firstInstallVolume.fill("0");
+    await firstInstallVolume.evaluate(input=>{input.value="0";input.dispatchEvent(new Event("input",{bubbles:true}));});
     assert(await firstInstallAudio.evaluate(audio=>audio.volume===0),
       device.name+": volume slider did not update immediately");
     // Restart reconciles all rows and must not resurrect a removed source.
@@ -213,7 +213,8 @@ try{
       device.name+": restart reintroduced a source that is unchecked");
     await page.locator('[data-install-action="stop"]').click();
     soundState=await page.evaluate(()=>window.JIHANKI_SOUNDSCAPE.getState(document.querySelector(".sound-installation")));
-    assert(!soundState.running&&await installRows.locator("audio:not(:paused)").count()===0,
+    const everyTrackPaused=await installRows.locator("audio").evaluateAll(audios=>audios.every(audio=>audio.paused));
+    assert(!soundState.running&&everyTrackPaused,
       device.name+": STOP did not pause every installation layer");
     await page.keyboard.press("Escape");
 
