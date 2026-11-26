@@ -30,7 +30,7 @@ try {
 
   const result = validateMarkdownRepository(root);
   assert(result.files === 2, "Expected to scan both Markdown fixture files");
-  assert(result.issues.some(issue => issue.includes("absent.png")), "Missing image link was not detected");
+  assert(result.issues.some(issue => issue.includes("missing.png")), "Missing image link was not detected");
   assert(result.issues.some(issue => issue.includes("absent.md")), "Missing Markdown link was not detected");
   assert(result.issues.some(issue => issue.includes("does-not-exist")), "Missing anchor was not detected");
   assert(!result.issues.some(issue => issue.includes("valid") || issue.includes("duplicate heading") || issue.includes("html anchor")),
