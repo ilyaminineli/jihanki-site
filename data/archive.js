@@ -1208,7 +1208,7 @@ const ARCHIVE = {
       "category": "performance",
       "author": "takismana",
       "group": "DANCE / MOVEMENT STUDIES",
-      "file": "media/video/julia_dances/IMG_2492.mp4",
+      "file": "media/video/julia_dances/julia_dance_1.mp4",
       "description": "A short performance fragment from the Japan trip. Individual location and context are left open until the clip is reviewed."
     },
     {
@@ -1219,7 +1219,7 @@ const ARCHIVE = {
       "category": "performance",
       "author": "takismana",
       "group": "DANCE / MOVEMENT STUDIES",
-      "file": "media/video/julia_dances/IMG_6012.mp4",
+      "file": "media/video/julia_dances/julia_dance_2.mp4",
       "description": "A short performance fragment from the Japan trip. Individual location and context are left open until the clip is reviewed."
     },
     {
@@ -1230,7 +1230,7 @@ const ARCHIVE = {
       "category": "performance",
       "author": "takismana",
       "group": "DANCE / MOVEMENT STUDIES",
-      "file": "media/video/julia_dances/IMG_8574.mp4",
+      "file": "media/video/julia_dances/julia_dance_3.mp4",
       "description": "A short performance fragment from the Japan trip. Individual location and context are left open until the clip is reviewed."
     },
     {
@@ -1241,7 +1241,7 @@ const ARCHIVE = {
       "category": "performance",
       "author": "takismana",
       "group": "DANCE / MOVEMENT STUDIES",
-      "file": "media/video/julia_dances/IMG_9803.mp4",
+      "file": "media/video/julia_dances/julia_dance_4.mp4",
       "description": "A short performance fragment from the Japan trip. Individual location and context are left open until the clip is reviewed."
     }
   ]
