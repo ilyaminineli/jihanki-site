@@ -131,6 +131,31 @@
     }
   }
 
+  function bind(root) {
+    rows(root).forEach(row => {
+      const audio=row.querySelector("audio");
+      if (!audio || audio.dataset.installBound === "true") return;
+      audio.dataset.installBound = "true";
+      audio.addEventListener("ended",() => {
+        const state=runtime(root);
+        state.active.delete(row.dataset.installTrack);
+        row.dataset.installPlaying="false";
+        const indicator=row.querySelector("[data-install-track-status]");
+        if(indicator)indicator.textContent="ENDED";
+        updateStatus(root);
+      });
+      audio.addEventListener("error",() => {
+        const state=runtime(root);
+        state.active.delete(row.dataset.installTrack);
+        state.failed.add(row.dataset.installTrack);
+        row.dataset.installPlaying="false";
+        const indicator=row.querySelector("[data-install-track-status]");
+        if(indicator)indicator.textContent="FILE ERROR";
+        updateStatus(root);
+      });
+    });
+  }
+
   function render() {
     const list = tracks();
     const selected = new Set(list.slice(0,Math.min(3,list.length)).map(item => item.id));
@@ -235,5 +260,5 @@
     };
   }
 
-  window.JIHANKI_SOUNDSCAPE = {render,start,stop,dispose,setSelection,setLoop,setVolume,getState,tracks};
+  window.JIHANKI_SOUNDSCAPE = {render,bind,start,stop,dispose,setSelection,setLoop,setVolume,getState,tracks};
 })();
