@@ -23,8 +23,8 @@
     PURCHASE_COMPLETE: { from: ["pending"], transaction: "dispensed" },
     PURCHASE_ABORT: { from: ["pending"], transaction: "failed", refundsReservedCredit: true },
     RECOVER: { from: "*", transaction: "failed", refundsPendingCredit: true },
-    RECEIPT_SAVED: { from: ["dispensed", "print-dialog-opened"], transaction: "receipt-saved" },
-    RECEIPT_PRINT_DIALOG_OPENED: { from: ["dispensed", "receipt-saved"], transaction: "print-dialog-opened" }
+    RECEIPT_SAVED: { from: ["dispensed", "print-dialog-opened", "receipt-saved"], transaction: "receipt-saved" },
+    RECEIPT_PRINT_DIALOG_OPENED: { from: ["dispensed", "receipt-saved", "print-dialog-opened"], transaction: "print-dialog-opened" }
   });
 
   function createState() {
@@ -174,7 +174,7 @@
       case "RECEIPT_SAVED":
       case "RECEIPT_PRINT_DIALOG_OPENED": {
         const allowed = event === "RECEIPT_SAVED"
-          ? ["dispensed", "print-dialog-opened"] : ["dispensed", "receipt-saved"];
+          ? ["dispensed", "print-dialog-opened", "receipt-saved"] : ["dispensed", "receipt-saved", "print-dialog-opened"];
         if (!allowed.includes(state.transaction.status) ||
             !payload.receiptCode || String(payload.receiptCode) !== state.transaction.receiptCode) {
           return result(state, false, "receipt-does-not-match-current-transaction");
