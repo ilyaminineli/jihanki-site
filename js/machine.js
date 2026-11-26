@@ -219,6 +219,7 @@
     artifactRenderToken += 1; activeArtifact = null; lastFocusedElement = document.activeElement;
     artifactContent.innerHTML = '<div class="exploration-panel"><div class="exploration-heading"><span>JHK / ARCHIVE INTERFACE</span><h1>' +
       esc(title) + '</h1></div>' + content + '</div>';
+    artifactContent.querySelectorAll("img").forEach(bindImageFallback);
     artifact.classList.add("open"); artifact.setAttribute("aria-hidden", "false");
     artifactClose?.focus(); announce(title + " opened.");
   }
@@ -324,17 +325,37 @@
   }
 
   function bindImageFallback(image) {
-    if (!image) return;
-    const original = image.getAttribute("src") || "";
+    if (!image || image.dataset.imageFallbackBound === "1") return;
+    image.dataset.imageFallbackBound = "1";
+    const original = image.dataset.originalSrc || image.getAttribute("src") || "";
     image.dataset.originalSrc = original;
-    const status = image.closest("figure")?.querySelector(".artifact-media-status");
+    const host = image.closest("figure, .markdown-image-frame, .temporal-record-media");
+    let status = host?.querySelector(".artifact-media-status");
+    if (!status && host) {
+      status = document.createElement("span");
+      status.className = "artifact-media-status";
+      status.setAttribute("role", "status");
+      status.setAttribute("aria-live", "polite");
+      host.append(status);
+    }
+    if (status && host?.classList.contains("temporal-record-media")) {
+      status.classList.add("temporal-image-status");
+    }
     image.addEventListener("error", () => {
-      if (!image.dataset.placeholderTried && original !== "assets/placeholder.png") {
+      if (!image.dataset.placeholderTried && !/\/assets\/placeholder\.png(?:[?#]|$)/.test(original)) {
         image.dataset.placeholderTried = "1";
         if (status) status.textContent = "IMAGE UNAVAILABLE / SHOWING ARCHIVE PLACEHOLDER";
-        image.src = "assets/placeholder.png";
+        image.src = new URL("assets/placeholder.png", document.baseURI).href;
       } else if (status) {
-        status.innerHTML = 'IMAGE AND PLACEHOLDER UNAVAILABLE. <button type="button" data-media-retry>RETRY ORIGINAL</button>';
+        status.textContent = "IMAGE AND PLACEHOLDER UNAVAILABLE";
+        // Chronology thumbnails are inside their archive-opening button; do not create nested controls.
+        if (!image.closest("button") && !status.querySelector("[data-media-retry]")) {
+          const retry = document.createElement("button");
+          retry.type = "button";
+          retry.dataset.mediaRetry = "";
+          retry.textContent = "RETRY ORIGINAL";
+          status.append(" ", retry);
+        }
       }
     });
     image.addEventListener("load", () => {
@@ -387,7 +408,7 @@
         if (renderToken !== artifactRenderToken || !artifact.classList.contains("open")) return;
         const base = new URL("./", new URL(file, location.href)).href;
         body.innerHTML = coverHTML + '<div class="artifact-text markdown-rendered">' + window.JIHANKI_MARKDOWN.render(markdown, base) + '</div>';
-        bindImageFallback(body.querySelector(".project-cover"));
+        body.querySelectorAll("img").forEach(bindImageFallback);
         window.JIHANKI_AUDIO.bindMedia(body);
         return;
       } catch (error) {
@@ -857,13 +878,16 @@
     }
     const retry = event.target.closest("[data-media-retry]");
     if (retry) {
-      const failedImage = artifactContent.querySelector("#artifact-body img.artifact-media");
+      const imageHost = retry.closest("figure, .markdown-image-frame, .temporal-record-media");
+      const failedImage = imageHost?.querySelector("img") || artifactContent.querySelector("#artifact-body img");
       const failedMedia = artifactContent.querySelector("#artifact-body audio, #artifact-body video");
       if (failedImage) {
         const base = failedImage.dataset.originalSrc || failedImage.getAttribute("src").split(/[?#]/)[0];
+        const retryURL = new URL(base, document.baseURI);
+        retryURL.searchParams.set("retry", String(Date.now()));
         delete failedImage.dataset.placeholderTried;
-        failedImage.src = base + (base.includes("?") ? "&" : "?") + "retry=" + Date.now();
-        const status = artifactContent.querySelector(".artifact-media-status");
+        failedImage.src = retryURL.href;
+        const status = imageHost?.querySelector(".artifact-media-status") || retry.closest(".artifact-media-status");
         if (status) status.textContent = "RETRYING IMAGE LOAD…";
       } else if (failedMedia) {
         failedMedia.load();
@@ -1034,8 +1058,22 @@
 
   document.addEventListener("keydown", event => {
     if (artifact.classList.contains("open") && event.key === "Tab") {
-      const focusable = [...artifact.querySelectorAll('button:not([disabled]),a[href],[tabindex]:not([tabindex="-1"])')]
-        .filter(node => node.getClientRects().length > 0);
+      const focusable = [...artifact.querySelectorAll([
+        'a[href]',
+        'area[href]',
+        'button:not([disabled])',
+        'input:not([disabled]):not([type="hidden"])',
+        'select:not([disabled])',
+        'textarea:not([disabled])',
+        'audio[controls]',
+        'video[controls]',
+        '[contenteditable="true"]',
+        '[tabindex]:not([tabindex="-1"])'
+      ].join(","))]
+        .filter(node => node.getClientRects().length > 0 &&
+          getComputedStyle(node).visibility !== "hidden" &&
+          !node.closest("[inert]") &&
+          node.getAttribute("aria-hidden") !== "true");
       if (focusable.length) {
         const first = focusable[0], last = focusable[focusable.length - 1];
         if (event.shiftKey && (document.activeElement === first || !artifact.contains(document.activeElement))) {
