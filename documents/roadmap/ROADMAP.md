@@ -91,33 +91,44 @@ This milestone does not author, transcode or replace the user's source videos. T
 
 # M37 — Archive schema and automated validation
 
-**Status:** Partial — type-aware contracts, valid/invalid fixtures and full CI verification implemented; Markdown-link validation remains  
+**Status:** Implemented — typed contracts, fixture coverage, Markdown link/anchor checks and exact media-manifest validation verified in CI  
 **Depends on:** M25–M34; supports every future content milestone.
 
 ## Goal
 
 Make the archive a trustworthy source of truth. New records should fail validation before they become broken visitor experiences.
 
-## Baseline changes
+## Implemented validation
 
-- Add a dependency-free Node.js validator.
-- Check required fields, type-aware media/document fields, optional voice/date/stock/metadata shapes, unique IDs, category mapping, stock status, local paths, curated relationship targets, duplicate HTML IDs and runtime script paths.
-- Run the validator automatically in GitHub Actions for relevant pushes and pull requests.
-- Correct the README authoring example to use the file property, not the unsupported textFile property.
+- Maintain type-aware record contracts for video, image, voicebank, project, audio and text records, including performance-category video records.
+- Validate required type-specific media fields, optional date/voice/URL/stock/metadata shapes, stable IDs, physical category mapping, stock states, local paths and curated relationship targets.
+- Validate relative Markdown links, image links and local HTML `href`/`src` attributes throughout the repository.
+- Validate target files and directory indexes, Markdown heading anchors (including duplicate heading slugs) and HTML `id`/`name` fragments.
+- Match the repository's GitHub-style em-dash heading anchors rather than forcing documentation URL changes.
+- Compare the media manifest against the exact set of files under `media/`: detect unlisted files, stale entries, duplicate/non-canonical paths, symbolic links, invalid sizes and invalid/mismatched Git blob SHA-1 fingerprints.
+- Validate archive `file` and `image` references against that manifest.
+- Run schema, interaction, Markdown and media-manifest fixtures, then the full validator, in GitHub Actions for relevant pushes and pull requests.
+- Keep the README authoring example aligned with the actual `file` property.
 
-## Remaining scope
+## Validation modules
+
+- `scripts/archive-schema.mjs` — per-type source record contract.
+- `scripts/markdown-links.mjs` — repository Markdown destinations and anchors.
+- `scripts/media-manifest.mjs` — exact media inventory and fingerprints.
+- `scripts/validate-archive.mjs` — live repository integration check.
+- `scripts/test-archive-schema.mjs`, `scripts/test-markdown-links.mjs`, and `scripts/test-media-manifest.mjs` — fixtures for valid and invalid input.
+
+## Remaining long-horizon scope
 
 1. Move all content records and pending records into the archive data source; runtime modules should not invent or migrate editorial content.
-2. Extend the documented contracts to any new record types introduced by future archive work.
-3. Add checks for Markdown relative links and retain media-manifest consistency coverage.
-4. Expand fixtures whenever fields or types are added or migrated.
-6. Keep migration scripts explicit, versioned and removable after migration.
+2. Extend the documented contracts and fixture set deliberately whenever new record types or fields are introduced.
+3. Keep migration scripts explicit, versioned and removable after migration.
 
 ## Acceptance criteria
 
-- The archive source contains every visitor-facing record.
-- Runtime modules never add, rename or delete editorial records.
-- Invalid IDs, categories, stock states, relationships and local paths fail CI.
+- Invalid IDs, categories, stock states, type-specific fields, relationships and local paths fail CI.
+- Every repository-relative Markdown link/image target resolves; every local Markdown or HTML fragment exists.
+- The media manifest exactly covers the media directory, and every listed file matches its byte size and Git blob fingerprint.
 - Each record type has a clear contract and a useful validation message.
 - The README and data guide show examples that match the actual renderer.
 
