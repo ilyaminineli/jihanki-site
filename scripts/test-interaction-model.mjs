@@ -73,6 +73,8 @@ assert.equal(state.transaction.status, "receipt-saved");
 ok(step(state, "RECEIPT_PRINT_DIALOG_OPENED", { receiptCode: "JHK-A" }));
 state = step(state, "RECEIPT_PRINT_DIALOG_OPENED", { receiptCode: "JHK-A" }).state;
 assert.equal(state.transaction.status, "print-dialog-opened");
+ok(step(state, "RECEIPT_SAVED", { receiptCode: "JHK-A" }));
+ok(step(state, "RECEIPT_PRINT_DIALOG_OPENED", { receiptCode: "JHK-A" }));
 
 state = model.createState();
 state = step(state, "INSERT_CREDIT").state;
