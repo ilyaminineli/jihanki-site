@@ -94,6 +94,8 @@ try{
     assert(await page.locator("#credit-display [data-credit-token]").count()===0,
       device.name+": the final credit token remained after dispensing");
     await page.keyboard.press("Escape");
+    await page.locator("#home-button").click();
+    await page.locator('[data-home-action="temporal"]').waitFor();
     // M50 is a static catalogue view: every source record appears once in the chronology,
     // while the visitor-local clock is presentation-only and creates no persistent state.
     const temporalStateBefore=await page.evaluate(()=>({keys:Object.keys(localStorage).sort().join("|"),events:window.JIHANKI_EVENTS.count()}));
