@@ -1153,6 +1153,18 @@ const ARCHIVE = {
       "description": "Notes on the archive's catalogue and rotation."
     }
   ],
+    {
+      "id": "daily-2026-08-18",
+      "title": "LAST MORNING ON THE BOARDS",
+      "date": "2026-08-18",
+      "type": "text",
+      "category": "notes",
+      "author": "archive",
+      "project": "japan-expedition",
+      "group": "DAILY EXPEDITION",
+      "description": "A closing field fragment about the recurring morning dance on the residency's wooden boards.",
+      "file": "documents/notes/daily/2026-08-18.md"
+    },
   "text": [
     {
       "id": "fuji-six-yokai-script",
