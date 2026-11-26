@@ -66,22 +66,54 @@ try{
     await page.locator(".temporal-archive").waitFor();
     const temporalView=await page.evaluate(()=>({
       records:document.querySelectorAll(".temporal-year [data-temporal-open],.temporal-unplaced [data-temporal-open]").length,
+      images:document.querySelectorAll(".temporal-year .temporal-record--image img").length,
       phase:document.querySelector(".temporal-now>strong")?.textContent||"",
-      localNote:document.querySelector(".temporal-now small")?.textContent||""
+      localNote:document.querySelector(".temporal-now small")?.textContent||"",
+      title:document.querySelector(".temporal-wordmark")?.textContent?.trim()||"",
+      nav:[...document.querySelectorAll(".temporal-nav button")].map(button=>button.textContent.trim())
     }));
     assert(temporalView.records===temporalStats.total,device.name+": chronology does not expose every record");
+    assert(temporalView.images===temporalStats.images,device.name+": contact sheet omitted source imagery");
+    assert(temporalView.title==="ARCHIVIO",device.name+": archival masthead missing");
+    assert(temporalView.nav.join("|").includes("MAPPA")&&temporalView.nav.join("|").includes("RANDOM")&&
+      temporalView.nav.join("|").includes("TIMELINE"),device.name+": archive navigation incomplete");
     assert(["DAWN","MORNING","AFTERNOON","DAY","EVENING","NIGHT"].includes(temporalView.phase),
       device.name+": visitor-local time phase missing");
-    assert(temporalView.localNote.includes("NOT SENT"),device.name+": local-time privacy note missing");
+    assert(temporalView.localNote.includes("NOT TRANSMITTED"),device.name+": local-time privacy note missing");
     const localKeysAfter=await page.evaluate(()=>Object.keys(localStorage).sort().join("|"));
     assert(localKeysBefore===localKeysAfter,device.name+": opening temporal archive created persistent visitor state");
+    const temporalImagePaths=await page.evaluate(()=>[...document.querySelectorAll(".temporal-year .temporal-record--image img")]
+      .map(image=>image.getAttribute("src")));
+    assert(temporalImagePaths.every(source=>source&&source.startsWith("media/")&&!source.includes("..")),
+      device.name+": contact sheet contains a remote or invalid image source");
+    for(const source of temporalImagePaths){
+      const resolved=path.resolve(ROOT,decodeURIComponent(source));
+      assert(resolved.startsWith(ROOT+path.sep),device.name+": contact-sheet image escaped the archive root");
+      await stat(resolved);
+    }
+    await mkdir(path.join(ROOT,"test-results"),{recursive:true});
+    await page.screenshot({path:path.join(ROOT,"test-results","temporal-"+device.name+".png"),fullPage:true});
+    await page.locator("[data-temporal-scroll]").click();
+    assert(await page.locator("#temporal-timeline").count()===1,device.name+": TIMELINE anchor missing");
     const firstTemporalRecord=page.locator(".temporal-year [data-temporal-open]").first();
     await firstTemporalRecord.waitFor();
     const expectedTemporalTitle=await firstTemporalRecord.locator("strong").textContent();
     await firstTemporalRecord.click();
-    await page.locator("#artifact-title, .artifact-title").first().waitFor();
+    await page.locator(".artifact-title").waitFor();
     assert((await page.locator(".artifact-title").textContent()).trim()===expectedTemporalTitle.trim(),
       device.name+": chronology opened a different source memory");
+    await page.keyboard.press("Escape");
+
+    // RANDOM and MAPPA navigate to existing machine views; neither adds temporal state.
+    await page.locator('[data-home-action="temporal"]').click();
+    await page.locator("[data-temporal-random]").click();
+    await page.locator(".artifact-title").waitFor();
+    assert((await page.locator(".artifact-title").textContent()).trim().length>0,
+      device.name+": RANDOM did not open an archive record");
+    await page.keyboard.press("Escape");
+    await page.locator('[data-home-action="temporal"]').click();
+    await page.locator("[data-temporal-map]").click();
+    await page.locator(".memory-map-panel").waitFor();
     await page.keyboard.press("Escape");
 
     await page.locator('[data-home-action="map"]').click();
