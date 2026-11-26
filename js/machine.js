@@ -32,17 +32,16 @@
   }
   function applyTransition(eventName, payload = {}) {
     const outcome = interactionModel.transition(interactionState, eventName, payload);
-    if (!outcome.accepted) {
-      window.JIHANKI_EVENTS?.record("machine-transition-rejected", {
-        event: eventName, reason: outcome.reason, view: interactionState.view,
-        overlay: interactionState.overlay
-      });
-      return outcome;
-    }
     interactionState = outcome.state;
     credits = interactionState.credits;
     selectedId = interactionState.selectedId;
     currentView = interactionState.view;
+    if (!outcome.accepted) {
+      window.JIHANKI_EVENTS?.record("machine-transition-rejected", {
+        event: eventName, reason: outcome.reason, view: currentView,
+        overlay: interactionState.overlay
+      });
+    }
     return outcome;
   }
   function transactionConfirmationMarkup() {
