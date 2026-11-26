@@ -253,6 +253,10 @@ Let the machine's available fragments and tone shift with local time and the arc
 5. Keep the implementation static and browser-local, without network calls, cookies, local storage or visitor profiles.
 6. Keep every archive record reachable and preserve the original category selectors and archive rotation.
 
+### Visual direction
+
+The TIME ARCHIVE uses a monochrome editorial index inspired by the structure of documentary contact sheets: an oversized outlined ARCHIVIO masthead, compact MAPPA / RANDOM / TIMELINE navigation, year anchors, month labels and a tiled image/text register. It uses only image files already referenced by the JIHANKI catalogue; it does not import photographs from the visual reference. Image cards are grayscale in the index and open the original archive records. The layout collapses to a two-column contact sheet and then a single-column lead panel on narrow screens.
+
 ### Implemented behaviour
 - A TIME ARCHIVE action opens the complete newest-first chronology, grouped by year and month.
 - The visitor-local hour, constrained by its day-part, selects one existing catalogue fragment as an hourly echo. The interface explicitly states that this does not imply the work was originally recorded at that hour.
