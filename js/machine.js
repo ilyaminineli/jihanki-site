@@ -133,6 +133,7 @@
     const machineLine = window.JIHANKI_PERSONALITY?.homeLine() || "SELECT A MEMORY";
     screen.innerHTML = '<div class="boot"><div class="boot-japanese">自販機</div><div class="boot-title">JIHANKI</div><div class="boot-subtitle">MEMORY ARCHIVE</div><div class="boot-loading">' + esc(machineLine) + '</div>' +
       '<div class="home-actions"><button type="button" data-home-action="rotation">ROTATION / ' + rotation.items.length + '</button>' +
+      '<button type="button" data-home-action="temporal">TIME ARCHIVE</button>' +
       '<button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button>' +
       '<button type="button" data-home-action="map">MEMORY MAP</button><button type="button" data-home-action="search">SEARCH</button>' +
       '<button type="button" data-home-action="installation">SOUND LAB</button>' +
@@ -188,6 +189,12 @@
       '<div class="personality-actions"><p>THIS MEMORY IS STORED ONLY IN THIS BROWSER.</p>' +
       '<button type="button" data-personality-reset>RESET MACHINE MEMORY</button></div>';
     openSystemPanel("MACHINE MEMORY", content);
+  }
+
+  function openTemporalArchive() {
+    if (!window.JIHANKI_TEMPORAL) return;
+    openSystemPanel("TEMPORAL ARCHIVE", window.JIHANKI_TEMPORAL.render(), "rotation");
+    currentView = "temporal";
   }
 
   function stockTag(item) {
@@ -693,6 +700,8 @@
   document.getElementById("artifact-close").addEventListener("click", closeArtifact);
   artifact.addEventListener("click", event => { if (event.target === artifact) closeArtifact(); });
   artifactContent.addEventListener("click", event => {
+    const temporalOpen = event.target.closest("[data-temporal-open]");
+    if (temporalOpen) { const item = byId(temporalOpen.dataset.temporalOpen); if (item) openItem(item); return; }
     const museumTabButton = event.target.closest("[data-museum-tab]");
     if (museumTabButton) { openMuseum(museumTabButton.dataset.museumTab); return; }
     const museumOpen = event.target.closest("[data-museum-open]");
@@ -860,6 +869,7 @@
     if (homeAction) {
       const action = homeAction.dataset.homeAction;
       if (action === "rotation") { showRotation(); return; }
+      if (action === "temporal") { openTemporalArchive(); return; }
       if (action === "collection") { showCollection(); return; }
       if (action === "map") { openMap("geography"); return; }
       if (action === "search") { openSearch(); return; }
@@ -949,7 +959,7 @@
 
   window.JIHANKI_MACHINE = {
     openItem, purchase, dispense, showCategory, showLocation, showRotation, showCollection,
-    openSearch, openMap, openArchaeology, openSoundscape, openMachineMemory, openMuseum,
+    openSearch, openMap, openArchaeology, openSoundscape, openMachineMemory, openMuseum, openTemporalArchive,
     getState() { return { credits, selectedId, activeCategory, currentView, maintenanceActive, ambient: window.JIHANKI_AUDIO.getState() }; }
   };
   window.JIHANKI_EVENTS.record("machine-booted", { items: allItems().length });
