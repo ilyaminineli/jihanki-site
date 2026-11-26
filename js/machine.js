@@ -829,6 +829,8 @@
   });
 
   artifactContent.addEventListener("change", async event => {
+    if (event.target.matches("[data-install-select]")) { window.JIHANKI_SOUNDSCAPE.setSelection(event.target); return; }
+    if (event.target.matches("[data-install-loop]")) { window.JIHANKI_SOUNDSCAPE.setLoop(event.target); return; }
     if (event.target.id === "museum-category" || event.target.id === "museum-sort") {
       const query = artifactContent.querySelector("#museum-search")?.value || "";
       const category = artifactContent.querySelector("#museum-category")?.value || "all";
