@@ -55,6 +55,18 @@ try{
     assert(geometry.canvas.x>=-1&&geometry.canvas.right<=device.width+1,device.name+": machine clipped horizontally");
     assert(geometry.coin.width>=43&&geometry.coin.height>=43,device.name+": COIN hit target too small");
     assert(geometry.home.width>=43&&geometry.home.height>=43,device.name+": HOME hit target too small");
+    const homeHierarchy=await page.evaluate(()=>({
+      soundLab:document.querySelector(".home-primary [data-home-action='installation']")?.textContent.trim()||"",
+      collection:!!document.querySelector(".home-actions [data-home-action='collection']"),
+      map:!!document.querySelector(".home-actions [data-home-action='map']"),
+      search:!!document.querySelector(".home-actions [data-home-action='search']"),
+      chronology:document.querySelector(".home-archive-tools [data-home-action='temporal']")?.textContent.trim()||"",
+      machineMemory:!!document.querySelector('[data-home-action="personality"]')
+    }));
+    assert(homeHierarchy.soundLab.includes("SOUND LAB")&&homeHierarchy.collection&&homeHierarchy.map&&homeHierarchy.search,
+      device.name+": main home-screen tools are incomplete");
+    assert(homeHierarchy.chronology==="CHRONOLOGY"&&!homeHierarchy.machineMemory,
+      device.name+": home-screen archive/memory hierarchy was not simplified");
     const widthScale=Math.min(device.width/429,1);
     const fitScale=Math.min(widthScale,device.height/932,1);
     const shouldScroll=(device.width<=560||(device.width>device.height&&device.height<620))&&
@@ -226,6 +238,13 @@ try{
     });
     await page.locator('[data-home-action="collection"]').click();
     await page.locator('[data-museum-tab="overview"]').waitFor();
+    assert(await page.locator(".museum-trail-preview [data-museum-tab='trail']").count()===1,
+      device.name+": Collection overview does not expose the unified Visit Trail");
+    assert(await page.locator(".museum-content .museum-row").count()===0,
+      device.name+": duplicate recent-visit list remains on Collection overview");
+    await page.locator('[data-museum-tab="trail"]').click();
+    assert(await page.locator(".museum-row").count()===1,
+      device.name+": Visit Trail is not available as the single history view");
     await page.locator('[data-museum-tab="works"]').click();
     const firstWork=page.locator("[data-museum-open]").first();
     await firstWork.waitFor();
