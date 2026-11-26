@@ -75,12 +75,15 @@ function slugifyHeading(text) {
     .replace(/<[^>]*>/g, "")
     .replace(/!\[([^\]]*)\]\([^)]*\)/g, "$1")
     .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    // GitHub preserves the spaced em-dash heading separator as a double hyphen.
+    .replace(/\s+—\s+/g, "--")
     .replace(/[*_~`]/g, "")
     .trim().toLowerCase()
     .replace(/&[a-z0-9#]+;/gi, "")
     .replace(/[^\p{L}\p{N}\s-]/gu, "")
     .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
+    .replace(/-{3,}/g, "--")
+    .replace(/-+/g, "-".repeat(1));
 }
 
 export function markdownAnchors(source) {
