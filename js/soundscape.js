@@ -120,8 +120,9 @@
     try {
       const promise = audio.play();
       if (promise && typeof promise.then === "function") await promise;
-      if (meta.generation !== token || !state.running || state.generation !== runGeneration ||
-          !selector.checked) {
+      // A stale play promise must never pause a newer play attempt on this same element.
+      if (meta.generation !== token) return false;
+      if (!state.running || state.generation !== runGeneration || !selector.checked) {
         try { audio.pause(); } catch (_) { }
         return false;
       }
