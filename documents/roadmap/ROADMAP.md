@@ -1,37 +1,53 @@
 # M35 — Machine interaction integrity
 
-**Status:** Partial — viewer-safe transaction feedback and regression coverage implemented; transition matrix remains open  
+**Status:** Implemented — explicit state model, transaction outcomes and regression coverage verified in CI  
 **Depends on:** M25–M34.
 
 ## Goal
 
 Make every machine interaction legible and reversible. A visitor should always understand the current screen, credit balance, selected memory and next available action.
 
-## Baseline changes
+## Interaction model
+
+The transition authority is `js/interaction-model.js`; `js/machine.js` remains responsible for rendering and effects. The model stores the active view, overlay, selected record, credit balance, pending-purchase flag, last transaction outcome and a monotonically increasing revision.
+
+| Event family | Accepted transition | Rejected / recovery behaviour |
+| --- | --- | --- |
+| Boot and navigation | Home, category, location, rotation and service each enter a named view | Navigation to home/service recovers and refunds any still-pending reserved credit |
+| Panels and records | Search/map/chronology/collection panels use the panel overlay; archive memories use the record overlay | Closing an overlay preserves the underlying view and selected record |
+| Credit | Insert one credit, up to a maximum of nine | Credit-limit rejection does not increase the balance |
+| Purchase attempt | Validate live-catalogue membership, stock and available credit; reserve one credit and enter a single-flight pending state | No credit, sold-out, restocking, archived and out-of-catalogue attempts preserve balance and selection; a second concurrent purchase is rejected |
+| Purchase completion | Match the pending record and create its receipt identity before moving to dispensed | A mismatched completion is rejected; a failed commit aborts and refunds the reserved credit |
+| Receipt actions | Track receipt download initiation and print-dialog opening against the exact receipt code | Repeated download/print actions are idempotent; a mismatched receipt code is rejected |
+
+Transaction statuses include `credit-accepted`, `blocked`, `pending`, `dispensed`, `failed`, `receipt-download-started` and `print-dialog-opened`. The interface deliberately says “RECEIPT DOWNLOAD STARTED” and “PRINT DIALOG OPENED”: the browser does not expose proof that a visitor retained a downloaded file or completed printing.
+
+## Implemented behaviour
 
 - Keep the credit balance visible in the CRT and memory viewer.
-- Allow one credit to be inserted from the open memory viewer, so the visitor does not have to close the viewer to reach the physical COIN control.
-- Keep insufficient-credit feedback inside the viewer instead of writing it to the obscured CRT.
-- Keep stock, catalogue and credit failure feedback inside the active viewer; a rejected transaction must preserve the credit and selected memory.
-- Track the actual machine view (idle, category, location, rotation, collection, service) and restore the matching ambient profile after closing a memory.
-- Ignore stale asynchronous Markdown responses after another memory has been opened or the viewer has closed.
+- Allow one credit to be inserted from the open memory viewer.
+- Keep insufficient-credit, stock, catalogue and transaction-failure feedback inside the active viewer rather than writing it behind the modal.
+- Preserve the selected record and remaining credit after rejected purchases.
+- Route view and overlay changes through one transition model.
+- Make purchases single-flight; reserve a credit before writing the receipt/collection and refund it on failure or interrupted recovery.
+- Bind receipt outcomes to the current receipt code and distinguish download initiation from print-dialog opening.
+- Ignore stale asynchronous Markdown success *and failure* responses after another record has been opened or the viewer has closed.
+- Keep the transition model in the offline shell cache.
 
-## Remaining scope
+## Verification
 
-1. Define one explicit interaction transition table for boot, browse, select, insert credit, dispense, read, close, service and recovery.
-2. Make repeated coin presses, rapid item changes and simultaneous media playback deterministic.
-3. Ensure every failed transaction preserves the selected item and remaining credit.
-4. Add a small transaction confirmation state that distinguishes credit accepted, memory dispensed and receipt saved.
-5. Add interaction tests for each transition, including no-credit, sold-out, archived and restocking records.
+- `scripts/test-interaction-model.mjs` covers views, overlays, credit limit, no-credit, sold-out, restocking, archived and out-of-catalogue rejection, single-flight attempts, mismatched completion, rollback, recovery and receipt outcomes.
+- The Playwright suite covers viewer-safe rejected purchases, receipt creation/download status, no-credit retries, rapid audio source changes and a delayed Markdown failure race.
+- GitHub Actions runs both suites together with the six-viewport and offline-recovery regression suite.
 
 ## Acceptance criteria
 
 - No visible action produces feedback behind an open modal.
 - A memory can be purchased without losing the selected record.
 - Credit counts never become negative and remain consistent across screen changes.
-- Closing a memory restores the precise screen and ambient state from which it was opened.
+- Closing a memory restores the underlying view and releases its overlay.
 - A slow document response cannot replace the content of a newer selection.
-- Every transaction has one unambiguous outcome and a corresponding receipt or failure event.
+- Every rejected purchase has one explicit failure outcome; every completed purchase has one receipt identity and a deterministic transaction state.
 
 # M36 — Media delivery and preservation
 
