@@ -83,7 +83,7 @@
 
 This work is an experimental music video based on the famous poem “Higanbana” (lyrics by Kitahara Hakushu, from the collection *Memories*, 1911).
 
-The music is based on the traditional Japanese pentatonic scale known as In-sen (陰旋法), which creates a unique atmosphere that is both eerie and nostalgic. The vocals were performed using the UTAU voice banks “Takismana (タキスマナ)” and “Eugene (友人),” which strike a balance between digital and organic sounds.
+The music is based on the traditional Japanese pentatonic scale known as In-sen (陰旋法), which creates a unique atmosphere that is both eerie and nostalgic. The vocals were performed using the UTAU voice banks “Takismana (Yulia Baranyuk) (タキスマナ)” and “Eugene (友人),” which strike a balance between digital and organic sounds.
 
 The visuals are created using the digital collage technique: fragments of old newspapers, footprints, and images of crimson higanbana (spider lilies) are layered on top of one another, creating the sensation of piecing together scattered fragments of memory.
 
@@ -108,8 +108,8 @@ In Japanese aesthetics, the firefly (hotaru) is a symbol of mono no aware—the 
 
 Hotaru is a conceptual audiovisual exploration that combines the aesthetics of liminal spaces with the experimental sounds of VocalSynth (UTAU).
 
-Music and lyrics: Takismana
-Video: Takismana—dance, editing
+Music and lyrics: Takismana (Yulia Baranyuk)
+Video: Takismana (Yulia Baranyuk)—dance, editing
 Varvara Andreeva—cinematographer
 
 6. Shiki
