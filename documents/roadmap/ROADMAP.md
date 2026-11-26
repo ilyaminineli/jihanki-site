@@ -134,7 +134,7 @@ Make the archive a trustworthy source of truth. New records should fail validati
 
 # M38 — Accessibility and device robustness
 
-**Status:** Baseline fixes in progress  
+**Status:** Core accessibility behaviour implemented and covered by automated browser regression; physical-device and assistive-technology audit remains manual  
 **Depends on:** M35; benefits from M37.
 
 ## Goal
