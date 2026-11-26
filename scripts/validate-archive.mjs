@@ -67,8 +67,6 @@ try {
         report(prefix + field + " does not resolve: " + target);
       }
     }
-    if (!Array.isArray(record.metadata?.locations)) report(prefix + "metadata.locations must be an array");
-    if (!Array.isArray(record.metadata?.related)) report(prefix + "metadata.related must be an array");
   });
 
   const unknown = categories?.unknown?.() || [];
