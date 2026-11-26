@@ -188,6 +188,7 @@
   }
   function openSoundscape() {
     openSystemPanel("SOUND INSTALLATION", window.JIHANKI_SOUNDSCAPE.render(), "reading");
+    window.JIHANKI_SOUNDSCAPE.bind(artifactContent);
     window.JIHANKI_AUDIO.bindMedia(artifactContent);
   }
   function openTemporalArchive() {
