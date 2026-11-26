@@ -1,18 +1,27 @@
 # JIHANKI — Development roadmap
 
-The roadmap follows the machine's internal logic: make the existing experience dependable before increasing its complexity. Milestones are sequenced, but creative work can proceed independently when it does not weaken preservation or runtime integrity.
+The roadmap makes the machine dependable before increasing its complexity. Existing M35–M40 foundations remain in [ROADMAP.md](./ROADMAP.md). The next development programme is in [M41–M50 — Implementation Map](./M41-M50-IMPLEMENTATION-MAP.md).
 
 | Milestone | Focus | Status |
 | --- | --- | --- |
-| [M35](./M35-machine-interaction-integrity.md) | Machine interaction integrity | Baseline fixes in progress |
-| [M36](./M36-media-delivery-and-preservation.md) | Media delivery and preservation | Planned; source-video compression pending |
-| [M37](./M37-archive-schema-and-validation.md) | Archive schema and automated validation | Validator and CI added |
-| [M38](./M38-accessibility-and-device-robustness.md) | Accessibility and device robustness | Baseline fixes in progress |
-| [M39](./M39-deep-archive-discovery.md) | Deep archive discovery | Planned |
-| [M40](./M40-visitor-continuity.md) | Visitor continuity | Planned |
+| [M35](./ROADMAP.md#m35--machine-interaction-integrity) | Machine interaction integrity | Baseline fixes in progress |
+| [M36](./ROADMAP.md#m36--media-delivery-and-preservation) | Media delivery and preservation | Source-video compression pending |
+| [M37](./ROADMAP.md#m37--archive-schema-and-automated-validation) | Archive schema and automated validation | Validator and CI baseline added |
+| [M38](./ROADMAP.md#m38--accessibility-and-device-robustness) | Accessibility and device robustness | Baseline fixes in progress |
+| [M39](./ROADMAP.md#m39--deep-archive-discovery) | Deep archive discovery | Partially implemented by M43–M44 |
+| [M40](./ROADMAP.md#m40--visitor-continuity) | Visitor continuity | Partially implemented by M46 |
+| [M41–M42](./M41-M50-IMPLEMENTATION-MAP.md#m41--media-integrity-manifest-and-offline-shell) | Media integrity, offline shell and delivery | Implemented baseline |
+| [M43](./M41-M50-IMPLEMENTATION-MAP.md#m43--memory-archaeology-archive-search-and-relationship-graph) | Memory archaeology, search and graph | Implemented baseline |
+| [M44](./M41-M50-IMPLEMENTATION-MAP.md#m44--the-memory-map) | Memory map | Implemented baseline |
+| [M45](./M41-M50-IMPLEMENTATION-MAP.md#m45--machine-personality-and-evolving-behaviour) | Machine personality | Implemented baseline |
+| [M46](./M41-M50-IMPLEMENTATION-MAP.md#m46--collectible-memory-objects-and-portable-collection) | Collectible memory objects | Implemented baseline |
+| [M47](./M41-M50-IMPLEMENTATION-MAP.md#m47--collection-exploration-and-visitor-continuity) | Visitor continuity | Planned |
+| [M48](./M41-M50-IMPLEMENTATION-MAP.md#m48--audio-installation-mode) | Audio installation mode | Implemented baseline |
+| [M49](./M41-M50-IMPLEMENTATION-MAP.md#m49--visitor-memory-exchange) | Visitor contribution system | Backend-dependent |
+| [M50](./M41-M50-IMPLEMENTATION-MAP.md#m50--temporal-archive) | Temporal archive | Planned |
 
-## Ordering
+## Implementation order
 
-M35 and M38 protect the interaction surface. M36 protects delivery and long-term preservation. M37 supplies automated guardrails for the content and code that follow. M39 deepens the archive's discovery model. M40 builds on the local collection without turning a private, browser-local archive into an account-driven service.
+P0 media integrity and device reliability remain the release gate. The visitor-facing feature work is layered on the archive foundation: M43 discovery, M44 place map, M45 evolving behaviour, M46 collectible objects, then M48 audio installation. M49 is intentionally blocked until a backend and moderation policy are selected.
 
-The M36 implementation must not overwrite source masters. Web derivatives should be generated from preserved originals, with their relationship recorded explicitly.
+Implementation statuses describe code coverage, not an assertion that every browser/device acceptance test has passed.

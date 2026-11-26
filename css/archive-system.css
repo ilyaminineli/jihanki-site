@@ -713,3 +713,90 @@ a:focus-visible {
     outline: 2px solid #ddd !important;
     outline-offset: 3px !important
 }
+
+/* M43–M48 — discovery, map, personality, collectibles and installation panels */
+.home-actions { flex-wrap:wrap; max-width:220px; margin-left:auto; margin-right:auto; }
+.home-actions button { min-width:54px; }
+.boot-loading { max-width:210px; line-height:1.45; margin-top:13px; }
+.exploration-panel { color:#ddd; font-family:"Courier New",monospace; }
+.exploration-heading { margin:0 0 18px; border-bottom:1px solid rgba(255,255,255,.14); padding-bottom:10px; }
+.exploration-heading>span,.map-eyebrow { display:block; color:#777; font-size:9px; letter-spacing:.16em; }
+.exploration-heading h1 { margin:6px 0 0; font-size:17px; letter-spacing:.12em; font-weight:400; }
+.exploration-empty,.exploration-footnote { color:#777; font-size:11px; line-height:1.6; padding:12px 2px; }
+.exploration-return { margin-bottom:12px; }
+.exploration-return button,.map-mode-switch button,.installation-actions button {
+  border:1px solid rgba(255,255,255,.18); background:#111; color:#bbb; padding:7px 10px;
+  font:10px "Courier New",monospace; letter-spacing:.08em; cursor:pointer;
+}
+.archive-search-label { display:block; margin-bottom:7px; color:#888; font-size:10px; letter-spacing:.1em; }
+#archive-search-input { width:100%; border:1px solid rgba(255,255,255,.2); background:#111; color:#eee; padding:11px;
+  font:13px "Courier New",monospace; outline-offset:3px; }
+.archive-search-results { margin-top:12px; display:grid; gap:5px; }
+.search-result { display:grid; grid-template-columns:30px 1fr; gap:2px 8px; text-align:left; padding:10px; color:#ddd;
+  background:#101010; border:1px solid rgba(255,255,255,.1); cursor:pointer; font:12px "Courier New",monospace; }
+.search-result>span { grid-row:span 2; color:#777; }.search-result small { color:#777; font-size:9px; }
+.archaeology-root { padding:14px; border:1px solid rgba(255,255,255,.22); background:rgba(255,255,255,.035); display:grid; gap:7px; }
+.archaeology-root>span,.archaeology-branch-label,.archaeology-places>span { color:#777; font-size:9px; letter-spacing:.14em; }
+.archaeology-root strong { font-size:16px; font-weight:400; }.archaeology-root small { color:#777; font-size:10px; }
+.archaeology-branch-label { margin:19px 0 7px; }
+.archaeology-node { width:100%; display:grid; grid-template-columns:30px 1fr 18px; align-items:center; text-align:left; gap:8px;
+  padding:10px 8px; margin:0 0 5px; background:#0e0e0e; border:1px solid rgba(255,255,255,.1); color:#ddd; cursor:pointer; }
+.archaeology-index,.archaeology-arrow { color:#777; font-size:10px; }
+.archaeology-node-copy { display:grid; gap:5px; }.archaeology-node-copy strong { font:12px/1.4 "Courier New",monospace; }
+.archaeology-node-copy small { color:#777; font-size:9px; letter-spacing:.08em; }
+.archaeology-places { margin-top:18px; padding-top:12px; border-top:1px solid rgba(255,255,255,.1); }
+.archaeology-places button,.map-place-list button { margin:7px 5px 0 0; padding:6px 8px; border:1px solid rgba(255,255,255,.12);
+  background:#111; color:#bbb; cursor:pointer; font:10px "Courier New",monospace; }
+.memory-map-panel { width:100%; }
+.map-toolbar { display:flex; justify-content:space-between; align-items:flex-end; gap:12px; margin-bottom:12px; }
+.map-toolbar>div:first-child { display:grid; gap:6px; }.map-toolbar strong { font-size:15px; letter-spacing:.1em; font-weight:400; }
+.map-mode-switch { display:flex; gap:4px; }.map-mode-switch button { padding:6px 8px; font-size:9px; }
+.map-mode-switch button[aria-pressed="true"] { border-color:rgba(255,255,255,.58); color:#fff; }
+.map-canvas { position:relative; min-height:340px; border:1px solid rgba(255,255,255,.14); overflow:hidden;
+  background:radial-gradient(ellipse at 46% 55%,rgba(140,140,140,.13),transparent 52%),
+  repeating-linear-gradient(0deg,transparent 0 23px,rgba(255,255,255,.035) 24px),
+  repeating-linear-gradient(90deg,transparent 0 23px,rgba(255,255,255,.035) 24px),#080808; }
+.map-canvas:before { content:""; position:absolute; left:28%; top:18%; width:43%; height:68%; border-radius:47% 53% 58% 42%;
+  border:1px dashed rgba(255,255,255,.1); transform:rotate(-18deg); }
+.map-region-label { position:absolute; color:rgba(255,255,255,.2); font-size:8px; letter-spacing:.18em; }
+.map-label-west { left:8px; bottom:8px; }.map-label-east { right:8px; top:8px; }
+.map-connections { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+.map-connections line { stroke:rgba(215,215,215,.22); stroke-width:.38; stroke-dasharray:1.4 1.5; }
+.map-memory-mode .map-connections line { stroke:rgba(240,240,240,.62); stroke-width:.65; stroke-dasharray:2 1; }
+.map-pin { position:absolute; z-index:2; transform:translate(-50%,-50%); display:grid; justify-items:center; gap:3px;
+  min-width:75px; padding:4px 5px; border:0; background:rgba(0,0,0,.74); color:#ddd; cursor:pointer; text-align:center;
+  font:9px "Courier New",monospace; }
+.map-pin-dot { width:7px; height:7px; border:1px solid #ddd; border-radius:50%; box-shadow:0 0 8px rgba(255,255,255,.28); }
+.map-pin strong { font-size:9px; font-weight:400; line-height:1.2; }.map-pin small { color:#777; font-size:7px; }
+.map-disclaimer { color:#777; font-size:9px; line-height:1.5; letter-spacing:.06em; }
+.map-place-list { display:flex; flex-wrap:wrap; gap:3px; }.map-place-list button { margin:0; }.map-place-list small { color:#777; margin-left:4px; }
+.collectible-object { max-width:520px; margin:0 auto 20px; padding:14px 16px; border:1px solid rgba(255,255,255,.24);
+  background:linear-gradient(135deg,rgba(255,255,255,.055),transparent 58%),#101010; box-shadow:inset 0 0 22px rgba(255,255,255,.025); }
+.collectible-top,.collectible-bottom { display:flex; justify-content:space-between; gap:12px; color:#777; font-size:8px; letter-spacing:.12em; }
+.collectible-title { margin:20px 0 12px; color:#eee; font-size:14px; letter-spacing:.1em; }
+.collectible-inscription { min-height:38px; color:#aaa; font:italic 11px/1.65 Georgia,serif; }
+.collectible-bottom { padding-top:16px; margin-top:14px; border-top:1px dashed rgba(255,255,255,.16); }
+.collectible-bottom strong { color:#ddd; }.collectible-object>button { margin-top:12px; padding:6px 8px; border:1px solid rgba(255,255,255,.13);
+  color:#aaa; background:#090909; font:9px "Courier New",monospace; cursor:pointer; }
+.media-metadata { display:flex; flex-wrap:wrap; gap:7px 16px; margin:12px 0 5px; color:#777; font-size:9px; letter-spacing:.08em; }
+.media-metadata b { color:#bbb; font-weight:400; }.media-load-status { margin:5px 0; color:#aaa; font-size:10px; }
+.media-load-status button,.artifact-media-status button { border:1px solid #555; background:#111; color:#ddd; padding:5px 8px; cursor:pointer; font:9px "Courier New",monospace; margin-left:6px; }
+.artifact-media-status { display:block; margin:8px 0; color:#aaa; font-size:10px; }
+.voicebank-image,.artifact-photo { margin:0; }.memory-map-panel button:hover,.search-result:hover,.archaeology-node:hover { background:#1b1b1b; color:#fff; }
+.sound-installation h2 { font-size:18px; letter-spacing:.1em; font-weight:400; margin:10px 0 6px; }
+.sound-installation>p { color:#777; font-size:11px; line-height:1.6; }
+.installation-tracks { display:grid; gap:8px; margin:16px 0; }.installation-track { padding:10px; border:1px solid rgba(255,255,255,.12); background:#0e0e0e; }
+.installation-track>label:first-child { display:flex; align-items:flex-start; gap:9px; cursor:pointer; }
+.installation-track>label:first-child span { display:grid; gap:5px; }.installation-track strong { font-size:11px; font-weight:400; }
+.installation-track small { color:#777; font-size:9px; }
+.installation-volume,.installation-loop { display:inline-flex; align-items:center; gap:7px; color:#777; font-size:8px; margin:9px 12px 0 0; }
+.installation-volume input { width:90px; }.installation-actions { display:flex; gap:6px; }.installation-status { margin-top:12px; color:#999; font-size:10px; }
+.artifact-relations .relation-link small { display:block; color:#777; font-size:8px; letter-spacing:.1em; margin-bottom:4px; }
+.relation-empty { display:block; padding:7px 0; color:#777; font-size:9px; }
+.artifact-relations .archaeology-open { color:#ddd; border-color:rgba(255,255,255,.22); }
+@media(max-width:560px) { .artifact-window { width:96vw; max-height:92vh; padding:15px; } .map-canvas { min-height:300px; }
+  .map-pin { min-width:65px; }.map-pin strong { font-size:8px; }.map-pin small { font-size:6px; } }
+@media(max-height:550px) and (orientation:landscape) {
+  body.compact-landscape { overflow-y:auto; height:auto; min-height:100%; }
+  body.compact-landscape .artifact-window { max-height:94vh; }
+}

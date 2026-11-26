@@ -34,7 +34,7 @@
   }
   function audioStateForView() {
     if (maintenanceActive || currentView === "service") return "service";
-    return ({ category: "browsing", location: "browsing", rotation: "rotation", collection: "collection" })[currentView] || "idle";
+    return ({ category: "browsing", location: "browsing", rotation: "rotation", collection: "collection", exploration: "browsing" })[currentView] || "idle";
   }
   function updateArtifactActions() {
     const actions = artifactContent.querySelector(".artifact-actions");
@@ -86,8 +86,20 @@
   }
 
   function resizeJihanki() {
-    const scale = Math.min(window.innerWidth / 429, window.innerHeight / 932);
+    const shortLandscape = window.innerWidth > window.innerHeight && window.innerHeight < 620;
+    document.body.classList.toggle("compact-landscape", shortLandscape);
+    const scale = shortLandscape ? Math.min(window.innerWidth / 429, 1) : Math.min(window.innerWidth / 429, window.innerHeight / 932);
     document.documentElement.style.setProperty("--scale", scale);
+    const viewport = document.getElementById("viewport");
+    if (shortLandscape) {
+      viewport.style.position = "absolute"; viewport.style.top = "12px";
+      viewport.style.transform = "translateX(-50%) scale(" + scale + ")";
+      viewport.style.transformOrigin = "top center";
+      document.body.style.minHeight = Math.ceil(932 * scale + 24) + "px";
+    } else {
+      viewport.style.position = ""; viewport.style.top = ""; viewport.style.transform = ""; viewport.style.transformOrigin = "";
+      document.body.style.minHeight = "";
+    }
   }
   window.addEventListener("resize", resizeJihanki);
   window.addEventListener("orientationchange", resizeJihanki);
@@ -100,16 +112,48 @@
     const collectionCount = window.JIHANKI_COLLECTION.count();
     const rotation = window.JIHANKI_ROTATION.current();
     const muteLabel = window.JIHANKI_AUDIO.isMuted() ? "AMBIENCE / OFF" : "AMBIENCE / ON";
-    screen.innerHTML = '<div class="boot"><div class="boot-japanese">自販機</div><div class="boot-title">JIHANKI</div><div class="boot-subtitle">MEMORY ARCHIVE</div><div class="boot-loading">SELECT A MEMORY</div>' +
-      '<div class="home-actions"><button type="button" data-home-action="rotation">ROTATION / ' + rotation.items.length + '</button><button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button></div>' +
+    const machineLine = window.JIHANKI_PERSONALITY?.homeLine() || "SELECT A MEMORY";
+    screen.innerHTML = '<div class="boot"><div class="boot-japanese">自販機</div><div class="boot-title">JIHANKI</div><div class="boot-subtitle">MEMORY ARCHIVE</div><div class="boot-loading">' + esc(machineLine) + '</div>' +
+      '<div class="home-actions"><button type="button" data-home-action="rotation">ROTATION / ' + rotation.items.length + '</button>' +
+      '<button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button>' +
+      '<button type="button" data-home-action="map">MEMORY MAP</button><button type="button" data-home-action="search">SEARCH</button>' +
+      '<button type="button" data-home-action="installation">SOUND LAB</button></div>' +
       '<button type="button" class="home-audio" data-home-action="audio">' + muteLabel + '</button></div>';
-    announce("JIHANKI home. " + collectionCount + " collected works. " + rotation.items.length + " rotation fragments.");
+    announce("JIHANKI home. " + collectionCount + " collected works. " + rotation.items.length + " rotation fragments. " + machineLine);
   }
   function showMessage(title, subtitle, footer) {
     screen.innerHTML = '<div class="boot"><div class="boot-title">' + esc(title) + '</div><div class="boot-subtitle">' + esc(subtitle || "") + '</div><div class="boot-loading">' + esc(footer || "") + '</div></div>';
     announce([title, subtitle, footer].filter(Boolean).join(". "));
     updateCreditDisplay();
   }
+  function openSystemPanel(title, content, state) {
+    if (artifact.classList.contains("open")) closeArtifact();
+    currentView = "exploration"; activeCategory = null;
+    window.JIHANKI_AUDIO.setState(state || "browsing");
+    artifactRenderToken += 1; activeArtifact = null; lastFocusedElement = document.activeElement;
+    artifactContent.innerHTML = '<div class="exploration-panel"><div class="exploration-heading"><span>JHK / ARCHIVE INTERFACE</span><h1>' +
+      esc(title) + '</h1></div>' + content + '</div>';
+    artifact.classList.add("open"); artifact.setAttribute("aria-hidden", "false");
+    artifactClose?.focus(); announce(title + " opened.");
+  }
+  function openSearch(query) {
+    const value = String(query || "");
+    const content = '<label class="archive-search-label" for="archive-search-input">SEARCH THE MEMORY CATALOGUE</label>' +
+      '<input id="archive-search-input" type="search" autocomplete="off" placeholder="A place, voice, sound, title…" value="' + esc(value) + '">' +
+      '<div id="archive-search-results" class="archive-search-results">' + window.JIHANKI_DISCOVERY.renderSearchResults(value) + '</div>' +
+      '<p class="exploration-footnote">Search includes titles, descriptions, dates, contributors and known locations.</p>';
+    openSystemPanel("ARCHIVE SEARCH", content);
+    const input = artifactContent.querySelector("#archive-search-input");
+    if (input) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
+  }
+  function openMap(mode) { openSystemPanel("THE MEMORY MAP", window.JIHANKI_MAP.render(mode || "geography")); }
+  function openArchaeology(item) {
+    if (!item) return;
+    openSystemPanel("MEMORY ARCHAEOLOGY", '<div class="exploration-return"><button type="button" data-panel-back="' + esc(item.id) +
+      '">← RETURN TO MEMORY</button></div>' + window.JIHANKI_DISCOVERY.renderGraph(item.id));
+  }
+  function openSoundscape() { openSystemPanel("SOUND INSTALLATION", window.JIHANKI_SOUNDSCAPE.render(), "reading"); }
+
   function stockTag(item) {
     const status = window.JIHANKI_INVENTORY.status(item);
     return '<span class="archive-stock status-' + esc(status) + '">' + esc(window.JIHANKI_INVENTORY.label(item)) + '</span>';
@@ -157,6 +201,29 @@
     if (wasOpen) announce("Closed memory. Returned to " + currentView + ".");
   }
 
+  function mediaMetadataMarkup(item, extension) {
+    return '<div class="media-metadata"><span>ARCHIVE / ' + esc(item.date || "UNDATED") + '</span><span>FORMAT / ' +
+      esc(String(extension || "UNKNOWN").toUpperCase()) + '</span><span>DURATION / <b data-media-duration>WAITING FOR METADATA</b></span></div>' +
+      '<div class="media-load-status" role="status" aria-live="polite"></div>';
+  }
+  function bindMediaMetadata(body) {
+    const media = body.querySelector("audio,video"); if (!media) return;
+    media.addEventListener("loadedmetadata", () => {
+      const target = body.querySelector("[data-media-duration]");
+      if (target) {
+        const seconds = Number(media.duration);
+        if (Number.isFinite(seconds)) {
+          const whole = Math.floor(seconds), minutes = Math.floor(whole / 60), remainder = whole % 60;
+          target.textContent = minutes + ":" + String(remainder).padStart(2, "0");
+        } else target.textContent = "LIVE / UNKNOWN";
+      }
+    }, { once: true });
+    media.addEventListener("error", () => {
+      const status = body.querySelector(".media-load-status");
+      if (status) status.innerHTML = 'MEDIA COULD NOT BE LOADED. <button type="button" data-media-retry>RETRY</button>';
+    }, { once: true });
+  }
+
   async function renderBody(item, renderToken) {
     const body = document.getElementById("artifact-body");
     if (!body) return;
@@ -183,15 +250,15 @@
     }
     const coverHTML = item.image && (type === "project" || type === "audio") ? '<img class="project-cover" src="' + esc(item.image) + '" alt="' + title + '">' : "";
     if (type === "video" || /^(mp4|webm|mov)$/.test(extension)) {
-      body.innerHTML = window.JIHANKI_VIDEO ? window.JIHANKI_VIDEO.render(item) :
-        '<video class="artifact-video" controls playsinline preload="metadata" src="' + esc(file) + '"></video>';
-      window.JIHANKI_AUDIO.bindMedia(body);
-      return;
+      body.innerHTML = (window.JIHANKI_VIDEO ? window.JIHANKI_VIDEO.render(item) :
+        '<video class="artifact-video" controls playsinline preload="metadata" src="' + esc(file) + '"></video>') +
+        mediaMetadataMarkup(item, extension);
+      bindMediaMetadata(body); window.JIHANKI_AUDIO.bindMedia(body); return;
     }
     if (type === "audio" || type === "music" || type === "sound" || /^(mp3|wav|ogg|m4a|aac|flac|opus)$/.test(extension)) {
-      body.innerHTML = '<audio class="artifact-audio" controls playsinline preload="metadata" src="' + esc(file) + '"></audio>';
-      window.JIHANKI_AUDIO.bindMedia(body);
-      return;
+      body.innerHTML = '<audio class="artifact-audio" controls playsinline preload="metadata" src="' + esc(file) + '"></audio>' +
+        mediaMetadataMarkup(item, extension);
+      bindMediaMetadata(body); window.JIHANKI_AUDIO.bindMedia(body); return;
     }
     if (type === "image" || type === "photo" || /^(png|jpe?g|webp|gif)$/.test(extension)) {
       body.innerHTML = '<figure class="artifact-photo"><img class="artifact-media" src="' + esc(file) + '" alt="' + title + '" loading="eager" decoding="async">' +
@@ -227,17 +294,17 @@
   }
 
   function renderRelations(item) {
-    const related = window.JIHANKI_RELATIONSHIPS.related(item);
-    const locations = window.JIHANKI_GEOGRAPHY.locations(item);
-    let html = "";
-    if (related.length) {
-      html += '<section class="artifact-relations"><span class="artifact-section-label">RELATED RECORDS</span>' +
-        related.map(record => '<button type="button" class="relation-link" data-related-id="' + esc(record.id) + '">' + esc(record.title) + '</button>').join("") + '</section>';
-    }
-    if (locations.length) {
-      html += '<section class="artifact-locations"><span class="artifact-section-label">LOCATION INDEX</span>' +
-        locations.map(place => '<button type="button" class="location-link" data-place="' + esc(place) + '">' + esc(place) + '</button>').join("") + '</section>';
-    }
+    const links = window.JIHANKI_DISCOVERY.links(item), locations = window.JIHANKI_GEOGRAPHY.locations(item);
+    let html = '<section class="artifact-relations"><span class="artifact-section-label">MEMORY ARCHAEOLOGY</span>' +
+      '<button type="button" class="relation-link archaeology-open" data-explore-id="' + esc(item.id) + '">TRACE CONNECTIONS / ' + links.length + ' LINKS ↗</button>';
+    if (links.length) html += links.slice(0, 5).map(link =>
+      '<button type="button" class="relation-link" data-related-id="' + esc(link.item.id) + '"><small>' +
+      esc(link.label || link.kind) + '</small>' + esc(link.item.title) + '</button>').join("");
+    else html += '<span class="relation-empty">NO CONNECTIONS RECORDED YET</span>';
+    html += '</section>';
+    if (locations.length) html += '<section class="artifact-locations"><span class="artifact-section-label">LOCATION INDEX</span>' +
+      locations.map(place => '<button type="button" class="location-link" data-place="' + esc(place) + '">' + esc(place) + '</button>').join("") +
+      '<button type="button" class="location-link location-map-link" data-open-map="geography">OPEN MEMORY MAP ↗</button></section>';
     return html;
   }
 
@@ -267,6 +334,7 @@
     const author = item.author || "ARCHIVE";
     artifactContent.innerHTML =
       (receipt ? window.JIHANKI_RECEIPTS.markup(receipt) : "") +
+      (window.JIHANKI_COLLECTION?.objectMarkup(item.id, receipt?.code) || "") +
       '<h1 class="artifact-title">' + esc(item.title || "UNTITLED") + '</h1>' +
       '<div class="artifact-meta">' + esc(author) + ' / ' + esc(date) + ' / ' + esc(item.machineCategory || item.category || item.type || "ARCHIVE") + '</div>' +
       '<div id="artifact-body">LOADING MEMORY...</div>' +
@@ -335,7 +403,7 @@
       else showMessage("SOLD OUT", "NO MEMORY IN STOCK", "PLEASE RETURN LATER");
       return;
     }
-    const item = pool[Math.floor(Math.random() * pool.length)];
+    const item = window.JIHANKI_PERSONALITY?.choose(pool, lastDispensed) || pool[Math.floor(Math.random() * pool.length)];
     purchase(item);
   }
 
@@ -379,25 +447,24 @@
   }
 
   function showCollection() {
-    closeArtifact();
-    currentView = "collection";
-    activeCategory = null; selectedId = null;
+    closeArtifact(); currentView = "collection"; activeCategory = null; selectedId = null;
     window.JIHANKI_AUDIO.setState("collection");
-    const records = window.JIHANKI_COLLECTION.all();
+    const records = window.JIHANKI_COLLECTION.all(), objects = window.JIHANKI_COLLECTION.objects();
     const html = records.map((record, index) => {
-      const item = window.JIHANKI_COLLECTION.resolve(record) || record;
+      const item = window.JIHANKI_COLLECTION.resolve(record) || record, object = window.JIHANKI_COLLECTION.objectFor(record.id);
       return '<button class="archive-item collection-item" type="button" data-archive-id="' + esc(item.id) + '">' +
         String(index + 1).padStart(2, "0") + '&nbsp;&nbsp;' + esc(record.title || item.title || "UNTITLED") +
         '<span class="collection-count">×' + Number(record.purchaseCount || 1) + '</span>' +
-        '<small>LAST ACQUIRED / ' + esc(new Date(record.lastCollectedAt).toLocaleDateString()) + '</small></button>';
+        '<small>LAST ACQUIRED / ' + esc(new Date(record.lastCollectedAt).toLocaleDateString()) + (object ? ' · OBJECT ' + esc(object.serial) : '') + '</small></button>';
     }).join("");
     const storageNote = window.JIHANKI_COLLECTION.storageAvailable() ? "STORED IN THIS BROWSER" : "SESSION ONLY / STORAGE UNAVAILABLE";
     screen.innerHTML = '<div class="archive collection-screen"><div class="archive-header"><span class="archive-title">MY COLLECTION</span><span class="archive-status">' + records.length + ' WORKS</span></div>' +
-      '<div class="collection-summary">' + window.JIHANKI_COLLECTION.totalPurchases() + ' TOTAL ACQUISITIONS / ' + esc(storageNote) + '</div>' +
+      '<div class="collection-summary">' + window.JIHANKI_COLLECTION.totalPurchases() + ' ACQUISITIONS / ' + objects.length + ' MEMORY OBJECTS / ' + esc(storageNote) + '</div>' +
       (records.length ? html : '<div class="archive-item collection-empty">NO MEMORIES COLLECTED YET</div>') +
-      '<div class="collection-actions"><button type="button" data-collection-action="export">EXPORT COLLECTION</button><button type="button" data-collection-action="clear">CLEAR</button></div></div>';
-    window.JIHANKI_EVENTS.record("collection-opened", { works: records.length, acquisitions: window.JIHANKI_COLLECTION.totalPurchases() });
-    announce("Personal collection. " + records.length + " works. " + window.JIHANKI_COLLECTION.totalPurchases() + " acquisitions.");
+      '<div class="collection-actions"><button type="button" data-collection-action="export">EXPORT</button><button type="button" data-collection-action="import">IMPORT</button>' +
+      '<button type="button" data-collection-action="clear">CLEAR</button><input id="collection-import-file" type="file" accept="application/json,.json" hidden></div></div>';
+    window.JIHANKI_EVENTS.record("collection-opened", { works: records.length, objects: objects.length, acquisitions: window.JIHANKI_COLLECTION.totalPurchases() });
+    announce("Personal collection. " + records.length + " works. " + objects.length + " collectible objects.");
     updateCreditDisplay();
   }
 
@@ -475,14 +542,39 @@
   document.getElementById("artifact-close").addEventListener("click", closeArtifact);
   artifact.addEventListener("click", event => { if (event.target === artifact) closeArtifact(); });
   artifactContent.addEventListener("click", event => {
+    const searchOpen = event.target.closest("[data-search-open]");
+    if (searchOpen) { const item = byId(searchOpen.dataset.searchOpen); if (item) openItem(item); return; }
+    const explore = event.target.closest("[data-explore-id]");
+    if (explore) { const item = byId(explore.dataset.exploreId); if (item) openArchaeology(item); return; }
+    const back = event.target.closest("[data-panel-back]");
+    if (back) { const item = byId(back.dataset.panelBack); if (item) openItem(item); return; }
+    const mapPlace = event.target.closest("[data-map-place]");
+    if (mapPlace) { showLocation(mapPlace.dataset.mapPlace); return; }
+    const mapMode = event.target.closest("[data-map-mode]");
+    if (mapMode) { openMap(mapMode.dataset.mapMode); return; }
+    const openMapButton = event.target.closest("[data-open-map]");
+    if (openMapButton) { openMap(openMapButton.dataset.openMap); return; }
+    const objectDownload = event.target.closest("[data-collectible-download]");
+    if (objectDownload) { window.JIHANKI_COLLECTION.downloadObject(objectDownload.dataset.collectibleDownload); return; }
+    const installAction = event.target.closest("[data-install-action]");
+    if (installAction) {
+      if (installAction.dataset.installAction === "start") window.JIHANKI_SOUNDSCAPE.start(artifactContent);
+      else window.JIHANKI_SOUNDSCAPE.stop(artifactContent);
+      return;
+    }
     const retry = event.target.closest("[data-media-retry]");
     if (retry) {
       const failedImage = artifactContent.querySelector("#artifact-body img.artifact-media");
+      const failedMedia = artifactContent.querySelector("#artifact-body audio, #artifact-body video");
       if (failedImage) {
         const base = failedImage.getAttribute("src").split(/[?#]/)[0];
         failedImage.src = base + "?retry=" + Date.now();
         const status = artifactContent.querySelector(".artifact-media-status");
         if (status) status.textContent = "RETRYING IMAGE LOAD…";
+      } else if (failedMedia) {
+        failedMedia.load();
+        const status = artifactContent.querySelector(".media-load-status");
+        if (status) status.textContent = "RETRYING MEDIA LOAD…";
       }
       return;
     }
@@ -500,12 +592,35 @@
     if (target.dataset.receiptAction === "download") { window.JIHANKI_RECEIPTS.download(target.dataset.receiptId); return; }
   });
 
+  artifactContent.addEventListener("input", event => {
+    if (event.target.id === "archive-search-input") {
+      const results = artifactContent.querySelector("#archive-search-results");
+      if (results) results.innerHTML = window.JIHANKI_DISCOVERY.renderSearchResults(event.target.value);
+    }
+    if (event.target.matches("[data-install-volume]")) window.JIHANKI_SOUNDSCAPE.setVolume(event.target);
+  });
+
+  screen.addEventListener("change", async event => {
+    if (event.target.id !== "collection-import-file" || !event.target.files?.[0]) return;
+    try {
+      const result = await window.JIHANKI_COLLECTION.importFile(event.target.files[0]);
+      showCollection();
+      announce("Collection imported. " + result.records + " records and " + result.objects + " objects read.");
+    } catch (error) {
+      announce("Collection import failed. " + error.message);
+      window.alert("JIHANKI import failed: " + error.message);
+    } finally { event.target.value = ""; }
+  });
+
   screen.addEventListener("click", event => {
     const homeAction = event.target.closest("[data-home-action]");
     if (homeAction) {
       const action = homeAction.dataset.homeAction;
       if (action === "rotation") { showRotation(); return; }
       if (action === "collection") { showCollection(); return; }
+      if (action === "map") { openMap("geography"); return; }
+      if (action === "search") { openSearch(); return; }
+      if (action === "installation") { openSoundscape(); return; }
       if (action === "audio") {
         const muted = window.JIHANKI_AUDIO.toggleMute();
         window.JIHANKI_EVENTS.record("ambient-control", { muted });
@@ -519,10 +634,11 @@
       if (collectionAction.dataset.collectionAction === "export") {
         window.JIHANKI_COLLECTION.exportFile();
         showCollection();
+      } else if (collectionAction.dataset.collectionAction === "import") {
+        screen.querySelector("#collection-import-file")?.click();
       } else if (collectionAction.dataset.collectionAction === "clear") {
-        if (window.confirm("Clear this browser's JIHANKI collection? Receipts will remain unchanged.")) {
-          window.JIHANKI_COLLECTION.clear();
-          showCollection();
+        if (window.confirm("Clear this browser's collection and collectible objects? Receipts and event history will remain unchanged.")) {
+          window.JIHANKI_COLLECTION.clear(); showCollection();
         }
       }
       return;
@@ -583,7 +699,8 @@
 
   window.JIHANKI_MACHINE = {
     openItem, purchase, dispense, showCategory, showLocation, showRotation, showCollection,
-    getState() { return { credits, selectedId, activeCategory, maintenanceActive, ambient: window.JIHANKI_AUDIO.getState() }; }
+    openSearch, openMap, openArchaeology, openSoundscape,
+    getState() { return { credits, selectedId, activeCategory, currentView, maintenanceActive, ambient: window.JIHANKI_AUDIO.getState() }; }
   };
   window.JIHANKI_EVENTS.record("machine-booted", { items: allItems().length });
   updateCreditDisplay();

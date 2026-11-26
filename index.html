@@ -809,7 +809,19 @@
     <script src="js/maintenance.js"></script>
     <script src="js/anomalies.js"></script>
     <script src="js/video.js"></script>
+    <script src="js/personality.js"></script>
+    <script src="js/discovery.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/soundscape.js"></script>
     <script src="js/machine.js"></script>
+    <script>
+        if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost")) {
+            window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js").catch(() => {
+                const status = document.getElementById("machine-announcer");
+                if (status) status.textContent = "OFFLINE CACHE UNAVAILABLE";
+            }));
+        }
+    </script>
 
 </body>
 

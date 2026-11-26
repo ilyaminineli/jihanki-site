@@ -4,6 +4,7 @@
  * Uses only Node's standard library; no build dependencies are required.
  */
 import { existsSync, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import path from "node:path";
 import vm from "node:vm";
 
@@ -83,6 +84,35 @@ try {
   report("Archive initialisation failed: " + (error?.stack || error));
 }
 
+const manifestText = read("data/media-manifest.json");
+if (manifestText) {
+  try {
+    const manifest = JSON.parse(manifestText);
+    if (manifest.format !== "JIHANKI-MEDIA-MANIFEST" || manifest.version !== 1 || !Array.isArray(manifest.files)) {
+      report("Media manifest has an unsupported format.");
+    } else {
+      const manifestPaths = new Set();
+      for (const entry of manifest.files) {
+        if (!entry?.path || manifestPaths.has(entry.path)) { report("Media manifest has an empty or duplicate path: " + entry?.path); continue; }
+        manifestPaths.add(entry.path);
+        const full = path.join(root, entry.path);
+        if (!existsSync(full)) { report("Media manifest path is missing: " + entry.path); continue; }
+        const bytes = readFileSync(full);
+        if (bytes.length !== Number(entry.size)) report("Media size mismatch: " + entry.path);
+        const gitSha = createHash("sha1").update(Buffer.concat([Buffer.from("blob " + bytes.length + "\0"), bytes])).digest("hex");
+        if (gitSha !== entry.gitBlobSha) report("Media checksum mismatch: " + entry.path);
+      }
+      for (const record of context.window.JIHANKI_ARCHIVE || []) {
+        for (const field of ["file", "image"]) {
+          const target = record[field];
+          if (typeof target === "string" && target.startsWith("media/") && !manifestPaths.has(target))
+            report("Archive media reference is absent from manifest: " + record.id + " -> " + target);
+        }
+      }
+    }
+  } catch (error) { report("Media manifest is invalid JSON: " + error.message); }
+}
+
 const index = read("index.html");
 const htmlIds = [...index.matchAll(/\bid=["']([^"']+)["']/g)].map((match) => match[1]);
 const seenHtmlIds = new Set();
@@ -95,6 +125,7 @@ const scriptPaths = [...index.matchAll(/<script\s+src=["']([^"']+)["']/g)].map((
 scriptPaths.forEach((script) => {
   if (!existsSync(path.resolve(root, script))) report("Missing runtime script: " + script);
 });
+if (!existsSync(path.join(root, "sw.js"))) report("Missing service worker: sw.js");
 
 for (const [page, prefix] of [["index.html", "site"], ["projects/aokigahara/index.html", "AOKIGAHARA"]]) {
   const html = read(page);

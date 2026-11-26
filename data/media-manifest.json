@@ -1,0 +1,691 @@
+{
+  "format": "JIHANKI-MEDIA-MANIFEST",
+  "version": 1,
+  "files": [
+    {
+      "path": "media/music/fuji-sonicpi-01.opus",
+      "size": 32625137,
+      "gitBlobSha": "5218f1e8d1d1c1da0e810e62e0b93160d1f6ce70"
+    },
+    {
+      "path": "media/music/fuji-sonicpi-02.opus",
+      "size": 27385016,
+      "gitBlobSha": "c99668ff7c6a59280f32b74db51d3934505d806a"
+    },
+    {
+      "path": "media/music/fuji-sonicpi-03.opus",
+      "size": 32152112,
+      "gitBlobSha": "defb006eb984af637b2cdd7120688c1224e912de"
+    },
+    {
+      "path": "media/music/fuji-sonicpi-04.opus",
+      "size": 30878663,
+      "gitBlobSha": "8f9e043cf4e324fc0697db0c1f687687ab291d48"
+    },
+    {
+      "path": "media/photo/cover1.png",
+      "size": 71878,
+      "gitBlobSha": "a7dcc3509b51f323605b12e15aa6063e5d1133d1"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (1).jpg",
+      "size": 81581,
+      "gitBlobSha": "db558eee81fac37c33983d4ffd68946a018e18dd"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (10).jpg",
+      "size": 245920,
+      "gitBlobSha": "7b50399072552b82b0b3ae0d36f2339a2cfc685a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (11).jpg",
+      "size": 382592,
+      "gitBlobSha": "4ec5a5f14fd4900561cf8b1d0ae1581958e46070"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (12).jpg",
+      "size": 323871,
+      "gitBlobSha": "c0aa7d53a5ad3a1bd28bec997471bba3b72cd0dd"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (13).jpg",
+      "size": 111772,
+      "gitBlobSha": "0e4c91cb9149dde5aba5967498948ecc35e99d51"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (14).jpg",
+      "size": 124287,
+      "gitBlobSha": "7fd546f6dbbf7f0556ef7eab440a54398d0ebbf3"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (15).jpg",
+      "size": 261465,
+      "gitBlobSha": "bfbc179bb6f4bc0a4416072a3630d8f9671c72aa"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (16).jpg",
+      "size": 205054,
+      "gitBlobSha": "bce54b74d10f63e57cf572ff6bf922601b5ccb81"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (17).jpg",
+      "size": 88592,
+      "gitBlobSha": "2d6503c38503b9943ce23378c6e7a0811fee035e"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (18).jpg",
+      "size": 47270,
+      "gitBlobSha": "2f8410113d0db4f0c58140fad61547e608a92cb1"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (19).jpg",
+      "size": 105893,
+      "gitBlobSha": "28947bd29bf7aca3db06b1015f26024bb5ae0d1e"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (2).jpg",
+      "size": 228433,
+      "gitBlobSha": "64376122800083eb90bdab927a50dd12d662286a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (20).jpg",
+      "size": 53887,
+      "gitBlobSha": "e2bac396e143104d09e1e3f0a3f10af08aa033b5"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (21).jpg",
+      "size": 78051,
+      "gitBlobSha": "854527dae09dbc3747ae00ba47a5567b2c5ee2b2"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (3).jpg",
+      "size": 251196,
+      "gitBlobSha": "254b896f47d308cff88797811abc84d2eeb51604"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (4).jpg",
+      "size": 169008,
+      "gitBlobSha": "0e92a861ab02a2cf30ea97a5375810b491611a14"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (5).jpg",
+      "size": 69673,
+      "gitBlobSha": "c54fbf9087c0cefe3d0e33ee627792d59fb345aa"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (6).jpg",
+      "size": 179412,
+      "gitBlobSha": "3defa89848e00b6da847028deccd58533ec9cefc"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (7).jpg",
+      "size": 215694,
+      "gitBlobSha": "e938c6238665c8c11e248cc0d06d4f00f4891aa9"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (8).jpg",
+      "size": 105864,
+      "gitBlobSha": "1c0ff8f8361522b2ad51338e0e2483651c4c1a2e"
+    },
+    {
+      "path": "media/photo/photos_from_japan/eli_photos (9).jpg",
+      "size": 76297,
+      "gitBlobSha": "ef4c96faa3659eb7e2f1672fcbb32617cef1d611"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (1).png",
+      "size": 245282,
+      "gitBlobSha": "5e3b1507d8972162db0e90f40182ea24dfa76efb"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (10).png",
+      "size": 489846,
+      "gitBlobSha": "caa413da947d9fc2d2fa6d3c5c9c6c6ee81ddfd4"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (11).png",
+      "size": 465123,
+      "gitBlobSha": "b807fc1d17dd192da719c0c7a752886d7cb47291"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (12).png",
+      "size": 601018,
+      "gitBlobSha": "1d9c1e3fc39aed2fa3900d7d076f094020986e06"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (13).png",
+      "size": 174384,
+      "gitBlobSha": "74cb5d9322dce9b23db183829bee7b0a1384550a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (14).png",
+      "size": 631562,
+      "gitBlobSha": "4dce96779f7651dde613a60ae8e3ab7cd6120151"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (15).png",
+      "size": 382935,
+      "gitBlobSha": "1cced6539b822b42255c58080a14ba0e5f9969db"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (16).png",
+      "size": 349619,
+      "gitBlobSha": "99a1556b6bf22480cf3143eb0ef66a405d4cc23a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (17).png",
+      "size": 472656,
+      "gitBlobSha": "18eb97d27f7e995743290b74fcd043ce44f9fca0"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (18).png",
+      "size": 567366,
+      "gitBlobSha": "00ee0dbaa3adc6334c3e217b668b21f1c19a1c62"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (19).png",
+      "size": 435084,
+      "gitBlobSha": "5bdd234ffd53ebbaa7a3a29ae9f137d532cea8af"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (2).png",
+      "size": 356672,
+      "gitBlobSha": "4064fc3d568c7ee1eea93bbe3117585d33dcf1a8"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (20).png",
+      "size": 423820,
+      "gitBlobSha": "5670ebf453a7abd3aa0fbe0bca488ba6b2c70705"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (21).png",
+      "size": 526809,
+      "gitBlobSha": "3fc5c72811cd93c52741bd137a1ac65e31af7c2f"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (22).png",
+      "size": 590802,
+      "gitBlobSha": "533db9eed8c7b22dfa0bc7f7bbb37de11e9bcb6a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (23).png",
+      "size": 371085,
+      "gitBlobSha": "26501234d6b1703743a582556934fb0a2dbc0cbf"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (24).png",
+      "size": 211230,
+      "gitBlobSha": "e94ad184abd445fe9892a9b814c6600c45068c33"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (25).png",
+      "size": 567763,
+      "gitBlobSha": "f343cc1aaf780f7ec645795ff9c86cdefb48c670"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (26).png",
+      "size": 280230,
+      "gitBlobSha": "c528032948210809330a4c3195b9cb758a51fa3e"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (27).png",
+      "size": 265972,
+      "gitBlobSha": "b9fde4aa3a7d9226b90f9c03370bf5342afffd4d"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (28).png",
+      "size": 586136,
+      "gitBlobSha": "509d4202b35a26245e14e7c190d5a9518409f5d1"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (29).png",
+      "size": 620437,
+      "gitBlobSha": "394c3c31284f18eb12479ba5ecccd4c6ba391e06"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (3).png",
+      "size": 469187,
+      "gitBlobSha": "283b5efec82cfb275007f0eeb775193879aaaf04"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (30).png",
+      "size": 324392,
+      "gitBlobSha": "e279e7df7f4a06e03e99943229a0944ac8df934a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (31).png",
+      "size": 268066,
+      "gitBlobSha": "ae2b0d8bcd8fd35e80a945e45736cf28e8e23450"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (32).png",
+      "size": 286348,
+      "gitBlobSha": "84830046f81ab78259ef0a43857ec0ba015c6a10"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (33).png",
+      "size": 278703,
+      "gitBlobSha": "5172ace7da1f1f7067d93e4728ac1f4cf8c6604d"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (34).png",
+      "size": 145348,
+      "gitBlobSha": "58abfc71115195f05d70fd74c55b52583365b23a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (35).png",
+      "size": 251144,
+      "gitBlobSha": "7df202261e8a755573cbc0ee3185496d3692dcc7"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (36).png",
+      "size": 415097,
+      "gitBlobSha": "348c1b5c166a9324b1086cb9c687bd149f50e173"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (37).png",
+      "size": 259053,
+      "gitBlobSha": "f8326375d71669ceab8b22e78634371c4db7623a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (38).png",
+      "size": 589122,
+      "gitBlobSha": "c474e6cd206b2734ddc8aba24348da63b2eb4ebc"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (39).png",
+      "size": 892938,
+      "gitBlobSha": "bdc39bd9d82b7c891fe139ba6bb8a66266fdd07a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (4).png",
+      "size": 428515,
+      "gitBlobSha": "1ae594291dc7982ece4f406ea139dba36c1a1420"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (40).png",
+      "size": 135555,
+      "gitBlobSha": "2359998e65f920915892efefd9829e25a86aec4f"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (41).png",
+      "size": 398209,
+      "gitBlobSha": "3361162dd9962a20d5c39cccdaf96eff1067c99e"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (42).png",
+      "size": 417874,
+      "gitBlobSha": "19515b260e524a9cbb63df6f2e5ca0e717c50670"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (43).png",
+      "size": 425211,
+      "gitBlobSha": "fca66ebeeb324ddfc7fa54f37886ef328d348406"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (44).png",
+      "size": 290262,
+      "gitBlobSha": "a134f7f016022430724676e541a37bed178cc0c4"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (45).png",
+      "size": 152206,
+      "gitBlobSha": "d8236595ad889b71abc79d1c66d4a441267bb898"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (46).png",
+      "size": 549188,
+      "gitBlobSha": "2aa6fdc259412907baaaf98d4c9334e64a858a0a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (47).png",
+      "size": 456046,
+      "gitBlobSha": "b4f1aee174527843e613d80c88b58a7b08b30d7d"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (48).png",
+      "size": 594861,
+      "gitBlobSha": "d9074d205e157007b8f1d8c674e986ad45784a46"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (49).png",
+      "size": 350773,
+      "gitBlobSha": "ce1a8498f86feb97496d020d436c3b12e75f8f03"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (5).png",
+      "size": 351221,
+      "gitBlobSha": "6be0db4bbbd0bb1fc14d441aa1d5222f53c85d4e"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (50).png",
+      "size": 359344,
+      "gitBlobSha": "305c9c1b5c9be611e012662895731246e3caf008"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (51).png",
+      "size": 230964,
+      "gitBlobSha": "9e0d224b4777364a13ea8a62e65e2b0813298bb8"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (52).png",
+      "size": 404390,
+      "gitBlobSha": "8512614a07afe5e8c2c7e7457a871b646451dadd"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (53).png",
+      "size": 225076,
+      "gitBlobSha": "c30847d663cc9adce7b061f9b56222294547a5e2"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (54).png",
+      "size": 172677,
+      "gitBlobSha": "b5af6154f6f0326c93e8da03318d1685add19ad4"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (55).png",
+      "size": 667695,
+      "gitBlobSha": "b559d99a895f4ea4d02cfc4942bb907c139c25b9"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (56).png",
+      "size": 299123,
+      "gitBlobSha": "6971ccb19cbf4fdd0dec0f0990a5ea6917b61947"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (57).png",
+      "size": 923276,
+      "gitBlobSha": "6e4527453c88a80c8c27e53d4e0e27ab6a403272"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (58).png",
+      "size": 429291,
+      "gitBlobSha": "71ae7d467d279d3121184c94461b6c2fe5ed9fbf"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (59).png",
+      "size": 319644,
+      "gitBlobSha": "cd0797f14bba1dc727b30fce86ab3a931fdc409b"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (6).png",
+      "size": 517000,
+      "gitBlobSha": "5ee2bf6734c648571f16337b573e6f439184e75d"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (60).png",
+      "size": 471444,
+      "gitBlobSha": "350c066d562dd8ff687b900967186f9e0be9938a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (61).png",
+      "size": 269823,
+      "gitBlobSha": "a5d505252077b19aae3fe079060a97ef6b19a93e"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (62).png",
+      "size": 465016,
+      "gitBlobSha": "ecc36ac40f0b7e708c5fb76f6b7ef12da40971a1"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (63).png",
+      "size": 681351,
+      "gitBlobSha": "1a3e985e32ab8b205b101eede70abb5f4caa8d6c"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (64).png",
+      "size": 598653,
+      "gitBlobSha": "e3e853cede2916d0ae996137759d1ae5a978a974"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (65).png",
+      "size": 503847,
+      "gitBlobSha": "132d0f26473a59b97150f0bd8958ade38776214a"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (66).png",
+      "size": 708924,
+      "gitBlobSha": "a6525a656d3916a05db90ca8b71f2ac8e127dfdb"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (67).png",
+      "size": 265636,
+      "gitBlobSha": "0e641757608b443c3b56330be93e5b89db601f19"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (68).png",
+      "size": 486076,
+      "gitBlobSha": "aa904dad1728478de2b8ee9cb1c9271ad3fdbb7f"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (7).png",
+      "size": 894953,
+      "gitBlobSha": "ad7b51549225f7df2c97d1e484bc4019d358b2a9"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (8).png",
+      "size": 703122,
+      "gitBlobSha": "4475e828910fb674f373946021cc1d5b429b8035"
+    },
+    {
+      "path": "media/photo/photos_from_japan/taki_photos (9).png",
+      "size": 204926,
+      "gitBlobSha": "83550a1d903710fc75f25a561facaeea9dda0e35"
+    },
+    {
+      "path": "media/photo/releases/aokigahara_pentalogy.jpg",
+      "size": 278919,
+      "gitBlobSha": "afaf734143eb55ab3e4947696c61f3e2abcea3d8"
+    },
+    {
+      "path": "media/photo/voicebanks/eugene.jpg",
+      "size": 94319,
+      "gitBlobSha": "6581a9720899ed88d119b5673b29a88bbb14dc71"
+    },
+    {
+      "path": "media/photo/voicebanks/iiraiv3.jpg",
+      "size": 72712,
+      "gitBlobSha": "bd2066541128362f3fbcae2f1ea9eea53a1e2d48"
+    },
+    {
+      "path": "media/photo/voicebanks/spider.jpg",
+      "size": 80376,
+      "gitBlobSha": "a2098e4e0854a697bd15d4d5af9ef46e4b2105aa"
+    },
+    {
+      "path": "media/photo/voicebanks/takismana.jpg",
+      "size": 71534,
+      "gitBlobSha": "80a61a88d17edbd2952059879b71538d90115ee0"
+    },
+    {
+      "path": "media/sound/jihanki-sfx/button-sound.opus",
+      "size": 4505,
+      "gitBlobSha": "b3f75e37c4478145d9d415e74753a8c466384bcc"
+    },
+    {
+      "path": "media/sound/jihanki-sfx/button-sound.wav",
+      "size": 50580,
+      "gitBlobSha": "e3ea255d3c117d75c50ad83b62c64a865a83df3e"
+    },
+    {
+      "path": "media/sound/jihanki-sfx/entering-money.opus",
+      "size": 17403,
+      "gitBlobSha": "b51fe1e9f7094ee00f7d5ccee1af6cd1b75ed48d"
+    },
+    {
+      "path": "media/sound/jihanki-sfx/entering-money.wav",
+      "size": 253492,
+      "gitBlobSha": "d001d266501c75ac96a41dcf5b49bbb15017468f"
+    },
+    {
+      "path": "media/sound/jihanki-sfx/homebutton.opus",
+      "size": 65829,
+      "gitBlobSha": "7a2cd023d3cd1e469761fa83c4f5a000ac6131a8"
+    },
+    {
+      "path": "media/sound/jihanki-sfx/homebutton.wav",
+      "size": 950012,
+      "gitBlobSha": "30a94fa489934bd68c2185f1ed9f7d406f44c6f6"
+    },
+    {
+      "path": "media/sound/jihanki-sfx/jihanki-music-loop.opus",
+      "size": 596732,
+      "gitBlobSha": "1a0cd6749bad67d96c838351ab812a8bf5adfd42"
+    },
+    {
+      "path": "media/sound/jihanki-sfx/jihanki-music-loop.wav",
+      "size": 8667180,
+      "gitBlobSha": "8aeb56fc40380f1812a3a935d150106c10345128"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Alarm (fully isolated).opus",
+      "size": 558358,
+      "gitBlobSha": "a766427755e0142e7ab40dae234f0f66f6594b7b"
+    },
+    {
+      "path": "media/sound/samples_cleaned/ame 1.opus",
+      "size": 114382,
+      "gitBlobSha": "bed1076188d16a1bae5230fec9604ec10a56802d"
+    },
+    {
+      "path": "media/sound/samples_cleaned/ame 2.opus",
+      "size": 312200,
+      "gitBlobSha": "9bee719209baad74fc0e5db7457ffdf311a37ba7"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Ararm.opus",
+      "size": 458421,
+      "gitBlobSha": "06fb158813b660384d01c99d7479d4d92253f41a"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Bird 1 (cut).opus",
+      "size": 52041,
+      "gitBlobSha": "81d7015742a2eae583778b483ec6bd9d718e9975"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Bird 1 (full).opus",
+      "size": 148189,
+      "gitBlobSha": "b6f5fcc68afbd40645926fa056edc67db85f6329"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Dialogue reconstruct 1.opus",
+      "size": 109525,
+      "gitBlobSha": "dc4c099617d14c93216d153a5c54c8c68e4c8ade"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Dialogue reconstruct 2.opus",
+      "size": 118126,
+      "gitBlobSha": "14b910ff8ff4b5100bb78b01b41aa8a068d88de8"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Do, MusicBox.opus",
+      "size": 27177,
+      "gitBlobSha": "2fbe9ae4b5dcf128abda2e252723ff1c58d26259"
+    },
+    {
+      "path": "media/sound/samples_cleaned/door.opus",
+      "size": 28008,
+      "gitBlobSha": "d7803215557c068138e724b23820339298ef2499"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Melody (ambience).opus",
+      "size": 250684,
+      "gitBlobSha": "212b99b63148a054f25af7673a250a762418ca67"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Melody (isolated).opus",
+      "size": 300671,
+      "gitBlobSha": "fea3cb91bd9725e94fbe0b4155c9346feaf6bf51"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Music Box chord.opus",
+      "size": 31667,
+      "gitBlobSha": "10a2d2b6faa8a4802fa182414fecef7c3982d361"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Music Box Loop.opus",
+      "size": 28091,
+      "gitBlobSha": "97aaaa3a033625dba4375bd476b9662f682c6f9d"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Ring.opus",
+      "size": 141447,
+      "gitBlobSha": "53b9ee82bd1683514b461ccbc29c600e438ca59c"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Shiki 1.opus",
+      "size": 49310,
+      "gitBlobSha": "1d924647ce855da2227c2a2aa082bfe93d297e55"
+    },
+    {
+      "path": "media/sound/samples_cleaned/Shiki 2.opus",
+      "size": 37238,
+      "gitBlobSha": "1bbb2b972491ff723ead208f2541351d90e1d0ae"
+    },
+    {
+      "path": "media/sound/Session with Tongue Drums.opus",
+      "size": 7046784,
+      "gitBlobSha": "d15266ecdfaedf3133a2da6c41fa757c2a3017c0"
+    },
+    {
+      "path": "media/video/Endless_road_MV_Taki_Iirai.mp4",
+      "size": 32746766,
+      "gitBlobSha": "7f748e8fb6df4fb681c6d297c9bf1673e03b4561"
+    },
+    {
+      "path": "media/video/Gonshan.mp4",
+      "size": 21218422,
+      "gitBlobSha": "ff1ac75ea864eccb4448dc7c86c2c1640117069c"
+    },
+    {
+      "path": "media/video/Hotaru.mp4",
+      "size": 47377594,
+      "gitBlobSha": "d0e58469e49372d4d5699e0bcd84e792a64fa674"
+    },
+    {
+      "path": "media/video/julia_dances/julia_dance_1.mp4",
+      "size": 21240465,
+      "gitBlobSha": "8adf8edd9358b32dfd8c7edb7c6154828260de84"
+    },
+    {
+      "path": "media/video/julia_dances/julia_dance_2.mp4",
+      "size": 30669680,
+      "gitBlobSha": "54945d359ffe3f0ea090bd5a52338dba53207550"
+    },
+    {
+      "path": "media/video/julia_dances/julia_dance_3.mp4",
+      "size": 2964096,
+      "gitBlobSha": "034eb0bd8bfea548a5dac4cf198fbaec24f74129"
+    },
+    {
+      "path": "media/video/julia_dances/julia_dance_4.mp4",
+      "size": 11195270,
+      "gitBlobSha": "f7cf78ff2ab689a9f4c77ba4fa34de26a34a1074"
+    },
+    {
+      "path": "media/video/README.txt",
+      "size": 5444,
+      "gitBlobSha": "040526e42a0cec2b70a8cde331a7de1506181b1b"
+    },
+    {
+      "path": "media/video/Shiki.mp4",
+      "size": 58050990,
+      "gitBlobSha": "ad91f24e10a9e887f43aa847399f2789462cb9a9"
+    },
+    {
+      "path": "media/video/Tunnel.mp4",
+      "size": 65430527,
+      "gitBlobSha": "12c4405833fe75e07f54480f099be2bf655e2ae6"
+    },
+    {
+      "path": "media/video/富士山六大妖怪　(saikoneon　動画).mp4",
+      "size": 31159946,
+      "gitBlobSha": "a971c5e4d6ceebec4e8b5481f645e27c84d9a5bb"
+    },
+    {
+      "path": "media/video/山は覚えている｜The Mountain Remembers｜MV.mp4",
+      "size": 27806005,
+      "gitBlobSha": "f5023da83eab32882ee12a9e2606242ee40084cf"
+    }
+  ]
+}

@@ -7,16 +7,17 @@ archive.js is data-only. It defines ARCHIVE and the flat JIHANKI_ARCHIVE array. 
 A record has a stable id, a human-readable title, an archive date, a semantic category, a type, and whichever file or external release URL applies.
 
 Example fields:
+- id: example-memory
+- title: EXAMPLE MEMORY
+- date: 2026
+- type: video
+- category: video
+- group: JAPAN / AUDIOVISUAL WORKS
+- file: media/video/example.mp4
+- stock: { status: new, quantity: null }
+- metadata: { locations: [Lake Saiko], related: [another-record-id] }
 
-- id: "example-memory"
-- title: "EXAMPLE MEMORY"
-- date: "2026"
-- type: "video"
-- category: "video"
-- group: "JAPAN / AUDIOVISUAL WORKS"
-- file: "media/video/example.mp4"
-- stock: { status: "new", quantity: null }
-- metadata: { locations: ["Lake Saiko"], related: ["another-record-id"] }
+Optional metadata should describe only known facts: locations, related archive IDs, production context, people and source material. Do not invent geographic coordinates or recording durations.
 
 ## Physical category mapping
 
@@ -27,13 +28,11 @@ The eight physical selectors are mapped explicitly in js/categories.js:
 | VIDEO | video |
 | PHOTO | photo, image |
 | UTAU | utau, voicebank |
-| TEXT | text |
+| DOCS | text |
 | MUSIC | music |
 | SOUND | sound |
 | NOTES | notes, note |
 | PERFORMANCE | performance |
-
-Records that do not match a mapping are reported in the maintenance terminal's unclassified count instead of being silently placed in another category.
 
 ## Stock states
 
@@ -46,28 +45,30 @@ Records that do not match a mapping are reported in the maintenance terminal's u
 
 quantity: null means no numeric limit is advertised. A finite quantity of zero blocks dispensing. Because JIHANKI is a static site, the published catalogue controls shared availability; visitor purchases do not modify global stock.
 
-The fifth Aokigahara / Fuji Sonic Pi environment, Shrine / Ritual, is listed as restocking until its public render is added.
-
 ## Relationships and geography
 
-Use metadata.locations for known place names and metadata.related for stable IDs of related archive records. Curated defaults for video voicebanks, expedition entries and known places live in js/relationships.js and js/geography.js.
+Use metadata.locations for known place names and metadata.related for stable IDs of related archive records. Typed editorial relationships live in js/relationships.js; contextual discovery and shared-location links live in js/discovery.js. Geography is indexed in js/geography.js.
 
-Photo group values are thematic groupings (for example, Machines after dark and Forest boundaries); they should not be confused with geographic locations.
+Photo group values are thematic groupings (for example, Machines after dark and Forest boundaries); they should not be confused with geographic locations. The Memory Map is schematic and explicitly not to scale.
+
+## Media integrity
+
+data/media-manifest.json inventories every file under media/ with its byte size and Git blob SHA-1. Rebuild it after adding or replacing media with:
+node scripts/build-media-manifest.mjs
+node scripts/build-media-manifest.mjs --check
+
+The validator confirms that catalogue paths exist and every referenced media file is represented in the manifest. The manifest hash is an integrity fingerprint, not a cryptographic authorship signature.
 
 ## Visitor-local data
 
-Receipts and machine event logs are saved in the visitor's browser. They are not fields in archive.js and do not alter the published catalogue.
+Receipts, event logs, personality state, collection records and collectible objects are saved in separate browser-local storage domains. They are never transmitted by the static site. Collection exports are versioned and include serialized objects; imports are validated before additive merge.
 
 ## Presentation and visitor memory
 
-The daily rotating selection is implemented in js/rotation.js. It chooses a date-stable fragment from each physical category and keeps a small residue from the preceding cycle. This is a presentation layer only: the complete catalogue remains available from the physical category selectors.
-
-Personal collections are implemented in js/collection.js. Only successful purchases are collected. Stored records include the archive ID, title, date, category, acquisition timestamps, repeat count and associated receipt codes. They remain local to the browser and can be exported as JSON.
-
-Ambient machine profiles live in js/audio.js. The original ambience loop fades between machine states; the visitor can mute it without disabling visual interactions or archive playback controls.
+The daily rotating selection is implemented in js/rotation.js. Personal collection and souvenirs live in js/collection.js. Local visitor interaction patterns drive the limited machine personality in js/personality.js. They do not affect the published catalogue.
 
 ## Automated integrity checks
 
-Run `node scripts/validate-archive.mjs` to validate required record fields, unique IDs, category aliases, stock states, local media/document paths, curated relationship targets, HTML IDs and script dependencies. GitHub Actions runs the same check for pushes and pull requests.
+Run node scripts/validate-archive.mjs to validate required record fields, unique IDs, category aliases, stock states, local media/document paths, curated relationship targets, HTML IDs, runtime scripts and media manifest checksums. GitHub Actions runs the same checks for pushes and pull requests.
 
-When adding a record, use `file` for the primary local document or media path. Do not use the obsolete `textFile` property.
+When adding a record, use file for the primary local document or media path. Do not use the obsolete textFile property.

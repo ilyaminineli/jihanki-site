@@ -1,38 +1,81 @@
-/* Curated cross-links between voices, audiovisual works and projects. */
+/* M43 — Curated, typed links. Connections are editorial, not automatic category matches. */
 (function () {
   const LINKS = {
-    "mountain-remembers-mv": ["voice-takismana", "voice-iirai", "voice-eugene", "aokigahara-pentalogy"],
-    "endless-road": ["voice-iirai", "voice-takismana"],
-    "gonshan": ["voice-takismana", "voice-eugene"],
-    "hotaru": ["voice-takismana", "voice-iirai", "voice-eugene"],
-    "aokigahara-pentalogy": ["aokigahara-shrine-restock", "daily-2026-07-22", "daily-2026-07-26"],
-    "aokigahara-shrine-restock": ["aokigahara-pentalogy", "daily-2026-07-26"],
-    "tunnel": ["daily-2026-07-25"]
+    "mountain-remembers-mv": [
+      { id: "voice-takismana", kind: "shared-voice", label: "UTAU VOICE" },
+      { id: "voice-iirai", kind: "shared-voice", label: "UTAU VOICE" },
+      { id: "voice-eugene", kind: "shared-voice", label: "UTAU VOICE" },
+      { id: "aokigahara-pentalogy", kind: "shared-project", label: "SOUND WORLD" }
+    ],
+    "endless-road": [
+      { id: "voice-iirai", kind: "shared-voice", label: "UTAU VOICE" },
+      { id: "voice-takismana", kind: "shared-voice", label: "UTAU VOICE" }
+    ],
+    "gonshan": [
+      { id: "voice-takismana", kind: "shared-voice", label: "UTAU VOICE" },
+      { id: "voice-eugene", kind: "shared-voice", label: "UTAU VOICE" }
+    ],
+    "hotaru": [
+      { id: "voice-takismana", kind: "shared-voice", label: "UTAU VOICE" },
+      { id: "voice-iirai", kind: "shared-voice", label: "UTAU VOICE" },
+      { id: "voice-eugene", kind: "shared-voice", label: "UTAU VOICE" }
+    ],
+    "aokigahara-pentalogy": [
+      { id: "aokigahara-shrine-restock", kind: "same-project", label: "PENTALOGY CHAPTER" },
+      { id: "daily-2026-07-22", kind: "field-origin", label: "FIELD NOTE" },
+      { id: "daily-2026-07-26", kind: "field-origin", label: "FIELD NOTE" }
+    ],
+    "aokigahara-shrine-restock": [
+      { id: "aokigahara-pentalogy", kind: "same-project", label: "PARENT PROJECT" },
+      { id: "daily-2026-07-26", kind: "field-origin", label: "FIELD NOTE" }
+    ],
+    "tunnel": [{ id: "daily-2026-07-25", kind: "source-observation", label: "FIELD NOTE" }],
+    "fuji-six-yokai-video": [
+      { id: "fuji-six-yokai-script", kind: "production-document", label: "SCRIPT" },
+      { id: "fuji-six-yokai-document", kind: "project-document", label: "PROJECT DOSSIER" }
+    ],
+    "fuji-six-yokai-script": [
+      { id: "fuji-six-yokai-video", kind: "production-document", label: "FILM" },
+      { id: "fuji-six-yokai-document", kind: "project-document", label: "PROJECT DOSSIER" }
+    ]
   };
-  function related(item) {
+  function explicitLinks(item) {
     const all = window.JIHANKI_ARCHIVE || [];
-    const ids = [...(item?.metadata?.related || []), ...(LINKS[item?.id] || [])];
-    const unique = [...new Set(ids.filter(id => id && id !== item?.id))];
-    return unique.map(id => all.find(record => record.id === id)).filter(Boolean);
+    const ids = Array.isArray(item?.metadata?.related) ? item.metadata.related : [];
+    const combined = [
+      ...ids.map(id => ({ id, kind: "related-record", label: "RELATED RECORD" })),
+      ...(LINKS[item?.id] || [])
+    ];
+    const seen = new Set();
+    return combined.filter(link => {
+      if (!link.id || link.id === item?.id || seen.has(link.id) || !all.some(record => record.id === link.id)) return false;
+      seen.add(link.id); return true;
+    }).map(link => ({ ...link, item: all.find(record => record.id === link.id) }));
   }
-  function validate() {
+  function links(item) {
     const all = window.JIHANKI_ARCHIVE || [];
-    const ids = new Set(all.map(item => item.id));
+    const merged = new Map();
+    [...explicitLinks(item), ...Object.entries(LINKS).flatMap(([sourceId, targets]) => {
+      const match = targets.find(target => target.id === item?.id);
+      const source = match && all.find(record => record.id === sourceId);
+      return source ? [{ id: source.id, item: source, kind: match.kind, label: match.label }] : [];
+    })].forEach(link => { if (!merged.has(link.id)) merged.set(link.id, link); });
+    return [...merged.values()];
+  }
+  function related(item) { return links(item).map(link => link.item).filter(Boolean); }
+  function validate() {
+    const all = window.JIHANKI_ARCHIVE || [], ids = new Set(all.map(item => item.id));
     const unresolvedSources = Object.keys(LINKS).filter(id => !ids.has(id));
     const unresolvedTargets = [];
-    Object.entries(LINKS).forEach(([from, targets]) => targets.forEach(to => {
-      if (!ids.has(to)) unresolvedTargets.push({ from, to, source: "curated" });
+    Object.entries(LINKS).forEach(([from, targets]) => targets.forEach(link => {
+      if (!ids.has(link.id)) unresolvedTargets.push({ from, to: link.id, source: "curated" });
     }));
     all.forEach(item => (item.metadata?.related || []).forEach(to => {
       if (!ids.has(to)) unresolvedTargets.push({ from: item.id, to, source: "metadata" });
     }));
     return { unresolvedSources, unresolvedTargets };
   }
-  window.JIHANKI_RELATIONSHIPS = {
-    related, validate,
-    forId(id) {
-      const item = (window.JIHANKI_ARCHIVE || []).find(record => record.id === id);
-      return item ? related(item) : [];
-    }
+  window.JIHANKI_RELATIONSHIPS = { links, related, validate,
+    forId(id) { const item = (window.JIHANKI_ARCHIVE || []).find(record => record.id === id); return item ? related(item) : []; }
   };
 })();

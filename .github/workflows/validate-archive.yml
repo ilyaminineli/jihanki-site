@@ -5,8 +5,10 @@ on:
     paths:
       - "data/**"
       - "js/categories.js"
-      - "js/relationships.js"
+      - "js/**"
+      - "css/**"
       - "index.html"
+      - "sw.js"
       - "projects/aokigahara/**"
       - "scripts/validate-archive.mjs"
       - ".github/workflows/validate-archive.yml"
@@ -14,8 +16,10 @@ on:
     paths:
       - "data/**"
       - "js/categories.js"
-      - "js/relationships.js"
+      - "js/**"
+      - "css/**"
       - "index.html"
+      - "sw.js"
       - "projects/aokigahara/**"
       - "scripts/validate-archive.mjs"
       - ".github/workflows/validate-archive.yml"
@@ -35,5 +39,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Validate media manifest
+        run: node scripts/build-media-manifest.mjs --check
       - name: Validate archive, relationships and local assets
         run: node scripts/validate-archive.mjs
