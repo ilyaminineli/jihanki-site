@@ -700,6 +700,20 @@
   document.getElementById("artifact-close").addEventListener("click", closeArtifact);
   artifact.addEventListener("click", event => { if (event.target === artifact) closeArtifact(); });
   artifactContent.addEventListener("click", event => {
+    const temporalMap = event.target.closest("[data-temporal-map]");
+    if (temporalMap) { openMap("geography"); return; }
+    const temporalRandom = event.target.closest("[data-temporal-random]");
+    if (temporalRandom) {
+      const records = window.JIHANKI_ARCHIVE || [];
+      const item = records.length ? records[Math.floor(Math.random() * records.length)] : null;
+      if (item) openItem(item);
+      return;
+    }
+    const temporalScroll = event.target.closest("[data-temporal-scroll]");
+    if (temporalScroll) {
+      artifactContent.querySelector("#temporal-timeline")?.scrollIntoView({behavior:window.matchMedia?.("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+      return;
+    }
     const temporalOpen = event.target.closest("[data-temporal-open]");
     if (temporalOpen) { const item = byId(temporalOpen.dataset.temporalOpen); if (item) openItem(item); return; }
     const museumTabButton = event.target.closest("[data-museum-tab]");
