@@ -217,10 +217,11 @@ Allow the archive to function as a visitor-operated sound installation using exi
 Allow visitors to contribute an anonymous memory fragment without exposing the archive to unmoderated uploads.
 
 ### Scope
-1. Define contribution types: short text, sound association, photograph or response to a machine prompt.
-2. Add a moderation queue and explicit publication approval.
-3. Define retention, deletion, consent and abuse-handling rules.
-4. Keep the current static build fully functional without the service.
+1. Accept a plain-text fragment of up to 500 characters, optionally responding to a prompt.
+2. Allow an optional association to one existing archive record selected from an allowlist.
+3. Require explicit consent and human moderation before publication; include withdrawal and report handling.
+4. Defer photographs, audio uploads, arbitrary links, comments, direct messages and public profiles.
+5. Keep the current static build fully functional without the service.
 
 ### Boundary
 This cannot be implemented securely with the current static-only architecture. It requires a separately selected backend, moderation workflow and privacy policy.
