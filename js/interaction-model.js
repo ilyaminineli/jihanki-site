@@ -23,8 +23,8 @@
     PURCHASE_COMPLETE: { from: ["pending"], transaction: "dispensed" },
     PURCHASE_ABORT: { from: ["pending"], transaction: "failed", refundsReservedCredit: true },
     RECOVER: { from: "*", transaction: "failed", refundsPendingCredit: true },
-    RECEIPT_SAVED: { from: ["dispensed", "print-dialog-opened", "receipt-saved"], transaction: "receipt-saved" },
-    RECEIPT_PRINT_DIALOG_OPENED: { from: ["dispensed", "receipt-saved", "print-dialog-opened"], transaction: "print-dialog-opened" }
+    RECEIPT_DOWNLOAD_STARTED: { from: ["dispensed", "print-dialog-opened", "receipt-download-started"], transaction: "receipt-download-started" },
+    RECEIPT_PRINT_DIALOG_OPENED: { from: ["dispensed", "receipt-download-started", "print-dialog-opened"], transaction: "print-dialog-opened" }
   });
 
   function createState() {
@@ -63,7 +63,7 @@
 
     if (Array.isArray(definition.from) && !definition.from.includes(
       event === "PURCHASE_COMPLETE" || event === "PURCHASE_ABORT" ||
-      event === "RECEIPT_SAVED" || event === "RECEIPT_PRINT_DIALOG_OPENED"
+      event === "RECEIPT_DOWNLOAD_STARTED" || event === "RECEIPT_PRINT_DIALOG_OPENED"
         ? state.transaction.status : state.view
     )) return result(state, false, "invalid-source-state");
 
@@ -171,15 +171,15 @@
         }
         return result(state, false, "nothing-to-recover");
 
-      case "RECEIPT_SAVED":
+      case "RECEIPT_DOWNLOAD_STARTED":
       case "RECEIPT_PRINT_DIALOG_OPENED": {
-        const allowed = event === "RECEIPT_SAVED"
-          ? ["dispensed", "print-dialog-opened", "receipt-saved"] : ["dispensed", "receipt-saved", "print-dialog-opened"];
+        const allowed = event === "RECEIPT_DOWNLOAD_STARTED"
+          ? ["dispensed", "print-dialog-opened", "receipt-download-started"] : ["dispensed", "receipt-download-started", "print-dialog-opened"];
         if (!allowed.includes(state.transaction.status) ||
             !payload.receiptCode || String(payload.receiptCode) !== state.transaction.receiptCode) {
           return result(state, false, "receipt-does-not-match-current-transaction");
         }
-        state.transaction = { ...state.transaction, status: event === "RECEIPT_SAVED" ? "receipt-saved" : "print-dialog-opened" };
+        state.transaction = { ...state.transaction, status: event === "RECEIPT_DOWNLOAD_STARTED" ? "receipt-download-started" : "print-dialog-opened" };
         return result(state, true);
       }
 
