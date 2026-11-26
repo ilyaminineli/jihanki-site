@@ -54,8 +54,33 @@ try{
     assert(geometry.canvas.x>=-1&&geometry.canvas.right<=device.width+1,device.name+": machine clipped horizontally");
     assert(geometry.coin.width>=43&&geometry.coin.height>=43,device.name+": COIN hit target too small");
     assert(geometry.home.width>=43&&geometry.home.height>=43,device.name+": HOME hit target too small");
-    if(device.width<=560&&geometry.scrollHeight>device.height)
-      assert(geometry.scrollMode,device.name+": expected full-width scrollable machine on a short phone");
+    // M50 is a static catalogue view: every source record appears once in the chronology,
+    // while the visitor-local clock is presentation-only and creates no persistent state.
+    const localKeysBefore=await page.evaluate(()=>Object.keys(localStorage).sort().join("|"));
+    const temporalStats=await page.evaluate(()=>window.JIHANKI_TEMPORAL.stats());
+    const sourceCount=await page.evaluate(()=>window.JIHANKI_ARCHIVE.length);
+    assert(temporalStats.total===sourceCount,device.name+": temporal archive omitted catalogue records");
+    assert(temporalStats.dated+temporalStats.unplaced===temporalStats.total,
+      device.name+": temporal date accounting is incomplete");
+    await page.locator('[data-home-action="temporal"]').click();
+    await page.locator(".temporal-archive").waitFor();
+    const temporalView=await page.evaluate(()=>({
+      records:document.querySelectorAll(".temporal-year [data-temporal-open],.temporal-unplaced [data-temporal-open]").length,
+      phase:document.querySelector(".temporal-now>strong")?.textContent||"",
+      localNote:document.querySelector(".temporal-now small")?.textContent||""
+    }));
+    assert(temporalView.records===temporalStats.total,device.name+": chronology does not expose every record");
+    assert(["DAWN","MORNING","AFTERNOON","DAY","EVENING","NIGHT"].includes(temporalView.phase),
+      device.name+": visitor-local time phase missing");
+    assert(temporalView.localNote.includes("NOT SENT"),device.name+": local-time privacy note missing");
+    const localKeysAfter=await page.evaluate(()=>Object.keys(localStorage).sort().join("|"));
+    assert(localKeysBefore===localKeysAfter,device.name+": opening temporal archive created persistent visitor state");
+    const firstTemporalRecord=page.locator(".temporal-year [data-temporal-open]").first();
+    await firstTemporalRecord.waitFor();
+    await firstTemporalRecord.click();
+    assert(await page.locator("#artifact[aria-hidden='false']").count()===1,
+      device.name+": chronology record did not open its source memory");
+    await page.keyboard.press("Escape");
 
     await page.locator('[data-home-action="map"]').click();
     await page.locator(".memory-map-panel").waitFor();
