@@ -755,10 +755,10 @@ const ARCHIVE = {
       "date": "2026",
       "type": "audio",
       "category": "music",
-      "author": "yulia-baranyuk",
+      "author": "takismana",
       "group": "SESSIONS / STANDALONE",
       "file": "media/sound/Session with Tongue Drums.opus",
-      "description": "A standalone tongue-drum session by Yulia Baranyuk, kept separate from the Aokigahara album."
+      "description": "A standalone tongue-drum session by Takismana, kept separate from the Aokigahara album."
     }
   ],
   "sound": [
