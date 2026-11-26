@@ -92,8 +92,12 @@ try{
       window.JIHANKI_MACHINE.openItem(item);
     },transactionId);
     await page.locator("#artifact.open [data-action='insert-credit-current']").waitFor();
+    assert(await page.evaluate(()=>window.JIHANKI_MACHINE.getState().overlay==="record"),
+      device.name+": record viewer did not enter the explicit record-overlay state");
     await page.locator("#artifact.open [data-action='insert-credit-current']").click();
     await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().credits===1);
+    assert(await page.evaluate(()=>window.JIHANKI_MACHINE.getState().transaction.status==="credit-accepted"),
+      device.name+": accepted coin was not represented in the transaction state");
     const machineScreenBeforeBlock=await page.locator("#screen-content").innerHTML();
     await page.evaluate(id=>{
       const item=window.JIHANKI_ARCHIVE.find(record=>record.id===id);
@@ -129,6 +133,8 @@ try{
       return{
         credits:window.JIHANKI_MACHINE.getState().credits,
         selectedId:window.JIHANKI_MACHINE.getState().selectedId,
+        overlay:window.JIHANKI_MACHINE.getState().overlay,
+        transaction:window.JIHANKI_MACHINE.getState().transaction,
         receiptCount:window.JIHANKI_RECEIPTS.all().length,
         collected:window.JIHANKI_COLLECTION.contains(id),
         order:["coin-accepted","receipt-generated","collection-added","memory-dispensed"].map(type=>events.lastIndexOf(type))
@@ -138,8 +144,19 @@ try{
       device.name+": successful dispense left an inconsistent credit or selection state");
     assert(completedTransaction.receiptCount===transactionBaseline.receipts+1&&completedTransaction.collected,
       device.name+": successful dispense did not produce one receipt and one collection record");
+    assert(completedTransaction.overlay==="record"&&completedTransaction.transaction.status==="dispensed"&&
+      completedTransaction.transaction.itemId===transactionId&&completedTransaction.transaction.receiptCode,
+      device.name+": successful transaction confirmation is not represented in the active record viewer");
     assert(completedTransaction.order.every((index,i,array)=>index>=0&&(i===0||index>array[i-1])),
       device.name+": transaction events were not recorded in credit/receipt/collection/dispense order");
+    const [receiptDownload]=await Promise.all([
+      page.waitForEvent("download"),
+      page.locator(".receipt-ticket [data-receipt-action='download']").click()
+    ]);
+    assert(receiptDownload.suggestedFilename().endsWith(".txt"),device.name+": receipt export used an unexpected filename");
+    await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().transaction.status==="receipt-saved");
+    assert((await page.locator("[data-transaction-confirmation]").textContent()).includes("RECEIPT SAVED"),
+      device.name+": receipt-save outcome was not confirmed in the viewer");
     await page.evaluate(id=>window.JIHANKI_MACHINE.purchase(window.JIHANKI_ARCHIVE.find(record=>record.id===id)),transactionId);
     await page.waitForFunction(()=>document.querySelector(".artifact-feedback")?.textContent.includes("NO CREDIT"));
     const retryState=await page.evaluate(()=>({
@@ -149,8 +166,59 @@ try{
     }));
     assert(retryState.credits===0&&retryState.receipts===transactionBaseline.receipts+1&&retryState.selectedId===transactionId,
       device.name+": a no-credit retry altered the completed transaction");
+    const rejectedState=await page.evaluate(()=>window.JIHANKI_MACHINE.getState().transaction);
+    assert(rejectedState.status==="blocked"&&rejectedState.reason==="no-credit",
+      device.name+": no-credit retry did not produce an explicit blocked outcome");
     await page.keyboard.press("Escape");
+    assert(await page.evaluate(()=>window.JIHANKI_MACHINE.getState().overlay==="none"),
+      device.name+": closing the record did not return the overlay to none");
     await page.locator("#home-button").click();
+
+    // Rapid source changes must stop the previous audio layer before the next one is displayed.
+    const audioSwap=await page.evaluate(()=>{
+      const audioItems=window.JIHANKI_ARCHIVE.filter(item=>item.type==="audio"&&item.file);
+      if(audioItems.length<2)return{skipped:true};
+      window.JIHANKI_MACHINE.openItem(audioItems[0]);
+      const media=document.querySelector("#artifact-body audio");
+      if(!media)return{missing:true};
+      let playing=false,pauseCalls=0;
+      media.play=()=>{playing=true;return Promise.resolve();};
+      media.pause=()=>{playing=false;pauseCalls++;};
+      media.play();
+      window.JIHANKI_MACHINE.openItem(audioItems[1]);
+      return{playing,pauseCalls,second:document.querySelector("#artifact-body audio")?.getAttribute("src"),expected:audioItems[1].file};
+    });
+    assert(!audioSwap.skipped&&!audioSwap.missing&&audioSwap.pauseCalls>0&&!audioSwap.playing&&audioSwap.second===audioSwap.expected,
+      device.name+": rapid media selection left a previous audio source active");
+    await page.keyboard.press("Escape");
+
+    // A delayed failure from an older Markdown request must not overwrite the newer selection.
+    const markdownRace=await page.evaluate(()=>{
+      const items=window.JIHANKI_ARCHIVE.filter(item=>typeof item.file==="string"&&item.file.endsWith(".md"));
+      if(items.length<2)return{skipped:true};
+      return{oldId:items[0].id,newId:items[1].id,newTitle:items[1].title,oldFile:items[0].file};
+    });
+    if(!markdownRace.skipped){
+      await page.route("**/"+markdownRace.oldFile,async route=>{
+        await new Promise(resolve=>setTimeout(resolve,120));
+        await route.abort();
+      });
+      await page.evaluate(({oldId,newId})=>{
+        window.JIHANKI_MACHINE.openItem(window.JIHANKI_ARCHIVE.find(item=>item.id===oldId));
+        window.JIHANKI_MACHINE.openItem(window.JIHANKI_ARCHIVE.find(item=>item.id===newId));
+      },markdownRace);
+      await page.waitForFunction(title=>document.querySelector(".artifact-title")?.textContent.trim()===title,markdownRace.newTitle);
+      await page.waitForTimeout(180);
+      const stillCurrent=await page.evaluate(()=>({
+        title:document.querySelector(".artifact-title")?.textContent.trim(),
+        body:document.querySelector("#artifact-body")?.textContent||""
+      }));
+      assert(stillCurrent.title===markdownRace.newTitle&&!stillCurrent.body.includes("MEMORY COULD NOT BE READ"),
+        device.name+": stale Markdown failure replaced the newer selected memory");
+      await page.unroute("**/"+markdownRace.oldFile);
+      await page.keyboard.press("Escape");
+      await page.locator("#home-button").click();
+    }
 
     // A credit is a spendable token: the pile shrinks as more are inserted and decrements on dispensing.
     await page.locator("#coin-button").click();
