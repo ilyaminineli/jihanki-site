@@ -93,7 +93,7 @@ try{
       await stat(resolved);
     }
     await mkdir(path.join(ROOT,"test-results"),{recursive:true});
-    await page.screenshot({path:path.join(ROOT,"test-results","temporal-"+device.name+".png"),fullPage:true});
+    await page.screenshot({path:path.join(ROOT,"test-results","temporal-"+device.name+".png")});
     await page.locator("[data-temporal-scroll]").click();
     assert(await page.locator("#temporal-timeline").count()===1,device.name+": TIMELINE anchor missing");
     const firstTemporalRecord=page.locator(".temporal-year [data-temporal-open]").first();
