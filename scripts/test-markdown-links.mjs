@@ -29,7 +29,7 @@ try {
   assert(!links.some(link => link.destination === "c.md"), "Inline code link was not ignored");
 
   const result = validateMarkdownRepository(root);
-  assert(result.files === 1, "Expected to scan one Markdown file");
+  assert(result.files === 2, "Expected to scan both Markdown fixture files");
   assert(result.issues.some(issue => issue.includes("absent.png")), "Missing image link was not detected");
   assert(result.issues.some(issue => issue.includes("absent.md")), "Missing Markdown link was not detected");
   assert(result.issues.some(issue => issue.includes("does-not-exist")), "Missing anchor was not detected");
