@@ -1,6 +1,6 @@
 # M35 — Machine interaction integrity
 
-**Status:** Baseline fixes in progress  
+**Status:** Partial — viewer-safe transaction feedback and regression coverage implemented; transition matrix remains open  
 **Depends on:** M25–M34.
 
 ## Goal
@@ -12,6 +12,7 @@ Make every machine interaction legible and reversible. A visitor should always u
 - Keep the credit balance visible in the CRT and memory viewer.
 - Allow one credit to be inserted from the open memory viewer, so the visitor does not have to close the viewer to reach the physical COIN control.
 - Keep insufficient-credit feedback inside the viewer instead of writing it to the obscured CRT.
+- Keep stock, catalogue and credit failure feedback inside the active viewer; a rejected transaction must preserve the credit and selected memory.
 - Track the actual machine view (idle, category, location, rotation, collection, service) and restore the matching ambient profile after closing a memory.
 - Ignore stale asynchronous Markdown responses after another memory has been opened or the viewer has closed.
 
