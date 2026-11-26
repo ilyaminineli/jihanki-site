@@ -46,7 +46,7 @@
   }
   function transactionConfirmationMarkup() {
     const transaction = interactionState.transaction;
-    if (!transaction?.receiptCode || !["dispensed", "receipt-saved", "receipt-printed"].includes(transaction.status)) return "";
+    if (!transaction?.receiptCode || !["dispensed", "receipt-saved", "print-dialog-opened"].includes(transaction.status)) return "";
     const label = transaction.status === "receipt-saved" ? "RECEIPT SAVED" :
       transaction.status === "print-dialog-opened" ? "PRINT DIALOG OPENED" : "MEMORY DISPENSED / RECEIPT CREATED";
     return '<div class="transaction-confirmation" role="status" aria-live="polite" data-transaction-confirmation>' +
