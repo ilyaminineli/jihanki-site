@@ -56,7 +56,7 @@ try{
     assert(geometry.home.width>=43&&geometry.home.height>=43,device.name+": HOME hit target too small");
     // M50 is a static catalogue view: every source record appears once in the chronology,
     // while the visitor-local clock is presentation-only and creates no persistent state.
-    const localKeysBefore=await page.evaluate(()=>Object.keys(localStorage).sort().join("|"));
+    const temporalStateBefore=await page.evaluate(()=>({keys:Object.keys(localStorage).sort().join("|"),events:window.JIHANKI_EVENTS.count()}));
     const temporalStats=await page.evaluate(()=>window.JIHANKI_TEMPORAL.stats());
     const sourceCount=await page.evaluate(()=>window.JIHANKI_ARCHIVE.length);
     assert(temporalStats.total===sourceCount,device.name+": temporal archive omitted catalogue records");
@@ -80,8 +80,9 @@ try{
     assert(["DAWN","MORNING","AFTERNOON","DAY","EVENING","NIGHT"].includes(temporalView.phase),
       device.name+": visitor-local time phase missing");
     assert(temporalView.localNote.includes("NOT TRANSMITTED"),device.name+": local-time privacy note missing");
-    const localKeysAfter=await page.evaluate(()=>Object.keys(localStorage).sort().join("|"));
-    assert(localKeysBefore===localKeysAfter,device.name+": opening temporal archive created persistent visitor state");
+    const temporalStateAfter=await page.evaluate(()=>({keys:Object.keys(localStorage).sort().join("|"),events:window.JIHANKI_EVENTS.count()}));
+    assert(temporalStateBefore.keys===temporalStateAfter.keys&&temporalStateBefore.events===temporalStateAfter.events,
+      device.name+": opening temporal archive wrote visitor state or event history");
     const temporalImagePaths=await page.evaluate(()=>[...document.querySelectorAll(".temporal-year .temporal-record--image img")]
       .map(image=>image.getAttribute("src")));
     assert(temporalImagePaths.every(source=>source&&source.startsWith("media/")&&!source.includes("..")),
