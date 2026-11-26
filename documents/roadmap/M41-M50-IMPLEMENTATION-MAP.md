@@ -210,8 +210,8 @@ Allow the archive to function as a visitor-operated sound installation using exi
 ## M49 — Visitor memory exchange
 
 **Priority:** P2 / backend-dependent  
-**Status:** Privacy and moderation design drafted; implementation blocked by release gates  
-**Depends on:** approved moderation model, backend/data-region selection, named moderation owners and legal/privacy review
+**Status:** Privacy/moderation design complete; Supabase Pro / Frankfurt selected as preferred target; service not provisioned  
+**Depends on:** named service owner and moderation team, DPA/transfer review, actual project provisioning and release-gate verification
 
 ### Goal
 Allow visitors to contribute an anonymous memory fragment without exposing the archive to unmoderated uploads.
@@ -228,11 +228,13 @@ This cannot be implemented securely with the current static-only architecture. I
 
 **Design reference:** [M49 — Visitor Memory Exchange: Privacy, Consent, Moderation and Abuse Prevention](../privacy/M49-VISITOR-MEMORY-EXCHANGE-PRIVACY-AND-MODERATION.md).
 
+**Backend/operations decision:** [M49 — Backend and Moderation-Operations Decision](../privacy/M49-BACKEND-AND-MODERATION-OPERATIONS-DECISION.md). Supabase Pro in eu-central-1 (Frankfurt) is the preferred target. The public static archive remains separate; only invite-only moderators authenticate. Submissions stay closed until the service owner, moderation lead, independent backup and monitored privacy contact are explicitly appointed, the DPA/transfer review is complete, and restore/deletion drills pass.
+
 The first-release model is text-first and anonymous: maximum 500 characters, optional association with one existing archive ID, no arbitrary links or media uploads, no accounts or public handles, and explicit consent. Every contribution remains private until a human moderator approves it. Automated checks may triage but may never publish. Pending, rejected and quarantined material is excluded from public reads. A one-time withdrawal key supports contributor-initiated removal without an account.
 
 The design sets bounded retention targets, rate limits, rotating keyed anti-abuse identifiers, moderator MFA and role separation, report handling, backup deletion and incident response. Photographs, uploaded audio, comments, direct messages and public profiles are deferred.
 
-M49 remains **design-only**. No frontend submission form, upload endpoint, API client, analytics event or hidden storage path may be added until every release gate in the design document is complete.
+M49 remains **not activated**. The backend target and operating model are selected on paper, but no provider project is provisioned and no frontend submission form, upload endpoint, API client, analytics event or hidden storage path may be enabled until every release gate in the decision and privacy documents is complete.
 
 ## M50 — Temporal archive
 
