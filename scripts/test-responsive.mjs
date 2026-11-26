@@ -77,9 +77,11 @@ try{
     assert(localKeysBefore===localKeysAfter,device.name+": opening temporal archive created persistent visitor state");
     const firstTemporalRecord=page.locator(".temporal-year [data-temporal-open]").first();
     await firstTemporalRecord.waitFor();
+    const expectedTemporalTitle=await firstTemporalRecord.locator("strong").textContent();
     await firstTemporalRecord.click();
-    assert(await page.locator("#artifact[aria-hidden='false']").count()===1,
-      device.name+": chronology record did not open its source memory");
+    await page.locator("#artifact-title, .artifact-title").first().waitFor();
+    assert((await page.locator(".artifact-title").textContent()).trim()===expectedTemporalTitle.trim(),
+      device.name+": chronology opened a different source memory");
     await page.keyboard.press("Escape");
 
     await page.locator('[data-home-action="map"]').click();
