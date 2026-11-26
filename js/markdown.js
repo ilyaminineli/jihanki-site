@@ -10,7 +10,10 @@
   function inline(text, base) {
     let value = esc(text), tokens = [];
     const token = html => { const key = "@@JH" + tokens.length + "@@"; tokens.push(html); return key; };
-    value = value.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, path) => token('<img class="markdown-image" src="' + esc(safeURL(path, base)) + '" alt="' + esc(alt) + '">'));
+    value = value.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, path) => token(
+      '<span class="markdown-image-frame"><img class="markdown-image" src="' + esc(safeURL(path, base)) +
+      '" alt="' + esc(alt) + '" loading="lazy" decoding="async"><span class="artifact-media-status" role="status" aria-live="polite"></span></span>'
+    ));
     value = value.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, path) => {
       const href = safeURL(path, base), ext = path.split("?")[0].split(".").pop().toLowerCase();
       if (/^(mp3|wav|ogg|m4a|aac|flac|opus)$/.test(ext)) return token('<div class="markdown-audio"><div class="markdown-audio-label">' + label + '</div><audio controls preload="metadata" src="' + esc(href) + '"></audio></div>');
