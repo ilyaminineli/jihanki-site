@@ -800,3 +800,15 @@ a:focus-visible {
   body.compact-landscape { overflow-y:auto; height:auto; min-height:100%; }
   body.compact-landscape .artifact-window { max-height:94vh; }
 }
+
+.personality-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px; }
+.personality-grid>div { display:grid; gap:6px; padding:10px; border:1px solid rgba(255,255,255,.12); background:#0e0e0e; }
+.personality-grid span { color:#777; font-size:8px; letter-spacing:.1em; }
+.personality-grid strong { color:#ddd; font-size:16px; font-weight:400; overflow-wrap:anywhere; }
+.personality-actions { margin-top:18px; padding-top:12px; border-top:1px solid rgba(255,255,255,.12); }
+.personality-actions p { color:#777; font-size:9px; line-height:1.5; }
+.personality-actions button { padding:7px 9px; border:1px solid rgba(255,255,255,.18); background:#111; color:#bbb; font:9px "Courier New",monospace; cursor:pointer; }
+.collectible-list-item { overflow-wrap:anywhere; }
+@media(max-height:620px) and (orientation:landscape) {
+  body.compact-landscape { overflow-y:auto; height:auto; min-height:100%; }
+}

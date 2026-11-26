@@ -10,7 +10,7 @@ on:
       - "index.html"
       - "sw.js"
       - "projects/aokigahara/**"
-      - "scripts/validate-archive.mjs"
+      - "scripts/**"
       - ".github/workflows/validate-archive.yml"
   pull_request:
     paths:
@@ -21,7 +21,7 @@ on:
       - "index.html"
       - "sw.js"
       - "projects/aokigahara/**"
-      - "scripts/validate-archive.mjs"
+      - "scripts/**"
       - ".github/workflows/validate-archive.yml"
   workflow_dispatch:
 

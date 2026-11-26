@@ -117,7 +117,8 @@
       '<div class="home-actions"><button type="button" data-home-action="rotation">ROTATION / ' + rotation.items.length + '</button>' +
       '<button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button>' +
       '<button type="button" data-home-action="map">MEMORY MAP</button><button type="button" data-home-action="search">SEARCH</button>' +
-      '<button type="button" data-home-action="installation">SOUND LAB</button></div>' +
+      '<button type="button" data-home-action="installation">SOUND LAB</button>' +
+      '<button type="button" data-home-action="personality">MACHINE MEMORY</button></div>' +
       '<button type="button" class="home-audio" data-home-action="audio">' + muteLabel + '</button></div>';
     announce("JIHANKI home. " + collectionCount + " collected works. " + rotation.items.length + " rotation fragments. " + machineLine);
   }
@@ -155,6 +156,20 @@
   function openSoundscape() {
     openSystemPanel("SOUND INSTALLATION", window.JIHANKI_SOUNDSCAPE.render(), "reading");
     window.JIHANKI_AUDIO.bindMedia(artifactContent);
+  }
+  function openMachineMemory() {
+    const profile = window.JIHANKI_PERSONALITY?.profile() || { opened: 0, purchases: 0, frequentCategory: null, recent: [] };
+    const recent = profile.recent.map(id => byId(id)).filter(Boolean);
+    const rows = recent.map(item => '<button type="button" class="archaeology-node" data-related-id="' + esc(item.id) + '">' +
+      '<span class="archaeology-node-copy"><strong>' + esc(item.title) + '</strong><small>RECENTLY VISITED</small></span></button>').join("");
+    const content = '<div class="personality-grid"><div><span>MEMORY OPENINGS</span><strong>' + Number(profile.opened) + '</strong></div>' +
+      '<div><span>PURCHASES</span><strong>' + Number(profile.purchases) + '</strong></div>' +
+      '<div><span>FREQUENT CATEGORY</span><strong>' + esc((profile.frequentCategory || "NONE").toUpperCase()) + '</strong></div></div>' +
+      '<div class="archaeology-branch-label">RECENTLY REMEMBERED / ' + recent.length + '</div>' +
+      (rows || '<div class="exploration-empty">THE MACHINE HAS NOT STORED A ROUTE YET.</div>') +
+      '<div class="personality-actions"><p>THIS MEMORY IS STORED ONLY IN THIS BROWSER.</p>' +
+      '<button type="button" data-personality-reset>RESET MACHINE MEMORY</button></div>';
+    openSystemPanel("MACHINE MEMORY", content);
   }
 
   function stockTag(item) {
@@ -464,6 +479,9 @@
     screen.innerHTML = '<div class="archive collection-screen"><div class="archive-header"><span class="archive-title">MY COLLECTION</span><span class="archive-status">' + records.length + ' WORKS</span></div>' +
       '<div class="collection-summary">' + window.JIHANKI_COLLECTION.totalPurchases() + ' ACQUISITIONS / ' + objects.length + ' MEMORY OBJECTS / ' + esc(storageNote) + '</div>' +
       (records.length ? html : '<div class="archive-item collection-empty">NO MEMORIES COLLECTED YET</div>') +
+      (objects.length ? '<div class="collection-summary">COLLECTIBLE OBJECTS / ' + objects.length + '</div>' +
+        objects.map(object => '<button type="button" class="archive-item collectible-list-item" data-collectible-open="' + esc(object.id) + '">' +
+          esc(object.stamp) + ' · ' + esc(object.title) + '<small>OBJECT ' + esc(object.serial) + ' / ' + esc(object.archiveDate) + '</small></button>').join("") : '') +
       '<div class="collection-actions"><button type="button" data-collection-action="export">EXPORT</button><button type="button" data-collection-action="import">IMPORT</button>' +
       '<button type="button" data-collection-action="clear">CLEAR</button><input id="collection-import-file" type="file" accept="application/json,.json" hidden></div></div>';
     window.JIHANKI_EVENTS.record("collection-opened", { works: records.length, objects: objects.length, acquisitions: window.JIHANKI_COLLECTION.totalPurchases() });
@@ -559,6 +577,14 @@
     if (openMapButton) { openMap(openMapButton.dataset.openMap); return; }
     const objectDownload = event.target.closest("[data-collectible-download]");
     if (objectDownload) { window.JIHANKI_COLLECTION.downloadObject(objectDownload.dataset.collectibleDownload); return; }
+    const personalityReset = event.target.closest("[data-personality-reset]");
+    if (personalityReset) {
+      if (window.confirm("Reset only this browser's JIHANKI machine memory? Collection and receipts will remain unchanged.")) {
+        window.JIHANKI_PERSONALITY.reset();
+        openMachineMemory();
+      }
+      return;
+    }
     const installAction = event.target.closest("[data-install-action]");
     if (installAction) {
       if (installAction.dataset.installAction === "start") window.JIHANKI_SOUNDSCAPE.start(artifactContent);
@@ -589,6 +615,7 @@
       return;
     }
     if (target.dataset.action === "purchase-current") { purchase(byId(selectedId)); return; }
+    if (target.dataset.objectSource) { const item = byId(target.dataset.objectSource); if (item) openItem(item); return; }
     if (target.dataset.relatedId) { const item = byId(target.dataset.relatedId); if (item) openItem(item); return; }
     if (target.dataset.place) { showLocation(target.dataset.place); return; }
     if (target.dataset.receiptAction === "print") { window.JIHANKI_RECEIPTS.print(target.dataset.receiptId); return; }
@@ -624,6 +651,7 @@
       if (action === "map") { openMap("geography"); return; }
       if (action === "search") { openSearch(); return; }
       if (action === "installation") { openSoundscape(); return; }
+      if (action === "personality") { openMachineMemory(); return; }
       if (action === "audio") {
         const muted = window.JIHANKI_AUDIO.toggleMute();
         window.JIHANKI_EVENTS.record("ambient-control", { muted });
@@ -631,6 +659,16 @@
         else showHome();
         return;
       }
+    }
+    const collectibleOpen = event.target.closest("[data-collectible-open]");
+    if (collectibleOpen) {
+      const object = window.JIHANKI_COLLECTION.objects().find(entry => entry.id === collectibleOpen.dataset.collectibleOpen);
+      if (object) {
+        openSystemPanel("COLLECTIBLE MEMORY OBJECT",
+          window.JIHANKI_COLLECTION.objectMarkup(object.archiveId, object.receiptCode) +
+          '<div class="exploration-return"><button type="button" data-object-source="' + esc(object.archiveId) + '">OPEN SOURCE MEMORY ↗</button></div>');
+      }
+      return;
     }
     const collectionAction = event.target.closest("[data-collection-action]");
     if (collectionAction) {
@@ -702,7 +740,7 @@
 
   window.JIHANKI_MACHINE = {
     openItem, purchase, dispense, showCategory, showLocation, showRotation, showCollection,
-    openSearch, openMap, openArchaeology, openSoundscape,
+    openSearch, openMap, openArchaeology, openSoundscape, openMachineMemory,
     getState() { return { credits, selectedId, activeCategory, currentView, maintenanceActive, ambient: window.JIHANKI_AUDIO.getState() }; }
   };
   window.JIHANKI_EVENTS.record("machine-booted", { items: allItems().length });
