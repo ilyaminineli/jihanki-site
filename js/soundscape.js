@@ -16,6 +16,12 @@
     );
   }
 
+  function installationRoot(root) {
+    if (!root) return null;
+    if (root.matches?.(".sound-installation")) return root;
+    return root.querySelector?.(".sound-installation") || null;
+  }
+
   function runtime(root) {
     let value = runtimes.get(root);
     if (!value) {
@@ -35,7 +41,8 @@
   }
 
   function rows(root) {
-    return [...(root?.querySelectorAll(".installation-track") || [])];
+    const scope = installationRoot(root);
+    return [...(scope?.querySelectorAll(".installation-track") || [])];
   }
 
   function selectedRows(root) {
@@ -43,11 +50,13 @@
   }
 
   function setStatus(root, message) {
-    const target = root?.querySelector(".installation-status");
+    const target = installationRoot(root)?.querySelector(".installation-status");
     if (target) target.textContent = message;
   }
 
   function updateStatus(root) {
+    root = installationRoot(root);
+    if (!root) return;
     const state = runtime(root);
     const selected = selectedRows(root).length;
     const active = state.active.size;
@@ -66,6 +75,8 @@
   }
 
   function stopTrack(root,row,rewind) {
+    root = installationRoot(root);
+    if (!root) return;
     const audio = row?.querySelector("audio");
     if (!audio) return;
     const meta = trackState(audio);
@@ -132,6 +143,8 @@
   }
 
   function bind(root) {
+    root = installationRoot(root);
+    if (!root) return;
     rows(root).forEach(row => {
       const audio=row.querySelector("audio");
       if (!audio || audio.dataset.installBound === "true") return;
@@ -184,6 +197,7 @@
   }
 
   async function start(root) {
+    root = installationRoot(root);
     if (!root) return 0;
     const state = runtime(root);
     state.running = true;
@@ -207,7 +221,7 @@
 
   function setSelection(input) {
     const row = input?.closest(".installation-track");
-    const root = input?.closest(".sound-installation");
+    const root = installationRoot(input?.closest(".sound-installation"));
     if (!row || !root) return false;
     const state = runtime(root);
     if (input.checked && state.running) {
@@ -235,6 +249,7 @@
   }
 
   function stop(root,quiet) {
+    root = installationRoot(root);
     if (!root) return;
     const state = runtime(root);
     state.running = false;
@@ -246,10 +261,12 @@
   }
 
   function dispose(root) {
+    root = installationRoot(root);
     if (root) stop(root,true);
   }
 
   function getState(root) {
+    root = installationRoot(root);
     if (!root) return {running:false,selectedIds:[],activeIds:[],failedIds:[]};
     const state = runtime(root);
     return {
