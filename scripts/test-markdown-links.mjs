@@ -8,7 +8,7 @@ import { extractMarkdownDestinations, validateMarkdownRepository } from "./markd
 const root = mkdtempSync(path.join(os.tmpdir(), "jihanki-markdown-links-"));
 try {
   mkdirSync(path.join(root, "docs"), { recursive: true });
-  writeFileSync(path.join(root, "docs", "target.md"), "# Existing heading\n\n## Repeated\n\n## Repeated\n");
+  writeFileSync(path.join(root, "docs", "target.md"), "# Existing heading\n\n# M35 — Machine interaction integrity\n\n## Repeated\n\n## Repeated\n");
   writeFileSync(path.join(root, "docs", "index.html"), '<h1 id="machine">Machine</h1>');
   writeFileSync(path.join(root, "docs", "source.md"), [
     "# Source",
@@ -27,6 +27,8 @@ try {
   assert(links.some(link => link.destination === "a.md") && links.some(link => link.destination === "b.md"),
     "Inline links were not extracted");
   assert(!links.some(link => link.destination === "c.md"), "Inline code link was not ignored");
+  assert((await import("./markdown-links.mjs")).markdownAnchors("# M35 — Machine interaction integrity").has("m35--machine-interaction-integrity"),
+    "Milestone heading slug did not match GitHub em-dash anchors");
 
   const result = validateMarkdownRepository(root);
   assert(result.files === 2, "Expected to scan both Markdown fixture files");
