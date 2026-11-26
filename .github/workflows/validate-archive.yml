@@ -48,6 +48,8 @@ jobs:
           done
       - name: Validate media manifest
         run: node scripts/build-media-manifest.mjs --check
+      - name: Test archive schema fixtures
+        run: node scripts/test-archive-schema.mjs
       - name: Install Playwright Chromium
         run: |
           npm install --no-save playwright
