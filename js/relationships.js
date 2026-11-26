@@ -30,6 +30,8 @@
       { id: "daily-2026-07-26", kind: "field-origin", label: "FIELD NOTE" }
     ],
     "tunnel": [{ id: "daily-2026-07-25", kind: "source-observation", label: "FIELD NOTE" }],
+    "daily-2026-07-27": [{ id: "daily-2026-08-18", kind: "ritual-return", label: "LAST RECORDED RITUAL" }],
+    "daily-2026-08-18": [{ id: "daily-2026-07-27", kind: "ritual-origin", label: "FIRST RECORDED RITUAL" }],
     "fuji-six-yokai-video": [
       { id: "fuji-six-yokai-script", kind: "production-document", label: "SCRIPT" },
       { id: "fuji-six-yokai-document", kind: "project-document", label: "PROJECT DOSSIER" }
