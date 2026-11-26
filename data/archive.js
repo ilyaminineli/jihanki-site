@@ -738,7 +738,7 @@ const ARCHIVE = {
   "music": [
     {
       "id": "aokigahara-pentalogy",
-      "title": "AOKIGAHARA / FUJI SONIC PI — Procedural Ambient Pentalogy",
+      "title": "FUJI SONIC PI — AOKIGAHARA PENTALOGY",
       "date": "2026",
       "type": "project",
       "category": "music",
@@ -755,10 +755,10 @@ const ARCHIVE = {
       "date": "2026",
       "type": "audio",
       "category": "music",
-      "author": "eli",
+      "author": "yulia-baranyuk",
       "group": "SESSIONS / STANDALONE",
       "file": "media/sound/Session with Tongue Drums.opus",
-      "description": "A standalone tongue-drum session, kept separate from the Aokigahara album."
+      "description": "A standalone tongue-drum session by Yulia Baranyuk, kept separate from the Aokigahara album."
     }
   ],
   "sound": [
@@ -1177,17 +1177,6 @@ const ARCHIVE = {
       "description": "The six invented beings and the project's evolving idea of contemporary yōkai."
     },
     {
-      "id": "video-production-notes",
-      "title": "VIDEO WORKS — DESCRIPTIONS AND CREDITS",
-      "date": "2026",
-      "type": "text",
-      "category": "text",
-      "author": "archive",
-      "group": "YŌKAI / VIDEO DOCUMENTATION",
-      "file": "media/video/README.txt",
-      "description": "Production notes and descriptions for the films in the video archive."
-    },
-    {
       "id": "jihanki-statement",
       "title": "AOKIGAHARA — ORIGINAL PROJECT STATEMENT",
       "date": "2026",
@@ -1196,7 +1185,7 @@ const ARCHIVE = {
       "author": "eli",
       "group": "PROJECT TEXTS",
       "file": "info.md",
-      "description": "The original procedural-ambient project statement, retained as a source text."
+      "description": "The original project statement describing the Aokigahara / Fuji Sonic Pi procedural ambient system."
     }
   ],
   "performance": [
