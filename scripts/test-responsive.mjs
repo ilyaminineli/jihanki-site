@@ -244,7 +244,7 @@ try{
       device.name+": Collection overview does not expose the unified Visit Trail");
     assert(await page.locator(".museum-content .museum-row").count()===0,
       device.name+": duplicate recent-visit list remains on Collection overview");
-    await page.locator('[data-museum-tab="trail"]').click();
+    await page.locator('.museum-tabs [data-museum-tab="trail"]').click();
     const expectedTrailRows=await page.evaluate(()=>Math.min(100,window.JIHANKI_MUSEUM.trail().length));
     assert(expectedTrailRows>0&&await page.locator(".museum-row").count()===expectedTrailRows,
       device.name+": Visit Trail is not available as the single history view");
