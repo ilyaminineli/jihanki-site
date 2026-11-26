@@ -66,14 +66,14 @@ no(step(state, "PURCHASE_COMPLETE", { itemId: "record-b", receiptCode: "JHK-A" }
 outcome = step(state, "PURCHASE_COMPLETE", { itemId: "record-a", receiptCode: "JHK-A" });
 ok(outcome); state = outcome.state;
 assert.equal(state.transaction.status, "dispensed");
-no(step(state, "RECEIPT_SAVED", { receiptCode: "OTHER" }), "receipt-does-not-match-current-transaction");
-ok(step(state, "RECEIPT_SAVED", { receiptCode: "JHK-A" }));
-state = step(state, "RECEIPT_SAVED", { receiptCode: "JHK-A" }).state;
-assert.equal(state.transaction.status, "receipt-saved");
+no(step(state, "RECEIPT_DOWNLOAD_STARTED", { receiptCode: "OTHER" }), "receipt-does-not-match-current-transaction");
+ok(step(state, "RECEIPT_DOWNLOAD_STARTED", { receiptCode: "JHK-A" }));
+state = step(state, "RECEIPT_DOWNLOAD_STARTED", { receiptCode: "JHK-A" }).state;
+assert.equal(state.transaction.status, "receipt-download-started");
 ok(step(state, "RECEIPT_PRINT_DIALOG_OPENED", { receiptCode: "JHK-A" }));
 state = step(state, "RECEIPT_PRINT_DIALOG_OPENED", { receiptCode: "JHK-A" }).state;
 assert.equal(state.transaction.status, "print-dialog-opened");
-ok(step(state, "RECEIPT_SAVED", { receiptCode: "JHK-A" }));
+ok(step(state, "RECEIPT_DOWNLOAD_STARTED", { receiptCode: "JHK-A" }));
 ok(step(state, "RECEIPT_PRINT_DIALOG_OPENED", { receiptCode: "JHK-A" }));
 
 state = model.createState();
