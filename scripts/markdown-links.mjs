@@ -82,8 +82,7 @@ function slugifyHeading(text) {
     .replace(/&[a-z0-9#]+;/gi, "")
     .replace(/[^\p{L}\p{N}\s-]/gu, "")
     .replace(/\s+/g, "-")
-    .replace(/-{3,}/g, "--")
-    .replace(/-+/g, "-".repeat(1));
+    .replace(/-{3,}/g, "--");
 }
 
 export function markdownAnchors(source) {
