@@ -109,6 +109,7 @@ node scripts/test-relationship-semantics.mjs
 node scripts/test-field-impressions.mjs
 node scripts/test-memory-traces.mjs
 node scripts/test-curators-cabinet.mjs
+node scripts/test-quiet-signals.mjs
 node scripts/test-markdown-links.mjs
 node scripts/test-media-manifest.mjs
 node scripts/validate-archive.mjs
