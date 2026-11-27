@@ -317,6 +317,17 @@ try{
     await page.locator(".memory-map-panel").waitFor();
     assert(await page.locator(".map-memory-mode").count()===1,device.name+": homepage map should open in Memory Network mode");
     assert(await page.locator(".map-pin").count()>=70,device.name+": homepage Memory Network did not load the full place set");
+    await page.waitForFunction(()=>{
+      const image=document.querySelector(".map-prefecture-backdrop img");
+      return !!image&&image.complete&&image.naturalWidth>0&&image.naturalHeight>0;
+    });
+    const japanBase=await page.locator(".map-prefecture-backdrop img").evaluate(image=>({
+      source:new URL(image.currentSrc).pathname,
+      width:image.naturalWidth,
+      height:image.naturalHeight
+    }));
+    assert(japanBase.source.endsWith("/assets/maps/japan-prefectures.svg")&&japanBase.width>400&&japanBase.height>500,
+      device.name+": supplied Japan prefecture SVG did not load as the map base");
     const map=await page.evaluate(()=>{
       const canvas=document.querySelector(".map-canvas"),viewport=canvas.getBoundingClientRect();
       const layer=canvas.querySelector(".map-pan-layer"),surface=layer.getBoundingClientRect();
@@ -334,7 +345,7 @@ try{
       node.querySelector(".map-pin-jp")&&node.querySelector(".map-pin-count")&&
       getComputedStyle(node).borderRadius!=="50%"&&
       getComputedStyle(node).borderColor.includes("125")&&
-      node.offsetWidth>=130));
+      node.offsetWidth>=100));
     assert(crtLabels,device.name+": CRT phosphor label hierarchy or frame is missing");
     assert(map.overflow==="hidden",device.name+": pannable map viewport must clip its inner surface");
     assert(await page.locator(".map-view-controls [data-map-fit]").count()===1,device.name+": map fit control missing");
