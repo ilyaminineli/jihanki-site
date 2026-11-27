@@ -1483,11 +1483,8 @@ const ARCHIVE = {
       "group": "Lake Saiko / residency interiors",
       "author": "eli",
       "file": "media/photo/photos_from_japan/eli_photos (7).jpg",
-      "description": "Bicycles sit inside a room whose long windows look over the lake. It is likely an accommodation or residency interior near Lake Saiko; the building itself is not identified.",
+      "description": "Bicycles sit inside a room with long windows looking over a lake. It may be an accommodation or residency interior near Lake Saiko, but neither the building nor exact location is confirmed.",
       "metadata": {
-        "locations": [
-          "Lake Saiko"
-        ],
         "related": [
           "daily-2026-07-22"
         ]
@@ -1792,9 +1789,6 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/taki_photos (11).png",
       "description": "Rows of fighting-game cabinets glow inside an arcade. The image expands the expedition's game and machine theme; the venue is not identifiable from the cabinet fronts.",
       "metadata": {
-        "locations": [
-          "Tokyo"
-        ],
         "related": [
           "photo-21",
           "photo-22",
