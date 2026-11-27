@@ -156,7 +156,7 @@ try{
       item.right<=homeHeaderAudit.screen.right+1&&item.width<=homeHeaderAudit.root.width+1),
       device.name+": a home header row extends beyond the CRT bounds: "+JSON.stringify(homeHeaderAudit));
     const statusLine=homeHeaderAudit.elements.find(item=>item.className==="boot-loading");
-    assert(statusLine&&statusLine.width<=210*expectedScale+2,
+    assert(statusLine&&statusLine.width<=210*geometry.scale+2,
       device.name+": live status line exceeded its constrained home-header width: "+JSON.stringify(statusLine));
     const widthScale=Math.min(device.width/429,1);
     const fitScale=Math.min(widthScale,device.height/932,1);
