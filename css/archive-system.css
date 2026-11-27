@@ -2610,3 +2610,42 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   .sound-suite-tabs { gap:4px; }
   .sound-suite-tabs button { min-height:44px; padding:7px 4px; font-size:7px; letter-spacing:.04em; }
 }
+
+
+/* M74 — keep the entire home masthead and its live status line inside the CRT.
+   Flex items with intrinsic text width can exceed max-width unless width/min-width
+   are also constrained. This is especially noticeable with Safari font metrics. */
+.home-boot {
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  padding-inline:8px;
+}
+.home-boot > * {
+  box-sizing:border-box;
+  min-width:0;
+  max-width:100%;
+}
+.home-boot .boot-japanese,
+.home-boot .boot-title,
+.home-boot .boot-subtitle {
+  width:100%;
+  max-width:100%;
+  text-align:center;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.home-boot .boot-loading {
+  display:block;
+  width:min(100%,210px);
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
+  padding-inline:4px;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  text-align:center;
+  line-height:1.45;
+}
