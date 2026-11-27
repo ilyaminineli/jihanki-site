@@ -237,7 +237,6 @@
       suite.querySelectorAll("[data-sound-suite-panel]").forEach(panel => {
         panel.hidden = panel.dataset.soundSuitePanel !== mode;
       });
-      window.JIHANKI_EVENTS?.record("sound-suite-mode-changed", { mode });
     });
   }
 
