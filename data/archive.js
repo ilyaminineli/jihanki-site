@@ -4445,7 +4445,7 @@ const ARCHIVE = {
     },
     {
       "id": "kadoya-shoten-miura-contact",
-      "title": "KADOYA SHOTEN — MIURA MASASHIGE CONTACT",
+      "title": "KADOYA SHOTEN — MIURA CONTACT",
       "date": "2026",
       "type": "text",
       "category": "notes",
