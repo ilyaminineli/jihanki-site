@@ -1619,4 +1619,12 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
     outline:1px solid rgba(255,255,255,.28);
     outline-offset:2px;
   }
+  .map-pan-layer .map-pin.map-pin-edge-left { transform:translate(0,-50%); }
+  .map-pan-layer .map-pin.map-pin-edge-right { transform:translate(-100%,-50%); }
+  .map-pan-layer .map-pin.map-pin-edge-top { transform:translate(-50%,0); }
+  .map-pan-layer .map-pin.map-pin-edge-bottom { transform:translate(-50%,-100%); }
+  .map-pan-layer .map-pin.map-pin-edge-left.map-pin-edge-top { transform:translate(0,0); }
+  .map-pan-layer .map-pin.map-pin-edge-left.map-pin-edge-bottom { transform:translate(0,-100%); }
+  .map-pan-layer .map-pin.map-pin-edge-right.map-pin-edge-top { transform:translate(-100%,0); }
+  .map-pan-layer .map-pin.map-pin-edge-right.map-pin-edge-bottom { transform:translate(-100%,-100%); }
 }
