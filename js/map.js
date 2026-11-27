@@ -4,7 +4,7 @@
   const POSITIONS={
     "Lake Saiko":[34,46],"Aokigahara":[27,67],"Fuji Five Lakes":[45,25],"Kawaguchiko":[59,50],
     "Lake Kawaguchi":[58,41],"Oishi Park":[52,30],"Kawaguchiko Music Forest Museum":[66,34],
-    "Arakurayama Sengen Park":[71,48],"Kawaguchiko Nostalgic Toys Museum":[62,42],
+    "Arakurayama Sengen Park":[71,48],"Fujisan Sengen Shrine":[56,64],"Kawaguchiko Nostalgic Toys Museum":[62,42],
     "Kawaguchiko Automobile Museum":[48,62],"Narusawa":[42,68],"Kamo River":[31,9],
     "Mount Fuji":[49,80],"Uno-Misaki Tunnel":[15,49],"Yamanashi":[71,70],"Tokyo":[78,14],
     "Ryugu Cave":[16,19],"Koyodai":[29,31],"Shrine":[63,80],"Shrines":[75,55],
