@@ -58,21 +58,3 @@ The exact route, intermediate stops and hotel address remain unspecified. The si
 ## Source and privacy note
 
 This chapter combines the travellers' explicit confirmation with limited chat context. It does not publish the private dialogue, hotel voucher, private booking details or any contact information. Specific venue names in the Osaka shortlist are treated as research leads, not confirmed gig locations.
-
-
-## Additional places and photo sequences from addition_3
-
-The newly uploaded collection expands the trip record:
-
-- **Fuji-Q Highland:** an illuminated entrance sign identifies the amusement park.
-- **Fujisan Dragon Tower / Tagonoura Minato Park:** two views show the distinctive angular observation tower.
-- **Mount Fuji:** summit-side facilities and volcanic upper-slope photographs extend the 1 August climb.
-- **McDonald’s with a Mount Fuji view:** the traveller identifies the restaurant as McDonald’s; the exact branch is unknown.
-- **Japan Kanji Museum & Library:** the 2025 “Kanji of the Year” display and 熊 calligraphy identify the Kyoto museum.
-- **Ueno Castle:** the illuminated keep and approach form a confirmed nighttime visit.
-- **Yamanashi forest and water infrastructure:** a prefectural forest marker, an inscribed stone, a named erosion-control structure and a reservoir view form a related but not fully geolocated landscape group.
-- **Foggy ridge lookout:** two images show a small raised platform and benches in cloud; the exact viewpoint is unknown.
-- **Tokyo at night:** the Skytree street view, bridge and elevated-road photographs are grouped as urban infrastructure; only the Skytree image has a directly recognisable landmark.
-- **Gion festival imagery:** the lantern photograph bears the wording 祇園祭; it is linked to Kyoto ritual and festival material without asserting a specific event date or venue.
-
-The unidentified shrine approach, traditional roofed building, nighttime torii, residential streets, bridge and foggy lookout remain deliberately unresolved.
