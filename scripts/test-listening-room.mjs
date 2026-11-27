@@ -62,5 +62,6 @@ assert.match(suiteHtml, /data-sound-suite-panel="archive" hidden/, "Archive list
 assert.equal((suiteHtml.match(/class="sound-suite-tabs"/g)||[]).length, 1, "The two audio modes should share one compact tab bar.");
 assert.match(html, /no listening history or saved mix is created/i,
   "Listening Room must not silently create visitor tracking or saved mixes.");
+assert(!source.includes("JIHANKI_EVENTS"), "Listening playback must not write per-track events to the machine journal.");
 
 console.log("M71 Listening Room tests passed: existing source filtering, archive groupings, pentalogy order, pending fifth render and no invented audio.");
