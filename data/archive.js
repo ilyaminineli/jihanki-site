@@ -1739,6 +1739,18 @@ const ARCHIVE = {
       "file": "documents/notes/daily/2026-07-29.md"
     },
     {
+      "id": "daily-2026-07-31-map-pins",
+      "title": "FORWARDED MAP PINS / PLACE IDENTIFICATION",
+      "date": "2026-07-31",
+      "type": "text",
+      "category": "notes",
+      "author": "archive",
+      "project": "japan-expedition",
+      "group": "FIELD MAP / PLACE REFERENCES",
+      "description": "A source register for captioned and unlabelled Google Maps pins, with place names assigned only when supported by the export or photographs.",
+      "file": "documents/notes/daily/2026-07-31-map-pins.md"
+    },
+    {
       "id": "daily-2026-07-31",
       "title": "GAKUPO BIRTHDAY",
       "date": "2026-07-31",
