@@ -28,4 +28,4 @@ Implementation statuses describe code coverage, not an assertion that every brow
 
 ## M67–M72 — Liminal archive exploration
 
-The next visitor-facing programme is intentionally small and atmospheric. It uses existing trails, typed relationships, Museum shelves and Sound Lab material rather than introducing a conventional progression system. See [M67–M72 — Liminal Archive Exploration](./M67-M72-LIMINAL-EXPLORATION.md). M67–M70 are implemented as small, browser-local archive experiences; M71 remains deferred until additional audio samples arrive and M72 remains experimental.
+The next visitor-facing programme is intentionally small and atmospheric. It uses existing trails, typed relationships, Museum shelves and Sound Lab material rather than introducing a conventional progression system. See [M67–M72 — Liminal Archive Exploration](./M67-M72-LIMINAL-EXPLORATION.md). M67–M70 are implemented as small, browser-local archive experiences; M71 remains gated on additional source audio, while M72 is implemented as one authored, browser-local return signal.
