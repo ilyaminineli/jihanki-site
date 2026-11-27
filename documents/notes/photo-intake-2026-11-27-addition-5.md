@@ -38,22 +38,22 @@ The following records incorporate the traveller's answers. Confidence refers to 
 | `addition_5 (24).jpg` | photo-226 | Sign for **Lake Yamanaka (山中湖)** in the Fuji-Hakone-Izu National Park. | Traveller-confirmed Lake Yamanaka reference. Exact camera position not established. |
 | `addition_5 (25).jpg` | photo-227 | Car navigation screen displaying **Lake Shōji (精進湖)** and **Lake Yamanaka (山中湖)**, with 9.1 km shown. | The display names both lakes. Preserve 9.1 km as a screen reading, not as a verified route distance or GPS track. |
 | `addition_5 (26).jpg` | photo-228 | Deer confirmed by the traveller as **Shiki**. | Connect to the Shiki encounter memory, Shiki audiovisual work and Shiki field recordings. Whether this is the same encounter as `(5)` remains open. |
-| `addition_5 (27).jpg` | photo-229 | Refrigerator shelves / stored food. | Purpose, place and date unknown. |
+| `addition_5 (27).jpg` | photo-229 | The shared refrigerator used by Eli and Takismana. | Traveller confirms it was their fridge. The precise room / accommodation identifier and capture date are not separately established. |
 | `addition_5 (28).jpg` | photo-230 | Formal hall with instruments and stage display. | Traveller identifies it as **Kawaguchiko Music Forest Museum**. Connect to the existing confirmed museum visit. |
 | `addition_5 (29).jpg` | photo-231 | Traveller's new laptop with a Hatsune Miku figure. | Connect to the new-laptop story and the Nojima Fujiyoshida Store purchase context in the 23 July note. The photograph itself does not establish the purchase location or exact date. |
-| `addition_5 (30).jpg` | photo-232 | Bananas / fruit in a basket near water. | Still unresolved. Do not assume it is part of the birthday preparation shown in `(31)`. |
+| `addition_5 (30).jpg` | photo-232 | Fruit photographed at one of the Mount Fuji ascent stops. | Traveller confirms it belongs to one of the Fuji summit stops. The exact station / hut / stop and date are not identified; do not connect it to Gakupo birthday preparation. |
 | `addition_5 (31).jpg` | photo-233 | Food preparation in a shared kitchen. | Traveller confirms this is preparation for the **Gakupo birthday celebration** recorded on 31 July 2026. |
 | `addition_5 (32).jpg` | photo-234 | **Kitaoji Shinmachi (北大路新町) bus stop**, Kyoto. | Traveller-confirmed stop. Connect to the existing Kitaoji Shinmachi place context and `photo-193`; exact stop-side camera position is not required. |
-| `addition_5 (33).jpg` | photo-235 | Urban street / pavement between buildings. | Exact city and street unknown. |
-| `addition_5 (34).jpg` | photo-236 | Close-up of a pillar / building notice. | Text and place remain unresolved. |
-| `addition_5 (35).jpg` | photo-237 | Night intersection and local shopfront. | Exact city and street unknown. |
-| `addition_5 (36).jpg` | photo-238 | Underground stairwell. | Station or building unknown. |
-| `addition_5 (37).jpg` | photo-239 | Animate and NewDays retail signage. | Brands are visible, but the station / city is not confirmed. Do not automatically assign this to Akihabara. |
-| `addition_5 (38).jpg` | photo-240 | Electronics / gaming retail signs. | Exact shop and city unknown. |
-| `addition_5 (39).jpg` | photo-241 | City view through railings / a window. | Exact location and relation to nearby urban photographs unknown. |
-| `addition_5 (40).jpg` | photo-242 | Busy shopping street. | Exact city and street unknown. |
-| `addition_5 (41).jpg` | photo-243 | Blue-lit arcade with game cabinets and visitors. | Venue and city unknown. |
-| `addition_5 (42).jpg` | photo-244 | **Akihabara**, Tokyo. | Traveller-confirmed district. Do not infer that all photographs `(37)`–`(41)` were also taken there. |
+| `addition_5 (33).jpg` | photo-235 | Urban street / pavement during the **first Tokyo visit**. | Traveller-confirmed Tokyo visit context; exact street unknown. |
+| `addition_5 (34).jpg` | photo-236 | Sticker photographed near a bus stop in **Kyoto**. | Traveller-confirmed city and bus-stop proximity; exact stop and sticker wording remain unresolved. Do not assume it is the same physical stop as `(32)`. |
+| `addition_5 (35).jpg` | photo-237 | Night intersection / shopfront during the **first Tokyo visit**. | Traveller-confirmed Tokyo visit context; exact street unknown. |
+| `addition_5 (36).jpg` | photo-238 | Stairway / descent toward **Shinjuku**. | Traveller confirms the route context. Exact station entrance and stairway are not identified. |
+| `addition_5 (37).jpg` | photo-239 | **Entrance / arrival into Akihabara**, Tokyo. | Traveller-confirmed Akihabara threshold / entrance context. |
+| `addition_5 (38).jpg` | photo-240 | Akihabara street / retail scene. | Traveller confirms Akihabara. Exact shop and street remain unidentified. |
+| `addition_5 (39).jpg` | photo-241 | City view within **Akihabara**. | Traveller confirms the district; exact building / viewpoint unknown. |
+| `addition_5 (40).jpg` | photo-242 | Shopping street in **Akihabara**. | Traveller confirms the district; exact street unknown. |
+| `addition_5 (41).jpg` | photo-243 | **Club in Akihabara**. | Traveller confirms the district and that this is a club, not an arcade. Venue name remains unknown. |
+| `addition_5 (42).jpg` | photo-244 | Akihabara, Tokyo. | Traveller-confirmed district. Together with `(37)`–`(41)`, this completes the Akihabara arrival / street / club sequence. |
 | `addition_5 (43).jpg` | photo-245 | NPC 24H parking sign. | Traveller places it somewhere in **Tokyo**. Exact district and car park unknown. This is not the Nintendo DS photograph. |
 | `addition_5 (44).jpg` | photo-246 | Nintendo DS music-software interface / music cartridge. | Traveller says Takismana used it for music and for a live event already represented in the archive. Link to Takismana's music/performance context; the exact event record has not yet been identified by title in the static catalogue. This is a separate image from the NPC parking sign in `(43)`. |
 | `addition_5 (45).jpg` | photo-247 | Residential street **near Miyuki Beach**, Onna, Okinawa. | Traveller-confirmed nearby locality; exact street and residence unknown. |
@@ -97,9 +97,15 @@ The Kyoto friend’s shop **Banbutsu Sōzō-bō** remains separate from Kawaguch
 - `(1)`: Onsen Yurari no Nenba, linked to the Onsen Yurari entry in the 25 July note.
 - `(22)`: Bamiyan sign somewhere on the first Kawaguchiko-to-Tokyo journey; link to that broad travel context only.
 - `(24))–`(25)`: named references to Lake Yamanaka and Lake Shōji; the car-navigation screen is not a route trace.
+- `(27)`: shared refrigerator used by Eli and Takismana; keep as a domestic / residency memory without asserting a precise room or date.
+- `(30)`: fruit from one of the Mount Fuji ascent stops; link to the 1 August Mount Fuji climb, not the 31 July birthday preparation.
 - `(32)`: Kitaoji Shinmachi bus stop; cross-link with the earlier `photo-193` area memory.
-- `(42)): Akihabara, Tokyo; only this frame is confirmed as Akihabara among the `(37)`–`(42)` group.
+- `(33)) and `(35)`: street scenes from the first Tokyo visit on 24 July.
+- `(34)`: sticker near a Kyoto bus stop; exact stop is not confirmed, so do not force a same-stop link to `(32)`.
+- `(36)`: descent / stairway toward Shinjuku during the first Tokyo visit.
+- `(37))–`(42)`: Akihabara sequence — arrival / entrance, retail and city views, shopping street, club and district scene. `(41)` is a club, not an arcade; the venue remains unnamed.
 - `(43)`: an NPC 24H parking facility somewhere in Tokyo, not the DS screen in `(44)`.
+- `(44)`: Nintendo DS music interface used by Takismana for music and a live event. The exact event record is not yet matched by title in the static catalogue.
 - `(45))–`(48)`: a separate Miyuki Beach / Onna locality cluster. `(48)` is the beach sign; `(45)` is a nearby residential street; `(47)` is a different Osaka image.
 - `(46)`: McDonald's 139 Fujiyoshida, same branch as `photo-169`.
 - `(47)`: poster in an Osaka underground parking lot near Shinsaibashi. The same exact car park as `photo-198` is not yet established.
@@ -114,9 +120,9 @@ These are the only substantial identification gaps left by the traveller's curre
 4. **`addition_5 (15).jpg`** — spillway is near a “rope trail”; the exact trail and meaning of that phrase are not resolved.
 5. **`addition_5 (16).jpg`** — spider photograph; place and date unknown.
 6. **`addition_5 (23).jpg`** — Sports Box building; city and relation to the Bamiyan sign are unknown.
-7. **`addition_5 (27).jpg` and `(30).jpg`** — fridge / food-storage scene and bananas basket remain unexplained.
-8. **`addition_5 (33).jpg`–`addition_5 (36).jpg`** — city streets, building notice, intersection and underground stairs remain unlocated.
-9. **`addition_5 (37).jpg`–`addition_5 (41).jpg`** — Animate / NewDays, electronics retail, city view, shopping street and arcade remain unlocated. Do not assign all to Akihabara from `(42)` alone.
+7. **`addition_5 (27).jpg` and `(30).jpg`** — identified as the shared fridge used by Eli and Takismana, and fruit from one of the Mount Fuji ascent stops respectively; exact room and mountain stop remain unspecified.
+8. **`addition_5 (33).jpg` and `(35).jpg`** are first-Tokyo-visit scenes; `(34).jpg` is a Kyoto bus-stop-area sticker; `(36).jpg` shows the descent toward Shinjuku. Their exact street / stop / entrance names remain unknown.
+9. **`addition_5 (37).jpg`–`addition_5 (42).jpg`** are now confirmed as the Akihabara sequence: entrance, retail / city views, shopping street, club and district view. The exact shop, street and club name remain unknown.
 10. **`addition_5 (44).jpg`** — the DS use is confirmed, but the exact archived live-event record is not yet matched to a specific ID.
 11. **`addition_5 (45).jpg`** — near Miyuki Beach is confirmed; the exact street / residence is not.
 12. **`addition_5 (17).jpg`–`addition_5 (21).jpg`** — outing is confirmed as the first summit visit near Saiko; exact named summit / trail remains unresolved.
