@@ -74,7 +74,7 @@
       .map(edge=>({from:edge.from,to:edge.to,kind:edge.kind,label:edge.label}));
   }
 
-  /* Label-sized packing on the pannable 1280 × 860 map surface.
+  /* Label-sized packing on the pannable 4000 × 3000 map surface.
      Pins keep their regional relationships but are separated by their real label
      rectangles, not merely by their anchor points. */
   function labelMetrics(name,count=1){
