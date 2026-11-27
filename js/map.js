@@ -184,7 +184,9 @@
       if(!a||!b)return "";
       const kind=esc(edge.kind||"within");
       const marker=edge.kind==="chronology"?' marker-end="url(#map-route-arrow)"':"";
-      return '<line class="map-edge-'+kind+'" x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'"'+marker+'></line>';
+      const x1=a[0]*MAP_SURFACE.width/100,y1=a[1]*MAP_SURFACE.height/100;
+      const x2=b[0]*MAP_SURFACE.width/100,y2=b[1]*MAP_SURFACE.height/100;
+      return '<line class="map-edge-'+kind+'" data-edge-from="'+esc(edge.from)+'" data-edge-to="'+esc(edge.to)+'" x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'"'+marker+'><title>'+esc(edge.label||edge.kind)+'</title></line>';
     }).join("");
     const nodes=mapPlaces.map(place=>{
       const p=point(place.name),metric=labelMetrics(place.name,place.count);
@@ -209,9 +211,25 @@
       '>PINS</button></div></div>'+(selected==="pins"?'<div class="map-pin-references">'+pinsMarkup()+'</div>':
       '<div class="map-legend">'+legend+'</div><div class="map-canvas '+(selected==="memory"?"map-memory-mode":selected==="trails"?"map-trails-mode":"map-place-mode")+
       '"><div class="map-pan-layer" style="width:'+MAP_SURFACE.width+'px;height:'+MAP_SURFACE.height+'px"><div class="map-region-label map-label-west">FUJI FIVE LAKES / YAMANASHI</div>'+
-      '<div class="map-region-label map-label-east">KANTO / KANSAI / OKINAWA</div><svg class="map-connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'+
-      '<defs><marker id="map-route-arrow" markerWidth="4" markerHeight="4" refX="3" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z"></path></marker></defs>'+
-      paths+'</svg>'+nodes+'</div></div><p class="map-disclaimer">'+
+      '<div class="map-region-label map-label-east">KANTO / KANSAI / OKINAWA</div>'+
+      '<svg class="map-japan-backdrop" viewBox="0 0 '+MAP_SURFACE.width+' '+MAP_SURFACE.height+'" aria-hidden="true"><defs><filter id="map-japan-glow"><feGaussianBlur stdDeviation="22"/></filter><linearGradient id="map-japan-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#42d87a" stop-opacity=".2"/><stop offset=".5" stop-color="#08783c" stop-opacity=".09"/><stop offset="1" stop-color="#36ce72" stop-opacity=".17"/></linearGradient></defs>'+
+      '<g class="japan-islands">'+
+      '<path class="japan-land-glow" d="M1010 1820 C1160 1720 1280 1650 1400 1540 C1540 1420 1640 1330 1790 1250 C1950 1160 2080 1040 2220 930 C2350 820 2460 680 2600 590 C2730 500 2860 455 2990 485 C2900 580 2790 660 2710 775 C2600 920 2510 1030 2370 1140 C2220 1260 2140 1370 1990 1460 C1840 1550 1730 1680 1580 1780 C1410 1890 1280 1980 1130 2020 Z"/>'+
+      '<path class="japan-land" d="M1010 1820 C1160 1720 1280 1650 1400 1540 C1540 1420 1640 1330 1790 1250 C1950 1160 2080 1040 2220 930 C2350 820 2460 680 2600 590 C2730 500 2860 455 2990 485 C2900 580 2790 660 2710 775 C2600 920 2510 1030 2370 1140 C2220 1260 2140 1370 1990 1460 C1840 1550 1730 1680 1580 1780 C1410 1890 1280 1980 1130 2020 Z"/>'+
+      '<path class="japan-land-glow" d="M2940 470 C3050 330 3190 250 3330 260 C3460 275 3550 370 3490 475 C3430 580 3290 630 3160 590 C3040 550 2980 520 2940 470 Z"/>'+
+      '<path class="japan-land" d="M2940 470 C3050 330 3190 250 3330 260 C3460 275 3550 370 3490 475 C3430 580 3290 630 3160 590 C3040 550 2980 520 2940 470 Z"/>'+
+      '<path class="japan-land-glow" d="M840 1900 C940 1830 1040 1880 1080 1980 C1110 2070 1050 2200 960 2225 C870 2240 790 2150 790 2050 C790 1980 805 1930 840 1900 Z"/>'+
+      '<path class="japan-land" d="M840 1900 C940 1830 1040 1880 1080 1980 C1110 2070 1050 2200 960 2225 C870 2240 790 2150 790 2050 C790 1980 805 1930 840 1900 Z"/>'+
+      '<path class="japan-land-glow" d="M1230 1920 C1330 1855 1440 1880 1490 1950 C1530 2020 1470 2090 1370 2110 C1270 2120 1190 2055 1190 1985 Z"/>'+
+      '<path class="japan-land" d="M1230 1920 C1330 1855 1440 1880 1490 1950 C1530 2020 1470 2090 1370 2110 C1270 2120 1190 2055 1190 1985 Z"/>'+
+      '<path class="japan-islet" d="M420 2450 C470 2405 535 2410 565 2460 C575 2505 535 2545 485 2535 C440 2528 410 2490 420 2450 Z"/>'+
+      '<path class="japan-islet" d="M570 2320 C612 2290 660 2310 670 2350 C665 2390 620 2410 585 2380 Z"/>'+
+      '<path class="japan-islet" d="M710 2210 C740 2188 780 2200 790 2230 C780 2260 740 2270 715 2245 Z"/>'+
+      '</g></svg>'+
+      '<svg class="map-connections" viewBox="0 0 '+MAP_SURFACE.width+' '+MAP_SURFACE.height+'" preserveAspectRatio="none" aria-hidden="true">'+
+      '<defs><marker id="map-route-arrow" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M0,0 L22,11 L0,22 z"></path></marker></defs>'+
+      paths+'</svg>'+nodes+
+      '<div class="map-view-controls" role="group" aria-label="Map zoom controls"><button type="button" data-map-zoom="out" aria-label="Zoom out" title="Zoom out">−</button><output data-map-zoom-level>100%</output><button type="button" data-map-zoom="in" aria-label="Zoom in" title="Zoom in">+</button><button type="button" data-map-fit title="Centre all visible places">FIT / CENTRE</button></div></div></div><p class="map-disclaimer">'+
       (selected==="memory"?"Lines describe named geographical relationships such as containment, outlooks and transit corridors. They are not shared-photo links.":
        selected==="trails"?"Arrows preserve the documented order of visits or travel. They are not measured roads, walking paths or exact transfer itineraries.":
        "SCHEMATIC / PAN TO EXPLORE / RELATIVE POSITION ONLY / NOT TO SCALE.")+
@@ -221,21 +239,92 @@
   function bind(root){
     const canvas=root?.querySelector?.(".map-canvas"),layer=canvas?.querySelector?.(".map-pan-layer");
     if(!canvas||!layer||canvas.dataset.panBound==="true")return;
-    canvas.dataset.panBound="true";let active=null;
-    const read=()=>({x:Number(layer.dataset.panX||0),y:Number(layer.dataset.panY||0)});
-    const write=(x,y)=>{layer.dataset.panX=String(x);layer.dataset.panY=String(y);layer.style.transform="translate3d("+x+"px,"+y+"px,0)";};
-    if(layer.dataset.panInitialized!=="true"){
-      const initialX=Math.min(0,(canvas.clientWidth-layer.offsetWidth)/2);
-      const initialY=Math.min(0,(canvas.clientHeight-layer.offsetHeight)/2);
-      write(initialX,initialY);layer.dataset.panInitialized="true";
-    }
-    canvas.addEventListener("pointerdown",event=>{if(event.target.closest("button,a"))return;if(event.pointerType==="mouse"&&event.button!==0)return;
-      const p=read();active={id:event.pointerId,x:event.clientX,y:event.clientY,px:p.x,py:p.y};canvas.setPointerCapture?.(event.pointerId);layer.classList.add("is-dragging");event.preventDefault();});
-    canvas.addEventListener("pointermove",event=>{if(!active||event.pointerId!==active.id)return;const dx=event.clientX-active.x,dy=event.clientY-active.y;
-      const minX=Math.min(0,canvas.clientWidth-layer.offsetWidth),minY=Math.min(0,canvas.clientHeight-layer.offsetHeight);
-      write(Math.max(minX,Math.min(0,active.px+dx)),Math.max(minY,Math.min(0,active.py+dy)));});
-    const finish=event=>{if(active&&event.pointerId===active.id){active=null;layer.classList.remove("is-dragging");}};
-    canvas.addEventListener("pointerup",finish);canvas.addEventListener("pointercancel",finish);canvas.addEventListener("lostpointercapture",finish);
+    canvas.dataset.panBound="true";
+    const zoomReadout=root.querySelector("[data-map-zoom-level]");
+    let active=null;
+    const MIN_SCALE=.06,MAX_SCALE=3;
+    const clampScale=value=>Math.max(MIN_SCALE,Math.min(MAX_SCALE,value));
+    const read=()=>({
+      x:Number(layer.dataset.panX||0),
+      y:Number(layer.dataset.panY||0),
+      scale:clampScale(Number(layer.dataset.panScale||1))
+    });
+    const clampPosition=(x,y,scale)=>{
+      const minX=Math.min(0,canvas.clientWidth-layer.offsetWidth*scale);
+      const minY=Math.min(0,canvas.clientHeight-layer.offsetHeight*scale);
+      const maxX=Math.max(0,canvas.clientWidth-layer.offsetWidth*scale);
+      const maxY=Math.max(0,canvas.clientHeight-layer.offsetHeight*scale);
+      return{x:Math.max(minX,Math.min(maxX,x)),y:Math.max(minY,Math.min(maxY,y))};
+    };
+    const write=(x,y,scale)=>{
+      scale=clampScale(scale);
+      const bounded=clampPosition(x,y,scale);
+      layer.dataset.panX=String(bounded.x);
+      layer.dataset.panY=String(bounded.y);
+      layer.dataset.panScale=String(scale);
+      layer.style.transformOrigin="0 0";
+      layer.style.transform="translate3d("+bounded.x+"px,"+bounded.y+"px,0) scale("+scale+")";
+      if(zoomReadout)zoomReadout.textContent=Math.round(scale*100)+"%";
+    };
+    const contentBounds=()=>{
+      const pins=[...layer.querySelectorAll(".map-pin")];
+      if(!pins.length)return{left:0,top:0,right:layer.offsetWidth,bottom:layer.offsetHeight};
+      const boxes=pins.map(pin=>{
+        const cx=parseFloat(pin.style.left)/100*layer.offsetWidth;
+        const cy=parseFloat(pin.style.top)/100*layer.offsetHeight;
+        return{left:cx-pin.offsetWidth/2,top:cy-pin.offsetHeight/2,
+          right:cx+pin.offsetWidth/2,bottom:cy+pin.offsetHeight/2};
+      });
+      return{
+        left:Math.min(...boxes.map(box=>box.left)),
+        top:Math.min(...boxes.map(box=>box.top)),
+        right:Math.max(...boxes.map(box=>box.right)),
+        bottom:Math.max(...boxes.map(box=>box.bottom))
+      };
+    };
+    const fit=()=>{
+      const bounds=contentBounds(),width=Math.max(1,bounds.right-bounds.left),height=Math.max(1,bounds.bottom-bounds.top);
+      const padding=Math.min(42,Math.max(18,Math.round(Math.min(canvas.clientWidth,canvas.clientHeight)*.055)));
+      const scale=clampScale(Math.min((canvas.clientWidth-padding*2)/width,(canvas.clientHeight-padding*2)/height,1.5));
+      const x=(canvas.clientWidth-width*scale)/2-bounds.left*scale;
+      const y=(canvas.clientHeight-height*scale)/2-bounds.top*scale;
+      write(x,y,scale);
+    };
+    const zoomAt=(nextScale,focusX=canvas.clientWidth/2,focusY=canvas.clientHeight/2)=>{
+      const current=read(),scale=clampScale(nextScale);
+      const mapX=(focusX-current.x)/current.scale,mapY=(focusY-current.y)/current.scale;
+      write(focusX-mapX*scale,focusY-mapY*scale,scale);
+    };
+    root.querySelectorAll("[data-map-zoom]").forEach(button=>button.addEventListener("click",()=>{
+      const current=read();
+      zoomAt(current.scale*(button.dataset.mapZoom==="in"?1.25:.8));
+    }));
+    root.querySelector("[data-map-fit]")?.addEventListener("click",fit);
+    canvas.addEventListener("wheel",event=>{
+      event.preventDefault();
+      const rect=canvas.getBoundingClientRect(),current=read();
+      zoomAt(current.scale*Math.exp(-event.deltaY*.0015),event.clientX-rect.left,event.clientY-rect.top);
+    },{passive:false});
+    canvas.addEventListener("pointerdown",event=>{
+      if(event.target.closest("button,a"))return;
+      if(event.pointerType==="mouse"&&event.button!==0)return;
+      const current=read();
+      active={id:event.pointerId,x:event.clientX,y:event.clientY,px:current.x,py:current.y,scale:current.scale};
+      canvas.setPointerCapture?.(event.pointerId);
+      layer.classList.add("is-dragging");
+      event.preventDefault();
+    });
+    canvas.addEventListener("pointermove",event=>{
+      if(!active||event.pointerId!==active.id)return;
+      write(active.px+event.clientX-active.x,active.py+event.clientY-active.y,active.scale);
+    });
+    const finish=event=>{
+      if(active&&event.pointerId===active.id){active=null;layer.classList.remove("is-dragging");}
+    };
+    canvas.addEventListener("pointerup",finish);
+    canvas.addEventListener("pointercancel",finish);
+    canvas.addEventListener("lostpointercapture",finish);
+    fit();
   }
   window.JIHANKI_MAP={render,bind,positions:POSITIONS,trails:TRAILS,pinReferences:PIN_REFERENCES};
 })();
