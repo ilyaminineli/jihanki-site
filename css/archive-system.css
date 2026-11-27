@@ -1434,3 +1434,8 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   .map-pin-reference { grid-template-columns:1fr; align-items:start; }
   .map-pin-reference a { justify-self:start; }
 }
+
+
+/* M52.1 — keep schematic pins inside compact map viewports */
+.map-pin { width:min(102px,28%); min-width:0; max-width:102px; }
+.map-pin strong { max-width:100%; overflow-wrap:anywhere; }
