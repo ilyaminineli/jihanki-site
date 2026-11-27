@@ -76,7 +76,7 @@ Keep this separate from **Niikura Tunnel (新倉河口湖トンネル)**, which 
 
 ### Shiki — deer, audiovisual work and sound recordings
 
-The traveller confirms that both `addition_5 (5).jpg` and `addition_5 (26).jpg` show **Shiki**. Connect the photographs to the existing `shiki` video and audio records `sound-08` (Shiki 1) and `sound-09` (Shiki 2), and to the 24–25 July encounter context. The current answer does not establish whether the photographs show the same individual encounter or separate appearances; do not fabricate that sequence.
+The traveller confirms that both `addition_5 (5).jpg` and `addition_5 (26).jpg` show **Shiki**. Connect the photographs to the existing `shiki` video and audio records `sound-08` (Shiki 1) and `sound-09` (Shiki 2), and to the 24–25 July encounter context. The traveller confirms both photographs show Shiki. The first Shiki appearance is recorded on 22 July and the first close encounter on 24 July, but the two photographs are not individually dated, so their exact sequence remains unassigned.
 
 ### First summit outing near Saiko
 
