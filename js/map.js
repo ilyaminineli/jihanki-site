@@ -2,14 +2,14 @@
 (function () {
   const esc=value=>String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
   const POSITIONS={
-    "Lake Saiko":[37,43],"Aokigahara":[30,64],"Fuji Five Lakes":[52,26],"Kawaguchiko":[64,45],
-    "Mount Fuji":[50,78],"Uno-Misaki Tunnel":[15,45],"Yamanashi":[77,68],"Tokyo":[86,10],
+    "Lake Saiko":[35,44],"Aokigahara":[28,64],"Fuji Five Lakes":[48,20],"Kawaguchiko":[65,47],
+    "Lake Kawaguchi":[61,39],"Oishi Park":[54,29],"Kawaguchiko Music Forest Museum":[74,31],
+    "Mount Fuji":[50,78],"Uno-Misaki Tunnel":[15,45],"Yamanashi":[76,68],"Tokyo":[86,10],
     "Ryugu Cave":[18,15],"Koyodai":[30,25],"Shrine":[66,78],"Shrines":[82,48],
     "Haneda":[91,34],"Shinjuku":[76,20],
-    "Lake Kawaguchi":[58,42],"Oishi Park":[57,31],
-    "Katori":[91,49],"Katori Station":[90,45],"Katori Jingu":[94,57],
-    "Kawaguchiko Music Forest Museum":[60,30],"Hard Off Kawaguchiko Store":[78,50],
-    "Nojima Fujiyoshida Store":[84,65],"Iyashi no Sato":[24,55],"Fujisan Museum":[72,82],
+    "Katori":[86,57],"Katori Station":[92,49],"Katori Jingu":[95,68],
+    "Hard Off Kawaguchiko Store":[80,49],"Nojima Fujiyoshida Store":[84,65],
+    "Iyashi no Sato":[24,55],"Fujisan Museum":[72,82],
     "Kyoto":[40,12],"Osaka":[18,8]
   };
   function associationLines(places){
