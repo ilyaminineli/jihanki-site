@@ -248,3 +248,11 @@ See [Addition_4 photo intake](./photo-intake-2026-11-27-addition-4.md), [Japan p
 The traveller has confirmed the principal unresolved labels in the 30-image intake. Key updates: photo-173 is the present-day Satyam 1 clearing and is connected to photo-127 and Koba-san's 3 August visit; photo-175 is Senbon Kitaoji; photo-179–180 are the Nagahama Furusato Festival fireworks on 15 August; photo-181–182 are in Niikura Tunnel; photo-183 is Kadoya Shoten, Miura's shop; photo-184 is the Dragon Tower waterfront view; photo-190 and photo-194 belong to the Demachiyanagi–Sanjo–Otsu transit corridor; photo-193 is near Kitaoji Shinmachi; photo-198 is underground parking near Shinsaibashi; photo-199–200 are near Shinsaibashi; photo-202 is near Miyuki Beach. The Genko-an guestbook is photo-192. Exact details still unknown are listed in the updated memory-prompt document.
 
 The Satyam history is corrected in the 3 August field note: Satyam 1 and the Satyam No. 7 chemical plant are distinct sites within the wider former Kamikuishiki compound. The mist/cloud above Fuji is retained as a traveller observation only.
+
+## Addition_5 — traveller-confirmed intake
+
+A separate batch of 49 photographs was supplied as `addition_5.zip` on 27 November 2026. These files are not yet part of the repository's `media/photo/photos_from_japan/` tree, so the current in-repository catalogue count above remains unchanged at 202 unique images. Their filename-by-filename register and traveller corrections are preserved in [Addition_5 — Japan photo intake](./photo-intake-2026-11-27-addition-5.md).
+
+Confirmed cross-collection links include Uno-Misaki Tunnel and its audiovisual work; Shiki and the existing `Shiki` video / sound takes; the first Saiko-area summit outing; the Kawaguchiko Retro Toys and Music Forest museums; the 31 July Gakupo birthday preparation; Akihabara; the Kitaoji Shinmachi bus stop; McDonald's 139 Fujiyoshida; and the Miyuki Beach / Onna photographs.
+
+Do not allocate the proposed `photo-203`–`photo-251` IDs or add manifest paths until the 49 source binaries are copied into the repository.
