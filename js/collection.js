@@ -34,7 +34,8 @@
       ?[...new Set(definition.sourceIds.filter(id=>typeof id==="string"&&/^[a-z0-9][a-z0-9-]{1,79}$/i.test(id)))].slice(0,20):[];
     if(!/^[a-z0-9][a-z0-9-]{2,79}$/.test(slug)||!title||!sourceIds.length)
       throw new Error("A field impression needs a stable ID, title and source fragments.");
-    const id="OBJ-FIELD-"+slug.toUpperCase(),archiveId="field-impression:"+slug;
+    const kind=definition.kind==="memory-trace"?"memory-trace":"field-impression";
+    const id="OBJ-"+(kind==="memory-trace"?"TRACE-":"FIELD-")+slug.toUpperCase(),archiveId=kind+":"+slug;
     const existing=objects().find(object=>object.id===id);
     if(existing)return {object:existing,created:false};
     const object={
@@ -43,10 +44,10 @@
       inscription:String(definition.inscription||"A fragment encountered in the archive.").slice(0,240),
       serial:String(definition.serial||"LOCAL FIELD").slice(0,40),
       createdAt:new Date().toISOString(),archiveDate:String(definition.archiveDate||"UNDATED").slice(0,40),
-      kind:"field-impression",sourceIds
+      kind,sourceIds
     };
     writeObjects([...readObjects(),object].slice(-1000));
-    window.JIHANKI_EVENTS?.record("field-impression-awarded",{impressionId:slug,sourceIds});
+    window.JIHANKI_EVENTS?.record(kind==="memory-trace"?"memory-trace-completed":"field-impression-awarded",{impressionId:slug,sourceIds});
     return {object,created:true};
   }
   function add(item,receipt) {
