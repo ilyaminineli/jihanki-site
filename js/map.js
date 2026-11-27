@@ -19,7 +19,11 @@
     "Otsuki–Fujiyoshida junction":[76,50],"Yokosawa Sabo":[33,61],"Tokyo Skytree":[80,18],"Sumida Ward":[84,15],
     "Fugaku Wind Cave":[25,65],"Mt. Fuji Panoramic Ropeway":[60,41],"Tenjoyama":[62,39],
     "Tagonoura Port":[82,85],"Nagahama":[51,44],"Kadoya Shoten":[49,46],
-    "CRYSTA Nagahori":[13,17],"Shinsaibashi":[12,15]
+    "CRYSTA Nagahori":[13,17],"Shinsaibashi":[12,15],
+    "Senbon Kitaoji":[35,17],"Kitaoji Shinmachi":[36,20],
+    "Demachiyanagi":[43,15],"Sanjo":[40,13],"Otsu":[48,13],
+    "Okinawa":[7,88],"Onna":[9,84],"Miyuki Beach":[11,82],
+    "Former Kamikuishiki complex":[36,42]
   };
   /* English / romaji remains the primary map vocabulary. Japanese is secondary detail only. */
   const JP_LABELS={
@@ -44,7 +48,10 @@
     "Yokosawa Sabo":"横沢砂防堰堤","Odawara":"小田原","Fujikawaguchiko":"富士河口湖町",
     "Fugaku Wind Cave":"富岳風穴","Mt. Fuji Panoramic Ropeway":"富士山パノラマロープウェイ","Tenjoyama":"天上山",
     "Tagonoura Port":"田子の浦港","Nagahama":"長浜","Kadoya Shoten":"かどや商店",
-    "CRYSTA Nagahori":"クリスタ長堀","Shinsaibashi":"心斎橋"
+    "CRYSTA Nagahori":"クリスタ長堀","Shinsaibashi":"心斎橋",
+    "Senbon Kitaoji":"千本北大路","Kitaoji Shinmachi":"北大路新町",
+    "Demachiyanagi":"出町柳","Sanjo":"三条","Otsu":"大津",
+    "Miyuki Beach":"みゆきビーチ","Onna":"恩納村","Okinawa":"沖縄"
   };
   const labelFor=name=>name;
   const subLabelFor=name=>JP_LABELS[name]||"";
@@ -52,16 +59,13 @@
   // the schematic. Keep them in the full index, but avoid drawing stacked pins.
   const DETAIL_ONLY=new Set([
     "PICA Fuji Saiko","Tagonoura Minato Park","Tokyo Skytree","Sumida Ward","McDonald’s 139 Fujiyoshida","Mt Fuji Station","Otsuki–Fujiyoshida junction","Yokosawa Sabo","Kamikuishiki","Mount Ashiwada","Fujikawaguchiko",
-    "Kinkaku-ji","Japan Kanji Museum & Library","Kanji Museum","Banbutsu Sōzō-bō","Tenjoyama","Tagonoura Port","Kadoya Shoten","Shinsaibashi","CRYSTA Nagahori"
+    "Kinkaku-ji","Japan Kanji Museum & Library","Kanji Museum","Banbutsu Sōzō-bō","Tenjoyama","Tagonoura Port","Kadoya Shoten","Shinsaibashi","CRYSTA Nagahori","Kamikuishiki","Senbon Kitaoji","Kitaoji Shinmachi","Demachiyanagi","Sanjo","Otsu","Okinawa","Onna","Miyuki Beach"
   ]);
-  function associationLines(places){
-    const edges=new Set();
-    (window.JIHANKI_ARCHIVE||[]).forEach(item=>{
-      const locations=(window.JIHANKI_GEOGRAPHY?.locations(item)||[]).filter(place=>places.includes(place)&&POSITIONS[place]);
-      if(locations.length<2)return;
-      for(let i=1;i<locations.length;i++)edges.add([locations[0],locations[i]].sort().join("|"));
-    });
-    return[...edges].map(value=>value.split("|"));
+  function geographicLines(places){
+    const names=new Set(places.map(place=>place.name));
+    return (window.JIHANKI_RELATIONSHIPS?.placeEdges()||[])
+      .filter(edge=>names.has(edge.from)&&names.has(edge.to))
+      .map(edge=>({from:edge.from,to:edge.to,kind:edge.kind,label:edge.label}));
   }
 
   /* Stable screen-space relaxation keeps dense clusters apart without implying
@@ -97,9 +101,11 @@
     }
     return Object.fromEntries(nodes.map(node=>[node.name,[node.x,node.y]]));
   }
-  const TRAILS=[{id:"kansai-road-loop",title:"河口湖／京都／大阪／河口湖",stops:["Kawaguchiko","Kyoto","Osaka","Kawaguchiko"],description:"河口湖から京都・大阪を経て河口湖へ戻った、確認済みの自動車移動。実際の道路経路を再現したものではありません。"}];
+  const TRAILS=window.JIHANKI_RELATIONSHIPS?.trails?.()||[];
   function trailMarkup(){
-    return TRAILS.map(trail=>'<article class="map-trail-card"><span class="map-eyebrow">確認済み／自動車移動</span><strong>'+esc(trail.title)+'</strong><p>'+esc(trail.description)+'</p><div class="map-trail-stops">'+trail.stops.map((name,index)=>'<button type="button" data-map-place="'+esc(name)+'"><span>'+String(index+1).padStart(2,"0")+'</span><strong>'+esc(labelFor(name))+'</strong></button>').join("")+'</div><button type="button" class="map-trail-open" data-map-trail-note="daily-2026-08-road-trip">旅の記録を開く ↗</button></article>').join("");
+    return TRAILS.map(trail=>'<article class="map-trail-card"><span class="map-eyebrow">'+esc(trail.mode||trail.kind)+'</span><strong>'+esc(trail.title)+'</strong><p>'+esc(trail.description)+'</p><div class="map-trail-stops">'+
+      trail.stops.map((name,index)=>'<button type="button" data-map-place="'+esc(name)+'"><span>'+String(index+1).padStart(2,"0")+'</span><strong>'+esc(labelFor(name))+'</strong></button>').join("")+
+      '</div></article>').join("");
   }
   const PIN_REFERENCES=[
     {label:"River fork / stepping-stone spot",detail:"Forwarded caption: “the river seems to split here; you can run over the stones.” Proper place name is not included in the export.",source:"Caption from Lera’s forwarded 28 July message",url:"https://maps.app.goo.gl/7BkvvvGWqwyns6Tr6",status:"caption-derived label"},
@@ -126,34 +132,62 @@
   function render(mode){
     const selected=mode==="memory"?"memory":mode==="trails"?"trails":mode==="pins"?"pins":"geography";
     const places=(window.JIHANKI_GEOGRAPHY?.places()||[]).filter(place=>POSITIONS[place.name]&&place.name!=="Kanji Museum").sort((a,b)=>b.count-a.count);
-    const mapPlaces=selected==="trails"?["Kawaguchiko","Kyoto","Osaka"].map(name=>places.find(place=>place.name===name)).filter(Boolean):selected==="pins"?[]:places.filter(place=>!DETAIL_ONLY.has(place.name));
+    const trailNames=[...new Set(TRAILS.flatMap(trail=>trail.stops))];
+    const mapPlaces=selected==="trails"
+      ?trailNames.map(name=>places.find(place=>place.name===name)).filter(Boolean)
+      :selected==="pins"?[]
+      :selected==="memory"?places.filter(place=>!["Kanji Museum"].includes(place.name))
+      :places.filter(place=>!DETAIL_ONLY.has(place.name));
     const indexPlaces=selected==="trails"?mapPlaces:places;
-    const mapNames=mapPlaces.map(place=>place.name);
     const layout=declutter(mapPlaces);
     const point=name=>layout[name]||POSITIONS[name];
-    const connections=selected==="memory"?associationLines(mapNames):selected==="trails"?TRAILS.flatMap(trail=>trail.stops.slice(1).map((stop,index)=>[trail.stops[index],stop])):[];
-    const paths=connections.map(([a,b])=>{
-      const p=point(a),q=point(b);return'<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+q[0]+'" y2="'+q[1]+'"></line>';
+    const connections=selected==="memory"
+      ?geographicLines(mapPlaces)
+      :selected==="trails"
+        ?TRAILS.flatMap(trail=>trail.stops.slice(1).map((stop,index)=>({from:trail.stops[index],to:stop,kind:"chronology",label:trail.kind})))
+        :[];
+    const paths=connections.map(edge=>{
+      const a=point(edge.from),b=point(edge.to);
+      if(!a||!b)return "";
+      const kind=esc(edge.kind||"within");
+      const marker=edge.kind==="chronology"?' marker-end="url(#map-route-arrow)"':"";
+      return '<line class="map-edge-'+kind+'" x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'"'+marker+'></line>';
     }).join("");
     const nodes=mapPlaces.map(place=>{
       const p=point(place.name),number=String(indexPlaces.indexOf(place)+1).padStart(2,"0");
       const density=place.count>=8?"cluster":place.count>=3?"active":"quiet";
       const jp=subLabelFor(place.name);
-      return'<button class="map-pin map-pin-'+density+'" style="left:'+p[0]+'%;top:'+p[1]+'%" type="button" data-map-place="'+esc(place.name)+
+      const edgeX=p[0]<38?" map-pin-edge-left":p[0]>62?" map-pin-edge-right":"";
+      const edgeY=p[1]<10?" map-pin-edge-top":p[1]>90?" map-pin-edge-bottom":"";
+      return '<button class="map-pin map-pin-'+density+edgeX+edgeY+'" style="left:'+p[0]+'%;top:'+p[1]+'%" type="button" data-map-place="'+esc(place.name)+
         '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-dot" aria-hidden="true"></span>'+
         '<span class="map-pin-copy"><strong>'+esc(place.name)+'</strong>'+(jp?'<small class="map-pin-jp">'+esc(jp)+'</small>':'')+
         '<small class="map-pin-count">'+place.count+' memories</small></span><span class="map-pin-index">'+number+'</span></button>';
     }).join("");
     const key=indexPlaces.map((place,index)=>'<button type="button" data-map-place="'+esc(place.name)+'"><span>'+
       String(index+1).padStart(2,"0")+'</span><strong>'+esc(place.name)+'</strong><small>'+place.count+' memories</small></button>').join("");
-    return'<section class="memory-map-panel"><div class="map-toolbar"><div><span class="map-eyebrow">JHK / GEOGRAPHIC MEMORY</span><strong>'+
-      (selected==="memory"?"MEMORY NETWORK":selected==="trails"?"TRAVEL TRAILS":selected==="pins"?"SOURCE PINS":"REGIONAL INDEX")+'</strong></div><div class="map-mode-switch"><button type="button" data-map-mode="geography" '+
-      (selected==="geography"?'aria-pressed="true"':"")+' >PLACE</button><button type="button" data-map-mode="memory" '+
-      (selected==="memory"?'aria-pressed="true"':"")+' >MEMORY</button><button type="button" data-map-mode="trails" '+(selected==="trails"?'aria-pressed="true"':"")+' >TRAILS</button><button type="button" data-map-mode="pins" '+(selected==="pins"?'aria-pressed="true"':"")+' >PINS</button></div></div>'+(selected==="pins"?'<div class="map-pin-references">'+pinsMarkup()+'</div>':'<div class="map-legend"><span><i class="legend-place"></i> PLACE ANCHOR</span><span><i class="legend-memory"></i> MEMORY CLUSTER</span><span><i class="legend-link"></i> SHARED MEMORY LINK</span></div><div class="map-canvas '+
-      (selected==="memory"?"map-memory-mode":selected==="trails"?"map-trails-mode":"map-place-mode")+'"><div class="map-pan-layer"><div class="map-region-label map-label-west">FUJI FIVE LAKES / YAMANASHI</div>'+
-      '<div class="map-region-label map-label-east">KANTO</div><svg class="map-connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'+paths+'</svg>'+nodes+
-      '</div></div><p class="map-disclaimer">'+(selected==="memory"?"Dashed links show shared archive records, not roads or measured routes.":"SCHEMATIC / RELATIVE POSITION ONLY / NOT TO SCALE.")+
-      '</p><div class="map-place-list" aria-label="地名一覧">'+key+'</div>'+(selected==="trails"?'<div class="map-trail-list">'+trailMarkup()+'</div>':"")+'</div>')+'</section>';
+    const legend=selected==="memory"
+      ?'<span><i class="legend-place"></i> WITHIN / ADMINISTRATIVE AREA</span><span><i class="legend-link"></i> OVERLOOKS / CONNECTED</span><span><i class="legend-transit"></i> TRANSIT CORRIDOR</span><span>PHOTO SEQUENCES ARE RECORD LINKS, NOT GEOGRAPHIC LINES</span>'
+      :selected==="trails"
+        ?'<span><i class="legend-trail"></i> ORDERED VISIT / TRAVEL SEQUENCE</span><span>SCHEMATIC ORDER ONLY / NOT A GPS ROUTE</span>'
+        :'<span><i class="legend-place"></i> PLACE ANCHOR</span><span>JAPANESE LABELS / ARCHIVE LOCATION INDEX</span>';
+    return '<section class="memory-map-panel"><div class="map-toolbar"><div><span class="map-eyebrow">JHK / GEOGRAPHIC MEMORY</span><strong>'+
+      (selected==="memory"?"GEOGRAPHIC RELATIONS":selected==="trails"?"CHRONOLOGICAL SEQUENCES":selected==="pins"?"SOURCE PINS":"REGIONAL INDEX")+
+      '</strong></div><div class="map-mode-switch"><button type="button" data-map-mode="geography" '+(selected==="geography"?'aria-pressed="true"':"")+
+      '>PLACE</button><button type="button" data-map-mode="memory" '+(selected==="memory"?'aria-pressed="true"':"")+
+      '>RELATIONS</button><button type="button" data-map-mode="trails" '+(selected==="trails"?'aria-pressed="true"':"")+
+      '>SEQUENCES</button><button type="button" data-map-mode="pins" '+(selected==="pins"?'aria-pressed="true"':"")+
+      '>PINS</button></div></div>'+(selected==="pins"?'<div class="map-pin-references">'+pinsMarkup()+'</div>':
+      '<div class="map-legend">'+legend+'</div><div class="map-canvas '+(selected==="memory"?"map-memory-mode":selected==="trails"?"map-trails-mode":"map-place-mode")+
+      '"><div class="map-pan-layer"><div class="map-region-label map-label-west">FUJI FIVE LAKES / YAMANASHI</div>'+
+      '<div class="map-region-label map-label-east">KANTO / KANSAI / OKINAWA</div><svg class="map-connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'+
+      '<defs><marker id="map-route-arrow" markerWidth="4" markerHeight="4" refX="3" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z"></path></marker></defs>'+
+      paths+'</svg>'+nodes+'</div></div><p class="map-disclaimer">'+
+      (selected==="memory"?"Lines describe named geographical relationships such as containment, outlooks and transit corridors. They are not shared-photo links.":
+       selected==="trails"?"Arrows preserve the documented order of visits or travel. They are not measured roads, walking paths or exact transfer itineraries.":
+       "SCHEMATIC / RELATIVE POSITION ONLY / NOT TO SCALE.")+
+      '</p><div class="map-place-list" aria-label="地名一覧">'+key+'</div>'+(selected==="trails"?'<div class="map-trail-list">'+trailMarkup()+'</div>':""))+
+      '</section>';
   }
   function bind(root){
     const canvas=root?.querySelector?.(".map-canvas"),layer=canvas?.querySelector?.(".map-pan-layer");

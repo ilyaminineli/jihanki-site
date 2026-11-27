@@ -198,33 +198,29 @@ Do not ask again for these identifications. Keep uncertainty about exact positio
 - Other thematic images and the twelve anonymous source pins remain open only where the files provide no stronger place evidence.
 
 
-## 4. Addition_4 — newly reviewed photographs (photo-173–photo-202)
+## 4. Addition_4 — traveller confirmations and remaining gaps
 
-### Unresolved place / event questions
-- **addition_4 (1).jpg** — photo-173: tree and pale marker in a grassy clearing. Which area or outing was this?
-- **addition_4 (3).jpg** — photo-175: Kyoto City Bus D boarding point with routes 1, 46, 6 and 北8. Which exact stop?
-- **addition_4 (4).jpg** — photo-176: urban skyline. Which city or district?
-- **addition_4 (7).jpg** and **addition_4 (8).jpg** — photo-179–180: fireworks. Were these at the 15 August 2026 Oku-Kawaguchi / Nagahama Furusato Festival, or another event?
-- **addition_4 (9).jpg** and **addition_4 (10).jpg** — photo-181–182: fire-hydrant cabinet 26 and R-7 emergency phone. Which station or city?
-- **addition_4 (11).jpg** — photo-183: Kadoya Shoten in Nagahama. Is this the shop with a house attached described by DYNAKYRIS, or a separate shop?
-- **addition_4 (12).jpg** — photo-184: night waterfront. Lake Kawaguchi, Tagonoura/Suruga Bay, or another waterfront?
-- **addition_4 (17).jpg** — photo-189: unnamed highway tunnel. Name or route?
-- **addition_4 (18).jpg**, **addition_4 (22).jpg**, **addition_4 (26).jpg** — photo-190, photo-194 and photo-198: are these the same underground complex or station?
-- **addition_4 (21).jpg** — photo-193: where was this alcohol vending machine?
-- **addition_4 (23).jpg** — photo-195: which arcade or town? Same venue as photo-99 or another?
-- **addition_4 (27).jpg** and **addition_4 (28).jpg** — photo-199–200: which city or street?
-- **addition_4 (30).jpg** — photo-202: can you identify the school or district near this wet crossing?
+### Resolved — do not ask again
 
-### Confirmations before making stronger links
-- **addition_4 (20).jpg** — photo-192: is this visitor book from **Genko-an**? If so, link it to photo-137, photo-151–153 and the bloody-ceiling memory.
-- **addition_4 (7)–(8).jpg** and **addition_4 (11).jpg**: is the celebration described by DYNAKYRIS connected to Nagahama, and was Kadoya Shoten involved? His note does not name the shop.
+- `addition_4 (1).jpg` — photo-173: Satyam 1, present-day grassy clearing/tree in former Kamikuishiki compound; linked to Koba-san's 3 August visit and photo-127.
+- `addition_4 (3).jpg` — photo-175: Senbon Kitaoji bus stop (千本北大路), Kyoto.
+- `addition_4 (4).jpg` — photo-176: near Tokyo; exact city still unknown.
+- `addition_4 (7).jpg` and `(8).jpg` — photo-179–180: Nagahama Furusato Festival, 15 August 2026.
+- `addition_4 (9).jpg` and `(10).jpg` — photo-181–182: Niikura Tunnel (新倉河口湖トンネル).
+- `addition_4 (11).jpg` — photo-183: Kadoya Shoten, Miura's shop; his Japanese self-introduction is preserved in a separate contact note.
+- `addition_4 (12).jpg` — photo-184: waterfront from Fujisan Dragon Tower.
+- `addition_4 (18).jpg` and `(22).jpg` — photo-190 and photo-194: connecting transit corridor for Demachiyanagi, Sanjo and Otsu.
+- `addition_4 (21).jpg` — photo-193: Kyoto, near Kitaoji Shinmachi bus stop.
+- `addition_4 (23).jpg` — photo-195: arcade somewhere between Kyoto and Osaka; exact venue not remembered.
+- `addition_4 (26).jpg` — photo-198: Osaka underground parking near Shinsaibashi; not the Kyoto–Otsu passage.
+- `addition_4 (27).jpg` and `(28).jpg` — photo-199–200: Osaka near Shinsaibashi.
+- `addition_4 (30).jpg` — photo-202: school sign near Miyuki Beach, Onna, Okinawa; school name unknown.
+- `addition_4 (20).jpg` — photo-192: Genko-an guestbook, dated 8 August 2026, signed Eli & Takismana.
 
-### Already identified
-- **addition_4 (2).jpg** — Fugaku Wind Cave.
-- **addition_4 (5).jpg** — Saiko East Gate.
-- **addition_4 (6).jpg** — Haneda Terminal 3 to Shinjuku Station West Exit, ticket dated 21 July 2026.
-- **addition_4 (13)–(14).jpg** — Tagonoura Port and management office, Fuji City.
-- **addition_4 (15)–(16).jpg** — Mt. Fuji Panoramic Ropeway / Tenjoyama, Lake Kawaguchi.
-- **addition_4 (19).jpg** — Kyoto direction signs.
-- **addition_4 (24)–(25).jpg** — Osaka Castle.
-- **addition_4 (29).jpg** — CRYSTA Nagahori, South 5 Elevator, Shinsaibashi, Osaka.
+### Still unresolved
+
+- **`addition_4 (17).jpg` — photo-189:** highway tunnel name and route are not remembered.
+- **`addition_4 (4).jpg` — photo-176:** exact city/ward or camera point for the Tokyo-area skyline.
+- **`addition_4 (23).jpg` — photo-195:** exact arcade and town along the Kyoto–Osaka journey.
+- **`addition_4 (27).jpg` and `(28).jpg` — photo-199–200:** exact street and building names near Shinsaibashi.
+- **`addition_4 (30).jpg` — photo-202:** exact school name near Miyuki Beach.

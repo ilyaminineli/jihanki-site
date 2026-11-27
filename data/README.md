@@ -128,3 +128,10 @@ The daily rotating selection is implemented in js/rotation.js. Personal collecti
 Run the focused schema, interaction, Markdown and media-manifest fixtures above, then run `node scripts/validate-archive.mjs` for the integrated repository scan. GitHub Actions runs these fixtures, the six-viewport interaction/offline Playwright suite, and the integrated validator.
 
 When adding a record, use file for the primary local document or media path. Do not use the obsolete textFile property.
+
+## Confirmed additions and historical corrections — 27 November 2026
+
+- The addition_4 intake now includes traveller-confirmed identifications for the Genko-an guestbook, Nagahama fireworks, Satyam 1 present-day clearing, Kadoya Shoten contact, Niikura Tunnel emergency phones and the Kyoto / Osaka / Okinawa images.
+- The 3 August Koba-san field note separates the traveller-identified Satyam 1 place from Satyam No. 7, identified by the Ministry of Justice as the sarin-production plant in the wider former Kamikuishiki compound.
+- Event and contact memories are maintained separately in [Nagahama Furusato Festival](../documents/notes/events/2026-08-15-nagahama-furusato-festival.md) and [Kadoya Shoten / Miura contact](../documents/notes/contacts/kadoya-shoten-miura.md).
+- The Memory Map and relationship index distinguish shared photo sequences, companion-source corroboration, geographical containment / outlook / transit-corridor relationships, and chronological travel or visit sequences.

@@ -422,16 +422,22 @@
 
   function renderRelations(item) {
     const links = window.JIHANKI_DISCOVERY.links(item), locations = window.JIHANKI_GEOGRAPHY.locations(item);
-    let html = '<section class="artifact-relations"><span class="artifact-section-label">MEMORY ARCHAEOLOGY</span>' +
+    const relationClass = kind => "relation-kind-" + String(kind || "related-record").replace(/[^a-z0-9-]/gi, "-");
+    let html = '<section class="artifact-relations"><span class="artifact-section-label">CURATED RECORD RELATIONSHIPS</span>' +
       '<button type="button" class="relation-link archaeology-open" data-explore-id="' + esc(item.id) + '">TRACE CONNECTIONS / ' + links.length + ' LINKS ↗</button>';
-    if (links.length) html += links.slice(0, 5).map(link =>
-      '<button type="button" class="relation-link" data-related-id="' + esc(link.item.id) + '"><small>' +
+    if (links.length) html += links.slice(0, 8).map(link =>
+      '<button type="button" class="relation-link ' + relationClass(link.kind) + '" data-related-id="' + esc(link.item.id) + '"><small>' +
       esc(link.label || link.kind) + '</small>' + esc(link.item.title) + '</button>').join("");
-    else html += '<span class="relation-empty">NO CONNECTIONS RECORDED YET</span>';
+    else html += '<span class="relation-empty">NO CURATED RECORD CONNECTIONS YET</span>';
     html += '</section>';
+    const placeLinks = window.JIHANKI_RELATIONSHIPS?.placeLinksFor(item) || [];
+    if (placeLinks.length) html += '<section class="artifact-relations artifact-geographic-relations"><span class="artifact-section-label">GEOGRAPHIC RELATIONSHIPS / NOT SHARED PHOTO LINKS</span>' +
+      placeLinks.slice(0, 8).map(edge => '<div class="relation-place-edge"><small>' + esc(edge.label || edge.kind) + ' / ' + esc(edge.kind) + '</small><strong>' +
+      esc(edge.from) + '</strong><span>→</span><strong>' + esc(edge.to) + '</strong></div>').join("") +
+      '<button type="button" class="location-link location-map-link" data-open-map="memory">OPEN GEOGRAPHIC RELATIONS ↗</button></section>';
     if (locations.length) html += '<section class="artifact-locations"><span class="artifact-section-label">LOCATION INDEX</span>' +
       locations.map(place => '<button type="button" class="location-link" data-place="' + esc(place) + '">' + esc(place) + '</button>').join("") +
-      '<button type="button" class="location-link location-map-link" data-open-map="geography">OPEN MEMORY MAP ↗</button></section>';
+      '<button type="button" class="location-link location-map-link" data-open-map="geography">OPEN PLACE MAP ↗</button></section>';
     return html;
   }
 

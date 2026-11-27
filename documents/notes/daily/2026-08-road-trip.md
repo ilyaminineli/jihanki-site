@@ -12,7 +12,7 @@ This route belongs to the central geography of the expedition. It connects the r
 
 ## Kyoto — a hotel, a friend and a Nintendo DS
 
-The Kyoto stay and hotel are confirmed parts of the journey. Takismana also bought a Nintendo DS at **万物創造房 (Banbutsu Sōzō-bō)**, a shop run by a friend. This is a useful small-scale memory of the Kyoto leg: a physical object and a personal connection, rather than only a tourist destination. DYNAKYRIS's independent account of the shop and the exchange of physical artworks and music is kept separately in [the companion fieldnote extraction](./dynakyris-japan-corroborations-2026-11-27.md).
+The Kyoto stay and hotel are confirmed parts of the journey. Takismana also bought a Nintendo DS at **万物創造房 (Banbutsu Sōzō-bō)**, a shop run by a friend. This is a useful small-scale memory of the Kyoto leg: a physical object and a personal connection, rather than only a tourist destination. DYNAKYRIS's independent account of the shop and the exchange of physical artworks and music is kept separately in [the companion fieldnote extraction](../dynakyris-japan-corroborations-2026-11-27.md).
 
 The private chat export contains a hotel voucher link, but the public archive deliberately does not reproduce booking documents, booking identifiers or private reservation details. The exact hotel name and address are not needed to preserve the fact of the stay.
 
@@ -24,24 +24,19 @@ The Osaka leg is confirmed as part of the road journey, but **no concerts were a
 
 The traveller confirms visits to **Genko-an** and **Kinkaku-ji (Rokuon-ji / the Golden Pavilion)**. The veranda, garden and tatami-room photographs in `addition_3` are confirmed as Genko-an. The Golden Pavilion photograph is Kinkaku-ji. The Kyoto visit also included the **Japan Kanji Museum & Library (Kanji Museum)**, identified by the 2025 “Kanji of the Year” display (熊) in the newly supplied photograph. The Kyoto shop 万物創造房 (Banbutsu Sōzō-bō) is a separate shop visit, not a museum.
 
-### Traveller recollection — Genko-an's bloody ceiling
+### Genko-an — a quiet visit and the bloody ceiling
 
-The following is preserved as the traveller's first-person recollection:
+I actually liked this place better. The area around the temples is a tourist destination, and there were plenty of visitors, but it was still beautiful. When we visited Genko-an, it felt as though it was almost only me, Takisman and the female staff inside.
 
-> I actually liked another place there better: sure, the area around those temples is a tourist spot—lots of tourists and all that—but it’s still beautiful.
->
-> I visited one of the palaces where it seemed like it was just me, Takisman, and the female staff.
->
-> The thing is, this building (Genko-an) uses the largest number of planks from the fortress room where about 300 samurai committed seppuku.
->
-> There used to be a castle where this event took place, and then they simply dismantled the castle for its boards and, as the Japanese usually do, reused them.
->
-> As a result, there’s this house where the ceiling literally has blood on it that’s 400 years old.
+Genko-an is a **temple**, not a palace. Its famous “bloody ceiling” is made from floorboards salvaged from Fushimi Castle after the siege of 1600. The boards were reused as ceiling material in several Kyoto temples, including Genko-an. Bloodstained marks and impressions are still associated with the wood, which is why the ceiling is remembered as a four-century-old trace of the siege.
 
-**Historical context, kept separate from the memory:** Genko-an is a temple. Kyoto Travel identifies its main hall's “bloody ceiling” as floorboards taken from disassembled Fushimi Castle, where soldiers loyal to Tokugawa Ieyasu were defeated and killed themselves. Kyoto City Tourism also names the ceiling as 血天井 and identifies its Fushimi Castle origin. Other Kyoto temples preserve floorboards from the same 1600 siege. These sources confirm the reused Fushimi Castle boards, but do not establish that Genko-an received the largest number or that exactly 300 people died in the particular room. Those details remain the traveller's recollection of what was explained on site, not independently verified counts. [Kyoto Travel — Genko-an](https://kyoto.travel/en/destinations/genkoan-temple/) · [Kyoto City Tourism — Genko-an](https://ja.kyoto.travel/tourism/single01.php?category_id=7&tourism_id=275) · [Kyoto Travel — Shoden-ji](https://kyoto.travel/en/destinations/shodenji-temple/).
+The historical accounts describe Torii Mototada and the defenders of Fushimi Castle holding out against the besieging forces before the castle fell. Hundreds of defenders died in the final siege. The exact number of boards assigned to Genko-an, and the claim that it received the largest share, are not established by the sources consulted; nor is a precise count of people who died in the particular room whose floorboards were reused at Genko-an. This archive therefore preserves the substance of the story without repeating the earlier “about 300 in that room” or “largest number of planks” claims as fact.
 
-The visitor-book photograph `addition_4 (20).jpg` is dated 8 August 2026 and signed `エリ＆タキスマナ`. Its page does not name the venue. Link it to Genko-an only if the traveller confirms this is the temple's guestbook.
+Sources: [Japan National Tourism Organization — Genko-an](https://www.japan.travel/en/spot/1155/) identifies the temple's bloody ceiling and the Fushimi Castle floorboards reused in five Kyoto temples. [Kyoto Travel — Genko-an Temple](https://kyoto.travel/en/destinations/genkoan-temple/) independently confirms the temple and the Fushimi Castle origin. The Japan Tourism Agency's [historical account of the Fushimi Castle bloodstained ceiling](https://www.mlit.go.jp/tagengo-db/en/R1-01714.html) discusses the defenders and the broader tradition of reused boards; it does not establish a room-specific casualty count for Genko-an.
 
+### Genko-an guestbook — 8 August 2026
+
+The photograph `addition_4 (20).jpg` (`photo-192`) is confirmed as Genko-an's guestbook. The page is dated 8 August 2026, and the lower entry is signed `エリ＆タキスマナ` (Eli & Takismana). It belongs with the Genko-an courtyard, engawa and tatami photographs `photo-151`–`photo-153` and the earlier round-window photograph `photo-137`.
 - [Kyoto Travel — Genko-an Temple](https://kyoto.travel/en/destinations/genkoan-temple/)
 - [Kyoto Travel — Kinkaku-ji Temple](https://kyoto.travel/en/destinations/kinkakuji-temple-the-golden-pavilion/)
 

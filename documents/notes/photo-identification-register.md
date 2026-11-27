@@ -241,3 +241,10 @@ The fireworks photographs `addition_4 (7).jpg` and `addition_4 (8).jpg` are a ca
 The visitor-book page `addition_4 (20).jpg` is dated 8 August 2026 and signed `エリ＆タキスマナ` (Eli & Takismana). It is catalogued as a Kyoto visitor-book memory, but its venue is not assigned to Genko-an until the traveller confirms the book's location.
 
 See [Addition_4 photo intake](./photo-intake-2026-11-27-addition-4.md), [Japan photo memory prompts](./photo-memory-prompts-2026-11-27.md) and [DYNAKYRIS companion fieldnotes](./dynakyris-japan-corroborations-2026-11-27.md).
+
+
+## Addition_4 — traveller confirmations, 27 November 2026
+
+The traveller has confirmed the principal unresolved labels in the 30-image intake. Key updates: photo-173 is the present-day Satyam 1 clearing and is connected to photo-127 and Koba-san's 3 August visit; photo-175 is Senbon Kitaoji; photo-179–180 are the Nagahama Furusato Festival fireworks on 15 August; photo-181–182 are in Niikura Tunnel; photo-183 is Kadoya Shoten, Miura's shop; photo-184 is the Dragon Tower waterfront view; photo-190 and photo-194 belong to the Demachiyanagi–Sanjo–Otsu transit corridor; photo-193 is near Kitaoji Shinmachi; photo-198 is underground parking near Shinsaibashi; photo-199–200 are near Shinsaibashi; photo-202 is near Miyuki Beach. The Genko-an guestbook is photo-192. Exact details still unknown are listed in the updated memory-prompt document.
+
+The Satyam history is corrected in the 3 August field note: Satyam 1 and the Satyam No. 7 chemical plant are distinct sites within the wider former Kamikuishiki compound. The mist/cloud above Fuji is retained as a traveller observation only.
