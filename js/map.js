@@ -228,8 +228,8 @@
       '</g></svg>'+
       '<svg class="map-connections" viewBox="0 0 '+MAP_SURFACE.width+' '+MAP_SURFACE.height+'" preserveAspectRatio="none" aria-hidden="true">'+
       '<defs><marker id="map-route-arrow" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M0,0 L22,11 L0,22 z"></path></marker></defs>'+
-      paths+'</svg>'+nodes+
-      '<div class="map-view-controls" role="group" aria-label="Map zoom controls"><button type="button" data-map-zoom="out" aria-label="Zoom out" title="Zoom out">−</button><output data-map-zoom-level>100%</output><button type="button" data-map-zoom="in" aria-label="Zoom in" title="Zoom in">+</button><button type="button" data-map-fit title="Centre all visible places">FIT / CENTRE</button></div></div></div><p class="map-disclaimer">'+
+      paths+'</svg>'+nodes+'</div>'+
+      '<div class="map-view-controls" role="group" aria-label="Map zoom controls"><button type="button" data-map-zoom="out" aria-label="Zoom out" title="Zoom out">−</button><output data-map-zoom-level>100%</output><button type="button" data-map-zoom="in" aria-label="Zoom in" title="Zoom in">+</button><button type="button" data-map-fit title="Centre all visible places">FIT / CENTRE</button></div></div><p class="map-disclaimer">'+
       (selected==="memory"?"Lines describe named geographical relationships such as containment, outlooks and transit corridors. They are not shared-photo links.":
        selected==="trails"?"Arrows preserve the documented order of visits or travel. They are not measured roads, walking paths or exact transfer itineraries.":
        "SCHEMATIC / PAN TO EXPLORE / RELATIVE POSITION ONLY / NOT TO SCALE.")+
