@@ -1,7 +1,7 @@
 // Bump both cache namespaces when the app shell changes so existing visitors do not
 // receive stale runtime assets after the next service-worker update.
-const SHELL_CACHE="jihanki-shell-v9";
-const RUNTIME_CACHE="jihanki-runtime-v9";
+const SHELL_CACHE="jihanki-shell-v10";
+const RUNTIME_CACHE="jihanki-runtime-v10";
 const SHELL=[
   "./","./index.html","./assets/jihanki.png","./assets/placeholder.png","./css/archive-system.css",
   "./data/archive.js","./js/categories.js","./js/events.js","./js/inventory.js","./js/relationships.js",
