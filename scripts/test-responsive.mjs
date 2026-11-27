@@ -312,6 +312,8 @@ try{
 
     await page.locator('[data-home-action="map"]').click();
     await page.locator(".memory-map-panel").waitFor();
+    assert(await page.locator(".map-memory-mode").count()===1,device.name+": homepage map should open in Memory Network mode");
+    assert(await page.locator(".map-pin").count()>=70,device.name+": homepage Memory Network did not load the full place set");
     const map=await page.evaluate(()=>{
       const canvas=document.querySelector(".map-canvas"),viewport=canvas.getBoundingClientRect();
       const layer=canvas.querySelector(".map-pan-layer"),surface=layer.getBoundingClientRect();
