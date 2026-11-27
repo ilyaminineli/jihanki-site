@@ -107,6 +107,8 @@ node scripts/test-archive-schema.mjs
 node scripts/test-interaction-model.mjs
 node scripts/test-relationship-semantics.mjs
 node scripts/test-field-impressions.mjs
+node scripts/test-memory-traces.mjs
+node scripts/test-curators-cabinet.mjs
 node scripts/test-markdown-links.mjs
 node scripts/test-media-manifest.mjs
 node scripts/validate-archive.mjs
