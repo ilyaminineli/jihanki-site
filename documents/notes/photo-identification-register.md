@@ -2,20 +2,21 @@
 
 **Audit scope:** all static photographic assets currently stored in `media/photo/`  
 **Reviewed:** 2026-11-27  
-**Catalogue state:** 202 unique Japan photographs indexed as `photo-01`–`photo-202`
+**Catalogue state:** 251 unique Japan photographs indexed as `photo-01`–`photo-251`
 
 ## What was checked
 
-The repository contains 203 files under `media/photo/photos_from_japan/`:
+The repository contains 252 files under `media/photo/photos_from_japan/`:
 
 - `addition_1/`: 37 photographs
 - `addition_2/`: 15 photographs
 - `addition_3/`: 32 photographs
 - `addition_4/`: 30 photographs
+- `addition_5/`: 49 photographs
 - `eli_photos/`: 21 photographs
 - `taki_photos/`: 68 photographs
 
-There are 202 unique images in those folders. `addition_2 (8).jpg` is an exact duplicate of `addition_2 (3).jpg`; it remains in the media manifest for integrity but does not receive a duplicate memory record. The earlier archive ranges remain unchanged: `addition_3` is `photo-141`–`photo-172`, and `addition_4` is `photo-173`–`photo-202`.
+There are 251 unique images in those folders. `addition_2 (8).jpg` is an exact duplicate of `addition_2 (3).jpg`; it remains in the media manifest for integrity but does not receive a duplicate memory record. The earlier archive ranges remain unchanged: `addition_3` is `photo-141`–`photo-172`, `addition_4` is `photo-173`–`photo-202`, and `addition_5` is now indexed as `photo-203`–`photo-251`.
 
 The other six static image assets in `media/photo/` are presentation artwork rather than unindexed travel photographs: the Aokigahara project cover and release-art variant, plus the four named voicebank portraits for Eugene:RE, Akane Iirai, SPIDER and Takismana. Those already have appropriate project or voicebank context in the catalogue. The two image files outside `media/` are also understood: `assets/jihanki.png` is the site's Memory Vending Machine artwork, while `assets/placeholder.png` is a neutral empty-frame fallback, not an undocumented photograph.
 
@@ -251,8 +252,6 @@ The Satyam history is corrected in the 3 August field note: Satyam 1 and the Sat
 
 ## Addition_5 — traveller-confirmed intake
 
-A separate batch of 49 photographs was supplied as `addition_5.zip` on 27 November 2026. These files are not yet part of the repository's `media/photo/photos_from_japan/` tree, so the current in-repository catalogue count above remains unchanged at 202 unique images. Their filename-by-filename register and traveller corrections are preserved in [Addition_5 — Japan photo intake](./photo-intake-2026-11-27-addition-5.md).
+The 49 photographs supplied in `addition_5.zip` on 27 November 2026 were already present in the repository's `media/photo/photos_from_japan/addition_5/` folder. They are now included in the media manifest and individually indexed as `photo-203`–`photo-251`. Their filename-by-filename register and traveller corrections are preserved in [Addition_5 — Japan photo intake](./photo-intake-2026-11-27-addition-5.md).
 
-Confirmed cross-collection links include Uno-Misaki Tunnel and its audiovisual work; Shiki and the existing `Shiki` video / sound takes; the first Saiko-area summit outing; the Kawaguchiko Retro Toys and Music Forest museums; the 31 July Gakupo birthday preparation; Akihabara; the Kitaoji Shinmachi bus stop; McDonald's 139 Fujiyoshida; and the Miyuki Beach / Onna photographs.
-
-Do not allocate the proposed `photo-203`–`photo-251` IDs or add manifest paths until the 49 source binaries are copied into the repository.
+Confirmed cross-collection links include Uno-Misaki Tunnel and its audiovisual work; Shiki and the existing `Shiki` video / sound takes; the first Saiko-area summit outing; the Kawaguchiko Retro Toys and Music Forest museums; the 31 July Gakupo birthday preparation; the Mount Fuji ascent; the first Tokyo / Shinjuku / Akihabara visit; Kyoto bus-stop details; the Takismana Nintendo DS music interface; McDonald's 139 Fujiyoshida; and the Miyuki Beach / Onna photographs.
