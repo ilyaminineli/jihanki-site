@@ -480,14 +480,15 @@ const ARCHIVE = {
     },
     {
       "id": "photo-06",
-      "title": "A figure beyond the mist",
-      "description": "A solitary figure is softened by dense fog on the mountain slope.",
+      "title": "A figure at the foggy lookout",
+      "description": "A solitary figure stands in dense fog beside benches and a raised timber structure. It resembles the foggy lookout photographs in addition_3 (30) and (31), but the shared viewpoint and exact location are not yet confirmed.",
       "date": "2026",
       "type": "image",
       "category": "photo",
       "group": "Forest boundaries",
       "author": "taki",
-      "file": "media/photo/photos_from_japan/taki_photos (35).png"
+      "file": "media/photo/photos_from_japan/taki_photos (35).png",
+      "metadata": { "related": ["photo-170", "photo-171"] }
     },
     {
       "id": "photo-07",
@@ -2399,7 +2400,7 @@ const ARCHIVE = {
       "group": "Lakefront / everyday objects",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (60).png",
-      "description": "Two non-alcoholic canned drinks are held beside a pier sign reading 遊覧船のり場 (sightseeing-boat boarding). The sign identifies the kind of waterfront stop, not the lake or operator."
+      "description": "Two non-alcoholic canned drinks are held beside a pier sign reading 遊覧船のり場 (sightseeing-boat boarding). The landing resembles Lake Kawaguchi sightseeing-boat piers, but the wording is generic and the exact lake/operator remains unconfirmed."
     },
     {
       "id": "photo-136",
@@ -2419,18 +2420,17 @@ const ARCHIVE = {
     },
     {
       "id": "photo-137",
-      "title": "A round window in a tatami room",
+      "title": "Genko-an — round and square windows",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Framed views / traditional interiors",
+      "group": "Kyoto / Genko-an temple interiors",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (62).png",
-      "description": "A traditional tatami room frames a green garden through a circular window. It creates a strong visual connection with the Fuji-through-a-round-window photograph, but the building and city are not confirmed.",
+      "description": "A tatami room frames a garden through the paired circular and square windows associated with Genko-an's Window of Enlightenment and Window of Confusion. This is a strong visual match to the traveller-confirmed Genko-an visit in Kyoto.",
       "metadata": {
-        "related": [
-          "photo-14"
-        ]
+        "locations": ["Genko-an", "Kyoto"],
+        "related": ["photo-151", "photo-152", "photo-153"]
       }
     },
     {
@@ -3075,6 +3075,7 @@ const ARCHIVE = {
           "Japan / 2026 expedition"
         ],
         "related": [
+          "photo-06",
           "photo-171",
           "photo-145"
         ]
@@ -3095,6 +3096,7 @@ const ARCHIVE = {
           "Japan / 2026 expedition"
         ],
         "related": [
+          "photo-06",
           "photo-170",
           "photo-145"
         ]
