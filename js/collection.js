@@ -27,6 +27,28 @@
       category,stamp:STAMPS[category]||"ARCHIVE FRAGMENT",inscription:LINES[hash%LINES.length],
       serial:String(hash%9999).padStart(4,"0"),createdAt:new Date().toISOString(),archiveDate:item.date||"UNDATED"};
   }
+  function addFieldPass(definition) {
+    const slug=String(definition?.id||"").trim().toLowerCase();
+    const title=String(definition?.title||"").trim();
+    const sourceIds=Array.isArray(definition?.sourceIds)
+      ?[...new Set(definition.sourceIds.filter(id=>typeof id==="string"&&/^[a-z0-9][a-z0-9-]{1,79}$/i.test(id)))].slice(0,20):[];
+    if(!/^[a-z0-9][a-z0-9-]{2,79}$/.test(slug)||!title||!sourceIds.length)
+      throw new Error("A field impression needs a stable ID, title and source fragments.");
+    const id="OBJ-FIELD-"+slug.toUpperCase(),archiveId="field-impression:"+slug;
+    const existing=objects().find(object=>object.id===id);
+    if(existing)return {object:existing,created:false};
+    const object={
+      id,archiveId,receiptCode:"",title,category:"field-impression",
+      stamp:String(definition.stamp||"FIELD IMPRESSION").slice(0,100),
+      inscription:String(definition.inscription||"A fragment encountered in the archive.").slice(0,240),
+      serial:String(definition.serial||"LOCAL FIELD").slice(0,40),
+      createdAt:new Date().toISOString(),archiveDate:String(definition.archiveDate||"UNDATED").slice(0,40),
+      kind:"field-impression",sourceIds
+    };
+    writeObjects([...readObjects(),object].slice(-1000));
+    window.JIHANKI_EVENTS?.record("field-impression-awarded",{impressionId:slug,sourceIds});
+    return {object,created:true};
+  }
   function add(item,receipt) {
     if(!item?.id)return null;
     const records=read(); let record=records.find(entry=>entry.id===item.id); const now=new Date().toISOString();
@@ -112,7 +134,8 @@
       if(seen.has(object.id))return;
       mergedObjects.push({id:object.id,archiveId:object.archiveId,receiptCode:String(object.receiptCode||""),title:object.title,
         category:String(object.category||"archive"),stamp:String(object.stamp||"ARCHIVE FRAGMENT"),inscription:String(object.inscription||""),
-        serial:String(object.serial||"0000"),createdAt:String(object.createdAt||new Date().toISOString()),archiveDate:String(object.archiveDate||"UNDATED")});
+        serial:String(object.serial||"0000"),createdAt:String(object.createdAt||new Date().toISOString()),archiveDate:String(object.archiveDate||"UNDATED"),
+        ...(object.kind==="field-impression"?{kind:"field-impression",sourceIds:Array.isArray(object.sourceIds)?object.sourceIds.filter(id=>typeof id==="string").slice(0,20):[]}:{})});
       seen.add(object.id);
     });
     if(merged.length>3000||mergedObjects.length>3000)throw new Error("The imported collection exceeds the supported size.");
@@ -125,6 +148,6 @@
     let payload;try{payload=JSON.parse(await file.text());}catch(_){throw new Error("The selected file is not valid JSON.");}
     return importPayload(payload);
   }
-  window.JIHANKI_COLLECTION={all,objects,add,resolve,objectFor,objectMarkup,downloadObject,importFile,importPayload,count,totalPurchases,clear,exportFile,
+  window.JIHANKI_COLLECTION={all,objects,add,addFieldPass,resolve,objectFor,objectMarkup,downloadObject,importFile,importPayload,count,totalPurchases,clear,exportFile,
     storageAvailable(){return storageAvailable;},contains(id){return all().some(record=>record.id===id);}};
 })();
