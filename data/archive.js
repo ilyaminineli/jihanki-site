@@ -3117,8 +3117,7 @@ const ARCHIVE = {
           "Mie"
         ],
         "related": [
-          "photo-167",
-          "photo-140"
+          "photo-167"
         ]
       }
     }
