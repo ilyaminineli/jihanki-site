@@ -71,11 +71,15 @@ Photo group values are thematic groupings (for example, Machines after dark and 
 
 ## Additional Japan photographs and source map pins
 
-The 2026 Japan photo batches in `media/photo/photos_from_japan/addition_1` and `addition_2` are catalogued as `photo-24` through `photo-74`. Each catalogue record points to its original file. Location metadata is only attached where a sign, visible map label, event branding, airport signage or a linked photo sequence supports the stop. The duplicate view in `addition_2 (8).jpg` remains in the media manifest but is not added as a second catalogue memory.
+The full Japan photographic archive contains 141 files across `addition_1`, `addition_2`, `eli_photos` and `taki_photos`. It is now represented by 140 unique catalogue memories (`photo-01` through `photo-140`). `addition_2 (8).jpg` is an exact duplicate of another view and remains in the media manifest without a second catalogue record. All other 140 unique images have one archive record each.
 
-Identified stops include Oishi Park / Lake Kawaguchi, Katori Jingu, Katori Station, Haneda, Lake Saiko, Kyoto and Yamanashi. The pagoda silhouette, unnamed shrine scene, accommodation interiors and other fragments remain unplaced where the site identity is not established.
+The initial addition batches occupy `photo-24` through `photo-74`. The formerly unindexed Eli and Taki collections are catalogued in `photo-75` through `photo-140`. The photo identification register documents new names, cross-links, thematic clusters and confidence boundaries. Confirmed place metadata includes Saiko Iyashi no Sato Nenba, Arakurayama Sengen Park / Chureito Pagoda, Oishi Park / Lake Kawaguchi, Kawaguchiko Nostalgic Toys Museum, Kawaguchiko Automobile Museum / Flight Hall in Narusawa, Shinjuku, Kamo River / Kyoto, Katori Jingu, Katori Station, Haneda, Lake Saiko and the Fuji Five Lakes region. Some records intentionally retain only a region or thematic group when the exact site is not supported.
 
 The Memory Map's `PINS` mode preserves four forwarded pins with caption-derived labels and twelve individually numbered 20 July map links that have no place names in the source export. Caption-derived labels are descriptions, not asserted official names. The original Google Maps links are retained for future confirmation.
+
+## Photo-identification register
+
+`documents/notes/photo-identification-register.md` is the editorial audit for this collection. It distinguishes sign- or note-backed identifications from probable visual candidates and purely thematic groupings. Sunpu Castle is treated only as a candidate for the castle-and-moat sequence; no exact harbour, industrial plant, unidentified temple, bus terminal or firework venue is assigned without better evidence.
 
 ## Media integrity
 
