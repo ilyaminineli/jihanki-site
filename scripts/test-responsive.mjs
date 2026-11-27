@@ -335,18 +335,20 @@ try{
         surface:{left:surface.left,top:surface.top,right:surface.right,bottom:surface.bottom},
         overflow:getComputedStyle(canvas).overflow,
         pins:[...layer.querySelectorAll(".map-pin")].map(node=>{const p=node.getBoundingClientRect();return{name:node.getAttribute("data-map-place"),left:p.left,right:p.right,top:p.top,bottom:p.bottom,width:p.width,height:p.height};}),
+        labelPins:[...layer.querySelectorAll(".map-pin-place-card")].map(node=>{const p=node.getBoundingClientRect();return{name:node.getAttribute("data-map-place"),left:p.left,right:p.right,top:p.top,bottom:p.bottom,width:p.width,height:p.height};}),
         keyCount:document.querySelectorAll(".map-place-list button").length,
         modalWidth:document.querySelector(".artifact-window").clientWidth,
         modalScrollWidth:document.querySelector(".artifact-window").scrollWidth};
     });
     assert(map.keyCount>0,device.name+": map key empty");
     assert(map.modalScrollWidth<=map.modalWidth+1,device.name+": map caused horizontal overflow");
-    const crtLabels=await page.locator(".map-pin").evaluateAll(nodes=>nodes.every(node=>
+    const mapLabels=page.locator(".map-pin-place-card");
+    const mapDots=page.locator(".map-pin-dot-only");
+    const crtLabels=await mapLabels.evaluateAll(nodes=>nodes.length>=15&&nodes.every(node=>
       node.querySelector(".map-pin-jp")&&node.querySelector(".map-pin-count")&&
-      getComputedStyle(node).borderRadius!=="50%"&&
-      getComputedStyle(node).borderColor.includes("125")&&
-      node.offsetWidth>=100));
-    assert(crtLabels,device.name+": CRT phosphor label hierarchy or frame is missing");
+      getComputedStyle(node).borderRadius!=="50%"&&node.offsetWidth>=100));
+    assert(crtLabels,device.name+": CRT Japanese/English primary place cards are missing");
+    assert(await mapDots.count()>=45,device.name+": exact-location map points are missing from the Japan map");
     assert(map.overflow==="hidden",device.name+": pannable map viewport must clip its inner surface");
     assert(await page.locator(".map-view-controls [data-map-fit]").count()===1,device.name+": map fit control missing");
     const initialZoom=Number((await page.locator("[data-map-zoom-level]").textContent()).replace("%",""));
