@@ -4392,6 +4392,34 @@ const ARCHIVE = {
       }
     },
     {
+      "id": "photo-intake-addition-5",
+      "title": "ADDITION_5 — JAPAN PHOTO INTAKE",
+      "date": "2026-11-27",
+      "type": "text",
+      "category": "notes",
+      "author": "archive",
+      "project": "japan-expedition",
+      "group": "PHOTO IDENTIFICATION / INTAKE",
+      "description": "Filename-by-filename review of 49 supplied addition_5 photographs, with cross-collection candidates, named signage, map context and traveller questions. Binary images still need to be added before photo records are created.",
+      "file": "documents/notes/photo-intake-2026-11-27-addition-5.md",
+      "metadata": {
+        "locations": [
+          "Uno-Misaki Tunnel",
+          "Lake Yamanaka",
+          "Lake Shōji",
+          "Miyuki Beach",
+          "Yamanashi",
+          "Okinawa"
+        ],
+        "related": [
+          "daily-2026-07-25",
+          "daily-2026-07-24",
+          "daily-2026-07-26",
+          "photo-202"
+        ]
+      }
+    },
+    {
       "id": "dynakyris-japan-corroborations-2026-11-27",
       "title": "DYNAKYRIS — JAPAN FIELDNOTE CORROBORATIONS",
       "date": "2026-11-27",
