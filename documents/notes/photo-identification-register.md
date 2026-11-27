@@ -2,18 +2,19 @@
 
 **Audit scope:** all static photographic assets currently stored in `media/photo/`  
 **Reviewed:** 2026-11-27  
-**Catalogue state:** 140 unique Japan photographs indexed as `photo-01`–`photo-140`
+**Catalogue state:** 172 unique Japan photographs indexed as `photo-01`–`photo-172`
 
 ## What was checked
 
-The repository contains 141 files under `media/photo/photos_from_japan/`:
+The repository contains 173 files under `media/photo/photos_from_japan/`:
 
 - `addition_1/`: 37 photographs
 - `addition_2/`: 15 photographs
+- `addition_3/`: 32 photographs
 - `eli_photos/`: 21 photographs
 - `taki_photos/`: 68 photographs
 
-There are 140 unique images in those folders. `addition_2 (8).jpg` is an exact duplicate of another image in `addition_2`; it remains in the media manifest for file integrity but does not receive a duplicate memory record. The earlier archive covered 74 of these unique photographs. This pass added the remaining 66 as `photo-75`–`photo-140`.
+There are 172 unique images in those folders. `addition_2 (8).jpg` is an exact duplicate of another image in `addition_2`; it remains in the media manifest for integrity but does not receive a duplicate memory record. The first archive pass indexed 74 images, the next indexed `photo-75`–`photo-140`, and the 32 unique `addition_3` photographs are now indexed as `photo-141`–`photo-172`.
 
 The other six static image assets in `media/photo/` are presentation artwork rather than unindexed travel photographs: the Aokigahara project cover and release-art variant, plus the four named voicebank portraits for Eugene:RE, Akane Iirai, SPIDER and Takismana. Those already have appropriate project or voicebank context in the catalogue. The two image files outside `media/` are also understood: `assets/jihanki.png` is the site's Memory Vending Machine artwork, while `assets/placeholder.png` is a neutral empty-frame fallback, not an undocumented photograph.
 
@@ -192,8 +193,8 @@ Strong new identifications include Kinkaku-ji and Fujisan Dragon Tower at Tagono
 
 The `addition_3` folder is now represented by `photo-141`–`photo-172`. All 32 source files have Git blob fingerprints distinct from the existing manifest.
 
-Confirmed or strongly identifiable places include Fujisan Dragon Tower / Tagonoura Minato Park (`photo-147`–`photo-148`), Kinkaku-ji (`photo-150`), Genko-an (`photo-151`–`photo-153`), Fuji-Q Highland (`photo-154`), Tokyo Skytree (`photo-158`), Japan Kanji Museum & Library (`photo-166`), and Ueno Castle at night (`photo-167`, `photo-172`). The McDonald’s with a Mount Fuji view is `photo-169`, with branch unknown.
+Confirmed or strongly identifiable places include Fujisan Dragon Tower / Tagonoura Minato Park (`photo-147`–`photo-148`), Kinkaku-ji (`photo-150`), Genko-an (`photo-151`–`photo-153`), PICA Fuji Saiko (`photo-154`), Sumida Ward / Tokyo (`photo-157`) and Tokyo Skytree (`photo-158`), Japan Kanji Museum & Library (`photo-166`), and Ueno Castle at night (`photo-167`, `photo-172`). The McDonald’s with a Mount Fuji view is `photo-169`, but the branch is unknown.
 
-The Yamanashi forest marker, inscribed stone, Yokosawa erosion-control sign and reservoir are grouped as a regional forest / water sequence without assigning an unsupported exact address. The foggy lookout (`photo-170`–`photo-171`), shrine approach, traditional roofed building, night torii and urban infrastructure photographs retain explicit uncertainty.
+The Yamanashi forest marker (`photo-160`) bears the words 環境庁 (Environment Agency) and 山梨県 (Yamanashi Prefecture). The separate sign in `photo-162` names 横沢砂防堰堤 (Yokosawa Sabo Erosion-Control Structure) and Yamanashi Prefecture’s Tsuru Construction Office. The inscribed stone and reservoir remain unidentified. The foggy lookout (`photo-170`–`photo-171`) is not assigned to Gokodai or Koyodai; the shrine approach, traditional roofed building, night torii and several urban infrastructure images also retain explicit uncertainty.
 
 The earlier “room of game memories” record (`photo-22`) is corrected to **Banbutsu Sōzō-bō**, the Kyoto shop 万物創造房. It is not a nostalgic-toys museum.
