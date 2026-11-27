@@ -1628,3 +1628,165 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   .map-pan-layer .map-pin.map-pin-edge-right.map-pin-edge-top { transform:translate(-100%,0); }
   .map-pan-layer .map-pin.map-pin-edge-right.map-pin-edge-bottom { transform:translate(-100%,-100%); }
 }
+
+
+/* M55 — one restrained Japanese pin style across desktop and touch.
+   The map is a larger pannable surface; the lower index carries full names and counts. */
+.memory-map-panel .map-canvas {
+  height:min(64vh,600px);
+  min-height:430px;
+  overflow:hidden;
+  touch-action:none;
+  cursor:grab;
+}
+.memory-map-panel .map-pan-layer {
+  position:absolute;
+  inset:0 auto auto 0;
+  width:1280px;
+  height:860px;
+  min-height:0;
+  transform:translate3d(0,0,0);
+  will-change:transform;
+}
+.memory-map-panel .map-pan-layer .map-pin {
+  box-sizing:border-box;
+  position:absolute;
+  z-index:2;
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+  min-width:0;
+  max-width:none;
+  height:auto;
+  padding:5px 8px;
+  border:1px solid rgba(255,255,255,.42);
+  border-radius:0;
+  background:rgba(3,3,3,.94);
+  color:#eee;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.62);
+  transform:translate(-50%,-50%);
+  cursor:pointer;
+  -webkit-appearance:none;
+  appearance:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.memory-map-panel .map-pan-layer .map-pin-label {
+  display:block;
+  width:100%;
+  max-width:100%;
+  color:#eee;
+  font:10px/1.3 "Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
+  font-weight:400;
+  letter-spacing:.02em;
+  text-align:center;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.memory-map-panel .map-pan-layer .map-pin-dot,
+.memory-map-panel .map-pan-layer .map-pin-copy,
+.memory-map-panel .map-pan-layer .map-pin-index,
+.memory-map-panel .map-pan-layer .map-pin-mobile-label {
+  display:none !important;
+}
+.memory-map-panel .map-pan-layer .map-pin:focus-visible,
+.memory-map-panel .map-pan-layer .map-pin:hover,
+.memory-map-panel .map-pan-layer .map-pin:active {
+  z-index:6;
+  border-color:rgba(255,255,255,.92);
+  background:rgba(22,22,22,.98);
+  outline:1px solid rgba(255,255,255,.3);
+  outline-offset:2px;
+}
+.memory-map-panel .map-pan-layer.is-dragging { cursor:grabbing; }
+@media(max-width:560px) {
+  .memory-map-panel .map-canvas { height:430px; min-height:430px; }
+}
+
+/* Location records reached from the map show the newly catalogued photographs in context. */
+#screen-content .map-location-record { width:100%; text-align:left; }
+#screen-content .map-location-record.has-photo {
+  display:grid;
+  grid-template-columns:88px minmax(0,1fr);
+  align-items:center;
+  gap:11px;
+  padding:9px 6px;
+}
+#screen-content .map-location-thumb {
+  display:block;
+  width:88px;
+  height:66px;
+  object-fit:cover;
+  border:1px solid rgba(255,255,255,.18);
+  background:#080808;
+}
+#screen-content .map-location-copy { min-width:0; display:grid; gap:5px; }
+#screen-content .map-location-copy strong {
+  display:block;
+  color:#ddd;
+  font-size:9px;
+  line-height:1.35;
+  font-weight:400;
+}
+#screen-content .map-location-copy small {
+  display:block;
+  color:#777;
+  font-size:7px;
+  letter-spacing:.06em;
+}
+@media(max-width:560px) {
+  #screen-content .map-location-record.has-photo { grid-template-columns:76px minmax(0,1fr); gap:9px; }
+  #screen-content .map-location-thumb { width:76px; height:60px; }
+}
+
+/* Saiko summit trail evidence: documentary stages and directly openable source frames. */
+.map-trail-stages {
+  display:grid;
+  gap:8px;
+  margin:12px 0;
+  padding-left:22px;
+  color:#888;
+  font:9px/1.55 "Courier New",monospace;
+}
+.map-trail-stages li { padding-left:3px; }
+.map-trail-stages li::marker { color:#ddd; }
+.map-trail-stages strong { display:block; margin-bottom:2px; color:#ccc; font-size:8px; font-weight:400; letter-spacing:.08em; }
+.map-trail-stages span { display:block; }
+.map-trail-photo-section { margin:14px 0 10px; }
+.map-trail-photo-grid {
+  display:grid;
+  grid-template-columns:repeat(5,minmax(0,1fr));
+  gap:6px;
+  margin-top:7px;
+}
+.map-trail-photo-grid button {
+  min-width:0;
+  padding:4px;
+  border:1px solid rgba(255,255,255,.18);
+  background:#080808;
+  color:#aaa;
+  cursor:pointer;
+  text-align:left;
+}
+.map-trail-photo-grid img {
+  display:block;
+  width:100%;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  background:#111;
+}
+.map-trail-photo-grid button>span {
+  display:block;
+  overflow:hidden;
+  margin-top:4px;
+  color:#999;
+  font:7px/1.3 "Courier New",monospace;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.map-trail-photo-grid button:focus-visible,
+.map-trail-photo-grid button:hover { border-color:rgba(255,255,255,.72); outline:1px solid rgba(255,255,255,.24); }
+@media(max-width:560px) {
+  .map-trail-photo-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
