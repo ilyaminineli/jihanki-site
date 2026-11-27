@@ -1559,3 +1559,13 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .map-pin-edge-left.map-pin-edge-bottom { transform:translate(0,-100%); }
 .map-pin-edge-right.map-pin-edge-top { transform:translate(-100%,0); }
 .map-pin-edge-right.map-pin-edge-bottom { transform:translate(-100%,-100%); }
+
+
+/* Small-screen map safety: bound long place labels and anchor them inwards early. */
+.memory-map-panel .map-pin {
+  width:fit-content;
+  max-width:min(140px,58vw);
+  white-space:normal;
+  overflow-wrap:anywhere;
+  line-height:1.2;
+}
