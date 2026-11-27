@@ -260,7 +260,23 @@
       mode:"CONFIRMED CAR JOURNEY",
       description:"A confirmed regional car journey. The ordered stops are preserved, including the return to Kawaguchiko; the line is not a measured road trace."
     }
-  ];
+,
+    {
+      id:"saiko-first-summit-2026-07-27",
+      kind:"hiking-sequence",
+      title:"LAKE SAIKO → FIRST SUMMIT NEAR SAIKO",
+      stops:["Lake Saiko","First summit near Saiko"],
+      mode:"HIKING / FIRST SUMMIT OUTING",
+      description:"The traveller confirms addition_5 (17)–(21) belong to the first summit visit near Saiko, linked to the 27 July ascent chapter. The direction board shows Yamanakako and Myōjin-yama, but the exact summit name and trail are not resolved. This line is a schematic memory sequence, not a surveyed path."
+    },
+    {
+      id:"first-tokyo-road-trip-2026-07-24",
+      kind:"first-car-journey",
+      title:"KAWAGUCHIKO → TOKYO → AKIHABARA",
+      stops:["Kawaguchiko","Tokyo","Akihabara"],
+      mode:"FIRST CAR JOURNEY TO TOKYO",
+      description:"The 24 July daily chapter records the first road trip from Kawaguchiko to Tokyo and the subsequent Akihabara visit. Addition_5 (22) places a Bamiyan sign somewhere along the journey, not at a confirmed stop; no exact road or intermediate route is drawn."
+    }  ];
 
   function allRecords(){return window.JIHANKI_ARCHIVE||[];}
   function byId(id){return allRecords().find(record=>record.id===id)||null;}
