@@ -135,6 +135,53 @@
       { id:"photo-198", kind:"same-neighbourhood", label:"SHINSAIBASHI AREA / DIFFERENT PLACE" },
       { id:"photo-199", kind:"same-neighbourhood", label:"SHINSAIBASHI AREA / DIFFERENT PLACE" },
       { id:"photo-200", kind:"same-neighbourhood", label:"SHINSAIBASHI AREA / DIFFERENT PLACE" }
+    ],
+    "photo-174": [
+      { id:"daily-2026-07-24", kind:"field-visit-photograph", label:"AOKIGAHARA CAVE VISIT" }
+    ],
+    "daily-2026-07-24": [
+      { id:"photo-174", kind:"field-visit-photograph", label:"FUGAKU WIND CAVE / SIGNED LOCATION" }
+    ],
+    "photo-177": [
+      { id:"daily-2026-07-22", kind:"field-context", label:"SAIKO / LOCAL TRANSPORT CONTEXT" },
+      { id:"daily-2026-07-23", kind:"field-context", label:"SAIKO / KOBA-SAN LOCAL MAP" }
+    ],
+    "photo-178": [
+      { id:"daily-2026-07-21", kind:"ticket-evidence", label:"HANEDA → SHINJUKU ARRIVAL TICKET" }
+    ],
+    "daily-2026-07-21": [
+      { id:"photo-178", kind:"ticket-evidence", label:"AIRPORT LIMOUSINE TICKET" }
+    ],
+    "photo-185": [
+      { id:"photo-186", kind:"same-port-context", label:"TAGONOURA PORT / OFFICE MARKER" },
+      { id:"photo-147", kind:"same-coastal-area", label:"TAGONOURA MINATO PARK / DRAGON TOWER AREA" },
+      { id:"photo-148", kind:"same-coastal-area", label:"TAGONOURA MINATO PARK / DRAGON TOWER AREA" }
+    ],
+    "photo-186": [
+      { id:"photo-185", kind:"same-port-context", label:"TAGONOURA PORT / HAZARD MAP" },
+      { id:"photo-147", kind:"same-coastal-area", label:"TAGONOURA MINATO PARK / DRAGON TOWER AREA" },
+      { id:"photo-148", kind:"same-coastal-area", label:"TAGONOURA MINATO PARK / DRAGON TOWER AREA" }
+    ],
+    "photo-187": [
+      { id:"photo-188", kind:"same-photo-sequence", label:"TENJOYAMA ROPEWAY / SECOND FRAME" },
+      { id:"photo-135", kind:"same-lake-context", label:"LAKE KAWAGUCHI / SEPARATE LAKESIDE SCENE" }
+    ],
+    "photo-188": [
+      { id:"photo-187", kind:"same-photo-sequence", label:"TENJOYAMA ROPEWAY / PANORAMA" },
+      { id:"photo-135", kind:"same-lake-context", label:"LAKE KAWAGUCHI / SEPARATE LAKESIDE SCENE" }
+    ],
+    "photo-135": [
+      { id:"photo-187", kind:"same-lake-context", label:"LAKE KAWAGUCHI / ROPEWAY OVERLOOK" },
+      { id:"photo-188", kind:"same-lake-context", label:"LAKE KAWAGUCHI / ROPEWAY STATION" }
+    ],
+    "photo-193": [
+      { id:"photo-49", kind:"shared-theme", label:"JIHANKI / VENDING-MACHINE SUBJECT" },
+      { id:"photo-50", kind:"shared-theme", label:"JIHANKI / VENDING-MACHINE SUBJECT" },
+      { id:"photo-57", kind:"shared-theme", label:"JIHANKI / VENDING-MACHINE SUBJECT" },
+      { id:"photo-58", kind:"shared-theme", label:"JIHANKI / VENDING-MACHINE SUBJECT" }
+    ],
+    "photo-195": [
+      { id:"daily-2026-08-road-trip", kind:"regional-journey-context", label:"KYOTO–OSAKA JOURNEY / EXACT VENUE UNKNOWN" }
     ]
   };
 
