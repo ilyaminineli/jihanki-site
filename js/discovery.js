@@ -11,17 +11,9 @@
   }
   function links(item){
     if(!item)return[];
-    const result=(window.JIHANKI_RELATIONSHIPS?.links(item)||[]).filter(link=>link.item);
-    // Broad fallback labels are not evidence of a shared physical place.
-    const broadLabels=new Set(["Japan / 2026 expedition"]);
-    const placeNames=(window.JIHANKI_GEOGRAPHY?.locations(item)||[]).filter(place=>!broadLabels.has(place));
-    (window.JIHANKI_ARCHIVE||[]).forEach(candidate=>{
-      if(candidate.id===item.id||result.some(link=>link.id===candidate.id))return;
-      const shared=(window.JIHANKI_GEOGRAPHY?.locations(candidate)||[])
-        .filter(place=>!broadLabels.has(place)&&placeNames.includes(place));
-      if(shared.length)result.push({id:candidate.id,item:candidate,kind:"shared-place",label:"SHARED PLACE",evidence:shared.slice(0,2).join(" · ")});
-    });
-    return result.slice(0,12);
+    // Record-to-record links are explicitly curated and typed. Shared geography
+    // is presented separately as place context; it is not treated as a memory edge.
+    return (window.JIHANKI_RELATIONSHIPS?.links(item)||[]).filter(link=>link.item).slice(0,12);
   }
   function graph(id){const root=(window.JIHANKI_ARCHIVE||[]).find(item=>item.id===id);return root?{root,links:links(root)}:null;}
   function renderGraph(id){
@@ -30,10 +22,13 @@
       '<span class="archaeology-index">'+String(index+1).padStart(2,"0")+'</span><span class="archaeology-node-copy"><strong>'+esc(link.item.title)+
       '</strong><small>'+esc(link.label||link.kind)+(link.evidence?" / "+esc(link.evidence):"")+'</small></span><span class="archaeology-arrow">↗</span></button>').join("");
     const places=window.JIHANKI_GEOGRAPHY?.locations(data.root)||[];
+    const placeLinks=window.JIHANKI_RELATIONSHIPS?.placeLinksFor(data.root)||[];
+    const geoRows=placeLinks.slice(0,8).map(edge=>'<div class="archaeology-place-edge"><span>'+esc(edge.label||edge.kind)+'</span><strong>'+esc(edge.from)+'</strong><small>'+esc(edge.kind)+'</small><strong>'+esc(edge.to)+'</strong></div>').join("");
     return'<div class="archaeology-root"><span>SELECTED FRAGMENT</span><strong>'+esc(data.root.title)+'</strong><small>'+esc(data.root.date||"UNDATED")+
-      ' / '+esc(data.root.machineCategory||data.root.category)+'</small></div><div class="archaeology-branch-label">TRACES LEADING OUTWARD / '+data.links.length+'</div>'+
-      (rows||'<div class="exploration-empty">NO CURATED CONNECTIONS FOUND YET.</div>')+
-      (places.length?'<div class="archaeology-places"><span>LOCATIONAL TRACES</span>'+places.map(place=>'<button type="button" data-map-place="'+esc(place)+'">'+esc(place)+'</button>').join("")+'</div>':"");
+      ' / '+esc(data.root.machineCategory||data.root.category)+'</small></div><div class="archaeology-branch-label">CURATED RECORD CONNECTIONS / '+data.links.length+'</div>'+
+      (rows||'<div class="exploration-empty">NO CURATED RECORD CONNECTIONS FOUND.</div>')+
+      (placeLinks.length?'<div class="archaeology-places"><span>GEOGRAPHIC RELATIONSHIPS / SEPARATE FROM SHARED RECORDS</span>'+geoRows+'</div>':"")+
+      (places.length?'<div class="archaeology-places"><span>LOCATIONAL INDEX</span>'+places.map(place=>'<button type="button" data-map-place="'+esc(place)+'">'+esc(place)+'</button>').join("")+'</div>':"");
   }
   function renderSearchResults(query){
     const records=search(query);if(!records.length)return'<div class="exploration-empty">NO MATCHING MEMORY FOUND.</div>';
