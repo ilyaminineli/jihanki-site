@@ -66,7 +66,7 @@
     "Onsen Yurari": "Traveller identifies addition_5 (1) as the Onsen Yurari no Nenba entrance; linked to the Onsen Yurari visit in the 25 July field note",
     "Akihabara": "Tokyo district confirmed by the traveller for addition_5 (42); other nearby retail and arcade photographs are not automatically assigned here",
     "First summit near Saiko": "Traveller-confirmed descriptive location for the first summit outing near Saiko; the precise summit name and trail remain unresolved",
-    "Uno-Misaki Tunnel": "Tunnel named by the portal sign in the addition_5 intake; the 25 July chapter records a visit, but the new photograph's date is unconfirmed",
+    "Uno-Misaki Tunnel": "Tunnel named by the addition_5 portal sign; the traveller confirms the entrance and interior photographs belong to the 25 July visit",
     "Lake Yamanaka": "Named by the addition_5 national-park sign and navigation display; exact photographic camera position is not established",
     "Lake Shōji": "精進湖, named on the addition_5 car navigation display; screen context only, not a confirmed route or camera position",
     "Katori": "The town locality visible in street and station signage",
