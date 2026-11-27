@@ -22,3 +22,11 @@
 The Sumida Ward notice (`photo-157`) explicitly names 墨田区すみだ清掃事務所 and the 本所警察署 / 向島警察署. The forest marker (`photo-160`) reads 環境庁 and 山梨県; the erosion-control sign (`photo-162`) names 横沢砂防堰堤 and 山梨県 都留建設部. The shrine approach, roofed building, night torii, bridge, urban streets, stone, reservoir and foggy lookout remain unresolved at exact-site level. The McDonald’s photo (`photo-169`) does not identify a branch; the foggy viewpoint (`photo-170`–`photo-171`) is not assigned to Gokodai or Koyodai.
 
 All 32 source files now have catalogue records and are included in the media manifest. The Japan photo archive contains 172 unique catalogue records (`photo-01`–`photo-172`).
+
+
+## Cross-collection recheck after visual comparison
+
+- `photo-137` (`taki_photos (62).png`) shows the paired round and square windows associated with Genko-an in Kyoto. It is now linked to the confirmed interior sequence `photo-151`–`photo-153`. Kyoto Travel and JNTO describe these signature windows: [Kyoto Travel — Genko-an](https://kyoto.travel/en/destinations/genkoan-temple/) and [JNTO — Genkoan Temple](https://faq.japan-travel.jnto.go.jp/en/spot/1214/).
+- `photo-06` (`taki_photos (35).png`) appears to share the foggy bench/lookout setting of `addition_3 (30).jpg` and `addition_3 (31).jpg`. The archive records this only as a tentative relationship.
+- `photo-135` (`taki_photos (60).png`) has a generic `遊覧船のりば` sign. Lake Kawaguchi is a candidate because of the pier style, but the location is not confirmed.
+- The full filename-by-filename memory prompt list is in [photo-memory-prompts-2026-11-27.md](./photo-memory-prompts-2026-11-27.md).
