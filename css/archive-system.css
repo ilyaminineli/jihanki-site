@@ -1901,3 +1901,190 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   .memory-map-panel .map-pin-jp { font-size:27px; }
   .memory-map-panel .map-pin-en { font-size:13px; }
 }
+
+
+/* M58 — fixed zoom console, mapped-pixel connections and analogue Japan phosphor relief. */
+.memory-map-panel .map-canvas {
+  background:
+    radial-gradient(ellipse at 52% 46%,rgba(23,125,66,.16),transparent 62%),
+    radial-gradient(ellipse at 48% 54%,rgba(7,42,21,.52),transparent 78%),
+    repeating-linear-gradient(0deg,transparent 0 27px,rgba(81,193,113,.045) 28px),
+    repeating-linear-gradient(90deg,transparent 0 27px,rgba(81,193,113,.045) 28px),
+    #010503;
+  isolation:isolate;
+}
+.memory-map-panel .map-pan-layer {
+  transform-origin:0 0;
+  will-change:transform;
+}
+.memory-map-panel .map-japan-backdrop {
+  position:absolute;
+  z-index:0;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  opacity:.78;
+  pointer-events:none;
+}
+.memory-map-panel .japan-land-glow {
+  fill:none;
+  stroke:#36d77b;
+  stroke-width:54;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  opacity:.23;
+  filter:url(#map-japan-glow);
+}
+.memory-map-panel .japan-land {
+  fill:url(#map-japan-fill);
+  stroke:rgba(79,218,128,.3);
+  stroke-width:8;
+  stroke-linejoin:round;
+}
+.memory-map-panel .japan-islet {
+  fill:rgba(23,123,66,.12);
+  stroke:rgba(75,204,119,.28);
+  stroke-width:6;
+}
+.memory-map-panel .map-connections {
+  position:absolute;
+  z-index:1;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:visible;
+  pointer-events:none;
+}
+.memory-map-panel .map-connections line {
+  fill:none;
+  stroke:rgba(126,218,151,.58);
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  filter:drop-shadow(0 0 5px rgba(52,190,105,.5));
+}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-within {
+  stroke:rgba(107,188,130,.52);
+  stroke-width:3;
+  stroke-dasharray:none;
+  filter:drop-shadow(0 0 3px rgba(54,163,91,.32));
+}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-near {
+  stroke:rgba(145,223,165,.72);
+  stroke-width:4;
+  stroke-dasharray:3 12;
+}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-located-on {
+  stroke:rgba(112,211,143,.75);
+  stroke-width:5;
+  stroke-dasharray:14 8;
+}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-overlooks {
+  stroke:rgba(162,232,178,.84);
+  stroke-width:5;
+  stroke-dasharray:2 9;
+}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-connected-to {
+  stroke:rgba(121,216,153,.76);
+  stroke-width:4;
+  stroke-dasharray:12 7;
+}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-transit-corridor {
+  stroke:rgba(165,232,181,.82);
+  stroke-width:5;
+  stroke-dasharray:20 8 3 8;
+}
+.memory-map-panel .map-connections line.map-edge-chronology {
+  stroke:rgba(180,239,193,.92);
+  stroke-width:7;
+  stroke-dasharray:16 11;
+  filter:drop-shadow(0 0 6px rgba(87,215,131,.7));
+}
+.memory-map-panel .map-pin { z-index:2; }
+.memory-map-panel .map-view-controls {
+  position:absolute;
+  z-index:14;
+  top:10px;
+  right:10px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+  padding:5px;
+  border:1px solid rgba(114,204,141,.48);
+  border-radius:4px;
+  background:rgba(0,8,3,.91);
+  box-shadow:0 0 10px rgba(41,164,89,.22),inset 0 0 8px rgba(48,141,80,.12);
+  backdrop-filter:blur(5px);
+}
+.memory-map-panel .map-view-controls button {
+  display:inline-flex;
+  min-width:30px;
+  min-height:30px;
+  align-items:center;
+  justify-content:center;
+  padding:4px 8px;
+  border:1px solid rgba(119,206,145,.42);
+  border-radius:2px;
+  background:rgba(5,24,12,.9);
+  color:#a8e3b7;
+  font:12px/1 "Courier New",monospace;
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.memory-map-panel .map-view-controls button[data-map-fit] {
+  min-width:78px;
+  font-size:8px;
+  letter-spacing:.1em;
+}
+.memory-map-panel .map-view-controls button:active,
+.memory-map-panel .map-view-controls button:focus-visible {
+  border-color:#c2f4ce;
+  background:#0a2a14;
+  color:#effff2;
+  outline:1px solid rgba(175,239,191,.3);
+  outline-offset:1px;
+}
+.memory-map-panel .map-view-controls output {
+  min-width:39px;
+  color:rgba(157,217,171,.78);
+  font:8px "Courier New",monospace;
+  text-align:center;
+  letter-spacing:.05em;
+}
+.memory-map-panel .map-canvas::after {
+  opacity:.2;
+  mix-blend-mode:screen;
+  background:
+    repeating-linear-gradient(90deg,rgba(70,255,129,.035) 0,rgba(70,255,129,.035) 1px,transparent 1px,transparent 3px),
+    repeating-linear-gradient(to bottom,rgba(190,255,205,.13) 0,rgba(190,255,205,.13) 1px,transparent 1px,transparent 4px);
+}
+.memory-map-panel .map-legend .legend-near {
+  width:17px;height:0;border:0;border-top:1px dotted #9bddad;border-radius:0;
+}
+.memory-map-panel .map-legend .legend-connected {
+  width:17px;height:0;border:0;border-top:1px dashed #83d49a;border-radius:0;
+}
+@media(max-width:560px) {
+  .memory-map-panel .map-view-controls {
+    top:7px;
+    right:7px;
+    gap:3px;
+    padding:4px;
+  }
+  .memory-map-panel .map-view-controls button {
+    min-width:32px;
+    min-height:32px;
+    padding:4px 6px;
+    font-size:14px;
+  }
+  .memory-map-panel .map-view-controls button[data-map-fit] {
+    min-width:73px;
+    font-size:7px;
+  }
+  .memory-map-panel .map-view-controls output { min-width:34px; font-size:7px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .memory-map-panel .map-pan-layer,
+  .memory-map-panel .map-pan-layer .map-pin { transition:none !important; }
+}
