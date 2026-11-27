@@ -50,6 +50,8 @@ jobs:
         run: node scripts/build-media-manifest.mjs --check
       - name: Test archive schema fixtures
         run: node scripts/test-archive-schema.mjs
+      - name: Test relationship semantics and place corrections
+        run: node scripts/test-relationship-semantics.mjs
       - name: Test machine interaction transitions
         run: node scripts/test-interaction-model.mjs
       - name: Test Markdown link validation fixtures
