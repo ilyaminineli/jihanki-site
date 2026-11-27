@@ -216,6 +216,7 @@
     {from:"Niikura Tunnel",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"},
     {from:"Onsen Yurari",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"},
     {from:"Akihabara",to:"Tokyo",kind:"within",label:"TOKYO DISTRICT"},
+    {from:"Shinjuku",to:"Tokyo",kind:"within",label:"TOKYO DISTRICT"},
     {from:"First summit near Saiko",to:"Lake Saiko",kind:"near",label:"NEAR SAIKO"},
     {from:"Uno-Misaki Tunnel",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"},
     {from:"Lake Yamanaka",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"},
