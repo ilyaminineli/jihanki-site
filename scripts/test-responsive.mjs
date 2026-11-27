@@ -341,8 +341,14 @@ try{
     const zoomedIn=Number((await page.locator("[data-map-zoom-level]").textContent()).replace("%",""));
     assert(zoomedIn>zoomedOut,device.name+": zoom-in control did not increase scale");
     await page.locator("[data-map-fit]").click();
-    assert(await page.locator(".map-memory-mode .map-connections line").count()===30,
-      device.name+": a curated geographic relationship is missing from Memory Network");
+    const relationAudit=await page.evaluate(()=>{
+      const names=new Set([...document.querySelectorAll(".map-memory-mode .map-pin")].map(pin=>pin.dataset.mapPlace));
+      const expected=window.JIHANKI_RELATIONSHIPS.placeEdges().filter(edge=>names.has(edge.from)&&names.has(edge.to)).length;
+      const drawn=document.querySelectorAll(".map-memory-mode .map-connections line").length;
+      return{expected,drawn};
+    });
+    assert(relationAudit.drawn===relationAudit.expected&&relationAudit.expected>=30,
+      device.name+": a curated geographic relationship is missing from Memory Network: "+JSON.stringify(relationAudit));
     for(const pin of map.pins){
       // Pins live on the intentionally wider pan surface, not necessarily inside
       // the currently visible viewport. Check the actual coordinate surface.
