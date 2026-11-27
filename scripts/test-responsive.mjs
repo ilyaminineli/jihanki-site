@@ -313,18 +313,24 @@ try{
     await page.locator('[data-home-action="map"]').click();
     await page.locator(".memory-map-panel").waitFor();
     const map=await page.evaluate(()=>{
-      const canvas=document.querySelector(".map-canvas"),r=canvas.getBoundingClientRect();
-      return{box:{left:r.left,top:r.top,right:r.right,bottom:r.bottom},
-        pins:[...document.querySelectorAll(".map-pin")].map(node=>{const p=node.getBoundingClientRect();return{name:node.getAttribute("data-map-place"),left:p.left,right:p.right,top:p.top,bottom:p.bottom,width:p.width,height:p.height};}),
+      const canvas=document.querySelector(".map-canvas"),viewport=canvas.getBoundingClientRect();
+      const layer=canvas.querySelector(".map-pan-layer"),surface=layer.getBoundingClientRect();
+      return{box:{left:viewport.left,top:viewport.top,right:viewport.right,bottom:viewport.bottom},
+        surface:{left:surface.left,top:surface.top,right:surface.right,bottom:surface.bottom},
+        overflow:getComputedStyle(canvas).overflow,
+        pins:[...layer.querySelectorAll(".map-pin")].map(node=>{const p=node.getBoundingClientRect();return{name:node.getAttribute("data-map-place"),left:p.left,right:p.right,top:p.top,bottom:p.bottom,width:p.width,height:p.height};}),
         keyCount:document.querySelectorAll(".map-place-list button").length,
         modalWidth:document.querySelector(".artifact-window").clientWidth,
         modalScrollWidth:document.querySelector(".artifact-window").scrollWidth};
     });
     assert(map.keyCount>0,device.name+": map key empty");
     assert(map.modalScrollWidth<=map.modalWidth+1,device.name+": map caused horizontal overflow");
+    assert(map.overflow==="hidden",device.name+": pannable map viewport must clip its inner surface");
     for(const pin of map.pins){
-      assert(pin.left>=map.box.left-1&&pin.right<=map.box.right+1,device.name+": map pin outside map width: "+JSON.stringify({pin,box:map.box}));
-      assert(pin.top>=map.box.top-1&&pin.bottom<=map.box.bottom+1,device.name+": map pin outside map height: "+JSON.stringify({pin,box:map.box}));
+      // Pins live on the intentionally wider pan surface, not necessarily inside
+      // the currently visible viewport. Check the actual coordinate surface.
+      assert(pin.left>=map.surface.left-1&&pin.right<=map.surface.right+1,device.name+": map pin outside pan surface: "+JSON.stringify({pin,surface:map.surface}));
+      assert(pin.top>=map.surface.top-1&&pin.bottom<=map.surface.bottom+1,device.name+": map pin outside pan surface: "+JSON.stringify({pin,surface:map.surface}));
     }
     await mkdir(path.join(ROOT,"test-results"),{recursive:true});
     await page.screenshot({path:path.join(ROOT,"test-results","map-"+device.name+".png")});
