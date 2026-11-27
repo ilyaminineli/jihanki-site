@@ -4788,7 +4788,56 @@ const ARCHIVE = {
       "image": "media/photo/releases/aokigahara_pentalogy.jpg",
       "projectPath": "projects/aokigahara/index.html",
       "file": "documents/projects/aokigahara.md",
-      "description": "One project and one five-environment album: Fujisan, Aokigahara, Saiko, Village and Shrine. Four public renders are available; the Shrine render remains pending."
+      "description": "One project and one five-environment album: Fujisan, Aokigahara, Saiko, Village and Shrine. Four public renders are available; the Shrine render remains pending.",
+      "metadata": { "related": ["aokigahara-01-fujisan", "aokigahara-02-aokigahara", "aokigahara-03-saiko", "aokigahara-04-village"] }
+    },
+    {
+      "id": "aokigahara-01-fujisan",
+      "title": "01 — FUJISAN / GEOLOGICAL",
+      "date": "2026",
+      "type": "audio",
+      "category": "music",
+      "author": "eli",
+      "group": "AOKIGAHARA / PENTALOGY",
+      "file": "media/music/fuji-sonicpi-01.opus",
+      "description": "Public render: mass, pressure and extremely slow transformation.",
+      "metadata": { "related": ["aokigahara-pentalogy"] }
+    },
+    {
+      "id": "aokigahara-02-aokigahara",
+      "title": "02 — AOKIGAHARA / BIOLOGICAL",
+      "date": "2026",
+      "type": "audio",
+      "category": "music",
+      "author": "eli",
+      "group": "AOKIGAHARA / PENTALOGY",
+      "file": "media/music/fuji-sonicpi-02.opus",
+      "description": "Public render: growth, density, decay and environmental memory.",
+      "metadata": { "related": ["aokigahara-pentalogy"] }
+    },
+    {
+      "id": "aokigahara-03-saiko",
+      "title": "03 — SAIKO / REFLECTIVE",
+      "date": "2026",
+      "type": "audio",
+      "category": "music",
+      "author": "eli",
+      "group": "AOKIGAHARA / PENTALOGY",
+      "file": "media/music/fuji-sonicpi-03.opus",
+      "description": "Public render: water, echoes, distance and returning memory.",
+      "metadata": { "related": ["aokigahara-pentalogy"] }
+    },
+    {
+      "id": "aokigahara-04-village",
+      "title": "04 — VILLAGE / SOCIAL",
+      "date": "2026",
+      "type": "audio",
+      "category": "music",
+      "author": "eli",
+      "group": "AOKIGAHARA / PENTALOGY",
+      "file": "media/music/fuji-sonicpi-04.opus",
+      "description": "Public render: human traces, infrastructure and abandoned routines.",
+      "metadata": { "related": ["aokigahara-pentalogy"] }
     },
     {
       "id": "session-tongue-drums",
