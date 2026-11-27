@@ -5,6 +5,7 @@
 
   const KEY = "jihanki.quiet-signals.v1";
   const TRACE_ID = "satyam-1-then-visit-now";
+  const TRACE_OBJECT_ID = "OBJ-TRACE-SATYAM-1-THEN-VISIT-NOW";
   const MESSAGE = "THE CLEARING REMAINS / NO FURTHER DETAILS AVAILABLE";
   const fresh = () => ({ version: 1, pending: false, delivered: false });
 
@@ -25,6 +26,17 @@
   let state = read();
   function save() {
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (_) { }
+  }
+
+  function traceAlreadyExists() {
+    return (window.JIHANKI_COLLECTION?.objects?.() || []).some(object =>
+      object.id === TRACE_OBJECT_ID || object.archiveId === "memory-trace:" + TRACE_ID
+    );
+  }
+
+  if (!state.pending && !state.delivered && traceAlreadyExists()) {
+    state.pending = true;
+    save();
   }
 
   window.addEventListener("jihanki:event", event => {
