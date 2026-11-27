@@ -675,6 +675,673 @@ const ARCHIVE = {
       "group": "Found media and machines",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (66).png"
+    },
+    {
+      "id": "photo-24",
+      "title": "Lanterns floating across Lake Kawaguchi",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Festival / Oishi Park",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (1).jpg",
+      "description": "Night view of the 2026 Fuji Kawaguchiko Lantern Floating event, with lanterns drifting across the lake.",
+      "metadata": {
+        "locations": [
+          "Oishi Park",
+          "Lake Kawaguchi"
+        ]
+      }
+    },
+    {
+      "id": "photo-25",
+      "title": "The lanterns gather at the water’s edge",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Festival / Oishi Park",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (2).jpg",
+      "description": "Lanterns are prepared along the shore before being set afloat.",
+      "metadata": {
+        "locations": [
+          "Oishi Park",
+          "Lake Kawaguchi"
+        ]
+      }
+    },
+    {
+      "id": "photo-26",
+      "title": "Mt. Fuji Lantern Floating",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Festival / Oishi Park",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (3).jpg",
+      "description": "The lantern identifies the event as Mt. Fuji Lantern Floating at Lake Kawaguchiko.",
+      "metadata": {
+        "locations": [
+          "Oishi Park",
+          "Lake Kawaguchi"
+        ]
+      }
+    },
+    {
+      "id": "photo-27",
+      "title": "A written lantern message",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Festival / Oishi Park",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (4).jpg",
+      "description": "A personal message is written on a lantern before it is carried to the water.",
+      "metadata": {
+        "locations": [
+          "Oishi Park",
+          "Lake Kawaguchi"
+        ]
+      }
+    },
+    {
+      "id": "photo-28",
+      "title": "A lantern held before release",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Festival / Oishi Park",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (5).jpg",
+      "description": "A close view of a lantern carrying a handwritten message at the lake event.",
+      "metadata": {
+        "locations": [
+          "Oishi Park",
+          "Lake Kawaguchi"
+        ]
+      }
+    },
+    {
+      "id": "photo-29",
+      "title": "The old shop counter",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified shop interiors",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (6).jpg",
+      "description": "A crowded old-fashioned counter with a mechanical register, shelves and Japanese signs; the establishment is not identified."
+    },
+    {
+      "id": "photo-30",
+      "title": "Saizeriya and Kappa Sushi signs",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified roadside fragments",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (7).jpg",
+      "description": "A roadside view with restaurant signs; the town and exact businesses are not established by the photograph."
+    },
+    {
+      "id": "photo-31",
+      "title": "Torii at a small water garden",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified shrine fragments",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (8).jpg",
+      "description": "A torii stands over a small water feature beneath dense greenery. It is kept separate from named shrine records pending confirmation."
+    },
+    {
+      "id": "photo-32",
+      "title": "Katori Jingu — the vermilion approach gate",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori Jingu / Shrine",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (9).jpg",
+      "description": "The vermilion tower gate and forested approach match Katori Jingu; nearby photographs in the group carry Katori street and station signs.",
+      "metadata": {
+        "locations": [
+          "Katori Jingu",
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-33",
+      "title": "Katori Jingu — the main gate",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori Jingu / Shrine",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (10).jpg",
+      "description": "A frontal view of the large vermilion tower gate at Katori Jingu.",
+      "metadata": {
+        "locations": [
+          "Katori Jingu",
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-34",
+      "title": "Katori Jingu — gate detail",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori Jingu / Shrine",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (11).jpg",
+      "description": "A closer view of the shrine’s vermilion gate and timber structure.",
+      "metadata": {
+        "locations": [
+          "Katori Jingu",
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-35",
+      "title": "Katori Jingu — the stone torii and grounds",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori Jingu / Shrine",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (12).jpg",
+      "description": "A stone torii marks the approach to a wooded shrine precinct in the Katori sequence.",
+      "metadata": {
+        "locations": [
+          "Katori Jingu",
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-36",
+      "title": "Katori — street sign",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori / Railway and streets",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (13).jpg",
+      "description": "A street sign explicitly reads 香取 / Katori, establishing the locality of this photograph.",
+      "metadata": {
+        "locations": [
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-37",
+      "title": "Katori Station sign",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori / Railway and streets",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (14).jpg",
+      "description": "A railway-side pole is marked かとり / Katori, identifying Katori Station.",
+      "metadata": {
+        "locations": [
+          "Katori Station",
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-38",
+      "title": "Haneda — aircraft at the terminal",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Haneda / Airport",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (15).jpg",
+      "description": "A night view across Tokyo International Airport’s apron and parked aircraft.",
+      "metadata": {
+        "locations": [
+          "Haneda"
+        ]
+      }
+    },
+    {
+      "id": "photo-39",
+      "title": "Haneda — wide apron view",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Haneda / Airport",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (16).jpg",
+      "description": "A wide night panorama of the aircraft stands and terminal lighting at Haneda.",
+      "metadata": {
+        "locations": [
+          "Haneda"
+        ]
+      }
+    },
+    {
+      "id": "photo-40",
+      "title": "Haneda — ANA at the terminal",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Haneda / Airport",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (17).jpg",
+      "description": "An ANA aircraft and airport terminal seen from the airside window.",
+      "metadata": {
+        "locations": [
+          "Haneda"
+        ]
+      }
+    },
+    {
+      "id": "photo-41",
+      "title": "Tokyo International Airport",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Haneda / Airport",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (18).jpg",
+      "description": "The terminal sign explicitly identifies Tokyo International Airport.",
+      "metadata": {
+        "locations": [
+          "Haneda"
+        ]
+      }
+    },
+    {
+      "id": "photo-42",
+      "title": "A hotel corridor",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified accommodation",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (19).jpg",
+      "description": "An interior corridor with numbered room doors; the hotel name and city are not visible."
+    },
+    {
+      "id": "photo-43",
+      "title": "A vending machine in the hotel",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified accommodation",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (20).jpg",
+      "description": "A vending machine inside an accommodation corridor. The photograph does not identify the hotel."
+    },
+    {
+      "id": "photo-44",
+      "title": "Tokyo Banana display",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified travel retail",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (21).jpg",
+      "description": "A retail display for Tokyo Banana souvenirs. No terminal or shop name is visible."
+    },
+    {
+      "id": "photo-45",
+      "title": "Lake Saiko — 9.79 km running route",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Lake Saiko / Running",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (22).jpg",
+      "description": "A Garmin activity screen explicitly labels Saiko Lake / 西湖 and records a 9.79 km run on 26 July.",
+      "metadata": {
+        "locations": [
+          "Lake Saiko"
+        ]
+      }
+    },
+    {
+      "id": "photo-46",
+      "title": "Pagoda silhouette at dusk",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unresolved pagoda viewpoint",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (23).jpg",
+      "description": "A multi-tiered pagoda is silhouetted against a hillside and distant lights. The precise pagoda is not confirmed; it is not assumed to be Chureito."
+    },
+    {
+      "id": "photo-47",
+      "title": "A Japanese grocery shelf",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified everyday fragments",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (24).jpg",
+      "description": "A close view of juice and beverage cartons in a store; no branch or town is identifiable."
+    },
+    {
+      "id": "photo-48",
+      "title": "Kyoto — circled city map",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / City map",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (25).jpg",
+      "description": "A map screenshot explicitly labelled 京都市 / Kyoto City, with a hand-drawn circle around a central area of the city.",
+      "metadata": {
+        "locations": [
+          "Kyoto"
+        ]
+      }
+    },
+    {
+      "id": "photo-49",
+      "title": "Vending machines in the dark",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Vending machines / unplaced",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (26).jpg",
+      "description": "Four illuminated vending machines stand in a dark roadside or parking area; the exact site is unknown."
+    },
+    {
+      "id": "photo-50",
+      "title": "Vending machines beneath a hillside",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Vending machines / unplaced",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (27).jpg",
+      "description": "A small group of vending machines and a person are visible at night beneath a wooded slope."
+    },
+    {
+      "id": "photo-51",
+      "title": "Welcome to Yamanashi — roadside vending machine",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / Roadside machines",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (28).jpg",
+      "description": "A roadside vending machine carries a prominent WELCOME to YAMANASHI sign.",
+      "metadata": {
+        "locations": [
+          "Yamanashi"
+        ]
+      }
+    },
+    {
+      "id": "photo-52",
+      "title": "A Yamanashi vending machine at night",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / Roadside machines",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (29).jpg",
+      "description": "A night photograph of a vending machine displaying the WELCOME to YAMANASHI sign.",
+      "metadata": {
+        "locations": [
+          "Yamanashi"
+        ]
+      }
+    },
+    {
+      "id": "photo-53",
+      "title": "A lit Yamanashi vending machine",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / Roadside machines",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (30).jpg",
+      "description": "A closer night view of the machine and its Yamanashi welcome placard.",
+      "metadata": {
+        "locations": [
+          "Yamanashi"
+        ]
+      }
+    },
+    {
+      "id": "photo-54",
+      "title": "Public telephone beside a Yamanashi machine",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / Roadside machines",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (31).jpg",
+      "description": "A public telephone booth stands beside the vending machine with the Yamanashi welcome sign.",
+      "metadata": {
+        "locations": [
+          "Yamanashi"
+        ]
+      }
+    },
+    {
+      "id": "photo-55",
+      "title": "Yōkai display figure",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified found objects",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (32).jpg",
+      "description": "A dramatic horned figure is displayed behind glass. The venue is not identified by the image."
+    },
+    {
+      "id": "photo-56",
+      "title": "Telephone booth and vending machine at night",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / Roadside machines",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (33).jpg",
+      "description": "A public telephone booth and illuminated vending machine form one roadside scene; the location is not legible.",
+      "metadata": {
+        "locations": [
+          "Yamanashi"
+        ]
+      }
+    },
+    {
+      "id": "photo-57",
+      "title": "Two machines outside a shop",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified roadside fragments",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (34).jpg",
+      "description": "A pair of outdoor vending machines beside a shopfront; no place name is visible."
+    },
+    {
+      "id": "photo-58",
+      "title": "Vending machine behind leaves",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified roadside fragments",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (35).jpg",
+      "description": "A vending machine is partly concealed by foliage in a dark roadside setting."
+    },
+    {
+      "id": "photo-59",
+      "title": "Boss cans collected in a bag",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified everyday fragments",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (36).jpg",
+      "description": "A close view of several Boss Rainbow Mountain Blend cans gathered in a travel bag."
+    },
+    {
+      "id": "photo-60",
+      "title": "A tatami room with a game console",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified accommodation",
+      "file": "media/photo/photos_from_japan/addition_1/addition_1 (37).jpg",
+      "description": "A traditional-style room with a television, console and low table; the accommodation is not identified."
+    },
+    {
+      "id": "photo-61",
+      "title": "A loft-style room",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified accommodation",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (1).jpg",
+      "description": "An accommodation interior with exposed timber roof framing, a work table and futons; no property name is visible."
+    },
+    {
+      "id": "photo-62",
+      "title": "A small sleeping room",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified accommodation",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (2).jpg",
+      "description": "A compact sleeping area within the same loft-style accommodation sequence."
+    },
+    {
+      "id": "photo-63",
+      "title": "A landscaped stone garden",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified garden / roadside",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (3).jpg",
+      "description": "A roadside garden with moss, rocks and a convex traffic mirror; the site name is not shown."
+    },
+    {
+      "id": "photo-64",
+      "title": "Keikyu bus ticket machine",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kanto / Transit fragment",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (4).jpg",
+      "description": "A Keikyu bus ticket machine with a visible on-screen timestamp of 21 July 2026, 20:42. The exact station is not identifiable."
+    },
+    {
+      "id": "photo-65",
+      "title": "Planters beside an outdoor vending machine",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified vending machines",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (5).jpg",
+      "description": "An outdoor vending machine stands between planters and a shop wall; exact location unknown."
+    },
+    {
+      "id": "photo-66",
+      "title": "A road tunnel in a wooded hillside",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified road and tunnel",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (6).jpg",
+      "description": "A two-lane road enters a tunnel cut through a wooded slope. The sign does not identify it as Uno-Misaki Tunnel."
+    },
+    {
+      "id": "photo-67",
+      "title": "Three vending machines and planters",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified vending machines",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (7).jpg",
+      "description": "A cluster of vending machines stands beside a planter and wooden bench, in a hillside setting."
+    },
+    {
+      "id": "photo-68",
+      "title": "Katori Station — platform-side exit",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori / Railway and streets",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (9).jpg",
+      "description": "A station notice says the toilets are to the right after leaving the station building; the red-painted station structure matches the Katori Station sequence.",
+      "metadata": {
+        "locations": [
+          "Katori Station",
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-69",
+      "title": "Katori Station — waiting room",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori / Railway and streets",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (10).jpg",
+      "description": "The interior of a small red-painted station building, with the platform and tracks visible through the windows.",
+      "metadata": {
+        "locations": [
+          "Katori Station",
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-70",
+      "title": "Katori — school-route sign",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori / Local streets",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (11).jpg",
+      "description": "A faded 通学路 / school route sign on a residential street in the Katori-area photo sequence.",
+      "metadata": {
+        "locations": [
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-71",
+      "title": "Katori — traditional house behind a hedge",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori / Local streets",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (12).jpg",
+      "description": "A traditional Japanese house and hedge beside a quiet local road in the Katori-area sequence.",
+      "metadata": {
+        "locations": [
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-72",
+      "title": "Katori — fields and wooded edge",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori / Local streets",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (13).jpg",
+      "description": "A rural road runs beside fields and homes on the edge of a wooded area.",
+      "metadata": {
+        "locations": [
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-73",
+      "title": "Katori — roadside garden",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori / Local streets",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (14).jpg",
+      "description": "A carefully kept roadside garden in a residential part of the Katori-area sequence.",
+      "metadata": {
+        "locations": [
+          "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-74",
+      "title": "Katori — stone boundary wall",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Katori / Local streets",
+      "file": "media/photo/photos_from_japan/addition_2/addition_2 (15).jpg",
+      "description": "A long stone wall and wooden fence beside the road, photographed in strong afternoon light.",
+      "metadata": {
+        "locations": [
+          "Katori"
+        ]
+      }
     }
   ],
   "utau": [
