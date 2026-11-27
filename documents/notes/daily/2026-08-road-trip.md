@@ -77,6 +77,15 @@ This chapter combines the travellers' explicit confirmation with limited chat co
 
 The new photograph `addition_4 (29).jpg` reads `CRYSTA 長堀` and `南5エレベーター`, identifying the South 5 elevator inside **CRYSTA Nagahori**, the underground mall directly connected to Shinsaibashi and Nagahoribashi stations. [Official CRYSTA Nagahori access information](https://global.crystaweb.jp/en/access/).
 
+## Addition_5 — further Kyoto locality details
+
+The traveller identifies:
+
+- `addition_5 (32).jpg` as the **Kitaoji Shinmachi (北大路新町) bus stop** in Kyoto.
+- `addition_5 (34).jpg` as a sticker photographed near a bus stop in Kyoto. Its exact stop and wording remain unknown; it is not assumed to be the same physical stop as `(32)`.
+
+These photographs add a second, smaller layer of street-level memory to the Kyoto journey.
+
 ## Addition_5 — Kyoto and Osaka urban details
 
 Two traveller-confirmed photographs add small-scale context to the Kansai journey:
