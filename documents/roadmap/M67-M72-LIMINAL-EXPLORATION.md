@@ -76,13 +76,13 @@ The existing shelves are now personal exhibitions. Each shelf keeps its visitor-
 
 **Status:** Implemented using the existing archive sources.
 
-The Listening Room is a sequential player, distinct from the Sound Lab's live multi-layer mixer. It uses the actual audio catalogue and preserves its existing source group labels:
+The Listening Room is now the ARCHIVE LISTENING mode inside the existing Sound Lab panel. It shares one audio surface with LIVE MIX, rather than adding another home-screen control. LIVE MIX remains the multi-layer mixer; ARCHIVE LISTENING is sequential playback. It uses the actual audio catalogue and preserves its existing source group labels:
 
 - Four public renders from the FUJI SONIC PI / AOKIGAHARA pentalogy, in the documented order: Fujisan, Aokigahara, Saiko and Village. The fifth environment, Shrine, remains visible as pending and has no invented audio file.
 - The separate Tongue Drums session remains a standalone session rather than being folded into the album.
 - Seventeen field-archive sound fragments remain grouped by their catalogue labels: Environment / weather, Environment / contact, Voices / animal traces, Objects / signals and Musical fragments.
 
-The four pentalogy renders are now individually catalogued as audio records and linked to the parent project. The Listening Room plays one source at a time, can start a room as a sequential queue, supports previous / next / stop, and advances when a recording ends. It does not invent geography, alter source files, create a saved mix or record listening history. Sound Lab remains the place for visitor-built simultaneous layers.
+The four pentalogy renders are now individually catalogued as audio records and linked to the parent project. ARCHIVE LISTENING plays one source at a time, can start a room as a sequential queue, supports previous / next / stop, and advances when a recording ends. Switching modes stops playback in the hidden mode so audio cannot unexpectedly overlap. The combined panel does not invent geography, alter source files, create a saved mix or record listening history.
 
 ## M72 — Quiet Signals
 
