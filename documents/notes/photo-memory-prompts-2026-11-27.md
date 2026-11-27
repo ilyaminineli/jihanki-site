@@ -117,6 +117,16 @@ These are not assigned to a specific venue, road, station, shrine, hotel, or tow
 - **taki_photos (11).png** — photo-99, blue-lit arcade cabinets; arcade and city unknown.
 - **taki_photos (66).png** — photo-23, self-published CDs and cassette display; venue unknown.
 
+### Early Jihanki / carried objects / roadside finds
+- **eli_photos (18).jpg** — photo-01, vending machine glow at night; exact machine/site unknown.
+- **taki_photos (24).png** — photo-02, single machine beneath a shelter; site unknown.
+- **taki_photos (49).png** — photo-03, phone booth and vending machine; site unknown.
+- **taki_photos (6).png** — photo-04, telephone set among greenery; site unknown.
+- **addition_1 (36).jpg** — photo-59, BOSS cans collected in a bag; where was this?
+- **taki_photos (22).png** — photo-107, BOSS coffee carried into the landscape; stop/location unknown.
+- **taki_photos (54).png** — photo-131, one vending machine beneath a shelter; site unknown.
+- **taki_photos (55).png** — photo-132, flowers beside a roadside rest area; rest area unknown.
+
 ### Water, flowers, industry and festival displays
 - **eli_photos (21).jpg** — photo-90, industrial stacks and steam over a waterway.
 - **taki_photos (52).png** — photo-129, second view of the same industrial waterway; facility and city unknown.
