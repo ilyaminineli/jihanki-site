@@ -79,10 +79,10 @@
   function labelMetrics(name){
     const label=subLabelFor(name)||name;
     const units=Array.from(label).length;
-    const width=Math.max(82,Math.min(156,units*10+20));
-    const charsPerLine=Math.max(1,Math.floor((width-18)/10));
+    const width=Math.max(88,Math.min(168,units*10.5+24));
+    const charsPerLine=Math.max(1,Math.floor((width-24)/11));
     const lines=Math.max(1,Math.ceil(units/charsPerLine));
-    const height=Math.max(30,lines*13+14);
+    const height=Math.max(32,lines*14+14);
     return{label,width,height};
   }
   function declutter(places){
