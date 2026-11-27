@@ -12,7 +12,7 @@
     "Katori":[74,55],"Katori Station":[77,43],"Katori Jingu":[79,67],
     "Hard Off Kawaguchiko Store":[76,49],"Nojima Fujiyoshida Store":[73,65],
     "Iyashi no Sato":[23,58],"Fujisan Museum":[68,80],
-    "Kyoto":[38,15],"Genko-an":[35,6],"Kinkaku-ji":[34,10],"Japan Kanji Museum & Library":[42,22],"Kanji Museum":[42,22],"Banbutsu Sōzō-bō":[34,23],"Osaka":[17,15],"Osaka Castle":[19,12],"Ueno Castle (Iga-Ueno)":[25,19],"Fuji-Q Highland":[69,63],"Fujiyoshida":[70,68],"Fujisan Dragon Tower":[82,82],"Tagonoura Minato Park":[82,88],"Fuji City":[85,82],"Tokyo Skytree":[80,18],"Tokyo":[78,14]
+    "Kyoto":[38,15],"Genko-an":[35,6],"Kinkaku-ji":[34,10],"Japan Kanji Museum & Library":[42,22],"Kanji Museum":[42,22],"Banbutsu Sōzō-bō":[34,23],"Osaka":[17,15],"Osaka Castle":[19,12],"Ueno Castle (Iga-Ueno)":[25,19],"PICA Fuji Saiko":[32,46],"Fujisan Dragon Tower":[82,82],"Tagonoura Minato Park":[82,88],"Fuji City":[85,82],"Tokyo Skytree":[80,18],"Tokyo":[78,14],"Sumida Ward":[84,15]
   };
   function associationLines(places){
     const edges=new Set();
@@ -22,6 +22,40 @@
       for(let i=1;i<locations.length;i++)edges.add([locations[0],locations[i]].sort().join("|"));
     });
     return[...edges].map(value=>value.split("|"));
+  }
+
+  /* Stable screen-space relaxation keeps dense clusters apart without implying
+     that the schematic positions are surveyed coordinates. */
+  function declutter(places){
+    const width=760,height=420,minGap=28;
+    const nodes=places.map(place=>{
+      const anchor=POSITIONS[place.name];
+      return{name:place.name,x:anchor[0],y:anchor[1],anchorX:anchor[0],anchorY:anchor[1]};
+    });
+    for(let pass=0;pass<240;pass++){
+      for(let i=0;i<nodes.length;i++){
+        for(let j=i+1;j<nodes.length;j++){
+          const a=nodes[i],b=nodes[j];
+          let dx=(a.x-b.x)*width/100,dy=(a.y-b.y)*height/100;
+          let distance=Math.hypot(dx,dy);
+          if(distance>=minGap)continue;
+          if(distance<0.01){
+            const angle=((i+1)*37+(j+1)*19)*Math.PI/180;
+            dx=Math.cos(angle)*0.01;dy=Math.sin(angle)*0.01;distance=0.01;
+          }
+          const push=(minGap-distance)*0.48,ux=dx/distance,uy=dy/distance;
+          a.x+=ux*push*100/width;a.y+=uy*push*100/height;
+          b.x-=ux*push*100/width;b.y-=uy*push*100/height;
+        }
+      }
+      nodes.forEach(node=>{
+        node.x+=(node.anchorX-node.x)*0.012;
+        node.y+=(node.anchorY-node.y)*0.012;
+        node.x=Math.max(2,Math.min(98,node.x));
+        node.y=Math.max(5,Math.min(95,node.y));
+      });
+    }
+    return Object.fromEntries(nodes.map(node=>[node.name,[node.x,node.y]]));
   }
   const TRAILS=[{id:"kansai-road-loop",title:"KAWAGUCHIKO / KYOTO / OSAKA / KAWAGUCHIKO",stops:["Kawaguchiko","Kyoto","Osaka","Kawaguchiko"],description:"A confirmed car journey from Kawaguchiko to Kyoto and Osaka, returning to Kawaguchiko. A regional memory trail, not a reconstructed road route."}];
   function trailMarkup(){
@@ -53,12 +87,15 @@
     const selected=mode==="memory"?"memory":mode==="trails"?"trails":mode==="pins"?"pins":"geography";
     const places=(window.JIHANKI_GEOGRAPHY?.places()||[]).filter(place=>POSITIONS[place.name]).sort((a,b)=>b.count-a.count);
     const names=places.map(place=>place.name);
-    const paths=(selected==="memory"?associationLines(names):selected==="trails"?TRAILS.flatMap(trail=>trail.stops.slice(1).map((stop,index)=>[trail.stops[index],stop])):[]).map(([a,b])=>{
-      const p=POSITIONS[a],q=POSITIONS[b];return'<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+q[0]+'" y2="'+q[1]+'"></line>';
-    }).join("");
     const mapPlaces=selected==="trails"?["Kawaguchiko","Kyoto","Osaka"].map(name=>places.find(place=>place.name===name)).filter(Boolean):selected==="pins"?[]:places;
+    const layout=declutter(mapPlaces);
+    const point=name=>layout[name]||POSITIONS[name];
+    const connections=selected==="memory"?associationLines(names):selected==="trails"?TRAILS.flatMap(trail=>trail.stops.slice(1).map((stop,index)=>[trail.stops[index],stop])):[];
+    const paths=connections.map(([a,b])=>{
+      const p=point(a),q=point(b);return'<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+q[0]+'" y2="'+q[1]+'"></line>';
+    }).join("");
     const nodes=mapPlaces.map((place,index)=>{
-      const p=POSITIONS[place.name],number=String(index+1).padStart(2,"0");
+      const p=point(place.name),number=String(index+1).padStart(2,"0");
       return'<button class="map-pin" style="left:'+p[0]+'%;top:'+p[1]+'%" type="button" data-map-place="'+esc(place.name)+
         '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-index">'+number+
         '</span><span class="map-pin-dot" aria-hidden="true"></span><strong>'+esc(place.name)+'</strong><small>'+place.count+' RECORDS</small></button>';
