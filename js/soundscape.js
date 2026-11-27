@@ -144,6 +144,7 @@
   }
 
   function bind(root) {
+    bindSuite(root);
     root = installationRoot(root);
     if (!root) return;
     rows(root).forEach(row => {
@@ -170,7 +171,7 @@
     });
   }
 
-  function render() {
+  function renderInstallation() {
     const list = tracks();
     const initialMix = list.filter(item => item.group !== "AOKIGAHARA / PENTALOGY").slice(0, Math.min(3, list.length));
     const selected = new Set(initialMix.map(item => item.id));
@@ -196,6 +197,48 @@
         '<button type="button" data-install-action="start">START INSTALLATION ↗</button>'+
         '<button type="button" data-install-action="stop">STOP</button>'+
       '</div><div class="installation-status" role="status" aria-live="polite">READY / SELECT THE LAYERS YOU WANT TO HEAR</div></div></section>';
+  }
+
+  function render() {
+    const mix = renderInstallation();
+    const archive = window.JIHANKI_LISTENING_ROOM?.render() ||
+      '<section class="listening-room"><p>ARCHIVE LISTENING IS NOT AVAILABLE.</p></section>';
+    return '<section class="sound-suite" data-sound-suite data-sound-mode="mix">' +
+      '<div class="sound-suite-tabs" role="tablist" aria-label="Sound Lab modes">' +
+        '<button type="button" role="tab" id="sound-suite-tab-mix" aria-controls="sound-suite-panel-mix" aria-selected="true" aria-pressed="true" data-sound-suite-mode="mix">LIVE MIX</button>' +
+        '<button type="button" role="tab" id="sound-suite-tab-archive" aria-controls="sound-suite-panel-archive" aria-selected="false" aria-pressed="false" data-sound-suite-mode="archive">ARCHIVE LISTENING</button>' +
+      '</div>' +
+      '<div class="sound-suite-panel" id="sound-suite-panel-mix" role="tabpanel" aria-labelledby="sound-suite-tab-mix" data-sound-suite-panel="mix">' + mix + '</div>' +
+      '<div class="sound-suite-panel" id="sound-suite-panel-archive" role="tabpanel" aria-labelledby="sound-suite-tab-archive" data-sound-suite-panel="archive" hidden>' + archive + '</div>' +
+    '</section>';
+  }
+
+  const suiteBindings = new WeakSet();
+  function bindSuite(root) {
+    const suite = root?.matches?.(".sound-suite") ? root : root?.querySelector?.(".sound-suite");
+    if (!suite || suiteBindings.has(suite)) return;
+    suiteBindings.add(suite);
+    suite.addEventListener("click", event => {
+      const tab = event.target.closest?.("[data-sound-suite-mode]");
+      if (!tab || !suite.contains(tab)) return;
+      const mode = tab.dataset.soundSuiteMode;
+      if (!["mix","archive"].includes(mode) || suite.dataset.soundMode === mode) return;
+
+      // The two modes share one player surface. Never let a hidden mode keep sounding.
+      stop(suite, true);
+      window.JIHANKI_LISTENING_ROOM?.stop(suite, true);
+
+      suite.dataset.soundMode = mode;
+      suite.querySelectorAll("[data-sound-suite-mode]").forEach(button => {
+        const selected = button.dataset.soundSuiteMode === mode;
+        button.setAttribute("aria-selected", String(selected));
+        button.setAttribute("aria-pressed", String(selected));
+      });
+      suite.querySelectorAll("[data-sound-suite-panel]").forEach(panel => {
+        panel.hidden = panel.dataset.soundSuitePanel !== mode;
+      });
+      window.JIHANKI_EVENTS?.record("sound-suite-mode-changed", { mode });
+    });
   }
 
   async function start(root) {
