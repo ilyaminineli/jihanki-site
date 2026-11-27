@@ -81,7 +81,7 @@ The Memory Map's `PINS` mode preserves four forwarded pins with caption-derived 
 
 `documents/notes/photo-identification-register.md` is the editorial audit for this collection. It distinguishes sign- or note-backed identifications from probable visual candidates and purely thematic groupings. The former Sunpu Castle candidate has been withdrawn after the traveller confirmed visits to Osaka Castle and Ueno Castle (Iga-Ueno). The new nighttime castle approach and keep are confirmed as Ueno Castle. The Kyoto shop previously mistaken for a nostalgic museum is Banbutsu Sōzō-bō.
 
-The `addition_3` folder is ingested and reviewed in [photo-intake-2026-11-27.md](../documents/notes/photo-intake-2026-11-27.md). All 32 JPEGs have archive records and are included in the `photo-141`–`photo-172` catalogue range.
+The `addition_3` folder is ingested and reviewed in [photo-intake-2026-11-27.md](../documents/notes/photo-intake-2026-11-27.md). All 32 JPEGs have archive records and are included in the `photo-141`–`photo-172` catalogue range. A filename-based reminder list for the remaining uncertain places and visual relationships is kept in [photo-memory-prompts-2026-11-27.md](../documents/notes/photo-memory-prompts-2026-11-27.md).
 
 ## Media integrity
 
