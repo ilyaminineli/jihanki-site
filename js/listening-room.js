@@ -72,9 +72,9 @@
       ? '<img class="listening-room-cover" src="' + esc(project.image) + '" alt="Aokigahara / Fuji Sonic Pi album cover" loading="lazy">'
       : "";
     return '<section class="listening-room">' +
-      '<div class="listening-room-masthead"><span>JHK / LISTENING ROOM</span><span>' + tracks.length + ' PUBLIC AUDIO SOURCES</span></div>' +
+      '<div class="listening-room-masthead"><span>JHK / ARCHIVE LISTENING</span><span>' + tracks.length + ' PUBLIC AUDIO SOURCES</span></div>' +
       '<h2>ARCHIVE / LISTENING</h2>' +
-      '<p class="listening-room-intro">A sequential player for the recordings already held by the archive. Source groups and descriptions follow the catalogue; they do not imply additional locations or undocumented relationships. For live multi-layer mixing, enter the Sound Lab.</p>' +
+      '<p class="listening-room-intro">A sequential player for recordings already held by the archive. Source groups and descriptions follow the catalogue; they do not imply additional locations or undocumented relationships.</p>' +
       '<section class="listening-now" aria-label="Listening player">' +
         '<div class="listening-now-heading"><span>NOW PLAYING</span><span data-listening-position>NO SELECTION</span></div>' +
         '<div class="listening-now-meta"><strong data-listening-title>SELECT A RECORDING</strong><small data-listening-description>Playback begins only after you choose a source.</small></div>' +
