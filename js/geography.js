@@ -49,7 +49,7 @@
     "Banbutsu Sōzō-bō": "Kyoto shop 万物創造房 run by a friend; the interior is a shop memory, not a museum",
     "Gion": "Kyoto district associated with Gion Matsuri and the lantern photograph",
     "PICA Fuji Saiko": "PICA Fuji Saiko campground and accommodation site, named by the illuminated sign at Lake Saiko",
-    "Fujiyoshida": "Yamanashi city at the foot of Mount Fuji; location of Fuji-Q Highland",
+    "Fujiyoshida": "Yamanashi city on the northern side of Mount Fuji; a regional context for the Fuji-view McDonald's photograph and Fuji-Q area",
     "Fujisan Dragon Tower": "Angular observation tower at Tagonoura Minato Park, Fuji City, Shizuoka",
     "Tagonoura Minato Park": "Fuji City coastal park containing Fujisan Dragon Tower",
     "Fuji City": "Shizuoka city on Suruga Bay; location of Tagonoura Minato Park",
