@@ -876,6 +876,8 @@
     if (mapPinNote) { const item = byId(mapPinNote.dataset.mapPinNote); if (item) openItem(item); return; }
     const mapTrailNote = event.target.closest("[data-map-trail-note]");
     if (mapTrailNote) { const item = byId(mapTrailNote.dataset.mapTrailNote); if (item) openItem(item); return; }
+    const mapPhoto = event.target.closest("[data-map-photo]");
+    if (mapPhoto) { const item = byId(mapPhoto.dataset.mapPhoto); if (item) openItem(item); return; }
     const mapPlace = event.target.closest("[data-map-place]");
     if (mapPlace) { showLocation(mapPlace.dataset.mapPlace); return; }
     const mapMode = event.target.closest("[data-map-mode]");
