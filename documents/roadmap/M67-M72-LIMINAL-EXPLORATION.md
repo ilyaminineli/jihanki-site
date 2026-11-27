@@ -20,7 +20,7 @@ This programme deliberately narrows the earlier feature proposal. It is not a co
 | Milestone | Focus | Status |
 | --- | --- | --- |
 | [M67](#m67--place-and-relationship-integrity) | Place and relationship integrity | Implemented |
-| [M68](#m68--field-impressions) | Field Impressions | Planned |
+| [M68](#m68--field-impressions) | Field Impressions | Implemented |
 | [M69](#m69--memory-traces) | Memory Traces | Planned |
 | [M70](#m70--curators-cabinet) | Curator’s Cabinet | Existing shelves; small optional extension only |
 | [M71](#m71--listening-room) | Listening Room | Deferred until additional source samples are supplied |
@@ -42,17 +42,17 @@ Correct the false Okinawa association and make it harder for a location error to
 
 ## M68 — Field Impressions
 
-**Status:** Planned.
+**Status:** Implemented.
 
-A very small first exploration loop based on the existing trail data. Start with the documented Saikoneon → first summit near Saiko outing, because its five photographs and four source-grounded stages already exist.
+A very small exploration loop based on the documented Saikoneon → first summit near Saiko outing. The existing trail already supplies five source photographs and four source-grounded stages.
 
-- Let a visitor encounter the trail through the Memory Map and open its source photographs in any order.
-- Once the complete curated evidence set has been encountered, the machine may quietly issue one local field impression / paper pass.
-- Do not display a large quest checklist, timer, score, percentage bar or deadline.
-- The pass is a souvenir of browsing the archive, not proof that the visitor physically completed the hike.
-- Store it in the existing Museum / Collection system and include it in the existing local backup format only if the schema can be extended without breaking old backups.
+- Opening all five source photographs, in any order, issues one local Field Impression in the Museum.
+- Existing browser-local Visit Trail entries count as previously encountered fragments; no re-reading is required after an update.
+- The pass is a souvenir of encountering the archive, not proof that the visitor physically completed the hike.
+- The pass preserves its five source IDs in the Collection backup and can be saved as a text object.
+- No visible checklist, progress percentage, timer, score, deadline or GPS tracking is added.
 
-The first version should be limited to one trail. Add others only when the experience proves useful and the underlying source material supports them.
+This first implementation is limited to one trail. More should be added only if they contribute something distinct to the archive experience.
 
 ## M69 — Memory Traces
 
