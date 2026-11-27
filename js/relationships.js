@@ -58,6 +58,12 @@
       { id:"photo-127", kind:"same-site-context", label:"SAME SATYAM 1 PLACE / EARLIER VIEW" },
       { id:"daily-2026-08-03", kind:"field-visit-context", label:"KOBA-SAN VISIT / 3 AUGUST" }
     ],
+    "photo-intake-addition-5": [
+      { id:"daily-2026-07-25", kind:"source-place-match", label:"UNO-MISAKI TUNNEL / NAMED PORTAL SIGN IN NEW PHOTO" },
+      { id:"daily-2026-07-24", kind:"candidate-encounter-context", label:"DEER PHOTOS / SHIKI ID NOT CONFIRMED" },
+      { id:"daily-2026-07-26", kind:"candidate-venue-context", label:"TOY DISPLAY / KAWAGUCHIKO MUSEUM CANDIDATE" },
+      { id:"photo-202", kind:"nearby-locality-context", label:"MIYUKI BEACH / SAME LOCALITY REFERENCE" }
+    ],
     "photo-192": [
       { id:"photo-137", kind:"same-place-memory", label:"GENKO-AN / ROUND AND SQUARE WINDOWS" },
       { id:"photo-151", kind:"same-place-memory", label:"GENKO-AN / VERANDA" },
