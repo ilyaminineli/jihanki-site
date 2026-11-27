@@ -4,6 +4,7 @@ import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 
 const source = await readFile("js/listening-room.js", "utf8");
+const soundscapeSource = await readFile("js/soundscape.js", "utf8");
 const album = [
   ["aokigahara-01-fujisan", "01 — FUJISAN / GEOLOGICAL", "media/music/fuji-sonicpi-01.opus"],
   ["aokigahara-02-aokigahara", "02 — AOKIGAHARA / BIOLOGICAL", "media/music/fuji-sonicpi-02.opus"],
@@ -27,7 +28,9 @@ const archive = [
   { id:"no-file", title:"No source", type:"audio", category:"sound" }
 ];
 const window = { JIHANKI_ARCHIVE: archive };
-vm.runInContext(source, vm.createContext({ window }));
+const context = vm.createContext({ window });
+vm.runInContext(source, context);
+vm.runInContext(soundscapeSource, context);
 
 const room = window.JIHANKI_LISTENING_ROOM;
 assert(room, "Listening Room module should initialise.");
@@ -50,7 +53,13 @@ for (const track of album) assert(html.includes(track.title), "Listening Room mu
 assert(html.includes("05 / SHRINE / RITUAL"), "The missing fifth environment should remain visible as pending.");
 assert.match(html, /Public render pending/, "The room must not invent a Shrine audio file.");
 assert(html.includes("sound-06") && html.includes("Dialogue reconstruct 1"));
-assert.match(html, /Sound Lab/, "Listening Room should clearly distinguish itself from layered Sound Lab mixing.");
+assert.match(html, /ARCHIVE LISTENING/, "Archive listening should be discoverable as a Sound Lab mode.");
+const suiteHtml = window.JIHANKI_SOUNDSCAPE.render();
+assert.match(suiteHtml, /data-sound-suite-mode="mix"/, "Sound Lab should expose a LIVE MIX mode.");
+assert.match(suiteHtml, /data-sound-suite-mode="archive"/, "Sound Lab should expose an ARCHIVE LISTENING mode.");
+assert.match(suiteHtml, /data-sound-suite-panel="mix"/, "Live mixing panel should remain available.");
+assert.match(suiteHtml, /data-sound-suite-panel="archive" hidden/, "Archive listening should share the same panel and start hidden.");
+assert.equal((suiteHtml.match(/class="sound-suite-tabs"/g)||[]).length, 1, "The two audio modes should share one compact tab bar.");
 assert.match(html, /no listening history or saved mix is created/i,
   "Listening Room must not silently create visitor tracking or saved mixes.");
 
