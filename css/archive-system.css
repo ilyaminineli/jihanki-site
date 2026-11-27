@@ -2574,10 +2574,6 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   outline:none !important;
   transform:none !important;
 }
-#coin-button::after,
-#home-button::after { content:none !important; }
-
-
 /* M73 refinement — unmarked physical hit zones; keep only the printed hardware labels. */
 #coin-button,#home-button,
 #coin-button:hover,#home-button:hover,
