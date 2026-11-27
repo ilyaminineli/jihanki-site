@@ -693,14 +693,14 @@
         '<div id="museum-work-list" class="museum-list">'+museumWorkMarkup("",pref.category,pref.sort)+'</div>';
     } else if(tab==="objects"){
       const fieldPasses=objects.filter(object=>object.kind==="field-impression");
-      const souvenirs=objects.filter(object=>object.kind!=="field-impression");
-      content=(souvenirs.length?'<div class="museum-section-heading">SERIALIZED MEMORY OBJECTS / '+souvenirs.length+'</div>'+
-        souvenirs.map(object=>'<button type="button" class="museum-object-row" data-museum-object="'+esc(object.id)+'"><span class="museum-object-stamp">'+
-        esc(object.stamp)+'</span><strong>'+esc(object.title)+'</strong><small>NO. '+esc(object.serial)+' / '+esc(object.archiveDate)+'</small></button>').join(""):"")+
-        (fieldPasses.length?'<div class="museum-section-heading">FIELD IMPRESSIONS / '+fieldPasses.length+'</div>'+
-        fieldPasses.map(object=>'<button type="button" class="museum-object-row field-impression-row" data-museum-object="'+esc(object.id)+'"><span class="museum-object-stamp">'+
-        esc(object.stamp)+'</span><strong>'+esc(object.title)+'</strong><small>'+esc(object.serial)+' / '+esc(object.archiveDate)+'</small></button>').join(""):"")+
-        (objects.length?'<div class="museum-storage-note">OBJECTS AND FIELD IMPRESSIONS ARE PRIVATE TO THIS BROWSER AND INCLUDED IN COLLECTION BACKUPS.</div>':
+      const memoryTraces=objects.filter(object=>object.kind==="memory-trace");
+      const souvenirs=objects.filter(object=>!["field-impression","memory-trace"].includes(object.kind));
+      const objectRows=list=>list.map(object=>'<button type="button" class="museum-object-row" data-museum-object="'+esc(object.id)+'"><span class="museum-object-stamp">'+
+        esc(object.stamp)+'</span><strong>'+esc(object.title)+'</strong><small>'+esc(object.serial)+' / '+esc(object.archiveDate)+'</small></button>').join("");
+      content=(souvenirs.length?'<div class="museum-section-heading">SERIALIZED MEMORY OBJECTS / '+souvenirs.length+'</div>'+objectRows(souvenirs):"")+
+        (fieldPasses.length?'<div class="museum-section-heading">FIELD IMPRESSIONS / '+fieldPasses.length+'</div>'+objectRows(fieldPasses):"")+
+        (memoryTraces.length?'<div class="museum-section-heading">MEMORY TRACES / '+memoryTraces.length+'</div>'+objectRows(memoryTraces):"")+
+        (objects.length?'<div class="museum-storage-note">OBJECTS, FIELD IMPRESSIONS AND TRACES ARE PRIVATE TO THIS BROWSER AND INCLUDED IN COLLECTION BACKUPS.</div>':
         '<div class="collection-empty">NO OBJECTS HAVE BEEN COLLECTED YET.</div>');
     } else if(tab==="kept"){
       const kept=museum.keptIds().map(id=>byId(id)).filter(Boolean);
@@ -726,7 +726,8 @@
             '<button type="button" data-museum-delete-shelf="'+esc(shelf.id)+'" aria-label="Delete shelf '+esc(shelf.name)+'">×</button></header>'+
             (items.length?items.map(item=>'<div class="museum-shelf-item"><button type="button" data-museum-open="'+esc(item.id)+'">'+esc(item.title)+'</button>'+
               '<button type="button" data-museum-remove-shelf-item="'+esc(shelf.id)+'" data-museum-remove-id="'+esc(item.id)+'" aria-label="Remove '+esc(item.title)+' from shelf">−</button></div>').join("") :
-              '<p class="museum-shelf-empty">EMPTY SHELF / ADD WORKS FROM THEIR MEMORY VIEW</p>')+'</section>';
+              '<p class="museum-shelf-empty">EMPTY SHELF / ADD WORKS FROM THEIR MEMORY VIEW</p>')+
+            '<button type="button" class="museum-shelf-card-export" data-museum-export-shelf="'+esc(shelf.id)+'">EXPORT EXHIBITION CARD ↗</button></section>';
         }).join(""):'<div class="collection-empty">CREATE A SHELF TO BUILD YOUR OWN EXHIBITION.</div>');
     } else {
       content='<div class="museum-care-section"><h2>BACKUP / RESTORE</h2><p>Export the private museum data separately from purchase records. Import merges the backup without deleting current data.</p>'+
@@ -752,13 +753,14 @@
   function showCollection(){openMuseum("overview");}
   function openCollectibleObject(object){
     if(!object)return;
-    const fieldPass=object.kind==="field-impression";
-    const sources=fieldPass?(object.sourceIds||[]).map(id=>byId(id)).filter(Boolean):[];
-    const provenance=fieldPass?'<section class="museum-care-section"><h2>ARCHIVE FRAGMENTS</h2>'+
+    const fieldPass=object.kind==="field-impression",memoryTrace=object.kind==="memory-trace";
+    const curatedRecord=fieldPass||memoryTrace;
+    const sources=curatedRecord?(object.sourceIds||[]).map(id=>byId(id)).filter(Boolean):[];
+    const provenance=curatedRecord?'<section class="museum-care-section"><h2>ARCHIVE FRAGMENTS</h2>'+
       sources.map(item=>'<div class="museum-row"><span>'+esc(item.title||item.id)+'</span><small>'+esc(item.date||"UNDATED")+' / '+esc(item.id)+'</small></div>').join("")+
-      '<p>This is a record of fragments encountered in the archive, not evidence of a physical visit.</p></section>':
+      (fieldPass?'<p>This is a record of fragments encountered in the archive, not evidence of a physical visit.</p>':'<p>These records are connected by the archive’s curated Satyam 1 relationships.</p>')+'</section>':
       '<button type="button" data-object-source="'+esc(object.archiveId)+'">OPEN SOURCE MEMORY ↗</button>';
-    openSystemPanel(fieldPass?"FIELD IMPRESSION":"COLLECTIBLE MEMORY OBJECT",window.JIHANKI_COLLECTION.objectMarkup(object.archiveId,object.receiptCode)+
+    openSystemPanel(memoryTrace?"MEMORY TRACE":fieldPass?"FIELD IMPRESSION":"COLLECTIBLE MEMORY OBJECT",window.JIHANKI_COLLECTION.objectMarkup(object.archiveId,object.receiptCode)+
       '<div class="exploration-return">'+provenance+'<button type="button" data-return-museum>RETURN TO MY MUSEUM</button></div>',"collection","museum");
   }
   function handleMuseumCare(action){
@@ -914,6 +916,8 @@
       catch (error) { announce(error.message); }
       return;
     }
+    const exportShelf = event.target.closest("[data-museum-export-shelf]");
+    if (exportShelf) { window.JIHANKI_MUSEUM.exportShelfCard(exportShelf.dataset.museumExportShelf); return; }
     const deleteShelf = event.target.closest("[data-museum-delete-shelf]");
     if (deleteShelf) {
       if (window.confirm("Delete this shelf? Works and souvenirs remain unchanged.")) {
