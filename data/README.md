@@ -29,7 +29,7 @@ The validator in `scripts/archive-schema.mjs` checks the runtime record shape wi
 | `image` | `file` | `description` and thematic `group` |
 | `voicebank` | `image` | `subtitle`, `context` and external `url` |
 | `project` | `file` | `image` and `projectPath` |
-| `audio` | `file` | `voices` and production context |
+| `audio` | `file` | `voices`, production context and optional related project IDs |
 | `text` | `file` | `project` and editorial grouping |
 | `video` in category `performance` | `file` | Performance context remains explicitly editorial |
 
@@ -83,6 +83,12 @@ The Memory Map's `PINS` mode preserves four forwarded pins with caption-derived 
 
 The `addition_3` folder is ingested and reviewed in [photo-intake-2026-11-27.md](../documents/notes/photo-intake-2026-11-27.md). All 32 JPEGs have archive records and are included in the `photo-141`–`photo-172` catalogue range. A filename-based reminder list for the remaining uncertain places and visual relationships is kept in [photo-memory-prompts-2026-11-27.md](../documents/notes/photo-memory-prompts-2026-11-27.md).
 
+## Listening Room sources
+
+The Listening Room uses audio records already held in `ARCHIVE.music` and `ARCHIVE.sound`. Four FUJI SONIC PI public renders are individually catalogued and linked to the parent `aokigahara-pentalogy` project. The Shrine environment remains pending and is not represented by a fabricated file. The 17 sound fragments retain their existing group labels and descriptions; the standalone Tongue Drums session remains separate from the pentalogy.
+
+The Listening Room is a sequential archive player. The Sound Lab remains the multi-layer mixing interface. Neither feature creates or alters source recordings.
+
 ## Media integrity
 
 data/media-manifest.json inventories every file under media/ with its byte size and Git blob SHA-1. Rebuild it after adding or replacing media with:
@@ -110,6 +116,7 @@ node scripts/test-field-impressions.mjs
 node scripts/test-memory-traces.mjs
 node scripts/test-curators-cabinet.mjs
 node scripts/test-quiet-signals.mjs
+node scripts/test-listening-room.mjs
 node scripts/test-markdown-links.mjs
 node scripts/test-media-manifest.mjs
 node scripts/validate-archive.mjs
