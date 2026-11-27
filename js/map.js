@@ -318,11 +318,12 @@
     }).join("");
     const key=indexPlaces.map((place,index)=>'<button type="button" data-map-place="'+esc(place.name)+'"><span>'+
       String(index+1).padStart(2,"0")+'</span><strong>'+esc(place.name)+'</strong><small>'+place.count+' memories</small></button>').join("");
+    const precisionLegend='<span><i class="legend-precision-site"></i> NAMED SITE</span><span><i class="legend-precision-locality"></i> LOCALITY</span><span><i class="legend-precision-area"></i> APPROX. AREA</span><span><i class="legend-precision-prefecture"></i> PREFECTURE</span>';
     const legend=selected==="memory"
-      ?'<span><i class="legend-place"></i> WITHIN / ADMINISTRATIVE AREA</span><span><i class="legend-near"></i> NEAR / LOCAL REFERENCE</span><span><i class="legend-connected"></i> OVERLOOKS / CONNECTED</span><span><i class="legend-transit"></i> TRANSIT CORRIDOR</span><span>PHOTO SEQUENCES ARE RECORD LINKS, NOT GEOGRAPHIC LINES</span>'
+      ?'<span><i class="legend-place"></i> WITHIN / ADMINISTRATIVE AREA</span><span><i class="legend-near"></i> NEAR / LOCAL REFERENCE</span><span><i class="legend-connected"></i> OVERLOOKS / CONNECTED</span><span><i class="legend-transit"></i> TRANSIT CORRIDOR</span>'+precisionLegend+'<span>PHOTO SEQUENCES ARE RECORD LINKS, NOT GEOGRAPHIC LINES</span>'
       :selected==="trails"
         ?'<span><i class="legend-trail"></i> ORDERED VISIT / TRAVEL SEQUENCE</span><span>SCHEMATIC ORDER ONLY / NOT A GPS ROUTE</span>'
-        :'<span><i class="legend-place"></i> PLACE ANCHOR</span><span>JAPANESE LABELS / ARCHIVE LOCATION INDEX</span>';
+        :'<span><i class="legend-place"></i> MAP ANCHOR</span>'+precisionLegend+'<span>FULL PLACE NAMES / RECORD COUNTS BELOW</span>';
     return '<section class="memory-map-panel"><div class="map-toolbar"><div><span class="map-eyebrow">JHK / GEOGRAPHIC MEMORY</span><strong>'+
       (selected==="memory"?"MEMORY NETWORK":selected==="trails"?"TRAVEL TRAILS":selected==="pins"?"SOURCE PINS":"PLACE INDEX")+
       '</strong></div><div class="map-mode-switch"><button type="button" data-map-mode="geography" '+(selected==="geography"?'aria-pressed="true"':"")+
