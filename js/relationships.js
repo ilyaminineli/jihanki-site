@@ -212,6 +212,8 @@
     {from:"Senbon Kitaoji",to:"Kyoto",kind:"within",label:"KYOTO CITY"},
     {from:"Kitaoji Shinmachi",to:"Kyoto",kind:"within",label:"KYOTO CITY"},
     {from:"Niikura Tunnel",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"},
+    {from:"Onsen Yurari",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"},
+    {from:"Akihabara",to:"Tokyo",kind:"within",label:"TOKYO DISTRICT"},
     {from:"Uno-Misaki Tunnel",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"},
     {from:"Lake Yamanaka",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"},
     {from:"Lake Shōji",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"},
