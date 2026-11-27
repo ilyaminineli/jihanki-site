@@ -2588,10 +2588,18 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   box-shadow:none !important;
   outline:none !important;
 }
-#coin-button:focus-visible,#home-button:focus-visible {
-  outline:1px dotted rgba(235,235,235,.20) !important;
-  outline-offset:-9px !important;
+#coin-button::after,#home-button::after {
+  content:"";
+  position:absolute;
+  left:50%; top:50%;
+  pointer-events:none;
+  opacity:0;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(235,235,235,.28);
 }
+#coin-button::after { width:24px; height:24px; border-radius:50%; }
+#home-button::after { width:20px; height:16px; border-radius:2px; }
+#coin-button:focus-visible::after,#home-button:focus-visible::after { opacity:.8; }
 .sound-suite { display:grid; gap:12px; color:#ddd; }
 .sound-suite-tabs { position:sticky; top:0; z-index:4; display:grid; grid-template-columns:1fr 1fr; gap:5px;
   padding:5px 0 8px; background:linear-gradient(#080808 82%,rgba(8,8,8,0)); }
