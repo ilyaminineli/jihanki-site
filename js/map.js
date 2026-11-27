@@ -1,7 +1,7 @@
 /* M44 — Schematic geography and archive-memory network. Not a surveying or navigation map. */
 (function () {
   const esc=value=>String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
-  const MAP_SURFACE={width:2200,height:1540};
+  const MAP_SURFACE={width:2700,height:1900};
   const POSITIONS={
     "Lake Saiko":[34,46],"Aokigahara":[27,67],"Fuji Five Lakes":[45,25],"Kawaguchiko":[59,50],
     "Lake Yamanaka":[76,48],"Lake Shōji":[35,61],"Uno-Misaki Tunnel":[24,55],
@@ -80,16 +80,16 @@
   function labelMetrics(name,count=1){
     const jp=subLabelFor(name)||name;
     const english=subLabelFor(name)?name:"";
-    const jpUnits=Array.from(jp).length;
-    const width=Math.max(136,Math.min(228,Math.max(jpUnits*15+30,english.length*5.1+34)));
-    const jpPerLine=Math.max(1,Math.floor((width-28)/15));
-    const jpLines=Math.max(1,Math.ceil(jpUnits/jpPerLine));
-    const englishLines=english?Math.max(1,Math.ceil(english.length*4.9/(width-26))):0;
-    const height=12+jpLines*19+(english?4+englishLines*11:0)+4+9+10;
-    return{jp,english,width,height:Math.max(62,height),count};
+    const units=Array.from(jp).length;
+    const width=Math.max(144,Math.min(340,Math.max(units*27+42,english.length*7.6+42)));
+    const jpPerLine=Math.max(1,Math.floor((width-40)/28));
+    const jpLines=Math.max(1,Math.ceil(units/jpPerLine));
+    const englishLines=english?Math.max(1,Math.ceil(english.length*7.5/(width-40))):0;
+    const height=24+jpLines*34+(english?5+englishLines*17:0)+7+10+24;
+    return{jp,english,width,height:Math.max(86,height),count};
   }
   function declutter(places){
-    const width=MAP_SURFACE.width,height=MAP_SURFACE.height,cellSize=280;
+    const width=MAP_SURFACE.width,height=MAP_SURFACE.height,cellSize=400;
     const nodes=places.map(place=>{
       const metric=labelMetrics(place.name,place.count),anchor=POSITIONS[place.name];
       return{name:place.name,x:anchor[0]*width/100,y:anchor[1]*height/100,
@@ -97,8 +97,8 @@
         boxW:metric.width,boxH:metric.height};
     });
     const clamp=node=>{
-      node.x=Math.max(node.boxW/2+28,Math.min(width-node.boxW/2-28,node.x));
-      node.y=Math.max(node.boxH/2+28,Math.min(height-node.boxH/2-28,node.y));
+      node.x=Math.max(node.boxW/2+32,Math.min(width-node.boxW/2-32,node.x));
+      node.y=Math.max(node.boxH/2+32,Math.min(height-node.boxH/2-32,node.y));
     };
     const separate=(a,b,margin)=>{
       const dx=a.x-b.x,dy=a.y-b.y;
@@ -131,13 +131,13 @@
         }
       });
       if(restore)nodes.forEach(node=>{
-        node.x+=(node.anchorX-node.x)*.0015;
-        node.y+=(node.anchorY-node.y)*.0015;
+        node.x+=(node.anchorX-node.x)*.001;
+        node.y+=(node.anchorY-node.y)*.001;
         clamp(node);
       });
     };
-    for(let passIndex=0;passIndex<190;passIndex++)pass(34,true);
-    for(let passIndex=0;passIndex<170;passIndex++)pass(26,false);
+    for(let passIndex=0;passIndex<220;passIndex++)pass(48,true);
+    for(let passIndex=0;passIndex<190;passIndex++)pass(38,false);
     return Object.fromEntries(nodes.map(node=>[node.name,[node.x/width*100,node.y/height*100]]));
   }
   const TRAILS=window.JIHANKI_RELATIONSHIPS?.trails?.()||[];
