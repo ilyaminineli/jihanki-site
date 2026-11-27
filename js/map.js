@@ -4,7 +4,7 @@
   const POSITIONS={
     "Lake Saiko":[34,46],"Aokigahara":[27,67],"Fuji Five Lakes":[45,25],"Kawaguchiko":[59,50],
     "Lake Yamanaka":[76,48],"Lake Shōji":[35,61],"Uno-Misaki Tunnel":[24,55],
-    "Onsen Yurari":[44,68],"Akihabara":[84,18],
+    "Onsen Yurari":[44,68],"Akihabara":[84,18],"First summit near Saiko":[37,36],
     "Lake Kawaguchi":[58,41],"Oishi Park":[52,30],"Kawaguchiko Music Forest Museum":[66,34],
     "Arakurayama Sengen Park":[71,48],"Fujisan Sengen Shrine":[56,64],"Kawaguchiko Nostalgic Toys Museum":[62,42],
     "Kawaguchiko Automobile Museum":[48,62],"Narusawa":[42,68],"Kamo River":[31,9],
@@ -31,7 +31,7 @@
   const JP_LABELS={
     "Lake Saiko":"西湖","Aokigahara":"青木ヶ原樹海","Fuji Five Lakes":"富士五湖","Kawaguchiko":"河口湖周辺",
     "Lake Yamanaka":"山中湖","Lake Shōji":"精進湖","Uno-Misaki Tunnel":"宇の岬トンネル",
-    "Onsen Yurari":"ゆらり","Akihabara":"秋葉原",
+    "Onsen Yurari":"ゆらり","Akihabara":"秋葉原","First summit near Saiko":"西湖近くの最初の山頂",
     "Lake Kawaguchi":"河口湖","Oishi Park":"大石公園","Kawaguchiko Music Forest Museum":"河口湖音楽と森の美術館",
     "Arakurayama Sengen Park":"新倉山浅間公園","Fujisan Sengen Shrine":"北口本宮冨士浅間神社",
     "Kawaguchiko Nostalgic Toys Museum":"懐かし玩具館","Kawaguchiko Automobile Museum":"河口湖自動車博物館",
