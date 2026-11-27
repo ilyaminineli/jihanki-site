@@ -2,7 +2,7 @@
 
 **Source:** traveller-supplied `addition_5.zip`, inspected 27 November 2026  
 **Files:** 49 JPEGs (`addition_5 (1).jpg`–`addition_5 (49).jpg`)  
-**Catalogue status:** review complete; photo IDs `photo-203`–`photo-251` are proposed for later integration, not yet assigned  
+**Catalogue status:** all 49 photographs are now catalogued as `photo-203`–`photo-251`  
 **Metadata:** no embedded capture date or GPS coordinates found in the 49 files  
 **Important implementation note:** the ZIP was supplied to the review, but the 49 binary files are not yet present under `media/photo/photos_from_japan/addition_5/` in the repository. Do not create archive photo records pointing at missing files. Add the binaries first, then allocate the proposed IDs in filename order and update `data/media-manifest.json`.
 
@@ -135,4 +135,4 @@ These are the only substantial identification gaps left by the traveller's curre
 - The navigation-screen distance is a screen reading, not a verified driving distance.
 - The deer are now confirmed as Shiki, but their individual encounter chronology remains unknown.
 - The first Saiko summit sequence is not merged with the 3 August Satyam 1 visit.
-- Addition_5 image IDs remain provisional until all 49 binary files are added to `media/photo/photos_from_japan/addition_5/` and the manifest is regenerated.
+- Addition_5 image IDs `photo-203`–`photo-251` are now allocated; all 49 source files are present in the media manifest and in the photo catalogue.
