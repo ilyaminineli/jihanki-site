@@ -1,8 +1,8 @@
 /* Geographic index from named archive records. Map positions are schematic, not surveyed coordinates. */
 (function () {
   const PLACE_BY_ID = {
-    "fuji-six-yokai-video": ["Mount Fuji", "Yamanashi"],
-    "mountain-remembers-mv": ["Mount Fuji", "Aokigahara", "Lake Saiko", "Fuji Five Lakes"],
+    "fuji-six-yokai-video": ["Mount Fuji", "Yamanashi", "Nojima Fujiyoshida Store"],
+    "mountain-remembers-mv": ["Mount Fuji", "Aokigahara", "Lake Saiko", "Fuji Five Lakes", "Kawaguchiko", "Nojima Fujiyoshida Store"],
     "endless-road": ["Lake Saiko", "Kawaguchiko", "Mount Fuji"],
     "gonshan": ["Japan / 2026 expedition"], "tunnel": ["Uno-Misaki Tunnel", "Yamanashi"],
     "hotaru": ["Japan / 2026 expedition"],
@@ -18,8 +18,6 @@
     "daily-2026-07-28": ["Tokyo"], "daily-2026-07-29": ["Ryugu Cave", "Koyodai"],
     "daily-2026-08-18": ["Lake Saiko"],
     "daily-2026-08-road-trip": ["Kawaguchiko", "Kyoto", "Osaka"],
-    "mountain-remembers-mv": ["Mount Fuji", "Aokigahara", "Lake Saiko", "Fuji Five Lakes", "Kawaguchiko", "Nojima Fujiyoshida Store"],
-    "fuji-six-yokai-video": ["Mount Fuji", "Yamanashi", "Nojima Fujiyoshida Store"]
   };
   const PLACES = {
     "Mount Fuji": "Mountain and surrounding landscape records",
