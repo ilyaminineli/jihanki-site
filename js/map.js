@@ -1,6 +1,7 @@
 /* M44 — Schematic geography and archive-memory network. Not a surveying or navigation map. */
 (function () {
   const esc=value=>String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+  const MAP_SURFACE={width:2200,height:1540};
   const POSITIONS={
     "Lake Saiko":[34,46],"Aokigahara":[27,67],"Fuji Five Lakes":[45,25],"Kawaguchiko":[59,50],
     "Lake Yamanaka":[76,48],"Lake Shōji":[35,61],"Uno-Misaki Tunnel":[24,55],
@@ -76,26 +77,28 @@
   /* Label-sized packing on the pannable 1280 × 860 map surface.
      Pins keep their regional relationships but are separated by their real label
      rectangles, not merely by their anchor points. */
-  function labelMetrics(name){
-    const label=subLabelFor(name)||name;
-    const units=Array.from(label).length;
-    const width=Math.max(88,Math.min(168,units*10.5+24));
-    const charsPerLine=Math.max(1,Math.floor((width-24)/11));
-    const lines=Math.max(1,Math.ceil(units/charsPerLine));
-    const height=Math.max(32,lines*14+14);
-    return{label,width,height};
+  function labelMetrics(name,count=1){
+    const jp=subLabelFor(name)||name;
+    const english=subLabelFor(name)?name:"";
+    const jpUnits=Array.from(jp).length;
+    const width=Math.max(136,Math.min(228,Math.max(jpUnits*15+30,english.length*5.1+34)));
+    const jpPerLine=Math.max(1,Math.floor((width-28)/15));
+    const jpLines=Math.max(1,Math.ceil(jpUnits/jpPerLine));
+    const englishLines=english?Math.max(1,Math.ceil(english.length*4.9/(width-26))):0;
+    const height=12+jpLines*19+(english?4+englishLines*11:0)+4+9+10;
+    return{jp,english,width,height:Math.max(62,height),count};
   }
   function declutter(places){
-    const width=1280,height=860,cellSize=220;
+    const width=MAP_SURFACE.width,height=MAP_SURFACE.height,cellSize=280;
     const nodes=places.map(place=>{
-      const metric=labelMetrics(place.name),anchor=POSITIONS[place.name];
+      const metric=labelMetrics(place.name,place.count),anchor=POSITIONS[place.name];
       return{name:place.name,x:anchor[0]*width/100,y:anchor[1]*height/100,
         anchorX:anchor[0]*width/100,anchorY:anchor[1]*height/100,
         boxW:metric.width,boxH:metric.height};
     });
     const clamp=node=>{
-      node.x=Math.max(node.boxW/2+12,Math.min(width-node.boxW/2-12,node.x));
-      node.y=Math.max(node.boxH/2+12,Math.min(height-node.boxH/2-12,node.y));
+      node.x=Math.max(node.boxW/2+28,Math.min(width-node.boxW/2-28,node.x));
+      node.y=Math.max(node.boxH/2+28,Math.min(height-node.boxH/2-28,node.y));
     };
     const separate=(a,b,margin)=>{
       const dx=a.x-b.x,dy=a.y-b.y;
@@ -113,8 +116,6 @@
       }
       clamp(a);clamp(b);
     };
-    // Spatial buckets avoid comparing every label with every other label.
-    // The 220px cell exceeds the largest possible colliding centre distance.
     const pass=(margin,restore)=>{
       const cells=new Map();
       nodes.forEach((node,index)=>{
@@ -130,13 +131,13 @@
         }
       });
       if(restore)nodes.forEach(node=>{
-        node.x+=(node.anchorX-node.x)*.003;
-        node.y+=(node.anchorY-node.y)*.003;
+        node.x+=(node.anchorX-node.x)*.0015;
+        node.y+=(node.anchorY-node.y)*.0015;
         clamp(node);
       });
     };
-    for(let passIndex=0;passIndex<150;passIndex++)pass(18,true);
-    for(let passIndex=0;passIndex<180;passIndex++)pass(12,false);
+    for(let passIndex=0;passIndex<190;passIndex++)pass(34,true);
+    for(let passIndex=0;passIndex<170;passIndex++)pass(26,false);
     return Object.fromEntries(nodes.map(node=>[node.name,[node.x/width*100,node.y/height*100]]));
   }
   const TRAILS=window.JIHANKI_RELATIONSHIPS?.trails?.()||[];
@@ -205,9 +206,11 @@
       return '<line class="map-edge-'+kind+'" x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'"'+marker+'></line>';
     }).join("");
     const nodes=mapPlaces.map(place=>{
-      const p=point(place.name),metric=labelMetrics(place.name);
-      return '<button class="map-pin" style="left:'+p[0]+'%;top:'+p[1]+'%;width:'+metric.width+'px;min-height:'+metric.height+'px" type="button" data-map-place="'+esc(place.name)+
-        '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-label">'+esc(metric.label)+'</span></button>';
+      const p=point(place.name),metric=labelMetrics(place.name,place.count);
+      return '<button class="map-pin" style="left:'+p[0]+'%;top:'+p[1]+'%;width:'+metric.width+'px;height:'+metric.height+'px" type="button" data-map-place="'+esc(place.name)+
+        '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-jp">'+esc(metric.jp)+'</span>'+
+        (metric.english?'<span class="map-pin-en">'+esc(metric.english)+'</span>':'')+
+        '<span class="map-pin-count">'+Number(place.count||0)+' RECORDS</span></button>';
     }).join("");
     const key=indexPlaces.map((place,index)=>'<button type="button" data-map-place="'+esc(place.name)+'"><span>'+
       String(index+1).padStart(2,"0")+'</span><strong>'+esc(place.name)+'</strong><small>'+place.count+' memories</small></button>').join("");
@@ -217,14 +220,14 @@
         ?'<span><i class="legend-trail"></i> ORDERED VISIT / TRAVEL SEQUENCE</span><span>SCHEMATIC ORDER ONLY / NOT A GPS ROUTE</span>'
         :'<span><i class="legend-place"></i> PLACE ANCHOR</span><span>JAPANESE LABELS / ARCHIVE LOCATION INDEX</span>';
     return '<section class="memory-map-panel"><div class="map-toolbar"><div><span class="map-eyebrow">JHK / GEOGRAPHIC MEMORY</span><strong>'+
-      (selected==="memory"?"GEOGRAPHIC RELATIONS":selected==="trails"?"CHRONOLOGICAL SEQUENCES":selected==="pins"?"SOURCE PINS":"REGIONAL INDEX")+
+      (selected==="memory"?"MEMORY NETWORK":selected==="trails"?"TRAVEL TRAILS":selected==="pins"?"SOURCE PINS":"PLACE INDEX")+
       '</strong></div><div class="map-mode-switch"><button type="button" data-map-mode="geography" '+(selected==="geography"?'aria-pressed="true"':"")+
       '>PLACE</button><button type="button" data-map-mode="memory" '+(selected==="memory"?'aria-pressed="true"':"")+
-      '>RELATIONS</button><button type="button" data-map-mode="trails" '+(selected==="trails"?'aria-pressed="true"':"")+
-      '>SEQUENCES</button><button type="button" data-map-mode="pins" '+(selected==="pins"?'aria-pressed="true"':"")+
+      '>MEMORY</button><button type="button" data-map-mode="trails" '+(selected==="trails"?'aria-pressed="true"':"")+
+      '>TRAILS</button><button type="button" data-map-mode="pins" '+(selected==="pins"?'aria-pressed="true"':"")+
       '>PINS</button></div></div>'+(selected==="pins"?'<div class="map-pin-references">'+pinsMarkup()+'</div>':
       '<div class="map-legend">'+legend+'</div><div class="map-canvas '+(selected==="memory"?"map-memory-mode":selected==="trails"?"map-trails-mode":"map-place-mode")+
-      '"><div class="map-pan-layer"><div class="map-region-label map-label-west">FUJI FIVE LAKES / YAMANASHI</div>'+
+      '"><div class="map-pan-layer" style="width:'+MAP_SURFACE.width+'px;height:'+MAP_SURFACE.height+'px"><div class="map-region-label map-label-west">FUJI FIVE LAKES / YAMANASHI</div>'+
       '<div class="map-region-label map-label-east">KANTO / KANSAI / OKINAWA</div><svg class="map-connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'+
       '<defs><marker id="map-route-arrow" markerWidth="4" markerHeight="4" refX="3" refY="2" orient="auto"><path d="M0,0 L4,2 L0,4 z"></path></marker></defs>'+
       paths+'</svg>'+nodes+'</div></div><p class="map-disclaimer">'+
