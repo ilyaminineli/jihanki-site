@@ -45,6 +45,9 @@ try{
     await page.goto(BASE,{waitUntil:"domcontentloaded"});
     await page.locator("#machine-image").waitFor({state:"attached"});
     await page.waitForFunction(()=>window.JIHANKI_MACHINE&&window.JIHANKI_ARCHIVE?.length>0);
+    // Random one-off kiosk anomalies can replace the HOME screen between unrelated
+    // assertions. Keep this layout/interaction suite deterministic; live behaviour is unchanged.
+    await page.evaluate(()=>{if(window.JIHANKI_ANOMALIES)window.JIHANKI_ANOMALIES.maybe=()=>false;});
     const geometry=await page.evaluate(()=>{
       const box=selector=>{const r=document.querySelector(selector).getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom};};
       return{width:innerWidth,height:innerHeight,scrollWidth:document.documentElement.scrollWidth,scrollHeight:document.documentElement.scrollHeight,
