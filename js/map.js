@@ -333,7 +333,7 @@
       '>PINS</button></div></div>'+(selected==="pins"?'<div class="map-pin-references">'+pinsMarkup()+'</div>':
       '<div class="map-legend">'+legend+'</div><div class="map-canvas '+(selected==="memory"?"map-memory-mode":selected==="trails"?"map-trails-mode":"map-place-mode")+
       '"><div class="map-pan-layer" style="width:'+MAP_SURFACE.width+'px;height:'+MAP_SURFACE.height+'px">'+
-      '<div class="map-region-label map-label-west">FUJI FIVE LAKES / YAMANASHI</div><div class="map-region-label map-label-east">KANTO / KANSAI / OKINAWA</div>'+
+      '<div class="map-region-label map-label-west">JAPAN / 47 PREFECTURES</div><div class="map-region-label map-label-east">WGS84 ANCHORS / APPROXIMATE</div>'+
       '<div class="map-prefecture-backdrop"><img src="assets/maps/japan-prefectures.svg" alt="" aria-hidden="true"></div>'+
       '<svg class="map-leaders" viewBox="0 0 '+MAP_SURFACE.width+' '+MAP_SURFACE.height+'" aria-hidden="true">'+leaders+'</svg>'+
       '<svg class="map-connections" viewBox="0 0 '+MAP_SURFACE.width+' '+MAP_SURFACE.height+'" preserveAspectRatio="none" aria-hidden="true">'+
@@ -375,8 +375,13 @@
         bottom:Math.max(...boxes.map(box=>box.bottom))
       };
     };
+    // Country-level views fit the complete prefecture SVG. Trail view instead
+    // frames only its stops, so a short regional sequence remains readable.
+    const viewBounds=()=>canvas.classList.contains("map-trails-mode")
+      ?contentBounds()
+      :{left:0,top:0,right:layer.offsetWidth,bottom:layer.offsetHeight};
     const clampPosition=(x,y,scale)=>{
-      const bounds=contentBounds();
+      const bounds=viewBounds();
       const width=bounds.right-bounds.left,height=bounds.bottom-bounds.top;
       const minX=width*scale<=canvas.clientWidth
         ?(canvas.clientWidth-width*scale)/2-bounds.left*scale
@@ -403,7 +408,7 @@
       if(zoomReadout)zoomReadout.textContent=Math.round(scale*100)+"%";
     };
     const fit=()=>{
-      const bounds=contentBounds(),width=Math.max(1,bounds.right-bounds.left),height=Math.max(1,bounds.bottom-bounds.top);
+      const bounds=viewBounds(),width=Math.max(1,bounds.right-bounds.left),height=Math.max(1,bounds.bottom-bounds.top);
       const padding=Math.min(42,Math.max(18,Math.round(Math.min(canvas.clientWidth,canvas.clientHeight)*.055)));
       const scale=clampScale(Math.min((canvas.clientWidth-padding*2)/width,(canvas.clientHeight-padding*2)/height,1.5));
       const x=(canvas.clientWidth-width*scale)/2-bounds.left*scale;
