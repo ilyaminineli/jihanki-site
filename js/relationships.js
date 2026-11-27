@@ -59,7 +59,7 @@
       { id:"daily-2026-08-03", kind:"field-visit-context", label:"KOBA-SAN VISIT / 3 AUGUST" }
     ],
     "photo-intake-addition-5": [
-      { id:"daily-2026-07-25", kind:"field-visit-photograph", label:"ON-SEN YURARI / UNO-MISAKI TUNNEL VISIT" },
+      { id:"daily-2026-07-25", kind:"field-visit-photograph", label:"ONSEN YURARI / UNO-MISAKI TUNNEL VISIT" },
       { id:"tunnel", kind:"project-source", label:"UNO-MISAKI / TUNNEL AUDIOVISUAL WORK" },
       { id:"daily-2026-07-24", kind:"field-encounter-context", label:"SHIKI / FUJI-AREA ENCOUNTER MEMORY" },
       { id:"shiki", kind:"subject-audiovisual-work", label:"SHIKI / DEER SUBJECT" },
@@ -259,8 +259,7 @@
       stops:["Kawaguchiko","Kyoto","Osaka","Kawaguchiko"],
       mode:"CONFIRMED CAR JOURNEY",
       description:"A confirmed regional car journey. The ordered stops are preserved, including the return to Kawaguchiko; the line is not a measured road trace."
-    }
-,
+    },
     {
       id:"saiko-first-summit-2026-07-27",
       kind:"hiking-sequence",
