@@ -18,6 +18,7 @@ The files in this directory are intentionally chronological. They preserve the p
 - [2026-07-29 — Ryugu Cave / Koyodai](./2026-07-29.md)
 - **2026-07-30 — no standalone chapter in the uploaded source**
 - [2026-07-31 — Gakupo Birthday](./2026-07-31.md)
+- [2026-07-31 — Forwarded map pins / place identification](./2026-07-31-map-pins.md)
 - [2026-08-01 — Entering Fuji](./2026-08-01.md)
 - [2026-08-02 — Hanabi](./2026-08-02.md)
 - [2026-08-03 — Machines / Memory / The Hidden History](./2026-08-03.md)
