@@ -283,10 +283,18 @@
     {
       id:"saiko-first-summit-2026-07-27",
       kind:"hiking-sequence",
-      title:"LAKE SAIKO → FIRST SUMMIT NEAR SAIKO",
+      title:"SAIKONEON → FIRST SUMMIT NEAR SAIKO",
       stops:["Lake Saiko","First summit near Saiko"],
-      mode:"HIKING / FIRST SUMMIT OUTING",
-      description:"The traveller confirms addition_5 (17)–(21) belong to the first summit visit near Saiko, linked to the 27 July ascent chapter. The direction board shows Yamanakako and Myōjin-yama, but the exact summit name and trail are not resolved. This line is a schematic memory sequence, not a surveyed path."
+      mode:"27 JULY / DOCUMENTED HIKING OUTING",
+      mapLine:false,
+      description:"The 27 July account records a direct ascent from Saikoneon, a difficult slope, a ridge trail and two remembered checkpoints. The two map pins are regional references only: no route line, summit coordinate or exact trail is asserted. The five Addition_5 photographs below document the outing.",
+      stages:[
+        {title:"DEPARTURE / SAIKONEON",detail:"The ascent began directly from the Saikoneon residence. Lake Saiko is retained as regional context, not as a precise trailhead coordinate."},
+        {title:"ASCENT / FINDING THE RIDGE TRAIL",detail:"The ground was steep and sliding. Eli found a metal hook and used it to help Taki climb; a trail was eventually found through the ridge."},
+        {title:"MANYŌSHŪ STONE",detail:"One of the two important checkpoints recorded in the daily note. The stone preserves a tanka associated with Mount Fuji."},
+        {title:"CLOUD VIEWPOINT",detail:"The second recorded checkpoint: a viewpoint with a wooden structure, where clouds passed through the landscape and several videos were recorded."}
+      ],
+      photoIds:["photo-219","photo-220","photo-221","photo-222","photo-223"]
     },
     {
       id:"first-tokyo-road-trip-2026-07-24",
