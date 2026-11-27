@@ -329,9 +329,20 @@ try{
       node.querySelector(".map-pin-jp")&&node.querySelector(".map-pin-count")&&
       getComputedStyle(node).borderRadius!=="50%"&&
       getComputedStyle(node).borderColor.includes("125")&&
-      node.getBoundingClientRect().width>=130));
+      node.offsetWidth>=130));
     assert(crtLabels,device.name+": CRT phosphor label hierarchy or frame is missing");
     assert(map.overflow==="hidden",device.name+": pannable map viewport must clip its inner surface");
+    assert(await page.locator(".map-view-controls [data-map-fit]").count()===1,device.name+": map fit control missing");
+    const initialZoom=Number((await page.locator("[data-map-zoom-level]").textContent()).replace("%",""));
+    await page.locator('[data-map-zoom="out"]').click();
+    const zoomedOut=Number((await page.locator("[data-map-zoom-level]").textContent()).replace("%",""));
+    assert(zoomedOut<initialZoom,device.name+": zoom-out control did not reduce scale");
+    await page.locator('[data-map-zoom="in"]').click();
+    const zoomedIn=Number((await page.locator("[data-map-zoom-level]").textContent()).replace("%",""));
+    assert(zoomedIn>zoomedOut,device.name+": zoom-in control did not increase scale");
+    await page.locator("[data-map-fit]").click();
+    assert(await page.locator(".map-memory-mode .map-connections line").count()===30,
+      device.name+": a curated geographic relationship is missing from Memory Network");
     for(const pin of map.pins){
       // Pins live on the intentionally wider pan surface, not necessarily inside
       // the currently visible viewport. Check the actual coordinate surface.
@@ -350,6 +361,14 @@ try{
     assert(await page.locator(".map-memory-mode").count()===1,device.name+": memory map mode failed");
     assert(await page.evaluate(()=>document.querySelector("#artifact").contains(document.activeElement)),device.name+": map dialog did not own keyboard focus");
     await page.locator('[data-map-mode="trails"]').click();
+    const trailsFit=await page.evaluate(()=>{
+      const canvas=document.querySelector(".map-canvas").getBoundingClientRect();
+      return [...document.querySelectorAll(".map-trails-mode .map-pin")].map(node=>{
+        const box=node.getBoundingClientRect();
+        return box.left>=canvas.left-1&&box.right<=canvas.right+1&&box.top>=canvas.top-1&&box.bottom<=canvas.bottom+1;
+      });
+    });
+    assert(trailsFit.length===10&&trailsFit.every(Boolean),device.name+": one or more Trail stops opened outside the fitted viewport");
     const summitPhotos=await page.locator(".map-trail-photo-grid button").evaluateAll(nodes=>nodes.map(node=>node.dataset.mapPhoto));
     assert(summitPhotos.join(",")==="photo-219,photo-220,photo-221,photo-222,photo-223",device.name+": Saiko summit evidence photos are missing or reordered: "+summitPhotos.join(","));
     assert(await page.locator(".map-trail-stages li").count()===4,device.name+": Saiko summit field sequence is incomplete");
