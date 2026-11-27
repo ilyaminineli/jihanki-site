@@ -472,7 +472,28 @@
     canvas.addEventListener("pointercancel",finish);
     canvas.addEventListener("lostpointercapture",finish);
 
+    canvas.__jihankiMapController={read,write,fit};
     fit();
   }
-  window.JIHANKI_MAP={render,bind,positions:GEO_COORDS,trails:TRAILS,pinReferences:PIN_REFERENCES};
+  function snapshot(root) {
+    const canvas=root?.querySelector?.(".map-canvas");
+    const layer=canvas?.querySelector?.(".map-pan-layer");
+    if(!canvas||!layer)return null;
+    const mode=canvas.classList.contains("map-memory-mode")?"memory":
+      canvas.classList.contains("map-trails-mode")?"trails":"geography";
+    return {
+      mode,
+      x:Number(layer.dataset.panX||0),
+      y:Number(layer.dataset.panY||0),
+      scale:Number(layer.dataset.panScale||1)
+    };
+  }
+  function restore(root,state) {
+    const canvas=root?.querySelector?.(".map-canvas");
+    const controller=canvas?.__jihankiMapController;
+    if(!controller||!state)return false;
+    controller.write(Number(state.x)||0,Number(state.y)||0,Number(state.scale)||1);
+    return true;
+  }
+  window.JIHANKI_MAP={render,bind,snapshot,restore,positions:GEO_COORDS,trails:TRAILS,pinReferences:PIN_REFERENCES};
 })();

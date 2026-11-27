@@ -26,6 +26,7 @@
   let lastFocusedElement = null;
   let artifactRenderToken = 0;
   let museumTab = "overview";
+  let mapReturnContext = null;
 
   function announce(message) {
     if (announcer) announcer.textContent = String(message || "");
@@ -61,17 +62,19 @@
       " / " + transaction.receiptCode;
   }
   function updateCreditDisplay() {
+    const displayedCredits = Math.max(0, Math.min(interactionModel.LIMITS.credits, Number(interactionState.credits) || 0));
+    credits = displayedCredits;
     if (creditDisplay) {
-      const tokens = Array.from({length:credits}, (_,index) => {
+      const tokens = Array.from({length:displayedCredits}, (_,index) => {
         const size = Math.max(4.5,12-index*0.8);
         return '<i class="credit-token" data-credit-token aria-hidden="true" style="--token-size:'+size+'px"></i>';
       }).join("");
       creditDisplay.innerHTML = '<span class="credit-token-stack" aria-hidden="true">'+tokens+'</span>' +
-        '<span class="credit-count">CREDITS / '+credits+'</span>';
-      creditDisplay.setAttribute("aria-label","Credits / "+credits);
+        '<span class="credit-count">CREDITS / '+displayedCredits+'</span>';
+      creditDisplay.setAttribute("aria-label","Credits / "+displayedCredits);
     }
     const balance = artifactContent.querySelector(".artifact-credit-status");
-    if (balance) balance.textContent = "CREDIT BALANCE / " + credits;
+    if (balance) balance.textContent = "CREDIT BALANCE / " + displayedCredits;
   }
   function audioStateForView() {
     if (maintenanceActive || currentView === "service") return "service";
@@ -186,12 +189,14 @@
   resizeJihanki();
 
   function showHome() {
+    mapReturnContext = null;
     applyTransition("NAVIGATE_HOME");
     window.JIHANKI_AUDIO.setState("idle");
     updateCreditDisplay();
     const collectionCount = window.JIHANKI_COLLECTION.count();
     const rotation = window.JIHANKI_ROTATION.current();
-    const muteLabel = window.JIHANKI_AUDIO.isMuted() ? "AMBIENCE / OFF" : "AMBIENCE / ON";
+    const soundMuted = window.JIHANKI_AUDIO.isMuted();
+    const soundLabel = soundMuted ? "SOUND / OFF" : "SOUND / ON";
     const machineLine = window.JIHANKI_PERSONALITY?.homeLine() || "SELECT A MEMORY";
     screen.innerHTML = '<div class="boot home-boot"><div class="boot-japanese">自販機</div><div class="boot-title">JIHANKI</div><div class="boot-subtitle">MEMORY ARCHIVE</div><div class="boot-loading">' + esc(machineLine) + '</div>' +
       '<div class="home-primary"><button type="button" data-home-action="installation">ENTER SOUND LAB ↗</button>' +
@@ -202,11 +207,15 @@
         '<button type="button" data-home-action="search">SEARCH</button></div>' +
       '<div class="home-archive-tools"><span>ARCHIVE</span>' +
         '<button type="button" data-home-action="rotation">ROTATION / ' + rotation.items.length + '</button>' +
-        '<button type="button" data-home-action="temporal">CHRONOLOGY</button></div>' +
-      '<button type="button" class="home-audio" data-home-action="audio">' + muteLabel + '</button></div>';
+        '<button type="button" data-home-action="temporal">CHRONOLOGY</button>' +
+        '<button type="button" class="home-audio" data-home-action="audio" aria-label="Toggle background ambience and vending-machine sound effects" aria-pressed="' + (!soundMuted) + '">' + soundLabel + '</button></div></div>';
     announce("JIHANKI home. Sound Lab, collection, memory map, search and archive chronology. " + collectionCount + " collected works. " + machineLine);
   }
   function showMessage(title, subtitle, footer) {
+    if (title === "COIN ACCEPTED") {
+      const balance = interactionState.credits;
+      subtitle = balance + " CREDIT" + (balance === 1 ? "" : "S");
+    }
     screen.innerHTML = '<div class="boot"><div class="boot-title">' + esc(title) + '</div><div class="boot-subtitle">' + esc(subtitle || "") + '</div><div class="boot-loading">' + esc(footer || "") + '</div></div>';
     announce([title, subtitle, footer].filter(Boolean).join(". "));
     updateCreditDisplay();
@@ -231,9 +240,39 @@
       '<p class="exploration-footnote">Search includes titles, descriptions, dates, contributors and known locations.</p>';
     openSystemPanel("ARCHIVE SEARCH", content);
     const input = artifactContent.querySelector("#archive-search-input");
-    if (input) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
+    const touchFirst = !!(window.matchMedia?.("(pointer: coarse)").matches || navigator.maxTouchPoints > 0);
+    if (input && !touchFirst) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
   }
-  function openMap(mode) { openSystemPanel("記憶の地図", window.JIHANKI_MAP.render(mode || "memory")); window.JIHANKI_MAP.bind(artifactContent); }
+  function openMap(mode, snapshot) {
+    if (!snapshot) mapReturnContext = null;
+    openSystemPanel("記憶の地図", window.JIHANKI_MAP.render(mode || "memory"));
+    window.JIHANKI_MAP.bind(artifactContent);
+    if (snapshot) window.JIHANKI_MAP.restore(artifactContent, snapshot);
+  }
+  function rememberMapReturn() {
+    const snapshot = window.JIHANKI_MAP?.snapshot(artifactContent);
+    if (snapshot) mapReturnContext = snapshot;
+    return !!snapshot;
+  }
+  function openMapRecord(item) {
+    rememberMapReturn();
+    openItem(item);
+  }
+  function openMapLocation(place) {
+    rememberMapReturn();
+    showLocation(place);
+  }
+  function mapReturnMarkup() {
+    return mapReturnContext
+      ? '<div class="map-expedition-return"><button type="button" data-return-map>← BACK TO MAP / EXPEDITION</button></div>'
+      : "";
+  }
+  function returnToMap() {
+    const snapshot = mapReturnContext;
+    if (!snapshot) return;
+    mapReturnContext = null;
+    openMap(snapshot.mode, snapshot);
+  }
   function openArchaeology(item) {
     if (!item) return;
     openSystemPanel("MEMORY ARCHAEOLOGY", '<div class="exploration-return"><button type="button" data-panel-back="' + esc(item.id) +
@@ -292,7 +331,10 @@
     artifactContent.querySelectorAll("audio,video").forEach(media => { try { media.pause(); } catch (_) { } });
     window.JIHANKI_AUDIO.clearMedia();
     activeArtifact = null;
-    if (wasOpen) applyTransition("CLOSE_OVERLAY");
+    if (wasOpen) {
+      if (!artifactContent.querySelector(".memory-map-panel")) mapReturnContext = null;
+      applyTransition("CLOSE_OVERLAY");
+    }
     window.JIHANKI_AUDIO.setState(audioStateForView());
     if (wasOpen && lastFocusedElement && lastFocusedElement.isConnected) lastFocusedElement.focus();
     lastFocusedElement = null;
@@ -467,6 +509,7 @@
     const date = item.date || "UNDATED";
     const author = item.author || "ARCHIVE";
     artifactContent.innerHTML =
+      mapReturnMarkup() +
       (receipt ? window.JIHANKI_RECEIPTS.markup(receipt) : "") +
       (receipt ? transactionConfirmationMarkup() : "") +
       (window.JIHANKI_COLLECTION?.objectMarkup(item.id, receipt?.code) || "") +
@@ -573,6 +616,7 @@
         '<small>'+esc(item.date||"UNDATED")+'</small></span></button>';
     }).join("");
     screen.innerHTML = '<div class="archive"><div class="archive-header"><span class="archive-title">' + esc(place.toUpperCase()) + '</span><span class="archive-status">' + records.length + ' RECORDS</span></div>' +
+      mapReturnMarkup() +
       (records.length ? html : '<div class="archive-item">NO MEMORY RECORDED</div>') + '</div>';
     window.JIHANKI_EVENTS.record("location-opened", { place, count: records.length });
     announce(place + ". " + records.length + " associated records.");
@@ -803,6 +847,8 @@
   document.getElementById("artifact-close").addEventListener("click", closeArtifact);
   artifact.addEventListener("click", event => { if (event.target === artifact) closeArtifact(); });
   artifactContent.addEventListener("click", event => {
+    const mapReturn = event.target.closest("[data-return-map]");
+    if (mapReturn) { returnToMap(); return; }
     const temporalMap = event.target.closest("[data-temporal-map]");
     if (temporalMap) { openMap("memory"); return; }
     const temporalRandom = event.target.closest("[data-temporal-random]");
@@ -873,13 +919,13 @@
     const back = event.target.closest("[data-panel-back]");
     if (back) { const item = byId(back.dataset.panelBack); if (item) openItem(item); return; }
     const mapPinNote = event.target.closest("[data-map-pin-note]");
-    if (mapPinNote) { const item = byId(mapPinNote.dataset.mapPinNote); if (item) openItem(item); return; }
+    if (mapPinNote) { const item = byId(mapPinNote.dataset.mapPinNote); if (item) openMapRecord(item); return; }
     const mapTrailNote = event.target.closest("[data-map-trail-note]");
-    if (mapTrailNote) { const item = byId(mapTrailNote.dataset.mapTrailNote); if (item) openItem(item); return; }
+    if (mapTrailNote) { const item = byId(mapTrailNote.dataset.mapTrailNote); if (item) openMapRecord(item); return; }
     const mapPhoto = event.target.closest("[data-map-photo]");
-    if (mapPhoto) { const item = byId(mapPhoto.dataset.mapPhoto); if (item) openItem(item); return; }
+    if (mapPhoto) { const item = byId(mapPhoto.dataset.mapPhoto); if (item) openMapRecord(item); return; }
     const mapPlace = event.target.closest("[data-map-place]");
-    if (mapPlace) { showLocation(mapPlace.dataset.mapPlace); return; }
+    if (mapPlace) { openMapLocation(mapPlace.dataset.mapPlace); return; }
     const mapMode = event.target.closest("[data-map-mode]");
     if (mapMode) { openMap(mapMode.dataset.mapMode); return; }
     const openMapButton = event.target.closest("[data-open-map]");
@@ -985,6 +1031,8 @@
   });
 
   screen.addEventListener("click", event => {
+    const mapReturn = event.target.closest("[data-return-map]");
+    if (mapReturn) { returnToMap(); return; }
     const homeAction = event.target.closest("[data-home-action]");
     if (homeAction) {
       const action = homeAction.dataset.homeAction;
@@ -997,8 +1045,9 @@
       if (action === "audio") {
         const muted = window.JIHANKI_AUDIO.toggleMute();
         window.JIHANKI_EVENTS.record("ambient-control", { muted });
-        if (maintenanceActive) window.JIHANKI_MAINTENANCE.render("ambient");
-        else showHome();
+        homeAction.textContent = muted ? "SOUND / OFF" : "SOUND / ON";
+        homeAction.setAttribute("aria-pressed", String(!muted));
+        homeAction.setAttribute("aria-label", "Toggle background ambience and vending-machine sound effects");
         return;
       }
     }

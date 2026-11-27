@@ -88,6 +88,7 @@
     muted = typeof forceValue === "boolean" ? forceValue : !muted;
     try { localStorage.setItem(MUTE_KEY, muted ? "1" : "0"); } catch (_) { }
     loop.muted = muted;
+    if (!muted) start();
     window.JIHANKI_EVENTS?.record(muted ? "ambient-muted" : "ambient-unmuted", {});
     return muted;
   }

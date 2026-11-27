@@ -2386,3 +2386,86 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .memory-map-panel .map-memory-mode .map-connections line.map-edge-connected-to {stroke:rgba(206,255,224,.98);stroke-width:5;stroke-dasharray:10 5;}
 .memory-map-panel .map-memory-mode .map-connections line.map-edge-transit-corridor {stroke:rgba(255,246,214,.98);stroke-width:6;stroke-dasharray:14 5 2 5;}
 .memory-map-panel .map-mode-switch [data-map-mode="pins"] {display:none !important;}
+
+
+/* M65 — visible sound switch, restrained physical controls and map return. */
+#archive-search-input {
+  font:16px/1.35 "Courier New",monospace !important;
+  min-height:44px;
+  touch-action:manipulation;
+}
+.home-boot .boot-japanese {
+  font-size:23px;
+  letter-spacing:.12em;
+  margin-left:.12em;
+  line-height:1.05;
+  white-space:nowrap;
+  transform:translateX(-10px);
+}
+.home-archive-tools { gap:3px; }
+.home-archive-tools button.home-audio {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  min-width:58px;
+  min-height:19px;
+  margin:0;
+  padding:3px 5px;
+  border:1px solid rgba(220,220,220,.34);
+  background:rgba(0,0,0,.52);
+  color:rgba(245,245,245,.9);
+  font:6px/1 "Courier New",monospace;
+  letter-spacing:.08em;
+  opacity:1;
+  touch-action:manipulation;
+}
+.home-archive-tools button.home-audio:hover,
+.home-archive-tools button.home-audio:focus-visible {
+  border-color:rgba(255,255,255,.58);
+  background:rgba(255,255,255,.08);
+  color:#fff;
+}
+@media (hover:hover) and (pointer:fine) {
+  #coin-button:hover,
+  #home-button:hover {
+    background:transparent !important;
+    border-color:transparent !important;
+    box-shadow:none !important;
+  }
+  #memory-button:hover {
+    background:rgba(0,0,0,.58) !important;
+    border-color:rgba(255,255,255,.10) !important;
+    color:rgba(220,220,220,.52) !important;
+    box-shadow:inset 0 0 18px rgba(0,0,0,.75) !important;
+  }
+}
+#coin-button:focus:not(:focus-visible),
+#home-button:focus:not(:focus-visible),
+#memory-button:focus:not(:focus-visible) {
+  outline:none !important;
+}
+.map-expedition-return {
+  display:flex;
+  margin:0 0 12px;
+}
+.map-expedition-return button {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  max-width:100%;
+  padding:9px 12px;
+  border:1px solid rgba(151,211,166,.42);
+  background:rgba(26,67,37,.16);
+  color:#c0e0c8;
+  font:9px/1.3 "Courier New",monospace;
+  letter-spacing:.09em;
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.map-expedition-return button:hover,
+.map-expedition-return button:focus-visible {
+  border-color:rgba(211,247,219,.78);
+  background:rgba(45,108,59,.24);
+}

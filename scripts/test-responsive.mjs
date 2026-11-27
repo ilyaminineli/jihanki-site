@@ -65,6 +65,8 @@ try{
       collection:!!document.querySelector(".home-actions [data-home-action='collection']"),
       map:!!document.querySelector(".home-actions [data-home-action='map']"),
       search:!!document.querySelector(".home-actions [data-home-action='search']"),
+      sound:document.querySelector(".home-audio")?.textContent.trim()||"",
+      soundButton:!!document.querySelector(".home-audio"),
       chronology:document.querySelector(".home-archive-tools [data-home-action='temporal']")?.textContent.trim()||"",
       machineMemory:!!document.querySelector('[data-home-action="personality"]')
     }));
@@ -72,6 +74,33 @@ try{
       device.name+": main home-screen tools are incomplete");
     assert(homeHierarchy.chronology==="CHRONOLOGY"&&!homeHierarchy.machineMemory,
       device.name+": home-screen archive/memory hierarchy was not simplified");
+    assert(homeHierarchy.soundButton&&homeHierarchy.sound.startsWith("SOUND /"),
+      device.name+": the labelled ambience / machine-sound switch is missing");
+    const soundButtonBox=await page.locator(".home-audio").boundingBox();
+    assert(soundButtonBox&&soundButtonBox.width>=55&&soundButtonBox.height>=18,
+      device.name+": the sound switch is too small to find or tap");
+    const initialMuted=await page.evaluate(()=>window.JIHANKI_AUDIO.isMuted());
+    await page.locator(".home-audio").click();
+    assert(await page.evaluate(()=>window.JIHANKI_AUDIO.isMuted())!==initialMuted,
+      device.name+": sound switch did not toggle ambience and machine effects");
+    assert((await page.locator(".home-audio").textContent()).trim()==="SOUND / "+(initialMuted?"ON":"OFF"),
+      device.name+": sound switch label did not reflect its state");
+    await page.locator(".home-audio").click();
+    assert(await page.evaluate(()=>window.JIHANKI_AUDIO.isMuted())===initialMuted,
+      device.name+": sound switch could not restore its previous state");
+    const wordmarkAudit=await page.evaluate(()=>{
+      const word=document.querySelector(".home-boot .boot-japanese").getBoundingClientRect();
+      const credit=document.querySelector("#credit-display").getBoundingClientRect();
+      const screen=document.querySelector("#screen").getBoundingClientRect();
+      return {word:{left:word.left,right:word.right,top:word.top,bottom:word.bottom},
+        credit:{left:credit.left,right:credit.right,top:credit.top,bottom:credit.bottom},
+        screen:{left:screen.left,right:screen.right}};
+    });
+    assert(wordmarkAudit.word.left>=wordmarkAudit.screen.left-1&&wordmarkAudit.word.right<=wordmarkAudit.screen.right+1,
+      device.name+": 自販機 wordmark extends outside the CRT");
+    assert(!(wordmarkAudit.word.right>wordmarkAudit.credit.left&&wordmarkAudit.word.left<wordmarkAudit.credit.right&&
+      wordmarkAudit.word.bottom>wordmarkAudit.credit.top&&wordmarkAudit.word.top<wordmarkAudit.credit.bottom),
+      device.name+": 自販機 wordmark overlaps the credit counter");
     const widthScale=Math.min(device.width/429,1);
     const fitScale=Math.min(widthScale,device.height/932,1);
     const shouldScroll=(device.width<=560||(device.width>device.height&&device.height<620))&&
@@ -228,9 +257,27 @@ try{
       await page.locator("#home-button").click();
     }
 
-    // A credit is a spendable token: the pile shrinks as more are inserted and decrements on dispensing.
+    // The centre feedback, top-right count and visible coin tokens all share one balance.
     await page.locator("#coin-button").click();
+    await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().credits===1);
+    const firstCoinAudit=await page.evaluate(()=>({
+      balance:window.JIHANKI_MACHINE.getState().credits,
+      tokens:document.querySelectorAll("#credit-display [data-credit-token]").length,
+      counter:document.querySelector(".credit-count")?.textContent.trim(),
+      feedback:document.querySelector("#screen-content .boot-subtitle")?.textContent.trim()
+    }));
+    assert(firstCoinAudit.balance===1&&firstCoinAudit.tokens===1&&firstCoinAudit.counter==="CREDITS / 1"&&firstCoinAudit.feedback==="1 CREDIT",
+      device.name+": first coin feedback and counters do not agree: "+JSON.stringify(firstCoinAudit));
     await page.locator("#coin-button").click();
+    await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().credits===2);
+    const secondCoinAudit=await page.evaluate(()=>({
+      balance:window.JIHANKI_MACHINE.getState().credits,
+      tokens:document.querySelectorAll("#credit-display [data-credit-token]").length,
+      counter:document.querySelector(".credit-count")?.textContent.trim(),
+      feedback:document.querySelector("#screen-content .boot-subtitle")?.textContent.trim()
+    }));
+    assert(secondCoinAudit.balance===2&&secondCoinAudit.tokens===2&&secondCoinAudit.counter==="CREDITS / 2"&&secondCoinAudit.feedback==="2 CREDITS",
+      device.name+": second coin feedback contains a duplicate or off-by-one credit: "+JSON.stringify(secondCoinAudit));
     const coinPile=await page.evaluate(()=>[...document.querySelectorAll("#credit-display [data-credit-token]")]
       .map(token=>parseFloat(getComputedStyle(token).width)));
     assert(coinPile.length===2,device.name+": two inserted credits were not drawn as two coin tokens");
@@ -399,9 +446,33 @@ try{
     const summitPhotos=await page.locator(".map-trail-photo-grid button").evaluateAll(nodes=>nodes.map(node=>node.dataset.mapPhoto));
     assert(summitPhotos.join(",")==="photo-219,photo-220,photo-221,photo-222,photo-223",device.name+": Saiko summit evidence photos are missing or reordered: "+summitPhotos.join(","));
     assert(await page.locator(".map-trail-stages li").count()===4,device.name+": Saiko summit field sequence is incomplete");
+    await page.locator('[data-map-mode="memory"]').click();
+    const mapBeforeReturn=await page.evaluate(()=>window.JIHANKI_MAP.snapshot(document.querySelector("#artifact-content")));
+    await page.evaluate(()=>{
+      const pin=document.querySelector(".map-pin-place-card");
+      if(!pin)throw new Error("No labelled map place to test return navigation.");
+      pin.dispatchEvent(new MouseEvent("click",{bubbles:true,cancelable:true}));
+    });
+    await page.locator("#screen-content [data-return-map]").waitFor();
+    await page.locator("#screen-content [data-return-map]").click();
+    await page.locator(".map-memory-mode").waitFor();
+    const mapAfterReturn=await page.evaluate(()=>window.JIHANKI_MAP.snapshot(document.querySelector("#artifact-content")));
+    assert(mapBeforeReturn?.mode==="memory"&&mapAfterReturn?.mode==="memory"&&
+      Math.abs(mapBeforeReturn.scale-mapAfterReturn.scale)<.001&&
+      Math.abs(mapBeforeReturn.x-mapAfterReturn.x)<1&&Math.abs(mapBeforeReturn.y-mapAfterReturn.y)<1,
+      device.name+": map expedition return did not restore the previous place, zoom and position");
     await page.keyboard.press("Escape");
     assert(await page.locator("#artifact.open").count()===0,device.name+": Escape failed to close map");
     await page.locator('[data-home-action="search"]').click();
+    const searchMobileAudit=await page.evaluate(()=>{
+      const input=document.querySelector("#archive-search-input");
+      return {fontSize:parseFloat(getComputedStyle(input).fontSize),focused:document.activeElement===input,scale:window.visualViewport?.scale||1};
+    });
+    if(device.hasTouch){
+      assert(searchMobileAudit.fontSize>=16,device.name+": search input is below iOS's no-auto-zoom size");
+      assert(!searchMobileAudit.focused,device.name+": archive search opened with the iPhone keyboard focused");
+    }
+    assert(Math.abs(searchMobileAudit.scale-1)<.02,device.name+": opening search zoomed the whole page");
     await page.locator("#archive-search-input").fill("Fuji");
     assert(await page.locator("[data-search-open]").count()>0,device.name+": search returned no Fuji records");
     await page.keyboard.press("Escape");
