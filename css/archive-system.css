@@ -2554,3 +2554,54 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   padding:5px 6px;
   border:1px solid rgba(255,255,255,.2);
 }
+
+
+/* M73 — invisible physical hit areas for COIN and HOME.
+   Do not draw the 60×60 pointer/focus rectangle over the machine photograph.
+   Keyboard focus remains indicated by a small contour that follows the actual control. */
+#coin-button,
+#home-button,
+#coin-button:hover,
+#home-button:hover,
+#coin-button:focus,
+#home-button:focus,
+#coin-button:active,
+#home-button:active {
+  border-color:transparent !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  color:transparent !important;
+  outline:none !important;
+  transform:none !important;
+}
+#coin-button::after,
+#home-button::after {
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  display:block;
+  pointer-events:none;
+  opacity:0;
+  transform:translate(-50%,-50%);
+  transition:opacity .12s ease;
+}
+#coin-button::after {
+  width:25px;
+  height:25px;
+  border:1px solid rgba(235,235,235,.28);
+  border-radius:50%;
+}
+#home-button::after {
+  width:22px;
+  height:18px;
+  border:1px solid rgba(235,235,235,.24);
+  border-radius:2px;
+}
+#coin-button:focus-visible::after,
+#home-button:focus-visible::after {
+  opacity:.8;
+}
+@media(prefers-reduced-motion:reduce) {
+  #coin-button::after,#home-button::after { transition:none; }
+}
