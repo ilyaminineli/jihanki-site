@@ -2533,7 +2533,6 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .listening-pending span { color:#aaa; font:8px "Courier New",monospace; }
 .listening-pending small,.listening-room-footnote { color:#777; font:8px/1.5 "Courier New",monospace; }
 .listening-room-footnote { margin:0; }
-.home-primary .home-listening { min-height:22px; border-color:rgba(255,255,255,.28); background:transparent; color:#aaa; font-size:7px; }
 @media(max-width:560px) {
   .listening-room-card-header { align-items:flex-start; flex-direction:column; }
   .listening-room-card-header button { width:100%; min-height:40px; }
@@ -2576,33 +2575,34 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   transform:none !important;
 }
 #coin-button::after,
-#home-button::after {
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  display:block;
-  pointer-events:none;
-  opacity:0;
-  transform:translate(-50%,-50%);
-  transition:opacity .12s ease;
+#home-button::after { content:none !important; }
+
+
+/* M73 refinement — unmarked physical hit zones; keep only the printed hardware labels. */
+#coin-button,#home-button,
+#coin-button:hover,#home-button:hover,
+#coin-button:focus,#home-button:focus,
+#coin-button:active,#home-button:active {
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  outline:none !important;
 }
-#coin-button::after {
-  width:25px;
-  height:25px;
-  border:1px solid rgba(235,235,235,.28);
-  border-radius:50%;
+#coin-button:focus-visible,#home-button:focus-visible {
+  outline:1px dotted rgba(235,235,235,.20) !important;
+  outline-offset:-9px !important;
 }
-#home-button::after {
-  width:22px;
-  height:18px;
-  border:1px solid rgba(235,235,235,.24);
-  border-radius:2px;
-}
-#coin-button:focus-visible::after,
-#home-button:focus-visible::after {
-  opacity:.8;
-}
-@media(prefers-reduced-motion:reduce) {
-  #coin-button::after,#home-button::after { transition:none; }
+.sound-suite { display:grid; gap:12px; color:#ddd; }
+.sound-suite-tabs { position:sticky; top:0; z-index:4; display:grid; grid-template-columns:1fr 1fr; gap:5px;
+  padding:5px 0 8px; background:linear-gradient(#080808 82%,rgba(8,8,8,0)); }
+.sound-suite-tabs button { min-height:42px; padding:8px 7px; border:1px solid rgba(255,255,255,.18);
+  background:#101010; color:#888; font:8px "Courier New",monospace; letter-spacing:.08em; cursor:pointer; }
+.sound-suite-tabs button[aria-selected="true"] { border-color:rgba(255,255,255,.58); background:#e8e8e8; color:#080808; }
+.sound-suite-panel[hidden] { display:none !important; }
+.sound-suite-panel { min-width:0; }
+.sound-suite-panel .sound-installation,
+.sound-suite-panel .listening-room { min-width:0; }
+@media(max-width:380px) {
+  .sound-suite-tabs { gap:4px; }
+  .sound-suite-tabs button { min-height:44px; padding:7px 4px; font-size:7px; letter-spacing:.04em; }
 }
