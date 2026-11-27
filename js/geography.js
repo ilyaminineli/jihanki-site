@@ -47,6 +47,7 @@
     "photo-200": ["Shinsaibashi", "Osaka"],
     "photo-202": ["Miyuki Beach", "Onna", "Okinawa"],
     "daily-2026-08-03": ["Lake Saiko", "Satyam 1", "Kamikuishiki", "Fujikawaguchiko", "Yamanashi", "Mount Fuji"],
+    "photo-intake-addition-5": ["Uno-Misaki Tunnel", "Lake Yamanaka", "Lake Shōji", "Miyuki Beach", "Yamanashi", "Okinawa"],
   };
   const PLACES = {
     "Mount Fuji": "Mountain and surrounding landscape records",
@@ -62,6 +63,9 @@
     "Kawaguchiko Nostalgic Toys Museum": "Toy, monster-figure, electronic-game and Japanese record displays; called Kawaguchiko Retro Toys Museum in the expedition note",
     "Kawaguchiko Automobile Museum": "Automobile collection and seasonal Flight Hall aircraft displays in Narusawa",
     "Narusawa": "Yamanashi locality of the Kawaguchiko Automobile Museum / Flight Hall",
+    "Uno-Misaki Tunnel": "Tunnel named by the portal sign in the addition_5 intake; the 25 July chapter records a visit, but the new photograph's date is unconfirmed",
+    "Lake Yamanaka": "Named by the addition_5 national-park sign and navigation display; exact photographic camera position is not established",
+    "Lake Shōji": "精進湖, named on the addition_5 car navigation display; screen context only, not a confirmed route or camera position",
     "Katori": "The town locality visible in street and station signage",
     "Katori Station": "JR Katori Station, identified by the かとり station sign and matching station interior photographs",
     "Katori Jingu": "The vermilion tower-gate shrine identified by the Katori photo sequence",
