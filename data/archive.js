@@ -3817,909 +3817,906 @@ const ARCHIVE = {
         ],
         "related": []
       }
-    }
-,
-    [
-      {
-        "id": "photo-203",
-        "title": "Onsen Yurari no Nenba — entrance",
-        "date": "2026-07-25",
-        "type": "image",
-        "category": "photo",
-        "group": "Yamanashi / Onsen Yurari",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (1).jpg",
-        "description": "The traveller identifies this entrance as Onsen Yurari no Nenba. The vertical sign reads お食事処 ふじざくら (Fuji Zakura dining place).",
-        "metadata": {
-          "locations": [
-            "Onsen Yurari",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-25"
-          ]
-        }
-      },
-      {
-        "id": "photo-204",
-        "title": "Misty lake beneath a mountain ridge",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Fuji Five Lakes / unidentified lake view",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (2).jpg",
-        "description": "A misty lake and mountain panorama. The traveller tentatively remembers Lake Motosu, but is not confident; the lake remains unidentified.",
-        "metadata": {
-          "related": [
-            "daily-2026-07-24"
-          ]
-        }
-      },
-      {
-        "id": "photo-205",
-        "title": "Boats illuminated after dark",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Water / boats and night lights",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (3).jpg",
-        "description": "A row of illuminated boats. The traveller corrects the earlier interpretation as capsule-like objects; the water venue and event are not yet identified."
-      },
-      {
-        "id": "photo-206",
-        "title": "Uno-Misaki Tunnel — illuminated interior",
-        "date": "2026-07-25",
-        "type": "image",
-        "category": "photo",
-        "group": "Uno-Misaki Tunnel / passage and field recording",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (4).jpg",
-        "description": "The traveller confirms this is the interior of Uno-Misaki Tunnel (宇の岬トンネル), photographed during the 25 July visit. It belongs with the named portal in photo-251 and the Tunnel audiovisual work.",
-        "metadata": {
-          "locations": [
-            "Uno-Misaki Tunnel",
-            "Yamanashi"
-          ],
-          "related": [
-            "photo-251",
-            "daily-2026-07-25",
-            "tunnel"
-          ]
-        }
-      },
-      {
-        "id": "photo-207",
-        "title": "Shiki — deer encounter",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Lake Saiko / Shiki encounters",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (5).jpg",
-        "description": "The traveller confirms this deer is Shiki. The photograph is connected to the first Shiki appearance near Saiko on 22 July and the first close encounter on 24 July, but this frame is not individually dated.",
-        "metadata": {
-          "locations": [
-            "Lake Saiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-22",
-            "daily-2026-07-24",
-            "shiki",
-            "sound-08",
-            "sound-09"
-          ]
-        }
-      },
-      {
-        "id": "photo-208",
-        "title": "Roadside fire-hose cabinet and mailbox",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Japanese infrastructure / unidentified locality",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (6).jpg",
-        "description": "A roadside fire-hose cabinet / hydrant installation beside a mailbox. The exact place is unknown."
-      },
-      {
-        "id": "photo-209",
-        "title": "Kawaguchiko Retro Toys Museum — entrance figure",
-        "date": "2026-07-26",
-        "type": "image",
-        "category": "photo",
-        "group": "Kawaguchiko / Retro Toys Museum",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (7).jpg",
-        "description": "The blue character / statue at the entrance to Kawaguchiko Retro Toys Museum, confirmed by the traveller.",
-        "metadata": {
-          "locations": [
-            "Kawaguchiko Nostalgic Toys Museum",
-            "Kawaguchiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-26"
-          ]
-        }
-      },
-      {
-        "id": "photo-210",
-        "title": "Tinplate-car making display",
-        "date": "2026-07-26",
-        "type": "image",
-        "category": "photo",
-        "group": "Kawaguchiko / Retro Toys Museum",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (8).jpg",
-        "description": "A tinplate-car making / assembly display inside Kawaguchiko Retro Toys Museum, confirmed by the traveller.",
-        "metadata": {
-          "locations": [
-            "Kawaguchiko Nostalgic Toys Museum",
-            "Kawaguchiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-26"
-          ]
-        }
-      },
-      {
-        "id": "photo-211",
-        "title": "Toy figures and dolls",
-        "date": "2026-07-26",
-        "type": "image",
-        "category": "photo",
-        "group": "Kawaguchiko / Retro Toys Museum",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (9).jpg",
-        "description": "Toy figures and dolls displayed inside Kawaguchiko Retro Toys Museum.",
-        "metadata": {
-          "locations": [
-            "Kawaguchiko Nostalgic Toys Museum",
-            "Kawaguchiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-26"
-          ]
-        }
-      },
-      {
-        "id": "photo-212",
-        "title": "Framed retro toy and game display",
-        "date": "2026-07-26",
-        "type": "image",
-        "category": "photo",
-        "group": "Kawaguchiko / Retro Toys Museum",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (10).jpg",
-        "description": "A framed illustrated game / toy display inside Kawaguchiko Retro Toys Museum.",
-        "metadata": {
-          "locations": [
-            "Kawaguchiko Nostalgic Toys Museum",
-            "Kawaguchiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-26"
-          ]
-        }
-      },
-      {
-        "id": "photo-213",
-        "title": "Kirakira Star Knight DX display",
-        "date": "2026-07-26",
-        "type": "image",
-        "category": "photo",
-        "group": "Kawaguchiko / Retro Toys Museum",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (11).jpg",
-        "description": "A retro game display including キラキラスターナイトDX (Kirakira Star Knight DX), photographed inside Kawaguchiko Retro Toys Museum.",
-        "metadata": {
-          "locations": [
-            "Kawaguchiko Nostalgic Toys Museum",
-            "Kawaguchiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-26"
-          ]
-        }
-      },
-      {
-        "id": "photo-214",
-        "title": "Vintage dolls",
-        "date": "2026-07-26",
-        "type": "image",
-        "category": "photo",
-        "group": "Kawaguchiko / Retro Toys Museum",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (12).jpg",
-        "description": "Vintage dolls displayed inside Kawaguchiko Retro Toys Museum.",
-        "metadata": {
-          "locations": [
-            "Kawaguchiko Nostalgic Toys Museum",
-            "Kawaguchiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-26"
-          ]
-        }
-      },
-      {
-        "id": "photo-215",
-        "title": "Character and costume figures",
-        "date": "2026-07-26",
-        "type": "image",
-        "category": "photo",
-        "group": "Kawaguchiko / Retro Toys Museum",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (13).jpg",
-        "description": "A character-costume and figure display, including Star Wars figures, inside Kawaguchiko Retro Toys Museum.",
-        "metadata": {
-          "locations": [
-            "Kawaguchiko Nostalgic Toys Museum",
-            "Kawaguchiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-26"
-          ]
-        }
-      },
-      {
-        "id": "photo-216",
-        "title": "Plush and character toy display",
-        "date": "2026-07-26",
-        "type": "image",
-        "category": "photo",
-        "group": "Kawaguchiko / Retro Toys Museum",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (14).jpg",
-        "description": "Plush and character toys displayed inside Kawaguchiko Retro Toys Museum.",
-        "metadata": {
-          "locations": [
-            "Kawaguchiko Nostalgic Toys Museum",
-            "Kawaguchiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-26"
-          ]
-        }
-      },
-      {
-        "id": "photo-217",
-        "title": "Spillway beside the rope trail",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Mountain trails / water infrastructure",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (15).jpg",
-        "description": "A small spillway / water channel. The traveller places it near the rope trail; the exact trail and whether this means a rope-assisted path or a ropeway are not yet established."
-      },
-      {
-        "id": "photo-218",
-        "title": "Spider on an interior wall",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Small encounters / insects",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (16).jpg",
-        "description": "A spider photographed on a wall. The exact building, place and date remain unknown."
-      },
-      {
-        "id": "photo-219",
-        "title": "First summit near Saiko — boundary marker",
-        "date": "2026-07-27",
-        "type": "image",
-        "category": "photo",
-        "group": "Saiko / first summit outing",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (17).jpg",
-        "description": "A red boundary marker in woodland, photographed during the first summit outing near Saiko, confirmed by the traveller.",
-        "metadata": {
-          "locations": [
-            "First summit near Saiko",
-            "Lake Saiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-27"
-          ]
-        }
-      },
-      {
-        "id": "photo-220",
-        "title": "First summit near Saiko — Yamanakako and Myojin-yama direction sign",
-        "date": "2026-07-27",
-        "type": "image",
-        "category": "photo",
-        "group": "Saiko / first summit outing",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (18).jpg",
-        "description": "A weathered wooden direction sign with 山中湖 (Yamanakako) and 明神山 (Myojin-yama) visible. The traveller confirms this belongs to the first summit outing near Saiko; it does not by itself establish the summit's official name.",
-        "metadata": {
-          "locations": [
-            "First summit near Saiko",
-            "Lake Saiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "photo-219",
-            "photo-221",
-            "photo-222",
-            "photo-223",
-            "daily-2026-07-27"
-          ]
-        }
-      },
-      {
-        "id": "photo-221",
-        "title": "First summit near Saiko — forest steps and clearing",
-        "date": "2026-07-27",
-        "type": "image",
-        "category": "photo",
-        "group": "Saiko / first summit outing",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (19).jpg",
-        "description": "A forest clearing with timber steps / a small bridge, part of the first summit outing near Saiko.",
-        "metadata": {
-          "locations": [
-            "First summit near Saiko",
-            "Lake Saiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "photo-220",
-            "photo-222",
-            "photo-223",
-            "daily-2026-07-27"
-          ]
-        }
-      },
-      {
-        "id": "photo-222",
-        "title": "First summit near Saiko — bridge and mountain view",
-        "date": "2026-07-27",
-        "type": "image",
-        "category": "photo",
-        "group": "Saiko / first summit outing",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (20).jpg",
-        "description": "A road bridge and mountain view from the first summit outing near Saiko.",
-        "metadata": {
-          "locations": [
-            "First summit near Saiko",
-            "Lake Saiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "photo-220",
-            "photo-221",
-            "photo-223",
-            "daily-2026-07-27"
-          ]
-        }
-      },
-      {
-        "id": "photo-223",
-        "title": "First summit near Saiko — tree-mounted trail sign",
-        "date": "2026-07-27",
-        "type": "image",
-        "category": "photo",
-        "group": "Saiko / first summit outing",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (21).jpg",
-        "description": "A small sign attached to a tree beside the wooded path during the first summit outing near Saiko.",
-        "metadata": {
-          "locations": [
-            "First summit near Saiko",
-            "Lake Saiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "photo-220",
-            "photo-221",
-            "photo-222",
-            "daily-2026-07-27"
-          ]
-        }
-      },
-      {
-        "id": "photo-224",
-        "title": "Bamiyan restaurant sign on the Kawaguchiko–Tokyo journey",
-        "date": "2026-07-24",
-        "type": "image",
-        "category": "photo",
-        "group": "First Tokyo visit / roadside stop",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (22).jpg",
-        "description": "A Bamiyan restaurant sign photographed somewhere along the first journey from Kawaguchiko to Tokyo. The branch and exact roadside location remain unidentified.",
-        "metadata": {
-          "related": [
-            "daily-2026-07-24"
-          ]
-        }
-      },
-      {
-        "id": "photo-225",
-        "title": "Sports Box building",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Unidentified retail and roadside places",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (23).jpg",
-        "description": "A building with Sports Box signage. The city, exact branch and relationship to the nearby Bamiyan photograph are not established."
-      },
-      {
-        "id": "photo-226",
-        "title": "Lake Yamanaka — Fuji-Hakone-Izu National Park sign",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Lake Yamanaka / park signage",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (24).jpg",
-        "description": "A park sign naming Lake Yamanaka (山中湖) and Fuji-Hakone-Izu National Park, including the designation 特別保護地区. The exact camera position is not established.",
-        "metadata": {
-          "locations": [
-            "Lake Yamanaka",
-            "Yamanashi"
-          ],
-          "related": [
-            "photo-227"
-          ]
-        }
-      },
-      {
-        "id": "photo-227",
-        "title": "Car navigation display — Lake Shoji and Lake Yamanaka",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Fuji Five Lakes / navigation display",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (25).jpg",
-        "description": "The car navigation screen displays Lake Shoji (精進湖) and Lake Yamanaka (山中湖), with 9.1 km shown. This is screen information, not a GPS track or proof of the exact road taken.",
-        "metadata": {
-          "related": [
-            "photo-226"
-          ]
-        }
-      },
-      {
-        "id": "photo-228",
-        "title": "Shiki — second deer photograph",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Lake Saiko / Shiki encounters",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (26).jpg",
-        "description": "The traveller confirms this deer is Shiki. The photograph is connected to the Shiki encounters recorded on 22 and 24 July, but this frame is not individually dated.",
-        "metadata": {
-          "locations": [
-            "Lake Saiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-22",
-            "daily-2026-07-24",
-            "shiki",
-            "sound-08",
-            "sound-09",
-            "photo-207"
-          ]
-        }
-      },
-      {
-        "id": "photo-229",
-        "title": "Shared refrigerator — Eli and Takismana",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Saikoneon / shared domestic space",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (27).jpg",
-        "description": "The refrigerator shared by Eli and Takismana during their stay. The precise room and capture date are not established.",
-        "metadata": {
-          "related": [
-            "daily-2026-07-22"
-          ]
-        }
-      },
-      {
-        "id": "photo-230",
-        "title": "Kawaguchiko Music Forest Museum — hall and instruments",
-        "date": "2026-07-23",
-        "type": "image",
-        "category": "photo",
-        "group": "Kawaguchiko / Music Forest Museum",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (28).jpg",
-        "description": "A formal hall and instrument display at Kawaguchiko Music Forest Museum, identified by the traveller.",
-        "metadata": {
-          "locations": [
-            "Kawaguchiko Music Forest Museum",
-            "Kawaguchiko",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-07-23"
-          ]
-        }
-      },
-      {
-        "id": "photo-231",
-        "title": "New laptop and Hatsune Miku figure",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Creative equipment / personal objects",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (29).jpg",
-        "description": "Eli's new laptop beside a Hatsune Miku figure. It connects to the Nojima Fujiyoshida Store laptop-purchase memory, but is not claimed to have been photographed inside the shop.",
-        "metadata": {
-          "related": [
-            "daily-2026-07-23"
-          ]
-        }
-      },
-      {
-        "id": "photo-232",
-        "title": "Fruit at a Mount Fuji ascent stop",
-        "date": "2026-08-01",
-        "type": "image",
-        "category": "photo",
-        "group": "Mount Fuji / ascent stops",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (30).jpg",
-        "description": "Fruit photographed at one of the stops during the Mount Fuji ascent. The exact station / hut / stop is not identified.",
-        "metadata": {
-          "locations": [
-            "Mount Fuji",
-            "Yamanashi"
-          ],
-          "related": [
-            "daily-2026-08-01"
-          ]
-        }
-      },
-      {
-        "id": "photo-233",
-        "title": "Gakupo birthday — food preparation",
-        "date": "2026-07-31",
-        "type": "image",
-        "category": "photo",
-        "group": "Gakupo birthday / 31 July",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (31).jpg",
-        "description": "Food preparation for the Gakupo birthday celebration on 31 July 2026, confirmed by the traveller.",
-        "metadata": {
-          "related": [
-            "daily-2026-07-31"
-          ]
-        }
-      },
-      {
-        "id": "photo-234",
-        "title": "Kitaoji Shinmachi — bus stop",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Kyoto / Kitaoji Shinmachi",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (32).jpg",
-        "description": "The Kitaoji Shinmachi (北大路新町) bus stop in Kyoto, identified by the traveller.",
-        "metadata": {
-          "locations": [
-            "Kitaoji Shinmachi",
-            "Kyoto"
-          ],
-          "related": [
-            "daily-2026-08-road-trip",
-            "photo-193"
-          ]
-        }
-      },
-      {
-        "id": "photo-235",
-        "title": "First Tokyo visit — urban street",
-        "date": "2026-07-24",
-        "type": "image",
-        "category": "photo",
-        "group": "Tokyo / first visit",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (33).jpg",
-        "description": "An urban street scene photographed during the first Tokyo visit on 24 July. The exact street is unknown.",
-        "metadata": {
-          "locations": [
-            "Tokyo"
-          ],
-          "related": [
-            "daily-2026-07-24"
-          ]
-        }
-      },
-      {
-        "id": "photo-236",
-        "title": "Kyoto — sticker near a bus stop",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Kyoto / street details",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (34).jpg",
-        "description": "A sticker photographed near a bus stop in Kyoto. The exact stop and sticker wording remain unidentified; it is not assumed to be the same stop as photo-234.",
-        "metadata": {
-          "locations": [
-            "Kyoto"
-          ],
-          "related": [
-            "daily-2026-08-road-trip"
-          ]
-        }
-      },
-      {
-        "id": "photo-237",
-        "title": "First Tokyo visit — night intersection",
-        "date": "2026-07-24",
-        "type": "image",
-        "category": "photo",
-        "group": "Tokyo / first visit",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (35).jpg",
-        "description": "A night intersection and local shopfront photographed during the first Tokyo visit on 24 July. The exact street is unknown.",
-        "metadata": {
-          "locations": [
-            "Tokyo"
-          ],
-          "related": [
-            "daily-2026-07-24"
-          ]
-        }
-      },
-      {
-        "id": "photo-238",
-        "title": "Shinjuku — descent to the station area",
-        "date": "2026-07-24",
-        "type": "image",
-        "category": "photo",
-        "group": "Tokyo / transit and descent",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (36).jpg",
-        "description": "A stairway / descent toward Shinjuku during the first Tokyo visit. The exact station entrance and stairway are not identified.",
-        "metadata": {
-          "locations": [
-            "Shinjuku",
-            "Tokyo"
-          ],
-          "related": [
-            "daily-2026-07-24"
-          ]
-        }
-      },
-      {
-        "id": "photo-239",
-        "title": "Akihabara — entrance and arrival",
-        "date": "2026-07-24",
-        "type": "image",
-        "category": "photo",
-        "group": "Tokyo / Akihabara",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (37).jpg",
-        "description": "The entrance / arrival into Akihabara, confirmed by the traveller.",
-        "metadata": {
-          "locations": [
-            "Akihabara",
-            "Tokyo"
-          ],
-          "related": [
-            "daily-2026-07-24"
-          ]
-        }
-      },
-      {
-        "id": "photo-240",
-        "title": "Akihabara — electronics and retail street",
-        "date": "2026-07-24",
-        "type": "image",
-        "category": "photo",
-        "group": "Tokyo / Akihabara",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (38).jpg",
-        "description": "An electronics / gaming retail scene in Akihabara, confirmed by the traveller. The specific shop is not identified.",
-        "metadata": {
-          "locations": [
-            "Akihabara",
-            "Tokyo"
-          ],
-          "related": [
-            "daily-2026-07-24"
-          ]
-        }
-      },
-      {
-        "id": "photo-241",
-        "title": "Akihabara — city view",
-        "date": "2026-07-24",
-        "type": "image",
-        "category": "photo",
-        "group": "Tokyo / Akihabara",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (39).jpg",
-        "description": "A city view photographed within Akihabara. The exact building and viewpoint are unknown.",
-        "metadata": {
-          "locations": [
-            "Akihabara",
-            "Tokyo"
-          ],
-          "related": [
-            "daily-2026-07-24"
-          ]
-        }
-      },
-      {
-        "id": "photo-242",
-        "title": "Akihabara — shopping street",
-        "date": "2026-07-24",
-        "type": "image",
-        "category": "photo",
-        "group": "Tokyo / Akihabara",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (40).jpg",
-        "description": "A busy shopping street in Akihabara, confirmed by the traveller. The exact street is not identified.",
-        "metadata": {
-          "locations": [
-            "Akihabara",
-            "Tokyo"
-          ],
-          "related": [
-            "daily-2026-07-24"
-          ]
-        }
-      },
-      {
-        "id": "photo-243",
-        "title": "Akihabara — club interior",
-        "date": "2026-07-24",
-        "type": "image",
-        "category": "photo",
-        "group": "Tokyo / Akihabara nightlife",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (41).jpg",
-        "description": "A club in Akihabara, confirmed by the traveller. The venue name is not yet known.",
-        "metadata": {
-          "locations": [
-            "Akihabara",
-            "Tokyo"
-          ],
-          "related": [
-            "daily-2026-07-24"
-          ]
-        }
-      },
-      {
-        "id": "photo-244",
-        "title": "Akihabara — night district scene",
-        "date": "2026-07-24",
-        "type": "image",
-        "category": "photo",
-        "group": "Tokyo / Akihabara",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (42).jpg",
-        "description": "An Akihabara street / district scene, confirmed by the traveller.",
-        "metadata": {
-          "locations": [
-            "Akihabara",
-            "Tokyo"
-          ],
-          "related": [
-            "daily-2026-07-24"
-          ]
-        }
-      },
-      {
-        "id": "photo-245",
-        "title": "Tokyo — NPC 24H parking sign",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Tokyo / parking infrastructure",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (43).jpg",
-        "description": "An NPC 24H coin-parking sign, photographed somewhere in Tokyo. The district and exact car park remain unknown.",
-        "metadata": {
-          "locations": [
-            "Tokyo"
-          ]
-        }
-      },
-      {
-        "id": "photo-246",
-        "title": "Nintendo DS — Takismana music interface",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Takismana / music performance equipment",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (44).jpg",
-        "description": "A Nintendo DS music interface / cartridge used by Takismana for music and a live event already represented in the archive. The precise event record has not yet been matched with confidence.",
-        "metadata": {
-          "related": [
-            "voice-takismana",
-            "daily-2026-08-road-trip",
-            "dynakyris-japan-corroborations-2026-11-27"
-          ]
-        }
-      },
-      {
-        "id": "photo-247",
-        "title": "Near Miyuki Beach — residential street",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Okinawa / Onna and Miyuki Beach",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (45).jpg",
-        "description": "A residential street near Miyuki Beach in Onna, Okinawa, confirmed by the traveller. The exact street and residence are not identified.",
-        "metadata": {
-          "locations": [
-            "Miyuki Beach",
-            "Onna",
-            "Okinawa"
-          ],
-          "related": [
-            "photo-202"
-          ]
-        }
-      },
-      {
-        "id": "photo-248",
-        "title": "McDonald's 139 Fujiyoshida",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Yamanashi / Fujiyoshida roadside",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (46).jpg",
-        "description": "McDonald's 139 Fujiyoshida (１３９富士吉田店), confirmed by the traveller as the same branch shown in photo-169.",
-        "metadata": {
-          "locations": [
-            "McDonald’s 139 Fujiyoshida",
-            "Fujiyoshida",
-            "Yamanashi"
-          ],
-          "related": [
-            "photo-169"
-          ]
-        }
-      },
-      {
-        "id": "photo-249",
-        "title": "Shinsaibashi underground parking — environmental poster",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Osaka / Shinsaibashi urban infrastructure",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (47).jpg",
-        "description": "A poster photographed in an underground parking lot near Shinsaibashi, Osaka. The slogan reads 地球にやさしく、自分にきびしく！ — “Be kind to the Earth, be strict with yourself!” The exact car park is not confirmed.",
-        "metadata": {
-          "locations": [
-            "Shinsaibashi",
-            "Osaka"
-          ],
-          "related": [
-            "daily-2026-08-road-trip",
-            "photo-198"
-          ]
-        }
-      },
-      {
-        "id": "photo-250",
-        "title": "Miyuki Beach — entrance sign",
-        "date": "2026",
-        "type": "image",
-        "category": "photo",
-        "group": "Okinawa / Miyuki Beach",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (48).jpg",
-        "description": "A wooden sign reading MIYUKI BEACH. The traveller confirms it belongs to the same Miyuki Beach outing / area as photo-202.",
-        "metadata": {
-          "locations": [
-            "Miyuki Beach",
-            "Onna",
-            "Okinawa"
-          ],
-          "related": [
-            "photo-202",
-            "photo-247"
-          ]
-        }
-      },
-      {
-        "id": "photo-251",
-        "title": "Uno-Misaki Tunnel — named portal",
-        "date": "2026-07-25",
-        "type": "image",
-        "category": "photo",
-        "group": "Uno-Misaki Tunnel / passage and field recording",
-        "file": "media/photo/photos_from_japan/addition_5/addition_5 (49).jpg",
-        "description": "The tunnel portal sign reads 宇の岬トンネル (Uno-Misaki Tunnel). The traveller confirms this was photographed during the 25 July visit and that the interior in photo-206 is the same tunnel.",
-        "metadata": {
-          "locations": [
-            "Uno-Misaki Tunnel",
-            "Yamanashi"
-          ],
-          "related": [
-            "photo-206",
-            "daily-2026-07-25",
-            "tunnel"
-          ]
-        }
+    },
+    {
+      "id": "photo-203",
+      "title": "Onsen Yurari no Nenba — entrance",
+      "date": "2026-07-25",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / Onsen Yurari",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (1).jpg",
+      "description": "The traveller identifies this entrance as Onsen Yurari no Nenba. The vertical sign reads お食事処 ふじざくら (Fuji Zakura dining place).",
+      "metadata": {
+        "locations": [
+          "Onsen Yurari",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-25"
+        ]
       }
-    ]
+    },
+    {
+      "id": "photo-204",
+      "title": "Misty lake beneath a mountain ridge",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Fuji Five Lakes / unidentified lake view",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (2).jpg",
+      "description": "A misty lake and mountain panorama. The traveller tentatively remembers Lake Motosu, but is not confident; the lake remains unidentified.",
+      "metadata": {
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-205",
+      "title": "Boats illuminated after dark",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Water / boats and night lights",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (3).jpg",
+      "description": "A row of illuminated boats. The traveller corrects the earlier interpretation as capsule-like objects; the water venue and event are not yet identified."
+    },
+    {
+      "id": "photo-206",
+      "title": "Uno-Misaki Tunnel — illuminated interior",
+      "date": "2026-07-25",
+      "type": "image",
+      "category": "photo",
+      "group": "Uno-Misaki Tunnel / passage and field recording",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (4).jpg",
+      "description": "The traveller confirms this is the interior of Uno-Misaki Tunnel (宇の岬トンネル), photographed during the 25 July visit. It belongs with the named portal in photo-251 and the Tunnel audiovisual work.",
+      "metadata": {
+        "locations": [
+          "Uno-Misaki Tunnel",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-251",
+          "daily-2026-07-25",
+          "tunnel"
+        ]
+      }
+    },
+    {
+      "id": "photo-207",
+      "title": "Shiki — deer encounter",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Lake Saiko / Shiki encounters",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (5).jpg",
+      "description": "The traveller confirms this deer is Shiki. The photograph is connected to the first Shiki appearance near Saiko on 22 July and the first close encounter on 24 July, but this frame is not individually dated.",
+      "metadata": {
+        "locations": [
+          "Lake Saiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-22",
+          "daily-2026-07-24",
+          "shiki",
+          "sound-08",
+          "sound-09"
+        ]
+      }
+    },
+    {
+      "id": "photo-208",
+      "title": "Roadside fire-hose cabinet and mailbox",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Japanese infrastructure / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (6).jpg",
+      "description": "A roadside fire-hose cabinet / hydrant installation beside a mailbox. The exact place is unknown."
+    },
+    {
+      "id": "photo-209",
+      "title": "Kawaguchiko Retro Toys Museum — entrance figure",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / Retro Toys Museum",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (7).jpg",
+      "description": "The blue character / statue at the entrance to Kawaguchiko Retro Toys Museum, confirmed by the traveller.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-26"
+        ]
+      }
+    },
+    {
+      "id": "photo-210",
+      "title": "Tinplate-car making display",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / Retro Toys Museum",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (8).jpg",
+      "description": "A tinplate-car making / assembly display inside Kawaguchiko Retro Toys Museum, confirmed by the traveller.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-26"
+        ]
+      }
+    },
+    {
+      "id": "photo-211",
+      "title": "Toy figures and dolls",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / Retro Toys Museum",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (9).jpg",
+      "description": "Toy figures and dolls displayed inside Kawaguchiko Retro Toys Museum.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-26"
+        ]
+      }
+    },
+    {
+      "id": "photo-212",
+      "title": "Framed retro toy and game display",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / Retro Toys Museum",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (10).jpg",
+      "description": "A framed illustrated game / toy display inside Kawaguchiko Retro Toys Museum.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-26"
+        ]
+      }
+    },
+    {
+      "id": "photo-213",
+      "title": "Kirakira Star Knight DX display",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / Retro Toys Museum",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (11).jpg",
+      "description": "A retro game display including キラキラスターナイトDX (Kirakira Star Knight DX), photographed inside Kawaguchiko Retro Toys Museum.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-26"
+        ]
+      }
+    },
+    {
+      "id": "photo-214",
+      "title": "Vintage dolls",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / Retro Toys Museum",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (12).jpg",
+      "description": "Vintage dolls displayed inside Kawaguchiko Retro Toys Museum.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-26"
+        ]
+      }
+    },
+    {
+      "id": "photo-215",
+      "title": "Character and costume figures",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / Retro Toys Museum",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (13).jpg",
+      "description": "A character-costume and figure display, including Star Wars figures, inside Kawaguchiko Retro Toys Museum.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-26"
+        ]
+      }
+    },
+    {
+      "id": "photo-216",
+      "title": "Plush and character toy display",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / Retro Toys Museum",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (14).jpg",
+      "description": "Plush and character toys displayed inside Kawaguchiko Retro Toys Museum.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-26"
+        ]
+      }
+    },
+    {
+      "id": "photo-217",
+      "title": "Spillway beside the rope trail",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Mountain trails / water infrastructure",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (15).jpg",
+      "description": "A small spillway / water channel. The traveller places it near the rope trail; the exact trail and whether this means a rope-assisted path or a ropeway are not yet established."
+    },
+    {
+      "id": "photo-218",
+      "title": "Spider on an interior wall",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Small encounters / insects",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (16).jpg",
+      "description": "A spider photographed on a wall. The exact building, place and date remain unknown."
+    },
+    {
+      "id": "photo-219",
+      "title": "First summit near Saiko — boundary marker",
+      "date": "2026-07-27",
+      "type": "image",
+      "category": "photo",
+      "group": "Saiko / first summit outing",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (17).jpg",
+      "description": "A red boundary marker in woodland, photographed during the first summit outing near Saiko, confirmed by the traveller.",
+      "metadata": {
+        "locations": [
+          "First summit near Saiko",
+          "Lake Saiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-220",
+      "title": "First summit near Saiko — Yamanakako and Myojin-yama direction sign",
+      "date": "2026-07-27",
+      "type": "image",
+      "category": "photo",
+      "group": "Saiko / first summit outing",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (18).jpg",
+      "description": "A weathered wooden direction sign with 山中湖 (Yamanakako) and 明神山 (Myojin-yama) visible. The traveller confirms this belongs to the first summit outing near Saiko; it does not by itself establish the summit's official name.",
+      "metadata": {
+        "locations": [
+          "First summit near Saiko",
+          "Lake Saiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-219",
+          "photo-221",
+          "photo-222",
+          "photo-223",
+          "daily-2026-07-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-221",
+      "title": "First summit near Saiko — forest steps and clearing",
+      "date": "2026-07-27",
+      "type": "image",
+      "category": "photo",
+      "group": "Saiko / first summit outing",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (19).jpg",
+      "description": "A forest clearing with timber steps / a small bridge, part of the first summit outing near Saiko.",
+      "metadata": {
+        "locations": [
+          "First summit near Saiko",
+          "Lake Saiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-220",
+          "photo-222",
+          "photo-223",
+          "daily-2026-07-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-222",
+      "title": "First summit near Saiko — bridge and mountain view",
+      "date": "2026-07-27",
+      "type": "image",
+      "category": "photo",
+      "group": "Saiko / first summit outing",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (20).jpg",
+      "description": "A road bridge and mountain view from the first summit outing near Saiko.",
+      "metadata": {
+        "locations": [
+          "First summit near Saiko",
+          "Lake Saiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-220",
+          "photo-221",
+          "photo-223",
+          "daily-2026-07-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-223",
+      "title": "First summit near Saiko — tree-mounted trail sign",
+      "date": "2026-07-27",
+      "type": "image",
+      "category": "photo",
+      "group": "Saiko / first summit outing",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (21).jpg",
+      "description": "A small sign attached to a tree beside the wooded path during the first summit outing near Saiko.",
+      "metadata": {
+        "locations": [
+          "First summit near Saiko",
+          "Lake Saiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-220",
+          "photo-221",
+          "photo-222",
+          "daily-2026-07-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-224",
+      "title": "Bamiyan restaurant sign on the Kawaguchiko–Tokyo journey",
+      "date": "2026-07-24",
+      "type": "image",
+      "category": "photo",
+      "group": "First Tokyo visit / roadside stop",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (22).jpg",
+      "description": "A Bamiyan restaurant sign photographed somewhere along the first journey from Kawaguchiko to Tokyo. The branch and exact roadside location remain unidentified.",
+      "metadata": {
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-225",
+      "title": "Sports Box building",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified retail and roadside places",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (23).jpg",
+      "description": "A building with Sports Box signage. The city, exact branch and relationship to the nearby Bamiyan photograph are not established."
+    },
+    {
+      "id": "photo-226",
+      "title": "Lake Yamanaka — Fuji-Hakone-Izu National Park sign",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Lake Yamanaka / park signage",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (24).jpg",
+      "description": "A park sign naming Lake Yamanaka (山中湖) and Fuji-Hakone-Izu National Park, including the designation 特別保護地区. The exact camera position is not established.",
+      "metadata": {
+        "locations": [
+          "Lake Yamanaka",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-227"
+        ]
+      }
+    },
+    {
+      "id": "photo-227",
+      "title": "Car navigation display — Lake Shoji and Lake Yamanaka",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Fuji Five Lakes / navigation display",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (25).jpg",
+      "description": "The car navigation screen displays Lake Shoji (精進湖) and Lake Yamanaka (山中湖), with 9.1 km shown. This is screen information, not a GPS track or proof of the exact road taken.",
+      "metadata": {
+        "related": [
+          "photo-226"
+        ]
+      }
+    },
+    {
+      "id": "photo-228",
+      "title": "Shiki — second deer photograph",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Lake Saiko / Shiki encounters",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (26).jpg",
+      "description": "The traveller confirms this deer is Shiki. The photograph is connected to the Shiki encounters recorded on 22 and 24 July, but this frame is not individually dated.",
+      "metadata": {
+        "locations": [
+          "Lake Saiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-22",
+          "daily-2026-07-24",
+          "shiki",
+          "sound-08",
+          "sound-09",
+          "photo-207"
+        ]
+      }
+    },
+    {
+      "id": "photo-229",
+      "title": "Shared refrigerator — Eli and Takismana",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Saikoneon / shared domestic space",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (27).jpg",
+      "description": "The refrigerator shared by Eli and Takismana during their stay. The precise room and capture date are not established.",
+      "metadata": {
+        "related": [
+          "daily-2026-07-22"
+        ]
+      }
+    },
+    {
+      "id": "photo-230",
+      "title": "Kawaguchiko Music Forest Museum — hall and instruments",
+      "date": "2026-07-23",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / Music Forest Museum",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (28).jpg",
+      "description": "A formal hall and instrument display at Kawaguchiko Music Forest Museum, identified by the traveller.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Music Forest Museum",
+          "Kawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-23"
+        ]
+      }
+    },
+    {
+      "id": "photo-231",
+      "title": "New laptop and Hatsune Miku figure",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Creative equipment / personal objects",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (29).jpg",
+      "description": "Eli's new laptop beside a Hatsune Miku figure. It connects to the Nojima Fujiyoshida Store laptop-purchase memory, but is not claimed to have been photographed inside the shop.",
+      "metadata": {
+        "related": [
+          "daily-2026-07-23"
+        ]
+      }
+    },
+    {
+      "id": "photo-232",
+      "title": "Fruit at a Mount Fuji ascent stop",
+      "date": "2026-08-01",
+      "type": "image",
+      "category": "photo",
+      "group": "Mount Fuji / ascent stops",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (30).jpg",
+      "description": "Fruit photographed at one of the stops during the Mount Fuji ascent. The exact station / hut / stop is not identified.",
+      "metadata": {
+        "locations": [
+          "Mount Fuji",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-08-01"
+        ]
+      }
+    },
+    {
+      "id": "photo-233",
+      "title": "Gakupo birthday — food preparation",
+      "date": "2026-07-31",
+      "type": "image",
+      "category": "photo",
+      "group": "Gakupo birthday / 31 July",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (31).jpg",
+      "description": "Food preparation for the Gakupo birthday celebration on 31 July 2026, confirmed by the traveller.",
+      "metadata": {
+        "related": [
+          "daily-2026-07-31"
+        ]
+      }
+    },
+    {
+      "id": "photo-234",
+      "title": "Kitaoji Shinmachi — bus stop",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / Kitaoji Shinmachi",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (32).jpg",
+      "description": "The Kitaoji Shinmachi (北大路新町) bus stop in Kyoto, identified by the traveller.",
+      "metadata": {
+        "locations": [
+          "Kitaoji Shinmachi",
+          "Kyoto"
+        ],
+        "related": [
+          "daily-2026-08-road-trip",
+          "photo-193"
+        ]
+      }
+    },
+    {
+      "id": "photo-235",
+      "title": "First Tokyo visit — urban street",
+      "date": "2026-07-24",
+      "type": "image",
+      "category": "photo",
+      "group": "Tokyo / first visit",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (33).jpg",
+      "description": "An urban street scene photographed during the first Tokyo visit on 24 July. The exact street is unknown.",
+      "metadata": {
+        "locations": [
+          "Tokyo"
+        ],
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-236",
+      "title": "Kyoto — sticker near a bus stop",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / street details",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (34).jpg",
+      "description": "A sticker photographed near a bus stop in Kyoto. The exact stop and sticker wording remain unidentified; it is not assumed to be the same stop as photo-234.",
+      "metadata": {
+        "locations": [
+          "Kyoto"
+        ],
+        "related": [
+          "daily-2026-08-road-trip"
+        ]
+      }
+    },
+    {
+      "id": "photo-237",
+      "title": "First Tokyo visit — night intersection",
+      "date": "2026-07-24",
+      "type": "image",
+      "category": "photo",
+      "group": "Tokyo / first visit",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (35).jpg",
+      "description": "A night intersection and local shopfront photographed during the first Tokyo visit on 24 July. The exact street is unknown.",
+      "metadata": {
+        "locations": [
+          "Tokyo"
+        ],
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-238",
+      "title": "Shinjuku — descent to the station area",
+      "date": "2026-07-24",
+      "type": "image",
+      "category": "photo",
+      "group": "Tokyo / transit and descent",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (36).jpg",
+      "description": "A stairway / descent toward Shinjuku during the first Tokyo visit. The exact station entrance and stairway are not identified.",
+      "metadata": {
+        "locations": [
+          "Shinjuku",
+          "Tokyo"
+        ],
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-239",
+      "title": "Akihabara — entrance and arrival",
+      "date": "2026-07-24",
+      "type": "image",
+      "category": "photo",
+      "group": "Tokyo / Akihabara",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (37).jpg",
+      "description": "The entrance / arrival into Akihabara, confirmed by the traveller.",
+      "metadata": {
+        "locations": [
+          "Akihabara",
+          "Tokyo"
+        ],
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-240",
+      "title": "Akihabara — electronics and retail street",
+      "date": "2026-07-24",
+      "type": "image",
+      "category": "photo",
+      "group": "Tokyo / Akihabara",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (38).jpg",
+      "description": "An electronics / gaming retail scene in Akihabara, confirmed by the traveller. The specific shop is not identified.",
+      "metadata": {
+        "locations": [
+          "Akihabara",
+          "Tokyo"
+        ],
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-241",
+      "title": "Akihabara — city view",
+      "date": "2026-07-24",
+      "type": "image",
+      "category": "photo",
+      "group": "Tokyo / Akihabara",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (39).jpg",
+      "description": "A city view photographed within Akihabara. The exact building and viewpoint are unknown.",
+      "metadata": {
+        "locations": [
+          "Akihabara",
+          "Tokyo"
+        ],
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-242",
+      "title": "Akihabara — shopping street",
+      "date": "2026-07-24",
+      "type": "image",
+      "category": "photo",
+      "group": "Tokyo / Akihabara",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (40).jpg",
+      "description": "A busy shopping street in Akihabara, confirmed by the traveller. The exact street is not identified.",
+      "metadata": {
+        "locations": [
+          "Akihabara",
+          "Tokyo"
+        ],
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-243",
+      "title": "Akihabara — club interior",
+      "date": "2026-07-24",
+      "type": "image",
+      "category": "photo",
+      "group": "Tokyo / Akihabara nightlife",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (41).jpg",
+      "description": "A club in Akihabara, confirmed by the traveller. The venue name is not yet known.",
+      "metadata": {
+        "locations": [
+          "Akihabara",
+          "Tokyo"
+        ],
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-244",
+      "title": "Akihabara — night district scene",
+      "date": "2026-07-24",
+      "type": "image",
+      "category": "photo",
+      "group": "Tokyo / Akihabara",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (42).jpg",
+      "description": "An Akihabara street / district scene, confirmed by the traveller.",
+      "metadata": {
+        "locations": [
+          "Akihabara",
+          "Tokyo"
+        ],
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-245",
+      "title": "Tokyo — NPC 24H parking sign",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Tokyo / parking infrastructure",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (43).jpg",
+      "description": "An NPC 24H coin-parking sign, photographed somewhere in Tokyo. The district and exact car park remain unknown.",
+      "metadata": {
+        "locations": [
+          "Tokyo"
+        ]
+      }
+    },
+    {
+      "id": "photo-246",
+      "title": "Nintendo DS — Takismana music interface",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Takismana / music performance equipment",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (44).jpg",
+      "description": "A Nintendo DS music interface / cartridge used by Takismana for music and a live event already represented in the archive. The precise event record has not yet been matched with confidence.",
+      "metadata": {
+        "related": [
+          "voice-takismana",
+          "daily-2026-08-road-trip",
+          "dynakyris-japan-corroborations-2026-11-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-247",
+      "title": "Near Miyuki Beach — residential street",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Okinawa / Onna and Miyuki Beach",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (45).jpg",
+      "description": "A residential street near Miyuki Beach in Onna, Okinawa, confirmed by the traveller. The exact street and residence are not identified.",
+      "metadata": {
+        "locations": [
+          "Miyuki Beach",
+          "Onna",
+          "Okinawa"
+        ],
+        "related": [
+          "photo-202"
+        ]
+      }
+    },
+    {
+      "id": "photo-248",
+      "title": "McDonald's 139 Fujiyoshida",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / Fujiyoshida roadside",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (46).jpg",
+      "description": "McDonald's 139 Fujiyoshida (１３９富士吉田店), confirmed by the traveller as the same branch shown in photo-169.",
+      "metadata": {
+        "locations": [
+          "McDonald’s 139 Fujiyoshida",
+          "Fujiyoshida",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-169"
+        ]
+      }
+    },
+    {
+      "id": "photo-249",
+      "title": "Shinsaibashi underground parking — environmental poster",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Osaka / Shinsaibashi urban infrastructure",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (47).jpg",
+      "description": "A poster photographed in an underground parking lot near Shinsaibashi, Osaka. The slogan reads 地球にやさしく、自分にきびしく！ — “Be kind to the Earth, be strict with yourself!” The exact car park is not confirmed.",
+      "metadata": {
+        "locations": [
+          "Shinsaibashi",
+          "Osaka"
+        ],
+        "related": [
+          "daily-2026-08-road-trip",
+          "photo-198"
+        ]
+      }
+    },
+    {
+      "id": "photo-250",
+      "title": "Miyuki Beach — entrance sign",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Okinawa / Miyuki Beach",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (48).jpg",
+      "description": "A wooden sign reading MIYUKI BEACH. The traveller confirms it belongs to the same Miyuki Beach outing / area as photo-202.",
+      "metadata": {
+        "locations": [
+          "Miyuki Beach",
+          "Onna",
+          "Okinawa"
+        ],
+        "related": [
+          "photo-202",
+          "photo-247"
+        ]
+      }
+    },
+    {
+      "id": "photo-251",
+      "title": "Uno-Misaki Tunnel — named portal",
+      "date": "2026-07-25",
+      "type": "image",
+      "category": "photo",
+      "group": "Uno-Misaki Tunnel / passage and field recording",
+      "file": "media/photo/photos_from_japan/addition_5/addition_5 (49).jpg",
+      "description": "The tunnel portal sign reads 宇の岬トンネル (Uno-Misaki Tunnel). The traveller confirms this was photographed during the 25 July visit and that the interior in photo-206 is the same tunnel.",
+      "metadata": {
+        "locations": [
+          "Uno-Misaki Tunnel",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-206",
+          "daily-2026-07-25",
+          "tunnel"
+        ]
+      }
+    }
   ],
   "utau": [
     {
