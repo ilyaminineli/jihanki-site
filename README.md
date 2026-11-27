@@ -387,4 +387,4 @@ The module does not use a backend, network API, cookies, localStorage, IndexedDB
 
 ## Roadmap
 
-The next development milestones are documented in [documents/roadmap/](documents/roadmap/README.md), from M35 machine interaction integrity through M50 temporal archive, including the active M41–M50 implementation map.
+The engineering roadmap covers M35–M50. The next intentionally small, atmosphere-led exploration programme is M67–M72; see [documents/roadmap/](documents/roadmap/README.md).
