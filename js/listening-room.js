@@ -146,7 +146,6 @@
         if (promise && typeof promise.catch === "function") promise.catch(() => {
           if (generation === token) announce("PLAYBACK BLOCKED OR SOURCE UNAVAILABLE / USE THE PLAYER CONTROLS TO RETRY");
         });
-        window.JIHANKI_EVENTS?.record("listening-room-track-started", { itemId: item.id, group: item.group || null });
       }
       return true;
     }
@@ -171,16 +170,15 @@
       index = target;
       loadCurrent(true);
     }
-    function stopPlayback() {
+    function stopPlayback(quiet) {
       generation += 1;
       try { audio.pause(); audio.currentTime = 0; } catch (_) { }
       queue = [];
       index = -1;
       if (title) title.textContent = "SELECT A RECORDING";
-      if (description) description.textContent = "Playback stopped.";
-      announce("STOPPED / THE ROOM IS QUIET");
+      if (description) description.textContent = quiet ? "Playback is ready when you are." : "Playback stopped.";
+      announce(quiet ? "READY / NO SOURCE SELECTED" : "STOPPED / THE ROOM IS QUIET");
       setTransport();
-      window.JIHANKI_EVENTS?.record("listening-room-stopped", {});
     }
 
     instances.set(scope, { stopPlayback });
