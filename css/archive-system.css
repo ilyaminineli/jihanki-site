@@ -1569,3 +1569,54 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   overflow-wrap:anywhere;
   line-height:1.2;
 }
+
+/* M54.2 — keep Japanese framed place labels on mobile instead of numbered dots.
+   Desktop retains the compact English/Japanese tag. Mobile uses the Japanese
+   label as the visible hit target, with the English place name kept in aria/title. */
+.map-pin-mobile-label { display:none; }
+@media(max-width:560px) {
+  .map-pan-layer .map-pin {
+    -webkit-appearance:none;
+    appearance:none;
+    -webkit-tap-highlight-color:transparent;
+    display:grid;
+    align-content:center;
+    justify-items:center;
+    gap:0;
+    width:max-content;
+    height:auto;
+    min-width:0;
+    min-height:28px;
+    max-width:124px;
+    padding:5px 7px;
+    border:1px solid rgba(255,255,255,.42);
+    border-radius:2px;
+    background:rgba(5,5,5,.93);
+    color:#f2f2f2;
+    box-shadow:0 2px 7px rgba(0,0,0,.58);
+    text-align:center;
+    transform:translate(-50%,-50%);
+    touch-action:manipulation;
+  }
+  .map-pan-layer .map-pin-dot,
+  .map-pan-layer .map-pin-copy,
+  .map-pan-layer .map-pin-index { display:none !important; }
+  .map-pan-layer .map-pin-mobile-label {
+    display:block;
+    max-width:110px;
+    color:#f2f2f2;
+    font:8px/1.25 -apple-system,BlinkMacSystemFont,"Yu Gothic","Hiragino Kaku Gothic ProN",sans-serif;
+    letter-spacing:.035em;
+    white-space:normal;
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+  .map-pan-layer .map-pin:focus-visible,
+  .map-pan-layer .map-pin:hover,
+  .map-pan-layer .map-pin:active {
+    border-color:rgba(255,255,255,.9);
+    background:rgba(23,23,23,.98);
+    outline:1px solid rgba(255,255,255,.28);
+    outline-offset:2px;
+  }
+}
