@@ -1790,3 +1790,114 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 @media(max-width:560px) {
   .map-trail-photo-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
 }
+
+
+/* M56 — CRT phosphor memory nodes, based on the Photoshop green-frame study. */
+.memory-map-panel .map-canvas {
+  background:
+    radial-gradient(ellipse at 49% 50%,rgba(36,88,55,.12),transparent 68%),
+    repeating-linear-gradient(0deg,transparent 0 27px,rgba(99,178,122,.055) 28px),
+    repeating-linear-gradient(90deg,transparent 0 27px,rgba(99,178,122,.055) 28px),
+    #020604;
+}
+.memory-map-panel .map-pan-layer {
+  width:2700px;
+  height:1900px;
+}
+.memory-map-panel .map-pan-layer .map-pin {
+  box-sizing:border-box;
+  display:flex !important;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  padding:10px 14px 9px;
+  border:2px solid rgba(125,210,151,.86);
+  border-radius:11px;
+  background:rgba(0,8,3,.94);
+  color:#e9f7ec;
+  box-shadow:
+    0 0 4px rgba(123,221,153,.8),
+    0 0 13px rgba(79,186,117,.38),
+    inset 0 0 13px rgba(69,150,93,.13);
+  text-align:center;
+  transform:translate(-50%,-50%);
+  transition:border-color .15s ease,box-shadow .15s ease,background .15s ease;
+}
+.memory-map-panel .map-pin-jp {
+  display:block;
+  max-width:100%;
+  color:#f0f8f1;
+  font:600 27px/1.15 "Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
+  letter-spacing:.025em;
+  text-shadow:0 0 3px rgba(227,255,234,.5),0 0 11px rgba(125,220,153,.3);
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.memory-map-panel .map-pin-en {
+  display:block;
+  max-width:100%;
+  color:#8bc99d;
+  font:600 13px/1.2 "Courier New",monospace;
+  letter-spacing:.045em;
+  text-shadow:0 0 5px rgba(108,204,137,.42);
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+.memory-map-panel .map-pin-count {
+  display:block;
+  color:rgba(140,202,157,.72);
+  font:8px/1 "Courier New",monospace;
+  letter-spacing:.2em;
+  text-shadow:0 0 4px rgba(105,197,131,.35);
+}
+.memory-map-panel .map-pan-layer .map-pin:focus-visible,
+.memory-map-panel .map-pan-layer .map-pin:hover,
+.memory-map-panel .map-pan-layer .map-pin:active {
+  z-index:7;
+  border-color:#c2f4ce;
+  background:rgba(2,15,7,.98);
+  box-shadow:0 0 6px rgba(155,241,177,.95),0 0 22px rgba(95,210,132,.56),inset 0 0 16px rgba(95,210,132,.2);
+  outline:1px solid rgba(175,239,191,.35);
+  outline-offset:3px;
+}
+.memory-map-panel .map-memory-mode .map-connections line {
+  stroke:rgba(117,199,142,.58);
+  stroke-width:.56;
+  stroke-dasharray:2.2 2;
+  filter:drop-shadow(0 0 2px rgba(105,202,136,.28));
+}
+.memory-map-panel .map-connections line.map-edge-within {
+  stroke:rgba(121,191,139,.4);
+  stroke-width:.48;
+  stroke-dasharray:none;
+}
+.memory-map-panel .map-connections line.map-edge-overlooks,
+.memory-map-panel .map-connections line.map-edge-connected-to {
+  stroke:rgba(131,213,154,.7);
+  stroke-dasharray:2.2 2.2;
+}
+.memory-map-panel .map-connections line.map-edge-transit-corridor {
+  stroke:rgba(144,223,165,.78);
+  stroke-dasharray:4 2 1 2;
+}
+.memory-map-panel .map-pan-layer .map-region-label {
+  color:rgba(135,194,150,.32);
+  text-shadow:0 0 4px rgba(97,181,122,.24);
+}
+.memory-map-panel .map-canvas::after {
+  content:"";
+  position:absolute;
+  z-index:8;
+  inset:0;
+  pointer-events:none;
+  opacity:.15;
+  background:repeating-linear-gradient(to bottom,rgba(190,255,205,.16) 0,rgba(190,255,205,.16) 1px,transparent 1px,transparent 4px);
+}
+@media(max-width:560px) {
+  .memory-map-panel .map-canvas { height:430px; min-height:430px; }
+  .memory-map-panel .map-pan-layer { width:2700px; height:1900px; }
+  .memory-map-panel .map-pin-jp { font-size:27px; }
+  .memory-map-panel .map-pin-en { font-size:13px; }
+}
