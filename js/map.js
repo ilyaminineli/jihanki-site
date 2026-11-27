@@ -135,8 +135,8 @@
         clamp(node);
       });
     };
-    for(let passIndex=0;passIndex<170;passIndex++)pass(18,true);
-    for(let passIndex=0;passIndex<120;passIndex++)pass(12,false);
+    for(let passIndex=0;passIndex<150;passIndex++)pass(18,true);
+    for(let passIndex=0;passIndex<180;passIndex++)pass(12,false);
     return Object.fromEntries(nodes.map(node=>[node.name,[node.x/width*100,node.y/height*100]]));
   }
   const TRAILS=window.JIHANKI_RELATIONSHIPS?.trails?.()||[];
