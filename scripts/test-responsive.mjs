@@ -341,13 +341,70 @@ try{
     assert(coinPile[0]>coinPile[1],device.name+": accumulated coin tokens do not progressively shrink");
     await page.locator("#memory-button").click();
     await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().credits===1);
+    const afterFirstDispense=await page.evaluate(()=>({
+      balance:window.JIHANKI_MACHINE.getState().credits,
+      counter:document.querySelector(".credit-count")?.textContent.trim(),
+      title:document.querySelector("#screen-content .boot-title")?.textContent.trim(),
+      subtitle:document.querySelector("#screen-content .boot-subtitle")?.textContent.trim()
+    }));
     assert(await page.locator("#credit-display [data-credit-token]").count()===1,
       device.name+": dispensing a memory did not consume one visible coin");
+    assert(afterFirstDispense.balance===1&&afterFirstDispense.counter==="CREDITS / 1"&&
+      afterFirstDispense.title==="CREDIT BALANCE"&&afterFirstDispense.subtitle==="1 / 9 CREDITS",
+      device.name+": centre feedback remained stale after the first purchase: "+JSON.stringify(afterFirstDispense));
     await page.keyboard.press("Escape");
     await page.locator("#memory-button").click();
     await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().credits===0);
+    const afterSecondDispense=await page.evaluate(()=>({
+      balance:window.JIHANKI_MACHINE.getState().credits,
+      counter:document.querySelector(".credit-count")?.textContent.trim(),
+      title:document.querySelector("#screen-content .boot-title")?.textContent.trim(),
+      subtitle:document.querySelector("#screen-content .boot-subtitle")?.textContent.trim()
+    }));
     assert(await page.locator("#credit-display [data-credit-token]").count()===0,
       device.name+": the final credit token remained after dispensing");
+    assert(afterSecondDispense.balance===0&&afterSecondDispense.counter==="CREDITS / 0"&&
+      afterSecondDispense.title==="CREDIT BALANCE"&&afterSecondDispense.subtitle==="0 / 9 CREDITS",
+      device.name+": centre feedback remained stale after the final purchase: "+JSON.stringify(afterSecondDispense));
+    await page.keyboard.press("Escape");
+    await page.locator("#home-button").click();
+
+    // The limit message reports the live balance, then changes when a purchase
+    // takes the machine below its nine-credit cap.
+    for(let coin=0;coin<9;coin++){
+      await page.locator("#coin-button").click();
+      await page.waitForFunction(expected=>window.JIHANKI_MACHINE.getState().credits===expected,coin+1);
+    }
+    const limitBefore=await page.evaluate(()=>({
+      balance:window.JIHANKI_MACHINE.getState().credits,
+      counter:document.querySelector(".credit-count")?.textContent.trim(),
+      title:document.querySelector("#screen-content .boot-title")?.textContent.trim(),
+      subtitle:document.querySelector("#screen-content .boot-subtitle")?.textContent.trim()
+    }));
+    assert(limitBefore.balance===9&&limitBefore.counter==="CREDITS / 9"&&
+      limitBefore.title==="COIN ACCEPTED"&&limitBefore.subtitle==="9 CREDITS",
+      device.name+": ninth coin did not show the correct live balance: "+JSON.stringify(limitBefore));
+    await page.locator("#coin-button").click();
+    const rejectedLimit=await page.evaluate(()=>({
+      balance:window.JIHANKI_MACHINE.getState().credits,
+      counter:document.querySelector(".credit-count")?.textContent.trim(),
+      title:document.querySelector("#screen-content .boot-title")?.textContent.trim(),
+      subtitle:document.querySelector("#screen-content .boot-subtitle")?.textContent.trim()
+    }));
+    assert(rejectedLimit.balance===9&&rejectedLimit.counter==="CREDITS / 9"&&
+      rejectedLimit.title==="CREDIT LIMIT"&&rejectedLimit.subtitle==="9 / 9 CREDITS",
+      device.name+": credit-limit feedback did not show the current balance: "+JSON.stringify(rejectedLimit));
+    await page.locator("#memory-button").click();
+    await page.waitForFunction(()=>window.JIHANKI_MACHINE.getState().credits===8);
+    const limitAfterPurchase=await page.evaluate(()=>({
+      balance:window.JIHANKI_MACHINE.getState().credits,
+      counter:document.querySelector(".credit-count")?.textContent.trim(),
+      title:document.querySelector("#screen-content .boot-title")?.textContent.trim(),
+      subtitle:document.querySelector("#screen-content .boot-subtitle")?.textContent.trim()
+    }));
+    assert(limitAfterPurchase.balance===8&&limitAfterPurchase.counter==="CREDITS / 8"&&
+      limitAfterPurchase.title==="CREDIT BALANCE"&&limitAfterPurchase.subtitle==="8 / 9 CREDITS",
+      device.name+": credit-limit message did not return to the live balance after dispensing: "+JSON.stringify(limitAfterPurchase));
     await page.keyboard.press("Escape");
     await page.locator("#home-button").click();
     await page.locator('[data-home-action="temporal"]').waitFor();
