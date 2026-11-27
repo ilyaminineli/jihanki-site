@@ -275,7 +275,8 @@
       stops:["Kawaguchiko","Tokyo","Akihabara"],
       mode:"FIRST CAR JOURNEY TO TOKYO",
       description:"The 24 July daily chapter records the first road trip from Kawaguchiko to Tokyo and the subsequent Akihabara visit. Addition_5 (22) places a Bamiyan sign somewhere along the journey, not at a confirmed stop; no exact road or intermediate route is drawn."
-    }  ];
+    }
+  ];
 
   function allRecords(){return window.JIHANKI_ARCHIVE||[];}
   function byId(id){return allRecords().find(record=>record.id===id)||null;}
