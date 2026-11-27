@@ -4188,13 +4188,13 @@ const ARCHIVE = {
     },
     {
       "id": "photo-223",
-      "title": "First summit near Saiko — tree-mounted trail sign",
+      "title": "First summit near Saiko — Mount Ashiwada / Koyodai direction sign",
       "date": "2026-07-27",
       "type": "image",
       "category": "photo",
       "group": "Saiko / first summit outing",
       "file": "media/photo/photos_from_japan/addition_5/addition_5 (21).jpg",
-      "description": "A small sign attached to a tree beside the wooded path during the first summit outing near Saiko.",
+      "description": "A wooden direction sign attached to a tree reads 足和田山・紅葉台 and includes the English name Mt. Ashiwada. It is part of the traveller-confirmed first-summit outing photo set; the sign supplies directional context, but does not establish which summit was reached or the exact trail taken.",
       "metadata": {
         "locations": [
           "First summit near Saiko",
