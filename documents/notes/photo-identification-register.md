@@ -32,9 +32,9 @@ The map remains schematic. No GPS coordinates, exact road traces, private accomm
 
 ### Arakurayama Sengen Park — Chureito Pagoda and the 26 July night view
 
-**Records:** `photo-46`, `photo-85`, `photo-101`, `photo-114`, `photo-116`
+**Records:** `photo-13`, `photo-46`, `photo-85`, `photo-101`, `photo-114`, `photo-116`
 
-The five-storey pagoda photographs and the Fuji / near-full-Moon / town-light views form one coherent group. The 26 July daily note records the night drive to Arakura Shrine, the empty mountain setting, the view of Fuji and the lights of towns below, and train sounds heard from the mountain. The distinctive pagoda is Chureito at Arakurayama Sengen Park. The location now appears as an archive place rather than an unidentified pagoda.
+The five-storey pagoda photographs and the Fuji / near-full-Moon / town-light views form one coherent group. The 26 July daily note records the night drive to Arakura Shrine, the empty mountain setting, the view of Fuji and the lights of towns below, and train sounds heard from the mountain. The distinctive pagoda is Chureito at Arakurayama Sengen Park. The earlier Eli night image (`photo-13`) shows the same Fuji / Moon / torii viewpoint and is now connected to the same place.
 
 This connection also makes the site’s “shrine / ritual / mountain” theme stronger: it records not simply a landmark photograph, but an observed night visit and a listening point above the town.
 
@@ -56,6 +56,12 @@ The wooden lookout structures fit the 27 July Saiko ridge / Manyōshū hiking ch
 
 Source:
 - [Japan Tourism Agency — Koyodai, Sankodai, and Mt. Ashiwada: Mt. Fuji from the Tokai Nature Trail](https://www.mlit.go.jp/tagengo-db/en/R1-00143.html)
+
+### Fujisan Sengen Shrine — 26 July daytime visit
+
+**Record:** `photo-10`
+
+The photograph previously captioned only as “Water at the shrine” shows a substantial vermilion torii, shrine flags, a stone-edged water channel and the grounds recorded as the first shrine visit in the 26 July chapter: Fujisan Sengen Shrine. The visit note independently supplies the name; the image supplies the architectural and water-feature detail. The exact gate or sub-precinct is not named.
 
 ### Saiko Iyashi no Sato Nenba
 
@@ -133,7 +139,7 @@ The retro museum photographs and the separate arcade image give the journey a se
 
 ### Framed landscapes and ordinary rituals
 
-The circular window in `photo-137` is cross-linked to the earlier Fuji-through-a-round-window image (`photo-14`). The flower still lifes (`photo-96`, `photo-112`), roadside stone marker (`photo-106`), lanterns and summit torii extend the project’s interest in small ritual objects and the act of framing a landscape. These are editorial groupings, not identifications of a particular shrine or botanical species.
+The true circular garden window is in `photo-137`; the earlier Fuji image (`photo-14`) is actually framed by a rectangular multi-pane wooden lattice. They remain cross-linked as different examples of framed views in traditional interiors. The flower still lifes (`photo-96`, `photo-112`), roadside stone marker (`photo-106`), lanterns and summit torii extend the project’s interest in small ritual objects and the act of framing a landscape. These are editorial groupings, not identifications of a particular shrine or botanical species.
 
 ## Provisional candidate: the illuminated castle-and-moat sequence
 
