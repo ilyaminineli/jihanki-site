@@ -2,15 +2,15 @@
 (function () {
   const esc=value=>String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
   const POSITIONS={
-    "Lake Saiko":[35,44],"Aokigahara":[28,64],"Fuji Five Lakes":[48,20],"Kawaguchiko":[65,47],
-    "Lake Kawaguchi":[61,39],"Oishi Park":[54,29],"Kawaguchiko Music Forest Museum":[74,31],
-    "Mount Fuji":[50,78],"Uno-Misaki Tunnel":[15,45],"Yamanashi":[76,68],"Tokyo":[86,10],
-    "Ryugu Cave":[18,15],"Koyodai":[30,25],"Shrine":[66,78],"Shrines":[82,48],
-    "Haneda":[91,34],"Shinjuku":[76,20],
-    "Katori":[86,57],"Katori Station":[92,49],"Katori Jingu":[95,68],
-    "Hard Off Kawaguchiko Store":[80,49],"Nojima Fujiyoshida Store":[84,65],
-    "Iyashi no Sato":[24,55],"Fujisan Museum":[72,82],
-    "Kyoto":[40,12],"Osaka":[18,8]
+    "Lake Saiko":[34,46],"Aokigahara":[27,67],"Fuji Five Lakes":[45,25],"Kawaguchiko":[59,50],
+    "Lake Kawaguchi":[58,41],"Oishi Park":[52,30],"Kawaguchiko Music Forest Museum":[66,34],
+    "Mount Fuji":[49,80],"Uno-Misaki Tunnel":[15,49],"Yamanashi":[71,70],"Tokyo":[78,14],
+    "Ryugu Cave":[16,19],"Koyodai":[29,31],"Shrine":[63,80],"Shrines":[75,55],
+    "Haneda":[79,37],"Shinjuku":[72,25],
+    "Katori":[74,55],"Katori Station":[77,43],"Katori Jingu":[79,67],
+    "Hard Off Kawaguchiko Store":[76,49],"Nojima Fujiyoshida Store":[73,65],
+    "Iyashi no Sato":[23,58],"Fujisan Museum":[68,80],
+    "Kyoto":[38,15],"Osaka":[17,15]
   };
   function associationLines(places){
     const edges=new Set();
