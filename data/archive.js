@@ -4400,21 +4400,44 @@ const ARCHIVE = {
       "author": "archive",
       "project": "japan-expedition",
       "group": "PHOTO IDENTIFICATION / INTAKE",
-      "description": "Filename-by-filename review of 49 supplied addition_5 photographs, with cross-collection candidates, named signage, map context and traveller questions. Binary images still need to be added before photo records are created.",
+      "description": "Traveller-confirmed filename-by-filename review of 49 addition_5 photographs, with corrected subjects, memory connections, named places and remaining uncertainties. The source binaries still need to be added before individual photo records are created.",
       "file": "documents/notes/photo-intake-2026-11-27-addition-5.md",
       "metadata": {
         "locations": [
           "Uno-Misaki Tunnel",
+          "Onsen Yurari",
           "Lake Yamanaka",
           "Lake Shōji",
-          "Miyuki Beach",
           "Yamanashi",
-          "Okinawa"
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko Music Forest Museum",
+          "Kitaoji Shinmachi",
+          "Akihabara",
+          "Tokyo",
+          "McDonald’s 139 Fujiyoshida",
+          "Miyuki Beach",
+          "Onna",
+          "Okinawa",
+          "Shinsaibashi",
+          "Osaka",
+          "Lake Saiko"
         ],
         "related": [
-          "daily-2026-07-25",
+          "daily-2026-07-23",
           "daily-2026-07-24",
+          "daily-2026-07-25",
           "daily-2026-07-26",
+          "daily-2026-07-27",
+          "daily-2026-07-31",
+          "daily-2026-08-road-trip",
+          "tunnel",
+          "shiki",
+          "sound-08",
+          "sound-09",
+          "voice-takismana",
+          "photo-169",
+          "photo-193",
+          "photo-198",
           "photo-202"
         ]
       }
