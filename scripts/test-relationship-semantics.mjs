@@ -15,7 +15,7 @@ const relationships = context.window.JIHANKI_RELATIONSHIPS;
 assert(archive.length > 0, "Archive failed to initialise.");
 assert(geography && relationships, "Geography or relationship index failed to initialise.");
 
-const miyukihamaIds = geography.entries("Miyukihama").map(record => record.id).sort();
+const miyukihamaIds = Array.from(geography.entries("Miyukihama"), record => record.id).sort();
 assert.deepEqual(miyukihamaIds, ["photo-202", "photo-247", "photo-250"],
   "Miyukihama should contain only the three traveller-confirmed Odawara photographs.");
 assert.equal(geography.entries("Okinawa").length, 0,
