@@ -9,7 +9,7 @@
   const PENTALOGY_ID = "aokigahara-pentalogy";
   const PENTALOGY_GROUP = "AOKIGAHARA / PENTALOGY";
   const PENDING_RENDER = {
-    title: "05 — SHRINE / RITUAL",
+    title: "SHRINE / RITUAL",
     note: "Public render pending. The fifth environment remains part of the project, but no playable render is archived."
   };
   const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({
