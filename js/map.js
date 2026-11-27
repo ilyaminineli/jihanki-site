@@ -249,23 +249,6 @@
       y:Number(layer.dataset.panY||0),
       scale:clampScale(Number(layer.dataset.panScale||1))
     });
-    const clampPosition=(x,y,scale)=>{
-      const minX=Math.min(0,canvas.clientWidth-layer.offsetWidth*scale);
-      const minY=Math.min(0,canvas.clientHeight-layer.offsetHeight*scale);
-      const maxX=Math.max(0,canvas.clientWidth-layer.offsetWidth*scale);
-      const maxY=Math.max(0,canvas.clientHeight-layer.offsetHeight*scale);
-      return{x:Math.max(minX,Math.min(maxX,x)),y:Math.max(minY,Math.min(maxY,y))};
-    };
-    const write=(x,y,scale)=>{
-      scale=clampScale(scale);
-      const bounded=clampPosition(x,y,scale);
-      layer.dataset.panX=String(bounded.x);
-      layer.dataset.panY=String(bounded.y);
-      layer.dataset.panScale=String(scale);
-      layer.style.transformOrigin="0 0";
-      layer.style.transform="translate3d("+bounded.x+"px,"+bounded.y+"px,0) scale("+scale+")";
-      if(zoomReadout)zoomReadout.textContent=Math.round(scale*100)+"%";
-    };
     const contentBounds=()=>{
       const pins=[...layer.querySelectorAll(".map-pin")];
       if(!pins.length)return{left:0,top:0,right:layer.offsetWidth,bottom:layer.offsetHeight};
@@ -281,6 +264,33 @@
         right:Math.max(...boxes.map(box=>box.right)),
         bottom:Math.max(...boxes.map(box=>box.bottom))
       };
+    };
+    const clampPosition=(x,y,scale)=>{
+      const bounds=contentBounds();
+      const width=bounds.right-bounds.left,height=bounds.bottom-bounds.top;
+      const minX=width*scale<=canvas.clientWidth
+        ?(canvas.clientWidth-width*scale)/2-bounds.left*scale
+        :canvas.clientWidth-bounds.right*scale;
+      const maxX=width*scale<=canvas.clientWidth
+        ?minX
+        :-bounds.left*scale;
+      const minY=height*scale<=canvas.clientHeight
+        ?(canvas.clientHeight-height*scale)/2-bounds.top*scale
+        :canvas.clientHeight-bounds.bottom*scale;
+      const maxY=height*scale<=canvas.clientHeight
+        ?minY
+        :-bounds.top*scale;
+      return{x:Math.max(minX,Math.min(maxX,x)),y:Math.max(minY,Math.min(maxY,y))};
+    };
+    const write=(x,y,scale)=>{
+      scale=clampScale(scale);
+      const bounded=clampPosition(x,y,scale);
+      layer.dataset.panX=String(bounded.x);
+      layer.dataset.panY=String(bounded.y);
+      layer.dataset.panScale=String(scale);
+      layer.style.transformOrigin="0 0";
+      layer.style.transform="translate3d("+bounded.x+"px,"+bounded.y+"px,0) scale("+scale+")";
+      if(zoomReadout)zoomReadout.textContent=Math.round(scale*100)+"%";
     };
     const fit=()=>{
       const bounds=contentBounds(),width=Math.max(1,bounds.right-bounds.left),height=Math.max(1,bounds.bottom-bounds.top);
