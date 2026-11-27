@@ -23,7 +23,7 @@ This programme deliberately narrows the earlier feature proposal. It is not a co
 | [M68](#m68--field-impressions) | Field Impressions | Implemented |
 | [M69](#m69--memory-traces) | Memory Traces | Implemented |
 | [M70](#m70--curators-cabinet) | Curator’s Cabinet | Implemented |
-| [M71](#m71--listening-room) | Listening Room | Source-material gate remains; implementation deferred |
+| [M71](#m71--listening-room) | Listening Room | Implemented with existing archive sources |
 | [M72](#m72--quiet-signals) | Quiet Signals | Implemented — one authored, browser-local response |
 
 ## M67 — Place and relationship integrity
@@ -74,9 +74,15 @@ The existing shelves are now personal exhibitions. Each shelf keeps its visitor-
 
 ## M71 — Listening Room
 
-**Status:** Source-material gate remains; implementation deferred.
+**Status:** Implemented using the existing archive sources.
 
-The current Sound Lab already supports layered archive listening. The repository has not received the additional source samples required to make a distinct Listening Room meaningful. Do not invent artificial audio challenges or overbuild a save/load recipe system before the source palette grows. When the samples are supplied, review the actual files and their provenance, update the archive catalogue and media manifest, then decide whether saved listening arrangements add something beyond the existing live Sound Lab. Until then, M71 is deliberately not marked implemented.
+The Listening Room is a sequential player, distinct from the Sound Lab's live multi-layer mixer. It uses the actual audio catalogue and preserves its existing source group labels:
+
+- Four public renders from the FUJI SONIC PI / AOKIGAHARA pentalogy, in the documented order: Fujisan, Aokigahara, Saiko and Village. The fifth environment, Shrine, remains visible as pending and has no invented audio file.
+- The separate Tongue Drums session remains a standalone session rather than being folded into the album.
+- Seventeen field-archive sound fragments remain grouped by their catalogue labels: Environment / weather, Environment / contact, Voices / animal traces, Objects / signals and Musical fragments.
+
+The four pentalogy renders are now individually catalogued as audio records and linked to the parent project. The Listening Room plays one source at a time, can start a room as a sequential queue, supports previous / next / stop, and advances when a recording ends. It does not invent geography, alter source files, create a saved mix or record listening history. Sound Lab remains the place for visitor-built simultaneous layers.
 
 ## M72 — Quiet Signals
 
@@ -90,5 +96,5 @@ Completing the existing curated Satyam 1 Memory Trace arms one browser-local res
 2. Keep M68 limited to the single documented Saiko trail.
 3. Keep M69 limited to the curated Satyam 1 trace.
 4. Keep M70 title-led and optional; no explanatory note or cover image is required.
-5. Keep M71 dormant until additional audio material is supplied and reviewed.
+5. Keep M71 grounded in the existing catalogue. Add later recordings only after their source identity and metadata are reviewed.
 6. Keep M72 to its single authored Satyam 1 return signal; do not expand it into a catalogue of unlocks.
