@@ -61,7 +61,8 @@
     "photo-intake-addition-5": [
       { id:"daily-2026-07-25", kind:"field-visit-photograph", label:"ONSEN YURARI / UNO-MISAKI TUNNEL VISIT" },
       { id:"tunnel", kind:"project-source", label:"UNO-MISAKI / TUNNEL AUDIOVISUAL WORK" },
-      { id:"daily-2026-07-24", kind:"field-encounter-context", label:"SHIKI / FUJI-AREA ENCOUNTER MEMORY" },
+      { id:"daily-2026-07-22", kind:"first-encounter-context", label:"SHIKI / FIRST DEER APPEARANCE NEAR SAIKO" },
+      { id:"daily-2026-07-24", kind:"close-encounter-context", label:"SHIKI / FIRST CLOSE ENCOUNTER" },
       { id:"shiki", kind:"subject-audiovisual-work", label:"SHIKI / DEER SUBJECT" },
       { id:"sound-08", kind:"subject-field-recording", label:"SHIKI / SOUND TAKE 1" },
       { id:"sound-09", kind:"subject-field-recording", label:"SHIKI / SOUND TAKE 2" },
@@ -69,6 +70,7 @@
       { id:"daily-2026-07-27", kind:"field-hike-photographs", label:"FIRST SUMMIT NEAR SAIKO" },
       { id:"daily-2026-07-23", kind:"museum-and-equipment-context", label:"MUSIC FOREST MUSEUM / NEW LAPTOP" },
       { id:"daily-2026-07-31", kind:"birthday-preparation-photo", label:"GAKUPO BIRTHDAY / 31 JULY" },
+      { id:"daily-2026-08-01", kind:"mountain-ascent-photo", label:"FRUIT AT A MOUNT FUJI ASCENT STOP" },
       { id:"daily-2026-08-road-trip", kind:"regional-and-cultural-context", label:"KYOTO / OSAKA / TAKISMANA DS MUSIC USE" },
       { id:"voice-takismana", kind:"music-performer-context", label:"TAKISMANA / NINTENDO DS MUSIC INTERFACE" },
       { id:"photo-169", kind:"same-business-location", label:"MCDONALD'S 139 FUJIYOSHIDA / SAME BRANCH" },
@@ -272,9 +274,9 @@
       id:"first-tokyo-road-trip-2026-07-24",
       kind:"first-car-journey",
       title:"KAWAGUCHIKO → TOKYO → AKIHABARA",
-      stops:["Kawaguchiko","Tokyo","Akihabara"],
+      stops:["Kawaguchiko","Tokyo","Akihabara","Shinjuku"],
       mode:"FIRST CAR JOURNEY TO TOKYO",
-      description:"The 24 July daily chapter records the first road trip from Kawaguchiko to Tokyo and the subsequent Akihabara visit. Addition_5 (22) places a Bamiyan sign somewhere along the journey, not at a confirmed stop; no exact road or intermediate route is drawn."
+      description:"The 24 July daily chapter records the first road trip from Kawaguchiko to Tokyo, the Akihabara visit and the later descent / transit toward Shinjuku. Addition_5 (22) places a Bamiyan sign somewhere along the journey, not at a confirmed stop; no exact road or intermediate route is drawn."
     }
   ];
 
