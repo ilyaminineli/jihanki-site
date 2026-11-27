@@ -2484,7 +2484,7 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .map-place-index .map-place-list { padding:3px 0 12px; max-height:300px; overflow:auto; }
 .map-place-index .map-place-list button { font-size:9px; padding:5px 6px; }
 
-/* M71 — Listening Room: a sequential player, distinct from live layered Sound Lab mixing. */
+/* M71 — Archive Listening: sequential playback inside the shared Sound Lab panel. */
 .listening-room { display:grid; gap:14px; color:#ddd; }
 .listening-room-masthead,.listening-now-heading { display:flex; justify-content:space-between; gap:8px; color:#777;
   font:8px "Courier New",monospace; letter-spacing:.1em; }
