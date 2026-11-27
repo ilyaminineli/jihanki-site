@@ -106,6 +106,7 @@ Run the focused fixtures and integrated validator from the repository root:
 node scripts/test-archive-schema.mjs
 node scripts/test-interaction-model.mjs
 node scripts/test-relationship-semantics.mjs
+node scripts/test-field-impressions.mjs
 node scripts/test-markdown-links.mjs
 node scripts/test-media-manifest.mjs
 node scripts/validate-archive.mjs
