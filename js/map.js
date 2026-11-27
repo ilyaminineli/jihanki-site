@@ -4,7 +4,7 @@
   const POSITIONS={
     "Lake Saiko":[34,46],"Aokigahara":[27,67],"Fuji Five Lakes":[45,25],"Kawaguchiko":[59,50],
     "Lake Yamanaka":[76,48],"Lake Shōji":[35,61],"Uno-Misaki Tunnel":[24,55],
-    "Onsen Yurari":[44,68],"Akihabara":[84,18],"First summit near Saiko":[37,36],
+    "Onsen Yurari":[44,68],"Akihabara":[84,18],"First summit near Saiko":[30,38],
     "Lake Kawaguchi":[58,41],"Oishi Park":[52,30],"Kawaguchiko Music Forest Museum":[66,34],
     "Arakurayama Sengen Park":[71,48],"Fujisan Sengen Shrine":[56,64],"Kawaguchiko Nostalgic Toys Museum":[62,42],
     "Kawaguchiko Automobile Museum":[48,62],"Narusawa":[42,68],"Kamo River":[31,9],
