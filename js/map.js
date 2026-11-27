@@ -87,9 +87,6 @@
     "Yamanashi":[35.6652,138.571,"prefecture"],
     "Yokosawa Sabo":[35.501,138.701,"area"]
   };
-  const PREFECTURE_LAYERS=[
-    "hokkaido-tohoku","kanto","chubu","kansai","chugoku","shikoku","kyushu","okinawa"
-  ];
   const surfacePoint=name=>{
     const value=GEO_COORDS[name];
     if(!value)return null;
@@ -144,7 +141,7 @@
       .map(edge=>({from:edge.from,to:edge.to,kind:edge.kind,label:edge.label}));
   }
 
-  /* Label-sized packing on the pannable 4000 × 3000 map surface.
+  /* Geographic WGS84 anchors are projected onto the supplied Japan SVG. Labels move only to avoid collisions; hairline leaders retain the map position.
      Pins keep their regional relationships but are separated by their real label
      rectangles, not merely by their anchor points. */
   function labelMetrics(name,count=1){
@@ -272,8 +269,8 @@
       return '<line class="map-leader" x1="'+a[0]+'" y1="'+a[1]+'" x2="'+p[0]+'" y2="'+p[1]+'"></line>';
     }).join("");
     const origins=mapPlaces.map(place=>{
-      const a=anchorPoint(place.name);
-      return '<span class="map-origin-dot" aria-hidden="true" style="left:'+(a[0]/MAP_SURFACE.width*100)+'%;top:'+(a[1]/MAP_SURFACE.height*100)+'%"></span>';
+      const a=anchorPoint(place.name),precision=GEO_COORDS[place.name][2];
+      return '<span class="map-origin-dot map-origin-precision-'+precision+'" aria-hidden="true" style="left:'+(a[0]/MAP_SURFACE.width*100)+'%;top:'+(a[1]/MAP_SURFACE.height*100)+'%"></span>';
     }).join("");
     const nodes=mapPlaces.map(place=>{
       const p=labelPoint(place.name),metric=labelMetrics(place.name,place.count);
@@ -300,7 +297,7 @@
       '<div class="map-legend">'+legend+'</div><div class="map-canvas '+(selected==="memory"?"map-memory-mode":selected==="trails"?"map-trails-mode":"map-place-mode")+
       '"><div class="map-pan-layer" style="width:'+MAP_SURFACE.width+'px;height:'+MAP_SURFACE.height+'px">'+
       '<div class="map-region-label map-label-west">FUJI FIVE LAKES / YAMANASHI</div><div class="map-region-label map-label-east">KANTO / KANSAI / OKINAWA</div>'+
-      '<div class="map-prefecture-backdrop">'+PREFECTURE_LAYERS.map(name=>'<img src="assets/maps/japan-'+name+'.svg" alt="" aria-hidden="true">').join("")+'</div>'+
+      '<div class="map-prefecture-backdrop"><img src="assets/maps/japan-prefectures.svg" alt="" aria-hidden="true"></div>'+
       '<svg class="map-leaders" viewBox="0 0 '+MAP_SURFACE.width+' '+MAP_SURFACE.height+'" aria-hidden="true">'+leaders+'</svg>'+
       '<svg class="map-connections" viewBox="0 0 '+MAP_SURFACE.width+' '+MAP_SURFACE.height+'" preserveAspectRatio="none" aria-hidden="true">'+
       '<defs><marker id="map-route-arrow" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto"><path d="M0,0 L16,8 L0,16 z"></path></marker></defs>'+
