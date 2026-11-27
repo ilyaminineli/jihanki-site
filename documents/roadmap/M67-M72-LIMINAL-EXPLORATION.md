@@ -86,8 +86,8 @@ A few authored, rare machine responses may acknowledge a meaningful return or a 
 
 ## Implementation order
 
-1. Keep M67’s semantic checks in CI.
-2. Build only the single-trail M68 experiment and evaluate its tone before expanding.
-3. Add one M69 trace only after the trail interaction feels settled.
-4. Revisit M70 and M72 only if they add atmosphere rather than administrative work.
-5. Leave M71 dormant until the additional audio material is available.
+1. Keep M67’s place and relationship semantics checks in CI.
+2. Keep M68 limited to the single documented Saiko trail.
+3. Keep M69 limited to the curated Satyam 1 trace.
+4. Keep M70 title-led and optional; no explanatory note or cover image is required.
+5. Leave M71 dormant until additional audio material is available. M72 remains experimental and may be omitted.
