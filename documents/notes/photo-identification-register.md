@@ -140,7 +140,7 @@ The retro museum photographs and the separate arcade image give the journey a se
 
 ### Framed landscapes and ordinary rituals
 
-The true circular garden window is in `photo-137`; the earlier Fuji image (`photo-14`) is actually framed by a rectangular multi-pane wooden lattice. They remain cross-linked as different examples of framed views in traditional interiors. The flower still lifes (`photo-96`, `photo-112`), roadside stone marker (`photo-106`), lanterns and summit torii extend the project’s interest in small ritual objects and the act of framing a landscape. These are editorial groupings, not identifications of a particular shrine or botanical species.
+The room in `photo-137` shows the paired circular and square garden windows associated with Genko-an. This is now a strong visual match to the traveller-confirmed Kyoto visit and is linked to the additional Genko-an interior images (`photo-151`–`photo-153`). The earlier Fuji image (`photo-14`) is a separate rectangular multi-pane wooden lattice view. The flower still lifes (`photo-96`, `photo-112`), roadside stone marker (`photo-106`), lanterns and summit torii extend the project’s interest in small ritual objects and the act of framing a landscape. These are editorial groupings, not identifications of a particular shrine or botanical species.
 
 ## Kansai castle visits: Osaka Castle and Ueno Castle
 
@@ -182,12 +182,17 @@ The following photographs are now described and grouped, but not assigned a spec
 This register is a source-aware identification layer, not a claim that every photograph has a verified GPS location. It should be updated when the original travellers confirm a provisional match.
 
 
-## Supplemental upload batch received 27 November 2026
+## Supplemental photo review and memory prompts
 
-Ten additional JPEGs were supplied after the 140-image audit. Their provisional identifications, confidence levels and media-ingest checklist are recorded in [the supplemental photo intake note](./photo-intake-2026-11-27.md). The incoming images are not yet repository media files and therefore are not included in the current `photo-01`–`photo-140` count.
+The 32 images in `addition_3` are now ingested as `photo-141`–`photo-172`; the archive contains 172 unique Japan photo records across 173 source files. The source-aware addition_3 identifications and the filename inventory of unresolved questions are maintained separately:
 
-Strong new identifications include Kinkaku-ji and Fujisan Dragon Tower at Tagonoura Minato Park. Two Fuji upper-slope frames fit the 1 August climb. The Kyoto veranda, nighttime torii, traditional roofed building and nighttime castle view retain the confidence limits documented in the intake note.
+- [Addition_3 photo intake and identification](./photo-intake-2026-11-27.md)
+- [Filename-based photo memory prompts](./photo-memory-prompts-2026-11-27.md)
 
+Cross-collection recheck:
+- `photo-137` (`taki_photos (62).png`) is now a strong visual match to Genko-an’s paired round and square windows.
+- `photo-06` (`taki_photos (35).png`) is tentatively related to the foggy lookout photographs `photo-170`–`photo-171`; the shared viewpoint remains unconfirmed.
+- `photo-135` (`taki_photos (60).png`) may show a Lake Kawaguchi sightseeing-boat landing, but the sign wording alone does not prove the lake.
 
 ## Addition_3 — 32 newly catalogued photographs
 
