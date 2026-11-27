@@ -87,7 +87,7 @@ The `addition_3` folder is ingested and reviewed in [photo-intake-2026-11-27.md]
 
 The Listening Room uses audio records already held in `ARCHIVE.music` and `ARCHIVE.sound`. Four FUJI SONIC PI public renders are individually catalogued and linked to the parent `aokigahara-pentalogy` project. The Shrine environment remains pending and is not represented by a fabricated file. The 17 sound fragments retain their existing group labels and descriptions; the standalone Tongue Drums session remains separate from the pentalogy.
 
-The Listening Room is a sequential archive player. The Sound Lab remains the multi-layer mixing interface. Neither feature creates or alters source recordings.
+The Sound Lab contains two integrated modes: LIVE MIX for simultaneous visitor-selected layers, and ARCHIVE LISTENING for sequential playback by the existing archive groupings. Switching modes stops audio in the mode being left. Neither feature creates or alters source recordings.
 
 ## Media integrity
 
