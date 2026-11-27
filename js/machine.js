@@ -565,9 +565,13 @@
     activeCategory = null;
     window.JIHANKI_AUDIO.setState("browsing");
     const records = window.JIHANKI_GEOGRAPHY.entries(place);
-    const html = records.map((item, index) => '<button class="archive-item" type="button" data-archive-id="' + esc(item.id) + '">' +
-      String(index + 1).padStart(2, "0") + '&nbsp;&nbsp;' + esc(item.title) + stockTag(item) +
-      '<small>' + esc(item.date || "UNDATED") + '</small></button>').join("");
+    const html = records.map((item, index) => {
+      const hasPhoto=(item.category==="photo"||item.type==="image")&&Boolean(item.file);
+      const thumbnail=hasPhoto?'<img class="map-location-thumb" src="'+esc(item.file)+'" alt="'+esc(item.title)+'" loading="lazy" decoding="async">':"";
+      return '<button class="archive-item map-location-record'+(hasPhoto?' has-photo':"")+'" type="button" data-archive-id="'+esc(item.id)+'">'+thumbnail+
+        '<span class="map-location-copy"><strong>'+String(index+1).padStart(2,"0")+'&nbsp;&nbsp;'+esc(item.title)+stockTag(item)+'</strong>'+
+        '<small>'+esc(item.date||"UNDATED")+'</small></span></button>';
+    }).join("");
     screen.innerHTML = '<div class="archive"><div class="archive-header"><span class="archive-title">' + esc(place.toUpperCase()) + '</span><span class="archive-status">' + records.length + ' RECORDS</span></div>' +
       (records.length ? html : '<div class="archive-item">NO MEMORY RECORDED</div>') + '</div>';
     window.JIHANKI_EVENTS.record("location-opened", { place, count: records.length });
