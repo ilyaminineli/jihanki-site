@@ -652,7 +652,17 @@ const ARCHIVE = {
       "category": "photo",
       "group": "Found media and machines",
       "author": "taki",
-      "file": "media/photo/photos_from_japan/taki_photos (28).png"
+      "file": "media/photo/photos_from_japan/taki_photos (28).png",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko"
+        ],
+        "related": [
+          "photo-100",
+          "photo-111"
+        ]
+      }
     },
     {
       "id": "photo-22",
@@ -663,7 +673,17 @@ const ARCHIVE = {
       "category": "photo",
       "group": "Found media and machines",
       "author": "taki",
-      "file": "media/photo/photos_from_japan/taki_photos (63).png"
+      "file": "media/photo/photos_from_japan/taki_photos (63).png",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko"
+        ],
+        "related": [
+          "photo-100",
+          "photo-111"
+        ]
+      }
     },
     {
       "id": "photo-23",
@@ -988,13 +1008,24 @@ const ARCHIVE = {
     },
     {
       "id": "photo-46",
-      "title": "Pagoda silhouette at dusk",
-      "date": "2026",
+      "title": "Chureito Pagoda silhouetted against the Moon",
+      "date": "2026-07-26",
       "type": "image",
       "category": "photo",
-      "group": "Unresolved pagoda viewpoint",
+      "group": "Arakurayama / Chureito Pagoda",
       "file": "media/photo/photos_from_japan/addition_1/addition_1 (23).jpg",
-      "description": "A multi-tiered pagoda is silhouetted against a hillside and distant lights. The precise pagoda is not confirmed; it is not assumed to be Chureito."
+      "description": "The five-storey silhouette is identified as Chureito Pagoda at Arakurayama Sengen Park by the matching night photographs from the 26 July Arakura Shrine visit. The field note records Mount Fuji, an almost full Moon and the lights of the towns below.",
+      "metadata": {
+        "locations": [
+          "Arakurayama Sengen Park"
+        ],
+        "related": [
+          "photo-85",
+          "photo-101",
+          "photo-114",
+          "photo-116"
+        ]
+      }
     },
     {
       "id": "photo-47",
@@ -1340,6 +1371,1103 @@ const ARCHIVE = {
       "metadata": {
         "locations": [
           "Katori"
+        ]
+      }
+    },
+    {
+      "id": "photo-75",
+      "title": "A raincoat beneath the night sky",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Rain / thresholds after dark",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (1).jpg",
+      "description": "A solitary figure in a yellow raincoat crosses a rain-darkened path. The image reads as a waterfront or lakeside walk, but no sign establishes the exact shore."
+    },
+    {
+      "id": "photo-76",
+      "title": "Illustrated banners above a narrow street",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Urban street fragments",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (2).jpg",
+      "description": "Character banners span a narrow Japanese shopping street. The scene is also photographed from a second position in the Taki collection; the street name is not visible.",
+      "metadata": {
+        "related": [
+          "photo-138"
+        ]
+      }
+    },
+    {
+      "id": "photo-77",
+      "title": "Red pedestrian signal at a quiet crossing",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Urban street fragments",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (3).jpg",
+      "description": "A red pedestrian signal glows above a small urban crossing. The surrounding buildings do not provide a reliable city or street name."
+    },
+    {
+      "id": "photo-78",
+      "title": "A white castle above the night water",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Castle / illuminated water",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (5).jpg",
+      "description": "A brightly illuminated white-plaster castle complex rises over a moat. The architecture and reflected walls resemble the East Gate and turret complex at Sunpu Castle Park, but no sign or travel note confirms the match.",
+      "metadata": {
+        "related": [
+          "photo-93",
+          "photo-94",
+          "photo-140"
+        ]
+      }
+    },
+    {
+      "id": "photo-79",
+      "title": "LUMINE 2 and the Shinjuku bus terminal",
+      "date": "2026-07-21",
+      "type": "image",
+      "category": "photo",
+      "group": "Shinjuku / transit",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (6).jpg",
+      "description": "The LUMINE 2 frontage and highway-bus terminal context identify this as the Shinjuku Station / Shinjuku Expressway Bus Terminal area, linking the image to the Haneda arrival journey.",
+      "metadata": {
+        "locations": [
+          "Shinjuku"
+        ],
+        "related": [
+          "daily-2026-07-21"
+        ]
+      }
+    },
+    {
+      "id": "photo-80",
+      "title": "A room overlooking Lake Saiko",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Lake Saiko / residency interiors",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (7).jpg",
+      "description": "Bicycles sit inside a room whose long windows look over the lake. It is likely an accommodation or residency interior near Lake Saiko; the building itself is not identified.",
+      "metadata": {
+        "locations": [
+          "Lake Saiko"
+        ],
+        "related": [
+          "daily-2026-07-22"
+        ]
+      }
+    },
+    {
+      "id": "photo-81",
+      "title": "Caution on the road",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Road signs / field details",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (8).jpg",
+      "description": "A Japanese caution sign catches the light on a dark road. The surrounding road and signpost have not yet been matched to a named route."
+    },
+    {
+      "id": "photo-82",
+      "title": "Saiko Iyashi no Sato Nenba — welcome sign",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Saiko Iyashi no Sato / village",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (9).jpg",
+      "description": "The illuminated sign reads 西湖いやしの里根場, identifying the traditional village as Saiko Iyashi no Sato Nenba. The visit is also recorded in the 23 July field note.",
+      "metadata": {
+        "locations": [
+          "Iyashi no Sato",
+          "Lake Saiko"
+        ],
+        "related": [
+          "daily-2026-07-23"
+        ]
+      }
+    },
+    {
+      "id": "photo-83",
+      "title": "Directions toward Otsuki and Fujiyoshida",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / road corridor",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (10).jpg",
+      "description": "A road-direction board points toward Otsuki and Fujiyoshida, documenting movement through the Yamanashi road corridor rather than a precise roadside stop.",
+      "metadata": {
+        "locations": [
+          "Yamanashi"
+        ]
+      }
+    },
+    {
+      "id": "photo-84",
+      "title": "Mitsuba-tsutsuji — the botanical label",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Botany / forest details",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (11).jpg",
+      "description": "The plant label reads ミツバツツジ (mitsuba-tsutsuji), an azalea. The botanical clue is clear, although the garden or trail where it was photographed is not named."
+    },
+    {
+      "id": "photo-85",
+      "title": "Chureito Pagoda at night",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Arakurayama / Chureito Pagoda",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (13).jpg",
+      "description": "A five-storey pagoda rises over the lights of Fujiyoshida. Its form and the recorded 26 July night visit identify it as Chureito Pagoda in Arakurayama Sengen Park.",
+      "metadata": {
+        "locations": [
+          "Arakurayama Sengen Park"
+        ],
+        "related": [
+          "photo-46",
+          "photo-101",
+          "photo-114",
+          "photo-116"
+        ]
+      }
+    },
+    {
+      "id": "photo-86",
+      "title": "Mount Fuji behind a stone lantern",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Fuji / shrine and landscape",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (16).jpg",
+      "description": "A stone lantern and flowering plants frame Mount Fuji beneath a large cloud. The exact shrine, garden or viewpoint is not established by the photograph."
+    },
+    {
+      "id": "photo-87",
+      "title": "The bend in the wooded road",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Forest roads / night passages",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (17).jpg",
+      "description": "A quiet road curves beneath dense trees and a single streetlight. It belongs to the expedition's recurring forest-road imagery, but no named tunnel or route is visible."
+    },
+    {
+      "id": "photo-88",
+      "title": "The Yamanashi road corridor",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / road corridor",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (19).jpg",
+      "description": "A large directional sign lists destinations including Otsuki, Tsuru, Oshino, Odawara and Yamanakako. It confirms the wider Fuji / Yamanashi driving geography, not the exact junction.",
+      "metadata": {
+        "locations": [
+          "Yamanashi"
+        ]
+      }
+    },
+    {
+      "id": "photo-89",
+      "title": "Exit marker inside a tunnel",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Tunnels / wayfinding",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (20).jpg",
+      "description": "A bilingual tunnel sign points toward an exit 1,240 metres away. The image adds a concrete wayfinding detail to the trip's tunnel and passage photographs, but the tunnel name is not legible."
+    },
+    {
+      "id": "photo-90",
+      "title": "Steam stacks above an industrial waterway",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Industrial water / steam",
+      "author": "eli",
+      "file": "media/photo/photos_from_japan/eli_photos (21).jpg",
+      "description": "Steam rises from an industrial waterfront and its tall striped stack reflects in the canal. A closely related view appears in the Taki collection; the city and facility remain unidentified.",
+      "metadata": {
+        "related": [
+          "photo-129"
+        ]
+      }
+    },
+    {
+      "id": "photo-91",
+      "title": "The storm edge at the coast",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Coast / night boundary",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (1).png",
+      "description": "A monochrome night view looks across a rough shoreline and a rock breakwater. The exact coast is not identifiable from the water and rocks alone.",
+      "metadata": {
+        "related": [
+          "photo-92",
+          "photo-133"
+        ]
+      }
+    },
+    {
+      "id": "photo-92",
+      "title": "Red harbour beacon at the end of the jetty",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Coast / navigation lights",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (2).png",
+      "description": "A concrete jetty reaches into the sea toward a blinking red navigation beacon. It forms a pair with the storm-shore photograph, but no harbour name is visible.",
+      "metadata": {
+        "related": [
+          "photo-91",
+          "photo-133"
+        ]
+      }
+    },
+    {
+      "id": "photo-93",
+      "title": "Castle walls reflected after dark",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Castle / illuminated water",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (3).png",
+      "description": "A white castle wall and stone rampart are illuminated above still water. This is part of the same night-castle sequence as the Eli photograph and the closer stairway view; Sunpu Castle remains a probable, not confirmed, identification.",
+      "metadata": {
+        "related": [
+          "photo-78",
+          "photo-94",
+          "photo-140"
+        ]
+      }
+    },
+    {
+      "id": "photo-94",
+      "title": "The castle roofline above the moat",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Castle / illuminated water",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (4).png",
+      "description": "A second angle shows the illuminated roofline, white walls and their reflection across the moat. It belongs to the same unresolved castle visit as the other night views.",
+      "metadata": {
+        "related": [
+          "photo-78",
+          "photo-93",
+          "photo-140"
+        ]
+      }
+    },
+    {
+      "id": "photo-95",
+      "title": "Lanterns floating at the Fuji Kawaguchiko event",
+      "date": "2026-08-16",
+      "type": "image",
+      "category": "photo",
+      "group": "Festival / Oishi Park",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (5).png",
+      "description": "Lanterns drift across the lake during the Mt. Fuji Lantern Floating event. The event venue and matching photographs in the addition_1 folder identify this as the Oishi Park / Lake Kawaguchi gathering.",
+      "metadata": {
+        "locations": [
+          "Oishi Park",
+          "Lake Kawaguchi"
+        ],
+        "related": [
+          "photo-24",
+          "photo-25",
+          "photo-26",
+          "photo-27",
+          "photo-28"
+        ]
+      }
+    },
+    {
+      "id": "photo-96",
+      "title": "A pale lily beneath the trees",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Flowers / seasonal memory",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (8).png",
+      "description": "A pale pink lily-like flower is photographed close to the ground. It is a useful counterpoint to the expedition's higanbana and flower imagery, but is not identified as the red spider lily and its exact species is unconfirmed.",
+      "metadata": {
+        "related": [
+          "gonshan",
+          "photo-112"
+        ]
+      }
+    },
+    {
+      "id": "photo-97",
+      "title": "A dark lake beneath the mountain ridge",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Night lakes / reflections",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (9).png",
+      "description": "A low-light view of a lake and mountainous horizon, with a small band of reflected light. It belongs to the Fuji-lake night sequence, but the lake cannot be distinguished visually."
+    },
+    {
+      "id": "photo-98",
+      "title": "Public telephone at the forest edge",
+      "date": "2026-07-22",
+      "type": "image",
+      "category": "photo",
+      "group": "Jihanki / forest phone booths",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (10).png",
+      "description": "A public telephone booth stands beside a wooded road. It closely matches the 22 July note about discovering an old public telephone in the Saiko forest walk; the exact coordinates are not recorded.",
+      "metadata": {
+        "locations": [
+          "Lake Saiko"
+        ],
+        "related": [
+          "photo-03",
+          "photo-04",
+          "daily-2026-07-22"
+        ]
+      }
+    },
+    {
+      "id": "photo-99",
+      "title": "Arcade machines in blue light",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Arcades / retro play",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (11).png",
+      "description": "Rows of fighting-game cabinets glow inside an arcade. The image expands the expedition's game and machine theme; the venue is not identifiable from the cabinet fronts.",
+      "metadata": {
+        "locations": [
+          "Tokyo"
+        ],
+        "related": [
+          "photo-21",
+          "photo-22",
+          "photo-100"
+        ]
+      }
+    },
+    {
+      "id": "photo-100",
+      "title": "Monster figures in ordered rows",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / nostalgic toys",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (12).png",
+      "description": "Long rows of monster figures are displayed together. This matches the 26 July museum note and its observation that monsters seemed ordinary when arranged neatly; the collection fits the Kawaguchiko nostalgic-toy museum.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko"
+        ],
+        "related": [
+          "photo-21",
+          "photo-22",
+          "photo-111",
+          "daily-2026-07-26"
+        ]
+      }
+    },
+    {
+      "id": "photo-101",
+      "title": "The Moon over Fuji from Arakurayama",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Arakurayama / moonlit Fuji",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (13).png",
+      "description": "Mount Fuji, the near-full Moon and the town lights align in the night view recorded during the 26 July visit to Arakura Shrine. The viewpoint belongs to the Arakurayama / Chureito sequence.",
+      "metadata": {
+        "locations": [
+          "Arakurayama Sengen Park"
+        ],
+        "related": [
+          "photo-46",
+          "photo-85",
+          "photo-114",
+          "photo-116"
+        ]
+      }
+    },
+    {
+      "id": "photo-102",
+      "title": "A road disappearing into the trees",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Forest roads / night passages",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (14).png",
+      "description": "A narrow forest road recedes into darkness between dense trees. The photograph is kept as a night-drive memory rather than assigned to a named route."
+    },
+    {
+      "id": "photo-103",
+      "title": "The road climbs through the forest",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Forest roads / night passages",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (15).png",
+      "description": "A second forest-road view rises toward an amber streetlight. It may belong to the same night-drive material as the preceding frame, but the exact location is unknown.",
+      "metadata": {
+        "related": [
+          "photo-102"
+        ]
+      }
+    },
+    {
+      "id": "photo-104",
+      "title": "Mount Fuji summit — the crater",
+      "date": "2026-08-01",
+      "type": "image",
+      "category": "photo",
+      "group": "Mount Fuji / summit climb",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (18).png",
+      "description": "A wide view looks across the exposed volcanic crater and summit ridge. The 1 August climbing note identifies the expedition and date.",
+      "metadata": {
+        "locations": [
+          "Mount Fuji"
+        ],
+        "related": [
+          "photo-121",
+          "photo-122",
+          "photo-123",
+          "daily-2026-08-01"
+        ]
+      }
+    },
+    {
+      "id": "photo-105",
+      "title": "A regional bus ticket office",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Transit / bus terminals",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (19).png",
+      "description": "A bus ticket counter and terminal frontage appear in the frame. The station or terminal name is not sufficiently legible to assign a specific stop."
+    },
+    {
+      "id": "photo-106",
+      "title": "Stone marker beside a mountain road",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Roadside markers / memorials",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (20).png",
+      "description": "A small stone marker or roadside memorial stands beneath a tree. Its inscription is not legible, so it remains a visual record rather than a named shrine or monument."
+    },
+    {
+      "id": "photo-107",
+      "title": "BOSS coffee — a drink carried into the landscape",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Jihanki / vending objects",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (22).png",
+      "description": "A canned BOSS Rainbow Mountain Blend coffee is held beside the expedition's everyday scenery. It extends the vending-machine motif from the machines themselves to the objects and drinks collected around them.",
+      "metadata": {
+        "related": [
+          "photo-01",
+          "photo-02",
+          "photo-113",
+          "photo-131"
+        ]
+      }
+    },
+    {
+      "id": "photo-108",
+      "title": "Rain on the city drive",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Rain / roads and transit",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (25).png",
+      "description": "A rain-darkened street is seen through a car windscreen at night. No road sign or landmark fixes the city."
+    },
+    {
+      "id": "photo-109",
+      "title": "A beam crossing the night lake",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Night lakes / reflections",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (26).png",
+      "description": "A bright band of light moves across a dark lake surface. The source of the beam and the lake are not identified."
+    },
+    {
+      "id": "photo-110",
+      "title": "Red signals around a road bend",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Roads / signals after dark",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (27).png",
+      "description": "A winding road is marked by red lights and traffic signals in the dark. The sequence adds to the archive's recurring road-as-threshold motif."
+    },
+    {
+      "id": "photo-111",
+      "title": "A wall of Japanese record sleeves",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / nostalgic toys and records",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (29).png",
+      "description": "A large display of Japanese record covers fills the frame. The 26 July museum visit and the museum's documented record collection make this a strong match for the Kawaguchiko nostalgic-toy collection, alongside the monster figures.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Nostalgic Toys Museum",
+          "Kawaguchiko"
+        ],
+        "related": [
+          "photo-21",
+          "photo-22",
+          "photo-100",
+          "daily-2026-07-26"
+        ]
+      }
+    },
+    {
+      "id": "photo-112",
+      "title": "A flower held in a glass",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Flowers / everyday still lifes",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (30).png",
+      "description": "A small flower is placed in a glass of water, turning a roadside botanical detail into a quiet still life. Its exact species and setting are not established.",
+      "metadata": {
+        "related": [
+          "photo-96"
+        ]
+      }
+    },
+    {
+      "id": "photo-113",
+      "title": "Vending machines beyond the tree line",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Machines after dark",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (31).png",
+      "description": "A small group of illuminated vending machines stands apart from the surrounding dark landscape. This joins the first-night Jihanki photographs as another machine cluster at the edge of ordinary space.",
+      "metadata": {
+        "related": [
+          "photo-01",
+          "photo-02",
+          "photo-03",
+          "photo-04",
+          "photo-98",
+          "photo-107",
+          "photo-131"
+        ]
+      }
+    },
+    {
+      "id": "photo-114",
+      "title": "Full Moon above Fuji and the town",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Arakurayama / moonlit Fuji",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (32).png",
+      "description": "A broad night view places Mount Fuji beneath the Moon and above the lights of the town. It matches the 26 July Arakura viewpoint described in the field note.",
+      "metadata": {
+        "locations": [
+          "Arakurayama Sengen Park"
+        ],
+        "related": [
+          "photo-46",
+          "photo-85",
+          "photo-101",
+          "photo-116"
+        ]
+      }
+    },
+    {
+      "id": "photo-115",
+      "title": "The tree-canopied approach",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Ritual / forest paths",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (33).png",
+      "description": "A dark path passes beneath a thick canopy with stone lantern-like fixtures at the side. It suggests a shrine or garden approach, but the place is not named."
+    },
+    {
+      "id": "photo-116",
+      "title": "Full Moon over the town from Arakurayama",
+      "date": "2026-07-26",
+      "type": "image",
+      "category": "photo",
+      "group": "Arakurayama / moonlit Fuji",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (34).png",
+      "description": "The Moon and Mount Fuji sit above a wide band of town lights. The view matches the 26 July night visit to Arakura Shrine and is grouped with the other Chureito viewpoint photographs.",
+      "metadata": {
+        "locations": [
+          "Arakurayama Sengen Park"
+        ],
+        "related": [
+          "photo-46",
+          "photo-85",
+          "photo-101",
+          "photo-114"
+        ]
+      }
+    },
+    {
+      "id": "photo-117",
+      "title": "Water channel beneath a bridge",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Water infrastructure / night",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (36).png",
+      "description": "A concrete water channel passes below a bridge and nearby infrastructure at night. The photograph records a built waterway, but not its town or route.",
+      "metadata": {
+        "related": [
+          "photo-118",
+          "photo-129"
+        ]
+      }
+    },
+    {
+      "id": "photo-118",
+      "title": "The stream below the road bridge",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Rivers / bridges and infrastructure",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (37).png",
+      "description": "A wooded stream or gorge runs beneath a distant illuminated bridge. It belongs to the water-and-infrastructure series, although the exact location is unknown.",
+      "metadata": {
+        "related": [
+          "photo-117"
+        ]
+      }
+    },
+    {
+      "id": "photo-119",
+      "title": "Stone lantern at a wooded roadside",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Shrine fragments / roadside ritual",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (39).png",
+      "description": "A stone lantern or small shrine marker stands beside greenery and a convex traffic mirror. No shrine name or inscription can be read."
+    },
+    {
+      "id": "photo-120",
+      "title": "Moonlight caught in a reed bed",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Night lakes / reflections",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (40).png",
+      "description": "A narrow strip of moonlight glitters across shallow water and reeds. The image is linked thematically to the other lake-at-night photographs, not to a particular lake.",
+      "metadata": {
+        "related": [
+          "photo-97",
+          "photo-109",
+          "photo-125"
+        ]
+      }
+    },
+    {
+      "id": "photo-121",
+      "title": "Mount Fuji summit — the crater rim",
+      "date": "2026-08-01",
+      "type": "image",
+      "category": "photo",
+      "group": "Mount Fuji / summit climb",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (41).png",
+      "description": "A second summit photograph records the jagged crater edge and dark volcanic ground. It belongs to the 1 August climb sequence.",
+      "metadata": {
+        "locations": [
+          "Mount Fuji"
+        ],
+        "related": [
+          "photo-104",
+          "photo-122",
+          "photo-123"
+        ]
+      }
+    },
+    {
+      "id": "photo-122",
+      "title": "Lava ridge above the clouds",
+      "date": "2026-08-01",
+      "type": "image",
+      "category": "photo",
+      "group": "Mount Fuji / summit climb",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (42).png",
+      "description": "A steep volcanic ridge and rough lava field rise above a bank of cloud at the summit. The 1 August climbing note confirms Mount Fuji as the setting.",
+      "metadata": {
+        "locations": [
+          "Mount Fuji"
+        ],
+        "related": [
+          "photo-104",
+          "photo-121",
+          "photo-123"
+        ]
+      }
+    },
+    {
+      "id": "photo-123",
+      "title": "Torii at the summit of Mount Fuji",
+      "date": "2026-08-01",
+      "type": "image",
+      "category": "photo",
+      "group": "Mount Fuji / summit climb",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (43).png",
+      "description": "A wooden torii stands beside the summit building and exposed volcanic ground. The photograph confirms a shrine threshold at the summit, but does not identify which summit shrine or sub-shrine.",
+      "metadata": {
+        "locations": [
+          "Mount Fuji"
+        ],
+        "related": [
+          "photo-104",
+          "photo-121",
+          "photo-122"
+        ]
+      }
+    },
+    {
+      "id": "photo-124",
+      "title": "Boats at a quiet Fuji lake",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Fuji Five Lakes / waterside views",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (44).png",
+      "description": "A wooded shore and small boats frame a calm lake. The landscape fits the Fuji Five Lakes region, but the individual lake cannot be distinguished.",
+      "metadata": {
+        "locations": [
+          "Fuji Five Lakes"
+        ]
+      }
+    },
+    {
+      "id": "photo-125",
+      "title": "Moonlight ripples across the water",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Night lakes / reflections",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (45).png",
+      "description": "A close monochrome study of light and ripples on the water surface. The image forms a visual pair with the reed-bed moonlight photograph, without a confirmed lake name.",
+      "metadata": {
+        "related": [
+          "photo-97",
+          "photo-109",
+          "photo-120"
+        ]
+      }
+    },
+    {
+      "id": "photo-126",
+      "title": "Aircraft preserved at the Kawaguchiko Automobile Museum",
+      "date": "2026-08-03",
+      "type": "image",
+      "category": "photo",
+      "group": "Kawaguchiko / aviation collection",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (46).png",
+      "description": "An outdoor aircraft display includes North American F-86 Sabre airframes whose visible serials match aircraft documented at the Kawaguchiko Automobile Museum and Flight Hall in Narusawa. This corrects the generic “Museum of Military Aircraft” wording in the 3 August note.",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko Automobile Museum",
+          "Narusawa",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-08-03"
+        ]
+      }
+    },
+    {
+      "id": "photo-127",
+      "title": "A wooden shelter in a green clearing",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Saiko ridge / lookout structures",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (47).png",
+      "description": "A small roofed wooden structure stands in an open, overgrown landscape. It may belong to the Saiko south-ridge hiking material, but the exact viewpoint is not confirmed.",
+      "metadata": {
+        "related": [
+          "photo-128",
+          "photo-130",
+          "daily-2026-07-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-128",
+      "title": "A multi-level timber lookout",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Saiko ridge / lookout structures",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (51).png",
+      "description": "A distinctive timber observation structure rises above a grassy hillside. The 27 July hiking note records a wooden viewpoint on the Saiko ridge; the precise station on the Koyodai–Sankodai–Ashiwada trail is not confirmed.",
+      "metadata": {
+        "related": [
+          "photo-127",
+          "photo-130",
+          "daily-2026-07-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-129",
+      "title": "Steam over the industrial waterway",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Industrial water / steam",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (52).png",
+      "description": "A second view shows the same industrial waterfront, striped stack and steam columns reflected in the water. It is paired with the Eli image, but the site remains unidentified.",
+      "metadata": {
+        "related": [
+          "photo-90"
+        ]
+      }
+    },
+    {
+      "id": "photo-130",
+      "title": "Stairs to the timber lookout",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Saiko ridge / lookout structures",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (53).png",
+      "description": "A closer view shows the multi-level wooden lookout and its steep approach. It is grouped with the 27 July Saiko ridge material, without assigning an exact peak or platform.",
+      "metadata": {
+        "related": [
+          "photo-127",
+          "photo-128",
+          "daily-2026-07-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-131",
+      "title": "One vending machine under a shelter",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Machines after dark",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (54).png",
+      "description": "A single illuminated machine stands beneath an otherwise empty parking canopy. It extends the Jihanki photographs from forest roads to anonymous rest-stop spaces.",
+      "metadata": {
+        "related": [
+          "photo-01",
+          "photo-02",
+          "photo-03",
+          "photo-113"
+        ]
+      }
+    },
+    {
+      "id": "photo-132",
+      "title": "Flowers beside a roadside rest area",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Roadside gardens / rest stops",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (55).png",
+      "description": "A flowerbed and trimmed hedge sit beside a parking area and roadside structure. The exact facility is not identifiable."
+    },
+    {
+      "id": "photo-133",
+      "title": "A ship beside the rope-fenced shore",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Coastal parks / maritime objects",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (56).png",
+      "description": "A ship-shaped structure stands in a grassy recreation area behind rope netting and wooden posts. It may be a maritime-themed park or memorial installation; no site name is visible.",
+      "metadata": {
+        "related": [
+          "photo-91",
+          "photo-92"
+        ]
+      }
+    },
+    {
+      "id": "photo-134",
+      "title": "Town and lake from a high viewpoint",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Fuji Five Lakes / panoramas",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (58).png",
+      "description": "A broad elevated view looks over a dense lakeside town, with water and mountain ridges beyond. It belongs to the Fuji Five Lakes panorama material, though the exact lookout and lake are not established.",
+      "metadata": {
+        "locations": [
+          "Fuji Five Lakes"
+        ]
+      }
+    },
+    {
+      "id": "photo-135",
+      "title": "Drinks at a sightseeing-boat landing",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Lakefront / everyday objects",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (60).png",
+      "description": "Two non-alcoholic canned drinks are held beside a pier sign reading 遊覧船のり場 (sightseeing-boat boarding). The sign identifies the kind of waterfront stop, not the lake or operator."
+    },
+    {
+      "id": "photo-136",
+      "title": "Last light across the lake",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Fuji Five Lakes / evening water",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (61).png",
+      "description": "A muted evening view looks across the water toward a low mountain ridge and lakeside buildings. The image belongs to the Fuji Five Lakes lakefront sequence, but the lake is not individually identified.",
+      "metadata": {
+        "locations": [
+          "Fuji Five Lakes"
+        ]
+      }
+    },
+    {
+      "id": "photo-137",
+      "title": "A round window in a tatami room",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Framed views / traditional interiors",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (62).png",
+      "description": "A traditional tatami room frames a green garden through a circular window. It creates a strong visual connection with the Fuji-through-a-round-window photograph, but the building and city are not confirmed.",
+      "metadata": {
+        "related": [
+          "photo-14"
+        ]
+      }
+    },
+    {
+      "id": "photo-138",
+      "title": "Banners above a narrow shopping street",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Urban street fragments",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (64).png",
+      "description": "A second photograph of the illustrated-banner street from the Eli collection. The matching street scene links the two photographers' sequences, though no shop name or district is legible.",
+      "metadata": {
+        "related": [
+          "photo-76"
+        ]
+      }
+    },
+    {
+      "id": "photo-139",
+      "title": "Kamo River with Kyoto Tower beyond",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / Kamo River",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (65).png",
+      "description": "White birds stand in the river below the city bank, with Kyoto Tower visible behind the rooftops. The tower-and-river combination identifies the scene as the Kamo River in Kyoto.",
+      "metadata": {
+        "locations": [
+          "Kamo River",
+          "Kyoto"
+        ],
+        "related": [
+          "daily-2026-08-road-trip"
+        ]
+      }
+    },
+    {
+      "id": "photo-140",
+      "title": "Steps to the white-plastered castle",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Castle / illuminated water",
+      "author": "taki",
+      "file": "media/photo/photos_from_japan/taki_photos (68).png",
+      "description": "A close view looks up stone steps toward a white-plastered gate or turret. The building belongs to the same castle sequence as the moat reflections; Sunpu Castle Park is a strong visual candidate, but the exact identification remains provisional.",
+      "metadata": {
+        "related": [
+          "photo-78",
+          "photo-93",
+          "photo-94"
         ]
       }
     }
