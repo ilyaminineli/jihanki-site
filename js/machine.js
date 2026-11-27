@@ -862,6 +862,8 @@
     if (explore) { const item = byId(explore.dataset.exploreId); if (item) openArchaeology(item); return; }
     const back = event.target.closest("[data-panel-back]");
     if (back) { const item = byId(back.dataset.panelBack); if (item) openItem(item); return; }
+    const mapTrailNote = event.target.closest("[data-map-trail-note]");
+    if (mapTrailNote) { const item = byId(mapTrailNote.dataset.mapTrailNote); if (item) openItem(item); return; }
     const mapPlace = event.target.closest("[data-map-place]");
     if (mapPlace) { showLocation(mapPlace.dataset.mapPlace); return; }
     const mapMode = event.target.closest("[data-map-mode]");
