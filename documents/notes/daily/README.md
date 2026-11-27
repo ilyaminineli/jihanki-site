@@ -18,12 +18,16 @@ The files in this directory are intentionally chronological. They preserve the p
 - [2026-07-29 — Ryugu Cave / Koyodai](./2026-07-29.md)
 - **2026-07-30 — no standalone chapter in the uploaded source**
 - [2026-07-31 — Gakupo Birthday](./2026-07-31.md)
+- [2026-07-31 — Forwarded map pins / place identification](./2026-07-31-map-pins.md)
 - [2026-08-01 — Entering Fuji](./2026-08-01.md)
 - [2026-08-02 — Hanabi](./2026-08-02.md)
 - [2026-08-03 — Machines / Memory / The Hidden History](./2026-08-03.md)
 - [2026-08-18 — Last Morning on the Boards](./2026-08-18.md)
+- [2026-08 — Kawaguchiko / Kyoto / Osaka / Kawaguchiko road journey](./2026-08-road-trip.md)> **Date note:** the source document explicitly prints date headings through 2026-07-26 and then 2026-07-31. The 2026-07-27 and 2026-07-28 chapters are ported from the chronological sections in the uploaded reconstruction, which explicitly labels those sections. No 2026-07-30 chapter is invented because the source does not provide one. The later chat export is sparse for 2026-08-04 through 2026-08-17 and omits most attached media, so no daily chapters are inferred for that interval.
 
-> **Date note:** the source document explicitly prints date headings through 2026-07-26 and then 2026-07-31. The 2026-07-27 and 2026-07-28 chapters are ported from the chronological sections in the uploaded reconstruction, which explicitly labels those sections. No 2026-07-30 chapter is invented because the source does not provide one. The later chat export is sparse for 2026-08-04 through 2026-08-17 and omits most attached media, so no daily chapters are inferred for that interval.
+## Cross-collection photo identification
+
+The [photo identification register](../photo-identification-register.md) records the full Japan image audit, new archive links and unresolved candidate locations.
 
 ## Core mutation of the project
 
