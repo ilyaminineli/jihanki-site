@@ -1483,3 +1483,42 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
     width:20px; height:20px; min-width:20px; max-width:20px;
   }
 }
+
+
+/* M51 — geographic memory: readable location tags and differentiated archive-density nodes. */
+.map-toolbar { align-items:center; flex-wrap:wrap; }
+.map-toolbar strong { text-transform:uppercase; font-size:13px; letter-spacing:.16em; }
+.map-mode-switch { flex-wrap:wrap; justify-content:flex-end; }
+.map-mode-switch button { min-width:66px; background:#0b0b0b; border:1px solid rgba(255,255,255,.17); color:#929292; letter-spacing:.1em; }
+.map-legend { display:flex; flex-wrap:wrap; gap:8px 16px; padding:7px 0 10px; color:#777; font:7px "Courier New",monospace; letter-spacing:.1em; }
+.map-legend span { display:inline-flex; align-items:center; gap:6px; }
+.map-legend i { display:inline-block; width:8px; height:8px; border:1px solid #bdbdbd; border-radius:50%; }
+.map-legend .legend-memory { width:11px; height:11px; background:rgba(255,255,255,.15); box-shadow:0 0 0 3px rgba(255,255,255,.07); }
+.map-legend .legend-link { width:18px; height:0; border:0; border-top:1px dashed #aaa; border-radius:0; }
+.map-canvas { min-height:390px; background-color:#070707; }
+.map-canvas:before { left:27%; top:18%; width:46%; height:69%; border-color:rgba(255,255,255,.09); }
+.map-place-mode .map-connections line { stroke:rgba(220,220,220,.15); stroke-dasharray:1 2; }
+.map-pin { min-width:0; max-width:132px; display:flex; align-items:center; gap:5px; padding:4px 6px; border:1px solid rgba(255,255,255,.16); background:rgba(5,5,5,.93); text-align:left; }
+.map-pin-dot { flex:0 0 8px; width:8px; height:8px; margin:0 2px; box-shadow:none; }
+.map-pin-copy { display:grid; min-width:0; gap:2px; }
+.map-pin strong { font-size:8px; line-height:1.15; overflow-wrap:anywhere; }
+.map-pin-jp { color:#646464; font-size:6px; line-height:1.1; }
+.map-pin-count { color:#858585; font-size:6px; line-height:1.1; }
+.map-pin-index { align-self:flex-start; margin-left:auto; color:#626262; font-size:6px; }
+.map-pin-quiet .map-pin-dot { width:6px; height:6px; flex-basis:6px; }
+.map-pin-active { border-color:rgba(255,255,255,.28); }
+.map-pin-active .map-pin-dot { width:9px; height:9px; flex-basis:9px; background:rgba(255,255,255,.1); }
+.map-pin-cluster { border-color:rgba(255,255,255,.48); box-shadow:0 0 0 2px rgba(255,255,255,.055); }
+.map-pin-cluster .map-pin-dot { width:12px; height:12px; flex-basis:12px; background:rgba(255,255,255,.2); box-shadow:0 0 0 3px rgba(255,255,255,.07); }
+.map-pin:focus-visible { outline:1px solid white; outline-offset:3px; }
+.map-pin:hover { background:#1a1a1a; border-color:#999; }
+@media(max-width:560px) {
+ .map-toolbar { display:grid; align-items:start; }
+ .map-mode-switch { justify-content:stretch; }
+ .map-mode-switch button { flex:1 1 calc(25% - 4px); min-width:0; padding:7px 4px; }
+ .map-canvas { min-height:430px; }
+ .map-pin { max-width:104px; gap:3px; padding:3px 4px; }
+ .map-pin strong { font-size:7px; }
+ .map-pin-count,.map-pin-jp { font-size:5px; }
+ .map-legend { gap:6px 10px; font-size:6px; }
+}

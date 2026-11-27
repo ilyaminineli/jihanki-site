@@ -168,3 +168,31 @@ These are not assigned to a specific venue, road, station, shrine, hotel, or tow
 - The older castle photographs remain unresolved individually; the newer night keep / approach pair is confirmed as Ueno Castle.
 
 Reply using the filenames above. Even a short note such as “that was the hotel near Saiko” or “the castle reflection was Osaka” is enough to update the archive without guessing.
+
+
+## Resolved by traveller — 27 November 2026
+
+Do not ask again for these identifications. Keep uncertainty about exact positions intact.
+
+- `eli_photos (5).jpg` (photo-78), `taki_photos (3).png` (photo-93), `taki_photos (4).png` (photo-94): all **Odawara Castle**.
+- `taki_photos (68).png` (photo-140): **Ueno-ebisumachi**, not Ueno Castle.
+- `taki_photos (47).png` (photo-127): **Satyam 1**, former Kamikuishiki village, Yamanashi.
+- `taki_photos (51).png` and `taki_photos (53).png` (photo-128, photo-130): **Fujisan Dragon Tower**, Tagonoura Minato Park, Fuji City, Shizuoka.
+- `taki_photos (60).png` (photo-135): **Lake Kawaguchi**, Fujikawaguchiko; Japanese sign means sightseeing boat landing.
+- `addition_3 (29).jpg` (photo-169): **McDonald’s 139 Fujiyoshida** (`１３９富士吉田店`).
+- `addition_3 (30).jpg` and `addition_3 (31).jpg` (photo-170–171): same **Gokodai / Mount Ashiwada** viewpoint.
+- `taki_photos (38).png` (photo-07): near Arakurayama Sengen Park, not Aokigahara; exact path unknown.
+- `eli_photos (10).jpg` (photo-83): Otsuki / Fujiyoshida junction; no geotag.
+- `eli_photos (19).jpg` (photo-88): Mt. Fuji Station area; no exact camera point.
+- `taki_photos (23).png` (photo-18): Niikura Tunnel, not Uno-Misaki Tunnel.
+- `addition_3 (1).jpg` (photo-141): upper Mount Fuji; station uncertain, possibly upper-middle section.
+- `addition_3 (5).jpg` (photo-145): upper Mount Fuji slope, exact position unknown.
+- `addition_3 (6).jpg` (photo-146): a few kilometres before summit, exact station unknown.
+- `addition_3 (9).jpg` (photo-149): road toward Kinkaku-ji in Kyoto; exact intersection unknown.
+- `addition_3 (22).jpg` (photo-162): Yokosawa Sabo near Lake Saiko / nearest mountain; exact position unknown.
+
+## Still worth resolving
+- `taki_photos (35).png` (photo-06): foggy figure / timber lookout; do not assume it is either Gokodai or Satyam 1.
+- `addition_3 (20).jpg`–`(23).jpg` (photo-160–163): forest marker and reservoir still lack exact site names; photo-162 is broadly near Lake Saiko.
+- Remaining upper Mount Fuji photos have no summit station beyond broad ascent context.
+- Other thematic images and the twelve anonymous source pins remain open only where the files provide no stronger place evidence.

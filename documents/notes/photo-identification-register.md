@@ -203,3 +203,29 @@ Confirmed or strongly identifiable places include Fujisan Dragon Tower / Tagonou
 The Yamanashi forest marker (`photo-160`) bears the words 環境庁 (Environment Agency) and 山梨県 (Yamanashi Prefecture). The separate sign in `photo-162` names 横沢砂防堰堤 (Yokosawa Sabo Erosion-Control Structure) and Yamanashi Prefecture’s Tsuru Construction Office. The inscribed stone and reservoir remain unidentified. The foggy lookout (`photo-170`–`photo-171`) is not assigned to Gokodai or Koyodai; the shrine approach, traditional roofed building, night torii and several urban infrastructure images also retain explicit uncertainty.
 
 The earlier “room of game memories” record (`photo-22`) is corrected to **Banbutsu Sōzō-bō**, the Kyoto shop 万物創造房. It is not a nostalgic-toys museum.
+
+
+## Traveller identification update — 27 November 2026
+
+The following corrections supersede earlier unresolved or tentative descriptions above. They are traveller-confirmed; where no geotag or exact position is remembered, the archive keeps only the supported locality or region.
+
+- `eli_photos (5).jpg` — `photo-78`: **Odawara Castle**, including the illuminated moat, ishigaki stone walls and Odawara Castle Copper Gate; promotional banners for the 2023 Taiga drama *Dōsuru Ieyasu* were present.
+- `taki_photos (3).png` — `photo-93`: **Odawara Castle**.
+- `taki_photos (4).png` — `photo-94`: **Odawara Castle**.
+- `taki_photos (68).png` — `photo-140`: **Ueno-ebisumachi**, not Ueno Castle; keep separate from the Iga-Ueno Castle and Odawara photographs.
+- `taki_photos (47).png` — `photo-127`: **Satyam 1**, ridge lookout in former Kamikuishiki village, Yamanashi, near Mount Fuji.
+- `taki_photos (51).png` — `photo-128` and `taki_photos (53).png` — `photo-130`: **Fujisan Dragon Tower**, also Fujinokuni Tagonoura Minato Park Dragon Tower, Fuji City, Shizuoka.
+- `taki_photos (60).png` — `photo-135`: **Lake Kawaguchi**, Fujikawaguchiko, Fuji Five Lakes. `遊覧船のりば` means “Sightseeing Boat Landing”; yellow flag at pier.
+- `addition_3 (29).jpg` — `photo-169`: **McDonald’s 139 Fujiyoshida** (`１３９富士吉田店`).
+- `addition_3 (30).jpg` and `(31).jpg` — `photo-170`, `photo-171`: same **Gokodai**, Mount Ashiwada, Yamanashi viewpoint.
+- `taki_photos (38).png` — `photo-07`: not Aokigahara; somewhere near **Arakurayama Sengen Park**, exact path unknown.
+- `eli_photos (10).jpg` — `photo-83`: **Otsuki / Fujiyoshida junction**, no geotag.
+- `eli_photos (19).jpg` — `photo-88`: **Mt. Fuji Station** area, exact camera point not geotagged.
+- `taki_photos (23).png` — `photo-18`: **Niikura Tunnel** (`新倉河口湖トンネル`), not Uno-Misaki Tunnel.
+- `addition_3 (1).jpg` — `photo-141`: Mount Fuji upper ascent; summit station unknown, possibly upper-middle section.
+- `addition_3 (5).jpg` — `photo-145`: upper Mount Fuji slope; exact position unknown.
+- `addition_3 (6).jpg` — `photo-146`: several kilometres before Mount Fuji summit; exact station unknown.
+- `addition_3 (9).jpg` — `photo-149`: Kyoto road toward **Kinkaku-ji**; exact intersection unknown.
+- `addition_3 (22).jpg` — `photo-162`: **Yokosawa Sabo**, somewhere near Lake Saiko and the nearest mountain; exact position unknown.
+
+These are locality-level or regional associations where stated, not surveyed GPS pins or measured routes.

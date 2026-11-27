@@ -488,18 +488,19 @@ const ARCHIVE = {
       "group": "Forest boundaries",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (35).png",
-      "metadata": { "related": ["photo-170", "photo-171"] }
+      "metadata": { "related": [] }
     },
     {
       "id": "photo-07",
-      "title": "Aokigahara floor",
-      "description": "Sunlight catches fallen branches, roots and dense forest growth.",
+      "title": "Forest floor near Arakurayama Sengen Park",
+      "description": "The traveller confirms this is not Aokigahara. It was photographed somewhere near Arakurayama Sengen Park; the exact path or forest parcel is not known.",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Forest boundaries",
+      "group": "Arakurayama Sengen Park / nearby forest",
       "author": "taki",
-      "file": "media/photo/photos_from_japan/taki_photos (38).png"
+      "file": "media/photo/photos_from_japan/taki_photos (38).png",
+      "metadata": { "locations": ["Arakurayama Sengen Park"] }
     },
     {
       "id": "photo-08",
@@ -638,14 +639,15 @@ const ARCHIVE = {
     },
     {
       "id": "photo-18",
-      "title": "Uno-Misaki passage",
-      "description": "The tunnel becomes a corridor between artificial light and mountain darkness.",
+      "title": "Niikura Tunnel (新倉河口湖トンネル)",
+      "description": "The traveller corrects the earlier Uno-Misaki Tunnel identification: this is Niikura Tunnel (新倉河口湖トンネル).",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Passage and transit",
+      "group": "Niikura Tunnel / passage and transit",
       "author": "taki",
-      "file": "media/photo/photos_from_japan/taki_photos (23).png"
+      "file": "media/photo/photos_from_japan/taki_photos (23).png",
+      "metadata": { "locations": ["Niikura Tunnel","Yamanashi"] }
     },
     {
       "id": "photo-19",
@@ -1434,21 +1436,17 @@ const ARCHIVE = {
     },
     {
       "id": "photo-78",
-      "title": "A white castle above the night water",
+      "title": "Odawara Castle above the illuminated moat",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Castle / illuminated water",
+      "group": "Odawara Castle / illuminated moat",
       "author": "eli",
       "file": "media/photo/photos_from_japan/eli_photos (5).jpg",
-      "description": "A brightly illuminated white-plaster castle complex rises over a moat. The earlier Sunpu comparison was unsupported and has been withdrawn. The traveller confirms visits to Osaka Castle and Ueno Castle (Iga-Ueno); this frame remains in the Kansai castle sequence, but the individual castle is not yet proven.",
+      "description": "The illuminated moat, stone ishigaki walls and castle approach are identified as Odawara Castle. Promotional banners for the 2023 Taiga drama Dōsuru Ieyasu were displayed on the castle grounds.",
       "metadata": {
-        "related": [
-          "photo-93",
-          "photo-94",
-          "photo-140",
-          "daily-2026-08-road-trip"
-        ]
+        "related": ["photo-93","photo-94"],
+        "locations": ["Odawara Castle","Odawara"]
       }
     },
     {
@@ -1519,18 +1517,16 @@ const ARCHIVE = {
     },
     {
       "id": "photo-83",
-      "title": "Directions toward Otsuki and Fujiyoshida",
+      "title": "Otsuki / Fujiyoshida road junction",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Yamanashi / road corridor",
+      "group": "Yamanashi / Otsuki–Fujiyoshida junction",
       "author": "eli",
       "file": "media/photo/photos_from_japan/eli_photos (10).jpg",
-      "description": "A road-direction board points toward Otsuki and Fujiyoshida, documenting movement through the Yamanashi road corridor rather than a precise roadside stop.",
+      "description": "The traveller confirms this is the Otsuki–Fujiyoshida junction. No geotag is available, so the archive retains the junction-level name without an exact pin.",
       "metadata": {
-        "locations": [
-          "Yamanashi"
-        ]
+        "locations": ["Yamanashi","Otsuki–Fujiyoshida junction"]
       }
     },
     {
@@ -1590,18 +1586,16 @@ const ARCHIVE = {
     },
     {
       "id": "photo-88",
-      "title": "The Yamanashi road corridor",
+      "title": "Mt. Fuji Station junction",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Yamanashi / road corridor",
+      "group": "Fujiyoshida / Mt. Fuji Station",
       "author": "eli",
       "file": "media/photo/photos_from_japan/eli_photos (19).jpg",
-      "description": "A large directional sign lists destinations including Otsuki, Tsuru, Oshino, Odawara and Yamanakako. It confirms the wider Fuji / Yamanashi driving geography, not the exact junction.",
+      "description": "The traveller identifies this Yamanashi road junction as Mt. Fuji Station. The archive records the station-area association without inventing a geotag or exact camera position.",
       "metadata": {
-        "locations": [
-          "Yamanashi"
-        ]
+        "locations": ["Mt Fuji Station","Fujiyoshida","Yamanashi"]
       }
     },
     {
@@ -1667,40 +1661,32 @@ const ARCHIVE = {
     },
     {
       "id": "photo-93",
-      "title": "Castle walls reflected after dark",
+      "title": "Odawara Castle walls reflected after dark",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Castle / illuminated water",
+      "group": "Odawara Castle / illuminated moat",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (3).png",
-      "description": "A white castle wall and stone rampart are illuminated above still water. This is part of the same night-castle sequence as the Eli photograph and the closer stairway view. The Sunpu candidate has been removed; the traveller confirms Osaka Castle and Ueno Castle (Iga-Ueno) as the two castle visits, but this frame is not yet allocated to one of them.",
+      "description": "Night view of Odawara Castle: illuminated moat, stone ishigaki walls and reflections. The earlier Osaka/Ueno castle ambiguity is withdrawn.",
       "metadata": {
-        "related": [
-          "photo-78",
-          "photo-94",
-          "photo-140",
-          "daily-2026-08-road-trip"
-        ]
+        "related": ["photo-78","photo-94"],
+        "locations": ["Odawara Castle","Odawara"]
       }
     },
     {
       "id": "photo-94",
-      "title": "The castle roofline above the moat",
+      "title": "Odawara Castle roofline above the moat",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Castle / illuminated water",
+      "group": "Odawara Castle / illuminated moat",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (4).png",
-      "description": "A second angle shows the illuminated roofline, white walls and their reflection across the moat. It belongs to the same unresolved Kansai castle sequence. The exact allocation between the traveller-confirmed Osaka Castle and Ueno Castle visits remains open.",
+      "description": "Night view of Odawara Castle, with the illuminated keep and moat reflection. The earlier Osaka/Ueno castle ambiguity is withdrawn.",
       "metadata": {
-        "related": [
-          "photo-78",
-          "photo-93",
-          "photo-140",
-          "daily-2026-08-road-trip"
-        ]
+        "related": ["photo-78","photo-93"],
+        "locations": ["Odawara Castle","Odawara"]
       }
     },
     {
@@ -2260,38 +2246,32 @@ const ARCHIVE = {
     },
     {
       "id": "photo-127",
-      "title": "A wooden shelter in a green clearing",
+      "title": "Satyam 1 ridge lookout",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Saiko ridge / lookout structures",
+      "group": "Satyam 1 / ridge lookout",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (47).png",
-      "description": "A small roofed wooden structure stands in an open, overgrown landscape. It may belong to the Saiko south-ridge hiking material, but the exact viewpoint is not confirmed.",
+      "description": "Identified by the traveller as Satyam 1, in the former village of Kamikuishiki, Yamanashi Prefecture, near Mount Fuji.",
       "metadata": {
-        "related": [
-          "photo-128",
-          "photo-130",
-          "daily-2026-07-27"
-        ]
+        "related": ["daily-2026-07-27"],
+        "locations": ["Satyam 1","Kamikuishiki","Yamanashi","Mount Fuji"]
       }
     },
     {
       "id": "photo-128",
-      "title": "A multi-level timber lookout",
+      "title": "Fujisan Dragon Tower",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Saiko ridge / lookout structures",
+      "group": "Fujisan Dragon Tower / Tagonoura Minato Park",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (51).png",
-      "description": "A distinctive timber observation structure rises above a grassy hillside. The 27 July hiking note records a wooden viewpoint on the Saiko ridge; the precise station on the Koyodai–Sankodai–Ashiwada trail is not confirmed.",
+      "description": "The timber tower is Fujisan Dragon Tower, also known as Fujinokuni Tagonoura Minato Park Dragon Tower, in Tagonoura Minato Park, Fuji City, Shizuoka.",
       "metadata": {
-        "related": [
-          "photo-127",
-          "photo-130",
-          "daily-2026-07-27"
-        ]
+        "related": ["photo-130"],
+        "locations": ["Fujisan Dragon Tower","Tagonoura Minato Park","Fuji City","Shizuoka"]
       }
     },
     {
@@ -2312,20 +2292,17 @@ const ARCHIVE = {
     },
     {
       "id": "photo-130",
-      "title": "Stairs to the timber lookout",
+      "title": "Stairs to Fujisan Dragon Tower",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Saiko ridge / lookout structures",
+      "group": "Fujisan Dragon Tower / Tagonoura Minato Park",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (53).png",
-      "description": "A closer view shows the multi-level wooden lookout and its steep approach. It is grouped with the 27 July Saiko ridge material, without assigning an exact peak or platform.",
+      "description": "The traveller confirms this is the same Fujisan Dragon Tower as the previous image, at Tagonoura Minato Park, Fuji City, Shizuoka.",
       "metadata": {
-        "related": [
-          "photo-127",
-          "photo-128",
-          "daily-2026-07-27"
-        ]
+        "related": ["photo-128"],
+        "locations": ["Fujisan Dragon Tower","Tagonoura Minato Park","Fuji City","Shizuoka"]
       }
     },
     {
@@ -2393,14 +2370,15 @@ const ARCHIVE = {
     },
     {
       "id": "photo-135",
-      "title": "Drinks at a sightseeing-boat landing",
+      "title": "Lake Kawaguchi sightseeing-boat landing",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Lakefront / everyday objects",
+      "group": "Lake Kawaguchi / sightseeing boat landing",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (60).png",
-      "description": "Two non-alcoholic canned drinks are held beside a pier sign reading 遊覧船のり場 (sightseeing-boat boarding). The landing resembles Lake Kawaguchi sightseeing-boat piers, but the wording is generic and the exact lake/operator remains unconfirmed."
+      "description": "Lake Kawaguchi, Fujikawaguchiko, Fuji Five Lakes region, Japan. The sign reads 遊覧船のりば (Sightseeing Boat Landing); a yellow flag marks the pier.",
+      "metadata": { "locations": ["Lake Kawaguchi","Fujikawaguchiko","Fuji Five Lakes"] }
     },
     {
       "id": "photo-136",
@@ -2471,21 +2449,17 @@ const ARCHIVE = {
     },
     {
       "id": "photo-140",
-      "title": "Steps to the white-plastered castle",
+      "title": "Ueno-ebisumachi",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Castle / illuminated water",
+      "group": "Ueno-ebisumachi / place fragment",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (68).png",
-      "description": "A close view looks up stone steps toward a white-plastered gate or turret. It belongs to the Kansai castle sequence, but the photo alone does not establish whether it is part of Osaka Castle or Ueno Castle (Iga-Ueno). The earlier Sunpu candidate has been withdrawn.",
+      "description": "Identified by the traveller as Ueno-ebisumachi. This is a place-name correction, not an attribution to Ueno Castle (Iga-Ueno).",
       "metadata": {
-        "related": [
-          "photo-78",
-          "photo-93",
-          "photo-94",
-          "daily-2026-08-road-trip"
-        ]
+        "related": [],
+        "locations": ["Ueno-ebisumachi"]
       }
     },
     {
@@ -2494,14 +2468,11 @@ const ARCHIVE = {
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Mount Fuji / summit climb",
+      "group": "Mount Fuji / upper ascent",
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (1).jpg",
-      "description": "A compact mountain toilet and rest facility beside the exposed summit approach. The exact station or elevation is not visible.",
+      "description": "A mountain toilet and rest facility on the upper Mount Fuji approach. The traveller cannot recall which summit station; it may have been in the upper-middle section. Exact station remains unknown.",
       "metadata": {
-        "locations": [
-          "Mount Fuji",
-          "Japan / 2026 expedition"
-        ],
+        "locations": ["Mount Fuji"],
         "related": [
           "photo-145",
           "photo-146"
@@ -2571,14 +2542,11 @@ const ARCHIVE = {
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Mount Fuji / summit climb",
+      "group": "Mount Fuji / upper ascent",
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (5).jpg",
-      "description": "A chain-railed path crosses dark volcanic ground and low vegetation in dense cloud. It belongs to the Mount Fuji upper-slope sequence; exact trail position is unknown.",
+      "description": "Chain-railed volcanic slope on the upper Mount Fuji climb. The exact location on the slope is not recalled and remains unassigned.",
       "metadata": {
-        "locations": [
-          "Mount Fuji",
-          "Japan / 2026 expedition"
-        ],
+        "locations": ["Mount Fuji"],
         "related": [
           "photo-141",
           "photo-146"
@@ -2591,14 +2559,11 @@ const ARCHIVE = {
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Mount Fuji / summit climb",
+      "group": "Mount Fuji / upper ascent",
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (6).jpg",
-      "description": "A steep slope of red volcanic scoria and exposed rock disappears into cloud. It is part of the Mount Fuji climb sequence; no exact station is assigned.",
+      "description": "Red volcanic scoria on the Mount Fuji ascent, photographed some kilometres before the summit. The exact station remains unknown.",
       "metadata": {
-        "locations": [
-          "Mount Fuji",
-          "Japan / 2026 expedition"
-        ],
+        "locations": ["Mount Fuji"],
         "related": [
           "photo-141",
           "photo-145"
@@ -2653,14 +2618,11 @@ const ARCHIVE = {
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Kyoto / city orientation",
+      "group": "Kyoto / way to Kinkaku-ji",
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (9).jpg",
-      "description": "A road sign points toward Kinkaku-ji (2 km), Kamigamo Shrine (2 km) and Nijo Castle (3 km). It confirms Kyoto context but not the exact junction.",
+      "description": "A Kyoto road sign pointing toward Kinkaku-ji. The traveller recalls this road as the way to Kinkaku-ji, one of the intended destinations; the exact intersection is not recorded.",
       "metadata": {
-        "locations": [
-          "Kyoto",
-          "Kinkaku-ji"
-        ],
+        "locations": ["Kyoto","Kinkaku-ji"],
         "related": [
           "photo-150"
         ]
@@ -2909,14 +2871,11 @@ const ARCHIVE = {
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Yamanashi / water and forest infrastructure",
+      "group": "Saiko area / Yokosawa Sabo",
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (22).jpg",
-      "description": "A circular metal gate frames a sign identifying the 横沢砂防堰堤 (Yokosawa sabo / erosion-control structure). The exact administrative address is not established.",
+      "description": "The sign identifies Yokosawa Sabo (横沢砂防堰堤) and Yamanashi Prefecture’s Tsuru Construction Office. The traveller places it somewhere near Lake Saiko and the nearest mountain; exact site coordinates are not recalled.",
       "metadata": {
-        "locations": [
-          "Yamanashi",
-          "Japan / 2026 expedition"
-        ],
+        "locations": ["Yokosawa Sabo","Lake Saiko","Yamanashi"],
         "related": [
           "photo-160",
           "photo-163"
@@ -3045,61 +3004,44 @@ const ARCHIVE = {
     },
     {
       "id": "photo-169",
-      "title": "McDonald’s with a view of Mount Fuji",
+      "title": "McDonald’s 139 Fujiyoshida",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Mount Fuji / roadside food stop",
+      "group": "Fujiyoshida / roadside food stop",
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (29).jpg",
-      "description": "A restaurant tray sits beside a large window framing Mount Fuji. The traveller identifies the restaurant as McDonald’s; the branch is not established.",
+      "description": "Identified by the traveller as McDonald’s 139 Fujiyoshida (１３９富士吉田店), with Mount Fuji visible through the window.",
       "metadata": {
-        "locations": [
-          "Mount Fuji",
-          "Japan / 2026 expedition"
-        ],
+        "locations": ["McDonald’s 139 Fujiyoshida","Fujiyoshida","Mount Fuji"],
         "related": []
       }
     },
     {
       "id": "photo-170",
-      "title": "Fogbound ridge platform",
+      "title": "Gokodai — foggy viewpoint",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Yamanashi / mountain viewpoints",
+      "group": "Gokodai / Mount Ashiwada",
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (30).jpg",
-      "description": "A small raised wooden platform and bench stand above a fog-covered slope. The exact ridge or viewpoint remains unidentified; Koyodai is not assumed.",
+      "description": "Identified by the traveller as Gokodai (Mount Ashiwada), Yamanashi, Japan. This is the foggy viewpoint previously left unnamed.",
       "metadata": {
-        "locations": [
-          "Yamanashi",
-          "Japan / 2026 expedition"
-        ],
-        "related": [
-          "photo-06",
-          "photo-171",
-          "photo-145"
-        ]
+        "locations": ["Gokodai","Mount Ashiwada","Yamanashi"],
+        "related": ["photo-171"]
       }
     },
     {
       "id": "photo-171",
-      "title": "Benches above the cloud line",
+      "title": "Gokodai — benches above the clouds",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Yamanashi / mountain viewpoints",
+      "group": "Gokodai / Mount Ashiwada",
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (31).jpg",
-      "description": "A row of simple wooden benches faces a cloud-filled valley from an exposed grassy lookout. The exact viewpoint is not established.",
+      "description": "Confirmed as the same foggy viewpoint as the previous image: Gokodai (Mount Ashiwada), Yamanashi, Japan.",
       "metadata": {
-        "locations": [
-          "Yamanashi",
-          "Japan / 2026 expedition"
-        ],
-        "related": [
-          "photo-06",
-          "photo-170",
-          "photo-145"
-        ]
+        "locations": ["Gokodai","Mount Ashiwada","Yamanashi"],
+        "related": ["photo-170"]
       }
     },
     {

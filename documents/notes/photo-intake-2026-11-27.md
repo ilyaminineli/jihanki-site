@@ -30,3 +30,14 @@ All 32 source files now have catalogue records and are included in the media man
 - `photo-06` (`taki_photos (35).png`) appears to share the foggy bench/lookout setting of `addition_3 (30).jpg` and `addition_3 (31).jpg`. The archive records this only as a tentative relationship.
 - `photo-135` (`taki_photos (60).png`) has a generic `遊覧船のりば` sign. Lake Kawaguchi is a candidate because of the pier style, but the location is not confirmed.
 - The full filename-by-filename memory prompt list is in [photo-memory-prompts-2026-11-27.md](./photo-memory-prompts-2026-11-27.md).
+
+
+## Traveller confirmations — 27 November 2026
+
+These statements supersede the matching open questions above:
+- `addition_3 (29).jpg` / photo-169 is **McDonald’s 139 Fujiyoshida** (`１３９富士吉田店`), not an unknown branch.
+- `addition_3 (30).jpg` and `(31).jpg` / photo-170–171 are **Gokodai (Mount Ashiwada)**, Yamanashi, and show the same viewpoint.
+- `addition_3 (22).jpg` / photo-162 names Yokosawa Sabo, somewhere near Lake Saiko and the nearest mountain; exact point not remembered.
+- `addition_3 (1).jpg`, (5).jpg and (6).jpg / photo-141, 145 and 146 remain at Mount Fuji ascent level, with upper-slope / station positions uncertain.
+- `addition_3 (9).jpg` / photo-149 is the Kyoto road toward Kinkaku-ji; exact intersection unknown.
+- Taki’s `(47).png`, `(51).png`, and `(53).png` records are separated: Satyam 1 (photo-127) versus Fujisan Dragon Tower (photo-128, photo-130). They are not one Saiko-ridge tower sequence.

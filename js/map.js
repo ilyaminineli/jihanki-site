@@ -6,39 +6,46 @@
     "Lake Kawaguchi":[58,41],"Oishi Park":[52,30],"Kawaguchiko Music Forest Museum":[66,34],
     "Arakurayama Sengen Park":[71,48],"Fujisan Sengen Shrine":[56,64],"Kawaguchiko Nostalgic Toys Museum":[62,42],
     "Kawaguchiko Automobile Museum":[48,62],"Narusawa":[42,68],"Kamo River":[31,9],
-    "Mount Fuji":[49,80],"Uno-Misaki Tunnel":[15,49],"Yamanashi":[71,70],"Tokyo":[78,14],
-    "Ryugu Cave":[16,19],"Koyodai":[29,31],"Shrine":[63,80],"Shrines":[75,55],
-    "Haneda":[79,37],"Shinjuku":[72,25],
-    "Katori":[74,55],"Katori Station":[77,43],"Katori Jingu":[79,67],
-    "Hard Off Kawaguchiko Store":[76,49],"Nojima Fujiyoshida Store":[73,65],
-    "Iyashi no Sato":[23,58],"Fujisan Museum":[68,80],
-    "Kyoto":[38,15],"Genko-an":[35,6],"Kinkaku-ji":[34,10],"Japan Kanji Museum & Library":[42,22],"Kanji Museum":[42,22],"Banbutsu Sōzō-bō":[34,23],"Osaka":[17,15],"Osaka Castle":[19,12],"Ueno Castle (Iga-Ueno)":[25,19],"PICA Fuji Saiko":[32,46],"Fujisan Dragon Tower":[82,82],"Tagonoura Minato Park":[82,88],"Fuji City":[85,82],"Tokyo Skytree":[80,18],"Tokyo":[78,14],"Sumida Ward":[84,15]
+    "Mount Fuji":[49,80],"Niikura Tunnel":[15,49],"Yamanashi":[71,70],"Tokyo":[78,14],
+    "Ryugu Cave":[16,19],"Koyodai":[29,31],"Shrine":[63,80],"Shrines":[75,55],"Haneda":[79,37],"Shinjuku":[72,25],
+    "Katori":[74,55],"Katori Station":[77,43],"Katori Jingu":[79,67],"Hard Off Kawaguchiko Store":[76,49],
+    "Nojima Fujiyoshida Store":[73,65],"Iyashi no Sato":[23,58],"Fujisan Museum":[68,80],
+    "Kyoto":[38,15],"Genko-an":[35,6],"Kinkaku-ji":[34,10],"Japan Kanji Museum & Library":[42,22],
+    "Kanji Museum":[42,22],"Banbutsu Sōzō-bō":[34,23],"Osaka":[17,15],"Osaka Castle":[19,12],
+    "Odawara Castle":[11,42],"Odawara":[13,46],"Ueno Castle (Iga-Ueno)":[25,19],"Ueno-ebisumachi":[29,24],
+    "PICA Fuji Saiko":[32,46],"Fujisan Dragon Tower":[82,82],"Tagonoura Minato Park":[82,88],"Fuji City":[85,82],
+    "Satyam 1":[39,35],"Kamikuishiki":[36,42],"Gokodai":[53,23],"Mount Ashiwada":[53,29],
+    "Fujikawaguchiko":[59,48],"McDonald’s 139 Fujiyoshida":[67,54],"Mt Fuji Station":[65,62],
+    "Otsuki–Fujiyoshida junction":[76,50],"Yokosawa Sabo":[33,61],"Tokyo Skytree":[80,18],"Sumida Ward":[84,15]
   };
+  /* English / romaji remains the primary map vocabulary. Japanese is secondary detail only. */
   const JP_LABELS={
-    "Lake Saiko":"西湖","Aokigahara":"青木ヶ原樹海","Fuji Five Lakes":"富士五湖",
-    "Kawaguchiko":"河口湖周辺","Lake Kawaguchi":"河口湖","Oishi Park":"大石公園",
-    "Kawaguchiko Music Forest Museum":"河口湖音楽と森の美術館","Arakurayama Sengen Park":"新倉山浅間公園",
-    "Fujisan Sengen Shrine":"北口本宮冨士浅間神社","Kawaguchiko Nostalgic Toys Museum":"懐かし玩具館",
-    "Kawaguchiko Automobile Museum":"河口湖自動車博物館","Narusawa":"鳴沢村","Kamo River":"鴨川",
-    "Mount Fuji":"富士山","Uno-Misaki Tunnel":"名称不詳トンネル","Yamanashi":"山梨県","Tokyo":"東京",
-    "Ryugu Cave":"竜宮洞穴","Koyodai":"紅葉台","Shrine":"神社","Shrines":"神社群",
-    "Haneda":"羽田","Shinjuku":"新宿","Katori":"香取","Katori Station":"香取駅","Katori Jingu":"香取神宮",
-    "Hard Off Kawaguchiko Store":"ハードオフ河口湖店","Nojima Fujiyoshida Store":"ノジマ富士吉田店",
-    "Iyashi no Sato":"西湖いやしの里根場","Fujisan Museum":"富士山ミュージアム",
-    "Kyoto":"京都","Genko-an":"源光庵","Kinkaku-ji":"金閣寺",
+    "Lake Saiko":"西湖","Aokigahara":"青木ヶ原樹海","Fuji Five Lakes":"富士五湖","Kawaguchiko":"河口湖周辺",
+    "Lake Kawaguchi":"河口湖","Oishi Park":"大石公園","Kawaguchiko Music Forest Museum":"河口湖音楽と森の美術館",
+    "Arakurayama Sengen Park":"新倉山浅間公園","Fujisan Sengen Shrine":"北口本宮冨士浅間神社",
+    "Kawaguchiko Nostalgic Toys Museum":"懐かし玩具館","Kawaguchiko Automobile Museum":"河口湖自動車博物館",
+    "Narusawa":"鳴沢村","Kamo River":"鴨川","Mount Fuji":"富士山","Niikura Tunnel":"新倉河口湖トンネル",
+    "Yamanashi":"山梨県","Tokyo":"東京","Ryugu Cave":"竜宮洞穴","Koyodai":"紅葉台","Gokodai":"五湖台",
+    "Shrine":"神社","Shrines":"神社群","Haneda":"羽田","Shinjuku":"新宿","Katori":"香取",
+    "Katori Station":"香取駅","Katori Jingu":"香取神宮","Hard Off Kawaguchiko Store":"ハードオフ河口湖店",
+    "Nojima Fujiyoshida Store":"ノジマ富士吉田店","Iyashi no Sato":"西湖いやしの里根場",
+    "Fujisan Museum":"富士山ミュージアム","Kyoto":"京都","Genko-an":"源光庵","Kinkaku-ji":"金閣寺",
     "Japan Kanji Museum & Library":"漢字ミュージアム","Kanji Museum":"漢字ミュージアム",
     "Banbutsu Sōzō-bō":"万物創造房","Osaka":"大阪","Osaka Castle":"大阪城",
-    "Ueno Castle (Iga-Ueno)":"伊賀上野城","PICA Fuji Saiko":"PICA富士西湖",
-    "Fujisan Dragon Tower":"富士山ドラゴンタワー","Tagonoura Minato Park":"田子の浦みなと公園",
-    "Fuji City":"富士市","Shizuoka":"静岡県","Tokyo Skytree":"東京スカイツリー","Sumida Ward":"墨田区",
-    "Iga-Ueno":"伊賀上野","Iga City":"伊賀市","Mie":"三重県",
-    "Sheremetyevo":"シェレメーチエヴォ","Moscow":"モスクワ"
+    "Odawara Castle":"小田原城","Ueno Castle (Iga-Ueno)":"伊賀上野城","Ueno-ebisumachi":"上野恵美須町",
+    "PICA Fuji Saiko":"PICA富士西湖","Fujisan Dragon Tower":"富士山ドラゴンタワー",
+    "Tagonoura Minato Park":"田子の浦みなと公園","Fuji City":"富士市","Shizuoka":"静岡県",
+    "Tokyo Skytree":"東京スカイツリー","Sumida Ward":"墨田区","Iga-Ueno":"伊賀上野","Iga City":"伊賀市",
+    "Mie":"三重県","Satyam 1":"サティヤム1","Kamikuishiki":"上九一色","Mount Ashiwada":"足和田山",
+    "McDonald’s 139 Fujiyoshida":"マクドナルド139富士吉田店","Mt Fuji Station":"富士山駅",
+    "Yokosawa Sabo":"横沢砂防堰堤","Odawara":"小田原","Fujikawaguchiko":"富士河口湖町"
   };
-  const labelFor=name=>JP_LABELS[name]||name;
+  const labelFor=name=>name;
+  const subLabelFor=name=>JP_LABELS[name]||"";
   // These are named sub-places already represented by a regional anchor on
   // the schematic. Keep them in the full index, but avoid drawing stacked pins.
   const DETAIL_ONLY=new Set([
-    "PICA Fuji Saiko","Tagonoura Minato Park","Tokyo Skytree","Sumida Ward",
+    "PICA Fuji Saiko","Tagonoura Minato Park","Tokyo Skytree","Sumida Ward","McDonald’s 139 Fujiyoshida","Mt Fuji Station","Otsuki–Fujiyoshida junction","Yokosawa Sabo","Kamikuishiki","Mount Ashiwada","Fujikawaguchiko",
     "Kinkaku-ji","Japan Kanji Museum & Library","Kanji Museum","Banbutsu Sōzō-bō"
   ]);
   function associationLines(places){
@@ -124,19 +131,22 @@
     }).join("");
     const nodes=mapPlaces.map(place=>{
       const p=point(place.name),number=String(indexPlaces.indexOf(place)+1).padStart(2,"0");
-      return'<button class="map-pin" style="left:'+p[0]+'%;top:'+p[1]+'%" type="button" data-map-place="'+esc(place.name)+
-        '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-index">'+number+
-        '</span><span class="map-pin-dot" aria-hidden="true"></span><strong>'+esc(labelFor(place.name))+'</strong><small>'+place.count+' 件</small></button>';
+      const density=place.count>=8?"cluster":place.count>=3?"active":"quiet";
+      const jp=subLabelFor(place.name);
+      return'<button class="map-pin map-pin-'+density+'" style="left:'+p[0]+'%;top:'+p[1]+'%" type="button" data-map-place="'+esc(place.name)+
+        '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-dot" aria-hidden="true"></span>'+
+        '<span class="map-pin-copy"><strong>'+esc(place.name)+'</strong>'+(jp?'<small class="map-pin-jp">'+esc(jp)+'</small>':'')+
+        '<small class="map-pin-count">'+place.count+' memories</small></span><span class="map-pin-index">'+number+'</span></button>';
     }).join("");
     const key=indexPlaces.map((place,index)=>'<button type="button" data-map-place="'+esc(place.name)+'"><span>'+
-      String(index+1).padStart(2,"0")+'</span><strong>'+esc(labelFor(place.name))+'</strong><small>'+place.count+' 件</small></button>').join("");
-    return'<section class="memory-map-panel"><div class="map-toolbar"><div><span class="map-eyebrow">JHK / 地理の記憶</span><strong>'+
-      (selected==="memory"?"記憶ネットワーク":selected==="trails"?"旅の道筋":selected==="pins"?"地図ピン":"地域索引")+'</strong></div><div class="map-mode-switch"><button type="button" data-map-mode="geography" '+
-      (selected==="geography"?'aria-pressed="true"':"")+' >場所</button><button type="button" data-map-mode="memory" '+
-      (selected==="memory"?'aria-pressed="true"':"")+' >記憶</button><button type="button" data-map-mode="trails" '+(selected==="trails"?'aria-pressed="true"':"")+' >道筋</button><button type="button" data-map-mode="pins" '+(selected==="pins"?'aria-pressed="true"':"")+' >ピン</button></div></div>'+(selected==="pins"?'<div class="map-pin-references">'+pinsMarkup()+'</div>':'<div class="map-canvas '+
-      (selected==="memory"?"map-memory-mode":selected==="trails"?"map-trails-mode":"map-place-mode")+'"><div class="map-pan-layer"><div class="map-region-label map-label-west">富士山周辺</div>'+
-      '<div class="map-region-label map-label-east">関東</div><svg class="map-connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'+paths+'</svg>'+nodes+
-      '</div></div><p class="map-disclaimer">'+(selected==="memory"?"線は共通する記録のつながりを示します。道路や移動経路ではありません。":"模式図／おおよその位置関係／縮尺なし。")+
+      String(index+1).padStart(2,"0")+'</span><strong>'+esc(place.name)+'</strong><small>'+place.count+' memories</small></button>').join("");
+    return'<section class="memory-map-panel"><div class="map-toolbar"><div><span class="map-eyebrow">JHK / GEOGRAPHIC MEMORY</span><strong>'+
+      (selected==="memory"?"MEMORY NETWORK":selected==="trails"?"TRAVEL TRAILS":selected==="pins"?"SOURCE PINS":"REGIONAL INDEX")+'</strong></div><div class="map-mode-switch"><button type="button" data-map-mode="geography" '+
+      (selected==="geography"?'aria-pressed="true"':"")+' >PLACE</button><button type="button" data-map-mode="memory" '+
+      (selected==="memory"?'aria-pressed="true"':"")+' >MEMORY</button><button type="button" data-map-mode="trails" '+(selected==="trails"?'aria-pressed="true"':"")+' >TRAILS</button><button type="button" data-map-mode="pins" '+(selected==="pins"?'aria-pressed="true"':"")+' >PINS</button></div></div>'+(selected==="pins"?'<div class="map-pin-references">'+pinsMarkup()+'</div>':'<div class="map-legend"><span><i class="legend-place"></i> PLACE ANCHOR</span><span><i class="legend-memory"></i> MEMORY CLUSTER</span><span><i class="legend-link"></i> SHARED MEMORY LINK</span></div><div class="map-canvas '+
+      (selected==="memory"?"map-memory-mode":selected==="trails"?"map-trails-mode":"map-place-mode")+'"><div class="map-pan-layer"><div class="map-region-label map-label-west">FUJI FIVE LAKES / YAMANASHI</div>'+
+      '<div class="map-region-label map-label-east">KANTO</div><svg class="map-connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'+paths+'</svg>'+nodes+
+      '</div></div><p class="map-disclaimer">'+(selected==="memory"?"Dashed links show shared archive records, not roads or measured routes.":"SCHEMATIC / RELATIVE POSITION ONLY / NOT TO SCALE.")+
       '</p><div class="map-place-list" aria-label="地名一覧">'+key+'</div>'+(selected==="trails"?'<div class="map-trail-list">'+trailMarkup()+'</div>':"")+'</div>')+'</section>';
   }
   function bind(root){

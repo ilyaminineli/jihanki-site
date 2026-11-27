@@ -4,7 +4,7 @@
     "fuji-six-yokai-video": ["Mount Fuji", "Yamanashi", "Nojima Fujiyoshida Store"],
     "mountain-remembers-mv": ["Mount Fuji", "Aokigahara", "Lake Saiko", "Fuji Five Lakes", "Kawaguchiko", "Nojima Fujiyoshida Store"],
     "endless-road": ["Lake Saiko", "Kawaguchiko", "Mount Fuji"],
-    "gonshan": ["Japan / 2026 expedition"], "tunnel": ["Uno-Misaki Tunnel", "Yamanashi"],
+    "gonshan": ["Japan / 2026 expedition"], "tunnel": ["Niikura Tunnel", "Yamanashi"],
     "hotaru": ["Japan / 2026 expedition"],
     "aokigahara-pentalogy": ["Mount Fuji", "Aokigahara", "Lake Saiko", "Fuji Five Lakes"],
     "aokigahara-shrine-restock": ["Mount Fuji", "Shrine"],
@@ -68,11 +68,25 @@
     "Koyodai": "Expedition notes", "Haneda": "Arrival and departure records", "Shinjuku": "Urban expedition notes",
     "Yamanashi": "Regional archive records", "Shrine": "Ritual and Shrine project material",
     "Sheremetyevo": "Departure records", "Moscow": "Departure records", "Shrines": "Ritual observations",
+
+    "Odawara": "Kanagawa city containing Odawara Castle; the illuminated moat and ishigaki photographs are identified there",
+    "Odawara Castle": "Castle confirmed in the illuminated moat and stone-rampart photographs",
+    "Ueno-ebisumachi": "Traveller-supplied place name for taki_photos (68).png; it is not Ueno Castle",
+    "Satyam 1": "Ridge lookout in the former village of Kamikuishiki, Yamanashi Prefecture, near Mount Fuji",
+    "Kamikuishiki": "Former village area in Yamanashi associated with the Satyam 1 ridge lookout",
+    "Gokodai": "Foggy viewpoint on Mount Ashiwada, Yamanashi, confirmed by the traveller",
+    "Mount Ashiwada": "Mountain associated with the confirmed Gokodai viewpoint",
+    "Fujikawaguchiko": "Town containing the confirmed Lake Kawaguchi sightseeing-boat landing",
+    "McDonald’s 139 Fujiyoshida": "１３９富士吉田店, confirmed branch in the Mount Fuji window-view photograph",
+    "Mt Fuji Station": "Mt. Fuji Station area; exact camera position is not geotagged",
+    "Otsuki–Fujiyoshida junction": "Junction-level identification from the traveller; no exact geotag is available",
+    "Niikura Tunnel": "新倉河口湖トンネル, identified by the traveller",
+    "Yokosawa Sabo": "横沢砂防堰堤, placed by the traveller somewhere near Lake Saiko; exact position remains unknown",
     "Japan / 2026 expedition": "Material whose precise location is not recorded"
   };
   function locations(item) {
     const existing = Array.isArray(item?.metadata?.locations) ? item.metadata.locations : [];
-    const mapped = PLACE_BY_ID[item?.id] || (item?.machineCategory === "photo" ? ["Japan / 2026 expedition"] : []);
+    const mapped = PLACE_BY_ID[item?.id] || [];
     const unique = [...new Set([...existing, ...mapped])];
     if (item?.metadata && Array.isArray(item.metadata.locations)) item.metadata.locations = unique;
     return unique;
