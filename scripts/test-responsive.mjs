@@ -137,6 +137,27 @@ try{
     assert(!(wordmarkAudit.word.right>wordmarkAudit.credit.left&&wordmarkAudit.word.left<wordmarkAudit.credit.right&&
       wordmarkAudit.word.bottom>wordmarkAudit.credit.top&&wordmarkAudit.word.top<wordmarkAudit.credit.bottom),
       device.name+": 自販機 wordmark overlaps the credit counter");
+    const homeHeaderAudit=await page.evaluate(()=>{
+      const root=document.querySelector(".home-boot");
+      const screen=document.querySelector("#screen");
+      const rr=root.getBoundingClientRect(),sr=screen.getBoundingClientRect();
+      const elements=[...root.children].map(element=>{
+        const r=element.getBoundingClientRect();
+        return {className:element.className,left:r.left,right:r.right,top:r.top,bottom:r.bottom,
+          width:r.width,scrollWidth:element.scrollWidth,clientWidth:element.clientWidth};
+      });
+      return {root:{left:rr.left,right:rr.right,width:rr.width,scrollWidth:root.scrollWidth,clientWidth:root.clientWidth},
+        screen:{left:sr.left,right:sr.right,top:sr.top,bottom:sr.bottom},
+        elements};
+    });
+    assert(homeHeaderAudit.root.scrollWidth<=homeHeaderAudit.root.clientWidth+1,
+      device.name+": home masthead has horizontal overflow: "+JSON.stringify(homeHeaderAudit));
+    assert(homeHeaderAudit.elements.every(item=>item.left>=homeHeaderAudit.screen.left-1&&
+      item.right<=homeHeaderAudit.screen.right+1&&item.width<=homeHeaderAudit.root.width+1),
+      device.name+": a home header row extends beyond the CRT bounds: "+JSON.stringify(homeHeaderAudit));
+    const statusLine=homeHeaderAudit.elements.find(item=>item.className==="boot-loading");
+    assert(statusLine&&statusLine.width<=210*expectedScale+2,
+      device.name+": live status line exceeded its constrained home-header width: "+JSON.stringify(statusLine));
     const widthScale=Math.min(device.width/429,1);
     const fitScale=Math.min(widthScale,device.height/932,1);
     const shouldScroll=(device.width<=560||(device.width>device.height&&device.height<620))&&
