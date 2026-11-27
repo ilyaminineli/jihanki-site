@@ -12,7 +12,7 @@
     "Katori":[74,55],"Katori Station":[77,43],"Katori Jingu":[79,67],
     "Hard Off Kawaguchiko Store":[76,49],"Nojima Fujiyoshida Store":[73,65],
     "Iyashi no Sato":[23,58],"Fujisan Museum":[68,80],
-    "Kyoto":[38,15],"Osaka":[17,15]
+    "Kyoto":[38,15],"Genko-an":[35,6],"Kinkaku-ji":[34,10],"Osaka":[17,15],"Osaka Castle":[19,12],"Ueno Castle (Iga-Ueno)":[25,19]
   };
   function associationLines(places){
     const edges=new Set();

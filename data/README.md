@@ -79,7 +79,9 @@ The Memory Map's `PINS` mode preserves four forwarded pins with caption-derived 
 
 ## Photo-identification register
 
-`documents/notes/photo-identification-register.md` is the editorial audit for this collection. It distinguishes sign- or note-backed identifications from probable visual candidates and purely thematic groupings. Sunpu Castle is treated only as a candidate for the castle-and-moat sequence; no exact harbour, industrial plant, unidentified temple, bus terminal or firework venue is assigned without better evidence.
+`documents/notes/photo-identification-register.md` is the editorial audit for this collection. It distinguishes sign- or note-backed identifications from probable visual candidates and purely thematic groupings. The former Sunpu Castle candidate has been withdrawn after the traveller confirmed visits to Osaka Castle and Ueno Castle (Iga-Ueno); exact frame-to-castle allocation remains open.
+
+A supplemental review of ten newly supplied JPEGs is recorded in [photo-intake-2026-11-27.md](../documents/notes/photo-intake-2026-11-27.md). These incoming binaries are not yet in the repository media tree and are not included in the `photo-01`–`photo-140` catalogue count.
 
 ## Media integrity
 

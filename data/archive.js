@@ -1446,12 +1446,13 @@ const ARCHIVE = {
       "group": "Castle / illuminated water",
       "author": "eli",
       "file": "media/photo/photos_from_japan/eli_photos (5).jpg",
-      "description": "A brightly illuminated white-plaster castle complex rises over a moat. The architecture and reflected walls resemble the East Gate and turret complex at Sunpu Castle Park, but no sign or travel note confirms the match.",
+      "description": "A brightly illuminated white-plaster castle complex rises over a moat. The earlier Sunpu comparison was unsupported and has been withdrawn. The traveller confirms visits to Osaka Castle and Ueno Castle (Iga-Ueno); this frame remains in the Kansai castle sequence, but the individual castle is not yet proven.",
       "metadata": {
         "related": [
           "photo-93",
           "photo-94",
-          "photo-140"
+          "photo-140",
+          "daily-2026-08-road-trip"
         ]
       }
     },
@@ -1678,12 +1679,13 @@ const ARCHIVE = {
       "group": "Castle / illuminated water",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (3).png",
-      "description": "A white castle wall and stone rampart are illuminated above still water. This is part of the same night-castle sequence as the Eli photograph and the closer stairway view; Sunpu Castle remains a probable, not confirmed, identification.",
+      "description": "A white castle wall and stone rampart are illuminated above still water. This is part of the same night-castle sequence as the Eli photograph and the closer stairway view. The Sunpu candidate has been removed; the traveller confirms Osaka Castle and Ueno Castle (Iga-Ueno) as the two castle visits, but this frame is not yet allocated to one of them.",
       "metadata": {
         "related": [
           "photo-78",
           "photo-94",
-          "photo-140"
+          "photo-140",
+          "daily-2026-08-road-trip"
         ]
       }
     },
@@ -1696,12 +1698,13 @@ const ARCHIVE = {
       "group": "Castle / illuminated water",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (4).png",
-      "description": "A second angle shows the illuminated roofline, white walls and their reflection across the moat. It belongs to the same unresolved castle visit as the other night views.",
+      "description": "A second angle shows the illuminated roofline, white walls and their reflection across the moat. It belongs to the same unresolved Kansai castle sequence. The exact allocation between the traveller-confirmed Osaka Castle and Ueno Castle visits remains open.",
       "metadata": {
         "related": [
           "photo-78",
           "photo-93",
-          "photo-140"
+          "photo-140",
+          "daily-2026-08-road-trip"
         ]
       }
     },
@@ -2481,12 +2484,13 @@ const ARCHIVE = {
       "group": "Castle / illuminated water",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (68).png",
-      "description": "A close view looks up stone steps toward a white-plastered gate or turret. The building belongs to the same castle sequence as the moat reflections; Sunpu Castle Park is a strong visual candidate, but the exact identification remains provisional.",
+      "description": "A close view looks up stone steps toward a white-plastered gate or turret. It belongs to the Kansai castle sequence, but the photo alone does not establish whether it is part of Osaka Castle or Ueno Castle (Iga-Ueno). The earlier Sunpu candidate has been withdrawn.",
       "metadata": {
         "related": [
           "photo-78",
           "photo-93",
-          "photo-94"
+          "photo-94",
+          "daily-2026-08-road-trip"
         ]
       }
     }

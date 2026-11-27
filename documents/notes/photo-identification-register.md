@@ -141,14 +141,17 @@ The retro museum photographs and the separate arcade image give the journey a se
 
 The true circular garden window is in `photo-137`; the earlier Fuji image (`photo-14`) is actually framed by a rectangular multi-pane wooden lattice. They remain cross-linked as different examples of framed views in traditional interiors. The flower still lifes (`photo-96`, `photo-112`), roadside stone marker (`photo-106`), lanterns and summit torii extend the project’s interest in small ritual objects and the act of framing a landscape. These are editorial groupings, not identifications of a particular shrine or botanical species.
 
-## Provisional candidate: the illuminated castle-and-moat sequence
+## Kansai castle visits: Osaka Castle and Ueno Castle
 
 **Records:** `photo-78`, `photo-93`, `photo-94`, `photo-140`
 
-Four photographs show a white-plastered castle gate or turret, stone ramparts, stairs and reflections in a moat. The visual architecture resembles the East Gate / Tatsumi Yagura area of Sunpu Castle Park in Shizuoka. Public photographs of the illuminated site show a similar composition. However, no diary entry, map pin or readable sign presently ties this visit to Sunpu Castle. The archive therefore keeps the sequence together as “Castle / illuminated water” and names Sunpu only as a candidate for future confirmation.
+**Traveller confirmation (27 November 2026):** the journey included visits to **Osaka Castle (Osaka-jo)** and **Ueno Castle (Iga-Ueno Castle, Iga City, Mie Prefecture)**. These are two distinct places. The previous Sunpu Castle comparison was incorrect and is withdrawn.
 
-Reference for comparison:
-- [Sunpu Castle Park official guide](https://www.sumpu-castlepark.com/en/pdf/guide.pdf)
+The four photographs show illuminated white-plastered castle structures, moat-side ramparts, reflections and a close stairway view. They remain grouped as one Kansai castle sequence while the exact frame-to-castle allocation is checked. The imagery is compatible with the two confirmed castle visits, but the photographs alone do not yet establish which individual frame belongs to Osaka and which to Iga-Ueno. The archive therefore does not assign all four images to both places or invent a split.
+
+Sources:
+- [JNTO — Iga Ueno Castle](https://faq.japan-travel.jnto.go.jp/en/spot/1214/)
+- [JNTO — Osaka Castle](https://faq.japan-travel.jnto.go.jp/en/spot/1087/)
 
 ## Regional or thematic records that remain unresolved
 
@@ -176,3 +179,10 @@ The following photographs are now described and grouped, but not assigned a spec
 4. Revisit the castle, harbour, industrial waterfront, sightseeing-boat landing, ridge lookout, and twelve unlabeled map pins only when a better date, photo, itinerary line, or original Google Maps destination is available.
 
 This register is a source-aware identification layer, not a claim that every photograph has a verified GPS location. It should be updated when the original travellers confirm a provisional match.
+
+
+## Supplemental upload batch received 27 November 2026
+
+Ten additional JPEGs were supplied after the 140-image audit. Their provisional identifications, confidence levels and media-ingest checklist are recorded in [the supplemental photo intake note](./photo-intake-2026-11-27.md). The incoming images are not yet repository media files and therefore are not included in the current `photo-01`–`photo-140` count.
+
+Strong new identifications include Kinkaku-ji and Fujisan Dragon Tower at Tagonoura Minato Park. Two Fuji upper-slope frames fit the 1 August climb. The Kyoto veranda, nighttime torii, traditional roofed building and nighttime castle view retain the confidence limits documented in the intake note.

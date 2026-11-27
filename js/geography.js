@@ -17,7 +17,7 @@
     "daily-2026-07-27": ["Mount Fuji", "Yamanashi"],
     "daily-2026-07-28": ["Tokyo"], "daily-2026-07-29": ["Ryugu Cave", "Koyodai"],
     "daily-2026-08-18": ["Lake Saiko"],
-    "daily-2026-08-road-trip": ["Kawaguchiko", "Kyoto", "Osaka"],
+    "daily-2026-08-road-trip": ["Kawaguchiko", "Kyoto", "Osaka", "Genko-an", "Kinkaku-ji", "Osaka Castle", "Ueno Castle (Iga-Ueno)"],
   };
   const PLACES = {
     "Mount Fuji": "Mountain and surrounding landscape records",
@@ -42,7 +42,11 @@
     "Iyashi no Sato": "Saiko Iyashi no Sato Nenba; the full name is legible on the welcome sign and the visit is confirmed in the 23 July note",
     "Fujisan Museum": "Fuji worship and regional cultural history; confirmed expedition visit",
     "Kyoto": "Kansai road journey, hotel stay, friendship and found Nintendo DS",
+    "Genko-an": "Kyoto temple visit confirmed by the traveller; its round and square windows provide a distinctive photo check",
+    "Kinkaku-ji": "Rokuon-ji / Golden Pavilion in Kyoto; the gold pavilion photograph is directly identifiable",
     "Osaka": "Kansai road journey and live music",
+    "Osaka Castle": "Osaka-jo; one of the two castle visits confirmed by the traveller",
+    "Ueno Castle (Iga-Ueno)": "Ueno Castle in Iga City, Mie Prefecture; a separate visit confirmed by the traveller",
     "Tokyo": "Urban expedition notes",
     "Uno-Misaki Tunnel": "Tunnel recordings and audiovisual work", "Ryugu Cave": "Expedition notes",
     "Koyodai": "Expedition notes", "Haneda": "Arrival and departure records", "Shinjuku": "Urban expedition notes",
