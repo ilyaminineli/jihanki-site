@@ -63,18 +63,18 @@ try{
     const physicalControlStyle=await page.evaluate(()=>{
       return ["coin-button","home-button"].map(id=>{
         const button=document.getElementById(id),style=getComputedStyle(button);
-        return {id,border:style.borderTopColor,background:style.backgroundColor,outline:style.outlineStyle,
+        return {id,borderWidth:style.borderTopWidth,borderStyle:style.borderTopStyle,background:style.backgroundColor,outline:style.outlineStyle,
           hitWidth:button.getBoundingClientRect().width,hitHeight:button.getBoundingClientRect().height};
       });
     });
-    assert(physicalControlStyle.every(item=>item.border==="rgba(0, 0, 0, 0)"&&item.background==="rgba(0, 0, 0, 0)"&&item.outline==="none"),
+    assert(physicalControlStyle.every(item=>item.borderWidth==="0px"&&item.borderStyle==="none"&&item.background==="rgba(0, 0, 0, 0)"&&item.outline==="none"),
       device.name+": COIN or HOME exposes the rectangular hit-area frame: "+JSON.stringify(physicalControlStyle));
     await page.locator("#coin-button").hover();
     const pointerControlStyle=await page.evaluate(()=>["coin-button","home-button"].map(id=>{
       const style=getComputedStyle(document.getElementById(id));
       return {id,border:style.borderTopColor,background:style.backgroundColor,outline:style.outlineStyle};
     }));
-    assert(pointerControlStyle.every(item=>item.border==="rgba(0, 0, 0, 0)"&&item.background==="rgba(0, 0, 0, 0)"&&item.outline==="none"),
+    assert(pointerControlStyle.every(item=>item.borderWidth==="0px"&&item.borderStyle==="none"&&item.background==="rgba(0, 0, 0, 0)"&&item.outline==="none"),
       device.name+": pointer hover exposed a COIN or HOME highlight square: "+JSON.stringify(pointerControlStyle));
     const homeHierarchy=await page.evaluate(()=>({
       soundLab:document.querySelector(".home-primary [data-home-action='installation']")?.textContent.trim()||"",
