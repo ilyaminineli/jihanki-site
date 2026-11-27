@@ -21,8 +21,8 @@ This programme deliberately narrows the earlier feature proposal. It is not a co
 | --- | --- | --- |
 | [M67](#m67--place-and-relationship-integrity) | Place and relationship integrity | Implemented |
 | [M68](#m68--field-impressions) | Field Impressions | Implemented |
-| [M69](#m69--memory-traces) | Memory Traces | Planned |
-| [M70](#m70--curators-cabinet) | Curator’s Cabinet | Existing shelves; small optional extension only |
+| [M69](#m69--memory-traces) | Memory Traces | Implemented |
+| [M70](#m70--curators-cabinet) | Curator’s Cabinet | Implemented |
 | [M71](#m71--listening-room) | Listening Room | Deferred until additional source samples are supplied |
 | [M72](#m72--quiet-signals) | Quiet Signals | Later / experimental |
 
@@ -56,21 +56,21 @@ This first implementation is limited to one trail. More should be added only if 
 
 ## M69 — Memory Traces
 
-**Status:** Planned.
+**Status:** Implemented.
 
-Make a very small number of explicitly curated relationships feel discoverable through movement between records. Begin with the Satyam 1 chain:
+One curated trace now recognises the Satyam 1 chain. Encountering all three source records, in any order, adds one private Memory Trace object to the Museum:
 
 - photo-127 — earlier view
-- daily-2026-08-03 — Koba-san visit and present-day context
+- daily-2026-08-03 — Koba-san visit and context
 - photo-173 — present-day clearing
 
-There is no general-purpose puzzle generator and no requirement to follow every edge in the archive. Completing a curated trace may produce one quiet machine response or a small local trace mark. The wording must remain faithful to the source records and preserve uncertainty.
+The module verifies the curated source links before enabling the trace. There is no puzzle prompt, guessed answer, score or requirement to follow every graph edge. The trace object preserves the three source IDs and remains local to the visitor’s browser.
 
 ## M70 — Curator’s Cabinet
 
-**Status:** Existing shelves; optional extension only.
+**Status:** Implemented.
 
-Reuse the Museum’s current shelves rather than adding another collection model. A visitor may arrange a few records as a personal exhibition, give it a title, and leave the note blank. A printable cabinet card can be considered later, but it is not required for the first exploration loop.
+The existing shelves are now personal exhibitions. Each shelf keeps its visitor-chosen title and selected records; no explanatory note or cover image is required. An optional “Export Exhibition Card” action downloads a self-contained HTML card with print styling, the shelf title and its selected archive records. The existing Museum backup continues to preserve shelves.
 
 ## M71 — Listening Room
 
