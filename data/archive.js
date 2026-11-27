@@ -5303,7 +5303,7 @@ const ARCHIVE = {
       "author": "archive",
       "project": "japan-expedition",
       "group": "PHOTO IDENTIFICATION / INTAKE",
-      "description": "Traveller-confirmed filename-by-filename review of 49 addition_5 photographs, with corrected subjects, memory connections, named places and remaining uncertainties. The source binaries still need to be added before individual photo records are created.",
+      "description": "Traveller-confirmed filename-by-filename review of 49 addition_5 photographs, with corrected subjects, memory connections, named places and remaining uncertainties. All 49 JPEGs are present in the media manifest and individually catalogued as photo-203 through photo-251.",
       "file": "documents/notes/photo-intake-2026-11-27-addition-5.md",
       "metadata": {
         "locations": [
