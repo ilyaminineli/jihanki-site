@@ -59,10 +59,22 @@
       { id:"daily-2026-08-03", kind:"field-visit-context", label:"KOBA-SAN VISIT / 3 AUGUST" }
     ],
     "photo-intake-addition-5": [
-      { id:"daily-2026-07-25", kind:"source-place-match", label:"UNO-MISAKI TUNNEL / NAMED PORTAL SIGN IN NEW PHOTO" },
-      { id:"daily-2026-07-24", kind:"candidate-encounter-context", label:"DEER PHOTOS / SHIKI ID NOT CONFIRMED" },
-      { id:"daily-2026-07-26", kind:"candidate-venue-context", label:"TOY DISPLAY / KAWAGUCHIKO MUSEUM CANDIDATE" },
-      { id:"photo-202", kind:"nearby-locality-context", label:"MIYUKI BEACH / SAME LOCALITY REFERENCE" }
+      { id:"daily-2026-07-25", kind:"field-visit-photograph", label:"ON-SEN YURARI / UNO-MISAKI TUNNEL VISIT" },
+      { id:"tunnel", kind:"project-source", label:"UNO-MISAKI / TUNNEL AUDIOVISUAL WORK" },
+      { id:"daily-2026-07-24", kind:"field-encounter-context", label:"SHIKI / FUJI-AREA ENCOUNTER MEMORY" },
+      { id:"shiki", kind:"subject-audiovisual-work", label:"SHIKI / DEER SUBJECT" },
+      { id:"sound-08", kind:"subject-field-recording", label:"SHIKI / SOUND TAKE 1" },
+      { id:"sound-09", kind:"subject-field-recording", label:"SHIKI / SOUND TAKE 2" },
+      { id:"daily-2026-07-26", kind:"museum-photo-sequence", label:"KAWAGUCHIKO RETRO TOYS MUSEUM" },
+      { id:"daily-2026-07-27", kind:"field-hike-photographs", label:"FIRST SUMMIT NEAR SAIKO" },
+      { id:"daily-2026-07-23", kind:"museum-and-equipment-context", label:"MUSIC FOREST MUSEUM / NEW LAPTOP" },
+      { id:"daily-2026-07-31", kind:"birthday-preparation-photo", label:"GAKUPO BIRTHDAY / 31 JULY" },
+      { id:"daily-2026-08-road-trip", kind:"regional-and-cultural-context", label:"KYOTO / OSAKA / TAKISMANA DS MUSIC USE" },
+      { id:"voice-takismana", kind:"music-performer-context", label:"TAKISMANA / NINTENDO DS MUSIC INTERFACE" },
+      { id:"photo-169", kind:"same-business-location", label:"MCDONALD'S 139 FUJIYOSHIDA / SAME BRANCH" },
+      { id:"photo-193", kind:"same-neighbourhood", label:"KITAOJI SHINMACHI / BUS-STOP AREA" },
+      { id:"photo-198", kind:"same-neighbourhood-context", label:"SHINSAIBASHI / UNDERGROUND PARKING AREA" },
+      { id:"photo-202", kind:"same-locality-and-outing", label:"MIYUKI BEACH / SAME OKINAWA OUTING" }
     ],
     "photo-192": [
       { id:"photo-137", kind:"same-place-memory", label:"GENKO-AN / ROUND AND SQUARE WINDOWS" },
