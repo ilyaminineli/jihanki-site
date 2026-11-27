@@ -4421,7 +4421,8 @@ const ARCHIVE = {
           "Okinawa",
           "Shinsaibashi",
           "Osaka",
-          "Lake Saiko"
+          "Lake Saiko",
+          "First summit near Saiko"
         ],
         "related": [
           "daily-2026-07-23",
