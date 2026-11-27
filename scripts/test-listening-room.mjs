@@ -53,7 +53,7 @@ for (const track of album) assert(html.includes(track.title), "Listening Room mu
 assert(html.includes("05 / SHRINE / RITUAL"), "The missing fifth environment should remain visible as pending.");
 assert.match(html, /Public render pending/, "The room must not invent a Shrine audio file.");
 assert(html.includes("sound-06") && html.includes("Dialogue reconstruct 1"));
-assert.match(html, /ARCHIVE LISTENING/, "Archive listening should be discoverable as a Sound Lab mode.");
+assert.match(html, /ARCHIVE \/ LISTENING/, "Archive listening should render its archive-player content.");
 const suiteHtml = window.JIHANKI_SOUNDSCAPE.render();
 assert.match(suiteHtml, /data-sound-suite-mode="mix"/, "Sound Lab should expose a LIVE MIX mode.");
 assert.match(suiteHtml, /data-sound-suite-mode="archive"/, "Sound Lab should expose an ARCHIVE LISTENING mode.");
