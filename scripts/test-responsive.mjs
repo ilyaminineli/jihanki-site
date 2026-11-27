@@ -344,7 +344,7 @@ try{
     assert(await page.locator(".map-memory-mode").count()===1,device.name+": memory map mode failed");
     assert(await page.evaluate(()=>document.querySelector("#artifact").contains(document.activeElement)),device.name+": map dialog did not own keyboard focus");
     await page.locator('[data-map-mode="trails"]').click();
-    const summitPhotos=await page.locator(".map-trail-photo-grid button").evaluateAll(nodes=>nodes.map(node=>node.dataset.archiveId));
+    const summitPhotos=await page.locator(".map-trail-photo-grid button").evaluateAll(nodes=>nodes.map(node=>node.dataset.mapPhoto));
     assert(summitPhotos.join(",")==="photo-219,photo-220,photo-221,photo-222,photo-223",device.name+": Saiko summit evidence photos are missing or reordered: "+summitPhotos.join(","));
     assert(await page.locator(".map-trail-stages li").count()===4,device.name+": Saiko summit field sequence is incomplete");
     await page.keyboard.press("Escape");
