@@ -86,7 +86,7 @@
     return{label,width,height};
   }
   function declutter(places){
-    const width=1280,height=860;
+    const width=1280,height=860,cellSize=220;
     const nodes=places.map(place=>{
       const metric=labelMetrics(place.name),anchor=POSITIONS[place.name];
       return{name:place.name,x:anchor[0]*width/100,y:anchor[1]*height/100,
@@ -98,7 +98,7 @@
       node.y=Math.max(node.boxH/2+12,Math.min(height-node.boxH/2-12,node.y));
     };
     const separate=(a,b,margin)=>{
-      let dx=a.x-b.x,dy=a.y-b.y;
+      const dx=a.x-b.x,dy=a.y-b.y;
       const overlapX=(a.boxW+b.boxW)/2+margin-Math.abs(dx);
       const overlapY=(a.boxH+b.boxH)/2+margin-Math.abs(dy);
       if(overlapX<=0||overlapY<=0)return;
@@ -113,17 +113,30 @@
       }
       clamp(a);clamp(b);
     };
-    for(let pass=0;pass<650;pass++){
-      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)separate(nodes[i],nodes[j],18);
-      nodes.forEach(node=>{
+    // Spatial buckets avoid comparing every label with every other label.
+    // The 220px cell exceeds the largest possible colliding centre distance.
+    const pass=(margin,restore)=>{
+      const cells=new Map();
+      nodes.forEach((node,index)=>{
+        const cx=Math.floor(node.x/cellSize),cy=Math.floor(node.y/cellSize),key=cx+","+cy;
+        if(!cells.has(key))cells.set(key,[]);
+        cells.get(key).push(index);
+      });
+      nodes.forEach((a,i)=>{
+        const cx=Math.floor(a.x/cellSize),cy=Math.floor(a.y/cellSize);
+        for(let gy=cy-1;gy<=cy+1;gy++)for(let gx=cx-1;gx<=cx+1;gx++){
+          const bucket=cells.get(gx+","+gy)||[];
+          for(const j of bucket)if(j>i)separate(a,nodes[j],margin);
+        }
+      });
+      if(restore)nodes.forEach(node=>{
         node.x+=(node.anchorX-node.x)*.003;
         node.y+=(node.anchorY-node.y)*.003;
         clamp(node);
       });
-    }
-    // A final collision-only pass removes the last few pixels of overlap.
-    for(let pass=0;pass<120;pass++)
-      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)separate(nodes[i],nodes[j],12);
+    };
+    for(let passIndex=0;passIndex<170;passIndex++)pass(18,true);
+    for(let passIndex=0;passIndex<120;passIndex++)pass(12,false);
     return Object.fromEntries(nodes.map(node=>[node.name,[node.x/width*100,node.y/height*100]]));
   }
   const TRAILS=window.JIHANKI_RELATIONSHIPS?.trails?.()||[];
