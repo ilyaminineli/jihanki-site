@@ -115,11 +115,11 @@ These are the only substantial identification gaps left by the traveller's curre
 5. **`addition_5 (16).jpg`** — spider photograph; place and date unknown.
 6. **`addition_5 (23).jpg`** — Sports Box building; city and relation to the Bamiyan sign are unknown.
 7. **`addition_5 (27).jpg` and `(30).jpg`** — fridge / food-storage scene and bananas basket remain unexplained.
-8. **`addition_5 (33).jpg)–`(36).jpg`** — city streets, building notice, intersection and underground stairs remain unlocated.
-9. **`addition_5 (37).jpg)–`(41).jpg`** — Animate / NewDays, electronics retail, city view, shopping street and arcade remain unlocated. Do not assign all to Akihabara from `(42)` alone.
+8. **`addition_5 (33).jpg`–`addition_5 (36).jpg`** — city streets, building notice, intersection and underground stairs remain unlocated.
+9. **`addition_5 (37).jpg`–`addition_5 (41).jpg`** — Animate / NewDays, electronics retail, city view, shopping street and arcade remain unlocated. Do not assign all to Akihabara from `(42)` alone.
 10. **`addition_5 (44).jpg`** — the DS use is confirmed, but the exact archived live-event record is not yet matched to a specific ID.
 11. **`addition_5 (45).jpg`** — near Miyuki Beach is confirmed; the exact street / residence is not.
-12. **`addition_5 (17).jpg)–`(21).jpg`** — outing is confirmed as the first summit visit near Saiko; exact named summit / trail remains unresolved.
+12. **`addition_5 (17).jpg`–`addition_5 (21).jpg`** — outing is confirmed as the first summit visit near Saiko; exact named summit / trail remains unresolved.
 
 ## Evidence and implementation boundaries
 
