@@ -252,7 +252,7 @@
     {from:"Sanjo",to:"Otsu",kind:"transit-corridor",label:"TRANSIT CORRIDOR"},
     {from:"Miyuki Beach",to:"Onna",kind:"within",label:"IN MUNICIPALITY"},
     {from:"Onna",to:"Okinawa",kind:"within",label:"IN PREFECTURE"},
-    {from:"Fujigawaguchiko",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"}
+    {from:"Fujikawaguchiko",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"}
   ];
 
   const TRAILS = [
