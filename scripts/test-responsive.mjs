@@ -88,6 +88,26 @@ try{
     }));
     assert(homeHierarchy.soundLab.includes("SOUND LAB")&&homeHierarchy.collection&&homeHierarchy.map&&homeHierarchy.search,
       device.name+": main home-screen tools are incomplete");
+    assert(await page.locator(".home-primary [data-home-action]").count()===1,
+      device.name+": the Sound Lab should be the single audio entry on the home screen");
+    assert(await page.locator(".home-primary [data-home-action='listening']").count()===0,
+      device.name+": a duplicate Listening Room home button is still present");
+    await page.locator(".home-primary [data-home-action='installation']").click();
+    await page.locator(".sound-suite").waitFor();
+    assert(await page.locator("[data-sound-suite-mode='mix']").getAttribute("aria-selected")==="true",
+      device.name+": Sound Lab should open in LIVE MIX mode");
+    assert(await page.locator("[data-sound-suite-panel='archive']").isHidden(),
+      device.name+": archive listening should start hidden inside the shared panel");
+    await page.locator("[data-sound-suite-mode='archive']").click();
+    assert(await page.locator("[data-sound-suite-panel='archive']").isVisible(),
+      device.name+": archive listening tab did not reveal sequential playback");
+    assert(await page.locator("[data-sound-suite-panel='mix']").isHidden(),
+      device.name+": live mixer remained visible behind archive listening");
+    await page.locator("[data-sound-suite-mode='mix']").click();
+    assert(await page.locator("[data-sound-suite-panel='mix']").isVisible(),
+      device.name+": LIVE MIX tab did not return to the layered mixer");
+    await page.keyboard.press("Escape");
+    await page.locator(".home-boot").waitFor();
     assert(homeHierarchy.chronology==="CHRONOLOGY"&&!homeHierarchy.machineMemory,
       device.name+": home-screen archive/memory hierarchy was not simplified");
     assert(homeHierarchy.soundButton&&homeHierarchy.sound.startsWith("SOUND /"),
