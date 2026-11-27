@@ -12,7 +12,7 @@ This route belongs to the central geography of the expedition. It connects the r
 
 ## Kyoto — a hotel, a friend and a Nintendo DS
 
-The Kyoto stay and hotel are confirmed parts of the journey. Takismana also bought a Nintendo DS at **万物創造房 (Banbutsu Sōzō-bō)**, a shop run by a friend. This is a useful small-scale memory of the Kyoto leg: a physical object and a personal connection, rather than only a tourist destination. DYNAKYRIS's independent account of the shop and the exchange of physical artworks and music is kept separately in [the companion fieldnote extraction](../dynakyris-japan-corroborations-2026-11-27.md).
+The Kyoto stay and hotel are confirmed parts of the journey. Takismana also bought a Nintendo DS at **万物創造房 (Banbutsu Sōzō-bō)**, the Kyoto shop run by **Banbutsu-san**. This is a useful small-scale memory of the Kyoto leg: a physical object and a personal connection, rather than only a tourist destination. DYNAKYRIS’s account of the shop visit and the exchange of physical artworks and music is preserved in [DYNAKYRIS — selected Japan diary extracts](../dynakyris-japan-corroborations-2026-11-27.md).
 
 The private chat export contains a hotel voucher link, but the public archive deliberately does not reproduce booking documents, booking identifiers or private reservation details. The exact hotel name and address are not needed to preserve the fact of the stay.
 

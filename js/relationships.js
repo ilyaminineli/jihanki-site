@@ -6,7 +6,21 @@
       { id:"voice-iirai", kind:"shared-voice", label:"UTAU VOICE" },
       { id:"voice-eugene", kind:"shared-voice", label:"UTAU VOICE" },
       { id:"aokigahara-pentalogy", kind:"shared-project", label:"SOUND WORLD" },
-      { id:"dynakyris-japan-corroborations-2026-11-27", kind:"companion-source", label:"COLLABORATOR FIELDNOTE" }
+      { id:"dynakyris-japan-corroborations-2026-11-27", kind:"collaborator-diary", label:"DYNAKYRIS / 17 AUGUST DIARY" }
+    ],
+    "photo-22": [
+      { id:"person-banbutsu-san", kind:"shopkeeper-context", label:"BANBUTSU-SAN / KYOTO SHOP" },
+      { id:"dynakyris-japan-corroborations-2026-11-27", kind:"diary-account", label:"DYNAKYRIS / BANBUTSU VISIT" }
+    ],
+    "person-banbutsu-san": [
+      { id:"dynakyris-japan-corroborations-2026-11-27", kind:"friendship-context", label:"DYNAKYRIS / KYOTO DIARY" },
+      { id:"photo-22", kind:"associated-shop", label:"BANBUTSU SŌZŌ-BŌ / SHOP INTERIOR" }
+    ],
+    "dynakyris-japan-corroborations-2026-11-27": [
+      { id:"person-banbutsu-san", kind:"friend-and-shop-context", label:"BANBUTSU-SAN / KYOTO" },
+      { id:"photo-22", kind:"diary-place", label:"BANBUTSU SŌZŌ-BŌ / INTERIOR" },
+      { id:"mountain-remembers-mv", kind:"film-reflection", label:"THE MOUNTAIN REMEMBERS / 17 AUGUST" },
+      { id:"photo-246", kind:"related-object-memory", label:"NINTENDO DS / JAPANESE MUSIC" }
     ],
     "endless-road": [
       { id:"voice-iirai", kind:"shared-voice", label:"UTAU VOICE" },
@@ -105,17 +119,14 @@
     "photo-179": [
       { id:"photo-180", kind:"same-event-photo-sequence", label:"SAME FESTIVAL / SECOND FRAME" },
       { id:"event-2026-08-15-nagahama-furusato-festival", kind:"event-documentation", label:"NAGAHAMA FURUSATO FESTIVAL" },
-      { id:"dynakyris-japan-corroborations-2026-11-27", kind:"companion-event-corroboration", label:"16 AUGUST FIELDNOTE" }
     ],
     "photo-180": [
       { id:"photo-179", kind:"same-event-photo-sequence", label:"SAME FESTIVAL / FIRST FRAME" },
       { id:"event-2026-08-15-nagahama-furusato-festival", kind:"event-documentation", label:"NAGAHAMA FURUSATO FESTIVAL" },
-      { id:"dynakyris-japan-corroborations-2026-11-27", kind:"companion-event-corroboration", label:"16 AUGUST FIELDNOTE" }
     ],
     "event-2026-08-15-nagahama-furusato-festival": [
       { id:"photo-179", kind:"event-photograph", label:"FIREWORKS / FRAME 1" },
       { id:"photo-180", kind:"event-photograph", label:"FIREWORKS / FRAME 2" },
-      { id:"dynakyris-japan-corroborations-2026-11-27", kind:"companion-event-corroboration", label:"INDEPENDENT PREVIOUS-EVENING ACCOUNT" }
     ],
     "photo-181": [
       { id:"photo-182", kind:"same-tunnel-installation", label:"NIIKURA TUNNEL / R-7 TELEPHONE" },

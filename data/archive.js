@@ -744,7 +744,7 @@ const ARCHIVE = {
     {
       "id": "photo-22",
       "title": "Banbutsu Sōzō-bō — Kyoto shop interior",
-      "description": "An interior view of 万物創造房 (Banbutsu Sōzō-bō), the Kyoto shop run by a friend and mentioned in the trip notes. It is a shop visit, not a museum or nostalgic-toys collection.",
+      "description": "An interior view of 万物創造房 (Banbutsu Sōzō-bō), the Kyoto shop run by Banbutsu-san and connected to DYNAKYRIS’s diary account of the visit. It is a shop visit, not a museum or nostalgic-toys collection.",
       "date": "2026",
       "type": "image",
       "category": "photo",
@@ -757,7 +757,9 @@ const ARCHIVE = {
           "Kyoto"
         ],
         "related": [
-          "daily-2026-08-road-trip"
+          "daily-2026-08-road-trip",
+          "dynakyris-japan-corroborations-2026-11-27",
+          "person-banbutsu-san"
         ]
       }
     },
@@ -5300,6 +5302,38 @@ const ARCHIVE = {
         "locations": [
           "Japan / 2026 expedition"
         ]
+      }
+    },
+    {
+      "id": "dynakyris-japan-corroborations-2026-11-27",
+      "title": "DYNAKYRIS — SELECTED JAPAN DIARY EXTRACTS",
+      "date": "2026",
+      "type": "text",
+      "category": "notes",
+      "author": "DYNAKYRIS",
+      "project": "japan-expedition",
+      "group": "PEOPLE / DIARY EXTRACTS",
+      "description": "DYNAKYRIS’s Kyoto diary account of Banbutsu-san and the Banbutsu Sōzō-bō visit, alongside his reflections on The Mountain Remembers.",
+      "file": "documents/notes/dynakyris-japan-corroborations-2026-11-27.md",
+      "metadata": {
+        "locations": ["Kyoto", "Banbutsu Sōzō-bō", "Fuji Five Lakes", "Lake Saiko", "Aokigahara"],
+        "related": ["person-banbutsu-san", "photo-22", "mountain-remembers-mv", "photo-246"]
+      }
+    },
+    {
+      "id": "person-banbutsu-san",
+      "title": "Banbutsu-san — Banbutsu Sōzō-bō, Kyoto",
+      "date": "2026",
+      "type": "text",
+      "category": "notes",
+      "author": "archive",
+      "project": "japan-expedition",
+      "group": "PEOPLE / KYOTO",
+      "description": "Friend of DYNAKYRIS associated with 万物創造房 (Banbutsu Sōzō-bō), the Kyoto shop. His personal name and further biographical details are not recorded in this archive.",
+      "file": "documents/notes/dynakyris-japan-corroborations-2026-11-27.md",
+      "metadata": {
+        "locations": ["Kyoto", "Banbutsu Sōzō-bō"],
+        "related": ["dynakyris-japan-corroborations-2026-11-27", "photo-22"]
       }
     },
     {
