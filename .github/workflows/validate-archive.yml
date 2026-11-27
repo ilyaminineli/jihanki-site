@@ -58,6 +58,8 @@ jobs:
         run: node scripts/test-memory-traces.mjs
       - name: Test curator cabinet cards
         run: node scripts/test-curators-cabinet.mjs
+      - name: Test listening room
+        run: node scripts/test-listening-room.mjs
       - name: Test quiet signals
         run: node scripts/test-quiet-signals.mjs
       - name: Test machine interaction transitions
