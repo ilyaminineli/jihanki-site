@@ -2542,7 +2542,7 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 }
 
 /* Keep the ambience control reachable after the fixed-size machine is scaled on phones. */
-.home-archive-tools .home-audio {
+.home-archive-tools button.home-audio {
   box-sizing:border-box;
   display:inline-flex;
   align-items:center;
