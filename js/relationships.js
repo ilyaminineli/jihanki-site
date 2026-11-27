@@ -287,7 +287,7 @@
       stops:["Lake Saiko","First summit near Saiko"],
       mode:"27 JULY / DOCUMENTED HIKING OUTING",
       mapLine:false,
-      description:"The 27 July account records a direct ascent from Saikoneon, a difficult slope, a ridge trail and two remembered checkpoints. The two map pins are regional references only: no route line, summit coordinate or exact trail is asserted. The five Addition_5 photographs below document the outing.",
+      description:"The 27 July account records a direct ascent from Saikoneon, a difficult slope, a ridge trail and two remembered checkpoints. The two map pins are regional references only: no route line, summit coordinate or exact trail is asserted. The five Addition_5 photographs below form an outing evidence set, not a verified frame-by-frame route sequence; the road-bridge and direction-sign images are contextual evidence, not plotted trail points.",
       stages:[
         {title:"DEPARTURE / SAIKONEON",detail:"The ascent began directly from the Saikoneon residence. Lake Saiko is retained as regional context, not as a precise trailhead coordinate."},
         {title:"ASCENT / FINDING THE RIDGE TRAIL",detail:"The ground was steep and sliding. Eli found a metal hook and used it to help Taki climb; a trail was eventually found through the ridge."},
