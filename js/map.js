@@ -1,34 +1,104 @@
 /* M44 — Schematic geography and archive-memory network. Not a surveying or navigation map. */
 (function () {
   const esc=value=>String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
-  const MAP_SURFACE={width:4000,height:3000};
-  const POSITIONS={
-    "Lake Saiko":[34,46],"Aokigahara":[27,67],"Fuji Five Lakes":[45,25],"Kawaguchiko":[59,50],
-    "Lake Yamanaka":[76,48],"Lake Shōji":[35,61],"Uno-Misaki Tunnel":[24,55],
-    "Onsen Yurari":[44,68],"Akihabara":[84,18],"First summit near Saiko":[30,38],
-    "Lake Kawaguchi":[58,41],"Oishi Park":[52,30],"Kawaguchiko Music Forest Museum":[66,34],
-    "Arakurayama Sengen Park":[71,48],"Fujisan Sengen Shrine":[56,64],"Kawaguchiko Nostalgic Toys Museum":[62,42],
-    "Kawaguchiko Automobile Museum":[48,62],"Narusawa":[42,68],"Kamo River":[31,9],
-    "Mount Fuji":[49,80],"Niikura Tunnel":[15,49],"Yamanashi":[71,70],"Tokyo":[78,14],
-    "Ryugu Cave":[16,19],"Koyodai":[29,31],"Shrine":[63,80],"Shrines":[75,55],"Haneda":[79,37],"Shinjuku":[72,25],
-    "Katori":[74,55],"Katori Station":[77,43],"Katori Jingu":[79,67],"Hard Off Kawaguchiko Store":[76,49],
-    "Nojima Fujiyoshida Store":[73,65],"Iyashi no Sato":[23,58],"Fujisan Museum":[68,80],
-    "Kyoto":[38,15],"Genko-an":[35,6],"Kinkaku-ji":[34,10],"Japan Kanji Museum & Library":[42,22],
-    "Kanji Museum":[42,22],"Banbutsu Sōzō-bō":[34,23],"Osaka":[17,15],"Osaka Castle":[19,12],
-    "Odawara Castle":[11,42],"Odawara":[13,46],"Ueno Castle (Iga-Ueno)":[25,19],"Ueno-ebisumachi":[29,24],
-    "PICA Fuji Saiko":[32,46],"Fujisan Dragon Tower":[82,82],"Tagonoura Minato Park":[82,88],"Fuji City":[85,82],
-    "Satyam 1":[39,35],"Kamikuishiki":[36,42],"Gokodai":[53,23],"Mount Ashiwada":[53,29],
-    "Fujikawaguchiko":[59,48],"Fujiyoshida":[67,56],"McDonald’s 139 Fujiyoshida":[67,54],"Mt Fuji Station":[65,62],
-    "Otsuki–Fujiyoshida junction":[76,50],"Yokosawa Sabo":[33,61],"Tokyo Skytree":[80,18],"Sumida Ward":[84,15],
-    "Fugaku Wind Cave":[25,65],"Mt. Fuji Panoramic Ropeway":[60,41],"Tenjoyama":[62,39],
-    "Tagonoura Port":[82,85],"Nagahama":[51,44],"Kadoya Shoten":[49,46],
-    "CRYSTA Nagahori":[13,17],"Shinsaibashi":[12,15],
-    "Senbon Kitaoji":[35,17],"Kitaoji Shinmachi":[36,20],
-    "Demachiyanagi":[43,15],"Sanjo":[40,13],"Otsu":[48,13],
-    "Okinawa":[7,88],"Onna":[9,84],"Miyuki Beach":[11,82],
-    "Former Kamikuishiki complex":[36,42]
+  const MAP_SURFACE={width:2800,height:3305};
+  const GEO_VIEWBOX={minLon:123.658963,maxLon:145.820743,minLat:24.217586,maxLat:45.523885};
+  // Coordinates are WGS84 lat/lon. "site" entries are sourced place coordinates;
+  // "locality" entries are town/area anchors; "area" entries preserve uncertain
+  // archive locations without pretending to be exact photo GPS.
+  const GEO_COORDS={
+    "Akihabara":[35.70189,139.77437,"site"],
+    "Aokigahara":[35.484,138.653,"area"],
+    "Arakurayama Sengen Park":[35.50051,138.80157,"site"],
+    "Banbutsu Sōzō-bō":[35.011,135.769,"area"],
+    "CRYSTA Nagahori":[34.67516,135.50279,"site"],
+    "Demachiyanagi":[35.0307,135.77333,"site"],
+    "First summit near Saiko":[35.499,138.681,"area"],
+    "Fugaku Wind Cave":[35.4745,138.663,"locality"],
+    "Fuji City":[35.1611,138.6763,"locality"],
+    "Fuji Five Lakes":[35.465,138.72,"area"],
+    "Fujikawaguchiko":[35.501,138.755,"locality"],
+    "Fujisan Dragon Tower":[35.151,138.682,"locality"],
+    "Fujisan Museum":[35.477,138.804,"locality"],
+    "Fujisan Sengen Shrine":[35.4726,138.7921,"site"],
+    "Fujiyoshida":[35.487,138.807,"locality"],
+    "Genko-an":[35.054,135.735,"locality"],
+    "Gokodai":[35.505,138.685,"area"],
+    "Haneda":[35.5514,139.7885,"site"],
+    "Hard Off Kawaguchiko Store":[35.503,138.765,"locality"],
+    "Iyashi no Sato":[35.528,138.670,"locality"],
+    "Japan Kanji Museum & Library":[35.0036,135.7778,"site"],
+    "Kadoya Shoten":[35.508,138.722,"area"],
+    "Kamikuishiki":[35.445,138.585,"area"],
+    "Kamo River":[35.016,135.772,"locality"],
+    "Kanji Museum":[35.0036,135.7778,"site"],
+    "Katori":[35.8978,140.4993,"locality"],
+    "Katori Jingu":[35.8886,140.5289,"site"],
+    "Katori Station":[35.89799,140.532,"site"],
+    "Kawaguchiko":[35.503,138.755,"locality"],
+    "Kawaguchiko Automobile Museum":[35.456,138.744,"locality"],
+    "Kawaguchiko Music Forest Museum":[35.520,138.772,"site"],
+    "Kawaguchiko Nostalgic Toys Museum":[35.507,138.760,"site"],
+    "Kinkaku-ji":[35.03959,135.72951,"site"],
+    "Kitaoji Shinmachi":[35.0445,135.754,"locality"],
+    "Koyodai":[35.500,138.680,"area"],
+    "Kyoto":[35.0116,135.7681,"city"],
+    "Lake Kawaguchi":[35.51667,138.75,"site"],
+    "Lake Saiko":[35.49902,138.68694,"site"],
+    "Lake Shōji":[35.48967,138.60705,"site"],
+    "Lake Yamanaka":[35.42511,138.84962,"site"],
+    "McDonald’s 139 Fujiyoshida":[35.489,138.806,"locality"],
+    "Miyuki Beach":[26.50733,127.89096,"site"],
+    "Mount Ashiwada":[35.505,138.686,"area"],
+    "Mount Fuji":[35.3628,138.7308,"site"],
+    "Mt Fuji Station":[35.481,138.795,"site"],
+    "Mt. Fuji Panoramic Ropeway":[35.517,138.775,"site"],
+    "Nagahama":[35.514,138.718,"area"],
+    "Narusawa":[35.481,138.69,"locality"],
+    "Niikura Tunnel":[35.495,138.805,"area"],
+    "Nojima Fujiyoshida Store":[35.484,138.809,"locality"],
+    "Odawara":[35.255,139.159,"locality"],
+    "Odawara Castle":[35.251,139.1536,"site"],
+    "Oishi Park":[35.531,138.741,"site"],
+    "Okinawa":[26.2124,127.6809,"prefecture"],
+    "Onna":[26.49748,127.85343,"locality"],
+    "Onsen Yurari":[35.477,138.692,"site"],
+    "Osaka":[34.6937,135.5023,"city"],
+    "Osaka Castle":[34.68737,135.52586,"site"],
+    "Otsu":[35.0174,135.8547,"city"],
+    "Otsuki–Fujiyoshida junction":[35.610,138.94,"area"],
+    "PICA Fuji Saiko":[35.495,138.685,"site"],
+    "Ryugu Cave":[35.495,138.653,"locality"],
+    "Sanjo":[35.009,135.772,"locality"],
+    "Satyam 1":[35.445,138.585,"area"],
+    "Senbon Kitaoji":[35.048,135.744,"locality"],
+    "Shinjuku":[35.69026,139.70051,"site"],
+    "Shinsaibashi":[34.675,135.5013,"locality"],
+    "Shrines":[35.4726,138.7921,"area"],
+    "Sumida Ward":[35.710,139.810,"area"],
+    "Tagonoura Minato Park":[35.14084,138.69377,"site"],
+    "Tagonoura Port":[35.14084,138.69377,"site"],
+    "Tenjoyama":[35.518,138.777,"locality"],
+    "Tokyo":[35.6812,139.7671,"city"],
+    "Tokyo Skytree":[35.71005,139.81071,"site"],
+    "Ueno Castle (Iga-Ueno)":[34.77019,136.12713,"site"],
+    "Ueno-ebisumachi":[34.7586,136.1311,"locality"],
+    "Uno-Misaki Tunnel":[35.466,138.602,"area"],
+    "Yamanashi":[35.6652,138.571,"prefecture"],
+    "Yokosawa Sabo":[35.501,138.701,"area"]
   };
-  /* English / romaji remains the primary map vocabulary. Japanese is secondary detail only. */
+  const PREFECTURE_LAYERS=[
+    "hokkaido-tohoku","kanto","chubu","kansai","chugoku","shikoku","kyushu","okinawa"
+  ];
+  const surfacePoint=name=>{
+    const value=GEO_COORDS[name];
+    if(!value)return null;
+    const [lat,lon]=value;
+    return [
+      (lon-GEO_VIEWBOX.minLon)/(GEO_VIEWBOX.maxLon-GEO_VIEWBOX.minLon)*MAP_SURFACE.width,
+      (GEO_VIEWBOX.maxLat-lat)/(GEO_VIEWBOX.maxLat-GEO_VIEWBOX.minLat)*MAP_SURFACE.height
+    ];
+  };
   const JP_LABELS={
     "Lake Saiko":"西湖","Aokigahara":"青木ヶ原樹海","Fuji Five Lakes":"富士五湖","Kawaguchiko":"河口湖周辺",
     "Lake Yamanaka":"山中湖","Lake Shōji":"精進湖","Uno-Misaki Tunnel":"宇の岬トンネル",
@@ -81,24 +151,34 @@
     const jp=subLabelFor(name)||name;
     const english=subLabelFor(name)?name:"";
     const units=Array.from(jp).length;
-    const width=Math.max(144,Math.min(340,Math.max(units*27+42,english.length*7.6+42)));
-    const jpPerLine=Math.max(1,Math.floor((width-40)/28));
-    const jpLines=Math.max(1,Math.ceil(units/jpPerLine));
-    const englishLines=english?Math.max(1,Math.ceil(english.length*7.5/(width-40))):0;
-    const height=24+jpLines*34+(english?5+englishLines*17:0)+7+10+24;
-    return{jp,english,width,height:Math.max(86,height),count};
+    const width=Math.max(112,Math.min(224,Math.max(units*16.5+28,english.length*5.7+30)));
+    const charsPerLine=Math.max(1,Math.floor((width-20)/17));
+    const jpLines=Math.max(1,Math.ceil(units/charsPerLine));
+    const englishLines=english?Math.max(1,Math.ceil(english.length*5.7/(width-20))):0;
+    const height=14+jpLines*20+(english?3+englishLines*11:0)+4+8+14;
+    return{jp,english,width,height:Math.max(58,height),count};
   }
   function declutter(places){
     const width=MAP_SURFACE.width,height=MAP_SURFACE.height;
     const nodes=places.map(place=>{
-      const metric=labelMetrics(place.name,place.count),anchor=POSITIONS[place.name];
-      return{name:place.name,x:anchor[0]*width/100,y:anchor[1]*height/100,
-        boxW:metric.width,boxH:metric.height};
+      const anchor=surfacePoint(place.name),metric=labelMetrics(place.name,place.count);
+      let seed=0;for(const character of place.name)seed=(seed*31+character.charCodeAt(0))>>>0;
+      return{
+        name:place.name,
+        anchorX:anchor[0],anchorY:anchor[1],
+        x:anchor[0]+((seed%5)-2)*8,
+        y:anchor[1]+(((seed>>>3)%5)-2)*7,
+        boxW:metric.width,boxH:metric.height
+      };
     });
+    const clamp=node=>{
+      node.x=Math.max(node.boxW/2+24,Math.min(width-node.boxW/2-24,node.x));
+      node.y=Math.max(node.boxH/2+24,Math.min(height-node.boxH/2-24,node.y));
+    };
     const separate=(a,b)=>{
       const dx=a.x-b.x,dy=a.y-b.y;
-      const overlapX=(a.boxW+b.boxW)/2+56-Math.abs(dx);
-      const overlapY=(a.boxH+b.boxH)/2+56-Math.abs(dy);
+      const overlapX=(a.boxW+b.boxW)/2+22-Math.abs(dx);
+      const overlapY=(a.boxH+b.boxH)/2+18-Math.abs(dy);
       if(overlapX<=0||overlapY<=0)return;
       if(overlapX<overlapY){
         const sign=dx===0?((a.name.length+b.name.length)%2?1:-1):Math.sign(dx);
@@ -109,19 +189,18 @@
         const push=(overlapY+.3)*.54;
         a.y+=sign*push*.5;b.y-=sign*push*.5;
       }
+      clamp(a);clamp(b);
     };
-    // Let edge nodes move naturally instead of pinning several labels against
-    // the same boundary. The complete node cloud is translated into the canvas
-    // once the spacing pass is finished.
-    for(let pass=0;pass<180;pass++)
-      for(let i=0;i<nodes.length;i++)
-        for(let j=i+1;j<nodes.length;j++)separate(nodes[i],nodes[j]);
-    const minX=Math.min(...nodes.map(node=>node.x-node.boxW/2));
-    const minY=Math.min(...nodes.map(node=>node.y-node.boxH/2));
-    const shiftX=32-minX,shiftY=32-minY;
-    return Object.fromEntries(nodes.map(node=>[node.name,[(node.x+shiftX)/width*100,(node.y+shiftY)/height*100]]));
-  }
-  const TRAILS=window.JIHANKI_RELATIONSHIPS?.trails?.()||[];
+    for(let pass=0;pass<260;pass++){
+      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)separate(nodes[i],nodes[j]);
+      nodes.forEach(node=>{
+        node.x+=(node.anchorX-node.x)*.0012;
+        node.y+=(node.anchorY-node.y)*.0012;
+        clamp(node);
+      });
+    }
+    return Object.fromEntries(nodes.map(node=>[node.name,[node.x,node.y]]));
+  }  const TRAILS=window.JIHANKI_RELATIONSHIPS?.trails?.()||[];
   function trailMarkup(){
     const archive=window.JIHANKI_ARCHIVE||[];
     return TRAILS.map(trail=>{
@@ -164,7 +243,7 @@
   }
   function render(mode){
     const selected=mode==="memory"?"memory":mode==="trails"?"trails":mode==="pins"?"pins":"geography";
-    const places=(window.JIHANKI_GEOGRAPHY?.places()||[]).filter(place=>POSITIONS[place.name]&&place.name!=="Kanji Museum").sort((a,b)=>b.count-a.count);
+    const places=(window.JIHANKI_GEOGRAPHY?.places()||[]).filter(place=>GEO_COORDS[place.name]&&place.name!=="Kanji Museum").sort((a,b)=>b.count-a.count);
     const trailNames=[...new Set(TRAILS.flatMap(trail=>trail.stops))];
     const mapPlaces=selected==="trails"
       ?trailNames.map(name=>places.find(place=>place.name===name)).filter(Boolean)
@@ -173,24 +252,33 @@
       :places.filter(place=>!DETAIL_ONLY.has(place.name));
     const indexPlaces=selected==="trails"?mapPlaces:places;
     const layout=declutter(mapPlaces);
-    const point=name=>layout[name]||POSITIONS[name];
+    const labelPoint=name=>layout[name]||surfacePoint(name);
+    const anchorPoint=surfacePoint;
     const connections=selected==="memory"
       ?geographicLines(mapPlaces)
       :selected==="trails"
         ?TRAILS.filter(trail=>trail.mapLine!==false).flatMap(trail=>trail.stops.slice(1).map((stop,index)=>({from:trail.stops[index],to:stop,kind:"chronology",label:trail.kind})))
         :[];
     const paths=connections.map(edge=>{
-      const a=point(edge.from),b=point(edge.to);
+      const a=anchorPoint(edge.from),b=anchorPoint(edge.to);
       if(!a||!b)return "";
       const kind=esc(edge.kind||"within");
       const marker=edge.kind==="chronology"?' marker-end="url(#map-route-arrow)"':"";
-      const x1=a[0]*MAP_SURFACE.width/100,y1=a[1]*MAP_SURFACE.height/100;
-      const x2=b[0]*MAP_SURFACE.width/100,y2=b[1]*MAP_SURFACE.height/100;
-      return '<line class="map-edge-'+kind+'" data-edge-from="'+esc(edge.from)+'" data-edge-to="'+esc(edge.to)+'" x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'"'+marker+'><title>'+esc(edge.label||edge.kind)+'</title></line>';
+      return '<line class="map-edge-'+kind+'" data-edge-from="'+esc(edge.from)+'" data-edge-to="'+esc(edge.to)+'" x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'"'+marker+'><title>'+esc(edge.label||edge.kind)+'</title></line>';
+    }).join("");
+    const leaders=mapPlaces.map(place=>{
+      const a=anchorPoint(place.name),p=labelPoint(place.name);
+      if(!a||!p||Math.hypot(p[0]-a[0],p[1]-a[1])<20)return "";
+      return '<line class="map-leader" x1="'+a[0]+'" y1="'+a[1]+'" x2="'+p[0]+'" y2="'+p[1]+'"></line>';
+    }).join("");
+    const origins=mapPlaces.map(place=>{
+      const a=anchorPoint(place.name);
+      return '<span class="map-origin-dot" aria-hidden="true" style="left:'+(a[0]/MAP_SURFACE.width*100)+'%;top:'+(a[1]/MAP_SURFACE.height*100)+'%"></span>';
     }).join("");
     const nodes=mapPlaces.map(place=>{
-      const p=point(place.name),metric=labelMetrics(place.name,place.count);
-      return '<button class="map-pin" style="left:'+p[0]+'%;top:'+p[1]+'%;width:'+metric.width+'px;height:'+metric.height+'px" type="button" data-map-place="'+esc(place.name)+
+      const p=labelPoint(place.name),metric=labelMetrics(place.name,place.count);
+      const precision=GEO_COORDS[place.name][2];
+      return '<button class="map-pin map-pin-precision-'+precision+'" style="left:'+(p[0]/MAP_SURFACE.width*100)+'%;top:'+(p[1]/MAP_SURFACE.height*100)+'%;width:'+metric.width+'px;height:'+metric.height+'px" type="button" data-map-place="'+esc(place.name)+
         '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-jp">'+esc(metric.jp)+'</span>'+
         (metric.english?'<span class="map-pin-en">'+esc(metric.english)+'</span>':'')+
         '<span class="map-pin-count">'+Number(place.count||0)+' RECORDS</span></button>';
@@ -210,25 +298,13 @@
       '>TRAILS</button><button type="button" data-map-mode="pins" '+(selected==="pins"?'aria-pressed="true"':"")+
       '>PINS</button></div></div>'+(selected==="pins"?'<div class="map-pin-references">'+pinsMarkup()+'</div>':
       '<div class="map-legend">'+legend+'</div><div class="map-canvas '+(selected==="memory"?"map-memory-mode":selected==="trails"?"map-trails-mode":"map-place-mode")+
-      '"><div class="map-pan-layer" style="width:'+MAP_SURFACE.width+'px;height:'+MAP_SURFACE.height+'px"><div class="map-region-label map-label-west">FUJI FIVE LAKES / YAMANASHI</div>'+
-      '<div class="map-region-label map-label-east">KANTO / KANSAI / OKINAWA</div>'+
-      '<svg class="map-japan-backdrop" viewBox="0 0 '+MAP_SURFACE.width+' '+MAP_SURFACE.height+'" aria-hidden="true"><defs><filter id="map-japan-glow"><feGaussianBlur stdDeviation="22"/></filter><linearGradient id="map-japan-fill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#42d87a" stop-opacity=".2"/><stop offset=".5" stop-color="#08783c" stop-opacity=".09"/><stop offset="1" stop-color="#36ce72" stop-opacity=".17"/></linearGradient></defs>'+
-      '<g class="japan-islands">'+
-      '<path class="japan-land-glow" d="M1010 1820 C1160 1720 1280 1650 1400 1540 C1540 1420 1640 1330 1790 1250 C1950 1160 2080 1040 2220 930 C2350 820 2460 680 2600 590 C2730 500 2860 455 2990 485 C2900 580 2790 660 2710 775 C2600 920 2510 1030 2370 1140 C2220 1260 2140 1370 1990 1460 C1840 1550 1730 1680 1580 1780 C1410 1890 1280 1980 1130 2020 Z"/>'+
-      '<path class="japan-land" d="M1010 1820 C1160 1720 1280 1650 1400 1540 C1540 1420 1640 1330 1790 1250 C1950 1160 2080 1040 2220 930 C2350 820 2460 680 2600 590 C2730 500 2860 455 2990 485 C2900 580 2790 660 2710 775 C2600 920 2510 1030 2370 1140 C2220 1260 2140 1370 1990 1460 C1840 1550 1730 1680 1580 1780 C1410 1890 1280 1980 1130 2020 Z"/>'+
-      '<path class="japan-land-glow" d="M2940 470 C3050 330 3190 250 3330 260 C3460 275 3550 370 3490 475 C3430 580 3290 630 3160 590 C3040 550 2980 520 2940 470 Z"/>'+
-      '<path class="japan-land" d="M2940 470 C3050 330 3190 250 3330 260 C3460 275 3550 370 3490 475 C3430 580 3290 630 3160 590 C3040 550 2980 520 2940 470 Z"/>'+
-      '<path class="japan-land-glow" d="M840 1900 C940 1830 1040 1880 1080 1980 C1110 2070 1050 2200 960 2225 C870 2240 790 2150 790 2050 C790 1980 805 1930 840 1900 Z"/>'+
-      '<path class="japan-land" d="M840 1900 C940 1830 1040 1880 1080 1980 C1110 2070 1050 2200 960 2225 C870 2240 790 2150 790 2050 C790 1980 805 1930 840 1900 Z"/>'+
-      '<path class="japan-land-glow" d="M1230 1920 C1330 1855 1440 1880 1490 1950 C1530 2020 1470 2090 1370 2110 C1270 2120 1190 2055 1190 1985 Z"/>'+
-      '<path class="japan-land" d="M1230 1920 C1330 1855 1440 1880 1490 1950 C1530 2020 1470 2090 1370 2110 C1270 2120 1190 2055 1190 1985 Z"/>'+
-      '<path class="japan-islet" d="M420 2450 C470 2405 535 2410 565 2460 C575 2505 535 2545 485 2535 C440 2528 410 2490 420 2450 Z"/>'+
-      '<path class="japan-islet" d="M570 2320 C612 2290 660 2310 670 2350 C665 2390 620 2410 585 2380 Z"/>'+
-      '<path class="japan-islet" d="M710 2210 C740 2188 780 2200 790 2230 C780 2260 740 2270 715 2245 Z"/>'+
-      '</g></svg>'+
+      '"><div class="map-pan-layer" style="width:'+MAP_SURFACE.width+'px;height:'+MAP_SURFACE.height+'px">'+
+      '<div class="map-region-label map-label-west">FUJI FIVE LAKES / YAMANASHI</div><div class="map-region-label map-label-east">KANTO / KANSAI / OKINAWA</div>'+
+      '<div class="map-prefecture-backdrop">'+PREFECTURE_LAYERS.map(name=>'<img src="assets/maps/japan-'+name+'.svg" alt="" aria-hidden="true">').join("")+'</div>'+
+      '<svg class="map-leaders" viewBox="0 0 '+MAP_SURFACE.width+' '+MAP_SURFACE.height+'" aria-hidden="true">'+leaders+'</svg>'+
       '<svg class="map-connections" viewBox="0 0 '+MAP_SURFACE.width+' '+MAP_SURFACE.height+'" preserveAspectRatio="none" aria-hidden="true">'+
-      '<defs><marker id="map-route-arrow" markerWidth="22" markerHeight="22" refX="18" refY="11" orient="auto"><path d="M0,0 L22,11 L0,22 z"></path></marker></defs>'+
-      paths+'</svg>'+nodes+'</div>'+
+      '<defs><marker id="map-route-arrow" markerWidth="16" markerHeight="16" refX="13" refY="8" orient="auto"><path d="M0,0 L16,8 L0,16 z"></path></marker></defs>'+
+      paths+'</svg>'+origins+nodes+'</div>'+
       '<div class="map-view-controls" role="group" aria-label="Map zoom controls"><button type="button" data-map-zoom="out" aria-label="Zoom out" title="Zoom out">−</button><output data-map-zoom-level>100%</output><button type="button" data-map-zoom="in" aria-label="Zoom in" title="Zoom in">+</button><button type="button" data-map-fit title="Centre all visible places">FIT / CENTRE</button></div></div><p class="map-disclaimer">'+
       (selected==="memory"?"Lines describe named geographical relationships such as containment, outlooks and transit corridors. They are not shared-photo links.":
        selected==="trails"?"Arrows preserve the documented order of visits or travel. They are not measured roads, walking paths or exact transfer itineraries.":
@@ -336,5 +412,5 @@
     canvas.addEventListener("lostpointercapture",finish);
     fit();
   }
-  window.JIHANKI_MAP={render,bind,positions:POSITIONS,trails:TRAILS,pinReferences:PIN_REFERENCES};
+  window.JIHANKI_MAP={render,bind,positions:GEO_COORDS,trails:TRAILS,pinReferences:PIN_REFERENCES};
 })();
