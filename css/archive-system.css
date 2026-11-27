@@ -1801,8 +1801,8 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
     #020604;
 }
 .memory-map-panel .map-pan-layer {
-  width:2700px;
-  height:1900px;
+  width:4000px;
+  height:3000px;
 }
 .memory-map-panel .map-pan-layer .map-pin {
   box-sizing:border-box;
@@ -1897,7 +1897,7 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 }
 @media(max-width:560px) {
   .memory-map-panel .map-canvas { height:430px; min-height:430px; }
-  .memory-map-panel .map-pan-layer { width:2700px; height:1900px; }
+  .memory-map-panel .map-pan-layer { width:4000px; height:3000px; }
   .memory-map-panel .map-pin-jp { font-size:27px; }
   .memory-map-panel .map-pin-en { font-size:13px; }
 }
