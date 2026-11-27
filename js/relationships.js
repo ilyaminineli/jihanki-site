@@ -81,7 +81,7 @@
       { id:"dynakyris-japan-corroborations-2026-11-27", kind:"companion-event-corroboration", label:"INDEPENDENT PREVIOUS-EVENING ACCOUNT" }
     ],
     "photo-181": [
-      { id:"photo-182", kind:"same-tunnel-installation", label:"NIiKURA TUNNEL / R-7 TELEPHONE" },
+      { id:"photo-182", kind:"same-tunnel-installation", label:"NIIKURA TUNNEL / R-7 TELEPHONE" },
       { id:"photo-18", kind:"same-tunnel-location", label:"NIIKURA TUNNEL / EARLIER PHOTOGRAPH" }
     ],
     "photo-182": [
@@ -135,9 +135,6 @@
       { id:"photo-198", kind:"same-neighbourhood", label:"SHINSAIBASHI AREA / DIFFERENT PLACE" },
       { id:"photo-199", kind:"same-neighbourhood", label:"SHINSAIBASHI AREA / DIFFERENT PLACE" },
       { id:"photo-200", kind:"same-neighbourhood", label:"SHINSAIBASHI AREA / DIFFERENT PLACE" }
-    ],
-    "photo-202": [
-      { id:"daily-2026-08-road-trip", kind:"regional-travel-context", label:"OKINAWA / SEPARATE REGIONAL FRAGMENT" }
     ]
   };
 
