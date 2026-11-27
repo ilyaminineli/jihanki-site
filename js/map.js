@@ -21,7 +21,7 @@
   }
   const TRAILS=[{id:"kansai-road-loop",title:"KAWAGUCHIKO / KYOTO / OSAKA / KAWAGUCHIKO",stops:["Kawaguchiko","Kyoto","Osaka","Kawaguchiko"],description:"A confirmed car journey from Kawaguchiko to Kyoto and Osaka, returning to Kawaguchiko. A regional memory trail, not a reconstructed road route."}];
   function trailMarkup(){
-    return TRAILS.map(trail=>'<article class="map-trail-card"><span class="map-eyebrow">CONFIRMED / CAR JOURNEY</span><strong>'+esc(trail.title)+'</strong><p>'+esc(trail.description)+'</p><div class="map-trail-stops">'+trail.stops.map((name,index)=>'<button type="button" data-map-place="'+esc(name)+'"><span>'+String(index+1).padStart(2,"0")+'</span><strong>'+esc(name)+'</strong></button>').join("")+'</div><button type="button" class="map-trail-open" data-archive-id="daily-2026-08-road-trip">OPEN JOURNEY NOTE ↗</button></article>').join("");
+    return TRAILS.map(trail=>'<article class="map-trail-card"><span class="map-eyebrow">CONFIRMED / CAR JOURNEY</span><strong>'+esc(trail.title)+'</strong><p>'+esc(trail.description)+'</p><div class="map-trail-stops">'+trail.stops.map((name,index)=>'<button type="button" data-map-place="'+esc(name)+'"><span>'+String(index+1).padStart(2,"0")+'</span><strong>'+esc(name)+'</strong></button>').join("")+'</div><button type="button" class="map-trail-open" data-map-trail-note="daily-2026-08-road-trip">OPEN JOURNEY NOTE ↗</button></article>').join("");
   }
   function render(mode){
     const selected=mode==="memory"?"memory":mode==="trails"?"trails":"geography";
