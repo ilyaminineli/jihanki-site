@@ -469,8 +469,8 @@ const ARCHIVE = {
     },
     {
       "id": "photo-05",
-      "title": "Rusted structure in the woods",
-      "description": "A neglected structure appears among the trees and undergrowth.",
+      "title": "A derelict hut above the forest path",
+      "description": "A small abandoned shed with a damaged corrugated roof stands above a rough stone retaining wall under dense trees. Its exact site is not established.",
       "date": "2026",
       "type": "image",
       "category": "photo",
@@ -524,14 +524,23 @@ const ARCHIVE = {
     },
     {
       "id": "photo-10",
-      "title": "Water at the shrine",
-      "description": "A stone lantern and water feature mark a quiet shrine threshold.",
-      "date": "2026",
+      "title": "Fujisan Sengen Shrine — water and vermilion torii",
+      "description": "A vermilion torii, shrine flags, stone edging and a clear water channel identify this as the first shrine visit recorded on 26 July: Fujisan Sengen Shrine.",
+      "date": "2026-07-26",
       "type": "image",
       "category": "photo",
       "group": "Ritual and reflection",
       "author": "eli",
-      "file": "media/photo/photos_from_japan/eli_photos (12).jpg"
+      "file": "media/photo/photos_from_japan/eli_photos (12).jpg",
+      "metadata": {
+        "locations": [
+          "Fujisan Sengen Shrine",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-26"
+        ]
+      }
     },
     {
       "id": "photo-11",
@@ -557,25 +566,41 @@ const ARCHIVE = {
     },
     {
       "id": "photo-13",
-      "title": "Fuji under the moon",
-      "description": "Mount Fuji and a shrine gate appear beneath the night sky.",
-      "date": "2026",
+      "title": "Arakurayama — Fuji beneath the near-full Moon",
+      "description": "Mount Fuji and the town lights are framed by a vermilion shrine gate beneath the Moon. The 26 July Arakura Shrine field note matches this night viewpoint.",
+      "date": "2026-07-26",
       "type": "image",
       "category": "photo",
-      "group": "Mountain and water",
+      "group": "Arakurayama / moonlit Fuji",
       "author": "eli",
-      "file": "media/photo/photos_from_japan/eli_photos (14).jpg"
+      "file": "media/photo/photos_from_japan/eli_photos (14).jpg",
+      "metadata": {
+        "locations": [
+          "Arakurayama Sengen Park"
+        ],
+        "related": [
+          "photo-85",
+          "photo-101",
+          "photo-114",
+          "photo-116"
+        ]
+      }
     },
     {
       "id": "photo-14",
-      "title": "Fuji through a circular window",
-      "description": "The mountain is framed by the round opening of a traditional room.",
+      "title": "Mount Fuji through a wooden lattice window",
+      "description": "Mount Fuji is framed by the multi-pane wooden lattice of an old building. This is a rectangular window composition, distinct from the circular garden window in photo-137.",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Mountain and water",
+      "group": "Framed views / traditional interiors",
       "author": "eli",
-      "file": "media/photo/photos_from_japan/eli_photos (15).jpg"
+      "file": "media/photo/photos_from_japan/eli_photos (15).jpg",
+      "metadata": {
+        "related": [
+          "photo-137"
+        ]
+      }
     },
     {
       "id": "photo-15",
@@ -645,12 +670,12 @@ const ARCHIVE = {
     },
     {
       "id": "photo-21",
-      "title": "Handheld game machines",
-      "description": "Rows of portable game devices turn into a wall of electronic objects.",
+      "title": "Handheld LCD games at the nostalgic toy museum",
+      "description": "Rows of portable LCD game units and other small electronic toys are displayed together. They connect to the 26 July museum visit and the expedition's wider interest in obsolete play machines.",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Found media and machines",
+      "group": "Kawaguchiko / nostalgic toys and games",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (28).png",
       "metadata": {
