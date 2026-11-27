@@ -12,7 +12,7 @@
     "Katori":[74,55],"Katori Station":[77,43],"Katori Jingu":[79,67],
     "Hard Off Kawaguchiko Store":[76,49],"Nojima Fujiyoshida Store":[73,65],
     "Iyashi no Sato":[23,58],"Fujisan Museum":[68,80],
-    "Kyoto":[38,15],"Genko-an":[35,6],"Kinkaku-ji":[34,10],"Osaka":[17,15],"Osaka Castle":[19,12],"Ueno Castle (Iga-Ueno)":[25,19]
+    "Kyoto":[38,15],"Genko-an":[35,6],"Kinkaku-ji":[34,10],"Japan Kanji Museum & Library":[42,22],"Kanji Museum":[42,22],"Banbutsu Sōzō-bō":[34,23],"Osaka":[17,15],"Osaka Castle":[19,12],"Ueno Castle (Iga-Ueno)":[25,19],"Fuji-Q Highland":[69,63],"Fujiyoshida":[70,68],"Fujisan Dragon Tower":[82,82],"Tagonoura Minato Park":[82,88],"Fuji City":[85,82],"Tokyo Skytree":[80,18],"Tokyo":[78,14]
   };
   function associationLines(places){
     const edges=new Set();
@@ -69,10 +69,24 @@
       (selected==="memory"?"MEMORY NETWORK":selected==="trails"?"EXPEDITION TRAILS":selected==="pins"?"SOURCE PINS":"REGIONAL INDEX")+'</strong></div><div class="map-mode-switch"><button type="button" data-map-mode="geography" '+
       (selected==="geography"?'aria-pressed="true"':"")+' >PLACE</button><button type="button" data-map-mode="memory" '+
       (selected==="memory"?'aria-pressed="true"':"")+' >MEMORY</button><button type="button" data-map-mode="trails" '+(selected==="trails"?'aria-pressed="true"':"")+' >TRAILS</button><button type="button" data-map-mode="pins" '+(selected==="pins"?'aria-pressed="true"':"")+' >PINS</button></div></div>'+(selected==="pins"?'<div class="map-pin-references">'+pinsMarkup()+'</div>':'<div class="map-canvas '+
-      (selected==="memory"?"map-memory-mode":selected==="trails"?"map-trails-mode":"map-place-mode")+'"><div class="map-region-label map-label-west">FUJI REGION</div>'+
+      (selected==="memory"?"map-memory-mode":selected==="trails"?"map-trails-mode":"map-place-mode")+'"><div class="map-pan-layer"><div class="map-region-label map-label-west">FUJI REGION</div>'+
       '<div class="map-region-label map-label-east">KANTO</div><svg class="map-connections" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">'+paths+'</svg>'+nodes+
-      '</div><p class="map-disclaimer">'+(selected==="memory"?"LINES REPRESENT SHARED ARCHIVE REFERENCES, NOT ROADS OR ROUTES.":"SCHEMATIC PLACE INDEX / APPROXIMATE RELATIVE POSITIONS / NOT TO SCALE.")+
+      '</div></div><p class="map-disclaimer">'+(selected==="memory"?"LINES REPRESENT SHARED ARCHIVE REFERENCES, NOT ROADS OR ROUTES.":"SCHEMATIC PLACE INDEX / APPROXIMATE RELATIVE POSITIONS / NOT TO SCALE.")+
       '</p><div class="map-place-list" aria-label="Map location index">'+key+'</div>'+(selected==="trails"?'<div class="map-trail-list">'+trailMarkup()+'</div>':"")+'</div>')+'</section>';
   }
-  window.JIHANKI_MAP={render,positions:POSITIONS,trails:TRAILS,pinReferences:PIN_REFERENCES};
+  function bind(root){
+    const canvas=root?.querySelector?.(".map-canvas"),layer=canvas?.querySelector?.(".map-pan-layer");
+    if(!canvas||!layer||canvas.dataset.panBound==="true")return;
+    canvas.dataset.panBound="true";let active=null;
+    const read=()=>({x:Number(layer.dataset.panX||0),y:Number(layer.dataset.panY||0)});
+    const write=(x,y)=>{layer.dataset.panX=String(x);layer.dataset.panY=String(y);layer.style.transform="translate3d("+x+"px,"+y+"px,0)";};
+    canvas.addEventListener("pointerdown",event=>{if(event.target.closest("button,a"))return;if(event.pointerType==="mouse"&&event.button!==0)return;
+      const p=read();active={id:event.pointerId,x:event.clientX,y:event.clientY,px:p.x,py:p.y};canvas.setPointerCapture?.(event.pointerId);layer.classList.add("is-dragging");event.preventDefault();});
+    canvas.addEventListener("pointermove",event=>{if(!active||event.pointerId!==active.id)return;const dx=event.clientX-active.x,dy=event.clientY-active.y;
+      const minX=Math.min(0,canvas.clientWidth-layer.offsetWidth),minY=Math.min(0,canvas.clientHeight-layer.offsetHeight);
+      write(Math.max(minX,Math.min(0,active.px+dx)),Math.max(minY,Math.min(0,active.py+dy)));});
+    const finish=event=>{if(active&&event.pointerId===active.id){active=null;layer.classList.remove("is-dragging");}};
+    canvas.addEventListener("pointerup",finish);canvas.addEventListener("pointercancel",finish);canvas.addEventListener("lostpointercapture",finish);
+  }
+  window.JIHANKI_MAP={render,bind,positions:POSITIONS,trails:TRAILS,pinReferences:PIN_REFERENCES};
 })();

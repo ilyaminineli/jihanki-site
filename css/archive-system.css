@@ -1436,6 +1436,17 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 }
 
 
-/* M52.1 — keep schematic pins inside compact map viewports */
-.map-pin { width:min(102px,28%); min-width:0; max-width:102px; }
-.map-pin strong { max-width:100%; overflow-wrap:anywhere; }
+/* M53 — preserve the desktop map scale on touch screens; pan the clipped map instead. */
+.map-canvas { touch-action:none; cursor:grab; }
+.map-pan-layer { position:absolute; inset:0; width:100%; min-height:100%; transform:translate3d(0,0,0); will-change:transform; }
+.map-pan-layer.is-dragging { cursor:grabbing; }
+.map-pan-layer .map-region-label { pointer-events:none; }
+@media(max-width:560px) {
+  .map-canvas { height:340px; min-height:340px; }
+  .map-pan-layer { width:760px; height:420px; }
+  .map-pan-layer .map-pin { width:auto; height:auto; min-width:75px; max-width:none; display:grid; justify-items:center; gap:3px;
+    padding:4px 5px; border:0; border-radius:0; background:rgba(0,0,0,.74); }
+  .map-pan-layer .map-pin-index { display:none; }
+  .map-pan-layer .map-pin-dot { display:block; }
+  .map-pan-layer .map-pin strong,.map-pan-layer .map-pin small { display:block; }
+}

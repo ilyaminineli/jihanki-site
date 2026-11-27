@@ -71,17 +71,17 @@ Photo group values are thematic groupings (for example, Machines after dark and 
 
 ## Additional Japan photographs and source map pins
 
-The full Japan photographic archive contains 141 files across `addition_1`, `addition_2`, `eli_photos` and `taki_photos`. It is now represented by 140 unique catalogue memories (`photo-01` through `photo-140`). `addition_2 (8).jpg` is an exact duplicate of another view and remains in the media manifest without a second catalogue record. All other 140 unique images have one archive record each.
+The Japan photographic archive contains 173 source files across `addition_1`, `addition_2`, `addition_3`, `eli_photos` and `taki_photos`. It is represented by 172 unique catalogue memories (`photo-01` through `photo-172`). `addition_2 (8).jpg` is an exact duplicate and remains in the media manifest without a second catalogue record. All 32 `addition_3` images are unique against the existing archive.
 
-The initial addition batches occupy `photo-24` through `photo-74`. The formerly unindexed Eli and Taki collections are catalogued in `photo-75` through `photo-140`. The photo identification register documents new names, cross-links, thematic clusters and confidence boundaries. Confirmed place metadata includes Saiko Iyashi no Sato Nenba, Fujisan Sengen Shrine, Arakurayama Sengen Park / Chureito Pagoda, Oishi Park / Lake Kawaguchi, Kawaguchiko Nostalgic Toys Museum, Kawaguchiko Automobile Museum / Flight Hall in Narusawa, Shinjuku, Kamo River / Kyoto, Katori Jingu, Katori Station, Haneda, Lake Saiko and the Fuji Five Lakes region. Some records intentionally retain only a region or thematic group when the exact site is not supported.
+The initial addition batches occupy `photo-24` through `photo-74`. The formerly unindexed Eli and Taki collections are catalogued in `photo-75` through `photo-140`; `addition_3` is catalogued in `photo-141` through `photo-172`. The photo identification register documents new names, cross-links, thematic clusters and confidence boundaries. Confirmed place metadata includes Saiko Iyashi no Sato Nenba, Fujisan Sengen Shrine, Arakurayama Sengen Park / Chureito Pagoda, Oishi Park / Lake Kawaguchi, Kawaguchiko Nostalgic Toys Museum, Kawaguchiko Automobile Museum / Flight Hall in Narusawa, Shinjuku, Kamo River / Kyoto, Katori Jingu, Katori Station, Haneda, Lake Saiko and the Fuji Five Lakes region. Some records intentionally retain only a region or thematic group when the exact site is not supported.
 
 The Memory Map's `PINS` mode preserves four forwarded pins with caption-derived labels and twelve individually numbered 20 July map links that have no place names in the source export. Caption-derived labels are descriptions, not asserted official names. The original Google Maps links are retained for future confirmation.
 
 ## Photo-identification register
 
-`documents/notes/photo-identification-register.md` is the editorial audit for this collection. It distinguishes sign- or note-backed identifications from probable visual candidates and purely thematic groupings. The former Sunpu Castle candidate has been withdrawn after the traveller confirmed visits to Osaka Castle and Ueno Castle (Iga-Ueno); exact frame-to-castle allocation remains open.
+`documents/notes/photo-identification-register.md` is the editorial audit for this collection. It distinguishes sign- or note-backed identifications from probable visual candidates and purely thematic groupings. The former Sunpu Castle candidate has been withdrawn after the traveller confirmed visits to Osaka Castle and Ueno Castle (Iga-Ueno). The new nighttime castle approach and keep are confirmed as Ueno Castle. The Kyoto shop previously mistaken for a nostalgic museum is Banbutsu Sōzō-bō.
 
-A supplemental review of ten newly supplied JPEGs is recorded in [photo-intake-2026-11-27.md](../documents/notes/photo-intake-2026-11-27.md). These incoming binaries are not yet in the repository media tree and are not included in the `photo-01`–`photo-140` catalogue count.
+The `addition_3` folder is ingested and reviewed in [photo-intake-2026-11-27.md](../documents/notes/photo-intake-2026-11-27.md). All 32 JPEGs have archive records and are included in the `photo-141`–`photo-172` catalogue range.
 
 ## Media integrity
 

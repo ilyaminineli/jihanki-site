@@ -691,23 +691,17 @@ const ARCHIVE = {
     },
     {
       "id": "photo-22",
-      "title": "The room of game memories",
-      "description": "An old room is crowded with toys, electronics and display objects.",
+      "title": "Banbutsu Sōzō-bō — Kyoto shop interior",
+      "description": "An interior view of 万物創造房 (Banbutsu Sōzō-bō), the Kyoto shop run by a friend and mentioned in the trip notes. It is a shop visit, not a museum or nostalgic-toys collection.",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Found media and machines",
+      "group": "Kyoto / found objects and independent shops",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (63).png",
       "metadata": {
-        "locations": [
-          "Kawaguchiko Nostalgic Toys Museum",
-          "Kawaguchiko"
-        ],
-        "related": [
-          "photo-100",
-          "photo-111"
-        ]
+        "locations": ["Banbutsu Sōzō-bō", "Kyoto"],
+        "related": ["daily-2026-08-road-trip"]
       }
     },
     {
@@ -2491,6 +2485,635 @@ const ARCHIVE = {
           "photo-93",
           "photo-94",
           "daily-2026-08-road-trip"
+        ]
+      }
+    },
+    {
+      "id": "photo-141",
+      "title": "A summit-side rest station",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Mount Fuji / summit climb",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (1).jpg",
+      "description": "A compact mountain toilet and rest facility beside the exposed summit approach. The exact station or elevation is not visible.",
+      "metadata": {
+        "locations": [
+          "Mount Fuji",
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-145",
+          "photo-146"
+        ]
+      }
+    },
+    {
+      "id": "photo-142",
+      "title": "Stone steps to a forest shrine",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified shrine approaches",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (2).jpg",
+      "description": "A stone stairway rises through dense trees toward a small shrine entrance flanked by guardian figures. No readable shrine name is visible.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-143",
+          "photo-144"
+        ]
+      }
+    },
+    {
+      "id": "photo-143",
+      "title": "A traditional roofed building above the garden",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Unidentified temple or shrine architecture",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (3).jpg",
+      "description": "A large traditional timber building stands above a carefully clipped stone garden. Its architecture is visible, but no sign establishes the institution or exact location.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-142",
+          "photo-151"
+        ]
+      }
+    },
+    {
+      "id": "photo-144",
+      "title": "Red torii in the night garden",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Night shrines and thresholds",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (4).jpg",
+      "description": "A row of red torii glows among trees beside a road at night. The shrine name is not visible.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-142",
+          "photo-167"
+        ]
+      }
+    },
+    {
+      "id": "photo-145",
+      "title": "A fogbound volcanic ridge",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Mount Fuji / summit climb",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (5).jpg",
+      "description": "A chain-railed path crosses dark volcanic ground and low vegetation in dense cloud. It belongs to the Mount Fuji upper-slope sequence; exact trail position is unknown.",
+      "metadata": {
+        "locations": [
+          "Mount Fuji",
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-141",
+          "photo-146"
+        ]
+      }
+    },
+    {
+      "id": "photo-146",
+      "title": "Red scoria on the upper slope",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Mount Fuji / summit climb",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (6).jpg",
+      "description": "A steep slope of red volcanic scoria and exposed rock disappears into cloud. It is part of the Mount Fuji climb sequence; no exact station is assigned.",
+      "metadata": {
+        "locations": [
+          "Mount Fuji",
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-141",
+          "photo-145"
+        ]
+      }
+    },
+    {
+      "id": "photo-147",
+      "title": "Fujisan Dragon Tower — close view",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Fuji City / Tagonoura Minato Park",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (7).jpg",
+      "description": "A low-angle view of the dark angular observation tower on a grassy mound. The structure matches Fujisan Dragon Tower at Tagonoura Minato Park.",
+      "metadata": {
+        "locations": [
+          "Fujisan Dragon Tower",
+          "Tagonoura Minato Park",
+          "Fuji City",
+          "Shizuoka"
+        ],
+        "related": [
+          "photo-148"
+        ]
+      }
+    },
+    {
+      "id": "photo-148",
+      "title": "Fujisan Dragon Tower — distant view",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Fuji City / Tagonoura Minato Park",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (8).jpg",
+      "description": "A wider view shows the angular observation tower rising above the grass under a dramatic sky. It is the same Fujisan Dragon Tower at Tagonoura Minato Park.",
+      "metadata": {
+        "locations": [
+          "Fujisan Dragon Tower",
+          "Tagonoura Minato Park",
+          "Fuji City",
+          "Shizuoka"
+        ],
+        "related": [
+          "photo-147"
+        ]
+      }
+    },
+    {
+      "id": "photo-149",
+      "title": "Kyoto direction sign",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / city orientation",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (9).jpg",
+      "description": "A road sign points toward Kinkaku-ji (2 km), Kamigamo Shrine (2 km) and Nijo Castle (3 km). It confirms Kyoto context but not the exact junction.",
+      "metadata": {
+        "locations": [
+          "Kyoto",
+          "Kinkaku-ji"
+        ],
+        "related": [
+          "photo-150"
+        ]
+      }
+    },
+    {
+      "id": "photo-150",
+      "title": "Kinkaku-ji reflected in the pond",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / Kinkaku-ji",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (10).jpg",
+      "description": "The Golden Pavilion stands above its pond, with the gold-leaf exterior and surrounding garden directly identifying Kinkaku-ji (Rokuon-ji).",
+      "metadata": {
+        "locations": [
+          "Kinkaku-ji",
+          "Kyoto"
+        ],
+        "related": [
+          "photo-149"
+        ]
+      }
+    },
+    {
+      "id": "photo-151",
+      "title": "Genko-an — courtyard and veranda",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / Genko-an",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (11).jpg",
+      "description": "A view across Genko-an’s traditional veranda and planted courtyard. The traveller confirms this as Genko-an.",
+      "metadata": {
+        "locations": [
+          "Genko-an",
+          "Kyoto"
+        ],
+        "related": [
+          "photo-152",
+          "photo-153"
+        ]
+      }
+    },
+    {
+      "id": "photo-152",
+      "title": "Genko-an — garden-facing engawa",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / Genko-an",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (12).jpg",
+      "description": "A broad engawa opens onto Genko-an’s garden, with timber posts, a small tree and carefully arranged stones. Confirmed by the traveller as Genko-an.",
+      "metadata": {
+        "locations": [
+          "Genko-an",
+          "Kyoto"
+        ],
+        "related": [
+          "photo-151",
+          "photo-153"
+        ]
+      }
+    },
+    {
+      "id": "photo-153",
+      "title": "Genko-an — tatami corridor",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / Genko-an",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (13).jpg",
+      "description": "A tatami-floored corridor connects the temple rooms, with calligraphy panels and shoji screens. Confirmed as Genko-an.",
+      "metadata": {
+        "locations": [
+          "Genko-an",
+          "Kyoto"
+        ],
+        "related": [
+          "photo-151",
+          "photo-152"
+        ]
+      }
+    },
+    {
+      "id": "photo-154",
+      "title": "Fuji-Q Highland at night",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Fujiyoshida / Fuji-Q Highland",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (14).jpg",
+      "description": "The illuminated sign reads FUJI-Q HIGHLAND, identifying the amusement park.",
+      "metadata": {
+        "locations": [
+          "Fuji-Q Highland",
+          "Fujiyoshida",
+          "Yamanashi"
+        ],
+        "related": []
+      }
+    },
+    {
+      "id": "photo-155",
+      "title": "A quiet residential road after dark",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Night streets / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (15).jpg",
+      "description": "A narrow residential street recedes beneath sparse streetlights. No readable sign or landmark establishes the city.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-156",
+          "photo-159"
+        ]
+      }
+    },
+    {
+      "id": "photo-156",
+      "title": "A bridge across the night river",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Urban water and infrastructure",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (16).jpg",
+      "description": "A lit bridge crosses a broad urban river, with apartment blocks and reflections along the banks. The river and city are not identified from this frame alone.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-158",
+          "photo-159"
+        ]
+      }
+    },
+    {
+      "id": "photo-157",
+      "title": "Japanese waste-sorting instructions",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Everyday urban infrastructure",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (17).jpg",
+      "description": "A close photograph of Japanese municipal waste-disposal and sorting notices. The ward and exact street are not established.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-155"
+        ]
+      }
+    },
+    {
+      "id": "photo-158",
+      "title": "Tokyo Skytree above a residential street",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Tokyo / Skytree",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (18).jpg",
+      "description": "Tokyo Skytree is visible in the distance above a narrow residential street, identifying this as a Tokyo night scene.",
+      "metadata": {
+        "locations": [
+          "Tokyo",
+          "Tokyo Skytree"
+        ],
+        "related": [
+          "photo-155",
+          "photo-156"
+        ]
+      }
+    },
+    {
+      "id": "photo-159",
+      "title": "Elevated road infrastructure at night",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Urban infrastructure / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (19).jpg",
+      "description": "An elevated expressway and adjoining pedestrian space are illuminated at night. The exact interchange and city remain unidentified.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-156",
+          "photo-158"
+        ]
+      }
+    },
+    {
+      "id": "photo-160",
+      "title": "Yamanashi Prefectural Forest marker",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / forest boundaries",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (20).jpg",
+      "description": "A wooden marker bears the inscription 山梨県有林 (Yamanashi Prefectural Forest), providing a regional forest-management reference. The exact forest parcel is not identified.",
+      "metadata": {
+        "locations": [
+          "Yamanashi",
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-161",
+          "photo-162"
+        ]
+      }
+    },
+    {
+      "id": "photo-161",
+      "title": "An inscribed stone in the forest",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / forest and memory",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (21).jpg",
+      "description": "A weathered stone carries a long Japanese inscription in a wooded setting. Its text is not fully legible, so no specific monument is assigned.",
+      "metadata": {
+        "locations": [
+          "Yamanashi",
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-160",
+          "photo-162"
+        ]
+      }
+    },
+    {
+      "id": "photo-162",
+      "title": "Yokosawa erosion-control structure",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / water and forest infrastructure",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (22).jpg",
+      "description": "A circular metal gate frames a sign identifying the 横沢砂防堰堤 (Yokosawa sabo / erosion-control structure). The exact administrative address is not established.",
+      "metadata": {
+        "locations": [
+          "Yamanashi",
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-160",
+          "photo-163"
+        ]
+      }
+    },
+    {
+      "id": "photo-163",
+      "title": "A reservoir beneath wooded hills",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / water landscapes",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (23).jpg",
+      "description": "A calm reservoir or dammed lake sits below forested hills. It is grouped with the forest and erosion-control photographs, but the individual water body is not named.",
+      "metadata": {
+        "locations": [
+          "Yamanashi",
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-160",
+          "photo-162"
+        ]
+      }
+    },
+    {
+      "id": "photo-164",
+      "title": "Nintendo DS and a found game",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / found objects",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (24).jpg",
+      "description": "A Nintendo DS is shown open with a game running. It connects thematically to the Kyoto Banbutsu Sōzō-bō shop visit and the trip note about finding a DS, but the photograph itself does not show the shop.",
+      "metadata": {
+        "locations": [
+          "Kyoto",
+          "Banbutsu Sōzō-bō"
+        ],
+        "related": [
+          "photo-22"
+        ]
+      }
+    },
+    {
+      "id": "photo-165",
+      "title": "Gion festival lantern display",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / festival and ritual objects",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (25).jpg",
+      "description": "A suspended display of Japanese lanterns includes the visible inscription 祇園祭 (Gion Matsuri). The image supports a Gion-festival association, but not a specific event date or venue.",
+      "metadata": {
+        "locations": [
+          "Kyoto",
+          "Gion"
+        ],
+        "related": [
+          "photo-166"
+        ]
+      }
+    },
+    {
+      "id": "photo-166",
+      "title": "The 2025 Kanji of the Year at Kanji Museum",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / Japan Kanji Museum & Library",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (26).jpg",
+      "description": "The exhibition sign reads 2025年「今年の漢字」 and the large calligraphy is 熊 (kuma, “bear”), identifying the Japan Kanji Museum & Library in Gion, Kyoto.",
+      "metadata": {
+        "locations": [
+          "Japan Kanji Museum & Library",
+          "Kanji Museum",
+          "Kyoto",
+          "Gion"
+        ],
+        "related": [
+          "photo-165"
+        ]
+      }
+    },
+    {
+      "id": "photo-167",
+      "title": "Night approach with a vermilion bridge",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Iga-Ueno / Ueno Castle at night",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (27).jpg",
+      "description": "A lit stairway and vermilion bridge lead toward an illuminated white structure. The traveller confirms this nighttime castle approach as Ueno Castle (Iga-Ueno).",
+      "metadata": {
+        "locations": [
+          "Ueno Castle (Iga-Ueno)",
+          "Iga-Ueno",
+          "Iga City",
+          "Mie"
+        ],
+        "related": [
+          "photo-172",
+          "photo-140"
+        ]
+      }
+    },
+    {
+      "id": "photo-168",
+      "title": "Rain-slicked street under amber lights",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Night streets / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (28).jpg",
+      "description": "A wet intersection reflects amber streetlights and traffic signals through mist or rain. No place name is visible.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-155",
+          "photo-156"
+        ]
+      }
+    },
+    {
+      "id": "photo-169",
+      "title": "McDonald’s with a view of Mount Fuji",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Mount Fuji / roadside food stop",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (29).jpg",
+      "description": "A restaurant tray sits beside a large window framing Mount Fuji. The traveller identifies the restaurant as McDonald’s; the branch is not established.",
+      "metadata": {
+        "locations": [
+          "Mount Fuji",
+          "Japan / 2026 expedition"
+        ],
+        "related": []
+      }
+    },
+    {
+      "id": "photo-170",
+      "title": "Fogbound ridge platform",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / mountain viewpoints",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (30).jpg",
+      "description": "A small raised wooden platform and bench stand above a fog-covered slope. The exact ridge or viewpoint remains unidentified; Koyodai is not assumed.",
+      "metadata": {
+        "locations": [
+          "Yamanashi",
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-171",
+          "photo-145"
+        ]
+      }
+    },
+    {
+      "id": "photo-171",
+      "title": "Benches above the cloud line",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Yamanashi / mountain viewpoints",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (31).jpg",
+      "description": "A row of simple wooden benches faces a cloud-filled valley from an exposed grassy lookout. The exact viewpoint is not established.",
+      "metadata": {
+        "locations": [
+          "Yamanashi",
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-170",
+          "photo-145"
+        ]
+      }
+    },
+    {
+      "id": "photo-172",
+      "title": "Ueno Castle illuminated at night",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Iga-Ueno / Ueno Castle",
+      "file": "media/photo/photos_from_japan/addition_3/addition_3 (32).jpg",
+      "description": "The illuminated keep and massive stone rampart identify Ueno Castle (Iga-Ueno). The traveller confirms this as the nighttime castle visit.",
+      "metadata": {
+        "locations": [
+          "Ueno Castle (Iga-Ueno)",
+          "Iga-Ueno",
+          "Iga City",
+          "Mie"
+        ],
+        "related": [
+          "photo-167",
+          "photo-140"
         ]
       }
     }

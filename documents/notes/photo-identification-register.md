@@ -186,3 +186,14 @@ This register is a source-aware identification layer, not a claim that every pho
 Ten additional JPEGs were supplied after the 140-image audit. Their provisional identifications, confidence levels and media-ingest checklist are recorded in [the supplemental photo intake note](./photo-intake-2026-11-27.md). The incoming images are not yet repository media files and therefore are not included in the current `photo-01`–`photo-140` count.
 
 Strong new identifications include Kinkaku-ji and Fujisan Dragon Tower at Tagonoura Minato Park. Two Fuji upper-slope frames fit the 1 August climb. The Kyoto veranda, nighttime torii, traditional roofed building and nighttime castle view retain the confidence limits documented in the intake note.
+
+
+## Addition_3 — 32 newly catalogued photographs
+
+The `addition_3` folder is now represented by `photo-141`–`photo-172`. All 32 source files have Git blob fingerprints distinct from the existing manifest.
+
+Confirmed or strongly identifiable places include Fujisan Dragon Tower / Tagonoura Minato Park (`photo-147`–`photo-148`), Kinkaku-ji (`photo-150`), Genko-an (`photo-151`–`photo-153`), Fuji-Q Highland (`photo-154`), Tokyo Skytree (`photo-158`), Japan Kanji Museum & Library (`photo-166`), and Ueno Castle at night (`photo-167`, `photo-172`). The McDonald’s with a Mount Fuji view is `photo-169`, with branch unknown.
+
+The Yamanashi forest marker, inscribed stone, Yokosawa erosion-control sign and reservoir are grouped as a regional forest / water sequence without assigning an unsupported exact address. The foggy lookout (`photo-170`–`photo-171`), shrine approach, traditional roofed building, night torii and urban infrastructure photographs retain explicit uncertainty.
+
+The earlier “room of game memories” record (`photo-22`) is corrected to **Banbutsu Sōzō-bō**, the Kyoto shop 万物創造房. It is not a nostalgic-toys museum.
