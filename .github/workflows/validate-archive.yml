@@ -52,6 +52,8 @@ jobs:
         run: node scripts/test-archive-schema.mjs
       - name: Test relationship semantics and place corrections
         run: node scripts/test-relationship-semantics.mjs
+      - name: Test field impressions
+        run: node scripts/test-field-impressions.mjs
       - name: Test machine interaction transitions
         run: node scripts/test-interaction-model.mjs
       - name: Test Markdown link validation fixtures
