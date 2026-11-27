@@ -346,12 +346,17 @@ const ARCHIVE = {
       "author": "eli",
       "group": "JAPAN / AUDIOVISUAL WORKS",
       "file": "media/video/山は覚えている｜The Mountain Remembers｜MV.mp4",
-      "description": "A fragmentary audiovisual memory of Fuji, the lakes, Aokigahara, roads, shrines, tunnels, vending machines and field recordings.",
+      "description": "A fragmentary audiovisual memory of Fuji, the lakes, Aokigahara, roads, shrines, tunnels, vending machines and field recordings. Companion fieldnotes by DYNAKYRIS describe the film as a work of memory rather than a travelogue and record DYNAKYRIS in Katakana in its credits.",
       "voices": [
         "Takismana",
         "Akane Iirai",
         "Eugene"
-      ]
+      ],
+      "metadata": {
+        "related": [
+          "dynakyris-japan-corroborations-2026-11-27"
+        ]
+      }
     },
     {
       "id": "endless-road",
@@ -488,7 +493,9 @@ const ARCHIVE = {
       "group": "Forest boundaries",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (35).png",
-      "metadata": { "related": [] }
+      "metadata": {
+        "related": []
+      }
     },
     {
       "id": "photo-07",
@@ -500,7 +507,11 @@ const ARCHIVE = {
       "group": "Arakurayama Sengen Park / nearby forest",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (38).png",
-      "metadata": { "locations": ["Arakurayama Sengen Park"] }
+      "metadata": {
+        "locations": [
+          "Arakurayama Sengen Park"
+        ]
+      }
     },
     {
       "id": "photo-08",
@@ -647,7 +658,12 @@ const ARCHIVE = {
       "group": "Niikura Tunnel / passage and transit",
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (23).png",
-      "metadata": { "locations": ["Niikura Tunnel","Yamanashi"] }
+      "metadata": {
+        "locations": [
+          "Niikura Tunnel",
+          "Yamanashi"
+        ]
+      }
     },
     {
       "id": "photo-19",
@@ -703,8 +719,14 @@ const ARCHIVE = {
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (63).png",
       "metadata": {
-        "locations": ["Banbutsu Sōzō-bō", "Kyoto"],
-        "related": ["daily-2026-08-road-trip"]
+        "locations": [
+          "Banbutsu Sōzō-bō",
+          "Kyoto"
+        ],
+        "related": [
+          "daily-2026-08-road-trip",
+          "dynakyris-japan-corroborations-2026-11-27"
+        ]
       }
     },
     {
@@ -1445,8 +1467,14 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/eli_photos (5).jpg",
       "description": "The illuminated moat, stone ishigaki walls and castle approach are identified as Odawara Castle. Promotional banners for the 2023 Taiga drama Dōsuru Ieyasu were displayed on the castle grounds.",
       "metadata": {
-        "related": ["photo-93","photo-94"],
-        "locations": ["Odawara Castle","Odawara"]
+        "related": [
+          "photo-93",
+          "photo-94"
+        ],
+        "locations": [
+          "Odawara Castle",
+          "Odawara"
+        ]
       }
     },
     {
@@ -1526,7 +1554,10 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/eli_photos (10).jpg",
       "description": "The traveller confirms this is the Otsuki–Fujiyoshida junction. No geotag is available, so the archive retains the junction-level name without an exact pin.",
       "metadata": {
-        "locations": ["Yamanashi","Otsuki–Fujiyoshida junction"]
+        "locations": [
+          "Yamanashi",
+          "Otsuki–Fujiyoshida junction"
+        ]
       }
     },
     {
@@ -1595,7 +1626,11 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/eli_photos (19).jpg",
       "description": "The traveller identifies this Yamanashi road junction as Mt. Fuji Station. The archive records the station-area association without inventing a geotag or exact camera position.",
       "metadata": {
-        "locations": ["Mt Fuji Station","Fujiyoshida","Yamanashi"]
+        "locations": [
+          "Mt Fuji Station",
+          "Fujiyoshida",
+          "Yamanashi"
+        ]
       }
     },
     {
@@ -1670,8 +1705,14 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/taki_photos (3).png",
       "description": "Night view of Odawara Castle: illuminated moat, stone ishigaki walls and reflections. The earlier Osaka/Ueno castle ambiguity is withdrawn.",
       "metadata": {
-        "related": ["photo-78","photo-94"],
-        "locations": ["Odawara Castle","Odawara"]
+        "related": [
+          "photo-78",
+          "photo-94"
+        ],
+        "locations": [
+          "Odawara Castle",
+          "Odawara"
+        ]
       }
     },
     {
@@ -1685,8 +1726,14 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/taki_photos (4).png",
       "description": "Night view of Odawara Castle, with the illuminated keep and moat reflection. The earlier Osaka/Ueno castle ambiguity is withdrawn.",
       "metadata": {
-        "related": ["photo-78","photo-93"],
-        "locations": ["Odawara Castle","Odawara"]
+        "related": [
+          "photo-78",
+          "photo-93"
+        ],
+        "locations": [
+          "Odawara Castle",
+          "Odawara"
+        ]
       }
     },
     {
@@ -2255,8 +2302,15 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/taki_photos (47).png",
       "description": "Identified by the traveller as Satyam 1, in the former village of Kamikuishiki, Yamanashi Prefecture, near Mount Fuji.",
       "metadata": {
-        "related": ["daily-2026-07-27"],
-        "locations": ["Satyam 1","Kamikuishiki","Yamanashi","Mount Fuji"]
+        "related": [
+          "daily-2026-07-27"
+        ],
+        "locations": [
+          "Satyam 1",
+          "Kamikuishiki",
+          "Yamanashi",
+          "Mount Fuji"
+        ]
       }
     },
     {
@@ -2270,8 +2324,15 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/taki_photos (51).png",
       "description": "The timber tower is Fujisan Dragon Tower, also known as Fujinokuni Tagonoura Minato Park Dragon Tower, in Tagonoura Minato Park, Fuji City, Shizuoka.",
       "metadata": {
-        "related": ["photo-130"],
-        "locations": ["Fujisan Dragon Tower","Tagonoura Minato Park","Fuji City","Shizuoka"]
+        "related": [
+          "photo-130"
+        ],
+        "locations": [
+          "Fujisan Dragon Tower",
+          "Tagonoura Minato Park",
+          "Fuji City",
+          "Shizuoka"
+        ]
       }
     },
     {
@@ -2301,8 +2362,15 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/taki_photos (53).png",
       "description": "The traveller confirms this is the same Fujisan Dragon Tower as the previous image, at Tagonoura Minato Park, Fuji City, Shizuoka.",
       "metadata": {
-        "related": ["photo-128"],
-        "locations": ["Fujisan Dragon Tower","Tagonoura Minato Park","Fuji City","Shizuoka"]
+        "related": [
+          "photo-128"
+        ],
+        "locations": [
+          "Fujisan Dragon Tower",
+          "Tagonoura Minato Park",
+          "Fuji City",
+          "Shizuoka"
+        ]
       }
     },
     {
@@ -2378,7 +2446,13 @@ const ARCHIVE = {
       "author": "taki",
       "file": "media/photo/photos_from_japan/taki_photos (60).png",
       "description": "Lake Kawaguchi, Fujikawaguchiko, Fuji Five Lakes region, Japan. The sign reads 遊覧船のりば (Sightseeing Boat Landing); a yellow flag marks the pier.",
-      "metadata": { "locations": ["Lake Kawaguchi","Fujikawaguchiko","Fuji Five Lakes"] }
+      "metadata": {
+        "locations": [
+          "Lake Kawaguchi",
+          "Fujikawaguchiko",
+          "Fuji Five Lakes"
+        ]
+      }
     },
     {
       "id": "photo-136",
@@ -2407,8 +2481,15 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/taki_photos (62).png",
       "description": "A tatami room frames a garden through the paired circular and square windows associated with Genko-an's Window of Enlightenment and Window of Confusion. This is a strong visual match to the traveller-confirmed Genko-an visit in Kyoto.",
       "metadata": {
-        "locations": ["Genko-an", "Kyoto"],
-        "related": ["photo-151", "photo-152", "photo-153"]
+        "locations": [
+          "Genko-an",
+          "Kyoto"
+        ],
+        "related": [
+          "photo-151",
+          "photo-152",
+          "photo-153"
+        ]
       }
     },
     {
@@ -2459,7 +2540,9 @@ const ARCHIVE = {
       "description": "Identified by the traveller as Ueno-ebisumachi. This is a place-name correction, not an attribution to Ueno Castle (Iga-Ueno).",
       "metadata": {
         "related": [],
-        "locations": ["Ueno-ebisumachi"]
+        "locations": [
+          "Ueno-ebisumachi"
+        ]
       }
     },
     {
@@ -2472,7 +2555,9 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (1).jpg",
       "description": "A mountain toilet and rest facility on the upper Mount Fuji approach. The traveller cannot recall which summit station; it may have been in the upper-middle section. Exact station remains unknown.",
       "metadata": {
-        "locations": ["Mount Fuji"],
+        "locations": [
+          "Mount Fuji"
+        ],
         "related": [
           "photo-145",
           "photo-146"
@@ -2546,7 +2631,9 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (5).jpg",
       "description": "Chain-railed volcanic slope on the upper Mount Fuji climb. The exact location on the slope is not recalled and remains unassigned.",
       "metadata": {
-        "locations": ["Mount Fuji"],
+        "locations": [
+          "Mount Fuji"
+        ],
         "related": [
           "photo-141",
           "photo-146"
@@ -2563,7 +2650,9 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (6).jpg",
       "description": "Red volcanic scoria on the Mount Fuji ascent, photographed some kilometres before the summit. The exact station remains unknown.",
       "metadata": {
-        "locations": ["Mount Fuji"],
+        "locations": [
+          "Mount Fuji"
+        ],
         "related": [
           "photo-141",
           "photo-145"
@@ -2622,7 +2711,10 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (9).jpg",
       "description": "A Kyoto road sign pointing toward Kinkaku-ji. The traveller recalls this road as the way to Kinkaku-ji, one of the intended destinations; the exact intersection is not recorded.",
       "metadata": {
-        "locations": ["Kyoto","Kinkaku-ji"],
+        "locations": [
+          "Kyoto",
+          "Kinkaku-ji"
+        ],
         "related": [
           "photo-150"
         ]
@@ -2875,7 +2967,11 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (22).jpg",
       "description": "The sign identifies Yokosawa Sabo (横沢砂防堰堤) and Yamanashi Prefecture’s Tsuru Construction Office. The traveller places it somewhere near Lake Saiko and the nearest mountain; exact site coordinates are not recalled.",
       "metadata": {
-        "locations": ["Yokosawa Sabo","Lake Saiko","Yamanashi"],
+        "locations": [
+          "Yokosawa Sabo",
+          "Lake Saiko",
+          "Yamanashi"
+        ],
         "related": [
           "photo-160",
           "photo-163"
@@ -3012,7 +3108,11 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (29).jpg",
       "description": "Identified by the traveller as McDonald’s 139 Fujiyoshida (１３９富士吉田店), with Mount Fuji visible through the window.",
       "metadata": {
-        "locations": ["McDonald’s 139 Fujiyoshida","Fujiyoshida","Mount Fuji"],
+        "locations": [
+          "McDonald’s 139 Fujiyoshida",
+          "Fujiyoshida",
+          "Mount Fuji"
+        ],
         "related": []
       }
     },
@@ -3026,8 +3126,14 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (30).jpg",
       "description": "Identified by the traveller as Gokodai (Mount Ashiwada), Yamanashi, Japan. This is the foggy viewpoint previously left unnamed.",
       "metadata": {
-        "locations": ["Gokodai","Mount Ashiwada","Yamanashi"],
-        "related": ["photo-171"]
+        "locations": [
+          "Gokodai",
+          "Mount Ashiwada",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-171"
+        ]
       }
     },
     {
@@ -3040,8 +3146,14 @@ const ARCHIVE = {
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (31).jpg",
       "description": "Confirmed as the same foggy viewpoint as the previous image: Gokodai (Mount Ashiwada), Yamanashi, Japan.",
       "metadata": {
-        "locations": ["Gokodai","Mount Ashiwada","Yamanashi"],
-        "related": ["photo-170"]
+        "locations": [
+          "Gokodai",
+          "Mount Ashiwada",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-170"
+        ]
       }
     },
     {
@@ -3063,6 +3175,566 @@ const ARCHIVE = {
         "related": [
           "photo-167"
         ]
+      }
+    },
+    {
+      "id": "photo-173",
+      "title": "A tree beside an unmarked clearing",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Roadside landscapes / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (1).jpg",
+      "description": "Tree in a grassy clearing beside a narrow pale marker; no readable place name or distinctive landmark.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": []
+      }
+    },
+    {
+      "id": "photo-174",
+      "title": "Fugaku Wind Cave — natural refrigerator display",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Aokigahara / Fugaku Wind Cave",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (2).jpg",
+      "description": "The sign reads 富岳風穴 / 天然冷蔵庫 (Fugaku Wind Cave / natural refrigerator).",
+      "metadata": {
+        "locations": [
+          "Fugaku Wind Cave",
+          "Aokigahara",
+          "Narusawa",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-24"
+        ]
+      }
+    },
+    {
+      "id": "photo-175",
+      "title": "Kyoto City Bus — D boarding point",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / public transport",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (3).jpg",
+      "description": "Kyoto City Bus boarding point D; routes 1, 46, 6 and 北8 are visible. Exact stop is unknown.",
+      "metadata": {
+        "locations": [
+          "Kyoto"
+        ],
+        "related": [
+          "photo-191"
+        ]
+      }
+    },
+    {
+      "id": "photo-176",
+      "title": "Urban buildings seen from the road",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Urban infrastructure / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (4).jpg",
+      "description": "High-rise urban skyline photographed from a road or vehicle; city unknown.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": []
+      }
+    },
+    {
+      "id": "photo-177",
+      "title": "Saiko East Gate — Green Line bus stop",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Lake Saiko / public transport",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (5).jpg",
+      "description": "The sign reads 西湖東口 (Saiko East Gate) and identifies local sightseeing-bus service.",
+      "metadata": {
+        "locations": [
+          "Lake Saiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "daily-2026-07-22",
+          "daily-2026-07-23"
+        ]
+      }
+    },
+    {
+      "id": "photo-178",
+      "title": "Haneda–Shinjuku airport limousine ticket",
+      "date": "2026-07-21",
+      "type": "image",
+      "category": "photo",
+      "group": "Arrival / Haneda and Shinjuku",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (6).jpg",
+      "description": "Ticket records Haneda Airport Terminal 3 to Shinjuku Station West Exit, 21 July 2026, 21:00 departure.",
+      "metadata": {
+        "locations": [
+          "Haneda",
+          "Shinjuku",
+          "Tokyo"
+        ],
+        "related": [
+          "daily-2026-07-21"
+        ]
+      }
+    },
+    {
+      "id": "photo-179",
+      "title": "Fireworks over water — event not yet confirmed",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Fireworks / unidentified event",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (7).jpg",
+      "description": "Possible 15 August Oku-Kawaguchi / Nagahama Furusato Festival match from companion context, but no landmark in the image confirms it.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-180",
+          "dynakyris-japan-corroborations-2026-11-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-180",
+      "title": "Fireworks over water — second frame",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Fireworks / unidentified event",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (8).jpg",
+      "description": "Second fireworks frame; same unconfirmed event candidate as photo-179.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-179",
+          "dynakyris-japan-corroborations-2026-11-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-181",
+      "title": "Fire hydrant cabinet 26 and SOS telephone",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Emergency infrastructure / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (9).jpg",
+      "description": "Wall cabinet marked 消火栓 26 beside emergency telephone marked R-7; site unknown.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-182"
+        ]
+      }
+    },
+    {
+      "id": "photo-182",
+      "title": "Emergency SOS telephone R-7",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Emergency infrastructure / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (10).jpg",
+      "description": "Close view of emergency SOS telephone marked R-7; paired with photo-181.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-181"
+        ]
+      }
+    },
+    {
+      "id": "photo-183",
+      "title": "Kadoya Shoten — Lake Kawaguchi local sake sign",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Nagahama / local shop",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (11).jpg",
+      "description": "Sign reads かどや商店 and 河口湖の地酒. Regional listing places Kadoya Shoten at Nagahama 1338-7; relation to the friend's shop-and-house passage is unconfirmed.",
+      "metadata": {
+        "locations": [
+          "Kadoya Shoten",
+          "Nagahama",
+          "Fujikawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "dynakyris-japan-corroborations-2026-11-27"
+        ]
+      }
+    },
+    {
+      "id": "photo-184",
+      "title": "Night waterfront panorama",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Water at night / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (12).jpg",
+      "description": "Night view of lights along a waterfront; waterbody and town unknown.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": []
+      }
+    },
+    {
+      "id": "photo-185",
+      "title": "Tagonoura Port tsunami hazard map",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Tagonoura Port / Fuji City",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (13).jpg",
+      "description": "Tsunami-hazard map explicitly identifies 田子の浦港 (Tagonoura Port), Fuji City.",
+      "metadata": {
+        "locations": [
+          "Tagonoura Port",
+          "Fuji City",
+          "Shizuoka"
+        ],
+        "related": [
+          "photo-186",
+          "photo-147",
+          "photo-148"
+        ]
+      }
+    },
+    {
+      "id": "photo-186",
+      "title": "Tagonoura Port Management Office marker",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Tagonoura Port / Fuji City",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (14).jpg",
+      "description": "Marker reads 田子の浦港管理事務所 (Tagonoura Port Management Office).",
+      "metadata": {
+        "locations": [
+          "Tagonoura Port",
+          "Fuji City",
+          "Shizuoka"
+        ],
+        "related": [
+          "photo-185",
+          "photo-147",
+          "photo-148"
+        ]
+      }
+    },
+    {
+      "id": "photo-187",
+      "title": "Lake Kawaguchi from the Mt. Fuji Panoramic Ropeway",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Tenjoyama / Mt. Fuji Panoramic Ropeway",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (15).jpg",
+      "description": "High view of Lake Kawaguchi from the ropeway route; gondola and cableway match Tenjoyama.",
+      "metadata": {
+        "locations": [
+          "Mt. Fuji Panoramic Ropeway",
+          "Tenjoyama",
+          "Lake Kawaguchi",
+          "Fujikawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-188",
+          "photo-135"
+        ]
+      }
+    },
+    {
+      "id": "photo-188",
+      "title": "Ropeway station and Lake Kawaguchi",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Tenjoyama / Mt. Fuji Panoramic Ropeway",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (16).jpg",
+      "description": "Ropeway cable/station structure with Lake Kawaguchi beyond; paired with photo-187.",
+      "metadata": {
+        "locations": [
+          "Mt. Fuji Panoramic Ropeway",
+          "Tenjoyama",
+          "Lake Kawaguchi",
+          "Fujikawaguchiko",
+          "Yamanashi"
+        ],
+        "related": [
+          "photo-187",
+          "photo-135"
+        ]
+      }
+    },
+    {
+      "id": "photo-189",
+      "title": "Driving through an unnamed highway tunnel",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Roads and tunnels / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (17).jpg",
+      "description": "Tunnel photographed from inside a moving vehicle; route and tunnel name unknown.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": []
+      }
+    },
+    {
+      "id": "photo-190",
+      "title": "Underground transit concourse and stairs",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Underground transport / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (18).jpg",
+      "description": "Stairs into an underground/rail concourse; station unknown.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": []
+      }
+    },
+    {
+      "id": "photo-191",
+      "title": "Kyoto directional road signs",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / street infrastructure",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (19).jpg",
+      "description": "Directional signs include 高野, 堀川北大路 and 千本丸太町; exact camera point unknown.",
+      "metadata": {
+        "locations": [
+          "Kyoto"
+        ],
+        "related": [
+          "daily-2026-08-road-trip",
+          "photo-175"
+        ]
+      }
+    },
+    {
+      "id": "photo-192",
+      "title": "Visitor-book entry signed Eli & Takismana",
+      "date": "2026-08-08",
+      "type": "image",
+      "category": "photo",
+      "group": "Kyoto / visitor-book memory",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (20).jpg",
+      "description": "Page dated 8 August 2026; lower entry signed エリ＆タキスマナ and thanks hosts for a wonderful adventure, calling the building and its history fascinating. Venue unnamed.",
+      "metadata": {
+        "locations": [
+          "Kyoto"
+        ],
+        "related": [
+          "daily-2026-08-road-trip"
+        ]
+      }
+    },
+    {
+      "id": "photo-193",
+      "title": "Alcohol vending machine",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Jihanki / alcohol vending infrastructure",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (21).jpg",
+      "description": "Alcohol vending machine marked 酒; site unknown. Thematic link to earlier Jihanki photographs only.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-49",
+          "photo-50",
+          "photo-57",
+          "photo-58"
+        ]
+      }
+    },
+    {
+      "id": "photo-194",
+      "title": "Exit 8 underground sign",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Underground transport / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (22).jpg",
+      "description": "Yellow sign reads 出口 ⑧ / EXIT 8 with escalator guidance; station unknown.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": []
+      }
+    },
+    {
+      "id": "photo-195",
+      "title": "Indoor prize-machine arcade",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Arcades / prize machines",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (23).jpg",
+      "description": "Crane/prize machines indoors; venue and city unknown, thematic comparison with photo-99 only.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": [
+          "photo-99"
+        ]
+      }
+    },
+    {
+      "id": "photo-196",
+      "title": "Osaka Castle moat and sightseeing boat",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Osaka / Osaka Castle",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (24).jpg",
+      "description": "Moat, stone ramparts and sightseeing boat identify Osaka Castle; distinct from Odawara and Iga-Ueno.",
+      "metadata": {
+        "locations": [
+          "Osaka Castle",
+          "Osaka"
+        ],
+        "related": [
+          "photo-197",
+          "daily-2026-08-road-trip"
+        ]
+      }
+    },
+    {
+      "id": "photo-197",
+      "title": "Osaka Castle stone ramparts and moat",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Osaka / Osaka Castle",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (25).jpg",
+      "description": "Second view of Osaka Castle moat and stone ramparts.",
+      "metadata": {
+        "locations": [
+          "Osaka Castle",
+          "Osaka"
+        ],
+        "related": [
+          "photo-196",
+          "daily-2026-08-road-trip"
+        ]
+      }
+    },
+    {
+      "id": "photo-198",
+      "title": "Long underground pedestrian passage",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Underground infrastructure / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (26).jpg",
+      "description": "Long tiled pedestrian passage; complex or station unknown.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": []
+      }
+    },
+    {
+      "id": "photo-199",
+      "title": "Modern high-rise at an unidentified junction",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Urban architecture / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (27).jpg",
+      "description": "Modern white tower beside a road junction; city unknown.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": []
+      }
+    },
+    {
+      "id": "photo-200",
+      "title": "Glass-fronted retail building and Coca-Cola clock",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Urban architecture / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (28).jpg",
+      "description": "Glass-fronted building and Coca-Cola clock/sign; street and city unknown.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": []
+      }
+    },
+    {
+      "id": "photo-201",
+      "title": "CRYSTA Nagahori — South 5 elevator",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Osaka / Shinsaibashi underground mall",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (29).jpg",
+      "description": "Sign reads CRYSTA 長堀 / 南5エレベーター (South 5 Elevator), identifying CRYSTA Nagahori.",
+      "metadata": {
+        "locations": [
+          "CRYSTA Nagahori",
+          "Shinsaibashi",
+          "Osaka"
+        ],
+        "related": [
+          "daily-2026-08-road-trip"
+        ]
+      }
+    },
+    {
+      "id": "photo-202",
+      "title": "Wet night crossing near an unidentified school",
+      "date": "2026",
+      "type": "image",
+      "category": "photo",
+      "group": "Night streets / unidentified locality",
+      "file": "media/photo/photos_from_japan/addition_4/addition_4 (30).jpg",
+      "description": "Rain-darkened crossing near a blurred school-front sign; name and locality unknown.",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ],
+        "related": []
       }
     }
   ],
@@ -3398,7 +4070,12 @@ const ARCHIVE = {
       "project": "japan-expedition",
       "group": "DAILY EXPEDITION",
       "description": "A dated chapter from the 2026 Japan journey.",
-      "file": "documents/notes/daily/2026-07-24.md"
+      "file": "documents/notes/daily/2026-07-24.md",
+      "metadata": {
+        "related": [
+          "photo-174"
+        ]
+      }
     },
     {
       "id": "daily-2026-07-25",
@@ -3562,8 +4239,23 @@ const ARCHIVE = {
       "author": "archive",
       "project": "japan-expedition",
       "group": "REGIONAL ROAD TRAIL",
-      "description": "A confirmed car journey from Kawaguchiko to Kyoto and Osaka and back, including the Kyoto hotel stay, a friend's shop and Osaka live music.",
-      "file": "documents/notes/daily/2026-08-road-trip.md"
+      "description": "A confirmed car journey from Kawaguchiko to Kyoto and Osaka and back, including Kyoto temple and shop visits, Osaka Castle and the return to Kawaguchiko.",
+      "file": "documents/notes/daily/2026-08-road-trip.md",
+      "metadata": {
+        "locations": [
+          "Kawaguchiko",
+          "Kyoto",
+          "Osaka"
+        ],
+        "related": [
+          "photo-191",
+          "photo-192",
+          "photo-196",
+          "photo-197",
+          "photo-201",
+          "dynakyris-japan-corroborations-2026-11-27"
+        ]
+      }
     },
     {
       "id": "daily-2026-08-18",
@@ -3576,6 +4268,49 @@ const ARCHIVE = {
       "group": "DAILY EXPEDITION",
       "description": "A closing field fragment about the recurring morning dance on the residency's wooden boards.",
       "file": "documents/notes/daily/2026-08-18.md"
+    },
+    {
+      "id": "photo-intake-addition-4",
+      "title": "ADDITION_4 — JAPAN PHOTO INTAKE",
+      "date": "2026-11-27",
+      "type": "text",
+      "category": "notes",
+      "author": "archive",
+      "project": "japan-expedition",
+      "group": "PHOTO IDENTIFICATION / INTAKE",
+      "description": "Filename-by-filename visual review of the 30 addition_4 photographs, with confident identifications, relationships and unresolved traveller questions.",
+      "file": "documents/notes/photo-intake-2026-11-27-addition-4.md",
+      "metadata": {
+        "locations": [
+          "Japan / 2026 expedition"
+        ]
+      }
+    },
+    {
+      "id": "dynakyris-japan-corroborations-2026-11-27",
+      "title": "DYNAKYRIS — JAPAN FIELDNOTE CORROBORATIONS",
+      "date": "2026-11-27",
+      "type": "text",
+      "category": "notes",
+      "author": "archive",
+      "project": "japan-expedition",
+      "group": "COMPANION FIELD NOTES",
+      "description": "A companion perspective on Banbutsu Sōzō-bō, physical artwork exchange, local celebration context and The Mountain Remembers; attributed to DYNAKYRIS.",
+      "file": "documents/notes/dynakyris-japan-corroborations-2026-11-27.md",
+      "metadata": {
+        "locations": [
+          "Kyoto",
+          "Osaka",
+          "Fuji Five Lakes"
+        ],
+        "related": [
+          "photo-22",
+          "mountain-remembers-mv",
+          "photo-179",
+          "photo-180",
+          "photo-183"
+        ]
+      }
     }
   ],
   "text": [
