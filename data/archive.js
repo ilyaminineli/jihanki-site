@@ -1153,6 +1153,18 @@ const ARCHIVE = {
       "description": "Notes on the archive's catalogue and rotation."
     },
     {
+      "id": "daily-2026-08-road-trip",
+      "title": "KAWAGUCHIKO / KYOTO / OSAKA / KAWAGUCHIKO",
+      "date": "2026-08",
+      "type": "text",
+      "category": "notes",
+      "author": "archive",
+      "project": "japan-expedition",
+      "group": "REGIONAL ROAD TRAIL",
+      "description": "A confirmed car journey from Kawaguchiko to Kyoto and Osaka and back, including the Kyoto hotel stay, a friend's shop and Osaka live music.",
+      "file": "documents/notes/daily/2026-08-road-trip.md"
+    },
+    {
       "id": "daily-2026-08-18",
       "title": "LAST MORNING ON THE BOARDS",
       "date": "2026-08-18",
