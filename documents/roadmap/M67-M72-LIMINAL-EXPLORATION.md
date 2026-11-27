@@ -23,8 +23,8 @@ This programme deliberately narrows the earlier feature proposal. It is not a co
 | [M68](#m68--field-impressions) | Field Impressions | Implemented |
 | [M69](#m69--memory-traces) | Memory Traces | Implemented |
 | [M70](#m70--curators-cabinet) | Curator’s Cabinet | Implemented |
-| [M71](#m71--listening-room) | Listening Room | Deferred until additional source samples are supplied |
-| [M72](#m72--quiet-signals) | Quiet Signals | Later / experimental |
+| [M71](#m71--listening-room) | Listening Room | Source-material gate remains; implementation deferred |
+| [M72](#m72--quiet-signals) | Quiet Signals | Implemented — one authored, browser-local response |
 
 ## M67 — Place and relationship integrity
 
@@ -74,15 +74,15 @@ The existing shelves are now personal exhibitions. Each shelf keeps its visitor-
 
 ## M71 — Listening Room
 
-**Status:** Deferred until additional source samples are supplied.
+**Status:** Source-material gate remains; implementation deferred.
 
-The current Sound Lab already supports layered archive listening. Do not invent artificial audio challenges or overbuild a save/load recipe system before the source palette grows. When new samples arrive, review the new material, update the archive catalogue and manifest, then decide whether saved listening arrangements are genuinely useful.
+The current Sound Lab already supports layered archive listening. The repository has not received the additional source samples required to make a distinct Listening Room meaningful. Do not invent artificial audio challenges or overbuild a save/load recipe system before the source palette grows. When the samples are supplied, review the actual files and their provenance, update the archive catalogue and media manifest, then decide whether saved listening arrangements add something beyond the existing live Sound Lab. Until then, M71 is deliberately not marked implemented.
 
 ## M72 — Quiet Signals
 
-**Status:** Later / experimental.
+**Status:** Implemented — deliberately limited to one signal.
 
-A few authored, rare machine responses may acknowledge a meaningful return or a completed curated connection. Keep the existing anomalies atmospheric. Do not expose a secret checklist, make discovery repeatable for points, or turn randomness into an economy. This milestone may be dropped entirely if it makes the machine feel too game-like.
+Completing the existing curated Satyam 1 Memory Trace arms one browser-local response. On the visitor's next return to the machine home screen, it replaces the ordinary home line once: “THE CLEARING REMAINS / NO FURTHER DETAILS AVAILABLE”. The signal is not a prize, does not assert a physical visit, is not repeatable, and is never triggered by unrelated browsing or random chance. Its delivered state survives reloads. No secret checklist or new progression system is exposed.
 
 ## Implementation order
 
@@ -90,4 +90,5 @@ A few authored, rare machine responses may acknowledge a meaningful return or a 
 2. Keep M68 limited to the single documented Saiko trail.
 3. Keep M69 limited to the curated Satyam 1 trace.
 4. Keep M70 title-led and optional; no explanatory note or cover image is required.
-5. Leave M71 dormant until additional audio material is available. M72 remains experimental and may be omitted.
+5. Keep M71 dormant until additional audio material is supplied and reviewed.
+6. Keep M72 to its single authored Satyam 1 return signal; do not expand it into a catalogue of unlocks.
