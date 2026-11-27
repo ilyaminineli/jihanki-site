@@ -201,7 +201,7 @@
       if (index >= 0) announce("SOURCE COULD NOT BE LOADED / " + queue[index].title);
     });
 
-    root.addEventListener("click", event => {
+    scope.addEventListener("click", event => {
       const roomButton = event.target.closest?.("[data-listening-play-room]");
       if (roomButton && scope.contains(roomButton)) {
         startRoom(roomButton.dataset.listeningPlayRoom);
