@@ -75,7 +75,7 @@ The sign in Eli’s photograph reads `西湖いやしの里根場` and identifie
 
 The monster figures in orderly rows and the extensive wall of Japanese record sleeves fit the 26 July museum visit. The daily note calls the venue “Kawaguchiko Retro Toys Museum” and specifically records electronic toys, a Family Computer-like game, and rows of monsters. Regional visitor listings use the “Kawaguchiko Nostalgic Toys Museum” wording and describe a collection that includes toys, records, advertisements and giveaway premiums. The archive keeps the diary’s wording visible in the description while using a shared place label for the connected images.
 
-The nearby arcade-cabinet photograph (`photo-99`) is grouped under retro play, but it is not assigned to this museum: its cabinets are a separate venue and the location is not readable.
+The arcade-cabinet photograph (`photo-99`) is grouped under retro play, but it is not assigned to this museum: its cabinets are a separate venue, and neither the venue nor city is confirmed by the photograph. The lake-view room (`photo-80`) is a possible residency interior, but no building name or dated note confirms its exact location, so it is kept unplaced.
 
 Source:
 - [Fuji Five Lakes Tourist Federation — Kawaguchiko Nostalgic Toys Museum](https://www.mt-fuji.gr.jp/en/art-museum/)
@@ -158,6 +158,8 @@ The following photographs are now described and grouped, but not assigned a spec
 - Industrial smokestacks and water reflections (`photo-90`, `photo-129`): same scene from two cameras; factory and city unknown.
 - Sightseeing-boat boarding sign (`photo-135`): the Japanese text identifies a boat landing, not the lake or operator.
 - Multi-level wooden lookout (`photo-127`, `photo-128`, `photo-130`): connected to the Saiko ridge hike, exact platform or summit unknown.
+- Lake-view accommodation or residency interior (`photo-80`): Lake Saiko is plausible from the trip context, but the building and exact location remain unconfirmed.
+- Arcade cabinets (`photo-99`): retro-play theme only; venue and city are not established.
 - Open lake panoramas (`photo-124`, `photo-134`, `photo-136`): Fuji Five Lakes region only; the individual lake is not certain.
 - Pale flower / flower in a glass (`photo-96`, `photo-112`): species and exact setting unknown.
 - Small torii, wooded approaches and roadside stone markers (`photo-115`, `photo-119`, and the previously indexed shrine fragments): no exact shrine name visible.
