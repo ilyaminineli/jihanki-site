@@ -161,12 +161,14 @@
       const p=point(place.name),number=String(indexPlaces.indexOf(place)+1).padStart(2,"0");
       const density=place.count>=8?"cluster":place.count>=3?"active":"quiet";
       const jp=subLabelFor(place.name);
+      const mobileLabel=jp||place.name;
       const edgeX=p[0]<38?" map-pin-edge-left":p[0]>62?" map-pin-edge-right":"";
       const edgeY=p[1]<10?" map-pin-edge-top":p[1]>90?" map-pin-edge-bottom":"";
       return '<button class="map-pin map-pin-'+density+edgeX+edgeY+'" style="left:'+p[0]+'%;top:'+p[1]+'%" type="button" data-map-place="'+esc(place.name)+
         '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-dot" aria-hidden="true"></span>'+
         '<span class="map-pin-copy"><strong>'+esc(place.name)+'</strong>'+(jp?'<small class="map-pin-jp">'+esc(jp)+'</small>':'')+
-        '<small class="map-pin-count">'+place.count+' memories</small></span><span class="map-pin-index">'+number+'</span></button>';
+        '<small class="map-pin-count">'+place.count+' memories</small></span><span class="map-pin-index">'+number+
+        '</span><span class="map-pin-mobile-label">'+esc(mobileLabel)+'</span></button>';
     }).join("");
     const key=indexPlaces.map((place,index)=>'<button type="button" data-map-place="'+esc(place.name)+'"><span>'+
       String(index+1).padStart(2,"0")+'</span><strong>'+esc(place.name)+'</strong><small>'+place.count+' memories</small></button>').join("");
