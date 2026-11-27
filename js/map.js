@@ -48,7 +48,7 @@
   /* Stable screen-space relaxation keeps dense clusters apart without implying
      that the schematic positions are surveyed coordinates. */
   function declutter(places){
-    const width=760,height=420,minGap=28;
+    const width=760,height=420,minGap=75;
     const nodes=places.map(place=>{
       const anchor=POSITIONS[place.name];
       return{name:place.name,x:anchor[0],y:anchor[1],anchorX:anchor[0],anchorY:anchor[1]};
@@ -78,9 +78,9 @@
     }
     return Object.fromEntries(nodes.map(node=>[node.name,[node.x,node.y]]));
   }
-  const TRAILS=[{id:"kansai-road-loop",title:"KAWAGUCHIKO / KYOTO / OSAKA / KAWAGUCHIKO",stops:["Kawaguchiko","Kyoto","Osaka","Kawaguchiko"],description:"A confirmed car journey from Kawaguchiko to Kyoto and Osaka, returning to Kawaguchiko. A regional memory trail, not a reconstructed road route."}];
+  const TRAILS=[{id:"kansai-road-loop",title:"河口湖／京都／大阪／河口湖",stops:["Kawaguchiko","Kyoto","Osaka","Kawaguchiko"],description:"河口湖から京都・大阪を経て河口湖へ戻った、確認済みの自動車移動。実際の道路経路を再現したものではありません。"}];
   function trailMarkup(){
-    return TRAILS.map(trail=>'<article class="map-trail-card"><span class="map-eyebrow">CONFIRMED / CAR JOURNEY</span><strong>'+esc(trail.title)+'</strong><p>'+esc(trail.description)+'</p><div class="map-trail-stops">'+trail.stops.map((name,index)=>'<button type="button" data-map-place="'+esc(name)+'"><span>'+String(index+1).padStart(2,"0")+'</span><strong>'+esc(name)+'</strong></button>').join("")+'</div><button type="button" class="map-trail-open" data-map-trail-note="daily-2026-08-road-trip">OPEN JOURNEY NOTE ↗</button></article>').join("");
+    return TRAILS.map(trail=>'<article class="map-trail-card"><span class="map-eyebrow">確認済み／自動車移動</span><strong>'+esc(trail.title)+'</strong><p>'+esc(trail.description)+'</p><div class="map-trail-stops">'+trail.stops.map((name,index)=>'<button type="button" data-map-place="'+esc(name)+'"><span>'+String(index+1).padStart(2,"0")+'</span><strong>'+esc(labelFor(name))+'</strong></button>').join("")+'</div><button type="button" class="map-trail-open" data-map-trail-note="daily-2026-08-road-trip">旅の記録を開く ↗</button></article>').join("");
   }
   const PIN_REFERENCES=[
     {label:"River fork / stepping-stone spot",detail:"Forwarded caption: “the river seems to split here; you can run over the stones.” Proper place name is not included in the export.",source:"Caption from Lera’s forwarded 28 July message",url:"https://maps.app.goo.gl/7BkvvvGWqwyns6Tr6",status:"caption-derived label"},
