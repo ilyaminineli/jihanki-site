@@ -172,7 +172,8 @@
 
   function render() {
     const list = tracks();
-    const selected = new Set(list.slice(0,Math.min(3,list.length)).map(item => item.id));
+    const initialMix = list.filter(item => item.group !== "AOKIGAHARA / PENTALOGY").slice(0, Math.min(3, list.length));
+    const selected = new Set(initialMix.map(item => item.id));
     return '<section class="sound-installation">'+
       '<div class="sound-lab-masthead"><span>JHK / SOUND LABORATORY</span><span>'+list.length+' SOURCE FRAGMENTS</span></div>'+
       '<h2>BUILD A LIVING ARCHIVE</h2>'+
