@@ -87,8 +87,8 @@
     "photo-246": [{id:"voice-takismana",kind:"music-performance-equipment",label:"TAKISMANA / NINTENDO DS MUSIC USE"},{id:"voice-takismana",kind:"music-performance-equipment",label:"SHARED CREATIVE HISTORY"}],
     "photo-248": [{id:"photo-169",kind:"same-business-location",label:"MCDONALD’S 139 FUJIYOSHIDA / SAME BRANCH"}],
     "photo-249": [{id:"photo-198",kind:"same-neighbourhood-context",label:"SHINSAIBASHI / UNDERGROUND PARKING AREA"}],
-    "photo-247": [{id:"photo-250",kind:"same-locality-outing",label:"MIYUKI BEACH / SAME OUTING"},{id:"photo-202",kind:"same-locality-outing",label:"MIYUKI BEACH / EARLIER SCHOOL-SIGN VIEW"}],
-    "photo-250": [{id:"photo-247",kind:"same-locality-outing",label:"MIYUKI BEACH / NEARBY RESIDENTIAL STREET"},{id:"photo-202",kind:"same-locality-outing",label:"MIYUKI BEACH / EARLIER SCHOOL-SIGN VIEW"}],
+    "photo-247": [{id:"photo-250",kind:"same-locality-outing",label:"MIYUKIHAMA / BEACH SIGN"},{id:"photo-202",kind:"same-locality-outing",label:"MIYUKIHAMA / SCHOOL-SIGN STREET"}],
+    "photo-250": [{id:"photo-247",kind:"same-locality-outing",label:"MIYUKIHAMA / NEARBY RESIDENTIAL STREET"},{id:"photo-202",kind:"same-locality-outing",label:"MIYUKIHAMA / SCHOOL-SIGN STREET"}],
     "photo-intake-addition-5": [
       { id:"daily-2026-07-25", kind:"field-visit-photograph", label:"ONSEN YURARI / UNO-MISAKI TUNNEL VISIT" },
       { id:"tunnel", kind:"project-source", label:"UNO-MISAKI / TUNNEL AUDIOVISUAL WORK" },
@@ -107,7 +107,7 @@
       { id:"photo-169", kind:"same-business-location", label:"MCDONALD'S 139 FUJIYOSHIDA / SAME BRANCH" },
       { id:"photo-193", kind:"same-neighbourhood", label:"KITAOJI SHINMACHI / BUS-STOP AREA" },
       { id:"photo-198", kind:"same-neighbourhood-context", label:"SHINSAIBASHI / UNDERGROUND PARKING AREA" },
-      { id:"photo-202", kind:"same-locality-and-outing", label:"MIYUKI BEACH / SAME OKINAWA OUTING" }
+      { id:"photo-202", kind:"same-locality-and-outing", label:"MIYUKIHAMA / ODAWARA OUTING" }
     ],
     "photo-192": [
       { id:"photo-137", kind:"same-place-memory", label:"GENKO-AN / ROUND AND SQUARE WINDOWS" },
