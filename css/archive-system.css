@@ -2570,7 +2570,8 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   border-color:transparent !important;
   background:transparent !important;
   box-shadow:none !important;
-  color:transparent !important;
+  color:rgba(235,235,235,.68) !important;
+  text-shadow:0 0 4px rgba(255,255,255,.10) !important;
   outline:none !important;
   transform:none !important;
 }
