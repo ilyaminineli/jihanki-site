@@ -16,7 +16,10 @@
     "PICA Fuji Saiko":[32,46],"Fujisan Dragon Tower":[82,82],"Tagonoura Minato Park":[82,88],"Fuji City":[85,82],
     "Satyam 1":[39,35],"Kamikuishiki":[36,42],"Gokodai":[53,23],"Mount Ashiwada":[53,29],
     "Fujikawaguchiko":[59,48],"McDonald’s 139 Fujiyoshida":[67,54],"Mt Fuji Station":[65,62],
-    "Otsuki–Fujiyoshida junction":[76,50],"Yokosawa Sabo":[33,61],"Tokyo Skytree":[80,18],"Sumida Ward":[84,15]
+    "Otsuki–Fujiyoshida junction":[76,50],"Yokosawa Sabo":[33,61],"Tokyo Skytree":[80,18],"Sumida Ward":[84,15],
+    "Fugaku Wind Cave":[25,65],"Mt. Fuji Panoramic Ropeway":[60,41],"Tenjoyama":[62,39],
+    "Tagonoura Port":[82,85],"Nagahama":[51,44],"Kadoya Shoten":[49,46],
+    "CRYSTA Nagahori":[13,17],"Shinsaibashi":[12,15]
   };
   /* English / romaji remains the primary map vocabulary. Japanese is secondary detail only. */
   const JP_LABELS={
@@ -38,7 +41,10 @@
     "Tokyo Skytree":"東京スカイツリー","Sumida Ward":"墨田区","Iga-Ueno":"伊賀上野","Iga City":"伊賀市",
     "Mie":"三重県","Satyam 1":"サティヤム1","Kamikuishiki":"上九一色","Mount Ashiwada":"足和田山",
     "McDonald’s 139 Fujiyoshida":"マクドナルド139富士吉田店","Mt Fuji Station":"富士山駅",
-    "Yokosawa Sabo":"横沢砂防堰堤","Odawara":"小田原","Fujikawaguchiko":"富士河口湖町"
+    "Yokosawa Sabo":"横沢砂防堰堤","Odawara":"小田原","Fujikawaguchiko":"富士河口湖町",
+    "Fugaku Wind Cave":"富岳風穴","Mt. Fuji Panoramic Ropeway":"富士山パノラマロープウェイ","Tenjoyama":"天上山",
+    "Tagonoura Port":"田子の浦港","Nagahama":"長浜","Kadoya Shoten":"かどや商店",
+    "CRYSTA Nagahori":"クリスタ長堀","Shinsaibashi":"心斎橋"
   };
   const labelFor=name=>name;
   const subLabelFor=name=>JP_LABELS[name]||"";
@@ -46,7 +52,7 @@
   // the schematic. Keep them in the full index, but avoid drawing stacked pins.
   const DETAIL_ONLY=new Set([
     "PICA Fuji Saiko","Tagonoura Minato Park","Tokyo Skytree","Sumida Ward","McDonald’s 139 Fujiyoshida","Mt Fuji Station","Otsuki–Fujiyoshida junction","Yokosawa Sabo","Kamikuishiki","Mount Ashiwada","Fujikawaguchiko",
-    "Kinkaku-ji","Japan Kanji Museum & Library","Kanji Museum","Banbutsu Sōzō-bō"
+    "Kinkaku-ji","Japan Kanji Museum & Library","Kanji Museum","Banbutsu Sōzō-bō","Tenjoyama","Tagonoura Port","Kadoya Shoten","Shinsaibashi","CRYSTA Nagahori"
   ]);
   function associationLines(places){
     const edges=new Set();
