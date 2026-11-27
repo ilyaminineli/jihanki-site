@@ -87,6 +87,12 @@
     "Yamanashi":[35.6652,138.571,"prefecture"],
     "Yokosawa Sabo":[35.501,138.701,"area"]
   };
+  const MAIN_LABELS=new Set([
+    "Yamanashi","Lake Saiko","Kyoto","Mount Fuji","Tokyo","Kawaguchiko","Katori",
+    "Kawaguchiko Nostalgic Toys Museum","Lake Kawaguchi","Fujikawaguchiko","Osaka",
+    "Akihabara","First summit near Saiko","Arakurayama Sengen Park","Fuji City",
+    "Fuji Five Lakes","Shinjuku","Oishi Park"
+  ]);
   const surfacePoint=name=>{
     const value=GEO_COORDS[name];
     if(!value)return null;
@@ -160,44 +166,62 @@
     const nodes=places.map(place=>{
       const anchor=surfacePoint(place.name),metric=labelMetrics(place.name,place.count);
       let seed=0;for(const character of place.name)seed=(seed*31+character.charCodeAt(0))>>>0;
-      return{
-        name:place.name,
-        anchorX:anchor[0],anchorY:anchor[1],
-        x:anchor[0]+((seed%5)-2)*8,
-        y:anchor[1]+(((seed>>>3)%5)-2)*7,
-        boxW:metric.width,boxH:metric.height
-      };
-    });
-    const clamp=node=>{
-      node.x=Math.max(node.boxW/2+24,Math.min(width-node.boxW/2-24,node.x));
-      node.y=Math.max(node.boxH/2+24,Math.min(height-node.boxH/2-24,node.y));
-    };
-    const separate=(a,b)=>{
-      const dx=a.x-b.x,dy=a.y-b.y;
-      const overlapX=(a.boxW+b.boxW)/2+22-Math.abs(dx);
-      const overlapY=(a.boxH+b.boxH)/2+18-Math.abs(dy);
-      if(overlapX<=0||overlapY<=0)return;
-      if(overlapX<overlapY){
-        const sign=dx===0?((a.name.length+b.name.length)%2?1:-1):Math.sign(dx);
-        const push=(overlapX+.3)*.54;
-        a.x+=sign*push*.5;b.x-=sign*push*.5;
-      }else{
-        const sign=dy===0?((a.name.length+b.name.length)%2?1:-1):Math.sign(dy);
-        const push=(overlapY+.3)*.54;
-        a.y+=sign*push*.5;b.y-=sign*push*.5;
+      return{name:place.name,count:place.count||0,seed,anchorX:anchor[0],anchorY:anchor[1],
+        x:anchor[0],y:anchor[1],boxW:metric.width,boxH:metric.height};
+    }).sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name));
+    const placed=[],margin=10,step=24,arc=42,maxRadius=500;
+    const overlaps=(a,x,y,b)=>
+      Math.abs(x-b.x)<(a.boxW+b.boxW)/2+margin&&
+      Math.abs(y-b.y)<(a.boxH+b.boxH)/2+margin;
+    const inside=(node,x,y)=>
+      x>=node.boxW/2+24&&x<=width-node.boxW/2-24&&
+      y>=node.boxH/2+24&&y<=height-node.boxH/2-24;
+    for(const node of nodes){
+      let chosen=null;
+      // Walk concentric rings from the true map anchor and take the nearest
+      // unoccupied label position. The geographic marker itself never moves.
+      for(let radius=0;radius<=maxRadius&&!chosen;radius+=step){
+        const samples=radius===0?1:Math.max(8,Math.ceil(2*Math.PI*radius/arc));
+        const phase=(node.seed%6283)/1000;
+        for(let index=0;index<samples;index++){
+          const angle=phase+2*Math.PI*index/samples;
+          const x=node.anchorX+(radius===0?0:radius*Math.cos(angle));
+          const y=node.anchorY+(radius===0?0:radius*Math.sin(angle));
+          if(inside(node,x,y)&&placed.every(other=>!overlaps(node,x,y,other))){
+            chosen={x,y};break;
+          }
+        }
       }
-      clamp(a);clamp(b);
-    };
-    for(let pass=0;pass<260;pass++){
-      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)separate(nodes[i],nodes[j]);
-      nodes.forEach(node=>{
-        node.x+=(node.anchorX-node.x)*.0012;
-        node.y+=(node.anchorY-node.y)*.0012;
-        clamp(node);
-      });
+      // If a very dense local cluster exhausts the normal search radius,
+      // favour the least-overlapping nearby position rather than moving a
+      // label across the country.
+      if(!chosen){
+        let best=null,bestScore=Infinity;
+        for(let radius=0;radius<=maxRadius+180;radius+=step){
+          const samples=radius===0?1:Math.max(8,Math.ceil(2*Math.PI*radius/arc));
+          const phase=(node.seed%6283)/1000;
+          for(let index=0;index<samples;index++){
+            const angle=phase+2*Math.PI*index/samples;
+            const x=node.anchorX+(radius===0?0:radius*Math.cos(angle));
+            const y=node.anchorY+(radius===0?0:radius*Math.sin(angle));
+            if(!inside(node,x,y))continue;
+            let overlapArea=0;
+            for(const other of placed){
+              const ox=(node.boxW+other.boxW)/2+margin-Math.abs(x-other.x);
+              const oy=(node.boxH+other.boxH)/2+margin-Math.abs(y-other.y);
+              if(ox>0&&oy>0)overlapArea+=ox*oy;
+            }
+            const score=overlapArea*10000+radius;
+            if(score<bestScore){bestScore=score;best={x,y};}
+          }
+        }
+        chosen=best||{x:node.anchorX,y:node.anchorY};
+      }
+      node.x=chosen.x;node.y=chosen.y;placed.push(node);
     }
     return Object.fromEntries(nodes.map(node=>[node.name,[node.x,node.y]]));
-  }  const TRAILS=window.JIHANKI_RELATIONSHIPS?.trails?.()||[];
+  }
+  const TRAILS=window.JIHANKI_RELATIONSHIPS?.trails?.()||[];
   function trailMarkup(){
     const archive=window.JIHANKI_ARCHIVE||[];
     return TRAILS.map(trail=>{
@@ -248,9 +272,11 @@
       :selected==="memory"?places.filter(place=>!["Kanji Museum"].includes(place.name))
       :places.filter(place=>!DETAIL_ONLY.has(place.name));
     const indexPlaces=selected==="trails"?mapPlaces:places;
-    const layout=declutter(mapPlaces);
+    const labelPlaces=selected==="trails"?mapPlaces:mapPlaces.filter(place=>MAIN_LABELS.has(place.name));
+    const layout=declutter(labelPlaces);
     const labelPoint=name=>layout[name]||surfacePoint(name);
     const anchorPoint=surfacePoint;
+    const hasLabel=name=>selected==="trails"||MAIN_LABELS.has(name);
     const connections=selected==="memory"
       ?geographicLines(mapPlaces)
       :selected==="trails"
@@ -263,19 +289,23 @@
       const marker=edge.kind==="chronology"?' marker-end="url(#map-route-arrow)"':"";
       return '<line class="map-edge-'+kind+'" data-edge-from="'+esc(edge.from)+'" data-edge-to="'+esc(edge.to)+'" x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'"'+marker+'><title>'+esc(edge.label||edge.kind)+'</title></line>';
     }).join("");
-    const leaders=mapPlaces.map(place=>{
+    const leaders=labelPlaces.map(place=>{
       const a=anchorPoint(place.name),p=labelPoint(place.name);
       if(!a||!p||Math.hypot(p[0]-a[0],p[1]-a[1])<20)return "";
       return '<line class="map-leader" x1="'+a[0]+'" y1="'+a[1]+'" x2="'+p[0]+'" y2="'+p[1]+'"></line>';
     }).join("");
-    const origins=mapPlaces.map(place=>{
+    const origins=labelPlaces.map(place=>{
       const a=anchorPoint(place.name),precision=GEO_COORDS[place.name][2];
       return '<span class="map-origin-dot map-origin-precision-'+precision+'" aria-hidden="true" style="left:'+(a[0]/MAP_SURFACE.width*100)+'%;top:'+(a[1]/MAP_SURFACE.height*100)+'%"></span>';
     }).join("");
     const nodes=mapPlaces.map(place=>{
+      const anchor=anchorPoint(place.name),precision=GEO_COORDS[place.name][2];
+      if(!hasLabel(place.name)){
+        return '<button class="map-pin map-pin-dot-only map-pin-precision-'+precision+'" style="left:'+(anchor[0]/MAP_SURFACE.width*100)+'%;top:'+(anchor[1]/MAP_SURFACE.height*100)+'%;width:14px;height:14px" type="button" data-map-place="'+esc(place.name)+
+          '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span aria-hidden="true"></span></button>';
+      }
       const p=labelPoint(place.name),metric=labelMetrics(place.name,place.count);
-      const precision=GEO_COORDS[place.name][2];
-      return '<button class="map-pin map-pin-precision-'+precision+'" style="left:'+(p[0]/MAP_SURFACE.width*100)+'%;top:'+(p[1]/MAP_SURFACE.height*100)+'%;width:'+metric.width+'px;height:'+metric.height+'px" type="button" data-map-place="'+esc(place.name)+
+      return '<button class="map-pin map-pin-place-card map-pin-precision-'+precision+'" style="left:'+(p[0]/MAP_SURFACE.width*100)+'%;top:'+(p[1]/MAP_SURFACE.height*100)+'%;width:'+metric.width+'px;height:'+metric.height+'px" type="button" data-map-place="'+esc(place.name)+
         '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-jp">'+esc(metric.jp)+'</span>'+
         (metric.english?'<span class="map-pin-en">'+esc(metric.english)+'</span>':'')+
         '<span class="map-pin-count">'+Number(place.count||0)+' RECORDS</span></button>';
