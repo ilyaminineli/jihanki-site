@@ -692,11 +692,16 @@
         '<option value="most" '+(pref.sort==="most"?"selected":"")+'>MOST ACQUIRED</option></select></label></div>'+
         '<div id="museum-work-list" class="museum-list">'+museumWorkMarkup("",pref.category,pref.sort)+'</div>';
     } else if(tab==="objects"){
-      content=objects.length?'<div class="museum-section-heading">SERIALIZED MEMORY OBJECTS / '+objects.length+'</div>'+
-        objects.map(object=>'<button type="button" class="museum-object-row" data-museum-object="'+esc(object.id)+'"><span class="museum-object-stamp">'+
-        esc(object.stamp)+'</span><strong>'+esc(object.title)+'</strong><small>NO. '+esc(object.serial)+' / '+esc(object.archiveDate)+'</small></button>').join("")+
-        '<div class="museum-storage-note">EACH OBJECT HAS ITS OWN RECEIPT REFERENCE AND CAN BE SAVED IN ITS SOURCE VIEW.</div>':
-        '<div class="collection-empty">NO OBJECTS HAVE BEEN COLLECTED YET.</div>';
+      const fieldPasses=objects.filter(object=>object.kind==="field-impression");
+      const souvenirs=objects.filter(object=>object.kind!=="field-impression");
+      content=(souvenirs.length?'<div class="museum-section-heading">SERIALIZED MEMORY OBJECTS / '+souvenirs.length+'</div>'+
+        souvenirs.map(object=>'<button type="button" class="museum-object-row" data-museum-object="'+esc(object.id)+'"><span class="museum-object-stamp">'+
+        esc(object.stamp)+'</span><strong>'+esc(object.title)+'</strong><small>NO. '+esc(object.serial)+' / '+esc(object.archiveDate)+'</small></button>').join(""):"")+
+        (fieldPasses.length?'<div class="museum-section-heading">FIELD IMPRESSIONS / '+fieldPasses.length+'</div>'+
+        fieldPasses.map(object=>'<button type="button" class="museum-object-row field-impression-row" data-museum-object="'+esc(object.id)+'"><span class="museum-object-stamp">'+
+        esc(object.stamp)+'</span><strong>'+esc(object.title)+'</strong><small>'+esc(object.serial)+' / '+esc(object.archiveDate)+'</small></button>').join(""):"")+
+        (objects.length?'<div class="museum-storage-note">OBJECTS AND FIELD IMPRESSIONS ARE PRIVATE TO THIS BROWSER AND INCLUDED IN COLLECTION BACKUPS.</div>':
+        '<div class="collection-empty">NO OBJECTS HAVE BEEN COLLECTED YET.</div>');
     } else if(tab==="kept"){
       const kept=museum.keptIds().map(id=>byId(id)).filter(Boolean);
       content='<div class="museum-section-heading">WORKS YOU CHOSE TO KEEP / '+kept.length+'</div>'+
@@ -747,9 +752,14 @@
   function showCollection(){openMuseum("overview");}
   function openCollectibleObject(object){
     if(!object)return;
-    openSystemPanel("COLLECTIBLE MEMORY OBJECT",window.JIHANKI_COLLECTION.objectMarkup(object.archiveId,object.receiptCode)+
-      '<div class="exploration-return"><button type="button" data-object-source="'+esc(object.archiveId)+'">OPEN SOURCE MEMORY ↗</button>'+
-      '<button type="button" data-return-museum>RETURN TO MY MUSEUM</button></div>',"collection","museum");
+    const fieldPass=object.kind==="field-impression";
+    const sources=fieldPass?(object.sourceIds||[]).map(id=>byId(id)).filter(Boolean):[];
+    const provenance=fieldPass?'<section class="museum-care-section"><h2>ARCHIVE FRAGMENTS</h2>'+
+      sources.map(item=>'<div class="museum-row"><span>'+esc(item.title||item.id)+'</span><small>'+esc(item.date||"UNDATED")+' / '+esc(item.id)+'</small></div>').join("")+
+      '<p>This is a record of fragments encountered in the archive, not evidence of a physical visit.</p></section>':
+      '<button type="button" data-object-source="'+esc(object.archiveId)+'">OPEN SOURCE MEMORY ↗</button>';
+    openSystemPanel(fieldPass?"FIELD IMPRESSION":"COLLECTIBLE MEMORY OBJECT",window.JIHANKI_COLLECTION.objectMarkup(object.archiveId,object.receiptCode)+
+      '<div class="exploration-return">'+provenance+'<button type="button" data-return-museum>RETURN TO MY MUSEUM</button></div>',"collection","museum");
   }
   function handleMuseumCare(action){
     const museum=window.JIHANKI_MUSEUM;
@@ -805,6 +815,12 @@
     showHome();
     window.JIHANKI_EVENTS.record("maintenance-closed", {});
   }
+
+  window.addEventListener("jihanki:event", event => {
+    if (event.detail?.type === "field-impression-awarded") {
+      announce("A field impression has been placed in your Museum.");
+    }
+  });
 
   document.querySelectorAll(".product").forEach(button => {
     button.addEventListener("click", () => {
