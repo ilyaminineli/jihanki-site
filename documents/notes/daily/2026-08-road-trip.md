@@ -8,7 +8,7 @@
 
 The Japan stay was not confined to the Lake Saiko and Mount Fuji area. During the trip, we made a substantial car journey from Kawaguchiko to Kyoto, continued to Osaka, and returned to Kawaguchiko.
 
-This route belongs to the central geography of the expedition. It connects the residency landscape around Fuji with the urban and cultural environments of Kansai, then brings the journey back to the place where the JIHANKI archive began. The Memory Map should show this as a distinct inter-regional trail, not as a chain of invented road coordinates.
+We left the lakes, drove to Kyoto and Osaka, then came back to Kawaguchiko. Some parts of the road are gone from memory; the places remain.
 
 ## Kyoto — a hotel, a friend and a Nintendo DS
 
@@ -50,26 +50,6 @@ The traveller confirms the nighttime keep and approach photographs in `addition_
 ## Return to Kawaguchiko
 
 The journey returned to Kawaguchiko by car. No precise departure times, motorway sequence, stops, overnight schedule or mileage are reconstructed here because the available public-facing source does not establish them.
-
-## Why this trail matters to JIHANKI
-
-The expedition's geography expanded from a dense local field around Saiko into a much longer movement across Japan. This matters to the archive in several ways:
-
-- The project is rooted in the residency landscape, but the trip itself was wider than that landscape.
-- The car became a means of connecting distant places, friends, music and found objects.
-- Kyoto and Osaka brought different kinds of cultural encounters into the same journey that had already produced the Fuji-region photographs, field recordings and audiovisual works.
-- The return to Kawaguchiko makes this a loop in the archive's geography, even though the actual road route is not plotted turn by turn.
-
-## Map and trail treatment
-
-The Memory Map should display this as a **confirmed regional road trail** with four ordered waypoints: Kawaguchiko, Kyoto, Osaka, Kawaguchiko. The return waypoint is intentional and should not be deduplicated. The line is an editorial trail indicator, not a route-navigation polyline.
-
-The exact route, intermediate stops and hotel address remain unspecified. The site's map must communicate that limitation rather than drawing a false precise route.
-
-## Source and privacy note
-
-This chapter combines the travellers' explicit confirmation with limited chat context. It does not publish the private dialogue, hotel voucher, private booking details or any contact information. Specific venue names in the Osaka shortlist are treated as research leads, not confirmed gig locations.
-
 
 ## Additional Osaka urban context — CRYSTA Nagahori
 

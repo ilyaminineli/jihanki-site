@@ -214,7 +214,7 @@ Do not ask again for these identifications. Keep uncertainty about exact positio
 - `addition_4 (23).jpg` — photo-195: arcade somewhere between Kyoto and Osaka; exact venue not remembered.
 - `addition_4 (26).jpg` — photo-198: Osaka underground parking near Shinsaibashi; not the Kyoto–Otsu passage.
 - `addition_4 (27).jpg` and `(28).jpg` — photo-199–200: Osaka near Shinsaibashi.
-- `addition_4 (30).jpg` — photo-202: school sign near Miyuki Beach, Onna, Okinawa; school name unknown.
+- `addition_4 (30).jpg` — photo-202: school sign near Miyukihama, Odawara; school name unknown.
 - `addition_4 (20).jpg` — photo-192: Genko-an guestbook, dated 8 August 2026, signed Eli & Takismana.
 
 ### Still unresolved
@@ -223,4 +223,4 @@ Do not ask again for these identifications. Keep uncertainty about exact positio
 - **`addition_4 (4).jpg` — photo-176:** exact city/ward or camera point for the Tokyo-area skyline.
 - **`addition_4 (23).jpg` — photo-195:** exact arcade and town along the Kyoto–Osaka journey.
 - **`addition_4 (27).jpg` and `(28).jpg` — photo-199–200:** exact street and building names near Shinsaibashi.
-- **`addition_4 (30).jpg` — photo-202:** exact school name near Miyuki Beach.
+- **`addition_4 (30).jpg` — photo-202:** exact school name near Miyukihama, Odawara.

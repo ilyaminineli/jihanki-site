@@ -143,7 +143,7 @@
   // the schematic. Keep them in the full index, but avoid drawing stacked pins.
   const DETAIL_ONLY=new Set([
     "PICA Fuji Saiko","Tagonoura Minato Park","Tokyo Skytree","Sumida Ward","McDonald’s 139 Fujiyoshida","Mt Fuji Station","Otsuki–Fujiyoshida junction","Yokosawa Sabo","Kamikuishiki","Mount Ashiwada","Fujikawaguchiko",
-    "Kinkaku-ji","Japan Kanji Museum & Library","Kanji Museum","Banbutsu Sōzō-bō","Tenjoyama","Tagonoura Port","Kadoya Shoten","Shinsaibashi","CRYSTA Nagahori","Kamikuishiki","Senbon Kitaoji","Kitaoji Shinmachi","Demachiyanagi","Sanjo","Otsu","Okinawa","Onna","Miyuki Beach","Onsen Yurari","Akihabara"
+    "Kinkaku-ji","Japan Kanji Museum & Library","Kanji Museum","Banbutsu Sōzō-bō","Tenjoyama","Tagonoura Port","Kadoya Shoten","Shinsaibashi","CRYSTA Nagahori","Kamikuishiki","Senbon Kitaoji","Kitaoji Shinmachi","Demachiyanagi","Sanjo","Otsu","Odawara","Onsen Yurari","Akihabara"
   ]);
   function geographicLines(places){
     const names=new Set(places.map(place=>place.name));

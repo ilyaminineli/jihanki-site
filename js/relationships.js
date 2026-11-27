@@ -288,7 +288,7 @@
       title:"KAWAGUCHIKO → KYOTO → OSAKA → KAWAGUCHIKO",
       stops:["Kawaguchiko","Kyoto","Osaka","Kawaguchiko"],
       mode:"CONFIRMED CAR JOURNEY",
-      description:"A confirmed regional car journey. The ordered stops are preserved, including the return to Kawaguchiko; the line is not a measured road trace."
+      description:"A long drive away from the lakes. Kyoto, Osaka, small discoveries — then the road back to Kawaguchiko."
     },
     {
       id:"saiko-first-summit-2026-07-27",
