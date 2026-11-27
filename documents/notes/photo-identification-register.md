@@ -2,19 +2,20 @@
 
 **Audit scope:** all static photographic assets currently stored in `media/photo/`  
 **Reviewed:** 2026-11-27  
-**Catalogue state:** 172 unique Japan photographs indexed as `photo-01`–`photo-172`
+**Catalogue state:** 202 unique Japan photographs indexed as `photo-01`–`photo-202`
 
 ## What was checked
 
-The repository contains 173 files under `media/photo/photos_from_japan/`:
+The repository contains 203 files under `media/photo/photos_from_japan/`:
 
 - `addition_1/`: 37 photographs
 - `addition_2/`: 15 photographs
 - `addition_3/`: 32 photographs
+- `addition_4/`: 30 photographs
 - `eli_photos/`: 21 photographs
 - `taki_photos/`: 68 photographs
 
-There are 172 unique images in those folders. `addition_2 (8).jpg` is an exact duplicate of another image in `addition_2`; it remains in the media manifest for integrity but does not receive a duplicate memory record. The first archive pass indexed 74 images, the next indexed `photo-75`–`photo-140`, and the 32 unique `addition_3` photographs are now indexed as `photo-141`–`photo-172`.
+There are 202 unique images in those folders. `addition_2 (8).jpg` is an exact duplicate of `addition_2 (3).jpg`; it remains in the media manifest for integrity but does not receive a duplicate memory record. The earlier archive ranges remain unchanged: `addition_3` is `photo-141`–`photo-172`, and `addition_4` is `photo-173`–`photo-202`.
 
 The other six static image assets in `media/photo/` are presentation artwork rather than unindexed travel photographs: the Aokigahara project cover and release-art variant, plus the four named voicebank portraits for Eugene:RE, Akane Iirai, SPIDER and Takismana. Those already have appropriate project or voicebank context in the catalogue. The two image files outside `media/` are also understood: `assets/jihanki.png` is the site's Memory Vending Machine artwork, while `assets/placeholder.png` is a neutral empty-frame fallback, not an undocumented photograph.
 
@@ -184,7 +185,7 @@ This register is a source-aware identification layer, not a claim that every pho
 
 ## Supplemental photo review and memory prompts
 
-The 32 images in `addition_3` are now ingested as `photo-141`–`photo-172`; the archive contains 172 unique Japan photo records across 173 source files. The source-aware addition_3 identifications and the filename inventory of unresolved questions are maintained separately:
+The 32 images in `addition_3` remain indexed as `photo-141`–`photo-172`; the 30 images in `addition_4` are now indexed as `photo-173`–`photo-202`. The archive contains 202 unique Japan photo records across 203 source files. The source-aware addition_3 identifications and the filename inventory of unresolved questions are maintained separately:
 
 - [Addition_3 photo intake and identification](./photo-intake-2026-11-27.md)
 - [Filename-based photo memory prompts](./photo-memory-prompts-2026-11-27.md)
@@ -229,3 +230,14 @@ The following corrections supersede earlier unresolved or tentative descriptions
 - `addition_3 (22).jpg` — `photo-162`: **Yokosawa Sabo**, somewhere near Lake Saiko and the nearest mountain; exact position unknown.
 
 These are locality-level or regional associations where stated, not surveyed GPS pins or measured routes.
+
+
+## Addition_4 — 30 newly catalogued photographs
+
+The `addition_4` folder is indexed as `photo-173`–`photo-202`. The batch adds Fugaku Wind Cave, Saiko East Gate, the Haneda–Shinjuku ticket, Tagonoura Port, Mt. Fuji Panoramic Ropeway, Kadoya Shoten, Osaka Castle and CRYSTA Nagahori. Unknown urban, transport, tunnel, arcade, waterfront and roadside frames remain deliberately unplaced.
+
+The fireworks photographs `addition_4 (7).jpg` and `addition_4 (8).jpg` are a candidate, not a confirmed match, for the 15 August 2026 Oku-Kawaguchi / Nagahama Furusato Festival. DYNAKYRIS's companion fieldnote describes a local celebration the previous evening; the 2026 event listing places fireworks at Nagahama Shinsui Park. No festival pin is added until the traveller confirms it.
+
+The visitor-book page `addition_4 (20).jpg` is dated 8 August 2026 and signed `エリ＆タキスマナ` (Eli & Takismana). It is catalogued as a Kyoto visitor-book memory, but its venue is not assigned to Genko-an until the traveller confirms the book's location.
+
+See [Addition_4 photo intake](./photo-intake-2026-11-27-addition-4.md), [Japan photo memory prompts](./photo-memory-prompts-2026-11-27.md) and [DYNAKYRIS companion fieldnotes](./dynakyris-japan-corroborations-2026-11-27.md).
