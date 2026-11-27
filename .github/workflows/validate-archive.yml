@@ -54,6 +54,10 @@ jobs:
         run: node scripts/test-relationship-semantics.mjs
       - name: Test field impressions
         run: node scripts/test-field-impressions.mjs
+      - name: Test curated memory traces
+        run: node scripts/test-memory-traces.mjs
+      - name: Test curator cabinet cards
+        run: node scripts/test-curators-cabinet.mjs
       - name: Test machine interaction transitions
         run: node scripts/test-interaction-model.mjs
       - name: Test Markdown link validation fixtures
