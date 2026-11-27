@@ -76,7 +76,7 @@ Keep this separate from **Niikura Tunnel (新倉河口湖トンネル)**, which 
 
 ### Shiki — deer, audiovisual work and sound recordings
 
-The traveller confirms that both `addition_5 (5).jpg` and `addition_5 (26).jpg` show **Shiki**. Connect the photographs to the existing `shiki` video and audio records `sound-08` (Shiki 1) and `sound-09` (Shiki 2), and to the 24–25 July encounter context. The traveller confirms both photographs show Shiki. The first Shiki appearance is recorded on 22 July and the first close encounter on 24 July, but the two photographs are not individually dated, so their exact sequence remains unassigned.
+The traveller confirms that both `addition_5 (5).jpg` and `addition_5 (26).jpg` show **Shiki**. Connect the photographs to the existing `shiki` video and audio records `sound-08` (Shiki 1) and `sound-09` (Shiki 2), and to the Shiki encounters recorded on 22 July (first appearance) and 24 July (first close encounter). The photographs themselves are not individually dated, so neither is assigned to one of those two moments.
 
 ### First summit outing near Saiko
 
@@ -100,10 +100,10 @@ The Kyoto friend’s shop **Banbutsu Sōzō-bō** remains separate from Kawaguch
 - `(27)`: shared refrigerator used by Eli and Takismana; keep as a domestic / residency memory without asserting a precise room or date.
 - `(30)`: fruit from one of the Mount Fuji ascent stops; link to the 1 August Mount Fuji climb, not the 31 July birthday preparation.
 - `(32)`: Kitaoji Shinmachi bus stop; cross-link with the earlier `photo-193` area memory.
-- `(33)) and `(35)`: street scenes from the first Tokyo visit on 24 July.
+- `(33)` and `(35)`: street scenes from the first Tokyo visit on 24 July.
 - `(34)`: sticker near a Kyoto bus stop; exact stop is not confirmed, so do not force a same-stop link to `(32)`.
 - `(36)`: descent / stairway toward Shinjuku during the first Tokyo visit.
-- `(37))–`(42)`: Akihabara sequence — arrival / entrance, retail and city views, shopping street, club and district scene. `(41)` is a club, not an arcade; the venue remains unnamed.
+- `(37)`–`(42)`: Akihabara sequence — arrival / entrance, retail and city views, shopping street, club and district scene. `(41)` is a club, not an arcade; the venue remains unnamed.
 - `(43)`: an NPC 24H parking facility somewhere in Tokyo, not the DS screen in `(44)`.
 - `(44)`: Nintendo DS music interface used by Takismana for music and a live event. The exact event record is not yet matched by title in the static catalogue.
 - `(45))–`(48)`: a separate Miyuki Beach / Onna locality cluster. `(48)` is the beach sign; `(45)` is a nearby residential street; `(47)` is a different Osaka image.
