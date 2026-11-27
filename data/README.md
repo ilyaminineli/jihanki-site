@@ -69,6 +69,14 @@ Use metadata.locations for known place names and metadata.related for stable IDs
 
 Photo group values are thematic groupings (for example, Machines after dark and Forest boundaries); they should not be confused with geographic locations. The Memory Map is schematic and explicitly not to scale.
 
+## Additional Japan photographs and source map pins
+
+The 2026 Japan photo batches in `media/photo/photos_from_japan/addition_1` and `addition_2` are catalogued as `photo-24` through `photo-74`. Each catalogue record points to its original file. Location metadata is only attached where a sign, visible map label, event branding, airport signage or a linked photo sequence supports the stop. The duplicate view in `addition_2 (8).jpg` remains in the media manifest but is not added as a second catalogue memory.
+
+Identified stops include Oishi Park / Lake Kawaguchi, Katori Jingu, Katori Station, Haneda, Lake Saiko, Kyoto and Yamanashi. The pagoda silhouette, unnamed shrine scene, accommodation interiors and other fragments remain unplaced where the site identity is not established.
+
+The Memory Map's `PINS` mode preserves four forwarded pins with caption-derived labels and twelve individually numbered 20 July map links that have no place names in the source export. Caption-derived labels are descriptions, not asserted official names. The original Google Maps links are retained for future confirmation.
+
 ## Media integrity
 
 data/media-manifest.json inventories every file under media/ with its byte size and Git blob SHA-1. Rebuild it after adding or replacing media with:
