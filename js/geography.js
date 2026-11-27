@@ -11,7 +11,7 @@
     "daily-2026-07-20": ["Sheremetyevo", "Moscow"],
     "daily-2026-07-21": ["Haneda", "Shinjuku", "Kawaguchiko"],
     "daily-2026-07-22": ["Lake Saiko", "Aokigahara"],
-    "daily-2026-07-23": ["Lake Saiko", "Kawaguchiko"],
+    "daily-2026-07-23": ["Lake Saiko", "Kawaguchiko", "Iyashi no Sato", "Fujisan Museum", "Kawaguchiko Music Forest Museum", "Hard Off Kawaguchiko Store", "Nojima Fujiyoshida Store"],
     "daily-2026-07-24": ["Tokyo"], "daily-2026-07-25": ["Uno-Misaki Tunnel"],
     "daily-2026-07-26": ["Yamanashi", "Shrines"],
     "daily-2026-07-27": ["Mount Fuji", "Yamanashi"],
