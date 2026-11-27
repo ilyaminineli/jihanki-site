@@ -1,22 +1,14 @@
 # 2026-08 — KAWAGUCHIKO / KYOTO / OSAKA / KAWAGUCHIKO
 
-**Route:** Kawaguchiko → Kyoto → Osaka → Kawaguchiko  
-**Travel mode:** car  
-**Status:** confirmed journey; individual stop-by-stop chronology is intentionally incomplete
-
-## A longer road chapter
-
-The Japan stay was not confined to the Lake Saiko and Mount Fuji area. During the trip, we made a substantial car journey from Kawaguchiko to Kyoto, continued to Osaka, and returned to Kawaguchiko.
-
 We left the lakes, drove to Kyoto and Osaka, then came back to Kawaguchiko. Some parts of the road are gone from memory; the places remain.
 
 ## Kyoto — a hotel, a friend and a Nintendo DS
 
-We stayed in Kyoto. Takismana found a Nintendo DS at **万物創造房 (Banbutsu Sōzō-bō)**, the shop run by **Banbutsu-san**. A small object, and a connection that stayed with us.
+In Kyoto, Takismana found a Nintendo DS at **万物創造房 (Banbutsu Sōzō-bō)**, the shop run by **Banbutsu-san**. DYNAKYRIS remembers the visit and the exchange of artworks and music.
 
 ## Osaka — city visit
 
-The Osaka leg is confirmed as part of the road journey, but **no concerts were attended in Osaka**. Earlier chat references to Live House DROP, Namba Mele and Music Bar SINKAGURA were venue research / shortlist material, not evidence of concert attendance. They must not be represented as visited venues or events in the trip archive.
+No concerts this time. The live houses mentioned in chat were only places we had considered.
 
 ## Kyoto temple visits — Genko-an and Kinkaku-ji
 
