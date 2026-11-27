@@ -14,7 +14,7 @@ In a 16 August entry, DYNAKYRIS describes a local celebration from the previous 
 
 The description is compatible with the Lake Kawaguchi / Nagahama area. The town identifies Nagahama as the western side of Lake Kawaguchi and says its Furusato Festival takes place each 15 August ([Fujikawaguchiko Town](https://www.town.fujikawaguchiko.lg.jp/ka/info.php?if_id=740)). A 2026 event listing gives fireworks at Nagahama Shinsui Park on 15 August ([event listing](https://www.walkerplus.com/event/ar0419e195711/data.html)). This is a plausible match for photos `addition_4 (7).jpg` and `addition_4 (8).jpg`, but neither the note nor images names the venue. The event remains provisional.
 
-Photo `addition_4 (11).jpg` identifies **Kadoya Shoten** in Nagahama. DYNAKYRIS does not name this shop, so it is not asserted to be the shop he described.
+Photo `addition_4 (11).jpg` identifies **Kadoya Shoten**, which the traveller says belongs to the man they contacted in Saiko and who introduced himself as `山梨県河口湖のかどや商店の三浦正重でさ`. This is kept as a separate contact memory in [Kadoya Shoten — Miura contact](../contacts/kadoya-shoten-miura.md). DYNAKYRIS does not name Kadoya Shoten, so it is not assumed to be the shop-with-a-house he described.
 
 ## The Mountain Remembers — memory and collaboration
 
