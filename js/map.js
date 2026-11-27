@@ -55,7 +55,8 @@
     "CRYSTA Nagahori":"クリスタ長堀","Shinsaibashi":"心斎橋",
     "Senbon Kitaoji":"千本北大路","Kitaoji Shinmachi":"北大路新町",
     "Demachiyanagi":"出町柳","Sanjo":"三条","Otsu":"大津",
-    "Miyuki Beach":"みゆきビーチ","Onna":"恩納村","Okinawa":"沖縄"
+    "Miyuki Beach":"みゆきビーチ","Onna":"恩納村","Okinawa":"沖縄",
+    "Otsuki–Fujiyoshida junction":"大月・富士吉田接続点","Former Kamikuishiki complex":"旧上九一色"
   };
   const labelFor=name=>name;
   const subLabelFor=name=>JP_LABELS[name]||"";
@@ -72,44 +73,77 @@
       .map(edge=>({from:edge.from,to:edge.to,kind:edge.kind,label:edge.label}));
   }
 
-  /* Stable screen-space relaxation keeps dense clusters apart without implying
-     that the schematic positions are surveyed coordinates. */
+  /* Label-sized packing on the pannable 1280 × 860 map surface.
+     Pins keep their regional relationships but are separated by their real label
+     rectangles, not merely by their anchor points. */
+  function labelMetrics(name){
+    const label=subLabelFor(name)||name;
+    const units=Array.from(label).length;
+    const width=Math.max(82,Math.min(156,units*10+20));
+    const charsPerLine=Math.max(1,Math.floor((width-18)/10));
+    const lines=Math.max(1,Math.ceil(units/charsPerLine));
+    const height=Math.max(30,lines*13+14);
+    return{label,width,height};
+  }
   function declutter(places){
-    const width=760,height=420,minGap=75;
+    const width=1280,height=860;
     const nodes=places.map(place=>{
-      const anchor=POSITIONS[place.name];
-      return{name:place.name,x:anchor[0],y:anchor[1],anchorX:anchor[0],anchorY:anchor[1]};
+      const metric=labelMetrics(place.name),anchor=POSITIONS[place.name];
+      return{name:place.name,x:anchor[0]*width/100,y:anchor[1]*height/100,
+        anchorX:anchor[0]*width/100,anchorY:anchor[1]*height/100,
+        boxW:metric.width,boxH:metric.height};
     });
-    for(let pass=0;pass<240;pass++){
-      for(let i=0;i<nodes.length;i++){
-        for(let j=i+1;j<nodes.length;j++){
-          const a=nodes[i],b=nodes[j];
-          let dx=(a.x-b.x)*width/100,dy=(a.y-b.y)*height/100;
-          let distance=Math.hypot(dx,dy);
-          if(distance>=minGap)continue;
-          if(distance<0.01){
-            const angle=((i+1)*37+(j+1)*19)*Math.PI/180;
-            dx=Math.cos(angle)*0.01;dy=Math.sin(angle)*0.01;distance=0.01;
-          }
-          const push=(minGap-distance)*0.48,ux=dx/distance,uy=dy/distance;
-          a.x+=ux*push*100/width;a.y+=uy*push*100/height;
-          b.x-=ux*push*100/width;b.y-=uy*push*100/height;
-        }
+    const clamp=node=>{
+      node.x=Math.max(node.boxW/2+12,Math.min(width-node.boxW/2-12,node.x));
+      node.y=Math.max(node.boxH/2+12,Math.min(height-node.boxH/2-12,node.y));
+    };
+    const separate=(a,b,margin)=>{
+      let dx=a.x-b.x,dy=a.y-b.y;
+      const overlapX=(a.boxW+b.boxW)/2+margin-Math.abs(dx);
+      const overlapY=(a.boxH+b.boxH)/2+margin-Math.abs(dy);
+      if(overlapX<=0||overlapY<=0)return;
+      if(overlapX<overlapY){
+        const sign=dx===0?((a.name.length+b.name.length)%2?1:-1):Math.sign(dx);
+        const push=(overlapX+.2)*.53;
+        a.x+=sign*push*.5;b.x-=sign*push*.5;
+      }else{
+        const sign=dy===0?((a.name.length+b.name.length)%2?1:-1):Math.sign(dy);
+        const push=(overlapY+.2)*.53;
+        a.y+=sign*push*.5;b.y-=sign*push*.5;
       }
+      clamp(a);clamp(b);
+    };
+    for(let pass=0;pass<650;pass++){
+      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)separate(nodes[i],nodes[j],18);
       nodes.forEach(node=>{
-        node.x+=(node.anchorX-node.x)*0.012;
-        node.y+=(node.anchorY-node.y)*0.012;
-        node.x=Math.max(2,Math.min(98,node.x));
-        node.y=Math.max(5,Math.min(95,node.y));
+        node.x+=(node.anchorX-node.x)*.003;
+        node.y+=(node.anchorY-node.y)*.003;
+        clamp(node);
       });
     }
-    return Object.fromEntries(nodes.map(node=>[node.name,[node.x,node.y]]));
+    // A final collision-only pass removes the last few pixels of overlap.
+    for(let pass=0;pass<120;pass++)
+      for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++)separate(nodes[i],nodes[j],12);
+    return Object.fromEntries(nodes.map(node=>[node.name,[node.x/width*100,node.y/height*100]]));
   }
   const TRAILS=window.JIHANKI_RELATIONSHIPS?.trails?.()||[];
   function trailMarkup(){
-    return TRAILS.map(trail=>'<article class="map-trail-card"><span class="map-eyebrow">'+esc(trail.mode||trail.kind)+'</span><strong>'+esc(trail.title)+'</strong><p>'+esc(trail.description)+'</p><div class="map-trail-stops">'+
-      trail.stops.map((name,index)=>'<button type="button" data-map-place="'+esc(name)+'"><span>'+String(index+1).padStart(2,"0")+'</span><strong>'+esc(labelFor(name))+'</strong></button>').join("")+
-      '</div></article>').join("");
+    const archive=window.JIHANKI_ARCHIVE||[];
+    return TRAILS.map(trail=>{
+      const stages=Array.isArray(trail.stages)&&trail.stages.length
+        ?'<ol class="map-trail-stages">'+trail.stages.map(stage=>'<li><strong>'+esc(stage.title)+'</strong><span>'+esc(stage.detail)+'</span></li>').join("")+'</ol>'
+        :"";
+      const photos=(trail.photoIds||[]).map(id=>archive.find(item=>item.id===id)).filter(item=>item&&item.file);
+      const photoMarkup=photos.length
+        ?'<div class="map-trail-photo-section"><span class="map-eyebrow">FIELD PHOTOGRAPHS / ADDITION_5</span><div class="map-trail-photo-grid">'+photos.map(item=>{
+          const filename=String(item.file).split("/").pop();
+          return '<button type="button" data-archive-id="'+esc(item.id)+'" title="'+esc(item.title)+'"><img src="'+esc(item.file)+'" alt="'+esc(item.title)+'" loading="lazy" decoding="async"><span>'+esc(filename)+'</span></button>';
+        }).join("")+'</div></div>'
+        :"";
+      return '<article class="map-trail-card"><span class="map-eyebrow">'+esc(trail.mode||trail.kind)+'</span><strong>'+esc(trail.title)+'</strong><p>'+esc(trail.description)+'</p>'+stages+photoMarkup+'<div class="map-trail-stops">'+
+        trail.stops.map((name,index)=>'<button type="button" data-map-place="'+esc(name)+'"><span>'+String(index+1).padStart(2,"0")+'</span><strong>'+esc(labelFor(name))+'</strong></button>').join("")+
+        '</div></article>';
+    }).join("");
   }
   const PIN_REFERENCES=[
     {label:"River fork / stepping-stone spot",detail:"Forwarded caption: “the river seems to split here; you can run over the stones.” Proper place name is not included in the export.",source:"Caption from Lera’s forwarded 28 July message",url:"https://maps.app.goo.gl/7BkvvvGWqwyns6Tr6",status:"caption-derived label"},
@@ -148,7 +182,7 @@
     const connections=selected==="memory"
       ?geographicLines(mapPlaces)
       :selected==="trails"
-        ?TRAILS.flatMap(trail=>trail.stops.slice(1).map((stop,index)=>({from:trail.stops[index],to:stop,kind:"chronology",label:trail.kind})))
+        ?TRAILS.filter(trail=>trail.mapLine!==false).flatMap(trail=>trail.stops.slice(1).map((stop,index)=>({from:trail.stops[index],to:stop,kind:"chronology",label:trail.kind})))
         :[];
     const paths=connections.map(edge=>{
       const a=point(edge.from),b=point(edge.to);
@@ -158,17 +192,9 @@
       return '<line class="map-edge-'+kind+'" x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'"'+marker+'></line>';
     }).join("");
     const nodes=mapPlaces.map(place=>{
-      const p=point(place.name),number=String(indexPlaces.indexOf(place)+1).padStart(2,"0");
-      const density=place.count>=8?"cluster":place.count>=3?"active":"quiet";
-      const jp=subLabelFor(place.name);
-      const mobileLabel=jp||place.name;
-      const edgeX=p[0]<38?" map-pin-edge-left":p[0]>62?" map-pin-edge-right":"";
-      const edgeY=p[1]<10?" map-pin-edge-top":p[1]>90?" map-pin-edge-bottom":"";
-      return '<button class="map-pin map-pin-'+density+edgeX+edgeY+'" style="left:'+p[0]+'%;top:'+p[1]+'%" type="button" data-map-place="'+esc(place.name)+
-        '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-dot" aria-hidden="true"></span>'+
-        '<span class="map-pin-copy"><strong>'+esc(place.name)+'</strong>'+(jp?'<small class="map-pin-jp">'+esc(jp)+'</small>':'')+
-        '<small class="map-pin-count">'+place.count+' memories</small></span><span class="map-pin-index">'+number+
-        '</span><span class="map-pin-mobile-label">'+esc(mobileLabel)+'</span></button>';
+      const p=point(place.name),metric=labelMetrics(place.name);
+      return '<button class="map-pin" style="left:'+p[0]+'%;top:'+p[1]+'%;width:'+metric.width+'px;min-height:'+metric.height+'px" type="button" data-map-place="'+esc(place.name)+
+        '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-label">'+esc(metric.label)+'</span></button>';
     }).join("");
     const key=indexPlaces.map((place,index)=>'<button type="button" data-map-place="'+esc(place.name)+'"><span>'+
       String(index+1).padStart(2,"0")+'</span><strong>'+esc(place.name)+'</strong><small>'+place.count+' memories</small></button>').join("");
@@ -191,7 +217,7 @@
       paths+'</svg>'+nodes+'</div></div><p class="map-disclaimer">'+
       (selected==="memory"?"Lines describe named geographical relationships such as containment, outlooks and transit corridors. They are not shared-photo links.":
        selected==="trails"?"Arrows preserve the documented order of visits or travel. They are not measured roads, walking paths or exact transfer itineraries.":
-       "SCHEMATIC / RELATIVE POSITION ONLY / NOT TO SCALE.")+
+       "SCHEMATIC / PAN TO EXPLORE / RELATIVE POSITION ONLY / NOT TO SCALE.")+
       '</p><div class="map-place-list" aria-label="地名一覧">'+key+'</div>'+(selected==="trails"?'<div class="map-trail-list">'+trailMarkup()+'</div>':""))+
       '</section>';
   }
@@ -201,6 +227,11 @@
     canvas.dataset.panBound="true";let active=null;
     const read=()=>({x:Number(layer.dataset.panX||0),y:Number(layer.dataset.panY||0)});
     const write=(x,y)=>{layer.dataset.panX=String(x);layer.dataset.panY=String(y);layer.style.transform="translate3d("+x+"px,"+y+"px,0)";};
+    if(layer.dataset.panInitialized!=="true"){
+      const initialX=Math.min(0,(canvas.clientWidth-layer.offsetWidth)/2);
+      const initialY=Math.min(0,(canvas.clientHeight-layer.offsetHeight)/2);
+      write(initialX,initialY);layer.dataset.panInitialized="true";
+    }
     canvas.addEventListener("pointerdown",event=>{if(event.target.closest("button,a"))return;if(event.pointerType==="mouse"&&event.button!==0)return;
       const p=read();active={id:event.pointerId,x:event.clientX,y:event.clientY,px:p.x,py:p.y};canvas.setPointerCapture?.(event.pointerId);layer.classList.add("is-dragging");event.preventDefault();});
     canvas.addEventListener("pointermove",event=>{if(!active||event.pointerId!==active.id)return;const dx=event.clientX-active.x,dy=event.clientY-active.y;
