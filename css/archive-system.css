@@ -2540,3 +2540,15 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   .listening-album-note { grid-template-columns:60px minmax(0,1fr); }
   .listening-room-cover { width:60px; height:60px; }
 }
+
+/* Keep the ambience control reachable after the fixed-size machine is scaled on phones. */
+.home-archive-tools .home-audio {
+  box-sizing:border-box;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:74px;
+  min-height:25px;
+  padding:4px 6px;
+  border:1px solid rgba(255,255,255,.2);
+}
