@@ -974,7 +974,7 @@ const ARCHIVE = {
     {
       "id": "photo-45",
       "title": "Lake Saiko — 9.79 km running route",
-      "date": "2026",
+      "date": "2026-07-26",
       "type": "image",
       "category": "photo",
       "group": "Lake Saiko / Running",
@@ -1199,7 +1199,7 @@ const ARCHIVE = {
     {
       "id": "photo-64",
       "title": "Keikyu bus ticket machine",
-      "date": "2026",
+      "date": "2026-07-21",
       "type": "image",
       "category": "photo",
       "group": "Kanto / Transit fragment",
