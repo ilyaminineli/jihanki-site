@@ -350,6 +350,9 @@ try{
     assert(crtLabels,device.name+": CRT Japanese/English primary place cards are missing");
     assert(await mapDots.count()>=45,device.name+": exact-location map points are missing from the Japan map");
     assert(map.overflow==="hidden",device.name+": pannable map viewport must clip its inner surface");
+    assert(map.surface.left>=map.box.left-1&&map.surface.right<=map.box.right+1&&
+      map.surface.top>=map.box.top-1&&map.surface.bottom<=map.box.bottom+1,
+      device.name+": the full Japan prefecture outline should fit in country-level views");
     assert(await page.locator(".map-view-controls [data-map-fit]").count()===1,device.name+": map fit control missing");
     const initialZoom=Number((await page.locator("[data-map-zoom-level]").textContent()).replace("%",""));
     await page.locator('[data-map-zoom="out"]').click();
