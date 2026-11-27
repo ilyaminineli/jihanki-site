@@ -75,6 +75,45 @@
     }
     const balance = artifactContent.querySelector(".artifact-credit-status");
     if (balance) balance.textContent = "CREDIT BALANCE / " + displayedCredits;
+    updateCreditFeedback(displayedCredits);
+  }
+
+  function updateCreditFeedback(displayedCredits) {
+    const feedback = screen.querySelector(".boot[data-credit-feedback]");
+    if (!feedback) return;
+    const title = feedback.querySelector("[data-credit-feedback-title]");
+    const subtitle = feedback.querySelector("[data-credit-feedback-subtitle]");
+    const footer = feedback.querySelector("[data-credit-feedback-footer]");
+    if (!title || !subtitle || !footer) return;
+
+    const limit = interactionModel.LIMITS.credits;
+    const transaction = interactionState.transaction || {};
+    const accepted = feedback.dataset.creditFeedback === "accepted" &&
+      transaction.status === "credit-accepted" && displayedCredits > 0;
+    const atLimit = feedback.dataset.creditFeedback === "limit" &&
+      transaction.reason === "credit-limit" && displayedCredits >= limit;
+
+    if (accepted) {
+      title.textContent = "COIN ACCEPTED";
+      subtitle.textContent = displayedCredits + " CREDIT" + (displayedCredits === 1 ? "" : "S");
+      footer.textContent = "PICK UP TO DISPENSE A MEMORY";
+      return;
+    }
+    if (atLimit) {
+      title.textContent = "CREDIT LIMIT";
+      subtitle.textContent = displayedCredits + " / " + limit + " CREDITS";
+      footer.textContent = "DISPENSE A MEMORY FIRST";
+      return;
+    }
+
+    // A coin/limit message is no longer a live description of the machine
+    // once a purchase or refund changes the transaction state. Keep the CRT
+    // balance in step with the token counter instead of leaving a stale snapshot.
+    title.textContent = "CREDIT BALANCE";
+    subtitle.textContent = displayedCredits + " / " + limit + " CREDITS";
+    footer.textContent = displayedCredits > 0
+      ? "PICK UP TO DISPENSE A MEMORY"
+      : "INSERT A COIN TO CONTINUE";
   }
   function audioStateForView() {
     if (maintenanceActive || currentView === "service") return "service";
@@ -212,11 +251,15 @@
     announce("JIHANKI home. Sound Lab, collection, memory map, search and archive chronology. " + collectionCount + " collected works. " + machineLine);
   }
   function showMessage(title, subtitle, footer) {
-    if (title === "COIN ACCEPTED") {
-      const balance = interactionState.credits;
-      subtitle = balance + " CREDIT" + (balance === 1 ? "" : "S");
-    }
-    screen.innerHTML = '<div class="boot"><div class="boot-title">' + esc(title) + '</div><div class="boot-subtitle">' + esc(subtitle || "") + '</div><div class="boot-loading">' + esc(footer || "") + '</div></div>';
+    const creditFeedback = title === "COIN ACCEPTED" ? "accepted" :
+      title === "CREDIT LIMIT" ? "limit" : null;
+    const feedbackAttribute = creditFeedback ? ' data-credit-feedback="' + creditFeedback + '"' : "";
+    const titleAttribute = creditFeedback ? " data-credit-feedback-title" : "";
+    const subtitleAttribute = creditFeedback ? " data-credit-feedback-subtitle" : "";
+    const footerAttribute = creditFeedback ? " data-credit-feedback-footer" : "";
+    screen.innerHTML = '<div class="boot"' + feedbackAttribute + '><div class="boot-title"' + titleAttribute + '>' +
+      esc(title) + '</div><div class="boot-subtitle"' + subtitleAttribute + '>' + esc(subtitle || "") +
+      '</div><div class="boot-loading"' + footerAttribute + '>' + esc(footer || "") + '</div></div>';
     announce([title, subtitle, footer].filter(Boolean).join(". "));
     updateCreditDisplay();
   }
