@@ -2547,8 +2547,10 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-width:74px;
-  min-height:25px;
-  padding:4px 6px;
+  flex:0 0 90px;
+  width:90px;
+  min-width:90px;
+  min-height:34px;
+  padding:5px 6px;
   border:1px solid rgba(255,255,255,.2);
 }
