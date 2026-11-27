@@ -1548,3 +1548,14 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .archaeology-place-edge { display:grid; grid-template-columns:minmax(75px,1fr) auto minmax(75px,1fr); gap:5px 8px; align-items:center; padding:6px 0; border-bottom:1px solid rgba(255,255,255,.07); font:9px "Courier New",monospace; }
 .archaeology-place-edge span { grid-column:1/-1; color:#777; font-size:8px; letter-spacing:.1em; }
 .archaeology-place-edge small { color:#888; text-align:center; }
+
+
+/* Keep pin labels inside the viewport when schematic anchors touch map edges. */
+.map-pin-edge-left { transform:translate(0,-50%); }
+.map-pin-edge-right { transform:translate(-100%,-50%); }
+.map-pin-edge-top { transform:translate(-50%,0); }
+.map-pin-edge-bottom { transform:translate(-50%,-100%); }
+.map-pin-edge-left.map-pin-edge-top { transform:translate(0,0); }
+.map-pin-edge-left.map-pin-edge-bottom { transform:translate(0,-100%); }
+.map-pin-edge-right.map-pin-edge-top { transform:translate(-100%,0); }
+.map-pin-edge-right.map-pin-edge-bottom { transform:translate(-100%,-100%); }
