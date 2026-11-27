@@ -2630,8 +2630,10 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .home-boot .boot-japanese,
 .home-boot .boot-title,
 .home-boot .boot-subtitle {
-  width:100%;
+  width:fit-content;
   max-width:100%;
+  margin-inline:auto;
+  box-sizing:border-box;
   text-align:center;
   white-space:normal;
   overflow-wrap:anywhere;
