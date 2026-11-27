@@ -47,7 +47,8 @@ Japan stay / shared field experience: **Takismana**
 * Browser-local collection with acquired works, serialized objects, saved works, thematic shelves and one unified visit trail
 * Browser-local collection and museum backup/restore with separate clear controls
 * Ambient machine states with volume transitions, media ducking and visitor mute control
-* Rare, authored machine anomalies
+* Rare, authored machine anomalies, including one browser-local Satyam 1 return signal
+
 * Memory archaeology with typed links between works, voices, notes and places
 * Schematic memory map with place-index and archive-network modes
 * Local, evolving machine personality with weighted rediscovery
