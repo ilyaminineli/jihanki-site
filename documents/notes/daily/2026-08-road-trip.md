@@ -76,3 +76,12 @@ This chapter combines the travellers' explicit confirmation with limited chat co
 ## Additional Osaka urban context — CRYSTA Nagahori
 
 The new photograph `addition_4 (29).jpg` reads `CRYSTA 長堀` and `南5エレベーター`, identifying the South 5 elevator inside **CRYSTA Nagahori**, the underground mall directly connected to Shinsaibashi and Nagahoribashi stations. [Official CRYSTA Nagahori access information](https://global.crystaweb.jp/en/access/).
+
+## Addition_5 — Kyoto and Osaka urban details
+
+Two traveller-confirmed photographs add small-scale context to the Kansai journey:
+
+- `addition_5 (32).jpg` identifies the **Kitaoji Shinmachi (北大路新町) bus stop** in Kyoto. It connects to the same local area already represented by `photo-193`.
+- `addition_5 (47).jpg` shows a poster photographed in an **Osaka underground parking lot near Shinsaibashi**. Its slogan reads `地球にやさしく、自分にきびしく！` — “Be kind to the Earth, be strict with yourself!” It is related at neighbourhood / scene level to the existing Shinsaibashi underground-parking photograph `photo-198`, but the archive does not claim that both images show the exact same car park.
+
+`addition_5 (44).jpg` separately documents a Nintendo DS music interface used by Takismana for music and a live event already represented in the archive. The exact event record remains to be matched; it should not be confused with the Osaka parking photograph.
