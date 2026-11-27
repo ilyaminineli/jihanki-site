@@ -38,7 +38,7 @@ assert.equal(awarded.length, 0, "Two fragments must not complete the trace.");
 open("photo-173");
 assert.equal(awarded.length, 1, "The third curated fragment should complete the trace.");
 assert.equal(awarded[0].kind, "memory-trace");
-assert.deepEqual(awarded[0].sourceIds, ["photo-127", "daily-2026-08-03", "photo-173"]);
+assert.deepEqual(JSON.parse(JSON.stringify(awarded[0].sourceIds)), ["photo-127", "daily-2026-08-03", "photo-173"]);
 open("photo-173");
 assert.equal(awarded.length, 1, "Reopening a fragment must not duplicate the trace.");
 
