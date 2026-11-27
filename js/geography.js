@@ -14,7 +14,7 @@
     "daily-2026-07-23": ["Lake Saiko", "Kawaguchiko", "Iyashi no Sato", "Fujisan Museum", "Kawaguchiko Music Forest Museum", "Hard Off Kawaguchiko Store", "Nojima Fujiyoshida Store"],
     "daily-2026-07-24": ["Tokyo", "Aokigahara", "Fugaku Wind Cave", "Akihabara"], "daily-2026-07-25": ["Uno-Misaki Tunnel", "Onsen Yurari", "Yamanashi"],
     "daily-2026-07-26": ["Yamanashi", "Shrines", "Arakurayama Sengen Park", "Fujisan Sengen Shrine", "Kawaguchiko Nostalgic Toys Museum"],
-    "daily-2026-07-27": ["Mount Fuji", "Yamanashi", "Lake Saiko"],
+    "daily-2026-07-27": ["Mount Fuji", "Yamanashi", "Lake Saiko", "First summit near Saiko"],
     "daily-2026-07-28": ["Tokyo"], "daily-2026-07-29": ["Ryugu Cave", "Koyodai"],
     "daily-2026-08-18": ["Lake Saiko"],
     "daily-2026-08-road-trip": ["Kawaguchiko", "Kyoto", "Osaka", "Genko-an", "Kinkaku-ji", "Osaka Castle", "Ueno Castle (Iga-Ueno)", "Japan Kanji Museum & Library", "Banbutsu Sōzō-bō", "CRYSTA Nagahori"],
@@ -47,7 +47,7 @@
     "photo-200": ["Shinsaibashi", "Osaka"],
     "photo-202": ["Miyuki Beach", "Onna", "Okinawa"],
     "daily-2026-08-03": ["Lake Saiko", "Satyam 1", "Kamikuishiki", "Fujikawaguchiko", "Yamanashi", "Mount Fuji"],
-    "photo-intake-addition-5": ["Uno-Misaki Tunnel", "Onsen Yurari", "Lake Yamanaka", "Lake Shōji", "Kawaguchiko Nostalgic Toys Museum", "Kawaguchiko Music Forest Museum", "Kitaoji Shinmachi", "Akihabara", "Tokyo", "McDonald’s 139 Fujiyoshida", "Miyuki Beach", "Onna", "Okinawa", "Shinsaibashi", "Osaka", "Lake Saiko", "Yamanashi"],
+    "photo-intake-addition-5": ["Uno-Misaki Tunnel", "Onsen Yurari", "Lake Yamanaka", "Lake Shōji", "Kawaguchiko Nostalgic Toys Museum", "Kawaguchiko Music Forest Museum", "Kitaoji Shinmachi", "Akihabara", "Tokyo", "McDonald’s 139 Fujiyoshida", "Miyuki Beach", "Onna", "Okinawa", "Shinsaibashi", "Osaka", "Lake Saiko", "First summit near Saiko", "Yamanashi"],
   };
   const PLACES = {
     "Mount Fuji": "Mountain and surrounding landscape records",
@@ -65,6 +65,7 @@
     "Narusawa": "Yamanashi locality of the Kawaguchiko Automobile Museum / Flight Hall",
     "Onsen Yurari": "Traveller identifies addition_5 (1) as the Onsen Yurari no Nenba entrance; linked to the Onsen Yurari visit in the 25 July field note",
     "Akihabara": "Tokyo district confirmed by the traveller for addition_5 (42); other nearby retail and arcade photographs are not automatically assigned here",
+    "First summit near Saiko": "Traveller-confirmed descriptive location for the first summit outing near Saiko; the precise summit name and trail remain unresolved",
     "Uno-Misaki Tunnel": "Tunnel named by the portal sign in the addition_5 intake; the 25 July chapter records a visit, but the new photograph's date is unconfirmed",
     "Lake Yamanaka": "Named by the addition_5 national-park sign and navigation display; exact photographic camera position is not established",
     "Lake Shōji": "精進湖, named on the addition_5 car navigation display; screen context only, not a confirmed route or camera position",
