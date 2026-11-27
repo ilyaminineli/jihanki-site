@@ -2747,20 +2747,22 @@ const ARCHIVE = {
     },
     {
       "id": "photo-154",
-      "title": "Fuji-Q Highland at night",
+      "title": "PICA Fuji Saiko sign after dark",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Fujiyoshida / Fuji-Q Highland",
+      "group": "Lake Saiko / residency and campground",
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (14).jpg",
-      "description": "The illuminated sign reads FUJI-Q HIGHLAND, identifying the amusement park.",
+      "description": "The illuminated sign reads PICA 富士西湖 / FUJI SAIKO, identifying PICA Fuji Saiko at Lake Saiko.",
       "metadata": {
         "locations": [
-          "Fuji-Q Highland",
-          "Fujiyoshida",
-          "Yamanashi"
+          "PICA Fuji Saiko",
+          "Lake Saiko"
         ],
-        "related": []
+        "related": [
+          "photo-80",
+          "daily-2026-08-18"
+        ]
       }
     },
     {
@@ -2803,19 +2805,22 @@ const ARCHIVE = {
     },
     {
       "id": "photo-157",
-      "title": "Japanese waste-sorting instructions",
+      "title": "Sumida Ward waste-sorting and anti-dumping notices",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Everyday urban infrastructure",
+      "group": "Tokyo / municipal systems and night streets",
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (17).jpg",
-      "description": "A close photograph of Japanese municipal waste-disposal and sorting notices. The ward and exact street are not established.",
+      "description": "The Japanese notices name 墨田区すみだ清掃事務所 (Sumida Ward’s cleaning office) and the 本所警察署 / 向島警察署 police stations. The photograph is therefore located in Sumida Ward, Tokyo; the exact street is not established.",
       "metadata": {
         "locations": [
-          "Japan / 2026 expedition"
+          "Sumida Ward",
+          "Tokyo"
         ],
         "related": [
-          "photo-155"
+          "photo-155",
+          "photo-156",
+          "photo-158"
         ]
       }
     },
@@ -2860,13 +2865,13 @@ const ARCHIVE = {
     },
     {
       "id": "photo-160",
-      "title": "Yamanashi Prefectural Forest marker",
+      "title": "Environment Agency / Yamanashi Prefecture forest marker",
       "date": "2026",
       "type": "image",
       "category": "photo",
       "group": "Yamanashi / forest boundaries",
       "file": "media/photo/photos_from_japan/addition_3/addition_3 (20).jpg",
-      "description": "A wooden marker bears the inscription 山梨県有林 (Yamanashi Prefectural Forest), providing a regional forest-management reference. The exact forest parcel is not identified.",
+      "description": "The timber post bears the vertical inscription 環境庁 (Environment Agency) and 山梨県 (Yamanashi Prefecture), indicating a prefectural forest or trail-management marker. The exact forest parcel is not identified.",
       "metadata": {
         "locations": [
           "Yamanashi",
