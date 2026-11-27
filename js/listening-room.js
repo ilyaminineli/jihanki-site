@@ -97,6 +97,7 @@
   }
 
   const bound = new WeakSet();
+  const instances = new WeakMap();
   function bind(root) {
     const scope = root?.querySelector?.(".listening-room");
     if (!scope || bound.has(scope)) return false;
@@ -182,6 +183,7 @@
       window.JIHANKI_EVENTS?.record("listening-room-stopped", {});
     }
 
+    instances.set(scope, { stopPlayback });
     audio.addEventListener("play", () => {
       const item = queue[index];
       announce(item ? "PLAYING / " + item.title : "PLAYING");
@@ -221,8 +223,24 @@
     return true;
   }
 
+  function resolveScope(root) {
+    if (!root) return null;
+    if (root.matches?.(".listening-room")) return root;
+    return root.querySelector?.(".listening-room") || root.closest?.(".listening-room") || null;
+  }
+
+  function stop(root, quiet) {
+    const scope = resolveScope(root);
+    const instance = scope && instances.get(scope);
+    if (instance) instance.stopPlayback(quiet !== false);
+  }
+
+  function dispose(root) {
+    stop(root, true);
+  }
+
   window.JIHANKI_LISTENING_ROOM = {
-    catalogue, rooms, render, bind,
+    catalogue, rooms, render, bind, stop, dispose,
     sourceCount() { return catalogue().length; }
   };
 })();
