@@ -315,7 +315,7 @@ try{
     const map=await page.evaluate(()=>{
       const canvas=document.querySelector(".map-canvas"),r=canvas.getBoundingClientRect();
       return{box:{left:r.left,top:r.top,right:r.right,bottom:r.bottom},
-        pins:[...document.querySelectorAll(".map-pin")].map(node=>{const p=node.getBoundingClientRect();return{left:p.left,right:p.right,top:p.top,bottom:p.bottom};}),
+        pins:[...document.querySelectorAll(".map-pin")].map(node=>{const p=node.getBoundingClientRect();return{name:node.getAttribute("data-map-place"),left:p.left,right:p.right,top:p.top,bottom:p.bottom,width:p.width,height:p.height};}),
         keyCount:document.querySelectorAll(".map-place-list button").length,
         modalWidth:document.querySelector(".artifact-window").clientWidth,
         modalScrollWidth:document.querySelector(".artifact-window").scrollWidth};
@@ -323,8 +323,8 @@ try{
     assert(map.keyCount>0,device.name+": map key empty");
     assert(map.modalScrollWidth<=map.modalWidth+1,device.name+": map caused horizontal overflow");
     for(const pin of map.pins){
-      assert(pin.left>=map.box.left-1&&pin.right<=map.box.right+1,device.name+": map pin outside map width");
-      assert(pin.top>=map.box.top-1&&pin.bottom<=map.box.bottom+1,device.name+": map pin outside map height");
+      assert(pin.left>=map.box.left-1&&pin.right<=map.box.right+1,device.name+": map pin outside map width: "+JSON.stringify({pin,box:map.box}));
+      assert(pin.top>=map.box.top-1&&pin.bottom<=map.box.bottom+1,device.name+": map pin outside map height: "+JSON.stringify({pin,box:map.box}));
     }
     await mkdir(path.join(ROOT,"test-results"),{recursive:true});
     await page.screenshot({path:path.join(ROOT,"test-results","map-"+device.name+".png")});
