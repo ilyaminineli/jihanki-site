@@ -60,6 +60,22 @@ try{
     assert(geometry.canvas.x>=-1&&geometry.canvas.right<=device.width+1,device.name+": machine clipped horizontally");
     assert(geometry.coin.width>=43&&geometry.coin.height>=43,device.name+": COIN hit target too small");
     assert(geometry.home.width>=43&&geometry.home.height>=43,device.name+": HOME hit target too small");
+    const physicalControlStyle=await page.evaluate(()=>{
+      return ["coin-button","home-button"].map(id=>{
+        const button=document.getElementById(id),style=getComputedStyle(button);
+        return {id,border:style.borderTopColor,background:style.backgroundColor,outline:style.outlineStyle,
+          hitWidth:button.getBoundingClientRect().width,hitHeight:button.getBoundingClientRect().height};
+      });
+    });
+    assert(physicalControlStyle.every(item=>item.border==="rgba(0, 0, 0, 0)"&&item.background==="rgba(0, 0, 0, 0)"&&item.outline==="none"),
+      device.name+": COIN or HOME exposes the rectangular hit-area frame: "+JSON.stringify(physicalControlStyle));
+    await page.locator("#coin-button").hover();
+    const pointerControlStyle=await page.evaluate(()=>["coin-button","home-button"].map(id=>{
+      const style=getComputedStyle(document.getElementById(id));
+      return {id,border:style.borderTopColor,background:style.backgroundColor,outline:style.outlineStyle};
+    }));
+    assert(pointerControlStyle.every(item=>item.border==="rgba(0, 0, 0, 0)"&&item.background==="rgba(0, 0, 0, 0)"&&item.outline==="none"),
+      device.name+": pointer hover exposed a COIN or HOME highlight square: "+JSON.stringify(pointerControlStyle));
     const homeHierarchy=await page.evaluate(()=>({
       soundLab:document.querySelector(".home-primary [data-home-action='installation']")?.textContent.trim()||"",
       collection:!!document.querySelector(".home-actions [data-home-action='collection']"),
