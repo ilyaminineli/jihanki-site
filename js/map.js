@@ -351,19 +351,127 @@
     if(!canvas||!layer||canvas.dataset.panBound==="true")return;
     canvas.dataset.panBound="true";
     const zoomReadout=root.querySelector("[data-map-zoom-level]");
-    const pointers=new Map();let gesture=null;
-    const point=e=>{const r=canvas.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};};
+    const MIN_SCALE=.06,MAX_SCALE=3;
+    const clampScale=value=>Math.max(MIN_SCALE,Math.min(MAX_SCALE,value));
+    const read=()=>({
+      x:Number(layer.dataset.panX||0),
+      y:Number(layer.dataset.panY||0),
+      scale:clampScale(Number(layer.dataset.panScale||1))
+    });
+    const contentBounds=()=>{
+      const pins=[...layer.querySelectorAll(".map-pin")];
+      if(!pins.length)return{left:0,top:0,right:layer.offsetWidth,bottom:layer.offsetHeight};
+      const boxes=pins.map(pin=>{
+        const cx=parseFloat(pin.style.left)/100*layer.offsetWidth;
+        const cy=parseFloat(pin.style.top)/100*layer.offsetHeight;
+        return{left:cx-pin.offsetWidth/2,top:cy-pin.offsetHeight/2,
+          right:cx+pin.offsetWidth/2,bottom:cy+pin.offsetHeight/2};
+      });
+      return{
+        left:Math.min(...boxes.map(box=>box.left)),
+        top:Math.min(...boxes.map(box=>box.top)),
+        right:Math.max(...boxes.map(box=>box.right)),
+        bottom:Math.max(...boxes.map(box=>box.bottom))
+      };
+    };
+    // Country-level views fit the complete prefecture SVG. Trail view instead
+    // frames only its stops, so a short regional sequence remains readable.
+    const viewBounds=()=>canvas.classList.contains("map-trails-mode")
+      ?contentBounds()
+      :{left:0,top:0,right:layer.offsetWidth,bottom:layer.offsetHeight};
+    const clampPosition=(x,y,scale)=>{
+      const bounds=viewBounds();
+      const width=bounds.right-bounds.left,height=bounds.bottom-bounds.top;
+      const minX=width*scale<=canvas.clientWidth
+        ?(canvas.clientWidth-width*scale)/2-bounds.left*scale
+        :canvas.clientWidth-bounds.right*scale;
+      const maxX=width*scale<=canvas.clientWidth
+        ?minX
+        :-bounds.left*scale;
+      const minY=height*scale<=canvas.clientHeight
+        ?(canvas.clientHeight-height*scale)/2-bounds.top*scale
+        :canvas.clientHeight-bounds.bottom*scale;
+      const maxY=height*scale<=canvas.clientHeight
+        ?minY
+        :-bounds.top*scale;
+      return{x:Math.max(minX,Math.min(maxX,x)),y:Math.max(minY,Math.min(maxY,y))};
+    };
+    const write=(x,y,scale)=>{
+      scale=clampScale(scale);
+      const bounded=clampPosition(x,y,scale);
+      layer.dataset.panX=String(bounded.x);
+      layer.dataset.panY=String(bounded.y);
+      layer.dataset.panScale=String(scale);
+      layer.style.transformOrigin="0 0";
+      layer.style.transform="translate3d("+bounded.x+"px,"+bounded.y+"px,0) scale("+scale+")";
+      if(zoomReadout)zoomReadout.textContent=Math.round(scale*100)+"%";
+    };
+    const fit=()=>{
+      const bounds=viewBounds(),width=Math.max(1,bounds.right-bounds.left),height=Math.max(1,bounds.bottom-bounds.top);
+      const padding=Math.min(42,Math.max(18,Math.round(Math.min(canvas.clientWidth,canvas.clientHeight)*.055)));
+      const scale=clampScale(Math.min((canvas.clientWidth-padding*2)/width,(canvas.clientHeight-padding*2)/height,1.5));
+      const x=(canvas.clientWidth-width*scale)/2-bounds.left*scale;
+      const y=(canvas.clientHeight-height*scale)/2-bounds.top*scale;
+      write(x,y,scale);
+    };
+    const zoomAt=(nextScale,focusX=canvas.clientWidth/2,focusY=canvas.clientHeight/2)=>{
+      const current=read(),scale=clampScale(nextScale);
+      const mapX=(focusX-current.x)/current.scale,mapY=(focusY-current.y)/current.scale;
+      write(focusX-mapX*scale,focusY-mapY*scale,scale);
+    };
+    root.querySelectorAll("[data-map-zoom]").forEach(button=>button.addEventListener("click",()=>{
+      const current=read();
+      zoomAt(current.scale*(button.dataset.mapZoom==="in"?1.25:.8));
+    }));
+    root.querySelector("[data-map-fit]")?.addEventListener("click",fit);
+    canvas.addEventListener("wheel",event=>{
+      event.preventDefault();
+      const rect=canvas.getBoundingClientRect(),current=read();
+      zoomAt(current.scale*Math.exp(-event.deltaY*.0015),event.clientX-rect.left,event.clientY-rect.top);
+    },{passive:false});
+    const pointers=new Map();
+    let gesture=null;
+    const localPoint=event=>{const rect=canvas.getBoundingClientRect();return{x:event.clientX-rect.left,y:event.clientY-rect.top};};
     const midpoint=(a,b)=>({x:(a.x+b.x)/2,y:(a.y+b.y)/2});
     const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
-    const current=()=>({x:Number(layer.dataset.panX||0),y:Number(layer.dataset.panY||0),scale:clampScale(Number(layer.dataset.panScale||1))});
-    const beginGesture=()=>{const ps=Array.from(pointers.values()),state=current();if(ps.length>=2)gesture={kind:"pinch",midpoint:midpoint(ps[0],ps[1]),distance:Math.max(1,distance(ps[0],ps[1])),x:state.x,y:state.y,scale:state.scale};else if(ps.length===1)gesture={kind:"pan",point:ps[0],x:state.x,y:state.y,scale:state.scale};else gesture=null;layer.classList.toggle("is-dragging",ps.length>0);};
-    root.querySelectorAll("[data-map-zoom]").forEach(button=>button.addEventListener("click",()=>{const state=current();zoomAt(state.scale*(button.dataset.mapZoom==="in"?1.25:.8));}));
-    root.querySelector("[data-map-fit]")?.addEventListener("click",fit);
-    canvas.addEventListener("wheel",event=>{event.preventDefault();const p=point(event),state=current();zoomAt(state.scale*Math.exp(-event.deltaY*.0015),p.x,p.y);},{passive:false});
-    canvas.addEventListener("pointerdown",event=>{if(event.target.closest("button,a"))return;if(event.pointerType==="mouse"&&event.button!==0)return;pointers.set(event.pointerId,point(event));try{canvas.setPointerCapture(event.pointerId);}catch(_){}beginGesture();event.preventDefault();});
-    canvas.addEventListener("pointermove",event=>{if(!pointers.has(event.pointerId))return;pointers.set(event.pointerId,point(event));const ps=Array.from(pointers.values());if(ps.length>=2&&gesture&&gesture.kind==="pinch"){const mid=midpoint(ps[0],ps[1]),scale=clampScale(gesture.scale*distance(ps[0],ps[1])/gesture.distance),mx=(gesture.midpoint.x-gesture.x)/gesture.scale,my=(gesture.midpoint.y-gesture.y)/gesture.scale;write(mid.x-mx*scale,mid.y-my*scale,scale);}else if(ps.length===1&&gesture&&gesture.kind==="pan"){const p=ps[0];write(gesture.x+p.x-gesture.point.x,gesture.y+p.y-gesture.point.y,gesture.scale);}event.preventDefault();});
-    const finish=event=>{if(!pointers.has(event.pointerId))return;pointers.delete(event.pointerId);beginGesture();};
-    canvas.addEventListener("pointerup",finish);canvas.addEventListener("pointercancel",finish);canvas.addEventListener("lostpointercapture",finish);
+    const beginGesture=()=>{
+      const points=Array.from(pointers.values()),current=read();
+      if(points.length>=2)gesture={type:"pinch",midpoint:midpoint(points[0],points[1]),distance:Math.max(1,distance(points[0],points[1])),x:current.x,y:current.y,scale:current.scale};
+      else if(points.length===1)gesture={type:"pan",point:points[0],x:current.x,y:current.y,scale:current.scale};
+      else gesture=null;
+      layer.classList.toggle("is-dragging",points.length>0);
+    };
+    canvas.addEventListener("pointerdown",event=>{
+      if(event.target.closest("button,a"))return;
+      if(event.pointerType==="mouse"&&event.button!==0)return;
+      pointers.set(event.pointerId,localPoint(event));
+      try{canvas.setPointerCapture(event.pointerId);}catch(_){}
+      beginGesture();event.preventDefault();
+    });
+    canvas.addEventListener("pointermove",event=>{
+      if(!pointers.has(event.pointerId))return;
+      pointers.set(event.pointerId,localPoint(event));
+      const points=Array.from(pointers.values());
+      if(points.length>=2&&gesture&&gesture.type==="pinch"){
+        const center=midpoint(points[0],points[1]);
+        const scale=clampScale(gesture.scale*distance(points[0],points[1])/gesture.distance);
+        const mapX=(gesture.midpoint.x-gesture.x)/gesture.scale;
+        const mapY=(gesture.midpoint.y-gesture.y)/gesture.scale;
+        write(center.x-mapX*scale,center.y-mapY*scale,scale);
+      }else if(points.length===1&&gesture&&gesture.type==="pan"){
+        const point=points[0];
+        write(gesture.x+point.x-gesture.point.x,gesture.y+point.y-gesture.point.y,gesture.scale);
+      }
+      event.preventDefault();
+    });
+    const finish=event=>{
+      if(!pointers.has(event.pointerId))return;
+      pointers.delete(event.pointerId);beginGesture();
+    };
+    canvas.addEventListener("pointerup",finish);
+    canvas.addEventListener("pointercancel",finish);
+    canvas.addEventListener("lostpointercapture",finish);
+
     fit();
   }
   window.JIHANKI_MAP={render,bind,positions:GEO_COORDS,trails:TRAILS,pinReferences:PIN_REFERENCES};

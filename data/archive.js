@@ -167,6 +167,32 @@ const DAILY_NOTES = [
     "group": "DAILY EXPEDITION",
     "description": "A dated chapter from the 2026 Japan journey.",
     "file": "documents/notes/daily/2026-08-03.md"
+  },
+  {
+    "id":"person-koba-san",
+    "title":"Koba-san — local guide and friend",
+    "date":"2026",
+    "type":"text",
+    "category":"notes",
+    "author":"archive",
+    "project":"japan-expedition",
+    "group":"PEOPLE / LOCAL CONNECTIONS",
+    "description":"Local guide and friend who welcomed the travellers near Lake Saiko, shared a regional map and cultural recommendations, and later drove them to the former Kamikuishiki area.",
+    "file":"documents/notes/daily/2026-07-23.md",
+    "metadata":{"locations":["Lake Saiko","Satyam 1"],"related":["daily-2026-07-23","daily-2026-08-03"]}
+  },
+  {
+    "id":"person-shoko-asahara",
+    "title":"Shoko Asahara — historical context",
+    "date":"1955–2018",
+    "type":"text",
+    "category":"notes",
+    "author":"archive",
+    "project":"japan-expedition",
+    "group":"HISTORICAL CONTEXT",
+    "description":"Historical reference in the 3 August chapter concerning Aum Shinrikyo and the former Kamikuishiki compound. Contextual documentation only; not an endorsement or destination.",
+    "file":"documents/notes/daily/2026-08-03.md",
+    "metadata":{"locations":["Kamikuishiki"],"related":["daily-2026-08-03"]}
   }
 ];
 const VIDEO_ARCHIVE = [
@@ -323,32 +349,8 @@ const UTAU_ARCHIVE = [
     "description": "Takismana's earlier voicebank, included as part of the connected project archive. The artist page and UTAU wiki references provide further information.",
     "url": "https://visingers.github.io/Julia-Baranyuk/Takismana/"
   },
-  {
-    "id":"person-koba-san",
-    "title":"Koba-san — local guide and friend",
-    "date":"2026",
-    "type":"text",
-    "category":"notes",
-    "author":"archive",
-    "project":"japan-expedition",
-    "group":"PEOPLE / LOCAL CONNECTIONS",
-    "description":"Local guide and friend who welcomed the travellers near Lake Saiko, shared a regional map and cultural recommendations, and later drove them to the former Kamikuishiki area.",
-    "file":"documents/notes/daily/2026-07-23.md",
-    "metadata":{"locations":["Lake Saiko","Satyam 1"],"related":["daily-2026-07-23","daily-2026-08-03"]}
-  },
-  {
-    "id":"person-shoko-asahara",
-    "title":"Shoko Asahara — historical context",
-    "date":"1955–2018",
-    "type":"text",
-    "category":"notes",
-    "author":"archive",
-    "project":"japan-expedition",
-    "group":"HISTORICAL CONTEXT",
-    "description":"Historical reference in the 3 August chapter concerning Aum Shinrikyo and the former Kamikuishiki compound. Contextual documentation only; not an endorsement or destination.",
-    "file":"documents/notes/daily/2026-08-03.md",
-    "metadata":{"locations":["Kamikuishiki"],"related":["daily-2026-08-03"]}
-  }
+  
+  
 
 ];
 const ARCHIVE = {
