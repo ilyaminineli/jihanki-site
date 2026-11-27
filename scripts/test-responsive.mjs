@@ -447,6 +447,16 @@ try{
     assert(summitPhotos.join(",")==="photo-219,photo-220,photo-221,photo-222,photo-223",device.name+": Saiko summit evidence photos are missing or reordered: "+summitPhotos.join(","));
     assert(await page.locator(".map-trail-stages li").count()===4,device.name+": Saiko summit field sequence is incomplete");
     await page.locator('[data-map-mode="memory"]').click();
+    const placeIndexState=await page.evaluate(()=>({
+      exists:!!document.querySelector(".map-place-index"),
+      open:document.querySelector(".map-place-index")?.open??true,
+      odawara:window.JIHANKI_GEOGRAPHY.entries("Miyukihama").map(item=>item.id).sort(),
+      okinawa:window.JIHANKI_GEOGRAPHY.entries("Okinawa").map(item=>item.id)
+    }));
+    assert(placeIndexState.exists&&!placeIndexState.open,
+      device.name+": the complete place index should be collapsed by default");
+    assert(placeIndexState.odawara.join(",")==="photo-202,photo-247,photo-250"&&placeIndexState.okinawa.length===0,
+      device.name+": Miyukihama records are not grouped under Odawara or Okinawa still has false memories");
     const mapBeforeReturn=await page.evaluate(()=>window.JIHANKI_MAP.snapshot(document.querySelector("#artifact-content")));
     await page.evaluate(()=>{
       const pin=document.querySelector(".map-pin-place-card");

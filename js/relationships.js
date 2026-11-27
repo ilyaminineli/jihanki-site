@@ -261,8 +261,7 @@
     {from:"Kinkaku-ji",to:"Kyoto",kind:"within",label:"IN CITY"},
     {from:"Demachiyanagi",to:"Sanjo",kind:"transit-corridor",label:"TRANSIT CORRIDOR"},
     {from:"Sanjo",to:"Otsu",kind:"transit-corridor",label:"TRANSIT CORRIDOR"},
-    {from:"Miyuki Beach",to:"Onna",kind:"within",label:"IN MUNICIPALITY"},
-    {from:"Onna",to:"Okinawa",kind:"within",label:"IN PREFECTURE"},
+    {from:"Miyukihama",to:"Odawara",kind:"within",label:"IN CITY"},
     {from:"Fujikawaguchiko",to:"Yamanashi",kind:"within",label:"IN PREFECTURE"}
   ];
 

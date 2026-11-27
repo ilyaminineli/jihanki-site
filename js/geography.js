@@ -46,9 +46,11 @@
     "photo-198": ["Shinsaibashi", "Osaka"],
     "photo-199": ["Shinsaibashi", "Osaka"],
     "photo-200": ["Shinsaibashi", "Osaka"],
-    "photo-202": ["Miyuki Beach", "Onna", "Okinawa"],
+    "photo-202": ["Miyukihama", "Odawara"],
+    "photo-247": ["Miyukihama", "Odawara"],
+    "photo-250": ["Miyukihama", "Odawara"],
     "daily-2026-08-03": ["Lake Saiko", "Satyam 1", "Kamikuishiki", "Fujikawaguchiko", "Yamanashi", "Mount Fuji"],
-    "photo-intake-addition-5": ["Uno-Misaki Tunnel", "Onsen Yurari", "Lake Yamanaka", "Lake Shōji", "Kawaguchiko Nostalgic Toys Museum", "Kawaguchiko Music Forest Museum", "Kitaoji Shinmachi", "Akihabara", "Tokyo", "McDonald’s 139 Fujiyoshida", "Miyuki Beach", "Onna", "Okinawa", "Shinsaibashi", "Osaka", "Lake Saiko", "First summit near Saiko", "Shinjuku", "Yamanashi"],
+    "photo-intake-addition-5": ["Uno-Misaki Tunnel", "Onsen Yurari", "Lake Yamanaka", "Lake Shōji", "Kawaguchiko Nostalgic Toys Museum", "Kawaguchiko Music Forest Museum", "Kitaoji Shinmachi", "Akihabara", "Tokyo", "McDonald’s 139 Fujiyoshida", "Miyukihama", "Odawara", "Shinsaibashi", "Osaka", "Lake Saiko", "First summit near Saiko", "Shinjuku", "Yamanashi"],
   };
   const PLACES = {
     "Mount Fuji": "Mountain and surrounding landscape records",
@@ -137,9 +139,8 @@
     "Otsu": "Shiga city at the eastern end of the traveller-identified Demachiyanagi–Sanjo–Otsu corridor",
     "Shiga": "Prefecture containing Otsu",
     "Kyoto–Osaka corridor": "Regional travel context only; the arcade photograph is somewhere between Kyoto and Osaka, exact venue unknown",
-    "Miyuki Beach": "みゆきビーチ in Onna Village, Okinawa; the traveller places a school-sign photograph nearby",
-    "Onna": "Onna Village, Okinawa Prefecture; locality of Miyuki Beach",
-    "Okinawa": "Prefecture containing Onna and Miyuki Beach",
+    "Miyukihama": "Beach area in Odawara, Kanagawa; the school sign and nearby residential street belong to this outing",
+    "Odawara": "Kanagawa city; location of Miyukihama and the castle photographs",
     "Japan / 2026 expedition": "Material whose precise location is not recorded"
   };
   function locations(item) {

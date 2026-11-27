@@ -52,7 +52,7 @@
     "Lake Yamanaka":[35.42511,138.84962,"site"],
     "McDonald’s 139 Fujiyoshida":[35.489,138.806,"locality"],
     "Mie":[34.7303,136.5086,"prefecture"],
-    "Miyuki Beach":[26.50733,127.89096,"site"],
+    "Miyukihama":[35.250,139.158,"locality"],
     "Mount Ashiwada":[35.505,138.686,"area"],
     "Mount Fuji":[35.3628,138.7308,"site"],
     "Mt Fuji Station":[35.481,138.795,"site"],
@@ -64,8 +64,7 @@
     "Odawara":[35.255,139.159,"locality"],
     "Odawara Castle":[35.251,139.1536,"site"],
     "Oishi Park":[35.531,138.741,"site"],
-    "Okinawa":[26.2124,127.6809,"prefecture"],
-    "Onna":[26.49748,127.85343,"locality"],
+    
     "Onsen Yurari":[35.477,138.692,"site"],
     "Osaka":[34.6937,135.5023,"locality"],
     "Osaka Castle":[34.68737,135.52586,"site"],
@@ -135,7 +134,7 @@
     "CRYSTA Nagahori":"クリスタ長堀","Shinsaibashi":"心斎橋",
     "Senbon Kitaoji":"千本北大路","Kitaoji Shinmachi":"北大路新町",
     "Demachiyanagi":"出町柳","Sanjo":"三条","Otsu":"大津",
-    "Miyuki Beach":"みゆきビーチ","Onna":"恩納村","Okinawa":"沖縄",
+    "Miyukihama":"みゆき浜",
     "Otsuki–Fujiyoshida junction":"大月・富士吉田接続点","Former Kamikuishiki complex":"旧上九一色"
   };
   const labelFor=name=>name;
@@ -317,7 +316,7 @@
         '<span class="map-pin-count">'+Number(place.count||0)+' RECORDS</span></button>';
     }).join("");
     const key=indexPlaces.map((place,index)=>'<button type="button" data-map-place="'+esc(place.name)+'"><span>'+
-      String(index+1).padStart(2,"0")+'</span><strong>'+esc(place.name)+'</strong><small>'+place.count+' memories</small></button>').join("");
+      String(index+1).padStart(2,"0")+'</span><strong>'+esc(place.name)+'</strong><small>'+place.count+'</small></button>').join("");
     const precisionLegend='<span><i class="legend-precision-site"></i> NAMED SITE</span><span><i class="legend-precision-locality"></i> LOCALITY</span><span><i class="legend-precision-area"></i> APPROX. AREA</span><span><i class="legend-precision-prefecture"></i> PREFECTURE</span>';
     const legend=selected==="memory"
       ?'<span><i class="legend-place"></i> WITHIN / ADMINISTRATIVE AREA</span><span><i class="legend-near"></i> NEAR / LOCAL REFERENCE</span><span><i class="legend-connected"></i> OVERLOOKS / CONNECTED</span><span><i class="legend-transit"></i> TRANSIT CORRIDOR</span>'+precisionLegend+'<span>PHOTO SEQUENCES ARE RECORD LINKS, NOT GEOGRAPHIC LINES</span>'
@@ -343,7 +342,7 @@
       (selected==="memory"?"Lines describe named geographical relationships such as containment, outlooks and transit corridors. They are not shared-photo links.":
        selected==="trails"?"Arrows preserve the documented order of visits or travel. They are not measured roads, walking paths or exact transfer itineraries.":
        "SCHEMATIC / PAN TO EXPLORE / RELATIVE POSITION ONLY / NOT TO SCALE.")+
-      '</p><div class="map-place-list" aria-label="地名一覧">'+key+'</div>'+(selected==="trails"?'<div class="map-trail-list">'+trailMarkup()+'</div>':""))+
+      '</p><details class="map-place-index"><summary>PLACE INDEX / '+indexPlaces.length+' LOCATIONS</summary><div class="map-place-list" aria-label="地名一覧">'+key+'</div></details>'+(selected==="trails"?'<div class="map-trail-list">'+trailMarkup()+'</div>':""))+
       '</section>';
   }
   function bind(root){

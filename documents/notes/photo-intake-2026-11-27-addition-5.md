@@ -56,10 +56,10 @@ The following records incorporate the traveller's answers. Confidence refers to 
 | `addition_5 (42).jpg` | photo-244 | Akihabara, Tokyo. | Traveller-confirmed district. Together with `(37)`–`(41)`, this completes the Akihabara arrival / street / club sequence. |
 | `addition_5 (43).jpg` | photo-245 | NPC 24H parking sign. | Traveller places it somewhere in **Tokyo**. Exact district and car park unknown. This is not the Nintendo DS photograph. |
 | `addition_5 (44).jpg` | photo-246 | Nintendo DS music-software interface / music cartridge. | Traveller says Takismana used it for music and for a live event already represented in the archive. Link to Takismana's music/performance context; the exact event record has not yet been identified by title in the static catalogue. This is a separate image from the NPC parking sign in `(43)`. |
-| `addition_5 (45).jpg` | photo-247 | Residential street **near Miyuki Beach**, Onna, Okinawa. | Traveller-confirmed nearby locality; exact street and residence unknown. |
+| `addition_5 (45).jpg` | photo-247 | Residential street **near Miyukihama, Odawara**. | Traveller-confirmed nearby locality; exact street unknown. |
 | `addition_5 (46).jpg` | photo-248 | **McDonald's 139 Fujiyoshida (１３９富士吉田店)**. | Traveller confirms the branch. Connect to the existing Mount Fuji window-view photograph `photo-169`. |
 | `addition_5 (47).jpg` | photo-249 | Poster in an **Osaka underground parking lot near Shinsaibashi**. Text reads `地球にやさしく、自分にきびしく！` — “Be kind to the Earth, be strict with yourself!” | Traveller-confirmed Osaka / Shinsaibashi underground-parking context. It is thematically and regionally related to `photo-198`, but the same exact car park is not independently established. |
-| `addition_5 (48).jpg` | photo-250 | Sign reading **MIYUKI BEACH**. | Traveller confirms it belongs to the same Miyuki Beach outing / area as existing `photo-202`. |
+| `addition_5 (48).jpg` | photo-250 | Sign reading **MIYUKI BEACH**, from the **Miyukihama, Odawara** outing. | Traveller correction: Miyukihama, Odawara. |
 | `addition_5 (49).jpg` | photo-251 | Portal sign reading `宇の岬トンネル` — **Uno-Misaki Tunnel**. | Traveller confirms it was photographed during the 25 July visit. Connect directly to `addition_5 (4).jpg` / proposed `photo-206` and the existing 25 July tunnel project record. |
 
 ## Cross-collection relationships established by the traveller
@@ -106,7 +106,7 @@ The Kyoto friend’s shop **Banbutsu Sōzō-bō** remains separate from Kawaguch
 - `(37)`–`(42)`: Akihabara sequence — arrival / entrance, retail and city views, shopping street, club and district scene. `(41)` is a club, not an arcade; the venue remains unnamed.
 - `(43)`: an NPC 24H parking facility somewhere in Tokyo, not the DS screen in `(44)`.
 - `(44)`: Nintendo DS music interface used by Takismana for music and a live event. The exact event record is not yet matched by title in the static catalogue.
-- `(45))–`(48)`: a separate Miyuki Beach / Onna locality cluster. `(48)` is the beach sign; `(45)` is a nearby residential street; `(47)` is a different Osaka image.
+- `(45)` and `(48)`: the Miyukihama, Odawara cluster. `(48)` is the beach sign; `(45)` is a nearby residential street. `(47)` is a separate Osaka image.
 - `(46)`: McDonald's 139 Fujiyoshida, same branch as `photo-169`.
 - `(47)`: poster in an Osaka underground parking lot near Shinsaibashi. The same exact car park as `photo-198` is not yet established.
 
@@ -124,7 +124,7 @@ These are the only substantial identification gaps left by the traveller's curre
 8. **`addition_5 (33).jpg` and `(35).jpg`** are first-Tokyo-visit scenes; `(34).jpg` is a Kyoto bus-stop-area sticker; `(36).jpg` shows the descent toward Shinjuku. Their exact street / stop / entrance names remain unknown.
 9. **`addition_5 (37).jpg`–`addition_5 (42).jpg`** are now confirmed as the Akihabara sequence: entrance, retail / city views, shopping street, club and district view. The exact shop, street and club name remain unknown.
 10. **`addition_5 (44).jpg`** — the DS use is confirmed, but the exact archived live-event record is not yet matched to a specific ID.
-11. **`addition_5 (45).jpg`** — near Miyuki Beach is confirmed; the exact street / residence is not.
+11. **`addition_5 (45).jpg`** — near Miyukihama, Odawara; the exact street is not identified.
 12. **`addition_5 (17).jpg`–`addition_5 (21).jpg`** — outing is confirmed as the first summit visit near Saiko; exact named summit / trail remains unresolved.
 
 ## Evidence and implementation boundaries

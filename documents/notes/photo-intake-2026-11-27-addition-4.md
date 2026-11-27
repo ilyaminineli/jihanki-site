@@ -38,7 +38,7 @@
 | `addition_4 (27).jpg` | photo-199 | Modern tower at road junction | Unresolved |
 | `addition_4 (28).jpg` | photo-200 | Glass-fronted building and Coca-Cola clock | Unresolved |
 | `addition_4 (29).jpg` | photo-201 | **CRYSTA Nagahori (クリスタ長堀)**, South 5 elevator, Shinsaibashi | Named by signage |
-| `addition_4 (30).jpg` | photo-202 | Wet crossing near blurred school-front sign | Unresolved |
+| `addition_4 (30).jpg` | photo-202 | Wet night crossing and school sign near **Miyukihama, Odawara** | Traveller correction; school name unreadable |
 
 ## Cross-collection connections
 
@@ -52,7 +52,7 @@
 - **Kyoto / Osaka:** photos-196–197 identify Osaka Castle, distinct from Odawara and Iga-Ueno. Photo-201 identifies CRYSTA Nagahori; its [official access page](https://global.crystaweb.jp/en/access/) says it is connected to Shinsaibashi and Nagahoribashi stations.
 - **Jihanki:** photo-193 adds an alcohol vending-machine subject, not a known location. Photos-181–182 are a paired R-7 emergency-phone installation. Other tunnels and underground passages remain separate until identified.
 
-The remaining open questions are the exact Tokyo-area skyline location (photo-176), the highway tunnel (photo-189), the precise arcade venue (photo-195), the exact buildings/street near Shinsaibashi (photo-199–200), and the school name beside Miyuki Beach (photo-202).
+The remaining open questions are the exact Tokyo-area skyline location (photo-176), the highway tunnel (photo-189), the precise arcade venue (photo-195), the exact buildings/street near Shinsaibashi (photo-199–200), and the school name beside Miyukihama (photo-202).
 
 
 ## Traveller confirmations — 27 November 2026
@@ -74,7 +74,7 @@ The following updates supersede the unresolved descriptions in the first intake 
 | `addition_4 (23).jpg` | photo-195 | Indoor arcade somewhere along the journey between Kyoto and Osaka | Kansai journey context only; exact venue unknown |
 | `addition_4 (26).jpg` | photo-198 | Underground parking in Osaka near **Shinsaibashi** | Separate from the Demachiyanagi–Sanjo–Otsu corridor and separate from CRYSTA Nagahori |
 | `addition_4 (27).jpg` and `(28).jpg` | photo-199–200 | Osaka, near **Shinsaibashi** | Same neighbourhood context; exact street/buildings unknown |
-| `addition_4 (30).jpg` | photo-202 | School sign near **Miyuki Beach (みゆきビーチ)**, Onna, Okinawa | Beach / municipality identified; school name remains unreadable |
+| `addition_4 (30).jpg` | photo-202 | School sign near **Miyukihama, Odawara** | Traveller correction; school name remains unreadable |
 
 ### Genko-an guestbook confirmation
 

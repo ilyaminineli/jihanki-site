@@ -3829,21 +3829,14 @@ const ARCHIVE = {
     },
     {
       "id": "photo-202",
-      "title": "School sign near Miyuki Beach, Onna",
+      "title": "School sign near Miyukihama, Odawara",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Okinawa / Miyuki Beach surroundings",
+      "group": "Odawara / Miyukihama",
       "file": "media/photo/photos_from_japan/addition_4/addition_4 (30).jpg",
-      "description": "The traveller places this wet night crossing and school sign near Miyuki Beach (みゆきビーチ), Onna Village, Okinawa. The school name remains unreadable and is not guessed.",
-      "metadata": {
-        "locations": [
-          "Miyuki Beach",
-          "Onna",
-          "Okinawa"
-        ],
-        "related": []
-      }
+      "description": "A wet night crossing and school-front sign near Miyukihama, Odawara. The school name is lost in the photograph.",
+      "metadata": {"locations":["Miyukihama","Odawara"],"related":["photo-247","photo-250"]}
     },
     {
       "id": "photo-203",
@@ -4643,23 +4636,14 @@ const ARCHIVE = {
     },
     {
       "id": "photo-247",
-      "title": "Near Miyuki Beach — residential street",
+      "title": "Near Miyukihama — residential street",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Okinawa / Onna and Miyuki Beach",
+      "group": "Odawara / Miyukihama",
       "file": "media/photo/photos_from_japan/addition_5/addition_5 (45).jpg",
-      "description": "A residential street near Miyuki Beach in Onna, Okinawa, confirmed by the traveller. The exact street and residence are not identified.",
-      "metadata": {
-        "locations": [
-          "Miyuki Beach",
-          "Onna",
-          "Okinawa"
-        ],
-        "related": [
-          "photo-202"
-        ]
-      }
+      "description": "A residential street near Miyukihama, Odawara. The exact street is not identified.",
+      "metadata": {"locations":["Miyukihama","Odawara"],"related":["photo-202","photo-250"]}
     },
     {
       "id": "photo-248",
@@ -4703,24 +4687,14 @@ const ARCHIVE = {
     },
     {
       "id": "photo-250",
-      "title": "Miyuki Beach — entrance sign",
+      "title": "Miyukihama — beach sign",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Okinawa / Miyuki Beach",
+      "group": "Odawara / Miyukihama",
       "file": "media/photo/photos_from_japan/addition_5/addition_5 (48).jpg",
-      "description": "A wooden sign reading MIYUKI BEACH. The traveller confirms it belongs to the same Miyuki Beach outing / area as photo-202.",
-      "metadata": {
-        "locations": [
-          "Miyuki Beach",
-          "Onna",
-          "Okinawa"
-        ],
-        "related": [
-          "photo-202",
-          "photo-247"
-        ]
-      }
+      "description": "A wooden MIYUKI BEACH sign from the Miyukihama outing in Odawara.",
+      "metadata": {"locations":["Miyukihama","Odawara"],"related":["photo-202","photo-247"]}
     },
     {
       "id": "photo-251",
@@ -5360,9 +5334,8 @@ const ARCHIVE = {
           "Akihabara",
           "Tokyo",
           "McDonald’s 139 Fujiyoshida",
-          "Miyuki Beach",
-          "Onna",
-          "Okinawa",
+          "Miyukihama",
+          "Odawara",
           "Shinsaibashi",
           "Osaka",
           "Lake Saiko",
@@ -5400,7 +5373,7 @@ const ARCHIVE = {
       "author": "archive",
       "project": "japan-expedition",
       "group": "EVENT / LAKE KAWAGUCHI",
-      "description": "Traveller-confirmed festival and fireworks event photographed in addition_4 (7).jpg and (8).jpg.",
+      "description": "Fireworks above Lake Kawaguchi on a summer evening. Two frames from the Nagahama festival.",
       "file": "documents/notes/events/2026-08-15-nagahama-furusato-festival.md",
       "metadata": {
         "locations": [
