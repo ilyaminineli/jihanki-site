@@ -92,6 +92,11 @@ try{
       device.name+": the Sound Lab should be the single audio entry on the home screen");
     assert(await page.locator(".home-primary [data-home-action='listening']").count()===0,
       device.name+": a duplicate Listening Room home button is still present");
+    assert(await page.locator(".home-primary small").count()===0,
+      device.name+": the redundant LIVE MIX / ARCHIVE LISTENING caption still consumes CRT space");
+    const homePrimaryButton=await page.locator(".home-primary [data-home-action='installation']").boundingBox();
+    assert(homePrimaryButton&&homePrimaryButton.height<=21*geometry.scale+2,
+      device.name+": the home Sound Lab entry is taller than its compact 21px design");
     await page.locator(".home-primary [data-home-action='installation']").click();
     await page.locator(".sound-suite").waitFor();
     assert(await page.locator("[data-sound-suite-mode='mix']").getAttribute("aria-selected")==="true",
