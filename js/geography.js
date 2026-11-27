@@ -12,10 +12,11 @@
     "daily-2026-07-21": ["Haneda", "Shinjuku", "Kawaguchiko"],
     "daily-2026-07-22": ["Lake Saiko", "Aokigahara"],
     "daily-2026-07-23": ["Lake Saiko", "Kawaguchiko", "Iyashi no Sato", "Fujisan Museum", "Kawaguchiko Music Forest Museum", "Hard Off Kawaguchiko Store", "Nojima Fujiyoshida Store"],
-    "daily-2026-07-24": ["Tokyo", "Aokigahara", "Fugaku Wind Cave", "Akihabara"], "daily-2026-07-25": ["Uno-Misaki Tunnel", "Onsen Yurari", "Yamanashi"],
+    "daily-2026-07-24": ["Tokyo", "Shinjuku", "Aokigahara", "Fugaku Wind Cave", "Akihabara"], "daily-2026-07-25": ["Uno-Misaki Tunnel", "Onsen Yurari", "Yamanashi"],
     "daily-2026-07-26": ["Yamanashi", "Shrines", "Arakurayama Sengen Park", "Fujisan Sengen Shrine", "Kawaguchiko Nostalgic Toys Museum"],
     "daily-2026-07-27": ["Mount Fuji", "Yamanashi", "Lake Saiko", "First summit near Saiko"],
     "daily-2026-07-28": ["Tokyo"], "daily-2026-07-29": ["Ryugu Cave", "Koyodai"],
+    "daily-2026-08-01": ["Mount Fuji", "Yamanashi"],
     "daily-2026-08-18": ["Lake Saiko"],
     "daily-2026-08-road-trip": ["Kawaguchiko", "Kyoto", "Osaka", "Genko-an", "Kinkaku-ji", "Osaka Castle", "Ueno Castle (Iga-Ueno)", "Japan Kanji Museum & Library", "Banbutsu Sōzō-bō", "CRYSTA Nagahori"],
     "photo-174": ["Fugaku Wind Cave", "Aokigahara", "Narusawa", "Yamanashi"],
@@ -47,7 +48,7 @@
     "photo-200": ["Shinsaibashi", "Osaka"],
     "photo-202": ["Miyuki Beach", "Onna", "Okinawa"],
     "daily-2026-08-03": ["Lake Saiko", "Satyam 1", "Kamikuishiki", "Fujikawaguchiko", "Yamanashi", "Mount Fuji"],
-    "photo-intake-addition-5": ["Uno-Misaki Tunnel", "Onsen Yurari", "Lake Yamanaka", "Lake Shōji", "Kawaguchiko Nostalgic Toys Museum", "Kawaguchiko Music Forest Museum", "Kitaoji Shinmachi", "Akihabara", "Tokyo", "McDonald’s 139 Fujiyoshida", "Miyuki Beach", "Onna", "Okinawa", "Shinsaibashi", "Osaka", "Lake Saiko", "First summit near Saiko", "Yamanashi"],
+    "photo-intake-addition-5": ["Uno-Misaki Tunnel", "Onsen Yurari", "Lake Yamanaka", "Lake Shōji", "Kawaguchiko Nostalgic Toys Museum", "Kawaguchiko Music Forest Museum", "Kitaoji Shinmachi", "Akihabara", "Tokyo", "McDonald’s 139 Fujiyoshida", "Miyuki Beach", "Onna", "Okinawa", "Shinsaibashi", "Osaka", "Lake Saiko", "First summit near Saiko", "Shinjuku", "Yamanashi"],
   };
   const PLACES = {
     "Mount Fuji": "Mountain and surrounding landscape records",
