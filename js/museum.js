@@ -32,6 +32,26 @@
   function save(){try{localStorage.setItem(KEY,JSON.stringify(state));return true;}catch(_){return false;}}
   function savePrefs(){try{localStorage.setItem(PREFS_KEY,JSON.stringify(prefs));return true;}catch(_){return false;}}
   function shelves(){return state.shelves.map(s=>({...s,itemIds:s.itemIds.slice()}));}
+  function shelfCardHtml(shelfId) {
+    const shelf=state.shelves.find(entry=>entry.id===String(shelfId));
+    if(!shelf)return "";
+    const esc=value=>String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+    const records=shelf.itemIds.map(id=>(window.JIHANKI_ARCHIVE||[]).find(item=>item.id===id)).filter(Boolean);
+    const entries=records.map((item,index)=>"<li><span>"+String(index+1).padStart(2,"0")+"</span><div><strong>"+esc(item.title||item.id)+"</strong><small>"+esc(item.date||"UNDATED")+" / "+esc(item.id)+"</small></div></li>").join("");
+    return "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>"+esc(shelf.name)+" — JIHANKI</title>"+
+      "<style>*{box-sizing:border-box}body{margin:0;padding:48px 24px;background:#eee;color:#171717;font:14px/1.5 Georgia,serif}.card{max-width:720px;margin:auto;padding:42px;border:1px solid #aaa;background:#faf9f5}.mark{font:10px monospace;letter-spacing:.18em;color:#666}.rule{height:1px;background:#aaa;margin:24px 0}.title{font-size:clamp(28px,6vw,48px);font-weight:400;line-height:1.05;overflow-wrap:anywhere}ol{list-style:none;padding:0;margin:30px 0}li{display:flex;gap:18px;padding:13px 0;border-bottom:1px solid #ddd}li>span,small{font:10px monospace;color:#777}li div{display:grid;gap:4px}li strong{font-weight:400;font-size:16px}.foot{font:10px monospace;color:#777;letter-spacing:.1em}@media print{body{padding:0;background:#fff}.card{border:0;max-width:none;padding:18mm} }</style>"+
+      "<body><main class=\"card\"><div class=\"mark\">自販機 / JIHANKI — PERSONAL CABINET</div><div class=\"rule\"></div><h1 class=\"title\">"+esc(shelf.name)+"</h1><p class=\"foot\">A SMALL EXHIBITION / "+records.length+" WORKS</p><div class=\"rule\"></div><ol>"+entries+"</ol><div class=\"rule\"></div><p class=\"foot\">ARRANGED FROM THE JIHANKI ARCHIVE · "+new Date().toISOString().slice(0,10)+"</p></main></body></html>";
+  }
+  function exportShelfCard(shelfId) {
+    const html=shelfCardHtml(shelfId);
+    if(!html)return false;
+    const shelf=state.shelves.find(entry=>entry.id===String(shelfId));
+    const blob=new Blob([html],{type:"text/html;charset=utf-8"}),url=URL.createObjectURL(blob),link=document.createElement("a");
+    link.href=url;link.download="jihanki-cabinet-"+String(shelf.name).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")+".html";
+    document.body.appendChild(link);link.click();link.remove();URL.revokeObjectURL(url);
+    window.JIHANKI_EVENTS?.record("museum-shelf-card-exported",{shelfId:shelf.id,works:shelf.itemIds.length});
+    return true;
+  }
   function keptIds(){return state.kept.slice();}
   function trail(){return state.trail.map(e=>({...e}));}
   function isKept(id){return state.kept.includes(String(id));}
@@ -120,7 +140,7 @@
     let payload;try{payload=JSON.parse(await file.text());}catch(_){throw new Error("The selected file is not valid JSON.");}return importPayload(payload);
   }
   load();
-  window.JIHANKI_MUSEUM={shelves,keptIds,trail,isKept,toggleKeep,createShelf,addToShelf,removeFromShelf,deleteShelf,
+  window.JIHANKI_MUSEUM={shelves,shelfCardHtml,exportShelfCard,keptIds,trail,isKept,toggleKeep,createShelf,addToShelf,removeFromShelf,deleteShelf,
     clearKept,clearShelves,clearTrail,resetPreferences,stats,setView,preferences:()=>({...prefs}),exportFile,importFile,importPayload,
     get storageAvailable(){try{const key="jihanki.museum.storage-test";localStorage.setItem(key,"1");localStorage.removeItem(key);return true;}catch(_){return false;}}};
 })();
