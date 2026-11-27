@@ -5,6 +5,11 @@ Use Markdown (`.md`) as the editable archive format.
 Keep your original `Yokais.odt` as the master/source document.
 When something becomes a JIHANKI item, make a small curated Markdown file.
 
+## Editorial registers
+
+- [Cross-collection photo identification register](notes/photo-identification-register.md) — names, source evidence, thematic groups, cross-photo links and unresolved candidates across the complete static photo collection.
+- [Daily expedition archive](notes/daily/README.md) — chronological source-derived trip chapters and the map-pin register.
+
 Recommended structure:
 
 # TITLE
