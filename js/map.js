@@ -1,7 +1,7 @@
 /* M44 — Schematic geography and archive-memory network. Not a surveying or navigation map. */
 (function () {
   const esc=value=>String(value??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
-  const MAP_SURFACE={width:2700,height:1900};
+  const MAP_SURFACE={width:4000,height:3000};
   const POSITIONS={
     "Lake Saiko":[34,46],"Aokigahara":[27,67],"Fuji Five Lakes":[45,25],"Kawaguchiko":[59,50],
     "Lake Yamanaka":[76,48],"Lake Shōji":[35,61],"Uno-Misaki Tunnel":[24,55],
@@ -89,56 +89,37 @@
     return{jp,english,width,height:Math.max(86,height),count};
   }
   function declutter(places){
-    const width=MAP_SURFACE.width,height=MAP_SURFACE.height,cellSize=400;
+    const width=MAP_SURFACE.width,height=MAP_SURFACE.height;
     const nodes=places.map(place=>{
       const metric=labelMetrics(place.name,place.count),anchor=POSITIONS[place.name];
       return{name:place.name,x:anchor[0]*width/100,y:anchor[1]*height/100,
-        anchorX:anchor[0]*width/100,anchorY:anchor[1]*height/100,
         boxW:metric.width,boxH:metric.height};
     });
-    const clamp=node=>{
-      node.x=Math.max(node.boxW/2+32,Math.min(width-node.boxW/2-32,node.x));
-      node.y=Math.max(node.boxH/2+32,Math.min(height-node.boxH/2-32,node.y));
-    };
-    const separate=(a,b,margin)=>{
+    const separate=(a,b)=>{
       const dx=a.x-b.x,dy=a.y-b.y;
-      const overlapX=(a.boxW+b.boxW)/2+margin-Math.abs(dx);
-      const overlapY=(a.boxH+b.boxH)/2+margin-Math.abs(dy);
+      const overlapX=(a.boxW+b.boxW)/2+56-Math.abs(dx);
+      const overlapY=(a.boxH+b.boxH)/2+56-Math.abs(dy);
       if(overlapX<=0||overlapY<=0)return;
       if(overlapX<overlapY){
         const sign=dx===0?((a.name.length+b.name.length)%2?1:-1):Math.sign(dx);
-        const push=(overlapX+.2)*.53;
+        const push=(overlapX+.3)*.54;
         a.x+=sign*push*.5;b.x-=sign*push*.5;
       }else{
         const sign=dy===0?((a.name.length+b.name.length)%2?1:-1):Math.sign(dy);
-        const push=(overlapY+.2)*.53;
+        const push=(overlapY+.3)*.54;
         a.y+=sign*push*.5;b.y-=sign*push*.5;
       }
-      clamp(a);clamp(b);
     };
-    const pass=(margin,restore)=>{
-      const cells=new Map();
-      nodes.forEach((node,index)=>{
-        const cx=Math.floor(node.x/cellSize),cy=Math.floor(node.y/cellSize),key=cx+","+cy;
-        if(!cells.has(key))cells.set(key,[]);
-        cells.get(key).push(index);
-      });
-      nodes.forEach((a,i)=>{
-        const cx=Math.floor(a.x/cellSize),cy=Math.floor(a.y/cellSize);
-        for(let gy=cy-1;gy<=cy+1;gy++)for(let gx=cx-1;gx<=cx+1;gx++){
-          const bucket=cells.get(gx+","+gy)||[];
-          for(const j of bucket)if(j>i)separate(a,nodes[j],margin);
-        }
-      });
-      if(restore)nodes.forEach(node=>{
-        node.x+=(node.anchorX-node.x)*.001;
-        node.y+=(node.anchorY-node.y)*.001;
-        clamp(node);
-      });
-    };
-    for(let passIndex=0;passIndex<220;passIndex++)pass(48,true);
-    for(let passIndex=0;passIndex<190;passIndex++)pass(38,false);
-    return Object.fromEntries(nodes.map(node=>[node.name,[node.x/width*100,node.y/height*100]]));
+    // Let edge nodes move naturally instead of pinning several labels against
+    // the same boundary. The complete node cloud is translated into the canvas
+    // once the spacing pass is finished.
+    for(let pass=0;pass<180;pass++)
+      for(let i=0;i<nodes.length;i++)
+        for(let j=i+1;j<nodes.length;j++)separate(nodes[i],nodes[j]);
+    const minX=Math.min(...nodes.map(node=>node.x-node.boxW/2));
+    const minY=Math.min(...nodes.map(node=>node.y-node.boxH/2));
+    const shiftX=32-minX,shiftY=32-minY;
+    return Object.fromEntries(nodes.map(node=>[node.name,[(node.x+shiftX)/width*100,(node.y+shiftY)/height*100]]));
   }
   const TRAILS=window.JIHANKI_RELATIONSHIPS?.trails?.()||[];
   function trailMarkup(){
