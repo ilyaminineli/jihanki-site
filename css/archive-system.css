@@ -1418,3 +1418,19 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .map-trail-stops button span { color:#777; font:8px "Courier New",monospace; }
 .map-trail-stops button strong { font:9px "Courier New",monospace; }
 .map-trail-open { justify-self:start; padding:7px 9px; border:1px solid rgba(255,255,255,.2); background:#151515; color:#ddd; cursor:pointer; font:9px "Courier New",monospace; letter-spacing:.08em; }
+
+
+/* M52 — source-linked place references */
+.map-pin-references { display:grid; gap:7px; margin-top:12px; }
+.map-pin-reference-intro { padding:10px 2px 4px; }
+.map-pin-reference-intro p { margin:7px 0 0; color:#888; font:10px/1.6 "Courier New",monospace; }
+.map-pin-reference { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:12px; padding:10px; border:1px solid rgba(255,255,255,.14); background:#0d0d0d; }
+.map-pin-reference>div { min-width:0; display:grid; gap:5px; }
+.map-pin-reference strong { color:#ddd; font:11px/1.4 "Courier New",monospace; }
+.map-pin-reference small { color:#8e8e8e; font:8px "Courier New",monospace; text-transform:uppercase; letter-spacing:.08em; }
+.map-pin-reference p { margin:0; color:#888; font:9px/1.55 "Courier New",monospace; }
+.map-pin-reference a { color:#ddd; font:9px "Courier New",monospace; text-decoration:underline; text-underline-offset:3px; white-space:nowrap; }
+@media(max-width:560px) {
+  .map-pin-reference { grid-template-columns:1fr; align-items:start; }
+  .map-pin-reference a { justify-self:start; }
+}
