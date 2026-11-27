@@ -2339,3 +2339,26 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   .memory-map-panel .map-pan-layer .map-pin-place-card .map-pin-en { font-size:9px; }
   .memory-map-panel .map-pan-layer .map-pin-dot-only { min-width:0; min-height:0; padding:0; }
 }
+
+
+/* M61 — precision legend and matching card outlines. */
+.memory-map-panel .map-legend .legend-precision-site {
+  width:6px;height:6px;border:1px solid rgba(194,244,206,.95);background:#9de8b0;
+  box-shadow:0 0 5px rgba(107,213,141,.62);
+}
+.memory-map-panel .map-legend .legend-precision-locality {
+  width:9px;height:9px;border:1px solid rgba(126,220,153,.84);background:rgba(115,220,150,.75);
+}
+.memory-map-panel .map-legend .legend-precision-area {
+  width:11px;height:11px;border:1px dashed rgba(143,224,164,.9);background:rgba(25,100,51,.25);
+}
+.memory-map-panel .map-legend .legend-precision-prefecture {
+  width:14px;height:14px;border:1px solid rgba(152,225,169,.88);background:rgba(47,135,75,.18);
+}
+.memory-map-panel .map-pan-layer .map-pin-place-card.map-pin-precision-area,
+.memory-map-panel .map-pan-layer .map-pin-place-card.map-pin-precision-prefecture {
+  border-style:dashed;
+}
+.memory-map-panel .map-pan-layer .map-pin-place-card.map-pin-precision-locality {
+  border-color:rgba(111,194,139,.72);
+}
