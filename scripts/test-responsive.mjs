@@ -332,11 +332,21 @@ try{
       assert(pin.left>=map.surface.left-1&&pin.right<=map.surface.right+1,device.name+": map pin outside pan surface: "+JSON.stringify({pin,surface:map.surface}));
       assert(pin.top>=map.surface.top-1&&pin.bottom<=map.surface.bottom+1,device.name+": map pin outside pan surface: "+JSON.stringify({pin,surface:map.surface}));
     }
+    for(let i=0;i<map.pins.length;i++)for(let j=i+1;j<map.pins.length;j++){
+      const a=map.pins[i],b=map.pins[j];
+      const overlapX=Math.min(a.right,b.right)-Math.max(a.left,b.left);
+      const overlapY=Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top);
+      assert(!(overlapX>1&&overlapY>1),device.name+": Japanese map labels overlap: "+JSON.stringify({a,b}));
+    }
     await mkdir(path.join(ROOT,"test-results"),{recursive:true});
     await page.screenshot({path:path.join(ROOT,"test-results","map-"+device.name+".png")});
     await page.locator('[data-map-mode="memory"]').click();
     assert(await page.locator(".map-memory-mode").count()===1,device.name+": memory map mode failed");
     assert(await page.evaluate(()=>document.querySelector("#artifact").contains(document.activeElement)),device.name+": map dialog did not own keyboard focus");
+    await page.locator('[data-map-mode="trails"]').click();
+    const summitPhotos=await page.locator(".map-trail-photo-grid button").evaluateAll(nodes=>nodes.map(node=>node.dataset.archiveId));
+    assert(summitPhotos.join(",")==="photo-219,photo-220,photo-221,photo-222,photo-223",device.name+": Saiko summit evidence photos are missing or reordered: "+summitPhotos.join(","));
+    assert(await page.locator(".map-trail-stages li").count()===4,device.name+": Saiko summit field sequence is incomplete");
     await page.keyboard.press("Escape");
     assert(await page.locator("#artifact.open").count()===0,device.name+": Escape failed to close map");
     await page.locator('[data-home-action="search"]').click();
