@@ -137,7 +137,7 @@
       const photoMarkup=photos.length
         ?'<div class="map-trail-photo-section"><span class="map-eyebrow">FIELD PHOTOGRAPHS / ADDITION_5</span><div class="map-trail-photo-grid">'+photos.map(item=>{
           const filename=String(item.file).split("/").pop();
-          return '<button type="button" data-archive-id="'+esc(item.id)+'" title="'+esc(item.title)+'"><img src="'+esc(item.file)+'" alt="'+esc(item.title)+'" loading="lazy" decoding="async"><span>'+esc(filename)+'</span></button>';
+          return '<button type="button" data-map-photo="'+esc(item.id)+'" title="'+esc(item.title)+'"><img src="'+esc(item.file)+'" alt="'+esc(item.title)+'" loading="lazy" decoding="async"><span>'+esc(filename)+'</span></button>';
         }).join("")+'</div></div>'
         :"";
       return '<article class="map-trail-card"><span class="map-eyebrow">'+esc(trail.mode||trail.kind)+'</span><strong>'+esc(trail.title)+'</strong><p>'+esc(trail.description)+'</p>'+stages+photoMarkup+'<div class="map-trail-stops">'+
