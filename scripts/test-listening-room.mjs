@@ -46,7 +46,7 @@ assert.deepEqual(JSON.parse(JSON.stringify(weather.tracks.map(track => track.id)
 assert(groups.some(entry => entry.label === "SESSIONS / STANDALONE"),
   "The tongue-drum session should stay separate from the pentalogy.");
 const html = room.render();
-for (const [, title] of album) assert(html.includes(title), "Listening Room must render " + title);
+for (const track of album) assert(html.includes(track.title), "Listening Room must render " + track.title);
 assert(html.includes("05 / SHRINE / RITUAL"), "The missing fifth environment should remain visible as pending.");
 assert.match(html, /Public render pending/, "The room must not invent a Shrine audio file.");
 assert(html.includes("sound-06") && html.includes("Dialogue reconstruct 1"));
