@@ -78,7 +78,7 @@
   }
   function audioStateForView() {
     if (maintenanceActive || currentView === "service") return "service";
-    return ({ category: "browsing", location: "browsing", rotation: "rotation", collection: "collection", museum: "collection", exploration: "browsing", temporal: "idle" })[currentView] || "idle";
+    return ({ category: "browsing", location: "browsing", rotation: "rotation", collection: "collection", museum: "collection", exploration: "browsing", temporal: "idle", listening: "reading" })[currentView] || "idle";
   }
   function updateArtifactActions() {
     const actions = artifactContent.querySelector(".artifact-actions");
@@ -200,7 +200,8 @@
     const machineLine = window.JIHANKI_QUIET_SIGNALS?.homeLine() || window.JIHANKI_PERSONALITY?.homeLine() || "SELECT A MEMORY";
     screen.innerHTML = '<div class="boot home-boot"><div class="boot-japanese">自販機</div><div class="boot-title">JIHANKI</div><div class="boot-subtitle">MEMORY ARCHIVE</div><div class="boot-loading">' + esc(machineLine) + '</div>' +
       '<div class="home-primary"><button type="button" data-home-action="installation">ENTER SOUND LAB ↗</button>' +
-        '<small>BUILD AN INSTALLATION FROM ARCHIVE SOUND</small></div>' +
+        '<button type="button" class="home-listening" data-home-action="listening">OPEN LISTENING ROOM ↗</button>' +
+        '<small>BUILD A LIVE MIX / LISTEN THROUGH THE ARCHIVE</small></div>' +
       '<div class="home-actions">' +
         '<button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button>' +
         '<button type="button" data-home-action="map">MEMORY MAP</button>' +
@@ -281,6 +282,11 @@
   function openSoundscape() {
     openSystemPanel("SOUND INSTALLATION", window.JIHANKI_SOUNDSCAPE.render(), "reading");
     window.JIHANKI_SOUNDSCAPE.bind(artifactContent);
+    window.JIHANKI_AUDIO.bindMedia(artifactContent);
+  }
+  function openListeningRoom() {
+    openSystemPanel("LISTENING ROOM", window.JIHANKI_LISTENING_ROOM.render(), "reading", "listening");
+    window.JIHANKI_LISTENING_ROOM.bind(artifactContent);
     window.JIHANKI_AUDIO.bindMedia(artifactContent);
   }
   function openTemporalArchive() {
@@ -1062,6 +1068,7 @@
       if (action === "map") { openMap("memory"); return; }
       if (action === "search") { openSearch(); return; }
       if (action === "installation") { openSoundscape(); return; }
+      if (action === "listening") { openListeningRoom(); return; }
       if (action === "audio") {
         const muted = window.JIHANKI_AUDIO.toggleMute();
         window.JIHANKI_EVENTS.record("ambient-control", { muted });
