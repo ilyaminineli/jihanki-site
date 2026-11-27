@@ -4422,7 +4422,8 @@ const ARCHIVE = {
           "Shinsaibashi",
           "Osaka",
           "Lake Saiko",
-          "First summit near Saiko"
+          "First summit near Saiko",
+          "Shinjuku"
         ],
         "related": [
           "daily-2026-07-23",
@@ -4431,6 +4432,8 @@ const ARCHIVE = {
           "daily-2026-07-26",
           "daily-2026-07-27",
           "daily-2026-07-31",
+          "daily-2026-08-01",
+          "daily-2026-07-22",
           "daily-2026-08-road-trip",
           "tunnel",
           "shiki",
