@@ -991,7 +991,7 @@
       if (action === "rotation") { showRotation(); return; }
       if (action === "temporal") { openTemporalArchive(); return; }
       if (action === "collection") { showCollection(); return; }
-      if (action === "map") { openMap("geography"); return; }
+      if (action === "map") { openMap("memory"); return; }
       if (action === "search") { openSearch(); return; }
       if (action === "installation") { openSoundscape(); return; }
       if (action === "audio") {
