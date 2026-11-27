@@ -325,6 +325,10 @@ try{
     });
     assert(map.keyCount>0,device.name+": map key empty");
     assert(map.modalScrollWidth<=map.modalWidth+1,device.name+": map caused horizontal overflow");
+    const crtLabels=await page.locator(".map-pin").evaluateAll(nodes=>nodes.every(node=>
+      node.querySelector(".map-pin-jp")&&node.querySelector(".map-pin-count")&&
+      getComputedStyle(node).borderRadius!=="50%"));
+    assert(crtLabels,device.name+": CRT Japanese / English label style is missing");
     assert(map.overflow==="hidden",device.name+": pannable map viewport must clip its inner surface");
     for(const pin of map.pins){
       // Pins live on the intentionally wider pan surface, not necessarily inside
