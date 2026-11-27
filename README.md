@@ -184,7 +184,12 @@ This is especially important on phones, where the machine must remain correctly 
 
 ## Sound Lab
 
-Sound Lab is the main creative entry on the machine's home screen. Visitors can combine existing local archive audio into a layered installation. While it is running, checking a source adds that layer immediately and unchecking it pauses and rewinds it. The Start button rebuilds the mix from the current checked sources; Stop pauses every layer. Each source has its own volume and loop controls. Playback requires an explicit visitor action.
+Sound Lab is the main creative entry on the machine's home screen. It has two modes in one panel:
+
+- **LIVE MIX** combines selected archive sources into simultaneous layers. Checking a source adds it immediately; unchecking it pauses and rewinds it. Start rebuilds the mix from the current selection, while Stop pauses every layer. Each source has its own volume and loop controls.
+- **ARCHIVE LISTENING** plays recordings sequentially in their catalogue groups, with a shared player, room queues, previous / next navigation and automatic progression at the end of a recording.
+
+Switching modes stops playback in the mode being left. No new home-screen control, saved listening history or generated audio is introduced. Playback requires an explicit visitor action.
 
 ## Audio
 
