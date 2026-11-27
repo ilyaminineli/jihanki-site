@@ -327,8 +327,10 @@ try{
     assert(map.modalScrollWidth<=map.modalWidth+1,device.name+": map caused horizontal overflow");
     const crtLabels=await page.locator(".map-pin").evaluateAll(nodes=>nodes.every(node=>
       node.querySelector(".map-pin-jp")&&node.querySelector(".map-pin-count")&&
-      getComputedStyle(node).borderRadius!=="50%"));
-    assert(crtLabels,device.name+": CRT Japanese / English label style is missing");
+      getComputedStyle(node).borderRadius!=="50%"&&
+      getComputedStyle(node).borderColor.includes("125")&&
+      node.getBoundingClientRect().width>=130));
+    assert(crtLabels,device.name+": CRT phosphor label hierarchy or frame is missing");
     assert(map.overflow==="hidden",device.name+": pannable map viewport must clip its inner surface");
     for(const pin of map.pins){
       // Pins live on the intentionally wider pan surface, not necessarily inside
