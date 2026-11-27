@@ -16,14 +16,25 @@
     "daily-2026-07-26": ["Yamanashi", "Shrines"],
     "daily-2026-07-27": ["Mount Fuji", "Yamanashi"],
     "daily-2026-07-28": ["Tokyo"], "daily-2026-07-29": ["Ryugu Cave", "Koyodai"],
-    "daily-2026-08-18": ["Lake Saiko"]
+    "daily-2026-08-18": ["Lake Saiko"],
+    "daily-2026-08-road-trip": ["Kawaguchiko", "Kyoto", "Osaka"],
+    "mountain-remembers-mv": ["Mount Fuji", "Aokigahara", "Lake Saiko", "Fuji Five Lakes", "Kawaguchiko", "Nojima Fujiyoshida Store"],
+    "fuji-six-yokai-video": ["Mount Fuji", "Yamanashi", "Nojima Fujiyoshida Store"]
   };
   const PLACES = {
     "Mount Fuji": "Mountain and surrounding landscape records",
     "Aokigahara": "Forest, memory and procedural sound records",
     "Lake Saiko": "Residency, lakeside observations and field material",
     "Fuji Five Lakes": "Regional audiovisual and expedition records",
-    "Kawaguchiko": "Expedition notes and travel records", "Tokyo": "Urban expedition notes",
+    "Kawaguchiko": "Expedition notes and travel records",
+    "Kawaguchiko Music Forest Museum": "Music boxes, mechanical organs and a confirmed expedition visit",
+    "Hard Off Kawaguchiko Store": "Second-hand electronics and found objects; confirmed expedition visit",
+    "Nojima Fujiyoshida Store": "Laptop purchase and the material origin of two later video works",
+    "Iyashi no Sato": "Traditional village and folk crafts; confirmed expedition visit",
+    "Fujisan Museum": "Fuji worship and regional cultural history; confirmed expedition visit",
+    "Kyoto": "Kansai road journey, hotel stay, friendship and found Nintendo DS",
+    "Osaka": "Kansai road journey and live music",
+    "Tokyo": "Urban expedition notes",
     "Uno-Misaki Tunnel": "Tunnel recordings and audiovisual work", "Ryugu Cave": "Expedition notes",
     "Koyodai": "Expedition notes", "Haneda": "Arrival and departure records", "Shinjuku": "Urban expedition notes",
     "Yamanashi": "Regional archive records", "Shrine": "Ritual and Shrine project material",
