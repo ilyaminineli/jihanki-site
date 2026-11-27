@@ -233,7 +233,7 @@
     const input = artifactContent.querySelector("#archive-search-input");
     if (input) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
   }
-  function openMap(mode) { openSystemPanel("THE MEMORY MAP", window.JIHANKI_MAP.render(mode || "geography")); window.JIHANKI_MAP.bind(artifactContent); }
+  function openMap(mode) { openSystemPanel("記憶の地図", window.JIHANKI_MAP.render(mode || "geography")); window.JIHANKI_MAP.bind(artifactContent); }
   function openArchaeology(item) {
     if (!item) return;
     openSystemPanel("MEMORY ARCHAEOLOGY", '<div class="exploration-return"><button type="button" data-panel-back="' + esc(item.id) +
