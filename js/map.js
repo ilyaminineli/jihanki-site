@@ -35,6 +35,12 @@
     "Sheremetyevo":"シェレメーチエヴォ","Moscow":"モスクワ"
   };
   const labelFor=name=>JP_LABELS[name]||name;
+  // These are named sub-places already represented by a regional anchor on
+  // the schematic. Keep them in the full index, but avoid drawing stacked pins.
+  const DETAIL_ONLY=new Set([
+    "PICA Fuji Saiko","Tagonoura Minato Park","Tokyo Skytree","Sumida Ward",
+    "Kinkaku-ji","Japan Kanji Museum & Library","Kanji Museum","Banbutsu Sōzō-bō"
+  ]);
   function associationLines(places){
     const edges=new Set();
     (window.JIHANKI_ARCHIVE||[]).forEach(item=>{
@@ -106,22 +112,23 @@
   }
   function render(mode){
     const selected=mode==="memory"?"memory":mode==="trails"?"trails":mode==="pins"?"pins":"geography";
-    const places=(window.JIHANKI_GEOGRAPHY?.places()||[]).filter(place=>POSITIONS[place.name]).sort((a,b)=>b.count-a.count);
-    const names=places.map(place=>place.name);
-    const mapPlaces=selected==="trails"?["Kawaguchiko","Kyoto","Osaka"].map(name=>places.find(place=>place.name===name)).filter(Boolean):selected==="pins"?[]:places;
+    const places=(window.JIHANKI_GEOGRAPHY?.places()||[]).filter(place=>POSITIONS[place.name]&&place.name!=="Kanji Museum").sort((a,b)=>b.count-a.count);
+    const mapPlaces=selected==="trails"?["Kawaguchiko","Kyoto","Osaka"].map(name=>places.find(place=>place.name===name)).filter(Boolean):selected==="pins"?[]:places.filter(place=>!DETAIL_ONLY.has(place.name));
+    const indexPlaces=selected==="trails"?mapPlaces:places;
+    const mapNames=mapPlaces.map(place=>place.name);
     const layout=declutter(mapPlaces);
     const point=name=>layout[name]||POSITIONS[name];
-    const connections=selected==="memory"?associationLines(names):selected==="trails"?TRAILS.flatMap(trail=>trail.stops.slice(1).map((stop,index)=>[trail.stops[index],stop])):[];
+    const connections=selected==="memory"?associationLines(mapNames):selected==="trails"?TRAILS.flatMap(trail=>trail.stops.slice(1).map((stop,index)=>[trail.stops[index],stop])):[];
     const paths=connections.map(([a,b])=>{
       const p=point(a),q=point(b);return'<line x1="'+p[0]+'" y1="'+p[1]+'" x2="'+q[0]+'" y2="'+q[1]+'"></line>';
     }).join("");
-    const nodes=mapPlaces.map((place,index)=>{
-      const p=point(place.name),number=String(index+1).padStart(2,"0");
+    const nodes=mapPlaces.map(place=>{
+      const p=point(place.name),number=String(indexPlaces.indexOf(place)+1).padStart(2,"0");
       return'<button class="map-pin" style="left:'+p[0]+'%;top:'+p[1]+'%" type="button" data-map-place="'+esc(place.name)+
         '" aria-label="Open '+esc(place.name)+' archive location" title="'+esc(place.name)+'"><span class="map-pin-index">'+number+
         '</span><span class="map-pin-dot" aria-hidden="true"></span><strong>'+esc(labelFor(place.name))+'</strong><small>'+place.count+' 件</small></button>';
     }).join("");
-    const key=mapPlaces.map((place,index)=>'<button type="button" data-map-place="'+esc(place.name)+'"><span>'+
+    const key=indexPlaces.map((place,index)=>'<button type="button" data-map-place="'+esc(place.name)+'"><span>'+
       String(index+1).padStart(2,"0")+'</span><strong>'+esc(labelFor(place.name))+'</strong><small>'+place.count+' 件</small></button>').join("");
     return'<section class="memory-map-panel"><div class="map-toolbar"><div><span class="map-eyebrow">JHK / 地理の記憶</span><strong>'+
       (selected==="memory"?"記憶ネットワーク":selected==="trails"?"旅の道筋":selected==="pins"?"地図ピン":"地域索引")+'</strong></div><div class="map-mode-switch"><button type="button" data-map-mode="geography" '+
