@@ -3,13 +3,12 @@
 **Event:** 長浜ふるさと祭り / Nagahama Furusato Festival  
 **Date:** 15 August 2026  
 **Area:** Nagahama, Lake Kawaguchi, Fujikawaguchiko, Yamanashi  
-**Archive source:** traveller confirmation, two fireworks photographs and DYNAKYRIS's companion fieldnote.
+**Archive basis:** traveller confirmation and two fireworks photographs.
 
 ## Confirmed photographic record
 
 The traveller confirms that **`addition_4 (7).jpg` (`photo-179`) and `addition_4 (8).jpg` (`photo-180`)** were photographed at the Nagahama Furusato Festival on 15 August 2026. Both images are assigned to the same event and retained as two frames, not duplicate photos.
 
-DYNAKYRIS's fieldnote dated 16 August independently describes a local celebration on the preceding evening, with fireworks, dancing, local people, hospitality and conversation. This is companion-source corroboration; the traveller's confirmation is the direct source for the two photographs' event attribution.
 
 ## Place context
 

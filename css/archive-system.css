@@ -2375,3 +2375,14 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 @media(max-width:560px) {
   .memory-map-panel .map-region-label { font-size:7px; }
 }
+
+
+/* M63 — mobile pinch navigation and high-contrast geographic relationships. */
+.memory-map-panel .map-canvas { touch-action:none; }
+.memory-map-panel .map-memory-mode .map-connections line {stroke:rgba(255,255,255,.96);stroke-width:5;opacity:.96;stroke-dasharray:3 3;filter:drop-shadow(0 0 2px #000) drop-shadow(0 0 5px rgba(255,255,255,.7));}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-within {stroke:rgba(239,245,239,.96);stroke-width:4;stroke-dasharray:none;}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-near {stroke:rgba(255,255,255,.98);stroke-width:5;stroke-dasharray:2 6;}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-overlooks,
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-connected-to {stroke:rgba(206,255,224,.98);stroke-width:5;stroke-dasharray:10 5;}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-transit-corridor {stroke:rgba(255,246,214,.98);stroke-width:6;stroke-dasharray:14 5 2 5;}
+.memory-map-panel .map-mode-switch [data-map-mode="pins"] {display:none !important;}

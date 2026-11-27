@@ -322,7 +322,34 @@ const UTAU_ARCHIVE = [
     "context": "Earlier recording · included for completeness",
     "description": "Takismana's earlier voicebank, included as part of the connected project archive. The artist page and UTAU wiki references provide further information.",
     "url": "https://visingers.github.io/Julia-Baranyuk/Takismana/"
+  },
+  {
+    "id":"person-koba-san",
+    "title":"Koba-san — local guide and friend",
+    "date":"2026",
+    "type":"text",
+    "category":"notes",
+    "author":"archive",
+    "project":"japan-expedition",
+    "group":"PEOPLE / LOCAL CONNECTIONS",
+    "description":"Local guide and friend who welcomed the travellers near Lake Saiko, shared a regional map and cultural recommendations, and later drove them to the former Kamikuishiki area.",
+    "file":"documents/notes/daily/2026-07-23.md",
+    "metadata":{"locations":["Lake Saiko","Satyam 1"],"related":["daily-2026-07-23","daily-2026-08-03"]}
+  },
+  {
+    "id":"person-shoko-asahara",
+    "title":"Shoko Asahara — historical context",
+    "date":"1955–2018",
+    "type":"text",
+    "category":"notes",
+    "author":"archive",
+    "project":"japan-expedition",
+    "group":"HISTORICAL CONTEXT",
+    "description":"Historical reference in the 3 August chapter concerning Aum Shinrikyo and the former Kamikuishiki compound. Contextual documentation only; not an endorsement or destination.",
+    "file":"documents/notes/daily/2026-08-03.md",
+    "metadata":{"locations":["Kamikuishiki"],"related":["daily-2026-08-03"]}
   }
+
 ];
 const ARCHIVE = {
   "videos": [
@@ -346,7 +373,7 @@ const ARCHIVE = {
       "author": "eli",
       "group": "JAPAN / AUDIOVISUAL WORKS",
       "file": "media/video/山は覚えている｜The Mountain Remembers｜MV.mp4",
-      "description": "A fragmentary audiovisual memory of Fuji, the lakes, Aokigahara, roads, shrines, tunnels, vending machines and field recordings. Companion fieldnotes by DYNAKYRIS describe the film as a work of memory rather than a travelogue and record DYNAKYRIS in Katakana in its credits.",
+      "description": "A fragmentary audiovisual memory of Fuji, the lakes, Aokigahara, roads, shrines, tunnels, vending machines and field recordings. DYNAKYRIS, a friend and creative collaborator in the Banbutsu Sōzō-bō circle, is included in the film credits.",
       "voices": [
         "Takismana",
         "Akane Iirai",
@@ -728,8 +755,7 @@ const ARCHIVE = {
           "Kyoto"
         ],
         "related": [
-          "daily-2026-08-road-trip",
-          "dynakyris-japan-corroborations-2026-11-27"
+          "daily-2026-08-road-trip"
         ]
       }
     },
@@ -3317,7 +3343,7 @@ const ARCHIVE = {
       "category": "photo",
       "group": "Nagahama Furusato Festival / fireworks",
       "file": "media/photo/photos_from_japan/addition_4/addition_4 (7).jpg",
-      "description": "The traveller confirms this fireworks photograph was taken at the Nagahama Furusato Festival on 15 August 2026, on the Lake Kawaguchi shore. DYNAKYRIS's 16 August fieldnote independently describes the local celebration on the previous evening.",
+      "description": "The traveller confirms this fireworks photograph was taken at the Nagahama Furusato Festival on 15 August 2026, on the Lake Kawaguchi shore.",
       "metadata": {
         "locations": [
           "Nagahama",
@@ -3327,7 +3353,6 @@ const ARCHIVE = {
         ],
         "related": [
           "photo-180",
-          "dynakyris-japan-corroborations-2026-11-27",
           "event-2026-08-15-nagahama-furusato-festival"
         ]
       }
@@ -3350,7 +3375,6 @@ const ARCHIVE = {
         ],
         "related": [
           "photo-179",
-          "dynakyris-japan-corroborations-2026-11-27",
           "event-2026-08-15-nagahama-furusato-festival"
         ]
       }
@@ -3403,7 +3427,7 @@ const ARCHIVE = {
       "category": "photo",
       "group": "Nagahama / local shop and contact",
       "file": "media/photo/photos_from_japan/addition_4/addition_4 (11).jpg",
-      "description": "The shop sign reads かどや商店 and 河口湖の地酒. The traveller identifies this as the shop of the man they contacted in Saiko, who introduced himself with the words: 「山梨県河口湖のかどや商店の三浦正重でさ」. His exact Japanese self-introduction is retained without assuming a romanized reading. The regional tourism listing places the shop at Nagahama 1338-7, Fujikawaguchiko. This identification does not by itself establish that it is the shop-with-house described separately in DYNAKYRIS's fieldnote.",
+      "description": "The shop sign reads かどや商店 and 河口湖の地酒. The traveller identifies this as the shop of the man they contacted in Saiko, who introduced himself with the words: 「山梨県河口湖のかどや商店の三浦正重でさ」. His exact Japanese self-introduction is retained without assuming a romanized reading. The regional tourism listing places the shop at Nagahama 1338-7, Fujikawaguchiko.",
       "metadata": {
         "locations": [
           "Kadoya Shoten",
@@ -3412,7 +3436,6 @@ const ARCHIVE = {
           "Yamanashi"
         ],
         "related": [
-          "dynakyris-japan-corroborations-2026-11-27",
           "kadoya-shoten-miura-contact"
         ]
       }
@@ -4610,8 +4633,7 @@ const ARCHIVE = {
       "metadata": {
         "related": [
           "voice-takismana",
-          "daily-2026-08-road-trip",
-          "dynakyris-japan-corroborations-2026-11-27"
+          "daily-2026-08-road-trip"
         ]
       }
     },
@@ -5126,19 +5148,7 @@ const ARCHIVE = {
       "description": "A dated chapter from the 2026 Japan journey.",
       "file": "documents/notes/daily/2026-07-29.md"
     },
-    {
-      "id": "daily-2026-07-31-map-pins",
-      "title": "FORWARDED MAP PINS / PLACE IDENTIFICATION",
-      "date": "2026-07-31",
-      "type": "text",
-      "category": "notes",
-      "author": "archive",
-      "project": "japan-expedition",
-      "group": "FIELD MAP / PLACE REFERENCES",
-      "description": "A source register for captioned and unlabelled Google Maps pins, with place names assigned only when supported by the export or photographs.",
-      "file": "documents/notes/daily/2026-07-31-map-pins.md"
-    },
-    {
+{
       "id": "daily-2026-07-31",
       "title": "GAKUPO BIRTHDAY",
       "date": "2026-07-31",
@@ -5257,8 +5267,7 @@ const ARCHIVE = {
           "photo-192",
           "photo-196",
           "photo-197",
-          "photo-201",
-          "dynakyris-japan-corroborations-2026-11-27"
+          "photo-201"
         ]
       }
     },
@@ -5346,34 +5355,7 @@ const ARCHIVE = {
         ]
       }
     },
-    {
-      "id": "dynakyris-japan-corroborations-2026-11-27",
-      "title": "DYNAKYRIS — JAPAN FIELDNOTE CORROBORATIONS",
-      "date": "2026-11-27",
-      "type": "text",
-      "category": "notes",
-      "author": "archive",
-      "project": "japan-expedition",
-      "group": "COMPANION FIELD NOTES",
-      "description": "A companion perspective on Banbutsu Sōzō-bō, physical artwork exchange, local celebration context and The Mountain Remembers; attributed to DYNAKYRIS.",
-      "file": "documents/notes/dynakyris-japan-corroborations-2026-11-27.md",
-      "metadata": {
-        "locations": [
-          "Kyoto",
-          "Osaka",
-          "Fuji Five Lakes"
-        ],
-        "related": [
-          "photo-22",
-          "mountain-remembers-mv",
-          "photo-179",
-          "photo-180",
-          "photo-183",
-          "event-2026-08-15-nagahama-furusato-festival"
-        ]
-      }
-    },
-    {
+{
       "id": "event-2026-08-15-nagahama-furusato-festival",
       "title": "NAGAHAMA FURUSATO FESTIVAL — 15 AUGUST 2026",
       "date": "2026-08-15",
@@ -5382,7 +5364,7 @@ const ARCHIVE = {
       "author": "archive",
       "project": "japan-expedition",
       "group": "EVENT / LAKE KAWAGUCHI",
-      "description": "Traveller-confirmed festival and fireworks event photographed in addition_4 (7).jpg and (8).jpg. DYNAKYRIS's 16 August fieldnote independently describes the local celebration the previous evening.",
+      "description": "Traveller-confirmed festival and fireworks event photographed in addition_4 (7).jpg and (8).jpg.",
       "file": "documents/notes/events/2026-08-15-nagahama-furusato-festival.md",
       "metadata": {
         "locations": [
@@ -5393,8 +5375,7 @@ const ARCHIVE = {
         ],
         "related": [
           "photo-179",
-          "photo-180",
-          "dynakyris-japan-corroborations-2026-11-27"
+          "photo-180"
         ]
       }
     },

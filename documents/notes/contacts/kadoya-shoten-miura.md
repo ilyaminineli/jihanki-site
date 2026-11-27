@@ -10,4 +10,4 @@ The traveller identifies the photographed shop as the shop of the man they conta
 
 The original wording is retained here rather than supplying an assumed romanized reading for the personal name. The sign in the photograph reads `かどや商店` and `河口湖の地酒`. A regional tourism listing gives the shop's address as Nagahama 1338-7, Fujikawaguchiko: [Fuji Five Lakes tourism listing](https://fujisan.ne.jp/sightseeing/1860/).
 
-This is a personal contact memory and a place identification. It is **not** automatically equated with the separate shop-with-a-house description in DYNAKYRIS's 16 August fieldnote; his note does not name Kadoya Shoten.
+This is a personal contact memory and a place identification.

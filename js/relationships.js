@@ -70,7 +70,7 @@
     "photo-226": [{id:"photo-227",kind:"same-region-reference",label:"LAKE YAMANAKA / NAVIGATION DISPLAY"}],
     "photo-227": [{id:"photo-226",kind:"same-region-reference",label:"LAKE YAMANAKA / PARK SIGN"}],
     "photo-234": [{id:"photo-193",kind:"same-locality",label:"KITAOJI SHINMACHI / EARLIER AREA PHOTOGRAPH"}],
-    "photo-246": [{id:"voice-takismana",kind:"music-performance-equipment",label:"TAKISMANA / NINTENDO DS MUSIC USE"},{id:"dynakyris-japan-corroborations-2026-11-27",kind:"related-object-memory",label:"NINTENDO DS / JAPANESE MUSIC SOFTWARE"}],
+    "photo-246": [{id:"voice-takismana",kind:"music-performance-equipment",label:"TAKISMANA / NINTENDO DS MUSIC USE"},{id:"voice-takismana",kind:"music-performance-equipment",label:"SHARED CREATIVE HISTORY"}],
     "photo-248": [{id:"photo-169",kind:"same-business-location",label:"MCDONALD’S 139 FUJIYOSHIDA / SAME BRANCH"}],
     "photo-249": [{id:"photo-198",kind:"same-neighbourhood-context",label:"SHINSAIBASHI / UNDERGROUND PARKING AREA"}],
     "photo-247": [{id:"photo-250",kind:"same-locality-outing",label:"MIYUKI BEACH / SAME OUTING"},{id:"photo-202",kind:"same-locality-outing",label:"MIYUKI BEACH / EARLIER SCHOOL-SIGN VIEW"}],
