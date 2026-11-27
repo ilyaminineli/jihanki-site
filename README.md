@@ -56,7 +56,7 @@ Japan stay / shared field experience: **Takismana**
 * Archive search, offline shell cache and media metadata
 * Versioned browser-local collection import/export
 * Prominent Sound Lab with immediate layer selection/removal, per-track volume/loop controls and reliable restart/stop transport
-* Dedicated Listening Room with sequential playback for the four public Aokigahara pentalogy renders, standalone tongue-drum session and 17 field-archive fragments
+* Sound Lab with two integrated modes: live multi-layer mixing and sequential archive listening across the four public Aokigahara pentalogy renders, standalone tongue-drum session and 17 field-archive fragments
 * Static Chronology with visitor-local hourly reading suggestion, monochrome photographic contact sheets and the complete dated catalogue
 * Markdown documents, images, audio and video rendered inside the artifact viewer
 * Ambient JIHANKI loop and interface sound effects
