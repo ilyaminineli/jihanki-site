@@ -63,7 +63,7 @@
 
     if (Array.isArray(definition.from) && !definition.from.includes(
       event === "PURCHASE_COMPLETE" || event === "PURCHASE_ABORT" ||
-      event === "RECEIPT_DOWNLOAD_STARTED" || event === "RECEIPT_PRINT_DIALOG_OPENED"
+        event === "RECEIPT_DOWNLOAD_STARTED" || event === "RECEIPT_PRINT_DIALOG_OPENED"
         ? state.transaction.status : state.view
     )) return result(state, false, "invalid-source-state");
 
@@ -85,8 +85,10 @@
           state.purchasePending = false;
           if (state.transaction.status === "pending") {
             state.credits = Math.min(LIMITS.credits, state.credits + 1);
-            state.transaction = { status: "failed", itemId: state.transaction.itemId,
-              receiptCode: null, reason: "navigation-recovery", source: null };
+            state.transaction = {
+              status: "failed", itemId: state.transaction.itemId,
+              receiptCode: null, reason: "navigation-recovery", source: null
+            };
           }
         }
         return result(state, true);
@@ -115,13 +117,17 @@
 
       case "INSERT_CREDIT":
         if (state.credits >= LIMITS.credits) {
-          state.transaction = { status: "blocked", itemId: state.selectedId, receiptCode: null,
-            reason: "credit-limit", source: payload.source || "physical" };
+          state.transaction = {
+            status: "blocked", itemId: state.selectedId, receiptCode: null,
+            reason: "credit-limit", source: payload.source || "physical"
+          };
           return result(state, false, "credit-limit");
         }
         state.credits += 1;
-        state.transaction = { status: "credit-accepted", itemId: state.selectedId, receiptCode: null,
-          reason: null, source: payload.source || "physical" };
+        state.transaction = {
+          status: "credit-accepted", itemId: state.selectedId, receiptCode: null,
+          reason: null, source: payload.source || "physical"
+        };
         return result(state, true);
 
       case "PURCHASE_ATTEMPT": {
@@ -145,7 +151,7 @@
 
       case "PURCHASE_COMPLETE":
         if (!state.purchasePending || state.transaction.status !== "pending" ||
-            String(payload.itemId || "") !== state.transaction.itemId || !payload.receiptCode) {
+          String(payload.itemId || "") !== state.transaction.itemId || !payload.receiptCode) {
           return result(state, false, "no-matching-pending-purchase");
         }
         state.purchasePending = false;
@@ -154,7 +160,7 @@
 
       case "PURCHASE_ABORT":
         if (!state.purchasePending || state.transaction.status !== "pending" ||
-            (payload.itemId && String(payload.itemId) !== state.transaction.itemId)) {
+          (payload.itemId && String(payload.itemId) !== state.transaction.itemId)) {
           return result(state, false, "no-matching-pending-purchase");
         }
         state.credits = Math.min(LIMITS.credits, state.credits + 1);
@@ -176,7 +182,7 @@
         const allowed = event === "RECEIPT_DOWNLOAD_STARTED"
           ? ["dispensed", "print-dialog-opened", "receipt-download-started"] : ["dispensed", "receipt-download-started", "print-dialog-opened"];
         if (!allowed.includes(state.transaction.status) ||
-            !payload.receiptCode || String(payload.receiptCode) !== state.transaction.receiptCode) {
+          !payload.receiptCode || String(payload.receiptCode) !== state.transaction.receiptCode) {
           return result(state, false, "receipt-does-not-match-current-transaction");
         }
         state.transaction = { ...state.transaction, status: event === "RECEIPT_DOWNLOAD_STARTED" ? "receipt-download-started" : "print-dialog-opened" };

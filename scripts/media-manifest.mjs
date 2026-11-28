@@ -28,7 +28,7 @@ export function validateMediaManifest(root, manifest) {
   for (const entry of manifest.files) {
     const relative = entry?.path;
     if (typeof relative !== "string" || !relative || path.posix.normalize(relative) !== relative ||
-        !relative.startsWith("media/") || relative.startsWith("/") || relative.split("/").includes("..")) {
+      !relative.startsWith("media/") || relative.startsWith("/") || relative.split("/").includes("..")) {
       issues.push("Media manifest path is not a canonical media-relative path: " + String(relative));
       continue;
     }

@@ -23,9 +23,11 @@ Purpose: this document extends the M35–M40 foundation and is the active implem
 **Depends on:** M36, M37
 
 ### Goal
+
 Establish a manifest-backed inventory for all media files, verify file size and Git blob checksum, and make the application shell available offline after the first successful visit.
 
 ### Scope
+
 1. Generate data/media-manifest.json from every file under media/.
 2. Record relative path, byte size and Git blob SHA-1 for each asset. The SHA is an integrity fingerprint, not an authorship signature.
 3. Validate every archive file and image reference to media/ against the manifest.
@@ -35,6 +37,7 @@ Establish a manifest-backed inventory for all media files, verify file size and 
 7. Bypass Range requests and large video streams instead of claiming they are fully available offline.
 
 ### Acceptance criteria
+
 - The manifest exactly describes the checked-in media directory.
 - A missing file, size mismatch, checksum mismatch or stale archive path fails CI.
 - A first visit can cache the core machine shell.
@@ -48,9 +51,11 @@ Establish a manifest-backed inventory for all media files, verify file size and 
 **Depends on:** M35, M36, M38, M41
 
 ### Goal
+
 Make media understandable before playback and keep the machine operable on more device shapes.
 
 ### Scope
+
 1. Lazy-load non-critical imagery and use asynchronous image decoding.
 2. Provide an explicit image/media failure state and retry action.
 3. Surface format, archive date and browser-reported duration for audio/video.
@@ -60,6 +65,7 @@ Make media understandable before playback and keep the machine operable on more 
 7. Calculate the 429 × 932 scale before first paint and recalculate against the visual viewport on resize/orientation changes.
 
 ### Acceptance criteria
+
 - Broken images have a visible fallback and retry.
 - Media duration is shown only after the browser reports metadata; unknown values are not invented.
 - Visitors can zoom and keyboard-operate every primary control.
@@ -76,9 +82,11 @@ Make media understandable before playback and keep the machine operable on more 
 **Depends on:** M30, M37, M39
 
 ### Goal
+
 Let visitors reconstruct a memory through evidence and editorial connections rather than treating records as isolated files.
 
 ### Scope
+
 1. Search titles, descriptions, contributors, dates and recorded locations.
 2. Give relationships explicit types: shared voice, same project, field origin, production document, source observation and shared place.
 3. Display a memory's immediate traces in its viewer.
@@ -87,6 +95,7 @@ Let visitors reconstruct a memory through evidence and editorial connections rat
 6. Keep factual connections distinguishable from thematic or conceptual links.
 
 ### Acceptance criteria
+
 - Every displayed link resolves to an existing archive record or named location.
 - Shared-category coincidence alone does not create a relationship.
 - Search results remain keyboard accessible and open the correct record.
@@ -99,9 +108,11 @@ Let visitors reconstruct a memory through evidence and editorial connections rat
 **Depends on:** M31, M37, M43
 
 ### Goal
+
 Represent expedition geography and the archive's network of remembered places.
 
 ### Scope
+
 1. Add a place-index mode using only locations already named in archive records.
 2. Add a memory-network mode with links generated from records that explicitly associate multiple places.
 3. Allow each place to open its associated archive entries.
@@ -109,6 +120,7 @@ Represent expedition geography and the archive's network of remembered places.
 5. Preserve unknown or imprecise locations rather than fabricating coordinates.
 
 ### Acceptance criteria
+
 - Every pin corresponds to a known place in the geography index.
 - Memory lines correspond to shared archive records, not invented routes.
 - Place mode and memory mode are visibly distinguishable.
@@ -121,9 +133,11 @@ Represent expedition geography and the archive's network of remembered places.
 **Depends on:** M29, M33, M40
 
 ### Goal
+
 Let the machine develop a subtle memory of a visitor's interaction history without becoming a chatbot or tracking system.
 
 ### Scope
+
 1. Store a bounded visitor-local history of opened records and category familiarity.
 2. Let the idle display evolve through restrained, context-sensitive messages.
 3. Bias random pick-up toward less recently visited material while keeping selection probabilistic.
@@ -131,6 +145,7 @@ Let the machine develop a subtle memory of a visitor's interaction history witho
 5. Keep personality state inspectable and resettable locally.
 
 ### Acceptance criteria
+
 - No interaction history leaves the visitor's browser.
 - Personality messages do not block ordinary navigation.
 - Random pick-up respects stock availability and coin rules.
@@ -143,9 +158,11 @@ Let the machine develop a subtle memory of a visitor's interaction history witho
 **Depends on:** M25, M33, M40
 
 ### Goal
+
 Turn a successful purchase into a unique, portable artifact rather than only a history row.
 
 ### Scope
+
 1. Generate a unique serialized memory object per successful receipt.
 2. Give each object a category stamp, archive reference, acquisition date and short inscription.
 3. Show the object in its memory viewer and in a separate browsable object list within the personal collection.
@@ -155,6 +172,7 @@ Turn a successful purchase into a unique, portable artifact rather than only a h
 7. Keep import additive and idempotent so restoring the same backup twice does not duplicate objects or inflate purchase counts.
 
 ### Acceptance criteria
+
 - Each successful receipt has one collectible object.
 - The object points back to its source record and receipt code.
 - Collection data remains browser-local.
@@ -169,9 +187,11 @@ Turn a successful purchase into a unique, portable artifact rather than only a h
 **Depends on:** M40, M43, M46
 
 ### Goal
+
 Make the personal collection a browsable personal museum, with clear separation between saved works, objects, receipts and machine preferences.
 
 ### Scope
+
 1. Add collection sections for acquired works, serialized objects, saved works, one visit trail and custom shelves.
 2. Search, filter and sort collected works; browse each souvenir independently.
 3. Allow visitors to keep individual archive works and create up to 12 named shelves.
@@ -182,6 +202,7 @@ Make the personal collection a browsable personal museum, with clear separation 
 8. Never claim cloud synchronisation without an approved backend.
 
 ### Acceptance criteria
+
 - Acquired works, collectible objects, saved works, one visit trail and custom shelves can be browsed separately.
 - No separate Machine Memory panel duplicates the collection's Visit Trail.
 - Museum backup/import is independent of the work/object collection backup.
@@ -196,9 +217,11 @@ Make the personal collection a browsable personal museum, with clear separation 
 **Depends on:** M32, M36, M42
 
 ### Goal
+
 Allow the archive to function as a visitor-operated sound installation using existing local audio fragments.
 
 ### Scope
+
 1. Select several audio items from the music and sound archive.
 2. Control each selected layer's volume and loop state.
 3. Add or remove a layer immediately when its selection checkbox changes during playback.
@@ -208,6 +231,7 @@ Allow the archive to function as a visitor-operated sound installation using exi
 7. Avoid automatic playback before a visitor gesture.
 
 ### Acceptance criteria
+
 - No audio begins merely by opening the installation panel.
 - Start, stop, volume and loop controls are keyboard accessible.
 - Unchecking a layer pauses and rewinds it immediately; checking it while running starts it.
@@ -222,9 +246,11 @@ Allow the archive to function as a visitor-operated sound installation using exi
 **Depends on:** named service owner and moderation team, DPA/transfer review, actual project provisioning and release-gate verification
 
 ### Goal
+
 Allow visitors to contribute an anonymous memory fragment without exposing the archive to unmoderated uploads.
 
 ### Scope
+
 1. Accept a plain-text fragment of up to 500 characters, optionally responding to a prompt.
 2. Allow an optional association to one existing archive record selected from an allowlist.
 3. Require explicit consent and human moderation before publication; include withdrawal and report handling.
@@ -232,6 +258,7 @@ Allow visitors to contribute an anonymous memory fragment without exposing the a
 5. Keep the current static build fully functional without the service.
 
 ### Boundary
+
 This cannot be implemented securely with the current static-only architecture. It requires a separately selected backend, moderation workflow and privacy policy.
 
 **Design reference:** [M49 — Visitor Memory Exchange: Privacy, Consent, Moderation and Abuse Prevention](../privacy/M49-VISITOR-MEMORY-EXCHANGE-PRIVACY-AND-MODERATION.md).
@@ -251,9 +278,11 @@ M49 remains **not activated**. The backend target and operating model are select
 **Depends on:** M28, M43, M45
 
 ### Goal
+
 Let the machine's available fragments and tone shift with local time and the archive's own chronology, without changing the source catalogue.
 
 ### Scope
+
 1. Build a complete chronology directly from source catalogue date values, preserving day-, month- and year-only precision.
 2. Keep undated or unparsed records visible in a separate section; do not assign invented dates.
 3. Show missing years between dated records as gaps in the catalogue, not as claims about unrecorded events.
@@ -266,6 +295,7 @@ Let the machine's available fragments and tone shift with local time and the arc
 The CHRONOLOGY uses a monochrome editorial index inspired by the structure of documentary contact sheets: an oversized outlined ARCHIVIO masthead, compact MAPPA / RANDOM / TIMELINE navigation, year anchors, month labels and a tiled image/text register. It uses only image files already referenced by the JIHANKI catalogue; it does not import photographs from the visual reference. Image cards are grayscale in the index and open the original archive records. The layout collapses to a two-column contact sheet and then a single-column lead panel on narrow screens.
 
 ### Implemented behaviour
+
 - A CHRONOLOGY action opens the complete newest-first date index, grouped by year and month.
 - The introduction explains that this is the archive's date index, not a diary of visitor activity; the hourly echo is a browser-local reading suggestion.
 - The visitor-local hour, constrained by its day-part, selects one existing catalogue fragment as an hourly echo. The interface explicitly states that this does not imply the work was originally recorded at that hour.
@@ -274,6 +304,7 @@ The CHRONOLOGY uses a monochrome editorial index inspired by the structure of do
 - The local clock is read at render time only. No temporal preference or clock value is persisted or transmitted.
 
 ### Acceptance criteria
+
 - Time changes presentation, never the underlying catalogue or original record dates.
 - All source catalogue entries appear in the chronology, including undated and unplaced entries.
 - Year-only records are not assigned invented months or days.

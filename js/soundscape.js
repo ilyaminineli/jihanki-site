@@ -4,14 +4,14 @@
   "use strict";
 
   const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
   })[char]);
   const runtimes = new WeakMap();
   const trackStates = new WeakMap();
 
   function tracks() {
     return (window.JIHANKI_ARCHIVE || []).filter(item =>
-      ["music","sound"].includes(item.machineCategory || item.category) &&
+      ["music", "sound"].includes(item.machineCategory || item.category) &&
       item.file && /\.(mp3|wav|ogg|m4a|aac|flac|opus)$/i.test(item.file)
     );
   }
@@ -25,8 +25,8 @@
   function runtime(root) {
     let value = runtimes.get(root);
     if (!value) {
-      value = { running:false, generation:0, active:new Set(), failed:new Set() };
-      runtimes.set(root,value);
+      value = { running: false, generation: 0, active: new Set(), failed: new Set() };
+      runtimes.set(root, value);
     }
     return value;
   }
@@ -34,8 +34,8 @@
   function trackState(audio) {
     let value = trackStates.get(audio);
     if (!value) {
-      value = { generation:0 };
-      trackStates.set(audio,value);
+      value = { generation: 0 };
+      trackStates.set(audio, value);
     }
     return value;
   }
@@ -62,19 +62,19 @@
     const active = state.active.size;
     if (!state.running) return;
     if (!selected) {
-      setStatus(root,"NO FRAGMENTS SELECTED / THE ROOM IS QUIET");
+      setStatus(root, "NO FRAGMENTS SELECTED / THE ROOM IS QUIET");
     } else if (active) {
       const failed = state.failed.size;
-      setStatus(root,"PLAYING / "+active+" OF "+selected+" SELECTED LAYERS"+
-        (failed ? " / "+failed+" FAILED" : ""));
+      setStatus(root, "PLAYING / " + active + " OF " + selected + " SELECTED LAYERS" +
+        (failed ? " / " + failed + " FAILED" : ""));
     } else if (state.failed.size) {
-      setStatus(root,"NO TRACK STARTED / CHECK FILE AND BROWSER PLAYBACK PERMISSIONS");
+      setStatus(root, "NO TRACK STARTED / CHECK FILE AND BROWSER PLAYBACK PERMISSIONS");
     } else {
-      setStatus(root,"STARTING / "+selected+" SELECTED LAYERS");
+      setStatus(root, "STARTING / " + selected + " SELECTED LAYERS");
     }
   }
 
-  function stopTrack(root,row,rewind) {
+  function stopTrack(root, row, rewind) {
     root = installationRoot(root);
     if (!root) return;
     const audio = row?.querySelector("audio");
@@ -93,12 +93,12 @@
     if (indicator) indicator.textContent = "READY / OFF";
   }
 
-  async function playTrack(root,row,runGeneration,rewind) {
+  async function playTrack(root, row, runGeneration, rewind) {
     const state = runtime(root);
     const selector = row.querySelector("[data-install-select]");
     const audio = row.querySelector("audio");
     if (!selector?.checked || !audio || !state.running || state.generation !== runGeneration) {
-      stopTrack(root,row,true);
+      stopTrack(root, row, true);
       updateStatus(root);
       return false;
     }
@@ -108,7 +108,7 @@
     const volume = row.querySelector("[data-install-volume]");
     const loop = row.querySelector("[data-install-loop]");
     audio.loop = !!loop?.checked;
-    audio.volume = Math.max(0,Math.min(100,Number(volume?.value ?? 35)))/100;
+    audio.volume = Math.max(0, Math.min(100, Number(volume?.value ?? 35))) / 100;
     if (rewind !== false) {
       try { audio.currentTime = 0; } catch (_) { }
     }
@@ -148,24 +148,24 @@
     root = installationRoot(root);
     if (!root) return;
     rows(root).forEach(row => {
-      const audio=row.querySelector("audio");
+      const audio = row.querySelector("audio");
       if (!audio || audio.dataset.installBound === "true") return;
       audio.dataset.installBound = "true";
-      audio.addEventListener("ended",() => {
-        const state=runtime(root);
+      audio.addEventListener("ended", () => {
+        const state = runtime(root);
         state.active.delete(row.dataset.installTrack);
-        row.dataset.installPlaying="false";
-        const indicator=row.querySelector("[data-install-track-status]");
-        if(indicator)indicator.textContent="ENDED";
+        row.dataset.installPlaying = "false";
+        const indicator = row.querySelector("[data-install-track-status]");
+        if (indicator) indicator.textContent = "ENDED";
         updateStatus(root);
       });
-      audio.addEventListener("error",() => {
-        const state=runtime(root);
+      audio.addEventListener("error", () => {
+        const state = runtime(root);
         state.active.delete(row.dataset.installTrack);
         state.failed.add(row.dataset.installTrack);
-        row.dataset.installPlaying="false";
-        const indicator=row.querySelector("[data-install-track-status]");
-        if(indicator)indicator.textContent="FILE ERROR";
+        row.dataset.installPlaying = "false";
+        const indicator = row.querySelector("[data-install-track-status]");
+        if (indicator) indicator.textContent = "FILE ERROR";
         updateStatus(root);
       });
     });
@@ -175,27 +175,27 @@
     const list = tracks();
     const initialMix = list.filter(item => item.group !== "AOKIGAHARA / PENTALOGY").slice(0, Math.min(3, list.length));
     const selected = new Set(initialMix.map(item => item.id));
-    return '<section class="sound-installation">'+
-      '<div class="sound-lab-masthead"><span>JHK / SOUND LABORATORY</span><span>'+list.length+' SOURCE FRAGMENTS</span></div>'+
-      '<h2>BUILD A LIVING ARCHIVE</h2>'+
-      '<p class="sound-lab-explainer">Layer field recordings, environmental sound and music into a small listening environment. The installation is local to this page; nothing is uploaded.</p>'+
-      '<div class="sound-lab-instructions"><strong>LIVE SELECTION</strong><span>CHECK / ADD A LAYER</span><span>UNCHECK / REMOVE IT IMMEDIATELY</span><span>START / REBUILD THE MIX FROM THE CURRENT SELECTION</span></div>'+
-      '<div class="installation-tracks">'+
-      list.map((item,index) =>
-        '<article class="installation-track" data-install-track="'+esc(item.id)+'" data-install-playing="false">'+
-          '<label class="installation-select"><input type="checkbox" data-install-select value="'+esc(item.id)+'" '+
-            (selected.has(item.id)?"checked":"")+'><span class="installation-track-copy"><strong>'+esc(item.title)+'</strong>'+
-            '<small>'+esc(String(item.machineCategory||item.category||"SOUND").toUpperCase())+' / '+esc(item.date||"UNDATED")+'</small></span>'+
-            '<span class="installation-index">'+String(index+1).padStart(2,"0")+'</span></label>'+
-          '<div class="installation-track-controls">'+
-            '<label class="installation-volume">LEVEL <input type="range" min="0" max="100" value="35" data-install-volume aria-label="Volume for '+esc(item.title)+'"></label>'+
-            '<label class="installation-loop"><input type="checkbox" data-install-loop checked> LOOP</label>'+
-            '<small class="installation-track-status" data-install-track-status>READY / OFF</small>'+
-          '</div><audio preload="none" src="'+esc(item.file)+'" hidden></audio></article>'
-      ).join("")+
-      '</div><div class="installation-transport"><div class="installation-actions">'+
-        '<button type="button" data-install-action="start">START INSTALLATION ↗</button>'+
-        '<button type="button" data-install-action="stop">STOP</button>'+
+    return '<section class="sound-installation">' +
+      '<div class="sound-lab-masthead"><span>JHK / SOUND LABORATORY</span><span>' + list.length + ' SOURCE FRAGMENTS</span></div>' +
+      '<h2>BUILD A LIVING ARCHIVE</h2>' +
+      '<p class="sound-lab-explainer">Layer field recordings, environmental sound and music into a small listening environment. The installation is local to this page; nothing is uploaded.</p>' +
+      '<div class="sound-lab-instructions"><strong>LIVE SELECTION</strong><span>CHECK / ADD A LAYER</span><span>UNCHECK / REMOVE IT IMMEDIATELY</span><span>START / REBUILD THE MIX FROM THE CURRENT SELECTION</span></div>' +
+      '<div class="installation-tracks">' +
+      list.map((item, index) =>
+        '<article class="installation-track" data-install-track="' + esc(item.id) + '" data-install-playing="false">' +
+        '<label class="installation-select"><input type="checkbox" data-install-select value="' + esc(item.id) + '" ' +
+        (selected.has(item.id) ? "checked" : "") + '><span class="installation-track-copy"><strong>' + esc(item.title) + '</strong>' +
+        '<small>' + esc(String(item.machineCategory || item.category || "SOUND").toUpperCase()) + ' / ' + esc(item.date || "UNDATED") + '</small></span>' +
+        '<span class="installation-index">' + String(index + 1).padStart(2, "0") + '</span></label>' +
+        '<div class="installation-track-controls">' +
+        '<label class="installation-volume">LEVEL <input type="range" min="0" max="100" value="35" data-install-volume aria-label="Volume for ' + esc(item.title) + '"></label>' +
+        '<label class="installation-loop"><input type="checkbox" data-install-loop checked> LOOP</label>' +
+        '<small class="installation-track-status" data-install-track-status>READY / OFF</small>' +
+        '</div><audio preload="none" src="' + esc(item.file) + '" hidden></audio></article>'
+      ).join("") +
+      '</div><div class="installation-transport"><div class="installation-actions">' +
+      '<button type="button" data-install-action="start">START INSTALLATION ↗</button>' +
+      '<button type="button" data-install-action="stop">STOP</button>' +
       '</div><div class="installation-status" role="status" aria-live="polite">READY / SELECT THE LAYERS YOU WANT TO HEAR</div></div></section>';
   }
 
@@ -205,12 +205,12 @@
       '<section class="listening-room"><p>ARCHIVE LISTENING IS NOT AVAILABLE.</p></section>';
     return '<section class="sound-suite" data-sound-suite data-sound-mode="mix">' +
       '<div class="sound-suite-tabs" role="tablist" aria-label="Sound Lab modes">' +
-        '<button type="button" role="tab" id="sound-suite-tab-mix" aria-controls="sound-suite-panel-mix" aria-selected="true" aria-pressed="true" data-sound-suite-mode="mix">LIVE MIX</button>' +
-        '<button type="button" role="tab" id="sound-suite-tab-archive" aria-controls="sound-suite-panel-archive" aria-selected="false" aria-pressed="false" data-sound-suite-mode="archive">ARCHIVE LISTENING</button>' +
+      '<button type="button" role="tab" id="sound-suite-tab-mix" aria-controls="sound-suite-panel-mix" aria-selected="true" aria-pressed="true" data-sound-suite-mode="mix">LIVE MIX</button>' +
+      '<button type="button" role="tab" id="sound-suite-tab-archive" aria-controls="sound-suite-panel-archive" aria-selected="false" aria-pressed="false" data-sound-suite-mode="archive">ARCHIVE LISTENING</button>' +
       '</div>' +
       '<div class="sound-suite-panel" id="sound-suite-panel-mix" role="tabpanel" aria-labelledby="sound-suite-tab-mix" data-sound-suite-panel="mix">' + mix + '</div>' +
       '<div class="sound-suite-panel" id="sound-suite-panel-archive" role="tabpanel" aria-labelledby="sound-suite-tab-archive" data-sound-suite-panel="archive" hidden>' + archive + '</div>' +
-    '</section>';
+      '</section>';
   }
 
   const suiteBindings = new WeakSet();
@@ -222,7 +222,7 @@
       const tab = event.target.closest?.("[data-sound-suite-mode]");
       if (!tab || !suite.contains(tab)) return;
       const mode = tab.dataset.soundSuiteMode;
-      if (!["mix","archive"].includes(mode) || suite.dataset.soundMode === mode) return;
+      if (!["mix", "archive"].includes(mode) || suite.dataset.soundMode === mode) return;
 
       // The two modes share one player surface. Never let a hidden mode keep sounding.
       stop(suite, true);
@@ -251,14 +251,14 @@
     state.failed.clear();
 
     const allRows = rows(root);
-    allRows.forEach(row => stopTrack(root,row,true));
+    allRows.forEach(row => stopTrack(root, row, true));
     const selected = selectedRows(root);
     if (!selected.length) {
-      setStatus(root,"SELECT AT LEAST ONE SOUND FRAGMENT");
+      setStatus(root, "SELECT AT LEAST ONE SOUND FRAGMENT");
       return 0;
     }
-    setStatus(root,"REBUILDING / "+selected.length+" SELECTED LAYERS");
-    await Promise.all(selected.map(row => playTrack(root,row,generation,true)));
+    setStatus(root, "REBUILDING / " + selected.length + " SELECTED LAYERS");
+    await Promise.all(selected.map(row => playTrack(root, row, generation, true)));
     if (state.generation === generation) updateStatus(root);
     return state.active.size;
   }
@@ -269,9 +269,9 @@
     if (!row || !root) return false;
     const state = runtime(root);
     if (input.checked && state.running) {
-      playTrack(root,row,state.generation,true);
+      playTrack(root, row, state.generation, true);
     } else {
-      stopTrack(root,row,true);
+      stopTrack(root, row, true);
       updateStatus(root);
     }
     return true;
@@ -288,11 +288,11 @@
   function setVolume(input) {
     const audio = input?.closest(".installation-track")?.querySelector("audio");
     if (!audio) return false;
-    audio.volume = Math.max(0,Math.min(100,Number(input.value)))/100;
+    audio.volume = Math.max(0, Math.min(100, Number(input.value))) / 100;
     return true;
   }
 
-  function stop(root,quiet) {
+  function stop(root, quiet) {
     root = installationRoot(root);
     if (!root) return;
     const state = runtime(root);
@@ -300,26 +300,26 @@
     state.generation += 1;
     state.active.clear();
     state.failed.clear();
-    rows(root).forEach(row => stopTrack(root,row,true));
-    if (!quiet) setStatus(root,"STOPPED / THE ROOM IS QUIET");
+    rows(root).forEach(row => stopTrack(root, row, true));
+    if (!quiet) setStatus(root, "STOPPED / THE ROOM IS QUIET");
   }
 
   function dispose(root) {
     root = installationRoot(root);
-    if (root) stop(root,true);
+    if (root) stop(root, true);
   }
 
   function getState(root) {
     root = installationRoot(root);
-    if (!root) return {running:false,selectedIds:[],activeIds:[],failedIds:[]};
+    if (!root) return { running: false, selectedIds: [], activeIds: [], failedIds: [] };
     const state = runtime(root);
     return {
-      running:state.running,
-      selectedIds:selectedRows(root).map(row=>row.dataset.installTrack),
-      activeIds:[...state.active],
-      failedIds:[...state.failed]
+      running: state.running,
+      selectedIds: selectedRows(root).map(row => row.dataset.installTrack),
+      activeIds: [...state.active],
+      failedIds: [...state.failed]
     };
   }
 
-  window.JIHANKI_SOUNDSCAPE = {render,bind,start,stop,dispose,setSelection,setLoop,setVolume,getState,tracks};
+  window.JIHANKI_SOUNDSCAPE = { render, bind, start, stop, dispose, setSelection, setLoop, setVolume, getState, tracks };
 })();

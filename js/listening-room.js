@@ -13,7 +13,7 @@
     note: "Public render pending. The fifth environment remains part of the project, but no playable render is archived."
   };
   const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
   })[char]);
 
   function catalogue() {
@@ -76,15 +76,15 @@
       '<h2>ARCHIVE / LISTENING</h2>' +
       '<p class="listening-room-intro">A sequential player for recordings already held by the archive. Source groups and descriptions follow the catalogue; they do not imply additional locations or undocumented relationships.</p>' +
       '<section class="listening-now" aria-label="Listening player">' +
-        '<div class="listening-now-heading"><span>NOW PLAYING</span><span data-listening-position>NO SELECTION</span></div>' +
-        '<div class="listening-now-meta"><strong data-listening-title>SELECT A RECORDING</strong><small data-listening-description>Playback begins only after you choose a source.</small></div>' +
-        '<audio data-listening-audio controls preload="none" aria-label="Listening Room audio player"></audio>' +
-        '<div class="listening-transport">' +
-          '<button type="button" data-listening-action="previous" disabled>← PREVIOUS</button>' +
-          '<button type="button" data-listening-action="next" disabled>NEXT →</button>' +
-          '<button type="button" data-listening-action="stop" disabled>STOP</button>' +
-        '</div>' +
-        '<div class="listening-status" data-listening-status role="status" aria-live="polite">READY / NO SOURCE SELECTED</div>' +
+      '<div class="listening-now-heading"><span>NOW PLAYING</span><span data-listening-position>NO SELECTION</span></div>' +
+      '<div class="listening-now-meta"><strong data-listening-title>SELECT A RECORDING</strong><small data-listening-description>Playback begins only after you choose a source.</small></div>' +
+      '<audio data-listening-audio controls preload="none" aria-label="Listening Room audio player"></audio>' +
+      '<div class="listening-transport">' +
+      '<button type="button" data-listening-action="previous" disabled>← PREVIOUS</button>' +
+      '<button type="button" data-listening-action="next" disabled>NEXT →</button>' +
+      '<button type="button" data-listening-action="stop" disabled>STOP</button>' +
+      '</div>' +
+      '<div class="listening-status" data-listening-status role="status" aria-live="polite">READY / NO SOURCE SELECTED</div>' +
       '</section>' +
       (project ? '<section class="listening-album-note">' + cover +
         '<div><span>ALBUM / PROCEDURAL PROJECT</span><strong>' + esc(project.title) +

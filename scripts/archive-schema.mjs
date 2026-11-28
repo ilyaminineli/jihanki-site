@@ -67,7 +67,7 @@ export function validateRecordSchema(record) {
   }
 
   if (record.voices !== undefined && (!Array.isArray(record.voices) ||
-      record.voices.some(voice => typeof voice !== "string" || !voice.trim()))) {
+    record.voices.some(voice => typeof voice !== "string" || !voice.trim()))) {
     errors.push("voices must be an array of non-empty strings");
   }
 
@@ -76,12 +76,12 @@ export function validateRecordSchema(record) {
       errors.push("stock must be an object when provided");
     } else {
       if (record.stock.status !== undefined &&
-          !STOCK_STATES.has(String(record.stock.status).toLowerCase())) {
+        !STOCK_STATES.has(String(record.stock.status).toLowerCase())) {
         errors.push("invalid stock status: " + record.stock.status);
       }
       const quantity = record.stock.quantity;
       if (quantity !== undefined && quantity !== null &&
-          (!Number.isFinite(quantity) || quantity < 0)) {
+        (!Number.isFinite(quantity) || quantity < 0)) {
         errors.push("stock.quantity must be a non-negative number or null");
       }
       for (const field of ["label", "note"]) {
@@ -98,8 +98,8 @@ export function validateRecordSchema(record) {
     } else {
       for (const field of ["locations", "related"]) {
         if (record.metadata[field] !== undefined &&
-            (!Array.isArray(record.metadata[field]) ||
-             record.metadata[field].some(value => typeof value !== "string" || !value.trim()))) {
+          (!Array.isArray(record.metadata[field]) ||
+            record.metadata[field].some(value => typeof value !== "string" || !value.trim()))) {
           errors.push("metadata." + field + " must be an array of non-empty strings when provided");
         }
       }

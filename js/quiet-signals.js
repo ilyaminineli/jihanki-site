@@ -42,8 +42,8 @@
   window.addEventListener("jihanki:event", event => {
     const entry = event.detail || {};
     if (entry.type !== "memory-trace-completed" ||
-        entry.detail?.impressionId !== TRACE_ID ||
-        state.delivered || state.pending) return;
+      entry.detail?.impressionId !== TRACE_ID ||
+      state.delivered || state.pending) return;
     state.pending = true;
     save();
   });

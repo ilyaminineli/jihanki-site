@@ -138,16 +138,16 @@
     const shelves = window.JIHANKI_MUSEUM?.shelves() || [];
     const museumTools = window.JIHANKI_MUSEUM
       ? '<div class="museum-artifact-tools" aria-label="Personal collection actions"><button type="button" data-museum-keep>' +
-        (kept ? "REMOVE FROM KEPT WORKS" : "SAVE TO KEPT WORKS") + '</button>' +
-        '<label class="museum-shelf-picker"><span>ADD THIS WORK TO A SHELF</span><select data-museum-shelf aria-label="Choose a personal shelf">' +
-        '<option value="">CHOOSE A SHELF</option>' +
-        shelves.map(shelf => '<option value="' + esc(shelf.id) + '">' + esc(shelf.name) + '</option>').join("") +
-        '</select></label><button type="button" data-museum-add-shelf aria-label="Add this work to the selected shelf" ' +
-        (shelves.length ? "" : "disabled") + '>ADD TO SHELF</button><p class="museum-shelf-help">' +
-        (shelves.length
-          ? "KEPT WORKS ARE BOOKMARKS. SHELVES ARE NAMED GROUPS YOU CURATE YOURSELF. ADDING A WORK TO A SHELF DOES NOT SPEND CREDITS."
-          : "KEPT WORKS ARE BOOKMARKS. TO CREATE A NAMED GROUP, OPEN MY COLLECTION / SHELVES FIRST. SHELVES DO NOT SPEND CREDITS.") +
-        '</p></div>' : "";
+      (kept ? "REMOVE FROM KEPT WORKS" : "SAVE TO KEPT WORKS") + '</button>' +
+      '<label class="museum-shelf-picker"><span>ADD THIS WORK TO A SHELF</span><select data-museum-shelf aria-label="Choose a personal shelf">' +
+      '<option value="">CHOOSE A SHELF</option>' +
+      shelves.map(shelf => '<option value="' + esc(shelf.id) + '">' + esc(shelf.name) + '</option>').join("") +
+      '</select></label><button type="button" data-museum-add-shelf aria-label="Add this work to the selected shelf" ' +
+      (shelves.length ? "" : "disabled") + '>ADD TO SHELF</button><p class="museum-shelf-help">' +
+      (shelves.length
+        ? "KEPT WORKS ARE BOOKMARKS. SHELVES ARE NAMED GROUPS YOU CURATE YOURSELF. ADDING A WORK TO A SHELF DOES NOT SPEND CREDITS."
+        : "KEPT WORKS ARE BOOKMARKS. TO CREATE A NAMED GROUP, OPEN MY COLLECTION / SHELVES FIRST. SHELVES DO NOT SPEND CREDITS.") +
+      '</p></div>' : "";
     const returnToMuseum = currentView === "museum" ? '<button type="button" data-return-museum>← RETURN TO MY MUSEUM</button>' : "";
     actions.innerHTML = '<span class="artifact-credit-status">CREDIT BALANCE / ' + credits + '</span>' + transaction + dossier + museumTools + returnToMuseum;
   }
