@@ -5,22 +5,7 @@
       { id:"voice-takismana", kind:"shared-voice", label:"UTAU VOICE" },
       { id:"voice-iirai", kind:"shared-voice", label:"UTAU VOICE" },
       { id:"voice-eugene", kind:"shared-voice", label:"UTAU VOICE" },
-      { id:"aokigahara-pentalogy", kind:"shared-project", label:"SOUND WORLD" },
-      { id:"dynakyris-japan-corroborations-2026-11-27", kind:"collaborator-diary", label:"DYNAKYRIS / 17 AUGUST DIARY" }
-    ],
-    "photo-22": [
-      { id:"person-banbutsu-san", kind:"shopkeeper-context", label:"BANBUTSU-SAN / KYOTO SHOP" },
-      { id:"dynakyris-japan-corroborations-2026-11-27", kind:"diary-account", label:"DYNAKYRIS / BANBUTSU VISIT" }
-    ],
-    "person-banbutsu-san": [
-      { id:"dynakyris-japan-corroborations-2026-11-27", kind:"friendship-context", label:"DYNAKYRIS / KYOTO DIARY" },
-      { id:"photo-22", kind:"associated-shop", label:"BANBUTSU SŌZŌ-BŌ / SHOP INTERIOR" }
-    ],
-    "dynakyris-japan-corroborations-2026-11-27": [
-      { id:"person-banbutsu-san", kind:"friend-and-shop-context", label:"BANBUTSU-SAN / KYOTO" },
-      { id:"photo-22", kind:"diary-place", label:"BANBUTSU SŌZŌ-BŌ / INTERIOR" },
-      { id:"mountain-remembers-mv", kind:"film-reflection", label:"THE MOUNTAIN REMEMBERS / 17 AUGUST" },
-      { id:"photo-246", kind:"related-object-memory", label:"NINTENDO DS / JAPANESE MUSIC" }
+      { id:"aokigahara-pentalogy", kind:"shared-project", label:"SOUND WORLD" }
     ],
     "endless-road": [
       { id:"voice-iirai", kind:"shared-voice", label:"UTAU VOICE" },
@@ -89,27 +74,7 @@
     "photo-249": [{id:"photo-198",kind:"same-neighbourhood-context",label:"SHINSAIBASHI / UNDERGROUND PARKING AREA"}],
     "photo-247": [{id:"photo-250",kind:"same-locality-outing",label:"MIYUKIHAMA / BEACH SIGN"},{id:"photo-202",kind:"same-locality-outing",label:"MIYUKIHAMA / SCHOOL-SIGN STREET"}],
     "photo-250": [{id:"photo-247",kind:"same-locality-outing",label:"MIYUKIHAMA / NEARBY RESIDENTIAL STREET"},{id:"photo-202",kind:"same-locality-outing",label:"MIYUKIHAMA / SCHOOL-SIGN STREET"}],
-    "photo-intake-addition-5": [
-      { id:"daily-2026-07-25", kind:"field-visit-photograph", label:"ONSEN YURARI / UNO-MISAKI TUNNEL VISIT" },
-      { id:"tunnel", kind:"project-source", label:"UNO-MISAKI / TUNNEL AUDIOVISUAL WORK" },
-      { id:"daily-2026-07-22", kind:"first-encounter-context", label:"SHIKI / FIRST DEER APPEARANCE NEAR SAIKO" },
-      { id:"daily-2026-07-24", kind:"close-encounter-context", label:"SHIKI / FIRST CLOSE ENCOUNTER" },
-      { id:"shiki", kind:"subject-audiovisual-work", label:"SHIKI / DEER SUBJECT" },
-      { id:"sound-08", kind:"subject-field-recording", label:"SHIKI / SOUND TAKE 1" },
-      { id:"sound-09", kind:"subject-field-recording", label:"SHIKI / SOUND TAKE 2" },
-      { id:"daily-2026-07-26", kind:"museum-photo-sequence", label:"KAWAGUCHIKO RETRO TOYS MUSEUM" },
-      { id:"daily-2026-07-27", kind:"field-hike-photographs", label:"FIRST SUMMIT NEAR SAIKO" },
-      { id:"daily-2026-07-23", kind:"museum-and-equipment-context", label:"MUSIC FOREST MUSEUM / NEW LAPTOP" },
-      { id:"daily-2026-07-31", kind:"birthday-preparation-photo", label:"GAKUPO BIRTHDAY / 31 JULY" },
-      { id:"daily-2026-08-01", kind:"mountain-ascent-photo", label:"FRUIT AT A MOUNT FUJI ASCENT STOP" },
-      { id:"daily-2026-08-road-trip", kind:"regional-and-cultural-context", label:"KYOTO / OSAKA / TAKISMANA DS MUSIC USE" },
-      { id:"voice-takismana", kind:"music-performer-context", label:"TAKISMANA / NINTENDO DS MUSIC INTERFACE" },
-      { id:"photo-169", kind:"same-business-location", label:"MCDONALD'S 139 FUJIYOSHIDA / SAME BRANCH" },
-      { id:"photo-193", kind:"same-neighbourhood", label:"KITAOJI SHINMACHI / BUS-STOP AREA" },
-      { id:"photo-198", kind:"same-neighbourhood-context", label:"SHINSAIBASHI / UNDERGROUND PARKING AREA" },
-      { id:"photo-202", kind:"same-locality-and-outing", label:"MIYUKIHAMA / ODAWARA OUTING" }
-    ],
-    "photo-192": [
+        "photo-192": [
       { id:"photo-137", kind:"same-place-memory", label:"GENKO-AN / ROUND AND SQUARE WINDOWS" },
       { id:"photo-151", kind:"same-place-memory", label:"GENKO-AN / VERANDA" },
       { id:"photo-152", kind:"same-place-memory", label:"GENKO-AN / ENGAWA" },
@@ -140,13 +105,7 @@
       { id:"photo-181", kind:"same-tunnel-location", label:"NIIKURA TUNNEL / NEWER DETAIL" },
       { id:"photo-182", kind:"same-tunnel-location", label:"NIIKURA TUNNEL / NEWER DETAIL" }
     ],
-    "photo-183": [
-      { id:"kadoya-shoten-miura-contact", kind:"personal-contact-record", label:"MIURA / ORIGINAL JAPANESE SELF-INTRODUCTION" }
-    ],
-    "kadoya-shoten-miura-contact": [
-      { id:"photo-183", kind:"shop-photograph", label:"KADOYA SHOTEN / SIGN" }
-    ],
-    "photo-184": [
+            "photo-184": [
       { id:"photo-128", kind:"same-viewpoint-location", label:"FUJISAN DRAGON TOWER" },
       { id:"photo-130", kind:"same-viewpoint-location", label:"FUJISAN DRAGON TOWER" }
     ],
