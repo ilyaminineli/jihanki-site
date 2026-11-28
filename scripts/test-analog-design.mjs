@@ -36,5 +36,8 @@ assert.match(guide,/Intentional exceptions[\s\S]*Printed receipts[\s\S]*Exported
   "The design guide must preserve explicit print/export exceptions.");
 assert.match(guide,/Memory Network[\s\S]*monochrome map canvas/,"The design guide must define Memory Network appearance.");
 assert.match(archiveCss,/\.sound-suite-tabs/,"Integrated Sound Lab mode component is retained.");
+const mapLegacy=archiveCss.slice(archiveCss.indexOf("/* M56 —"),archiveCss.indexOf("/* M65 —"));
+assert(!mapLegacy.includes("99, 178, 122")&&!mapLegacy.includes("#36d77b"),
+  "Legacy map phosphor rules must not retain a green palette.");
 
 console.log("JIHANKI analog design tests passed: shared tokens, Chronology, Memory Network, Museum, offline cache and project dossier.");
