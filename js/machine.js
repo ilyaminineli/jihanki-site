@@ -249,11 +249,12 @@
       '<div class="home-actions">' +
       '<button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button>' +
       '<button type="button" data-home-action="map">MEMORY MAP</button>' +
-      '<button type="button" data-home-action="search">SEARCH</button></div>' +
+      '<button type="button" data-home-action="search">SEARCH</button>' +
+      '<button type="button" class="home-audio" data-home-action="audio" aria-label="Toggle background ambience and vending-machine sound effects" aria-pressed="' + (!soundMuted) + '">' + soundLabel + '</button></div>' +
       '<div class="home-archive-tools"><span>ARCHIVE</span>' +
       '<button type="button" data-home-action="rotation">ROTATION / ' + rotation.items.length + '</button>' +
       '<button type="button" data-home-action="temporal">CHRONOLOGY</button>' +
-      '<button type="button" class="home-audio" data-home-action="audio" aria-label="Toggle background ambience and vending-machine sound effects" aria-pressed="' + (!soundMuted) + '">' + soundLabel + '</button></div></div>';
+      '</div></div>';
     announce("JIHANKI home. Sound Lab, collection, memory map, search and archive chronology. " + collectionCount + " collected works. " + machineLine);
   }
   function showMessage(title, subtitle, footer) {
