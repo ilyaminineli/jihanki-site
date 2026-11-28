@@ -74,7 +74,7 @@ These are output formats, not alternate site UI themes:
 
 - **Printed receipts:** may use a light paper-like page because they represent a physical receipt.
 - **Exported Curator's Cabinet cards:** may use a paper print layout because the file is intended to be printed or shared independently.
-- **Archive media and artwork:** retain original colour when it is part of the source. Do not recolour the source file to match UI chrome.
+- **Archive media and artwork:** never alter the source file to match UI chrome. A page may apply a reversible presentation filter (for example, the monochrome Chronology contact sheet or grayscale map backdrop); the opened archive record remains the original source.
 - **Japanese place labels:** Mincho typography may be used for glyph clarity, but supporting labels and counts remain mono.
 
 ## 8. Implementation rules for future work
