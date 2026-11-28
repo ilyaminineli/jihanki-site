@@ -29,13 +29,22 @@ const archiveLink=index.indexOf('href="css/archive-system.css"');
 const themeLink=index.indexOf('href="css/jihanki-analog.css"');
 assert(archiveLink>=0&&themeLink>archiveLink,"Shared theme must load after feature-specific archive styles.");
 assert(sw.includes('"./css/jihanki-analog.css"'),"Shared theme must be precached for offline use.");
-assert.match(sw,/jihanki-shell-v18/,"Service-worker shell cache must be versioned for the new stylesheet.");
+assert.match(sw,/jihanki-shell-v19/,"Service-worker shell cache must be versioned for the new stylesheet.");
 assert(projectHtml.includes('../../css/jihanki-analog.css'),"Standalone Aokigahara dossier must load shared design tokens.");
 assert.match(projectCss,/--bg:\s*var\(--jhk-ink/,"Project palette must derive from shared JIHANKI tokens.");
 assert.match(guide,/Intentional exceptions[\s\S]*Printed receipts[\s\S]*Exported Curator's Cabinet cards/,
   "The design guide must preserve explicit print/export exceptions.");
 assert.match(guide,/Memory Network[\s\S]*monochrome map canvas/,"The design guide must define Memory Network appearance.");
 assert.match(archiveCss,/\.sound-suite-tabs/,"Integrated Sound Lab mode component is retained.");
+assert.match(theme, /#artifact \\{[\\s\\S]*?padding:[^;]*safe-area-inset-top/,
+  "Artifact overlay must respect safe-area insets.");
+assert.match(theme, /#artifact \.artifact-window[\\s\\S]*?max-height:calc\\(100dvh - 24px\\)/,
+  "Artifact window must be constrained to the visible viewport.");
+assert.match(theme, /\.map-expedition-return button[\\s\\S]*?var\\(--jhk-panel/,
+  "Map return must use the shared neutral panel palette.");
+assert.match(theme, /\.location-archive[\\s\\S]*?padding:18px 12px 12px/,
+  "CRT location list must reserve headroom for the physical credit display.");
+
 assert(!/font:[^;]*(?:Impact|Arial Narrow|Georgia|sans-serif)/i.test(archiveCss)&&
   !/font-family:\s*(?:Impact|Arial|Helvetica|Georgia)/i.test(archiveCss),
   "Feature-specific archive CSS must not reintroduce the legacy editorial font stack.");
