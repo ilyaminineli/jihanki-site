@@ -97,3 +97,16 @@ The design system governs presentation, not archive meaning. It must never chang
 - Flex and grid children that contain labels, relation rows, buttons or selects must declare `min-width: 0` and may wrap long archival titles.
 - Keep the credit balance, transaction action and Museum controls in separate predictable rows; never force the shelf picker to its desktop minimum width on a phone.
 - Check every overlay on 320px and 375px widths as well as desktop. A map pan surface is the deliberate exception: its inner geography may be larger than the viewport, but the map canvas must clip it and controls must remain inside the dialog.
+
+
+## 10. Museum collections and shelves
+
+The Museum uses three separate ideas and must label them distinctly:
+
+- **Collected Works:** records actually dispensed through the machine; purchases and receipts remain their own transaction history.
+- **Kept Works:** a visitor-local bookmark list. Saving a work here does not purchase it or place it on a shelf.
+- **Shelves:** visitor-named thematic groups of archive records. A record may be placed on multiple shelves. Adding or removing it changes only the visitor's local shelf membership; it does not change the public archive, spend credits or delete the record.
+
+Create a shelf in **MY COLLECTION → SHELVES**. Open an archive record, choose a shelf in **ADD THIS WORK TO A SHELF**, and press **ADD TO SHELF**. From the Shelves tab, visitors can remove individual entries, delete a shelf without deleting the archive records, or export a print-ready exhibition card.
+
+Always explain the difference between Kept Works and Shelves in the interface. Avoid the ambiguous button label `ADD` when the action is specifically adding an archive work to a shelf.
