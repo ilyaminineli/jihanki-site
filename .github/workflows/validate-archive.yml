@@ -68,6 +68,8 @@ jobs:
         run: node scripts/test-markdown-links.mjs
       - name: Test media manifest integrity fixtures
         run: node scripts/test-media-manifest.mjs
+      - name: Test analog design system
+        run: node scripts/test-analog-design.mjs
       - name: Install Playwright Chromium
         run: |
           npm install --no-save playwright
