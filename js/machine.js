@@ -237,7 +237,7 @@
     const soundMuted = window.JIHANKI_AUDIO.isMuted();
     const soundLabel = soundMuted ? "SOUND / OFF" : "SOUND / ON";
     const machineLine = window.JIHANKI_QUIET_SIGNALS?.homeLine() || window.JIHANKI_PERSONALITY?.homeLine() || "SELECT A MEMORY";
-    screen.innerHTML = '<div class="boot home-boot"><div class="boot-japanese">自販機</div><div class="boot-title">JIHANKI</div><div class="boot-subtitle">MEMORY ARCHIVE</div><div class="boot-loading">' + esc(machineLine) + '</div>' +
+    screen.innerHTML = '<div class="boot home-boot"><div class="home-wordmark-stack"><div class="boot-japanese">自販機</div><div class="boot-title">JIHANKI</div><div class="boot-subtitle">MEMORY ARCHIVE</div></div><div class="boot-loading">' + esc(machineLine) + '</div>' +
       '<div class="home-primary"><button type="button" data-home-action="installation">ENTER SOUND LAB ↗</button></div>' +
       '<div class="home-actions">' +
         '<button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button>' +
