@@ -130,18 +130,34 @@ try{
     assert(await page.evaluate(()=>window.JIHANKI_AUDIO.isMuted())===initialMuted,
       device.name+": sound switch could not restore its previous state");
     const wordmarkAudit=await page.evaluate(()=>{
-      const word=document.querySelector(".home-boot .boot-japanese").getBoundingClientRect();
-      const credit=document.querySelector("#credit-display").getBoundingClientRect();
+      const selectors=[".boot-japanese",".boot-title",".boot-subtitle"];
       const screen=document.querySelector("#screen").getBoundingClientRect();
-      return {word:{left:word.left,right:word.right,top:word.top,bottom:word.bottom},
-        credit:{left:credit.left,right:credit.right,top:credit.top,bottom:credit.bottom},
-        screen:{left:screen.left,right:screen.right}};
+      const credit=document.querySelector("#credit-display").getBoundingClientRect();
+      const wordmarks=selectors.map(selector=>{
+        const element=document.querySelector(".home-boot "+selector);
+        const range=document.createRange();
+        range.selectNodeContents(element);
+        const glyph=range.getBoundingClientRect();
+        const box=element.getBoundingClientRect();
+        return {selector,left:glyph.left,right:glyph.right,top:glyph.top,bottom:glyph.bottom,
+          center:(glyph.left+glyph.right)/2,boxLeft:box.left,boxRight:box.right};
+      });
+      return {wordmarks,credit:{left:credit.left,right:credit.right,top:credit.top,bottom:credit.bottom},
+        screen:{left:screen.left,right:screen.right,top:screen.top,bottom:screen.bottom},
+        topHeadroom:wordmarks[0].top-screen.top};
     });
-    assert(wordmarkAudit.word.left>=wordmarkAudit.screen.left-1&&wordmarkAudit.word.right<=wordmarkAudit.screen.right+1,
-      device.name+": 自販機 wordmark extends outside the CRT");
-    assert(!(wordmarkAudit.word.right>wordmarkAudit.credit.left&&wordmarkAudit.word.left<wordmarkAudit.credit.right&&
-      wordmarkAudit.word.bottom>wordmarkAudit.credit.top&&wordmarkAudit.word.top<wordmarkAudit.credit.bottom),
-      device.name+": 自販機 wordmark overlaps the credit counter");
+    const screenCenter=(wordmarkAudit.screen.left+wordmarkAudit.screen.right)/2;
+    assert(wordmarkAudit.wordmarks.every(word=>word.left>=wordmarkAudit.screen.left-1&&
+      word.right<=wordmarkAudit.screen.right+1),
+      device.name+": a home wordmark extends outside the CRT: "+JSON.stringify(wordmarkAudit));
+    assert(wordmarkAudit.wordmarks.every(word=>Math.abs(word.center-screenCenter)<=2*geometry.scale+1),
+      device.name+": Japanese, JIHANKI and MEMORY ARCHIVE are not visually centered: "+JSON.stringify(wordmarkAudit));
+    const japanese=wordmarkAudit.wordmarks[0];
+    assert(japanese.top>=wordmarkAudit.screen.top+25*geometry.scale,
+      device.name+": Japanese wordmark is too close to the CRT ceiling: "+JSON.stringify(wordmarkAudit));
+    assert(!(japanese.right>wordmarkAudit.credit.left&&japanese.left<wordmarkAudit.credit.right&&
+      japanese.bottom>wordmarkAudit.credit.top&&japanese.top<wordmarkAudit.credit.bottom),
+      device.name+": Japanese wordmark overlaps the credit counter");
     const homeHeaderAudit=await page.evaluate(()=>{
       const root=document.querySelector(".home-boot");
       const screen=document.querySelector("#screen");
