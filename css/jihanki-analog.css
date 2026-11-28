@@ -323,3 +323,59 @@
   .museum-artifact-tools { grid-template-columns:minmax(0,1fr); }
   .museum-artifact-tools > * { grid-column:1 / -1; width:100%; }
 }
+
+
+/* Location archive inside the CRT: reserve the physical credit-counter corner. */
+#screen-content .location-archive {
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  padding:18px 12px 12px;
+  overflow-x:hidden;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+}
+#screen-content .location-archive .archive-header {
+  display:flex;
+  align-items:flex-start;
+  gap:6px 10px;
+  min-width:0;
+  padding-right:42px;
+}
+#screen-content .location-archive .archive-title,
+#screen-content .location-archive .archive-status {
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+#screen-content .location-archive .archive-status {
+  margin-left:auto;
+  white-space:nowrap;
+}
+#screen-content .location-archive .map-expedition-return {
+  min-width:0;
+  max-width:100%;
+}
+#screen-content .location-archive .map-expedition-return button {
+  min-width:0;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+#screen-content .location-archive .map-location-record {
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+#screen-content .location-archive .map-location-copy,
+#screen-content .location-archive .map-location-copy strong {
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+#screen-content .location-archive .map-location-thumb {
+  max-width:100%;
+}
