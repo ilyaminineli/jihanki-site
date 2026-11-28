@@ -25,6 +25,13 @@ The files in this directory are intentionally chronological. They preserve the p
 - [2026-08-18 — Last Morning on the Boards](./2026-08-18.md)
 - [2026-08 — Kawaguchiko / Kyoto / Osaka / Kawaguchiko road journey](./2026-08-road-trip.md)> **Date note:** the source document explicitly prints date headings through 2026-07-26 and then 2026-07-31. The 2026-07-27 and 2026-07-28 chapters are ported from the chronological sections in the uploaded reconstruction, which explicitly labels those sections. No 2026-07-30 chapter is invented because the source does not provide one. The later chat export is sparse for 2026-08-04 through 2026-08-17 and omits most attached media, so no daily chapters are inferred for that interval.
 
+## Companion first-person accounts
+
+- [Takismana — Katori](../takismana-katori.md) — the final day in Japan, including the Kashima and Katori shrine visits and return to Tokyo. The source calls it the last day but does not give a calendar date.
+- [Takismana — Fujisan](../takismana-fujisan.md) — the 1 August 2026 Mount Fuji climb, from the bus approach to the summit, descent and return.
+
+These texts preserve Takismana’s complete original accounts. They are separate from the daily reconstruction and are linked to their corresponding photographs and place records in the visitor archive.
+
 ## Cross-collection photo identification
 
 The [photo identification register](../photo-identification-register.md) records the full Japan image audit, new archive links and unresolved candidate locations.
