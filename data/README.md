@@ -1,153 +1,70 @@
 # Archive catalogue
 
-archive.js is data-only. It defines ARCHIVE and the flat JIHANKI_ARCHIVE array. The display/runtime behaviour lives in js/.
+`archive.js` is the catalogue source. It defines the archive records and metadata; visitor-interface behaviour lives in the focused modules under `js/`.
 
-## Record contract
+## Record shape
 
-A record has a stable id, a human-readable title, an archive date, a semantic category, a type, and whichever file or external release URL applies.
+A record normally has a stable `id`, human-readable `title`, `type`, semantic `category`, and the local `file` or `image` it opens. Use the original date precision: a year-only date stays year-only, and unknown dates stay unknown.
 
-Example fields:
-- id: example-memory
-- title: EXAMPLE MEMORY
-- date: 2026
-- type: video
-- category: video
-- group: JAPAN / AUDIOVISUAL WORKS
-- file: media/video/example.mp4
-- stock: { status: new, quantity: null }
-- metadata: { locations: [Lake Saiko], related: [another-record-id] }
+Example:
 
-Optional metadata should describe only known facts: locations, related archive IDs, production context, people and source material. Do not invent geographic coordinates or recording durations.
+```javascript
+{
+  id: "example-memory",
+  title: "EXAMPLE MEMORY",
+  date: "2026-08-14",
+  type: "text",
+  category: "notes",
+  group: "FIELD NOTES",
+  file: "documents/notes/example-memory.md",
+  stock: { status: "available", quantity: null },
+  metadata: {
+    locations: ["Lake Saiko"],
+    related: []
+  }
+}
+```
 
-## Type-specific record contracts
+## Categories and physical selectors
 
-The validator in `scripts/archive-schema.mjs` checks the runtime record shape without requiring optional editorial context.
+The physical machine has eight selectors. The mapping and aliases are defined once in `js/categories.js`. Keep semantic category values in the catalogue and do not introduce a new alias without adding it to that mapping.
 
-| `type` | Required source field | Optional type-specific context |
-| --- | --- | --- |
-| `video` | `file` | `voices` may list credited voice sources |
-| `image` | `file` | `description` and thematic `group` |
-| `voicebank` | `image` | `subtitle`, `context` and external `url` |
-| `project` | `file` | `image` and `projectPath` |
-| `audio` | `file` | `voices`, production context and optional related project IDs |
-| `text` | `file` | `project` and editorial grouping |
-| `video` in category `performance` | `file` | Performance context remains explicitly editorial |
+## Stock and dispensing
 
-Common fields are `id`, `title`, `type` and `category`. `date` is optional so an undated work can remain unplaced; when present it must be a year (`YYYY`), month (`YYYY-MM`) or real calendar date (`YYYY-MM-DD`). The validator checks the shape of optional `voices`, `stock` and `metadata` fields, validates HTTP(S) URLs and continues to check local paths separately.
-
-The contract does not require invented dates, locations, durations, voice credits or other provenance. Add or change a record type deliberately: update the contract and its valid/invalid fixtures in `scripts/fixtures/archive-schema.json` together.
-
-## Physical category mapping
-
-The eight physical selectors are mapped explicitly in js/categories.js:
-
-| Selector | Catalogue categories |
-| --- | --- |
-| VIDEO | video |
-| PHOTO | photo, image |
-| UTAU | utau, voicebank |
-| DOCS | text |
-| MUSIC | music |
-| SOUND | sound |
-| NOTES | notes, note |
-| PERFORMANCE | performance |
-
-## Public NOTES selector
-
-The physical NOTES category is reserved for genuine field chapters, memory records and notes directly related to the JIHANKI project. Internal photo-intake reports, filename prompts, identification checklists, duplicate expedition indexes, third-party diary extracts and personal-contact dossiers are editorial source material, not memories to be dispensed. Keep such working documents out of `ARCHIVE.notes`; their source files may remain in the repository for provenance.
-
-## Stock states
-
-- new — newly added work; available for dispensing and marked as fresh stock.
-- available — normally available.
-- low-stock — available with a low-stock label.
-- sold-out — visible for inspection, not dispensed.
-- restocking — visible while a work is being prepared, not dispensed.
-- archived — preserved but removed from circulation.
-
-quantity: null means no numeric limit is advertised. A finite quantity of zero blocks dispensing. Because JIHANKI is a static site, the published catalogue controls shared availability; visitor purchases do not modify global stock.
+Supported stock statuses are `new`, `available`, `low-stock`, `sold-out`, `restocking`, `archived` and `withdrawn`. Unavailable records remain inspectable where appropriate but cannot be purchased. The catalogue stores published stock state; visitor purchases do not decrement a shared server-side inventory because the site has no backend.
 
 ## Relationships and geography
 
-Use metadata.locations for known place names and metadata.related for stable IDs of related archive records. Typed editorial relationships live in js/relationships.js; contextual discovery and shared-location links live in js/discovery.js. Geography is indexed in js/geography.js.
+- Stable record IDs are used by `js/relationships.js` for typed cross-references.
+- Record location metadata is used by the place index and map modules.
+- `js/geography.js` defines place information and `js/map.js` provides the schematic map and archive-network view.
+- Geographic containment, proximity, outlook, transit corridor, same-photo sequence, shared subject and chronological travel links have different meanings. Do not flatten them into a generic “related” line.
+- Approximate area anchors must remain approximate; they are not exact photo coordinates or navigation instructions.
 
-Photo group values are thematic groupings (for example, Machines after dark and Forest boundaries); they should not be confused with geographic locations. The Memory Map is schematic and explicitly not to scale.
+## Runtime and visitor-local data
 
-## Additional Japan photographs and source map pins
+The site loads its modules in dependency order from `index.html`. Modules cover relationships, geography, search/discovery, chronology, collection, museum shelves, receipts, audio, listening, visitor impressions, memory traces and the machine state model.
 
-The Japan photographic archive contains 203 source files across `addition_1`, `addition_2`, `addition_3`, `addition_4`, `eli_photos` and `taki_photos`. It is represented by 202 unique catalogue memories (`photo-01` through `photo-202`). `addition_2 (8).jpg` is an exact duplicate of `addition_2 (3).jpg` and remains in the media manifest without a second catalogue record. All 32 `addition_3` images are unique against the existing archive.
+Collection, receipts and preferences are browser-local. They are not synced between devices or transmitted to a backend.
 
-The initial addition batches occupy `photo-24` through `photo-74`. The formerly unindexed Eli and Taki collections are catalogued in `photo-75` through `photo-140`; `addition_3` is catalogued in `photo-141` through `photo-172`; and `addition_4` is catalogued in `photo-173` through `photo-202`. The photo identification register documents new names, cross-links, thematic clusters and confidence boundaries. Internal intake and identification files remain maintainer references; they are not public catalogue records or NOTES items. Confirmed place metadata includes Saiko Iyashi no Sato Nenba, Fujisan Sengen Shrine, Arakurayama Sengen Park / Chureito Pagoda, Oishi Park / Lake Kawaguchi, Kawaguchiko Nostalgic Toys Museum, Kawaguchiko Automobile Museum / Flight Hall in Narusawa, Shinjuku, Kamo River / Kyoto, Katori Jingu, Katori Station, Haneda, Lake Saiko, PICA Fuji Saiko, Genko-an, Kinkaku-ji, Japan Kanji Museum & Library, Banbutsu Sōzō-bō, Fujisan Dragon Tower / Tagonoura Minato Park, Sumida Ward / Tokyo Skytree, and Ueno Castle (Iga-Ueno). Some other photographs intentionally retain only regional or thematic associations. Some records intentionally retain only a region or thematic group when the exact site is not supported.
+## Media manifest
 
-The Memory Map's `PINS` mode preserves four forwarded pins with caption-derived labels and twelve individually numbered 20 July map links that have no place names in the source export. Caption-derived labels are descriptions, not asserted official names. The original Google Maps links are retained for future confirmation.
+`data/media-manifest.json` records each local media path, size and Git blob fingerprint. It is checked with:
 
-## Photo-identification register
-
-`documents/notes/photo-identification-register.md` is the editorial audit for this collection. It distinguishes sign- or note-backed identifications from probable visual candidates and purely thematic groupings. The former Sunpu Castle candidate has been withdrawn after the traveller confirmed visits to Osaka Castle and Ueno Castle (Iga-Ueno). The new nighttime castle approach and keep are confirmed as Ueno Castle. The Kyoto shop previously mistaken for a nostalgic museum is Banbutsu Sōzō-bō.
-
-The `addition_3` folder is ingested and reviewed in [photo-intake-2026-11-27.md](../documents/notes/photo-intake-2026-11-27.md). All 32 JPEGs have archive records and are included in the `photo-141`–`photo-172` catalogue range. A filename-based reminder list for the remaining uncertain places and visual relationships is kept in [photo-memory-prompts-2026-11-27.md](../documents/notes/photo-memory-prompts-2026-11-27.md).
-
-## Listening Room sources
-
-The Listening Room uses audio records already held in `ARCHIVE.music` and `ARCHIVE.sound`. Four FUJI SONIC PI public renders are individually catalogued and linked to the parent `aokigahara-pentalogy` project. The Shrine environment remains pending and is not represented by a fabricated file. The 17 sound fragments retain their existing group labels and descriptions; the standalone Tongue Drums session remains separate from the pentalogy.
-
-The Sound Lab contains two integrated modes: LIVE MIX for simultaneous visitor-selected layers, and ARCHIVE LISTENING for sequential playback by the existing archive groupings. Switching modes stops audio in the mode being left. Neither feature creates or alters source recordings.
-
-## Media integrity
-
-data/media-manifest.json inventories every file under media/ with its byte size and Git blob SHA-1. Rebuild it after adding or replacing media with:
-node scripts/build-media-manifest.mjs
-node scripts/build-media-manifest.mjs --check
-
-The validator confirms that catalogue paths exist and every referenced media file is represented in the manifest. The manifest hash is an integrity fingerprint, not a cryptographic authorship signature.
-
-## Repository-wide integrity checks
-
-The static archive is validated at two levels:
-
-- `scripts/archive-schema.mjs` validates per-type catalogue fields.
-- `scripts/markdown-links.mjs` scans repository Markdown links, images and local HTML targets, checks file/directory destinations and validates local Markdown-heading and HTML anchors.
-- `scripts/media-manifest.mjs` compares the manifest with the exact files under `media/`, checks canonical paths, duplicate entries, untracked/stale files, byte sizes and Git blob SHA-1 fingerprints.
-- `scripts/validate-archive.mjs` combines the live archive, category and relationship checks with media, Markdown, HTML ID, image and runtime-script checks.
-
-Run the focused fixtures and integrated validator from the repository root:
-
-```sh
-node scripts/test-archive-schema.mjs
-node scripts/test-interaction-model.mjs
-node scripts/test-relationship-semantics.mjs
-node scripts/test-field-impressions.mjs
-node scripts/test-memory-traces.mjs
-node scripts/test-curators-cabinet.mjs
-node scripts/test-quiet-signals.mjs
-node scripts/test-listening-room.mjs
-node scripts/test-markdown-links.mjs
-node scripts/test-media-manifest.mjs
-node scripts/validate-archive.mjs
+```bash
 node scripts/build-media-manifest.mjs --check
 ```
 
-A valid manifest must list every file under `media/` exactly once. After adding, removing or replacing a media file, rebuild it with `node scripts/build-media-manifest.mjs`, then rerun the check. The Git blob SHA-1 is an integrity fingerprint, not an authorship signature.
+After intentionally adding or changing media, rebuild the manifest with:
 
-The Markdown scanner ignores code examples, accepts external links without trying to fetch them, and checks local relative destinations and fragments. It uses GitHub-compatible heading slugs so existing roadmap anchors stay valid.
+```bash
+node scripts/build-media-manifest.mjs
+```
 
-## Visitor-local data
+Then run `node scripts/validate-archive.mjs`. The Git blob value is an integrity fingerprint, not a cryptographic authorship signature.
 
-Receipts, event logs, personality state, museum state, collection records and collectible objects are saved in separate browser-local storage domains. They are never transmitted by the static site. Collection exports are versioned and include serialized objects; imports are validated before additive merge. Museum exports use a separate versioned format for kept works, shelves and visit trail; imports are validated before additive merge.
+## Validation scope
 
-## Presentation and visitor memory
+The maintained integrated validator checks record contracts, unique IDs, selector mapping, stock state, local file resolution, relationship targets, manifest coverage, HTML IDs, script references, image paths and Markdown relative links / anchors. GitHub Actions checks JavaScript syntax and runs the manifest check and integrated validator.
 
-The daily rotating selection is implemented in js/rotation.js. Personal collection and souvenirs live in js/collection.js. The visitor-specific museum — kept works, custom shelves, visit trail and its own backup format — lives in js/museum.js. Local visitor interaction patterns drive the limited machine personality in js/personality.js. They do not affect the published catalogue.
-
-## Automated integrity checks
-
-Run the focused schema, interaction, Markdown and media-manifest fixtures above, then run `node scripts/validate-archive.mjs` for the integrated repository scan. GitHub Actions runs these fixtures, the six-viewport interaction/offline Playwright suite, and the integrated validator.
-
-When adding a record, use file for the primary local document or media path. Do not use the obsolete textFile property.
-
-## Confirmed additions and historical corrections — 27 November 2026
-
-- The addition_4 intake now includes traveller-confirmed identifications for the Genko-an guestbook, Nagahama fireworks, Satyam 1 present-day clearing, Kadoya Shoten contact, Niikura Tunnel emergency phones and the Kyoto and Osaka photographs, plus the school-sign photograph near Miyukihama, Odawara.
-- The 3 August Koba-san field note separates the traveller-identified Satyam 1 place from Satyam No. 7, identified by the Ministry of Justice as the sarin-production plant in the wider former Kamikuishiki compound.
-- Event and contact memories are maintained separately in [Nagahama Furusato Festival](../documents/notes/events/2026-08-15-nagahama-furusato-festival.md) and [Kadoya Shoten / Miura contact](../documents/notes/contacts/kadoya-shoten-miura.md).
-- The Memory Map and relationship index distinguish shared photo sequences, companion-source corroboration, geographical containment / outlook / transit-corridor relationships, and chronological travel or visit sequences.
+The former standalone `scripts/test-*.mjs` files are no longer present. Do not use old test commands copied from earlier milestone notes as current instructions.

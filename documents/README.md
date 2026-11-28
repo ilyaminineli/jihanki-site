@@ -1,42 +1,38 @@
-# JIHANKI DOCUMENTS
+# JIHANKI documents
 
-Use Markdown (`.md`) as the editable archive format.
+Markdown is the editable format for field notes, project texts, research, scripts and internal documentation. Preserve source wording and identify whether a text is a first-hand account, a traveller's recollection, an external corroboration or an editorial inference.
 
-Keep your original `Yokais.odt` as the master/source document.
-When something becomes a JIHANKI item, make a small curated Markdown file.
+## Visitor-facing archive material
 
-## Interface design
+Only deliberately curated memories should be added to the public catalogue in `data/archive.js`. Internal registers, prompts, implementation notes and working analysis are not automatically visitor-facing entries.
 
-- [JIHANKI Analog UI System](design/JIHANKI-ANALOG-DESIGN-SYSTEM.md) — shared palette, typography, surfaces, map treatment, interaction states and exceptions for future pages.
+## Editorial and source registers
 
-Internal editorial references are not machine records. Photo-intake reports, identification registers and filename-memory prompts may be retained here for provenance, but they must not be added to `ARCHIVE.notes` or shown as public NOTES items unless they are deliberately rewritten as a JIHANKI memory.
+- [Daily Japan expedition archive](notes/daily/README.md) — chronological source-derived travel chapters.
+- [Cross-collection photo identification register](notes/photo-identification-register.md) — 251 unique Japan photographs, confidence levels, corrections and relationships.
+- [Addition 3 photo intake](notes/photo-intake-2026-11-27.md) — filename-level register for photos 141–172.
+- [Addition 4 photo intake](notes/photo-intake-2026-11-27-addition-4.md) — filename-level register for photos 173–202.
+- [Addition 5 photo intake](notes/photo-intake-2026-11-27-addition-5.md) — filename-level register for photos 203–251 and the traveller-confirmed cross-collection links.
+- [Photo memory prompts](notes/photo-memory-prompts-2026-11-27.md) — unresolved identification questions; resolved answers are retained to prevent asking them again.
+- [Japan map coordinate register](notes/map-coordinate-register-2026-11-27.md) — source SVG, coordinate transform and precision classes.
+- [DYNAKYRIS Japan corroborations](notes/dynakyris-japan-corroborations-2026-11-27.md) — a separate traveller's perspective, preserved as edited summaries.
 
-## Editorial registers
+These documents are editorial provenance. Do not place their working titles, filenames or analysis prompts into the vending machine as visitor-facing memories unless intentionally adapted.
 
-- [Cross-collection photo identification register](notes/photo-identification-register.md) — names, source evidence, thematic groups, cross-photo links and unresolved candidates across the complete static photo collection.
-- [Supplemental Japan photo intake — 27 November 2026](notes/photo-intake-2026-11-27.md) — provisional identification of ten incoming JPEGs, with a media-ingest checklist.
-- [Daily expedition archive](notes/daily/README.md) — chronological source-derived trip chapters and the map-pin register.
+## Design and architecture
 
-Recommended structure:
+- [JIHANKI Analog UI System](design/JIHANKI-ANALOG-DESIGN-SYSTEM.md) — shared palette, typography, surfaces, controls, map treatment and interaction states.
+- [Development roadmap](roadmap/README.md) — current status index and validation guidance.
+- [M41–M50 implementation map](roadmap/M41-M50-IMPLEMENTATION-MAP.md) — technical decisions and feature acceptance history.
+- [M67–M72 liminal archive exploration](roadmap/M67-M72-LIMINAL-EXPLORATION.md) — implemented optional archive experiences.
+- [M49 visitor memory exchange privacy model](privacy/M49-VISITOR-MEMORY-EXCHANGE-PRIVACY-AND-MODERATION.md) and [backend / moderation operations decision](privacy/M49-BACKEND-AND-MODERATION-OPERATIONS-DECISION.md) — future backend decision record; the feature is not enabled.
 
-# TITLE
+## Editorial format
 
-**Date:** YYYY-MM-DD
-**Location:** ...
-**Type:** ...
-**Tags:** ...
+A short record can be enough. Use fields only where they add useful context:
 
-Text...
+- **Date:** YYYY-MM-DD, year or unknown
+- **Place:** named place or appropriately broad area
+- **Source:** who supplied or confirmed the account, when relevant
 
-## Observation
-
-...
-
-## Possible themes
-
-- ...
-- ...
-
-## Development roadmap
-
-The implementation roadmap is maintained in [roadmap/README.md](roadmap/README.md). Milestones M35–M40 cover interaction integrity, media preservation and delivery, automated archive validation, accessibility, deeper discovery and visitor-local continuity.
+Do not force every photograph to have a story, every story to have a conclusion, or every uncertain location to receive a named pin. Preserve uncertainty rather than decorating it with invented detail.
