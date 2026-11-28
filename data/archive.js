@@ -5237,7 +5237,33 @@ const ARCHIVE = {
 
 
     },
-{
+    {
+      "id": "first-jihanki-note",
+      "title": "FIRST JIHANKI — PROJECT ORIGIN",
+      "date": "2026-07-22",
+      "type": "text",
+      "category": "notes",
+      "author": "shared",
+      "group": "JIHANKI / PROJECT ORIGIN",
+      "description": "The first night-time vending-machine encounter near SAIKONEON and the origin of the JIHANKI memory archive.",
+      "file": "documents/notes/first-jihanki.md",
+      "metadata": {
+        "locations": ["SAIKONEON", "Lake Saiko", "Yamanashi"],
+        "related": ["daily-2026-07-22"]
+      }
+    },
+    {
+      "id": "archive-rotation",
+      "title": "ARCHIVE ROTATION",
+      "date": "2026",
+      "type": "text",
+      "category": "notes",
+      "author": "shared",
+      "group": "JIHANKI / MACHINE CONCEPT",
+      "description": "A concept note about JIHANKI's date-based archive rotation, fragments and residue.",
+      "file": "documents/notes/archive-rotation.md"
+    },
+    {
       "id": "event-2026-08-15-nagahama-furusato-festival",
       "title": "NAGAHAMA FURUSATO FESTIVAL — 15 AUGUST 2026",
       "date": "2026-08-15",
