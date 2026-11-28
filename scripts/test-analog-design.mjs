@@ -36,6 +36,9 @@ assert.match(guide,/Intentional exceptions[\s\S]*Printed receipts[\s\S]*Exported
   "The design guide must preserve explicit print/export exceptions.");
 assert.match(guide,/Memory Network[\s\S]*monochrome map canvas/,"The design guide must define Memory Network appearance.");
 assert.match(archiveCss,/\.sound-suite-tabs/,"Integrated Sound Lab mode component is retained.");
+assert(!/font:[^;]*(?:Impact|Arial Narrow|Georgia|sans-serif)/i.test(archiveCss)&&
+  !/font-family:\s*(?:Impact|Arial|Helvetica|Georgia)/i.test(archiveCss),
+  "Feature-specific archive CSS must not reintroduce the legacy editorial font stack.");
 const mapLegacy=archiveCss.slice(archiveCss.indexOf("/* M56 —"),archiveCss.indexOf("/* M65 —"));
 assert(!mapLegacy.includes("99, 178, 122")&&!mapLegacy.includes("#36d77b"),
   "Legacy map phosphor rules must not retain a green palette.");
