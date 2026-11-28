@@ -9,6 +9,8 @@ When something becomes a JIHANKI item, make a small curated Markdown file.
 
 - [JIHANKI Analog UI System](design/JIHANKI-ANALOG-DESIGN-SYSTEM.md) — shared palette, typography, surfaces, map treatment, interaction states and exceptions for future pages.
 
+Internal editorial references are not machine records. Photo-intake reports, identification registers and filename-memory prompts may be retained here for provenance, but they must not be added to `ARCHIVE.notes` or shown as public NOTES items unless they are deliberately rewritten as a JIHANKI memory.
+
 ## Editorial registers
 
 - [Cross-collection photo identification register](notes/photo-identification-register.md) — names, source evidence, thematic groups, cross-photo links and unresolved candidates across the complete static photo collection.
