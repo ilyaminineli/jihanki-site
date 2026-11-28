@@ -625,7 +625,7 @@ try{
     const placeIndexState=await page.evaluate(()=>({
       exists:!!document.querySelector(".map-place-index"),
       open:document.querySelector(".map-place-index")?.open??true,
-      odawara:window.JIHANKI_GEOGRAPHY.entries("Miyukihama").map(item=>item.id).sort(),
+      odawara:window.JIHANKI_GEOGRAPHY.entries("Miyukihama").filter(item=>item.type==="image").map(item=>item.id).sort(),
       okinawa:window.JIHANKI_GEOGRAPHY.entries("Okinawa").map(item=>item.id)
     }));
     assert(placeIndexState.exists&&!placeIndexState.open,
