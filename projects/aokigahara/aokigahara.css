@@ -1,12 +1,12 @@
 :root {
-  --bg: #050505;
-  --panel: #0b0b0b;
-  --line: #272727;
-  --line-soft: #171717;
-  --text: #d8d8d8;
-  --muted: #777;
-  --soft: #aaa;
-  --accent: #eee;
+  --bg: var(--jhk-ink, #050505);
+  --panel: var(--jhk-panel, #0b0b0b);
+  --line: var(--jhk-line-strong, #272727);
+  --line-soft: var(--jhk-line-soft, #171717);
+  --text: var(--jhk-text, #d8d8d8);
+  --muted: var(--jhk-text-muted, #777);
+  --soft: var(--jhk-text-soft, #aaa);
+  --accent: var(--jhk-text-strong, #eee);
 }
 
 * {
