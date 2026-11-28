@@ -601,15 +601,16 @@
         #artifact {
             position: fixed;
             inset: 0;
-
             z-index: 1000;
-
             display: none;
-
             justify-content: center;
             align-items: center;
-
-            background: rgba(0, 0, 0, .90);
+            box-sizing: border-box;
+            padding: max(10px, env(safe-area-inset-top)) max(10px, env(safe-area-inset-right))
+                max(10px, env(safe-area-inset-bottom)) max(10px, env(safe-area-inset-left));
+            overflow: hidden;
+            overscroll-behavior: contain;
+            background: rgba(0, 0, 0, .97);
         }
 
         #artifact.open {
@@ -619,12 +620,18 @@
         .artifact-window {
             position: relative;
 
-            width: min(90vw, 720px);
-            max-height: 88vh;
-
-            overflow: auto;
-
-            padding: 22px;
+            box-sizing: border-box;
+            width: min(720px, calc(100vw - 24px));
+            max-width: 100%;
+            min-width: 0;
+            min-height: 0;
+            max-height: calc(100vh - 24px);
+            max-height: calc(100dvh - 24px);
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            scrollbar-gutter: stable;
+            padding: clamp(14px, 2.5vw, 22px);
 
             background: #090909;
             color: #ddd;
@@ -654,6 +661,10 @@
 
         #artifact-content {
             clear: both;
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            box-sizing: border-box;
             padding-top: 12px;
         }
 
