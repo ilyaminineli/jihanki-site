@@ -58,6 +58,7 @@ Japan stay / shared field experience: **Takismana**
 * Integrated Sound Lab with LIVE MIX controls for multi-layer playback and ARCHIVE LISTENING for the four public Aokigahara pentalogy renders, standalone tongue-drum session and 17 field-archive fragments
 * Static Chronology with visitor-local hourly reading suggestion, monochrome photographic contact sheets and the complete dated catalogue
 * Shared JIHANKI Analog UI system: monochrome phosphor palette, terminal typography, squared controls and reusable design tokens
+* [JIHANKI Analog UI System guide](documents/design/JIHANKI-ANALOG-DESIGN-SYSTEM.md) — rules for future page and component work
 * Markdown documents, images, audio and video rendered inside the artifact viewer
 * Ambient JIHANKI loop and interface sound effects
 * Static deployment: no framework, build step, backend or visitor account
