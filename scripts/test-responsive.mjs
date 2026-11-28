@@ -692,7 +692,7 @@ try{
       locationLayout.status.right>locationLayout.credit.left&&locationLayout.status.left<locationLayout.credit.right&&
       locationLayout.status.bottom>locationLayout.credit.top&&locationLayout.status.top<locationLayout.credit.bottom;
     assert(!statusOverCredit,device.name+": location record count overlaps the physical credit display: "+JSON.stringify(locationLayout));
-    const returnBackgroundRGB=locationLayout.buttonStyle?.background.match(/\\d+/g)?.slice(0,3).map(Number)||[];
+    const returnBackgroundRGB=locationLayout.buttonStyle?.background.match(/\d+/g)?.slice(0,3).map(Number)||[];
     assert(returnBackgroundRGB.length===3&&Math.max(...returnBackgroundRGB)-Math.min(...returnBackgroundRGB)<=2,
       device.name+": BACK TO MAP still has a colored accent instead of neutral phosphor: "+JSON.stringify(locationLayout.buttonStyle));
     await page.locator("#screen-content [data-return-map]").click();
