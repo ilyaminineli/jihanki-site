@@ -221,3 +221,10 @@
 @media(prefers-reduced-motion:reduce) {
   .temporal-marquee span,.temporal-record-media img { animation:none !important;transition:none !important; }
 }
+
+/* Japanese map labels retain their native display character; their Latin metadata stays terminal mono. */
+.memory-map-panel .map-pin-mobile-label {
+  color:var(--jhk-text-strong) !important;
+  font:8px/1.25 var(--jhk-font-japanese) !important;
+  letter-spacing:.025em;
+}
