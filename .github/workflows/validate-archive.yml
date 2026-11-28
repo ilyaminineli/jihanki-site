@@ -50,6 +50,8 @@ jobs:
         run: node scripts/build-media-manifest.mjs --check
       - name: Test archive schema fixtures
         run: node scripts/test-archive-schema.mjs
+      - name: Test public archive visibility
+        run: node scripts/test-public-archive.mjs
       - name: Test relationship semantics and place corrections
         run: node scripts/test-relationship-semantics.mjs
       - name: Test field impressions
