@@ -87,3 +87,13 @@ These are output formats, not alternate site UI themes:
 6. When an intentional exception is necessary, add it to this guide instead of quietly introducing a second design language.
 
 The design system governs presentation, not archive meaning. It must never change source records, dates, place certainty, relationship semantics or visitor-local privacy behaviour.
+
+
+## 9. Artifact overlay and mobile bounds
+
+- The artifact dialog is a viewport-contained surface, not a second independently scrolling page.
+- Use the visual viewport height where available (`100dvh`), respect safe-area insets, and keep horizontal overflow hidden.
+- The artifact window owns vertical scrolling; its content must not create a second horizontal scrollbar.
+- Flex and grid children that contain labels, relation rows, buttons or selects must declare `min-width: 0` and may wrap long archival titles.
+- Keep the credit balance, transaction action and Museum controls in separate predictable rows; never force the shelf picker to its desktop minimum width on a phone.
+- Check every overlay on 320px and 375px widths as well as desktop. A map pan surface is the deliberate exception: its inner geography may be larger than the viewport, but the map canvas must clip it and controls must remain inside the dialog.
