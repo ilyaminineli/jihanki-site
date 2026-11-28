@@ -35,6 +35,7 @@
     "Kamikuishiki": [35.445, 138.585, "area"],
     "Kamo River": [35.016, 135.772, "locality"],
     "Kanji Museum": [35.0036, 135.7778, "site"],
+    "Kashima Jingū": [35.96906, 140.63136, "site"], // Kokugakuin University Digital Museum shrine coordinates
     "Katori": [35.8978, 140.4993, "locality"],
     "Katori Jingu": [35.8886, 140.5289, "site"],
     "Katori Station": [35.89799, 140.532, "site"],
@@ -95,7 +96,7 @@
   const MAIN_LABELS = new Set([
     "Yamanashi", "Lake Saiko", "Kyoto", "Mount Fuji", "Tokyo", "Kawaguchiko", "Katori",
     "Kawaguchiko Nostalgic Toys Museum", "Lake Kawaguchi", "Fujikawaguchiko", "Osaka",
-    "Akihabara", "First summit near Saiko", "Arakurayama Sengen Park", "Fuji City",
+    "Akihabara", "First summit near Saiko", "Arakurayama Sengen Park", "Fuji City", "Kashima Jingū",
     "Fuji Five Lakes", "Shinjuku", "Oishi Park"
   ]);
   const surfacePoint = name => {
@@ -117,7 +118,7 @@
     "Narusawa": "鳴沢村", "Kamo River": "鴨川", "Mount Fuji": "富士山", "Niikura Tunnel": "新倉河口湖トンネル",
     "Yamanashi": "山梨県", "Tokyo": "東京", "Ryugu Cave": "竜宮洞穴", "Koyodai": "紅葉台", "Gokodai": "五湖台",
     "Shrine": "神社", "Shrines": "神社群", "Haneda": "羽田", "Shinjuku": "新宿", "Katori": "香取",
-    "Katori Station": "香取駅", "Katori Jingu": "香取神宮", "Hard Off Kawaguchiko Store": "ハードオフ河口湖店",
+    "Kashima Jingū": "鹿島神宮", "Katori Station": "香取駅", "Katori Jingu": "香取神宮", "Hard Off Kawaguchiko Store": "ハードオフ河口湖店",
     "Nojima Fujiyoshida Store": "ノジマ富士吉田店", "Iyashi no Sato": "西湖いやしの里根場",
     "Fujisan Museum": "富士山ミュージアム", "Kyoto": "京都", "Genko-an": "源光庵", "Kinkaku-ji": "金閣寺",
     "Japan Kanji Museum & Library": "漢字ミュージアム", "Kanji Museum": "漢字ミュージアム",
@@ -237,7 +238,7 @@
         : "";
       const photos = (trail.photoIds || []).map(id => archive.find(item => item.id === id)).filter(item => item && item.file);
       const photoMarkup = photos.length
-        ? '<div class="map-trail-photo-section"><span class="map-eyebrow">FIELD PHOTOGRAPHS / ADDITION_5</span><div class="map-trail-photo-grid">' + photos.map(item => {
+        ? '<div class="map-trail-photo-section"><span class="map-eyebrow">FIELD PHOTOGRAPHS / CONNECTED RECORDS</span><div class="map-trail-photo-grid">' + photos.map(item => {
           const filename = String(item.file).split("/").pop();
           return '<button type="button" data-map-photo="' + esc(item.id) + '" title="' + esc(item.title) + '"><img src="' + esc(item.file) + '" alt="' + esc(item.title) + '" loading="lazy" decoding="async"><span>' + esc(filename) + '</span></button>';
         }).join("") + '</div></div>'
