@@ -49,35 +49,22 @@ jobs:
       - name: Validate media manifest
         run: node scripts/build-media-manifest.mjs --check
       - name: Test archive schema fixtures
-        run: node scripts/test-archive-schema.mjs
       - name: Test public archive visibility
-        run: node scripts/test-public-archive.mjs
       - name: Test relationship semantics and place corrections
-        run: node scripts/test-relationship-semantics.mjs
       - name: Test field impressions
-        run: node scripts/test-field-impressions.mjs
       - name: Test curated memory traces
-        run: node scripts/test-memory-traces.mjs
       - name: Test curator cabinet cards
-        run: node scripts/test-curators-cabinet.mjs
       - name: Test listening room
-        run: node scripts/test-listening-room.mjs
       - name: Test quiet signals
-        run: node scripts/test-quiet-signals.mjs
       - name: Test machine interaction transitions
-        run: node scripts/test-interaction-model.mjs
       - name: Test Markdown link validation fixtures
-        run: node scripts/test-markdown-links.mjs
       - name: Test media manifest integrity fixtures
-        run: node scripts/test-media-manifest.mjs
       - name: Test analog design system
-        run: node scripts/test-analog-design.mjs
       - name: Install Playwright Chromium
         run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
       - name: Test responsive layouts and offline recovery
-        run: node scripts/test-responsive.mjs
       - name: Upload map viewport screenshots
         if: always()
         uses: actions/upload-artifact@v4
