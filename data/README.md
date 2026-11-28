@@ -52,6 +52,10 @@ The eight physical selectors are mapped explicitly in js/categories.js:
 | NOTES | notes, note |
 | PERFORMANCE | performance |
 
+## Public NOTES selector
+
+The physical NOTES category is reserved for genuine field chapters, memory records and notes directly related to the JIHANKI project. Internal photo-intake reports, filename prompts, identification checklists, duplicate expedition indexes, third-party diary extracts and personal-contact dossiers are editorial source material, not memories to be dispensed. Keep such working documents out of `ARCHIVE.notes`; their source files may remain in the repository for provenance.
+
 ## Stock states
 
 - new — newly added work; available for dispensing and marked as fresh stock.
