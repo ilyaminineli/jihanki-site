@@ -464,6 +464,17 @@ try{
     assert(["DAWN","MORNING","AFTERNOON","DAY","EVENING","NIGHT"].includes(temporalView.phase),
       device.name+": visitor-local time phase missing");
     assert(temporalView.localNote.includes("NOT TRANSMITTED"),device.name+": local-time privacy note missing");
+    const temporalStyle=await page.evaluate(()=>{
+      const selectors=[".temporal-archive",".temporal-wordmark",".temporal-now>strong",".temporal-purpose"];
+      return selectors.map(selector=>{
+        const style=getComputedStyle(document.querySelector(selector));
+        return {selector,fontFamily:style.fontFamily,color:style.color,background:style.backgroundColor};
+      });
+    });
+    assert(temporalStyle.every(item=>item.fontFamily.includes("Courier New")),
+      device.name+": Chronology still uses a separate display/body type system: "+JSON.stringify(temporalStyle));
+    assert(temporalStyle[0].background==="rgb(8, 8, 8)",
+      device.name+": Chronology does not use the shared CRT surface: "+JSON.stringify(temporalStyle));
     const temporalStateAfter=await page.evaluate(()=>({keys:Object.keys(localStorage).sort().join("|"),events:window.JIHANKI_EVENTS.count()}));
     assert(temporalStateBefore.keys===temporalStateAfter.keys&&temporalStateBefore.events===temporalStateAfter.events,
       device.name+": opening temporal archive wrote visitor state or event history");
@@ -505,6 +516,22 @@ try{
     await page.locator(".memory-map-panel").waitFor();
     assert(await page.locator(".map-memory-mode").count()===1,device.name+": homepage map should open in Memory Network mode");
     assert(await page.locator(".map-pin").count()>=70,device.name+": homepage Memory Network did not load the full place set");
+    const mapStyleAudit=await page.evaluate(()=>{
+      const canvas=document.querySelector(".map-canvas"),pin=document.querySelector(".map-pin-place-card");
+      const jp=pin?.querySelector(".map-pin-jp"),edge=document.querySelector(".map-memory-mode .map-connections line");
+      const canvasStyle=getComputedStyle(canvas),pinStyle=getComputedStyle(pin),jpStyle=getComputedStyle(jp),edgeStyle=getComputedStyle(edge);
+      return {canvas:{background:canvasStyle.backgroundColor,image:canvasStyle.backgroundImage},
+        pin:{border:pinStyle.borderTopColor,background:pinStyle.backgroundColor,radius:pinStyle.borderRadius},
+        japanese:{color:jpStyle.color,fontFamily:jpStyle.fontFamily},
+        edge:{stroke:edgeStyle.stroke,filter:edgeStyle.filter}};
+    });
+    assert(!mapStyleAudit.canvas.image.includes("99, 178, 122")&&!mapStyleAudit.canvas.image.includes("81, 193, 113"),
+      device.name+": Memory Network still uses the green phosphor grid: "+JSON.stringify(mapStyleAudit));
+    assert(mapStyleAudit.pin.radius==="0px"&&mapStyleAudit.pin.background==="rgba(5, 5, 5, 0.94)",
+      device.name+": Memory Network pin cards do not use the shared square CRT surface: "+JSON.stringify(mapStyleAudit));
+    const edgeRGB=mapStyleAudit.edge.stroke.match(/\\d+/g)?.slice(0,3).map(Number)||[];
+    assert(edgeRGB.length===3&&Math.max(...edgeRGB)-Math.min(...edgeRGB)<=2&&mapStyleAudit.edge.filter==="none",
+      device.name+": Memory Network relation lines are not monochrome: "+JSON.stringify(mapStyleAudit));
     await page.waitForFunction(()=>{
       const image=document.querySelector(".map-prefecture-backdrop img");
       return !!image&&image.complete&&image.naturalWidth>0&&image.naturalHeight>0;
@@ -715,6 +742,8 @@ try{
     });
     await page.locator('[data-home-action="collection"]').click();
     await page.locator('[data-museum-tab="overview"]').waitFor();
+    const museumFont=await page.locator(".museum-intro p").evaluate(element=>getComputedStyle(element).fontFamily);
+    assert(museumFont.includes("Courier New"),device.name+": Museum intro still diverges from the terminal typography: "+museumFont);
     assert(await page.locator(".museum-trail-preview [data-museum-tab='trail']").count()===1,
       device.name+": Collection overview does not expose the unified Visit Trail");
     assert(await page.locator(".museum-content .museum-row").count()===0,
