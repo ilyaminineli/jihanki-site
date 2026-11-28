@@ -5317,7 +5317,8 @@ const ARCHIVE = {
           "photo-179",
           "photo-180"
         ]
-      },
+      }
+    },
     {
       "id": "takismana-katori",
       "title": "KATORI — THE LAST DAY IN JAPAN",
