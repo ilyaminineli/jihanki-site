@@ -50,7 +50,7 @@
     "photo-247": ["Miyukihama", "Odawara"],
     "photo-250": ["Miyukihama", "Odawara"],
     "daily-2026-08-03": ["Lake Saiko", "Satyam 1", "Kamikuishiki", "Fujikawaguchiko", "Yamanashi", "Mount Fuji"],
-    "photo-intake-addition-5": ["Uno-Misaki Tunnel", "Onsen Yurari", "Lake Yamanaka", "Lake Shōji", "Kawaguchiko Nostalgic Toys Museum", "Kawaguchiko Music Forest Museum", "Kitaoji Shinmachi", "Akihabara", "Tokyo", "McDonald’s 139 Fujiyoshida", "Miyukihama", "Odawara", "Shinsaibashi", "Osaka", "Lake Saiko", "First summit near Saiko", "Shinjuku", "Yamanashi"],
+
   };
   const PLACES = {
     "Mount Fuji": "Mountain and surrounding landscape records",
