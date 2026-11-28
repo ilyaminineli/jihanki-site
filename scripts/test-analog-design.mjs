@@ -29,7 +29,7 @@ const archiveLink=index.indexOf('href="css/archive-system.css"');
 const themeLink=index.indexOf('href="css/jihanki-analog.css"');
 assert(archiveLink>=0&&themeLink>archiveLink,"Shared theme must load after feature-specific archive styles.");
 assert(sw.includes('"./css/jihanki-analog.css"'),"Shared theme must be precached for offline use.");
-assert.match(sw,/jihanki-shell-v17/,"Service-worker shell cache must be versioned for the new stylesheet.");
+assert.match(sw,/jihanki-shell-v18/,"Service-worker shell cache must be versioned for the new stylesheet.");
 assert(projectHtml.includes('../../css/jihanki-analog.css'),"Standalone Aokigahara dossier must load shared design tokens.");
 assert.match(projectCss,/--bg:\s*var\(--jhk-ink/,"Project palette must derive from shared JIHANKI tokens.");
 assert.match(guide,/Intentional exceptions[\s\S]*Printed receipts[\s\S]*Exported Curator's Cabinet cards/,
