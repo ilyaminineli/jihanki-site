@@ -5222,6 +5222,22 @@ const ARCHIVE = {
 
     },
     {
+      "id": "daily-2026-08-road-trip",
+      "title": "KAWAGUCHIKO / KYOTO / OSAKA / KAWAGUCHIKO",
+      "date": "2026-08",
+      "type": "text",
+      "category": "notes",
+      "author": "archive",
+      "project": "japan-expedition",
+      "group": "REGIONAL ROAD TRAIL",
+      "description": "A confirmed car journey from Kawaguchiko to Kyoto and Osaka and back, including Kyoto temple and shop visits, Osaka Castle and the return to Kawaguchiko.",
+      "file": "documents/notes/daily/2026-08-road-trip.md",
+      "metadata": {
+        "locations": ["Kawaguchiko", "Kyoto", "Osaka", "Genko-an"],
+        "related": ["photo-191", "photo-192", "photo-196", "photo-197", "photo-201"]
+      }
+    },
+    {
       "id": "daily-2026-08-18",
       "title": "LAST MORNING ON THE BOARDS",
       "date": "2026-08-18",
@@ -5262,6 +5278,22 @@ const ARCHIVE = {
       "group": "JIHANKI / MACHINE CONCEPT",
       "description": "A concept note about JIHANKI's date-based archive rotation, fragments and residue.",
       "file": "documents/notes/archive-rotation.md"
+    },
+    {
+      "id": "person-koba-san",
+      "title": "Koba-san — local guide and friend",
+      "date": "2026",
+      "type": "text",
+      "category": "notes",
+      "author": "archive",
+      "project": "japan-expedition",
+      "group": "PEOPLE / LOCAL CONNECTIONS",
+      "description": "Local guide and friend who welcomed the travellers near Lake Saiko, shared a regional map and cultural recommendations, and later drove them to the former Kamikuishiki area.",
+      "file": "documents/notes/daily/2026-07-23.md",
+      "metadata": {
+        "locations": ["Lake Saiko", "Satyam 1", "Kamikuishiki", "Yamanashi"],
+        "related": ["daily-2026-07-23", "daily-2026-08-03"]
+      }
     },
     {
       "id": "event-2026-08-15-nagahama-furusato-festival",
