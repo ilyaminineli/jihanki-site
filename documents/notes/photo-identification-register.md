@@ -18,7 +18,7 @@ The repository contains 252 files under `media/photo/photos_from_japan/`:
 
 There are 251 unique images in those folders. `addition_2 (8).jpg` is an exact duplicate of `addition_2 (3).jpg`; it remains in the media manifest for integrity but does not receive a duplicate memory record. The earlier archive ranges remain unchanged: `addition_3` is `photo-141`–`photo-172`, `addition_4` is `photo-173`–`photo-202`, and `addition_5` is now indexed as `photo-203`–`photo-251`.
 
-The other six static image assets in `media/photo/` are presentation artwork rather than unindexed travel photographs: the Aokigahara project cover and release-art variant, plus the four named voicebank portraits for Eugene:RE, Akane Iirai, SPIDER and Takismana. Those already have appropriate project or voicebank context in the catalogue. The two image files outside `media/` are also understood: `assets/jihanki.png` is the site's Memory Vending Machine artwork, while `assets/placeholder.png` is a neutral empty-frame fallback, not an undocumented photograph.
+The other six static image assets in `media/photo/` are presentation artwork rather than unindexed travel photographs: the Aokigahara project cover and release-art variant, plus the four named voicebank portraits for Eugene:RE, Akane Iirai, SPIDER and Takismana. Those already have appropriate project or voicebank context in the catalogue. The two image files outside `media/` are also understood: `assets/jihanki_main.png` is the site's Memory Vending Machine artwork, while `assets/placeholder.png` is a neutral empty-frame fallback, not an undocumented photograph.
 
 ## Identification confidence
 

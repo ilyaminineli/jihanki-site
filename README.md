@@ -69,7 +69,7 @@ Japan stay / shared field experience: **Takismana**
 ```text
 JIHANKI/
 ├── assets/
-│   └── jihanki.png
+│   └── jihanki_main.png
 │
 ├── css/
 │   ├── archive-system.css     # feature-specific archive / modal styles

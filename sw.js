@@ -3,7 +3,7 @@
 const SHELL_CACHE="jihanki-shell-v19";
 const RUNTIME_CACHE="jihanki-runtime-v19";
 const SHELL=[
-  "./","./index.html","./assets/jihanki.png","./assets/placeholder.png","./css/archive-system.css","./css/jihanki-analog.css",
+  "./","./index.html","./assets/jihanki_main.png","./assets/placeholder.png","./css/archive-system.css","./css/jihanki-analog.css",
   "./data/archive.js","./js/categories.js","./js/events.js","./js/inventory.js","./js/relationships.js",
   "./js/geography.js","./js/rotation.js","./js/temporal.js","./js/receipts.js","./js/collection.js","./js/museum.js","./js/audio.js",
   "./js/markdown.js","./js/maintenance.js","./js/anomalies.js","./js/video.js","./js/personality.js",
