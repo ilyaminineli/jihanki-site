@@ -255,3 +255,16 @@ The Satyam history is corrected in the 3 August field note: Satyam 1 and the Sat
 The 49 photographs supplied in `addition_5.zip` on 27 November 2026 were already present in the repository's `media/photo/photos_from_japan/addition_5/` folder. They are now included in the media manifest and individually indexed as `photo-203`–`photo-251`. Their filename-by-filename register and traveller corrections are preserved in [Addition_5 — Japan photo intake](./photo-intake-2026-11-27-addition-5.md).
 
 Confirmed cross-collection links include Uno-Misaki Tunnel and its audiovisual work; Shiki and the existing `Shiki` video / sound takes; the first Saiko-area summit outing; the Kawaguchiko Retro Toys and Music Forest museums; the 31 July Gakupo birthday preparation; the Mount Fuji ascent; the first Tokyo / Shinjuku / Akihabara visit; Kyoto bus-stop details; the Takismana Nintendo DS music interface; McDonald's 139 Fujiyoshida; and the Miyukihama / Odawara photographs.
+
+
+## Complete companion accounts — Katori and Mount Fuji
+
+The visitor archive now includes two separate, complete first-person accounts by Takismana. Their source wording is preserved in full; the following links describe how they connect to the existing photo register.
+
+### Katori — final day in Japan
+
+[Read Takismana’s complete Katori account](./takismana-katori.md). Its shrine and locality links connect to `photo-32`–`photo-37` and `photo-68`–`photo-74`, including the Katori Jingū gates, Katori street evidence and Katori Station. Airport photographs `photo-38`–`photo-41` are attached only as terminal-context images: the account itself says “Tokyo airport” and does not name Haneda or give a calendar date. The source names Kashima Jingū, Katori Jingū and Ikisu Jinja as the Togoku Sansha, but only describes visits to Kashima Jingū and Katori Jingū.
+
+### Fujisan — 1 August 2026
+
+[Read Takismana’s complete Fujisan account](./takismana-fujisan.md). The upper-ascent group `photo-141`, `photo-145` and `photo-146` connects to the summit group `photo-104`, `photo-121`–`photo-123`, the existing 1 August chapter and the Fuji-view McDonald’s photograph `photo-169`. The summit torii remains a summit shrine threshold; neither the account nor the photograph identifies the precise shrine building. The wrong descent trail is retained as a narrative detail, not converted into an invented route or map line.
