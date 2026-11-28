@@ -2396,10 +2396,10 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .home-boot .boot-japanese {
   font-size:23px;
   letter-spacing:.12em;
-  margin-left:.12em;
   line-height:1.05;
   white-space:nowrap;
-  transform:translateX(-10px);
+  margin:0;
+  transform:none;
 }
 .home-archive-tools { gap:3px; }
 .home-archive-tools button.home-audio {
@@ -2626,22 +2626,44 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   min-width:0;
   max-width:100%;
 }
-.home-boot .boot-japanese,
-.home-boot .boot-title,
-.home-boot .boot-subtitle {
+.home-wordmark-stack {
+  display:flex;
+  flex:0 0 auto;
+  flex-direction:column;
+  align-items:stretch;
+  justify-content:flex-start;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
+  padding:14px 0 0;
+  text-align:center;
+}
+.home-wordmark-stack .boot-japanese,
+.home-wordmark-stack .boot-title,
+.home-wordmark-stack .boot-subtitle {
   display:block;
   align-self:stretch;
   width:100%;
+  min-width:0;
   max-width:100%;
-  margin-left:0;
-  margin-right:0;
+  margin:0;
+  padding:0;
   box-sizing:border-box;
   text-align:center;
+  text-indent:0;
+  transform:none;
   white-space:normal;
   overflow-wrap:anywhere;
 }
-.home-boot .boot-japanese {
-  margin-top:10px;
+.home-wordmark-stack .boot-japanese {
+  line-height:1.05;
+}
+.home-wordmark-stack .boot-title {
+  margin-top:4px;
+}
+.home-wordmark-stack .boot-subtitle {
+  margin-top:5px;
 }
 .home-boot .boot-loading {
   display:block;
