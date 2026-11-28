@@ -2617,10 +2617,13 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
    are also constrained. This is especially noticeable with Safari font metrics. */
 .home-boot {
   box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
   width:100%;
   min-width:0;
   max-width:100%;
-  padding:10px 8px 0;
+  padding:25px 8px 0;
 }
 .home-boot > * {
   box-sizing:border-box;
@@ -2637,7 +2640,7 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   min-width:0;
   max-width:100%;
   box-sizing:border-box;
-  padding:34px 0 0;
+  padding:0;
   text-align:center;
 }
 .home-wordmark-stack .boot-japanese,
