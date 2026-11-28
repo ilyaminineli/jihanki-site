@@ -42,7 +42,7 @@ assert(theme.includes("max-height:calc(100dvh - 24px)"),
   "Artifact window must be constrained to the visible viewport.");
 assert(theme.includes(".map-expedition-return button")&&theme.includes("background:var(--jhk-panel) !important"),
   "Map return must use the shared neutral panel palette.");
-assert(theme.includes(".location-archive")&&theme.includes("padding:18px 12px 12px"),
+assert(theme.includes(".location-archive")&&theme.includes("padding:40px 12px 12px"),
   "CRT location list must reserve headroom for the physical credit display.");
 
 assert(!/font:[^;]*(?:Impact|Arial Narrow|Georgia|sans-serif)/i.test(archiveCss)&&
