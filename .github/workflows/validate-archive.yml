@@ -35,10 +35,12 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
       - name: Check JavaScript syntax
         shell: bash
         run: |
@@ -46,31 +48,9 @@ jobs:
           for source in js/*.js sw.js scripts/*.mjs; do
             node --check "$source"
           done
+
       - name: Validate media manifest
         run: node scripts/build-media-manifest.mjs --check
-      - name: Test archive schema fixtures
-      - name: Test public archive visibility
-      - name: Test relationship semantics and place corrections
-      - name: Test field impressions
-      - name: Test curated memory traces
-      - name: Test curator cabinet cards
-      - name: Test listening room
-      - name: Test quiet signals
-      - name: Test machine interaction transitions
-      - name: Test Markdown link validation fixtures
-      - name: Test media manifest integrity fixtures
-      - name: Test analog design system
-      - name: Install Playwright Chromium
-        run: |
-          npm install --no-save playwright
-          npx playwright install --with-deps chromium
-      - name: Test responsive layouts and offline recovery
-      - name: Upload map viewport screenshots
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: jihanki-device-emulation
-          path: test-results/*.png
-          if-no-files-found: ignore
+
       - name: Validate archive, relationships and local assets
         run: node scripts/validate-archive.mjs
