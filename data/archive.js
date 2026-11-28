@@ -5320,6 +5320,38 @@ const ARCHIVE = {
       }
 
     }
+    {
+      "id": "takismana-katori",
+      "title": "KATORI — THE LAST DAY IN JAPAN",
+      "date": "2026",
+      "type": "text",
+      "category": "notes",
+      "author": "takismana",
+      "project": "japan-expedition",
+      "group": "TRAVEL ACCOUNTS / KATORI",
+      "description": "Takismana’s complete first-person account of the final day in Japan: the journey via Tokyo and Kashima to Katori Jingū, the return-ticket cash problem, the taxi to the airport and one last jihanki drink. The source does not give the exact date.",
+      "file": "documents/notes/takismana-katori.md",
+      "metadata": {
+        "locations": ["Lake Saiko", "Kawaguchiko", "Tokyo", "Kashima Jingū", "Katori Station", "Katori Jingu", "Katori"],
+        "related": ["photo-32", "photo-33", "photo-34", "photo-35", "photo-36", "photo-37", "photo-68", "photo-69", "photo-70", "photo-71", "photo-72", "photo-73", "photo-74", "photo-38", "photo-39", "photo-40", "photo-41"]
+      }
+    },
+    {
+      "id": "takismana-fujisan",
+      "title": "FUJISAN — THE 1 AUGUST CLIMB",
+      "date": "2026-08-01",
+      "type": "text",
+      "category": "notes",
+      "author": "takismana",
+      "project": "japan-expedition",
+      "group": "TRAVEL ACCOUNTS / MOUNT FUJI",
+      "description": "Takismana’s complete first-person account of the 1 August Mount Fuji climb: the approach from Fujikawaguchiko, the ascent, summit shrine and crater, difficult descent, return buses and Fuji-view McDonald’s stop.",
+      "file": "documents/notes/takismana-fujisan.md",
+      "metadata": {
+        "locations": ["Fujikawaguchiko", "Mount Fuji", "Yamanashi"],
+        "related": ["daily-2026-08-01", "photo-141", "photo-145", "photo-146", "photo-104", "photo-121", "photo-122", "photo-123", "photo-169"]
+      }
+    },
   ],
   "text": [
     {
