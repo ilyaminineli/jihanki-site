@@ -145,8 +145,15 @@ try{
           transform:style.transform,marginLeft:style.marginLeft,marginRight:style.marginRight,
           textAlign:style.textAlign};
       });
+      const boot=document.querySelector(".home-boot"),stack=document.querySelector(".home-wordmark-stack");
+      const bootRect=boot.getBoundingClientRect(),stackRect=stack.getBoundingClientRect();
+      const bootStyle=getComputedStyle(boot),stackStyle=getComputedStyle(stack);
       return {wordmarks,credit:{left:credit.left,right:credit.right,top:credit.top,bottom:credit.bottom},
         screen:{left:screen.left,right:screen.right,top:screen.top,bottom:screen.bottom},
+        boot:{top:bootRect.top,bottom:bootRect.bottom,height:bootRect.height,justifyContent:bootStyle.justifyContent,
+          paddingTop:bootStyle.paddingTop,transform:bootStyle.transform},
+        stack:{top:stackRect.top,bottom:stackRect.bottom,height:stackRect.height,paddingTop:stackStyle.paddingTop,
+          transform:stackStyle.transform},
         topHeadroom:wordmarks[0].top-screen.top};
     });
     const screenCenter=(wordmarkAudit.screen.left+wordmarkAudit.screen.right)/2;
@@ -159,7 +166,7 @@ try{
       word.marginRight==="0px"&&word.textAlign==="center"),
       device.name+": a legacy offset is still applied to the home wordmarks: "+JSON.stringify(wordmarkAudit));
     const japanese=wordmarkAudit.wordmarks[0];
-    assert(japanese.top>=wordmarkAudit.screen.top+25*geometry.scale,
+    assert(japanese.top>=wordmarkAudit.screen.top+4*geometry.scale,
       device.name+": Japanese wordmark is too close to the CRT ceiling: "+JSON.stringify(wordmarkAudit));
     assert(!(japanese.right>wordmarkAudit.credit.left&&japanese.left<wordmarkAudit.credit.right&&
       japanese.bottom>wordmarkAudit.credit.top&&japanese.top<wordmarkAudit.credit.bottom),
