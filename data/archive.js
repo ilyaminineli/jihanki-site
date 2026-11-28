@@ -180,19 +180,7 @@ const DAILY_NOTES = [
     "description":"Local guide and friend who welcomed the travellers near Lake Saiko, shared a regional map and cultural recommendations, and later drove them to the former Kamikuishiki area.",
     "file":"documents/notes/daily/2026-07-23.md",
     "metadata":{"locations":["Lake Saiko","Satyam 1"],"related":["daily-2026-07-23","daily-2026-08-03"]}
-  },
-  {
-    "id":"person-shoko-asahara",
-    "title":"Shoko Asahara — historical context",
-    "date":"1955–2018",
-    "type":"text",
-    "category":"notes",
-    "author":"archive",
-    "project":"japan-expedition",
-    "group":"HISTORICAL CONTEXT",
-    "description":"Historical reference in the 3 August chapter concerning Aum Shinrikyo and the former Kamikuishiki compound. Contextual documentation only; not an endorsement or destination.",
-    "file":"documents/notes/daily/2026-08-03.md",
-    "metadata":{"locations":["Kamikuishiki"],"related":["daily-2026-08-03"]}
+
   }
 ];
 const VIDEO_ARCHIVE = [
@@ -382,9 +370,7 @@ const ARCHIVE = {
         "Eugene"
       ],
       "metadata": {
-        "related": [
-          "dynakyris-japan-corroborations-2026-11-27"
-        ]
+        "related": []
       }
     },
     {
@@ -757,9 +743,7 @@ const ARCHIVE = {
           "Kyoto"
         ],
         "related": [
-          "daily-2026-08-road-trip",
-          "dynakyris-japan-corroborations-2026-11-27",
-          "person-banbutsu-san"
+          "daily-2026-08-road-trip"
         ]
       }
     },
@@ -3439,9 +3423,7 @@ const ARCHIVE = {
           "Fujikawaguchiko",
           "Yamanashi"
         ],
-        "related": [
-          "kadoya-shoten-miura-contact"
-        ]
+        "related": []
       }
     },
     {
@@ -5237,66 +5219,7 @@ const ARCHIVE = {
           "photo-173"
         ]
       }
-    },
-    {
-      "id": "expedition-index",
-      "title": "JAPAN EXPEDITION 2026 — DAILY INDEX",
-      "date": "2026",
-      "type": "text",
-      "category": "notes",
-      "author": "archive",
-      "group": "INDEX / FIELD RECORD",
-      "file": "documents/notes/daily/README.md",
-      "description": "Chronological index and recurring motifs from the Japan journey."
-    },
-    {
-      "id": "first-jihanki-note",
-      "title": "FIRST JIHANKI — PROJECT ORIGIN",
-      "date": "2026",
-      "type": "text",
-      "category": "notes",
-      "author": "shared",
-      "group": "INDEX / FIELD RECORD",
-      "file": "documents/notes/first-jihanki.md",
-      "description": "The first vending-machine encounter and the origin of the memory archive."
-    },
-    {
-      "id": "archive-rotation",
-      "title": "ARCHIVE ROTATION",
-      "date": "2026",
-      "type": "text",
-      "category": "notes",
-      "author": "shared",
-      "group": "INDEX / FIELD RECORD",
-      "file": "documents/notes/archive-rotation.md",
-      "description": "Notes on the archive's catalogue and rotation."
-    },
-    {
-      "id": "daily-2026-08-road-trip",
-      "title": "KAWAGUCHIKO / KYOTO / OSAKA / KAWAGUCHIKO",
-      "date": "2026-08",
-      "type": "text",
-      "category": "notes",
-      "author": "archive",
-      "project": "japan-expedition",
-      "group": "REGIONAL ROAD TRAIL",
-      "description": "A confirmed car journey from Kawaguchiko to Kyoto and Osaka and back, including Kyoto temple and shop visits, Osaka Castle and the return to Kawaguchiko.",
-      "file": "documents/notes/daily/2026-08-road-trip.md",
-      "metadata": {
-        "locations": [
-          "Kawaguchiko",
-          "Kyoto",
-          "Osaka",
-          "Genko-an"
-        ],
-        "related": [
-          "photo-191",
-          "photo-192",
-          "photo-196",
-          "photo-197",
-          "photo-201"
-        ]
-      }
+
     },
     {
       "id": "daily-2026-08-18",
@@ -5309,109 +5232,10 @@ const ARCHIVE = {
       "group": "DAILY EXPEDITION",
       "description": "A closing field fragment about the recurring morning dance on the residency's wooden boards.",
       "file": "documents/notes/daily/2026-08-18.md"
-    },
-    {
-      "id": "photo-intake-addition-4",
-      "title": "ADDITION_4 — JAPAN PHOTO INTAKE",
-      "date": "2026-11-27",
-      "type": "text",
-      "category": "notes",
-      "author": "archive",
-      "project": "japan-expedition",
-      "group": "PHOTO IDENTIFICATION / INTAKE",
-      "description": "Filename-by-filename visual review of the 30 addition_4 photographs, with confident identifications, relationships and unresolved traveller questions.",
-      "file": "documents/notes/photo-intake-2026-11-27-addition-4.md",
-      "metadata": {
-        "locations": [
-          "Japan / 2026 expedition"
-        ]
-      }
-    },
-    {
-      "id": "dynakyris-japan-corroborations-2026-11-27",
-      "title": "DYNAKYRIS — SELECTED JAPAN DIARY EXTRACTS",
-      "date": "2026",
-      "type": "text",
-      "category": "notes",
-      "author": "DYNAKYRIS",
-      "project": "japan-expedition",
-      "group": "PEOPLE / DIARY EXTRACTS",
-      "description": "DYNAKYRIS’s Kyoto diary account of Banbutsu-san and the Banbutsu Sōzō-bō visit, alongside his reflections on The Mountain Remembers.",
-      "file": "documents/notes/dynakyris-japan-corroborations-2026-11-27.md",
-      "metadata": {
-        "locations": ["Kyoto", "Banbutsu Sōzō-bō", "Fuji Five Lakes", "Lake Saiko", "Aokigahara"],
-        "related": ["person-banbutsu-san", "photo-22", "mountain-remembers-mv", "photo-246"]
-      }
-    },
-    {
-      "id": "person-banbutsu-san",
-      "title": "Banbutsu-san — Banbutsu Sōzō-bō, Kyoto",
-      "date": "2026",
-      "type": "text",
-      "category": "notes",
-      "author": "archive",
-      "project": "japan-expedition",
-      "group": "PEOPLE / KYOTO",
-      "description": "Friend of DYNAKYRIS associated with 万物創造房 (Banbutsu Sōzō-bō), the Kyoto shop. His personal name and further biographical details are not recorded in this archive.",
-      "file": "documents/notes/dynakyris-japan-corroborations-2026-11-27.md",
-      "metadata": {
-        "locations": ["Kyoto", "Banbutsu Sōzō-bō"],
-        "related": ["dynakyris-japan-corroborations-2026-11-27", "photo-22"]
-      }
-    },
-    {
-      "id": "photo-intake-addition-5",
-      "title": "ADDITION_5 — JAPAN PHOTO INTAKE",
-      "date": "2026-11-27",
-      "type": "text",
-      "category": "notes",
-      "author": "archive",
-      "project": "japan-expedition",
-      "group": "PHOTO IDENTIFICATION / INTAKE",
-      "description": "Traveller-confirmed filename-by-filename review of 49 addition_5 photographs, with corrected subjects, memory connections, named places and remaining uncertainties. All 49 JPEGs are present in the media manifest and individually catalogued as photo-203 through photo-251.",
-      "file": "documents/notes/photo-intake-2026-11-27-addition-5.md",
-      "metadata": {
-        "locations": [
-          "Uno-Misaki Tunnel",
-          "Onsen Yurari",
-          "Lake Yamanaka",
-          "Lake Shōji",
-          "Yamanashi",
-          "Kawaguchiko Nostalgic Toys Museum",
-          "Kawaguchiko Music Forest Museum",
-          "Kitaoji Shinmachi",
-          "Akihabara",
-          "Tokyo",
-          "McDonald’s 139 Fujiyoshida",
-          "Miyukihama",
-          "Odawara",
-          "Shinsaibashi",
-          "Osaka",
-          "Lake Saiko",
-          "First summit near Saiko",
-          "Shinjuku"
-        ],
-        "related": [
-          "daily-2026-07-23",
-          "daily-2026-07-24",
-          "daily-2026-07-25",
-          "daily-2026-07-26",
-          "daily-2026-07-27",
-          "daily-2026-07-31",
-          "daily-2026-08-01",
-          "daily-2026-07-22",
-          "daily-2026-08-road-trip",
-          "tunnel",
-          "shiki",
-          "sound-08",
-          "sound-09",
-          "voice-takismana",
-          "photo-169",
-          "photo-193",
-          "photo-198",
-          "photo-202"
-        ]
-      }
+
+
+
+
     },
 {
       "id": "event-2026-08-15-nagahama-furusato-festival",
@@ -5436,29 +5260,7 @@ const ARCHIVE = {
           "photo-180"
         ]
       }
-    },
-    {
-      "id": "kadoya-shoten-miura-contact",
-      "title": "KADOYA SHOTEN — MIURA CONTACT",
-      "date": "2026",
-      "type": "text",
-      "category": "notes",
-      "author": "archive",
-      "project": "japan-expedition",
-      "group": "LOCAL CONTACT / SAIKO",
-      "description": "A contact memory for Miura at Kadoya Shoten, Lake Kawaguchi. The original Japanese self-introduction is preserved without imposing a romanized reading.",
-      "file": "documents/notes/contacts/kadoya-shoten-miura.md",
-      "metadata": {
-        "locations": [
-          "Kadoya Shoten",
-          "Nagahama",
-          "Fujikawaguchiko",
-          "Yamanashi"
-        ],
-        "related": [
-          "photo-183"
-        ]
-      }
+
     }
   ],
   "text": [
