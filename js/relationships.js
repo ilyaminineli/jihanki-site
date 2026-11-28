@@ -189,6 +189,41 @@
     ],
     "photo-195": [
       { id: "daily-2026-08-road-trip", kind: "regional-journey-context", label: "KYOTO–OSAKA JOURNEY / EXACT VENUE UNKNOWN" }
+    ],
+    "daily-2026-08-01": [
+      { id: "takismana-fujisan", kind: "companion-first-person-account", label: "TAKISMANA / COMPLETE 1 AUGUST CLIMB ACCOUNT" }
+    ],
+    "takismana-katori": [
+      { id: "photo-32", kind: "shrine-visit-photograph", label: "KATORI JINGU / VERMILION APPROACH GATE" },
+      { id: "photo-33", kind: "shrine-visit-photograph", label: "KATORI JINGU / MAIN GATE" },
+      { id: "photo-34", kind: "shrine-visit-photograph", label: "KATORI JINGU / GATE DETAIL" },
+      { id: "photo-35", kind: "shrine-visit-photograph", label: "KATORI JINGU / STONE TORII AND GROUNDS" },
+      { id: "photo-36", kind: "locality-evidence", label: "KATORI / STREET SIGN" },
+      { id: "photo-37", kind: "station-evidence", label: "KATORI STATION / SIGN" },
+      { id: "photo-68", kind: "station-context", label: "KATORI STATION / PLATFORM-SIDE EXIT" },
+      { id: "photo-69", kind: "station-context", label: "KATORI STATION / WAITING ROOM" },
+      { id: "photo-70", kind: "locality-context", label: "KATORI / SCHOOL-ROUTE SIGN" },
+      { id: "photo-71", kind: "locality-context", label: "KATORI / TRADITIONAL HOUSE" },
+      { id: "photo-72", kind: "locality-context", label: "KATORI / FIELDS AND WOODED EDGE" },
+      { id: "photo-73", kind: "locality-context", label: "KATORI / ROADSIDE GARDEN" },
+      { id: "photo-74", kind: "locality-context", label: "KATORI / STONE BOUNDARY WALL" },
+      { id: "photo-38", kind: "airport-context-photograph", label: "TOKYO AIRPORT / TERMINAL CONTEXT; AIRPORT NOT NAMED IN TEXT" },
+      { id: "photo-39", kind: "airport-context-photograph", label: "TOKYO AIRPORT / TERMINAL CONTEXT; AIRPORT NOT NAMED IN TEXT" },
+      { id: "photo-40", kind: "airport-context-photograph", label: "TOKYO AIRPORT / TERMINAL CONTEXT; AIRPORT NOT NAMED IN TEXT" },
+      { id: "photo-41", kind: "airport-context-photograph", label: "TOKYO AIRPORT / TERMINAL CONTEXT; AIRPORT NOT NAMED IN TEXT" },
+      { id: "first-jihanki-note", kind: "shared-concept", label: "JIHANKI / RESPAWN-POINT MOTIF" }
+    ],
+    "takismana-fujisan": [
+      { id: "daily-2026-08-01", kind: "companion-daily-chapter", label: "1 AUGUST / DAILY EXPEDITION CHAPTER" },
+      { id: "photo-141", kind: "upper-ascent-photograph", label: "MOUNT FUJI / UPPER ASCENT" },
+      { id: "photo-145", kind: "upper-ascent-photograph", label: "MOUNT FUJI / FOGBOUND VOLCANIC RIDGE" },
+      { id: "photo-146", kind: "upper-ascent-photograph", label: "MOUNT FUJI / RED SCORIA" },
+      { id: "photo-104", kind: "summit-photograph", label: "MOUNT FUJI / CRATER" },
+      { id: "photo-121", kind: "summit-photograph", label: "MOUNT FUJI / CRATER RIM" },
+      { id: "photo-122", kind: "summit-photograph", label: "MOUNT FUJI / LAVA RIDGE ABOVE CLOUDS" },
+      { id: "photo-123", kind: "summit-photograph", label: "MOUNT FUJI / SUMMIT TORII" },
+      { id: "photo-169", kind: "post-climb-meal-context", label: "FUJI-VIEW MCDONALD’S / RETURN STOP" },
+      { id: "mountain-remembers-mv", kind: "shared-landscape-work", label: "MOUNT FUJI / AUDIOVISUAL MEMORY" }
     ]
   };
 
@@ -221,7 +256,11 @@
     { from: "Demachiyanagi", to: "Sanjo", kind: "transit-corridor", label: "TRANSIT CORRIDOR" },
     { from: "Sanjo", to: "Otsu", kind: "transit-corridor", label: "TRANSIT CORRIDOR" },
     { from: "Miyukihama", to: "Odawara", kind: "within", label: "IN CITY" },
-    { from: "Fujikawaguchiko", to: "Yamanashi", kind: "within", label: "IN PREFECTURE" }
+    { from: "Fujikawaguchiko", to: "Yamanashi", kind: "within", label: "IN PREFECTURE" },
+    { from: "Katori Station", to: "Katori Jingu", kind: "near", label: "APPROX. HALF-HOUR WALK / TAKISMANA’S ACCOUNT" },
+    { from: "Katori Station", to: "Katori", kind: "within", label: "KATORI LOCALITY" },
+    { from: "Katori Jingu", to: "Katori", kind: "within", label: "KATORI LOCALITY" },
+    { from: "Kashima Jingū", to: "Katori Jingu", kind: "connected-to", label: "TOGOKU SANSHA / TWO SHRINES VISITED IN THE ACCOUNT" }
   ];
 
   const TRAILS = [
@@ -272,6 +311,40 @@
       stops: ["Kawaguchiko", "Tokyo", "Akihabara", "Shinjuku"],
       mode: "FIRST CAR JOURNEY TO TOKYO",
       description: "The 24 July daily chapter records the first road trip from Kawaguchiko to Tokyo, the Akihabara visit and the later descent / transit toward Shinjuku. Addition_5 (22) places a Bamiyan sign somewhere along the journey, not at a confirmed stop; no exact road or intermediate route is drawn."
+    },
+    {
+      id: "takismana-katori-final-day",
+      kind: "final-day-memory-sequence",
+      title: "LAKE SAIKO → TOKYO → KASHIMA → KATORI → TOKYO",
+      stops: ["Lake Saiko", "Tokyo", "Kashima Jingū", "Katori Station", "Katori Jingu", "Katori Station", "Tokyo"],
+      mode: "FINAL-DAY / BUS, LOCAL TRAIN AND TAXI",
+      mapLine: false,
+      description: "Takismana’s full account follows an early bus from Kawaguchiko to Tokyo, a bus to Kashima, a local train to Katori and the shrine visit, then the return to Kashima and a taxi back to Tokyo airport. The source calls it the last day in Japan but gives no exact date or airport name. Ordered memory stops only; no road or transit route is plotted.",
+      stages: [
+        { title: "DEPARTURE / LAKE SAIKO TO TOKYO", detail: "An early bus brought both travellers from Kawaguchiko to Tokyo. Their suitcases were left at a luggage counter and sent to the hotel." },
+        { title: "KASHIMA / TOGOKU SANSHA CONTEXT", detail: "A bus from Tokyo and a local train brought them to Kashima. They visited Kashima Jingū; the account places it and Katori Jingū within the historical Togoku Sansha pilgrimage context. Ikisu Jinja is named as the third shrine, but is not described as a visit." },
+        { title: "KATORI / THE SHRINE WALK", detail: "From Katori Station, the walk to Katori Jingū took about half an hour in intense heat. The dojo and shops were closed; the account recalls the offering box and a goshuin." },
+        { title: "RETURN / CASH-ONLY TICKETS", detail: "Back in Kashima, the travellers could not buy a bus ticket by card or top up their transport cards without cash. A taxi became the way back to Tokyo." },
+        { title: "AIRPORT / ONE LAST JIHANKI", detail: "At the Tokyo airport, they rested, visited the observation deck and used a few coins found in their luggage for one last vending-machine drink." }
+      ],
+      photoIds: ["photo-32", "photo-33", "photo-35", "photo-36", "photo-37", "photo-68", "photo-69"]
+    },
+    {
+      id: "takismana-fujisan-climb-2026-08-01",
+      kind: "summit-climb-memory-sequence",
+      title: "FUJIKAWAGUCHIKO → MOUNT FUJI / SUMMIT → FUJI-VIEW MCDONALD’S",
+      stops: ["Fujikawaguchiko", "Mount Fuji", "McDonald’s 139 Fujiyoshida"],
+      mode: "1 AUGUST / BUS, SUMMIT CLIMB AND RETURN",
+      mapLine: false,
+      description: "The 1 August daily chapter and Takismana’s complete account describe the bus approach, ascent to the summit shrine and crater, difficult descent on the wrong trail, several buses back to Fujikawaguchiko and the Fuji-view McDonald’s stop. The trailhead and exact descent route are not identified, so this is an ordered memory sequence rather than a plotted hiking route.",
+      stages: [
+        { title: "APPROACH / FUJIKAWAGUCHIKO", detail: "The car was left in Fujikawaguchiko before the bus climbed through the forest to the crowded trailhead. The exact trailhead is not named." },
+        { title: "ASCENT / VOLCANIC GRAVEL", detail: "The account recalls rocky slopes, loose volcanic gravel, increasingly expensive water and vending machines at the upper stations." },
+        { title: "SUMMIT / SHRINE AND CRATER", detail: "At the summit, the travellers visited a shrine, bought goshuin slips and walked to the crater edge. The exact shrine name is not established by the photos." },
+        { title: "DESCENT / WRONG TURN", detail: "A fork led them onto a trail descending into a neighbouring prefecture. The account does not identify the trail or bus stop." },
+        { title: "RETURN / BUSES AND THE FUJI VIEW", detail: "Several buses brought them back to Fujikawaguchiko. They then drove to the McDonald’s with a view of Fuji." }
+      ],
+      photoIds: ["photo-141", "photo-145", "photo-146", "photo-104", "photo-121", "photo-122", "photo-123", "photo-169"]
     }
   ];
 
