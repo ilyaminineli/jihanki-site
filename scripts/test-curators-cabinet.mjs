@@ -23,7 +23,7 @@ const museum = window.JIHANKI_MUSEUM;
 const shelf = museum.createShelf("A place remembered");
 museum.addToShelf(shelf.id, "photo-127");
 museum.addToShelf(shelf.id, "photo-173");
-assert.equal(shelf.itemIds.length, 2, "A shelf should contain only the two explicitly selected records.");
+assert.equal(museum.shelves()[0].itemIds.length, 2, "A shelf should contain only the two explicitly selected records.");
 museum.addToShelf(shelf.id, "photo-127");
 assert.equal(museum.shelves()[0].itemIds.length, 2, "Adding the same work twice should not create duplicates.");
 assert.equal(museum.removeFromShelf(shelf.id, "photo-127"), true, "A selected work should be removable from its shelf.");
