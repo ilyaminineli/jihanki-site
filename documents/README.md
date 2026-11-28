@@ -5,6 +5,10 @@ Use Markdown (`.md`) as the editable archive format.
 Keep your original `Yokais.odt` as the master/source document.
 When something becomes a JIHANKI item, make a small curated Markdown file.
 
+## Interface design
+
+- [JIHANKI Analog UI System](design/JIHANKI-ANALOG-DESIGN-SYSTEM.md) — shared palette, typography, surfaces, map treatment, interaction states and exceptions for future pages.
+
 ## Editorial registers
 
 - [Cross-collection photo identification register](notes/photo-identification-register.md) — names, source evidence, thematic groups, cross-photo links and unresolved candidates across the complete static photo collection.
