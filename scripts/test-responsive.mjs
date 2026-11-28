@@ -648,6 +648,10 @@ try{
       device.name+": map expedition return did not restore the previous place, zoom and position");
     await page.keyboard.press("Escape");
     assert(await page.locator("#artifact.open").count()===0,device.name+": Escape failed to close map");
+    // Map place detail returns to its originating location view; use the physical
+    // HOME control before testing home-screen Search rather than assuming home.
+    await page.locator("#home-button").click();
+    await page.locator('[data-home-action="search"]').waitFor();
     await page.locator('[data-home-action="search"]').click();
     const searchMobileAudit=await page.evaluate(()=>{
       const input=document.querySelector("#archive-search-input");
