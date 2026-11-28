@@ -692,8 +692,9 @@ try{
       locationLayout.status.right>locationLayout.credit.left&&locationLayout.status.left<locationLayout.credit.right&&
       locationLayout.status.bottom>locationLayout.credit.top&&locationLayout.status.top<locationLayout.credit.bottom;
     assert(!statusOverCredit,device.name+": location record count overlaps the physical credit display: "+JSON.stringify(locationLayout));
-    assert(locationLayout.buttonStyle&&!/0, ?(1[2-9][0-9]|[2-9][0-9]{2}), ?(1[2-9][0-9]|[2-9][0-9]{2})/.test(locationLayout.buttonStyle.background),
-      device.name+": BACK TO MAP still has a green accent: "+JSON.stringify(locationLayout.buttonStyle));
+    const returnBackgroundRGB=locationLayout.buttonStyle?.background.match(/\\d+/g)?.slice(0,3).map(Number)||[];
+    assert(returnBackgroundRGB.length===3&&Math.max(...returnBackgroundRGB)-Math.min(...returnBackgroundRGB)<=2,
+      device.name+": BACK TO MAP still has a colored accent instead of neutral phosphor: "+JSON.stringify(locationLayout.buttonStyle));
     await page.locator("#screen-content [data-return-map]").click();
     await page.locator(".map-memory-mode").waitFor();
     const mapAfterReturn=await page.evaluate(()=>window.JIHANKI_MAP.snapshot(document.querySelector("#artifact-content")));
