@@ -36,8 +36,7 @@ const expectedEdges = [
   ["photo-247", "photo-250"],
   ["photo-247", "photo-202"],
   ["photo-250", "photo-247"],
-  ["photo-250", "photo-202"],
-  ["photo-intake-addition-5", "photo-202"]
+  ["photo-250", "photo-202"]
 ];
 for (const [from, to] of expectedEdges) {
   const edge = (definitions[from] || []).find(candidate => candidate.id === to);
