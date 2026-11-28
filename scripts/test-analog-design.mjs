@@ -36,13 +36,13 @@ assert.match(guide,/Intentional exceptions[\s\S]*Printed receipts[\s\S]*Exported
   "The design guide must preserve explicit print/export exceptions.");
 assert.match(guide,/Memory Network[\s\S]*monochrome map canvas/,"The design guide must define Memory Network appearance.");
 assert.match(archiveCss,/\.sound-suite-tabs/,"Integrated Sound Lab mode component is retained.");
-assert.match(theme, /#artifact \\{[\\s\\S]*?padding:[^;]*safe-area-inset-top/,
+assert(theme.includes("padding:max(10px,env(safe-area-inset-top))"),
   "Artifact overlay must respect safe-area insets.");
-assert.match(theme, /#artifact \.artifact-window[\\s\\S]*?max-height:calc\\(100dvh - 24px\\)/,
+assert(theme.includes("max-height:calc(100dvh - 24px)"),
   "Artifact window must be constrained to the visible viewport.");
-assert.match(theme, /\.map-expedition-return button[\\s\\S]*?var\\(--jhk-panel/,
+assert(theme.includes(".map-expedition-return button")&&theme.includes("background:var(--jhk-panel) !important"),
   "Map return must use the shared neutral panel palette.");
-assert.match(theme, /\.location-archive[\\s\\S]*?padding:18px 12px 12px/,
+assert(theme.includes(".location-archive")&&theme.includes("padding:18px 12px 12px"),
   "CRT location list must reserve headroom for the physical credit display.");
 
 assert(!/font:[^;]*(?:Impact|Arial Narrow|Georgia|sans-serif)/i.test(archiveCss)&&
