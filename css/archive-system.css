@@ -2619,7 +2619,7 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   width:100%;
   min-width:0;
   max-width:100%;
-  padding-inline:8px;
+  padding:10px 8px 0;
 }
 .home-boot > * {
   box-sizing:border-box;
@@ -2629,13 +2629,19 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .home-boot .boot-japanese,
 .home-boot .boot-title,
 .home-boot .boot-subtitle {
-  width:fit-content;
+  display:block;
+  align-self:stretch;
+  width:100%;
   max-width:100%;
-  margin-inline:auto;
+  margin-left:0;
+  margin-right:0;
   box-sizing:border-box;
   text-align:center;
   white-space:normal;
   overflow-wrap:anywhere;
+}
+.home-boot .boot-japanese {
+  margin-top:10px;
 }
 .home-boot .boot-loading {
   display:block;
