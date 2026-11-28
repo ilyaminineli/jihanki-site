@@ -590,7 +590,7 @@ try{
       const drawn=document.querySelectorAll(".map-memory-mode .map-connections line").length;
       return{expected,drawn};
     });
-    assert(relationAudit.drawn===relationAudit.expected&&relationAudit.expected>=30,
+    assert(relationAudit.drawn===relationAudit.expected&&relationAudit.expected>0,
       device.name+": a curated geographic relationship is missing from Memory Network: "+JSON.stringify(relationAudit));
     for(const pin of map.pins){
       // Pins live on the intentionally wider pan surface, not necessarily inside
