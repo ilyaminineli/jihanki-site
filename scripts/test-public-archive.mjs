@@ -27,6 +27,7 @@ for (const id of hidden) {
 }
 for (const id of ["first-jihanki-note", "archive-rotation", "daily-2026-07-22", "daily-2026-08-03"]) {
   assert(archive.some(item => item.id === id), "JIHANKI origin / field memory was removed by the editorial cleanup: " + id);
+  assert(notes.some(item => item.id === id), "JIHANKI-specific note is missing from the public NOTES selector: " + id);
 }
 for (const id of ["photo-203", "photo-251", "photo-202", "photo-247", "photo-250"]) {
   assert(archive.some(item => item.id === id), "Photographic archive record was removed: " + id);
