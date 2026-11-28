@@ -1791,13 +1791,13 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 }
 
 
-/* M56 — CRT phosphor memory nodes, based on the Photoshop green-frame study. */
+/* M56 — monochrome phosphor memory nodes, tuned to the JIHANKI CRT palette. */
 .memory-map-panel .map-canvas {
   background:
-    radial-gradient(ellipse at 49% 50%,rgba(36,88,55,.12),transparent 68%),
-    repeating-linear-gradient(0deg,transparent 0 27px,rgba(99,178,122,.055) 28px),
-    repeating-linear-gradient(90deg,transparent 0 27px,rgba(99,178,122,.055) 28px),
-    #020604;
+    radial-gradient(ellipse at 49% 50%,rgba(75, 75, 75, .12),transparent 68%),
+    repeating-linear-gradient(0deg,transparent 0 27px,rgba(157, 157, 157, .055) 28px),
+    repeating-linear-gradient(90deg,transparent 0 27px,rgba(157, 157, 157, .055) 28px),
+    #050505;
 }
 .memory-map-panel .map-pan-layer {
   width:4000px;
@@ -1811,14 +1811,14 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   justify-content:center;
   gap:4px;
   padding:10px 14px 9px;
-  border:2px solid rgba(125,210,151,.86);
+  border:2px solid rgba(188, 188, 188, .86);
   border-radius:11px;
-  background:rgba(0,8,3,.94);
-  color:#e9f7ec;
+  background:rgba(6, 6, 6, .94);
+  color:#f3f3f3;
   box-shadow:
-    0 0 4px rgba(123,221,153,.8),
-    0 0 13px rgba(79,186,117,.38),
-    inset 0 0 13px rgba(69,150,93,.13);
+    0 0 4px rgba(195, 195, 195, .8),
+    0 0 13px rgba(158, 158, 158, .38),
+    inset 0 0 13px rgba(129, 129, 129, .13);
   text-align:center;
   transform:translate(-50%,-50%);
   transition:border-color .15s ease,box-shadow .15s ease,background .15s ease;
@@ -1826,10 +1826,10 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .memory-map-panel .map-pin-jp {
   display:block;
   max-width:100%;
-  color:#f0f8f1;
+  color:#f6f6f6;
   font:600 27px/1.15 "Noto Serif JP","Yu Mincho","Hiragino Mincho ProN",serif;
   letter-spacing:.025em;
-  text-shadow:0 0 3px rgba(227,255,234,.5),0 0 11px rgba(125,220,153,.3);
+  text-shadow:0 0 3px rgba(248, 248, 248, .5),0 0 11px rgba(195, 195, 195, .3);
   white-space:normal;
   overflow-wrap:anywhere;
   word-break:normal;
@@ -1837,53 +1837,53 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .memory-map-panel .map-pin-en {
   display:block;
   max-width:100%;
-  color:#8bc99d;
+  color:#b9b9b9;
   font:600 13px/1.2 "Courier New",monospace;
   letter-spacing:.045em;
-  text-shadow:0 0 5px rgba(108,204,137,.42);
+  text-shadow:0 0 5px rgba(179, 179, 179, .42);
   white-space:normal;
   overflow-wrap:anywhere;
 }
 .memory-map-panel .map-pin-count {
   display:block;
-  color:rgba(140,202,157,.72);
+  color:rgba(186, 186, 186, .72);
   font:8px/1 "Courier New",monospace;
   letter-spacing:.2em;
-  text-shadow:0 0 4px rgba(105,197,131,.35);
+  text-shadow:0 0 4px rgba(173, 173, 173, .35);
 }
 .memory-map-panel .map-pan-layer .map-pin:focus-visible,
 .memory-map-panel .map-pan-layer .map-pin:hover,
 .memory-map-panel .map-pan-layer .map-pin:active {
   z-index:7;
-  border-color:#c2f4ce;
-  background:rgba(2,15,7,.98);
-  box-shadow:0 0 6px rgba(155,241,177,.95),0 0 22px rgba(95,210,132,.56),inset 0 0 16px rgba(95,210,132,.2);
-  outline:1px solid rgba(175,239,191,.35);
+  border-color:#e7e7e7;
+  background:rgba(12, 12, 12, .98);
+  box-shadow:0 0 6px rgba(218, 218, 218, .95),0 0 22px rgba(180, 180, 180, .56),inset 0 0 16px rgba(180, 180, 180, .2);
+  outline:1px solid rgba(222, 222, 222, .35);
   outline-offset:3px;
 }
 .memory-map-panel .map-memory-mode .map-connections line {
-  stroke:rgba(117,199,142,.58);
+  stroke:rgba(177, 177, 177, .58);
   stroke-width:.56;
   stroke-dasharray:2.2 2;
-  filter:drop-shadow(0 0 2px rgba(105,202,136,.28));
+  filter:drop-shadow(0 0 2px rgba(177, 177, 177, .28));
 }
 .memory-map-panel .map-connections line.map-edge-within {
-  stroke:rgba(121,191,139,.4);
+  stroke:rgba(172, 172, 172, .4);
   stroke-width:.48;
   stroke-dasharray:none;
 }
 .memory-map-panel .map-connections line.map-edge-overlooks,
 .memory-map-panel .map-connections line.map-edge-connected-to {
-  stroke:rgba(131,213,154,.7);
+  stroke:rgba(191, 191, 191, .7);
   stroke-dasharray:2.2 2.2;
 }
 .memory-map-panel .map-connections line.map-edge-transit-corridor {
-  stroke:rgba(144,223,165,.78);
+  stroke:rgba(202, 202, 202, .78);
   stroke-dasharray:4 2 1 2;
 }
 .memory-map-panel .map-pan-layer .map-region-label {
-  color:rgba(135,194,150,.32);
-  text-shadow:0 0 4px rgba(97,181,122,.24);
+  color:rgba(178, 178, 178, .32);
+  text-shadow:0 0 4px rgba(159, 159, 159, .24);
 }
 .memory-map-panel .map-canvas::after {
   content:"";
@@ -1892,7 +1892,7 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   inset:0;
   pointer-events:none;
   opacity:.15;
-  background:repeating-linear-gradient(to bottom,rgba(190,255,205,.16) 0,rgba(190,255,205,.16) 1px,transparent 1px,transparent 4px);
+  background:repeating-linear-gradient(to bottom,rgba(238, 238, 238, .16) 0,rgba(238, 238, 238, .16) 1px,transparent 1px,transparent 4px);
 }
 @media(max-width:560px) {
   .memory-map-panel .map-canvas { height:430px; min-height:430px; }
@@ -1905,11 +1905,11 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 /* M58 — fixed zoom console, mapped-pixel connections and analogue Japan phosphor relief. */
 .memory-map-panel .map-canvas {
   background:
-    radial-gradient(ellipse at 52% 46%,rgba(23,125,66,.16),transparent 62%),
-    radial-gradient(ellipse at 48% 54%,rgba(7,42,21,.52),transparent 78%),
-    repeating-linear-gradient(0deg,transparent 0 27px,rgba(81,193,113,.045) 28px),
-    repeating-linear-gradient(90deg,transparent 0 27px,rgba(81,193,113,.045) 28px),
-    #010503;
+    radial-gradient(ellipse at 52% 46%,rgba(99, 99, 99, .16),transparent 62%),
+    radial-gradient(ellipse at 48% 54%,rgba(33, 33, 33, .52),transparent 78%),
+    repeating-linear-gradient(0deg,transparent 0 27px,rgba(163, 163, 163, .045) 28px),
+    repeating-linear-gradient(90deg,transparent 0 27px,rgba(163, 163, 163, .045) 28px),
+    #040404;
   isolation:isolate;
 }
 .memory-map-panel .map-pan-layer {
@@ -1928,7 +1928,7 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 }
 .memory-map-panel .japan-land-glow {
   fill:none;
-  stroke:#36d77b;
+  stroke:#aeaeae;
   stroke-width:54;
   stroke-linecap:round;
   stroke-linejoin:round;
@@ -1937,13 +1937,13 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 }
 .memory-map-panel .japan-land {
   fill:url(#map-japan-fill);
-  stroke:rgba(79,218,128,.3);
+  stroke:rgba(182, 182, 182, .3);
   stroke-width:8;
   stroke-linejoin:round;
 }
 .memory-map-panel .japan-islet {
-  fill:rgba(23,123,66,.12);
-  stroke:rgba(75,204,119,.28);
+  fill:rgba(98, 98, 98, .12);
+  stroke:rgba(170, 170, 170, .28);
   stroke-width:6;
 }
 .memory-map-panel .map-connections {
@@ -1957,48 +1957,48 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 }
 .memory-map-panel .map-connections line {
   fill:none;
-  stroke:rgba(126,218,151,.58);
+  stroke:rgba(194, 194, 194, .58);
   stroke-width:4;
   stroke-linecap:round;
   stroke-linejoin:round;
-  filter:drop-shadow(0 0 5px rgba(52,190,105,.5));
+  filter:drop-shadow(0 0 5px rgba(155, 155, 155, .5));
 }
 .memory-map-panel .map-memory-mode .map-connections line.map-edge-within {
-  stroke:rgba(107,188,130,.52);
+  stroke:rgba(167, 167, 167, .52);
   stroke-width:3;
   stroke-dasharray:none;
-  filter:drop-shadow(0 0 3px rgba(54,163,91,.32));
+  filter:drop-shadow(0 0 3px rgba(135, 135, 135, .32));
 }
 .memory-map-panel .map-memory-mode .map-connections line.map-edge-near {
-  stroke:rgba(145,223,165,.72);
+  stroke:rgba(202, 202, 202, .72);
   stroke-width:4;
   stroke-dasharray:3 12;
 }
 .memory-map-panel .map-memory-mode .map-connections line.map-edge-located-on {
-  stroke:rgba(112,211,143,.75);
+  stroke:rgba(185, 185, 185, .75);
   stroke-width:5;
   stroke-dasharray:14 8;
 }
 .memory-map-panel .map-memory-mode .map-connections line.map-edge-overlooks {
-  stroke:rgba(162,232,178,.84);
+  stroke:rgba(213, 213, 213, .84);
   stroke-width:5;
   stroke-dasharray:2 9;
 }
 .memory-map-panel .map-memory-mode .map-connections line.map-edge-connected-to {
-  stroke:rgba(121,216,153,.76);
+  stroke:rgba(191, 191, 191, .76);
   stroke-width:4;
   stroke-dasharray:12 7;
 }
 .memory-map-panel .map-memory-mode .map-connections line.map-edge-transit-corridor {
-  stroke:rgba(165,232,181,.82);
+  stroke:rgba(214, 214, 214, .82);
   stroke-width:5;
   stroke-dasharray:20 8 3 8;
 }
 .memory-map-panel .map-connections line.map-edge-chronology {
-  stroke:rgba(180,239,193,.92);
+  stroke:rgba(223, 223, 223, .92);
   stroke-width:7;
   stroke-dasharray:16 11;
-  filter:drop-shadow(0 0 6px rgba(87,215,131,.7));
+  filter:drop-shadow(0 0 6px rgba(182, 182, 182, .7));
 }
 .memory-map-panel .map-pin { z-index:2; }
 .memory-map-panel .map-view-controls {
@@ -2010,10 +2010,10 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   align-items:center;
   gap:5px;
   padding:5px;
-  border:1px solid rgba(114,204,141,.48);
+  border:1px solid rgba(180, 180, 180, .48);
   border-radius:4px;
-  background:rgba(0,8,3,.91);
-  box-shadow:0 0 10px rgba(41,164,89,.22),inset 0 0 8px rgba(48,141,80,.12);
+  background:rgba(6, 6, 6, .91);
+  box-shadow:0 0 10px rgba(132, 132, 132, .22),inset 0 0 8px rgba(117, 117, 117, .12);
   backdrop-filter:blur(5px);
 }
 .memory-map-panel .map-view-controls button {
@@ -2023,10 +2023,10 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   align-items:center;
   justify-content:center;
   padding:4px 8px;
-  border:1px solid rgba(119,206,145,.42);
+  border:1px solid rgba(183, 183, 183, .42);
   border-radius:2px;
-  background:rgba(5,24,12,.9);
-  color:#a8e3b7;
+  background:rgba(19, 19, 19, .9);
+  color:#d3d3d3;
   font:12px/1 "Courier New",monospace;
   cursor:pointer;
   touch-action:manipulation;
@@ -2038,15 +2038,15 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 }
 .memory-map-panel .map-view-controls button:active,
 .memory-map-panel .map-view-controls button:focus-visible {
-  border-color:#c2f4ce;
-  background:#0a2a14;
-  color:#effff2;
-  outline:1px solid rgba(175,239,191,.3);
+  border-color:#e7e7e7;
+  background:#222222;
+  color:#fbfbfb;
+  outline:1px solid rgba(222, 222, 222, .3);
   outline-offset:1px;
 }
 .memory-map-panel .map-view-controls output {
   min-width:39px;
-  color:rgba(157,217,171,.78);
+  color:rgba(201, 201, 201, .78);
   font:8px "Courier New",monospace;
   text-align:center;
   letter-spacing:.05em;
@@ -2055,14 +2055,14 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   opacity:.2;
   mix-blend-mode:screen;
   background:
-    repeating-linear-gradient(90deg,rgba(70,255,129,.035) 0,rgba(70,255,129,.035) 1px,transparent 1px,transparent 3px),
-    repeating-linear-gradient(to bottom,rgba(190,255,205,.13) 0,rgba(190,255,205,.13) 1px,transparent 1px,transparent 4px);
+    repeating-linear-gradient(90deg,rgba(207, 207, 207, .035) 0,rgba(207, 207, 207, .035) 1px,transparent 1px,transparent 3px),
+    repeating-linear-gradient(to bottom,rgba(238, 238, 238, .13) 0,rgba(238, 238, 238, .13) 1px,transparent 1px,transparent 4px);
 }
 .memory-map-panel .map-legend .legend-near {
-  width:17px;height:0;border:0;border-top:1px dotted #9bddad;border-radius:0;
+  width:17px;height:0;border:0;border-top:1px dotted #cccccc;border-radius:0;
 }
 .memory-map-panel .map-legend .legend-connected {
-  width:17px;height:0;border:0;border-top:1px dashed #83d49a;border-radius:0;
+  width:17px;height:0;border:0;border-top:1px dashed #bfbfbf;border-radius:0;
 }
 @media(max-width:560px) {
   .memory-map-panel .map-view-controls {
@@ -2092,15 +2092,15 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 /* M59 — use the supplied 47-prefecture SVG as the real geographic canvas. */
 .memory-map-panel .map-canvas {
   background:
-    radial-gradient(ellipse at 52% 50%,rgba(24,88,49,.12),transparent 67%),
-    repeating-linear-gradient(0deg,transparent 0 25px,rgba(99,178,122,.035) 26px),
-    repeating-linear-gradient(90deg,transparent 0 25px,rgba(99,178,122,.035) 26px),
-    #020604;
+    radial-gradient(ellipse at 52% 50%,rgba(72, 72, 72, .12),transparent 67%),
+    repeating-linear-gradient(0deg,transparent 0 25px,rgba(157, 157, 157, .035) 26px),
+    repeating-linear-gradient(90deg,transparent 0 25px,rgba(157, 157, 157, .035) 26px),
+    #050505;
 }
 .memory-map-panel .map-pan-layer {
   width:2800px;
   height:3305px;
-  background:radial-gradient(ellipse at 54% 48%,rgba(9,42,22,.12),transparent 68%);
+  background:radial-gradient(ellipse at 54% 48%,rgba(34, 34, 34, .12),transparent 68%);
 }
 .memory-map-panel .map-prefecture-backdrop {
   position:absolute;
@@ -2117,7 +2117,7 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   height:100%;
   object-fit:fill;
   opacity:1;
-  filter:drop-shadow(0 0 10px rgba(40,160,86,.12));
+  filter:drop-shadow(0 0 10px rgba(129, 129, 129, .12));
 }
 .memory-map-panel .map-leaders {
   position:absolute;
@@ -2130,69 +2130,69 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 }
 .memory-map-panel .map-leader {
   fill:none;
-  stroke:rgba(129,211,151,.48);
+  stroke:rgba(189, 189, 189, .48);
   stroke-width:1.25;
   stroke-dasharray:3 4;
   stroke-linecap:round;
-  filter:drop-shadow(0 0 2px rgba(68,174,102,.3));
+  filter:drop-shadow(0 0 2px rgba(146, 146, 146, .3));
 }
 .memory-map-panel .map-origin-dot {
   position:absolute;
   z-index:3;
   width:8px;
   height:8px;
-  border:1px solid rgba(190,246,202,.94);
+  border:1px solid rgba(231, 231, 231, .94);
   border-radius:50%;
-  background:#9de8b0;
-  box-shadow:0 0 4px rgba(155,241,177,.9),0 0 11px rgba(71,205,117,.58);
+  background:#d4d4d4;
+  box-shadow:0 0 4px rgba(218, 218, 218, .9),0 0 11px rgba(170, 170, 170, .58);
   transform:translate(-50%,-50%);
   pointer-events:none;
 }
 .memory-map-panel .map-origin-precision-site {
   width:6px;
   height:6px;
-  background:#c8f7d2;
+  background:#eaeaea;
 }
 .memory-map-panel .map-origin-precision-locality {
   width:9px;
   height:9px;
-  background:rgba(115,220,150,.85);
-  box-shadow:0 0 4px rgba(155,241,177,.72),0 0 13px rgba(71,205,117,.45);
+  background:rgba(193, 193, 193, .85);
+  box-shadow:0 0 4px rgba(218, 218, 218, .72),0 0 13px rgba(170, 170, 170, .45);
 }
 .memory-map-panel .map-origin-precision-area,
 .memory-map-panel .map-origin-precision-prefecture {
   width:12px;
   height:12px;
-  border:1px dashed rgba(143,224,164,.82);
-  background:rgba(25,100,51,.34);
-  box-shadow:0 0 7px rgba(71,205,117,.34);
+  border:1px dashed rgba(202, 202, 202, .82);
+  background:rgba(81, 81, 81, .34);
+  box-shadow:0 0 7px rgba(170, 170, 170, .34);
 }
 .memory-map-panel .map-origin-precision-prefecture {
   width:16px;
   height:16px;
   border-style:solid;
-  background:rgba(47,135,75,.2);
+  background:rgba(112, 112, 112, .2);
 }
 .memory-map-panel .map-pan-layer .map-pin {
   z-index:4;
   gap:3px;
   padding:7px 9px 6px;
-  border:1.5px solid rgba(125,210,151,.82);
+  border:1.5px solid rgba(188, 188, 188, .82);
   border-radius:6px;
-  background:rgba(0,8,3,.91);
-  box-shadow:0 0 3px rgba(123,221,153,.48),0 0 9px rgba(79,186,117,.22),inset 0 0 9px rgba(69,150,93,.1);
+  background:rgba(6, 6, 6, .91);
+  box-shadow:0 0 3px rgba(195, 195, 195, .48),0 0 9px rgba(158, 158, 158, .22),inset 0 0 9px rgba(129, 129, 129, .1);
 }
 .memory-map-panel .map-pan-layer .map-pin-jp {
   font-size:16px;
   line-height:1.18;
   letter-spacing:.02em;
-  text-shadow:0 0 2px rgba(227,255,234,.35),0 0 6px rgba(125,220,153,.22);
+  text-shadow:0 0 2px rgba(248, 248, 248, .35),0 0 6px rgba(195, 195, 195, .22);
 }
 .memory-map-panel .map-pan-layer .map-pin-en {
   font-size:9px;
   line-height:1.15;
   letter-spacing:.035em;
-  text-shadow:0 0 3px rgba(108,204,137,.25);
+  text-shadow:0 0 3px rgba(179, 179, 179, .25);
 }
 .memory-map-panel .map-pan-layer .map-pin-count {
   font-size:6.5px;
@@ -2200,19 +2200,19 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   text-shadow:none;
 }
 .memory-map-panel .map-pan-layer .map-pin-precision-locality {
-  border-color:rgba(111,194,139,.72);
-  box-shadow:0 0 3px rgba(123,221,153,.34),0 0 7px rgba(79,186,117,.16),inset 0 0 7px rgba(69,150,93,.08);
+  border-color:rgba(172, 172, 172, .72);
+  box-shadow:0 0 3px rgba(195, 195, 195, .34),0 0 7px rgba(158, 158, 158, .16),inset 0 0 7px rgba(129, 129, 129, .08);
 }
 .memory-map-panel .map-pan-layer .map-pin-precision-area,
 .memory-map-panel .map-pan-layer .map-pin-precision-prefecture {
   border-style:dashed;
-  border-color:rgba(111,194,139,.58);
-  background:rgba(0,8,3,.84);
-  box-shadow:0 0 4px rgba(79,186,117,.15),inset 0 0 6px rgba(69,150,93,.05);
+  border-color:rgba(172, 172, 172, .58);
+  background:rgba(6, 6, 6, .84);
+  box-shadow:0 0 4px rgba(158, 158, 158, .15),inset 0 0 6px rgba(129, 129, 129, .05);
 }
 .memory-map-panel .map-connections line {
   stroke-width:1.7;
-  filter:drop-shadow(0 0 2px rgba(52,190,105,.3));
+  filter:drop-shadow(0 0 2px rgba(155, 155, 155, .3));
 }
 .memory-map-panel .map-memory-mode .map-connections line.map-edge-within {
   stroke-width:1.35;
@@ -2255,9 +2255,9 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   max-width:none;
   border-radius:6px;
   padding:7px 9px 6px;
-  border:1.5px solid rgba(125,210,151,.82);
-  background:rgba(0,8,3,.91);
-  box-shadow:0 0 3px rgba(123,221,153,.48),0 0 9px rgba(79,186,117,.22),inset 0 0 9px rgba(69,150,93,.1);
+  border:1.5px solid rgba(188, 188, 188, .82);
+  background:rgba(6, 6, 6, .91);
+  box-shadow:0 0 3px rgba(195, 195, 195, .48),0 0 9px rgba(158, 158, 158, .22),inset 0 0 9px rgba(129, 129, 129, .1);
 }
 .memory-map-panel .map-pan-layer .map-pin-place-card .map-pin-jp {
   font-size:16px;
@@ -2281,10 +2281,10 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   width:14px;
   height:14px;
   padding:0;
-  border:1px solid rgba(163,235,181,.75);
+  border:1px solid rgba(216, 216, 216, .75);
   border-radius:50%;
-  background:rgba(0,14,5,.88);
-  box-shadow:0 0 4px rgba(107,213,141,.46);
+  background:rgba(10, 10, 10, .88);
+  box-shadow:0 0 4px rgba(185, 185, 185, .46);
   transform:translate(-50%,-50%);
   cursor:pointer;
   -webkit-appearance:none;
@@ -2296,29 +2296,29 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   width:4px;
   height:4px;
   border-radius:50%;
-  background:#91dfa8;
-  box-shadow:0 0 5px rgba(119,225,151,.72);
+  background:#cacaca;
+  box-shadow:0 0 5px rgba(197, 197, 197, .72);
   pointer-events:none;
 }
 .memory-map-panel .map-pan-layer .map-pin-dot-only.map-pin-precision-site {
-  width:9px;height:9px;border-color:rgba(194,244,206,.92);
+  width:9px;height:9px;border-color:rgba(231, 231, 231, .92);
 }
 .memory-map-panel .map-pan-layer .map-pin-dot-only.map-pin-precision-site span {
-  width:3px;height:3px;background:#c8f7d2;
+  width:3px;height:3px;background:#eaeaea;
 }
 .memory-map-panel .map-pan-layer .map-pin-dot-only.map-pin-precision-locality {
-  width:12px;height:12px;border-color:rgba(126,220,153,.82);
+  width:12px;height:12px;border-color:rgba(195, 195, 195, .82);
 }
 .memory-map-panel .map-pan-layer .map-pin-dot-only.map-pin-precision-area {
-  width:15px;height:15px;border-style:dashed;border-color:rgba(143,224,164,.82);
-  background:rgba(25,100,51,.2);
+  width:15px;height:15px;border-style:dashed;border-color:rgba(202, 202, 202, .82);
+  background:rgba(81, 81, 81, .2);
 }
 .memory-map-panel .map-pan-layer .map-pin-dot-only.map-pin-precision-area span {
-  width:4px;height:4px;background:#77c990;
+  width:4px;height:4px;background:#b3b3b3;
 }
 .memory-map-panel .map-pan-layer .map-pin-dot-only.map-pin-precision-prefecture {
-  width:19px;height:19px;border-color:rgba(152,225,169,.9);
-  background:rgba(47,135,75,.24);
+  width:19px;height:19px;border-color:rgba(205, 205, 205, .9);
+  background:rgba(112, 112, 112, .24);
 }
 .memory-map-panel .map-pan-layer .map-pin-dot-only.map-pin-precision-prefecture span {
   width:6px;height:6px;
@@ -2326,11 +2326,11 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 .memory-map-panel .map-pan-layer .map-pin-dot-only:hover,
 .memory-map-panel .map-pan-layer .map-pin-dot-only:focus-visible {
   z-index:6;
-  border-color:#d7ffe0;
-  background:rgba(6,30,13,.98);
-  outline:1px solid rgba(175,239,191,.42);
+  border-color:#f4f4f4;
+  background:rgba(24, 24, 24, .98);
+  outline:1px solid rgba(222, 222, 222, .42);
   outline-offset:3px;
-  box-shadow:0 0 8px rgba(155,241,177,.9),0 0 16px rgba(95,210,132,.5);
+  box-shadow:0 0 8px rgba(218, 218, 218, .9),0 0 16px rgba(180, 180, 180, .5);
 }
 @media(max-width:560px) {
   .memory-map-panel .map-pan-layer .map-pin-place-card { padding:6px 8px 5px; }
@@ -2342,32 +2342,32 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 
 /* M61 — precision legend and matching card outlines. */
 .memory-map-panel .map-legend .legend-precision-site {
-  width:6px;height:6px;border:1px solid rgba(194,244,206,.95);background:#9de8b0;
-  box-shadow:0 0 5px rgba(107,213,141,.62);
+  width:6px;height:6px;border:1px solid rgba(231, 231, 231, .95);background:#d4d4d4;
+  box-shadow:0 0 5px rgba(185, 185, 185, .62);
 }
 .memory-map-panel .map-legend .legend-precision-locality {
-  width:9px;height:9px;border:1px solid rgba(126,220,153,.84);background:rgba(115,220,150,.75);
+  width:9px;height:9px;border:1px solid rgba(195, 195, 195, .84);background:rgba(193, 193, 193, .75);
 }
 .memory-map-panel .map-legend .legend-precision-area {
-  width:11px;height:11px;border:1px dashed rgba(143,224,164,.9);background:rgba(25,100,51,.25);
+  width:11px;height:11px;border:1px dashed rgba(202, 202, 202, .9);background:rgba(81, 81, 81, .25);
 }
 .memory-map-panel .map-legend .legend-precision-prefecture {
-  width:14px;height:14px;border:1px solid rgba(152,225,169,.88);background:rgba(47,135,75,.18);
+  width:14px;height:14px;border:1px solid rgba(205, 205, 205, .88);background:rgba(112, 112, 112, .18);
 }
 .memory-map-panel .map-pan-layer .map-pin-place-card.map-pin-precision-area,
 .memory-map-panel .map-pan-layer .map-pin-place-card.map-pin-precision-prefecture {
   border-style:dashed;
 }
 .memory-map-panel .map-pan-layer .map-pin-place-card.map-pin-precision-locality {
-  border-color:rgba(111,194,139,.72);
+  border-color:rgba(172, 172, 172, .72);
 }
 
 
 /* M62 — the vector already supplies the geography; remove the legacy orbit decoration. */
 .memory-map-panel .map-canvas::before { display:none !important; }
 .memory-map-panel .map-region-label {
-  color:rgba(133,198,151,.56);
-  text-shadow:0 0 4px rgba(97,181,122,.18);
+  color:rgba(181, 181, 181, .56);
+  text-shadow:0 0 4px rgba(159, 159, 159, .18);
   font-size:8px;
   letter-spacing:.16em;
 }
@@ -2378,12 +2378,12 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
 
 /* M63 — mobile pinch navigation and high-contrast geographic relationships. */
 .memory-map-panel .map-canvas { touch-action:none; }
-.memory-map-panel .map-memory-mode .map-connections line {stroke:rgba(255,255,255,.96);stroke-width:5;opacity:.96;stroke-dasharray:3 3;filter:drop-shadow(0 0 2px #000) drop-shadow(0 0 5px rgba(255,255,255,.7));}
-.memory-map-panel .map-memory-mode .map-connections line.map-edge-within {stroke:rgba(239,245,239,.96);stroke-width:4;stroke-dasharray:none;}
-.memory-map-panel .map-memory-mode .map-connections line.map-edge-near {stroke:rgba(255,255,255,.98);stroke-width:5;stroke-dasharray:2 6;}
+.memory-map-panel .map-memory-mode .map-connections line {stroke:rgba(255, 255, 255, .96);stroke-width:5;opacity:.96;stroke-dasharray:3 3;filter:drop-shadow(0 0 2px #000000) drop-shadow(0 0 5px rgba(255, 255, 255, .7));}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-within {stroke:rgba(243, 243, 243, .96);stroke-width:4;stroke-dasharray:none;}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-near {stroke:rgba(255, 255, 255, .98);stroke-width:5;stroke-dasharray:2 6;}
 .memory-map-panel .map-memory-mode .map-connections line.map-edge-overlooks,
-.memory-map-panel .map-memory-mode .map-connections line.map-edge-connected-to {stroke:rgba(206,255,224,.98);stroke-width:5;stroke-dasharray:10 5;}
-.memory-map-panel .map-memory-mode .map-connections line.map-edge-transit-corridor {stroke:rgba(255,246,214,.98);stroke-width:6;stroke-dasharray:14 5 2 5;}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-connected-to {stroke:rgba(242, 242, 242, .98);stroke-width:5;stroke-dasharray:10 5;}
+.memory-map-panel .map-memory-mode .map-connections line.map-edge-transit-corridor {stroke:rgba(246, 246, 246, .98);stroke-width:6;stroke-dasharray:14 5 2 5;}
 .memory-map-panel .map-mode-switch [data-map-mode="pins"] {display:none !important;}
 
 
@@ -2636,7 +2636,7 @@ html.machine-scroll body { min-height:calc(100vh + 24px); }
   min-width:0;
   max-width:100%;
   box-sizing:border-box;
-  padding:14px 0 0;
+  padding:34px 0 0;
   text-align:center;
 }
 .home-wordmark-stack .boot-japanese,
