@@ -66,5 +66,3 @@ Then run `node scripts/validate-archive.mjs`. The Git blob value is an integrity
 ## Validation scope
 
 The maintained integrated validator checks record contracts, unique IDs, selector mapping, stock state, local file resolution, relationship targets, manifest coverage, HTML IDs, script references, image paths and Markdown relative links / anchors. GitHub Actions checks JavaScript syntax and runs the manifest check and integrated validator.
-
-The former standalone `scripts/test-*.mjs` files are no longer present. Do not use old test commands copied from earlier milestone notes as current instructions.
