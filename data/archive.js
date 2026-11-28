@@ -840,13 +840,17 @@ const ARCHIVE = {
     },
     {
       "id": "photo-29",
-      "title": "The old shop counter",
+      "title": "The old shop counter — Kadoya Shoten (かどや商店)",
       "date": "2026",
       "type": "image",
       "category": "photo",
-      "group": "Unidentified shop interiors",
+      "group": "Kadoya Shoten / shop interior",
       "file": "media/photo/photos_from_japan/addition_1/addition_1 (6).jpg",
-      "description": "A crowded old-fashioned counter with a mechanical register, shelves and Japanese signs; the establishment is not identified."
+      "description": "The old-fashioned counter inside Kadoya Shoten (かどや商店), the same Nagahama shop identified in photo-183. The traveller confirms that the counter and the shop-front photograph belong to the same place.",
+      "metadata": {
+        "locations": ["Kadoya Shoten", "Nagahama", "Fujikawaguchiko", "Yamanashi"],
+        "related": ["person-miura-masashige", "photo-183", "dance-2"]
+      }
     },
     {
       "id": "photo-30",
@@ -3423,7 +3427,7 @@ const ARCHIVE = {
           "Fujikawaguchiko",
           "Yamanashi"
         ],
-        "related": []
+        "related": ["person-miura-masashige", "photo-29", "dance-2"]
       }
     },
     {
@@ -5296,6 +5300,22 @@ const ARCHIVE = {
       }
     },
     {
+      "id": "person-miura-masashige",
+      "title": "三浦正重さん — かどや商店",
+      "date": "2026",
+      "type": "text",
+      "category": "notes",
+      "author": "archive",
+      "project": "japan-expedition",
+      "group": "PEOPLE / LOCAL CONNECTIONS",
+      "description": "A person memory connected to かどや商店 in Nagahama. The archive brings together the shop-front photograph, the old shop counter and Takismana’s Performance fragment 02, which was filmed at the same shop. The traveller remembers 三浦正重さん with gratitude for the poster, other presents and good memories from Japan.",
+      "file": "documents/notes/contacts/kadoya-shoten-miura.md",
+      "metadata": {
+        "locations": ["Kadoya Shoten", "Nagahama", "Fujikawaguchiko", "Yamanashi"],
+        "related": ["photo-183", "photo-29", "dance-2"]
+      }
+    },
+    {
       "id": "event-2026-08-15-nagahama-furusato-festival",
       "title": "NAGAHAMA FURUSATO FESTIVAL — 15 AUGUST 2026",
       "date": "2026-08-15",
@@ -5406,9 +5426,13 @@ const ARCHIVE = {
       "type": "video",
       "category": "performance",
       "author": "takismana",
-      "group": "DANCE / MOVEMENT STUDIES",
+      "group": "KADOYA SHOTEN / PERFORMANCE",
       "file": "media/video/julia_dances/julia_dance_2.mp4",
-      "description": "A short performance fragment from the Japan trip. Individual location and context are left open until the clip is reviewed."
+      "description": "A short performance by Takismana filmed inside Kadoya Shoten (かどや商店) in Nagahama. The traveller confirms that the performance was recorded at the same shop as the exterior photograph and the old shop counter.",
+      "metadata": {
+        "locations": ["Kadoya Shoten", "Nagahama", "Fujikawaguchiko", "Yamanashi"],
+        "related": ["person-miura-masashige", "photo-183", "photo-29"]
+      }
     },
     {
       "id": "dance-3",
