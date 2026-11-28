@@ -57,6 +57,7 @@ Japan stay / shared field experience: **Takismana**
 * Versioned browser-local collection import/export
 * Integrated Sound Lab with LIVE MIX controls for multi-layer playback and ARCHIVE LISTENING for the four public Aokigahara pentalogy renders, standalone tongue-drum session and 17 field-archive fragments
 * Static Chronology with visitor-local hourly reading suggestion, monochrome photographic contact sheets and the complete dated catalogue
+* Shared JIHANKI Analog UI system: monochrome phosphor palette, terminal typography, squared controls and reusable design tokens
 * Markdown documents, images, audio and video rendered inside the artifact viewer
 * Ambient JIHANKI loop and interface sound effects
 * Static deployment: no framework, build step, backend or visitor account
@@ -70,7 +71,8 @@ JIHANKI/
 │   └── jihanki.png
 │
 ├── css/
-│   └── archive-system.css     # active supplemental CRT / archive / modal styles
+│   ├── archive-system.css     # feature-specific archive / modal styles
+│   └── jihanki-analog.css     # shared palette, typography and analog component rules
 │
 # The fixed-coordinate machine skin and layout remain inline in index.html.
 # machine.css and screen.css are retained as standalone layout references.
