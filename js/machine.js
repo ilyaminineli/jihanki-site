@@ -137,10 +137,17 @@
     const kept = window.JIHANKI_MUSEUM?.isKept(item.id) || false;
     const shelves = window.JIHANKI_MUSEUM?.shelves() || [];
     const museumTools = window.JIHANKI_MUSEUM
-      ? '<div class="museum-artifact-tools"><button type="button" data-museum-keep>' + (kept ? "REMOVE FROM MY MUSEUM" : "KEEP IN MY MUSEUM") + '</button>' +
-      '<label class="museum-shelf-picker"> <select data-museum-shelf><option value="">SELECT SHELF</option>' +
-      shelves.map(shelf => '<option value="' + esc(shelf.id) + '">' + esc(shelf.name) + '</option>').join("") +
-      '</select></label><button type="button" data-museum-add-shelf ' + (shelves.length ? "" : "disabled") + '>ADD</button></div>' : "";
+      ? '<div class="museum-artifact-tools" aria-label="Personal collection actions"><button type="button" data-museum-keep>' +
+        (kept ? "REMOVE FROM KEPT WORKS" : "SAVE TO KEPT WORKS") + '</button>' +
+        '<label class="museum-shelf-picker"><span>ADD THIS WORK TO A SHELF</span><select data-museum-shelf aria-label="Choose a personal shelf">' +
+        '<option value="">CHOOSE A SHELF</option>' +
+        shelves.map(shelf => '<option value="' + esc(shelf.id) + '">' + esc(shelf.name) + '</option>').join("") +
+        '</select></label><button type="button" data-museum-add-shelf aria-label="Add this work to the selected shelf" ' +
+        (shelves.length ? "" : "disabled") + '>ADD TO SHELF</button><p class="museum-shelf-help">' +
+        (shelves.length
+          ? "KEPT WORKS ARE BOOKMARKS. SHELVES ARE NAMED GROUPS YOU CURATE YOURSELF. ADDING A WORK TO A SHELF DOES NOT SPEND CREDITS."
+          : "KEPT WORKS ARE BOOKMARKS. TO CREATE A NAMED GROUP, OPEN MY COLLECTION / SHELVES FIRST. SHELVES DO NOT SPEND CREDITS.") +
+        '</p></div>' : "";
     const returnToMuseum = currentView === "museum" ? '<button type="button" data-return-museum>← RETURN TO MY MUSEUM</button>' : "";
     actions.innerHTML = '<span class="artifact-credit-status">CREDIT BALANCE / ' + credits + '</span>' + transaction + dossier + museumTools + returnToMuseum;
   }
@@ -764,7 +771,8 @@
         '<div class="museum-actions"><button type="button" data-museum-care="clear-trail">CLEAR VISIT TRAIL</button></div>';
     } else if (tab === "shelves") {
       const shelves = museum.shelves();
-      content = '<div class="museum-create-shelf"><label for="museum-shelf-name">NEW SHELF</label><div><input id="museum-shelf-name" maxlength="36" placeholder="A name for this collection">' +
+      content = '<div class="museum-shelf-guide"><strong>SHELVES ARE YOUR OWN NAMED GROUPS OF MEMORIES.</strong><p>Create a shelf here, then open any archive work and choose ADD THIS WORK TO A SHELF. A work can appear on more than one shelf. This is a private browser-local selection: it does not purchase, move or remove the original archive item.</p><p>Use EXPORT EXHIBITION CARD to make a printable list of the works on a shelf.</p></div>' +
+        '<div class="museum-create-shelf"><label for="museum-shelf-name">NEW SHELF</label><div><input id="museum-shelf-name" maxlength="36" placeholder="e.g. Night journeys">' +
         '<button type="button" data-museum-create-shelf>CREATE</button></div></div>' +
         (shelves.length ? shelves.map(shelf => {
           const items = shelf.itemIds.map(id => byId(id)).filter(Boolean);
@@ -774,7 +782,7 @@
               '<button type="button" data-museum-remove-shelf-item="' + esc(shelf.id) + '" data-museum-remove-id="' + esc(item.id) + '" aria-label="Remove ' + esc(item.title) + ' from shelf">−</button></div>').join("") :
               '<p class="museum-shelf-empty">EMPTY SHELF / ADD WORKS FROM THEIR MEMORY VIEW</p>') +
             '<button type="button" class="museum-shelf-card-export" data-museum-export-shelf="' + esc(shelf.id) + '">EXPORT EXHIBITION CARD ↗</button></section>';
-        }).join("") : '<div class="collection-empty">CREATE A SHELF TO BUILD YOUR OWN EXHIBITION.</div>');
+        }).join("") : '<div class="collection-empty">NO SHELVES YET. NAME ONE ABOVE, THEN ADD WORKS FROM THEIR MEMORY VIEW.</div>');
     } else {
       content = '<div class="museum-care-section"><h2>BACKUP / RESTORE</h2><p>Export the private museum data separately from purchase records. Import merges the backup without deleting current data.</p>' +
         '<button type="button" data-museum-care="export">EXPORT MY MUSEUM</button><button type="button" data-museum-care="import">IMPORT MY MUSEUM</button>' +
