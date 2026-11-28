@@ -224,6 +224,26 @@
       { id: "photo-123", kind: "summit-photograph", label: "MOUNT FUJI / SUMMIT TORII" },
       { id: "photo-169", kind: "post-climb-meal-context", label: "FUJI-VIEW MCDONALD’S / RETURN STOP" },
       { id: "mountain-remembers-mv", kind: "shared-landscape-work", label: "MOUNT FUJI / AUDIOVISUAL MEMORY" }
+    ],
+    "person-miura-masashige": [
+      { id: "photo-183", kind: "shop-front-photograph", label: "KADOYA SHOTEN / SHOP FRONT" },
+      { id: "photo-29", kind: "same-shop-interior", label: "KADOYA SHOTEN / THE OLD SHOP COUNTER" },
+      { id: "dance-2", kind: "performance-filmed-at-shop", label: "KADOYA SHOTEN / PERFORMANCE FRAGMENT 02" }
+    ],
+    "photo-183": [
+      { id: "person-miura-masashige", kind: "shop-contact-memory", label: "三浦正重さん / KADOYA SHOTEN" },
+      { id: "photo-29", kind: "same-shop-interior", label: "SAME SHOP / THE OLD COUNTER" },
+      { id: "dance-2", kind: "performance-filmed-at-shop", label: "SAME SHOP / PERFORMANCE FRAGMENT 02" }
+    ],
+    "photo-29": [
+      { id: "person-miura-masashige", kind: "shop-contact-memory", label: "三浦正重さん / KADOYA SHOTEN" },
+      { id: "photo-183", kind: "same-shop-exterior", label: "SAME SHOP / EXTERIOR" },
+      { id: "dance-2", kind: "performance-filmed-at-shop", label: "SAME SHOP / PERFORMANCE FRAGMENT 02" }
+    ],
+    "dance-2": [
+      { id: "person-miura-masashige", kind: "shop-contact-memory", label: "三浦正重さん / KADOYA SHOTEN" },
+      { id: "photo-183", kind: "filming-location-photograph", label: "KADOYA SHOTEN / EXTERIOR" },
+      { id: "photo-29", kind: "filming-location-interior", label: "KADOYA SHOTEN / THE OLD SHOP COUNTER" }
     ]
   };
 
