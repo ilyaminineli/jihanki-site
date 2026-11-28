@@ -65,13 +65,13 @@
     const displayedCredits = Math.max(0, Math.min(interactionModel.LIMITS.credits, Number(interactionState.credits) || 0));
     credits = displayedCredits;
     if (creditDisplay) {
-      const tokens = Array.from({length:displayedCredits}, (_,index) => {
-        const size = Math.max(4.5,12-index*0.8);
-        return '<i class="credit-token" data-credit-token aria-hidden="true" style="--token-size:'+size+'px"></i>';
+      const tokens = Array.from({ length: displayedCredits }, (_, index) => {
+        const size = Math.max(4.5, 12 - index * 0.8);
+        return '<i class="credit-token" data-credit-token aria-hidden="true" style="--token-size:' + size + 'px"></i>';
       }).join("");
-      creditDisplay.innerHTML = '<span class="credit-token-stack" aria-hidden="true">'+tokens+'</span>' +
-        '<span class="credit-count">CREDITS / '+displayedCredits+'</span>';
-      creditDisplay.setAttribute("aria-label","Credits / "+displayedCredits);
+      creditDisplay.innerHTML = '<span class="credit-token-stack" aria-hidden="true">' + tokens + '</span>' +
+        '<span class="credit-count">CREDITS / ' + displayedCredits + '</span>';
+      creditDisplay.setAttribute("aria-label", "Credits / " + displayedCredits);
     }
     const balance = artifactContent.querySelector(".artifact-credit-status");
     if (balance) balance.textContent = "CREDIT BALANCE / " + displayedCredits;
@@ -138,9 +138,9 @@
     const shelves = window.JIHANKI_MUSEUM?.shelves() || [];
     const museumTools = window.JIHANKI_MUSEUM
       ? '<div class="museum-artifact-tools"><button type="button" data-museum-keep>' + (kept ? "REMOVE FROM MY MUSEUM" : "KEEP IN MY MUSEUM") + '</button>' +
-        '<label class="museum-shelf-picker">ADD TO SHELF <select data-museum-shelf><option value="">SELECT SHELF</option>' +
-        shelves.map(shelf => '<option value="' + esc(shelf.id) + '">' + esc(shelf.name) + '</option>').join("") +
-        '</select></label><button type="button" data-museum-add-shelf ' + (shelves.length ? "" : "disabled") + '>ADD</button></div>' : "";
+      '<label class="museum-shelf-picker"> <select data-museum-shelf><option value="">SELECT SHELF</option>' +
+      shelves.map(shelf => '<option value="' + esc(shelf.id) + '">' + esc(shelf.name) + '</option>').join("") +
+      '</select></label><button type="button" data-museum-add-shelf ' + (shelves.length ? "" : "disabled") + '>ADD</button></div>' : "";
     const returnToMuseum = currentView === "museum" ? '<button type="button" data-return-museum>← RETURN TO MY MUSEUM</button>' : "";
     actions.innerHTML = '<span class="artifact-credit-status">CREDIT BALANCE / ' + credits + '</span>' + transaction + dossier + museumTools + returnToMuseum;
   }
@@ -240,13 +240,13 @@
     screen.innerHTML = '<div class="boot home-boot"><div class="home-wordmark-stack"><div class="boot-japanese">自販機</div><div class="boot-title">JIHANKI</div><div class="boot-subtitle">MEMORY ARCHIVE</div></div><div class="boot-loading">' + esc(machineLine) + '</div>' +
       '<div class="home-primary"><button type="button" data-home-action="installation">ENTER SOUND LAB ↗</button></div>' +
       '<div class="home-actions">' +
-        '<button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button>' +
-        '<button type="button" data-home-action="map">MEMORY MAP</button>' +
-        '<button type="button" data-home-action="search">SEARCH</button></div>' +
+      '<button type="button" data-home-action="collection">COLLECTION / ' + collectionCount + '</button>' +
+      '<button type="button" data-home-action="map">MEMORY MAP</button>' +
+      '<button type="button" data-home-action="search">SEARCH</button></div>' +
       '<div class="home-archive-tools"><span>ARCHIVE</span>' +
-        '<button type="button" data-home-action="rotation">ROTATION / ' + rotation.items.length + '</button>' +
-        '<button type="button" data-home-action="temporal">CHRONOLOGY</button>' +
-        '<button type="button" class="home-audio" data-home-action="audio" aria-label="Toggle background ambience and vending-machine sound effects" aria-pressed="' + (!soundMuted) + '">' + soundLabel + '</button></div></div>';
+      '<button type="button" data-home-action="rotation">ROTATION / ' + rotation.items.length + '</button>' +
+      '<button type="button" data-home-action="temporal">CHRONOLOGY</button>' +
+      '<button type="button" class="home-audio" data-home-action="audio" aria-label="Toggle background ambience and vending-machine sound effects" aria-pressed="' + (!soundMuted) + '">' + soundLabel + '</button></div></div>';
     announce("JIHANKI home. Sound Lab, collection, memory map, search and archive chronology. " + collectionCount + " collected works. " + machineLine);
   }
   function showMessage(title, subtitle, footer) {
@@ -521,7 +521,7 @@
     const placeLinks = window.JIHANKI_RELATIONSHIPS?.placeLinksFor(item) || [];
     if (placeLinks.length) html += '<section class="artifact-relations artifact-geographic-relations"><span class="artifact-section-label">GEOGRAPHIC RELATIONSHIPS / NOT SHARED PHOTO LINKS</span>' +
       placeLinks.slice(0, 8).map(edge => '<div class="relation-place-edge"><small>' + esc(edge.label || edge.kind) + ' / ' + esc(edge.kind) + '</small><strong>' +
-      esc(edge.from) + '</strong><span>→</span><strong>' + esc(edge.to) + '</strong></div>').join("") +
+        esc(edge.from) + '</strong><span>→</span><strong>' + esc(edge.to) + '</strong></div>').join("") +
       '<button type="button" class="location-link location-map-link" data-open-map="memory">OPEN GEOGRAPHIC RELATIONS ↗</button></section>';
     if (locations.length) html += '<section class="artifact-locations"><span class="artifact-section-label">LOCATION INDEX</span>' +
       locations.map(place => '<button type="button" class="location-link" data-place="' + esc(place) + '">' + esc(place) + '</button>').join("") +
@@ -655,11 +655,11 @@
     window.JIHANKI_AUDIO.setState("browsing");
     const records = window.JIHANKI_GEOGRAPHY.entries(place);
     const html = records.map((item, index) => {
-      const hasPhoto=(item.category==="photo"||item.type==="image")&&Boolean(item.file);
-      const thumbnail=hasPhoto?'<img class="map-location-thumb" src="'+esc(item.file)+'" alt="'+esc(item.title)+'" loading="lazy" decoding="async">':"";
-      return '<button class="archive-item map-location-record'+(hasPhoto?' has-photo':"")+'" type="button" data-archive-id="'+esc(item.id)+'">'+thumbnail+
-        '<span class="map-location-copy"><strong>'+String(index+1).padStart(2,"0")+'&nbsp;&nbsp;'+esc(item.title)+stockTag(item)+'</strong>'+
-        '<small>'+esc(item.date||"UNDATED")+'</small></span></button>';
+      const hasPhoto = (item.category === "photo" || item.type === "image") && Boolean(item.file);
+      const thumbnail = hasPhoto ? '<img class="map-location-thumb" src="' + esc(item.file) + '" alt="' + esc(item.title) + '" loading="lazy" decoding="async">' : "";
+      return '<button class="archive-item map-location-record' + (hasPhoto ? ' has-photo' : "") + '" type="button" data-archive-id="' + esc(item.id) + '">' + thumbnail +
+        '<span class="map-location-copy"><strong>' + String(index + 1).padStart(2, "0") + '&nbsp;&nbsp;' + esc(item.title) + stockTag(item) + '</strong>' +
+        '<small>' + esc(item.date || "UNDATED") + '</small></span></button>';
     }).join("");
     screen.innerHTML = '<div class="archive"><div class="archive-header"><span class="archive-title">' + esc(place.toUpperCase()) + '</span><span class="archive-status">' + records.length + ' RECORDS</span></div>' +
       mapReturnMarkup() +
@@ -693,143 +693,143 @@
   }
 
   function museumWorkMarkup(query, category, sort) {
-    const needle=String(query||"").trim().toLowerCase();
-    let records=window.JIHANKI_COLLECTION.all().map(record=>({record,item:window.JIHANKI_COLLECTION.resolve(record)||record}));
-    if(category&&category!=="all")records=records.filter(entry=>String(entry.item.machineCategory||entry.item.category||entry.item.type||"archive").toLowerCase()===category);
-    if(needle)records=records.filter(entry=>[entry.item.title,entry.item.author,entry.item.date,entry.item.group,entry.item.category].join(" ").toLowerCase().includes(needle));
-    if(sort==="title")records.sort((a,b)=>String(a.item.title).localeCompare(String(b.item.title)));
-    else if(sort==="oldest")records.sort((a,b)=>String(a.record.firstCollectedAt||"").localeCompare(String(b.record.firstCollectedAt||"")));
-    else if(sort==="most")records.sort((a,b)=>Number(b.record.purchaseCount||0)-Number(a.record.purchaseCount||0));
-    return records.map((entry,index)=>{
-      const object=window.JIHANKI_COLLECTION.objectFor(entry.record.id),item=entry.item;
-      return '<button class="archive-item museum-record" type="button" data-museum-open="'+esc(item.id)+'"><span class="museum-record-number">'+
-        String(index+1).padStart(2,"0")+'</span><span class="museum-record-title">'+esc(item.title||"UNTITLED")+'</span>'+
-        '<span class="collection-count">×'+Number(entry.record.purchaseCount||1)+'</span><small>'+esc(item.date||"UNDATED")+' / '+
-        esc(item.machineCategory||item.category||item.type||"ARCHIVE")+(object?' / OBJECT '+esc(object.serial):"")+'</small></button>';
-    }).join("")||'<div class="collection-empty museum-empty">NO WORKS MATCH THIS VIEW.</div>';
+    const needle = String(query || "").trim().toLowerCase();
+    let records = window.JIHANKI_COLLECTION.all().map(record => ({ record, item: window.JIHANKI_COLLECTION.resolve(record) || record }));
+    if (category && category !== "all") records = records.filter(entry => String(entry.item.machineCategory || entry.item.category || entry.item.type || "archive").toLowerCase() === category);
+    if (needle) records = records.filter(entry => [entry.item.title, entry.item.author, entry.item.date, entry.item.group, entry.item.category].join(" ").toLowerCase().includes(needle));
+    if (sort === "title") records.sort((a, b) => String(a.item.title).localeCompare(String(b.item.title)));
+    else if (sort === "oldest") records.sort((a, b) => String(a.record.firstCollectedAt || "").localeCompare(String(b.record.firstCollectedAt || "")));
+    else if (sort === "most") records.sort((a, b) => Number(b.record.purchaseCount || 0) - Number(a.record.purchaseCount || 0));
+    return records.map((entry, index) => {
+      const object = window.JIHANKI_COLLECTION.objectFor(entry.record.id), item = entry.item;
+      return '<button class="archive-item museum-record" type="button" data-museum-open="' + esc(item.id) + '"><span class="museum-record-number">' +
+        String(index + 1).padStart(2, "0") + '</span><span class="museum-record-title">' + esc(item.title || "UNTITLED") + '</span>' +
+        '<span class="collection-count">×' + Number(entry.record.purchaseCount || 1) + '</span><small>' + esc(item.date || "UNDATED") + ' / ' +
+        esc(item.machineCategory || item.category || item.type || "ARCHIVE") + (object ? ' / OBJECT ' + esc(object.serial) : "") + '</small></button>';
+    }).join("") || '<div class="collection-empty museum-empty">NO WORKS MATCH THIS VIEW.</div>';
   }
 
   function museumTabMarkup(tab) {
-    const tabs=[["overview","OVERVIEW"],["works","WORKS"],["objects","OBJECTS"],["kept","SAVED"],["trail","VISIT TRAIL"],["shelves","SHELVES"],["care","CARE"]];
-    return '<nav class="museum-tabs" aria-label="Personal museum sections">'+tabs.map(([id,label])=>
-      '<button type="button" data-museum-tab="'+id+'" aria-pressed="'+(tab===id?"true":"false")+'">'+label+'</button>').join("")+'</nav>';
+    const tabs = [["overview", "OVERVIEW"], ["works", "WORKS"], ["objects", "OBJECTS"], ["kept", "SAVED"], ["trail", "VISIT TRAIL"], ["shelves", "SHELVES"], ["care", "CARE"]];
+    return '<nav class="museum-tabs" aria-label="Personal museum sections">' + tabs.map(([id, label]) =>
+      '<button type="button" data-museum-tab="' + id + '" aria-pressed="' + (tab === id ? "true" : "false") + '">' + label + '</button>').join("") + '</nav>';
   }
 
   function museumRender(tab) {
-    const museum=window.JIHANKI_MUSEUM,records=window.JIHANKI_COLLECTION.all(),objects=window.JIHANKI_COLLECTION.objects(),stats=museum.stats();
-    const storage=museum.storageAvailable?"LOCAL / SAVED IN THIS BROWSER":"SESSION ONLY / STORAGE UNAVAILABLE";
-    let content="";
-    if(tab==="overview"){
-      const trailCount=museum.trail().length;
-      content='<div class="museum-intro"><span>JHK / YOUR PRIVATE COLLECTION</span><p>Works you have dispensed, fragments you have chosen to save, collectible objects and a single visit trail. Everything stays in this browser.</p></div>'+
-        '<div class="museum-stats"><div><span>COLLECTED WORKS</span><strong>'+records.length+'</strong></div><div><span>OBJECTS</span><strong>'+objects.length+
-        '</strong></div><div><span>SAVED</span><strong>'+stats.kept+'</strong></div><div><span>VISITS</span><strong>'+stats.visits+'</strong></div></div>'+
-        '<section class="museum-trail-preview"><div><span>YOUR VISIT TRAIL</span><strong>'+trailCount+' RECORDED FRAGMENTS</strong></div>'+
-        '<p>A chronological list of the memories you have opened. This is the only visit-history view; the separate Machine Memory screen has been removed.</p>'+
-        '<button type="button" data-museum-tab="trail">OPEN VISIT TRAIL ↗</button></section>'+
-        '<div class="museum-storage-note">'+storage+' / NOTHING IS SENT TO A SERVER.</div>';
-    } else if(tab==="works"){
-      const pref=museum.preferences(),categories=[...new Set(records.map(record=>String(record.category||"archive").toLowerCase()))].sort();
-      content='<div class="museum-toolbar"><label>FIND A WORK<input id="museum-search" type="search" placeholder="Title, artist, year…" autocomplete="off"></label>'+
-        '<label>CATEGORY<select id="museum-category"><option value="all">ALL CATEGORIES</option>'+categories.map(value=>
-        '<option value="'+esc(value)+'" '+(pref.category===value?"selected":"")+'>'+esc(value.toUpperCase())+'</option>').join("")+'</select></label>'+
-        '<label>ORDER<select id="museum-sort"><option value="recent" '+(pref.sort==="recent"?"selected":"")+'>RECENT</option>'+
-        '<option value="title" '+(pref.sort==="title"?"selected":"")+'>TITLE</option><option value="oldest" '+(pref.sort==="oldest"?"selected":"")+'>FIRST ACQUIRED</option>'+
-        '<option value="most" '+(pref.sort==="most"?"selected":"")+'>MOST ACQUIRED</option></select></label></div>'+
-        '<div id="museum-work-list" class="museum-list">'+museumWorkMarkup("",pref.category,pref.sort)+'</div>';
-    } else if(tab==="objects"){
-      const fieldPasses=objects.filter(object=>object.kind==="field-impression");
-      const memoryTraces=objects.filter(object=>object.kind==="memory-trace");
-      const souvenirs=objects.filter(object=>!["field-impression","memory-trace"].includes(object.kind));
-      const objectRows=list=>list.map(object=>'<button type="button" class="museum-object-row" data-museum-object="'+esc(object.id)+'"><span class="museum-object-stamp">'+
-        esc(object.stamp)+'</span><strong>'+esc(object.title)+'</strong><small>'+esc(object.serial)+' / '+esc(object.archiveDate)+'</small></button>').join("");
-      content=(souvenirs.length?'<div class="museum-section-heading">SERIALIZED MEMORY OBJECTS / '+souvenirs.length+'</div>'+objectRows(souvenirs):"")+
-        (fieldPasses.length?'<div class="museum-section-heading">FIELD IMPRESSIONS / '+fieldPasses.length+'</div>'+objectRows(fieldPasses):"")+
-        (memoryTraces.length?'<div class="museum-section-heading">MEMORY TRACES / '+memoryTraces.length+'</div>'+objectRows(memoryTraces):"")+
-        (objects.length?'<div class="museum-storage-note">OBJECTS, FIELD IMPRESSIONS AND TRACES ARE PRIVATE TO THIS BROWSER AND INCLUDED IN COLLECTION BACKUPS.</div>':
-        '<div class="collection-empty">NO OBJECTS HAVE BEEN COLLECTED YET.</div>');
-    } else if(tab==="kept"){
-      const kept=museum.keptIds().map(id=>byId(id)).filter(Boolean);
-      content='<div class="museum-section-heading">WORKS YOU CHOSE TO KEEP / '+kept.length+'</div>'+
-        (kept.length?kept.map((item,index)=>'<button type="button" class="museum-row" data-museum-open="'+esc(item.id)+'"><span>'+
-        String(index+1).padStart(2,"0")+' / '+esc(item.title)+'</span><small>'+esc(item.date||"UNDATED")+'</small></button>').join("")+
-        '<div class="museum-storage-note">KEPT WORKS ARE SEPARATE FROM PURCHASES. YOU CAN KEEP AN ENTRY WITHOUT DISPENSING IT.</div>':
-        '<div class="collection-empty">KEEP A WORK FROM ITS MEMORY VIEW TO PLACE IT HERE.</div>');
-    } else if(tab==="trail"){
-      const trail=museum.trail().slice(-100).reverse();
-      content='<div class="museum-section-heading">RECENT VISIT TRAIL / '+trail.length+'</div>'+
-        (trail.length?trail.map((entry,index)=>'<button type="button" class="museum-row" data-museum-open="'+esc(entry.id)+'"><span>'+
-        String(index+1).padStart(2,"0")+' / '+esc(entry.title)+'</span><small>'+esc(entry.category||"ARCHIVE")+' / '+esc(new Date(entry.visitedAt).toLocaleString())+'</small></button>').join("") :
-        '<div class="collection-empty">YOUR VISIT TRAIL IS EMPTY.</div>')+
+    const museum = window.JIHANKI_MUSEUM, records = window.JIHANKI_COLLECTION.all(), objects = window.JIHANKI_COLLECTION.objects(), stats = museum.stats();
+    const storage = museum.storageAvailable ? "LOCAL / SAVED IN THIS BROWSER" : "SESSION ONLY / STORAGE UNAVAILABLE";
+    let content = "";
+    if (tab === "overview") {
+      const trailCount = museum.trail().length;
+      content = '<div class="museum-intro"><span>JHK / YOUR PRIVATE COLLECTION</span><p>Works you have dispensed, fragments you have chosen to save, collectible objects and a single visit trail. Everything stays in this browser.</p></div>' +
+        '<div class="museum-stats"><div><span>COLLECTED WORKS</span><strong>' + records.length + '</strong></div><div><span>OBJECTS</span><strong>' + objects.length +
+        '</strong></div><div><span>SAVED</span><strong>' + stats.kept + '</strong></div><div><span>VISITS</span><strong>' + stats.visits + '</strong></div></div>' +
+        '<section class="museum-trail-preview"><div><span>YOUR VISIT TRAIL</span><strong>' + trailCount + ' RECORDED FRAGMENTS</strong></div>' +
+        '<p>A chronological list of the memories you have opened. This is the only visit-history view; the separate Machine Memory screen has been removed.</p>' +
+        '<button type="button" data-museum-tab="trail">OPEN VISIT TRAIL ↗</button></section>' +
+        '<div class="museum-storage-note">' + storage + ' / NOTHING IS SENT TO A SERVER.</div>';
+    } else if (tab === "works") {
+      const pref = museum.preferences(), categories = [...new Set(records.map(record => String(record.category || "archive").toLowerCase()))].sort();
+      content = '<div class="museum-toolbar"><label>FIND A WORK<input id="museum-search" type="search" placeholder="Title, artist, year…" autocomplete="off"></label>' +
+        '<label>CATEGORY<select id="museum-category"><option value="all">ALL CATEGORIES</option>' + categories.map(value =>
+          '<option value="' + esc(value) + '" ' + (pref.category === value ? "selected" : "") + '>' + esc(value.toUpperCase()) + '</option>').join("") + '</select></label>' +
+        '<label>ORDER<select id="museum-sort"><option value="recent" ' + (pref.sort === "recent" ? "selected" : "") + '>RECENT</option>' +
+        '<option value="title" ' + (pref.sort === "title" ? "selected" : "") + '>TITLE</option><option value="oldest" ' + (pref.sort === "oldest" ? "selected" : "") + '>FIRST ACQUIRED</option>' +
+        '<option value="most" ' + (pref.sort === "most" ? "selected" : "") + '>MOST ACQUIRED</option></select></label></div>' +
+        '<div id="museum-work-list" class="museum-list">' + museumWorkMarkup("", pref.category, pref.sort) + '</div>';
+    } else if (tab === "objects") {
+      const fieldPasses = objects.filter(object => object.kind === "field-impression");
+      const memoryTraces = objects.filter(object => object.kind === "memory-trace");
+      const souvenirs = objects.filter(object => !["field-impression", "memory-trace"].includes(object.kind));
+      const objectRows = list => list.map(object => '<button type="button" class="museum-object-row" data-museum-object="' + esc(object.id) + '"><span class="museum-object-stamp">' +
+        esc(object.stamp) + '</span><strong>' + esc(object.title) + '</strong><small>' + esc(object.serial) + ' / ' + esc(object.archiveDate) + '</small></button>').join("");
+      content = (souvenirs.length ? '<div class="museum-section-heading">SERIALIZED MEMORY OBJECTS / ' + souvenirs.length + '</div>' + objectRows(souvenirs) : "") +
+        (fieldPasses.length ? '<div class="museum-section-heading">FIELD IMPRESSIONS / ' + fieldPasses.length + '</div>' + objectRows(fieldPasses) : "") +
+        (memoryTraces.length ? '<div class="museum-section-heading">MEMORY TRACES / ' + memoryTraces.length + '</div>' + objectRows(memoryTraces) : "") +
+        (objects.length ? '<div class="museum-storage-note">OBJECTS, FIELD IMPRESSIONS AND TRACES ARE PRIVATE TO THIS BROWSER AND INCLUDED IN COLLECTION BACKUPS.</div>' :
+          '<div class="collection-empty">NO OBJECTS HAVE BEEN COLLECTED YET.</div>');
+    } else if (tab === "kept") {
+      const kept = museum.keptIds().map(id => byId(id)).filter(Boolean);
+      content = '<div class="museum-section-heading">WORKS YOU CHOSE TO KEEP / ' + kept.length + '</div>' +
+        (kept.length ? kept.map((item, index) => '<button type="button" class="museum-row" data-museum-open="' + esc(item.id) + '"><span>' +
+          String(index + 1).padStart(2, "0") + ' / ' + esc(item.title) + '</span><small>' + esc(item.date || "UNDATED") + '</small></button>').join("") +
+          '<div class="museum-storage-note">KEPT WORKS ARE SEPARATE FROM PURCHASES. YOU CAN KEEP AN ENTRY WITHOUT DISPENSING IT.</div>' :
+          '<div class="collection-empty">KEEP A WORK FROM ITS MEMORY VIEW TO PLACE IT HERE.</div>');
+    } else if (tab === "trail") {
+      const trail = museum.trail().slice(-100).reverse();
+      content = '<div class="museum-section-heading">RECENT VISIT TRAIL / ' + trail.length + '</div>' +
+        (trail.length ? trail.map((entry, index) => '<button type="button" class="museum-row" data-museum-open="' + esc(entry.id) + '"><span>' +
+          String(index + 1).padStart(2, "0") + ' / ' + esc(entry.title) + '</span><small>' + esc(entry.category || "ARCHIVE") + ' / ' + esc(new Date(entry.visitedAt).toLocaleString()) + '</small></button>').join("") :
+          '<div class="collection-empty">YOUR VISIT TRAIL IS EMPTY.</div>') +
         '<div class="museum-actions"><button type="button" data-museum-care="clear-trail">CLEAR VISIT TRAIL</button></div>';
-    } else if(tab==="shelves"){
-      const shelves=museum.shelves();
-      content='<div class="museum-create-shelf"><label for="museum-shelf-name">NEW SHELF</label><div><input id="museum-shelf-name" maxlength="36" placeholder="A name for this collection">'+
-        '<button type="button" data-museum-create-shelf>CREATE</button></div></div>'+
-        (shelves.length?shelves.map(shelf=>{
-          const items=shelf.itemIds.map(id=>byId(id)).filter(Boolean);
-          return '<section class="museum-shelf"><header><div><strong>'+esc(shelf.name)+'</strong><small>'+items.length+' WORKS</small></div>'+
-            '<button type="button" data-museum-delete-shelf="'+esc(shelf.id)+'" aria-label="Delete shelf '+esc(shelf.name)+'">×</button></header>'+
-            (items.length?items.map(item=>'<div class="museum-shelf-item"><button type="button" data-museum-open="'+esc(item.id)+'">'+esc(item.title)+'</button>'+
-              '<button type="button" data-museum-remove-shelf-item="'+esc(shelf.id)+'" data-museum-remove-id="'+esc(item.id)+'" aria-label="Remove '+esc(item.title)+' from shelf">−</button></div>').join("") :
-              '<p class="museum-shelf-empty">EMPTY SHELF / ADD WORKS FROM THEIR MEMORY VIEW</p>')+
-            '<button type="button" class="museum-shelf-card-export" data-museum-export-shelf="'+esc(shelf.id)+'">EXPORT EXHIBITION CARD ↗</button></section>';
-        }).join(""):'<div class="collection-empty">CREATE A SHELF TO BUILD YOUR OWN EXHIBITION.</div>');
+    } else if (tab === "shelves") {
+      const shelves = museum.shelves();
+      content = '<div class="museum-create-shelf"><label for="museum-shelf-name">NEW SHELF</label><div><input id="museum-shelf-name" maxlength="36" placeholder="A name for this collection">' +
+        '<button type="button" data-museum-create-shelf>CREATE</button></div></div>' +
+        (shelves.length ? shelves.map(shelf => {
+          const items = shelf.itemIds.map(id => byId(id)).filter(Boolean);
+          return '<section class="museum-shelf"><header><div><strong>' + esc(shelf.name) + '</strong><small>' + items.length + ' WORKS</small></div>' +
+            '<button type="button" data-museum-delete-shelf="' + esc(shelf.id) + '" aria-label="Delete shelf ' + esc(shelf.name) + '">×</button></header>' +
+            (items.length ? items.map(item => '<div class="museum-shelf-item"><button type="button" data-museum-open="' + esc(item.id) + '">' + esc(item.title) + '</button>' +
+              '<button type="button" data-museum-remove-shelf-item="' + esc(shelf.id) + '" data-museum-remove-id="' + esc(item.id) + '" aria-label="Remove ' + esc(item.title) + ' from shelf">−</button></div>').join("") :
+              '<p class="museum-shelf-empty">EMPTY SHELF / ADD WORKS FROM THEIR MEMORY VIEW</p>') +
+            '<button type="button" class="museum-shelf-card-export" data-museum-export-shelf="' + esc(shelf.id) + '">EXPORT EXHIBITION CARD ↗</button></section>';
+        }).join("") : '<div class="collection-empty">CREATE A SHELF TO BUILD YOUR OWN EXHIBITION.</div>');
     } else {
-      content='<div class="museum-care-section"><h2>BACKUP / RESTORE</h2><p>Export the private museum data separately from purchase records. Import merges the backup without deleting current data.</p>'+
-        '<button type="button" data-museum-care="export">EXPORT MY MUSEUM</button><button type="button" data-museum-care="import">IMPORT MY MUSEUM</button>'+
-        '<input id="museum-import-file" type="file" accept="application/json,.json" hidden></div>'+
-        '<div class="museum-care-section"><h2>COLLECTION DATA</h2><p>Works and serialized objects are a separate data domain. Receipts remain untouched.</p>'+
-        '<button type="button" data-museum-care="export-collection">EXPORT WORKS + OBJECTS</button><button type="button" data-museum-care="import-collection">IMPORT WORKS + OBJECTS</button>'+
-        '<input id="collection-import-file" type="file" accept="application/json,.json" hidden></div>'+
-        '<div class="museum-care-section"><h2>RESET / CLEAR</h2><p>Each action below affects only the named local data. Purchase receipts and the public archive are not cleared.</p>'+
-        '<button type="button" data-museum-care="clear-kept">CLEAR KEPT WORKS</button><button type="button" data-museum-care="clear-shelves">CLEAR SHELVES</button>'+
-        '<button type="button" data-museum-care="clear-trail">CLEAR VISIT TRAIL</button><button type="button" data-museum-care="clear-collection">CLEAR WORKS + OBJECTS</button>'+
-        '<button type="button" data-museum-care="reset-personality">RESET MACHINE PERSONALITY</button><button type="button" data-museum-care="reset-preferences">RESET MUSEUM VIEW</button></div>'+
+      content = '<div class="museum-care-section"><h2>BACKUP / RESTORE</h2><p>Export the private museum data separately from purchase records. Import merges the backup without deleting current data.</p>' +
+        '<button type="button" data-museum-care="export">EXPORT MY MUSEUM</button><button type="button" data-museum-care="import">IMPORT MY MUSEUM</button>' +
+        '<input id="museum-import-file" type="file" accept="application/json,.json" hidden></div>' +
+        '<div class="museum-care-section"><h2>COLLECTION DATA</h2><p>Works and serialized objects are a separate data domain. Receipts remain untouched.</p>' +
+        '<button type="button" data-museum-care="export-collection">EXPORT WORKS + OBJECTS</button><button type="button" data-museum-care="import-collection">IMPORT WORKS + OBJECTS</button>' +
+        '<input id="collection-import-file" type="file" accept="application/json,.json" hidden></div>' +
+        '<div class="museum-care-section"><h2>RESET / CLEAR</h2><p>Each action below affects only the named local data. Purchase receipts and the public archive are not cleared.</p>' +
+        '<button type="button" data-museum-care="clear-kept">CLEAR KEPT WORKS</button><button type="button" data-museum-care="clear-shelves">CLEAR SHELVES</button>' +
+        '<button type="button" data-museum-care="clear-trail">CLEAR VISIT TRAIL</button><button type="button" data-museum-care="clear-collection">CLEAR WORKS + OBJECTS</button>' +
+        '<button type="button" data-museum-care="reset-personality">RESET MACHINE PERSONALITY</button><button type="button" data-museum-care="reset-preferences">RESET MUSEUM VIEW</button></div>' +
         '<div class="museum-storage-note">MUTE PREFERENCE / RECEIPTS / MACHINE PERSONALITY / MUSEUM / COLLECTION ARE STORED SEPARATELY IN THIS BROWSER.</div>';
     }
-    return museumTabMarkup(tab)+'<div class="museum-content">'+content+'</div>';
+    return museumTabMarkup(tab) + '<div class="museum-content">' + content + '</div>';
   }
-  function openMuseum(tab){
-    museumTab=["overview","works","objects","kept","trail","shelves","care"].includes(tab)?tab:"overview";
-    openSystemPanel("MY COLLECTION",museumRender(museumTab),"collection","museum");
+  function openMuseum(tab) {
+    museumTab = ["overview", "works", "objects", "kept", "trail", "shelves", "care"].includes(tab) ? tab : "overview";
+    openSystemPanel("MY COLLECTION", museumRender(museumTab), "collection", "museum");
     window.JIHANKI_MUSEUM.setView(museumTab);
-    window.JIHANKI_EVENTS.record("museum-opened",{tab:museumTab});
+    window.JIHANKI_EVENTS.record("museum-opened", { tab: museumTab });
   }
-  function showCollection(){openMuseum("overview");}
-  function openCollectibleObject(object){
-    if(!object)return;
-    const fieldPass=object.kind==="field-impression",memoryTrace=object.kind==="memory-trace";
-    const curatedRecord=fieldPass||memoryTrace;
-    const sources=curatedRecord?(object.sourceIds||[]).map(id=>byId(id)).filter(Boolean):[];
-    const provenance=curatedRecord?'<section class="museum-care-section"><h2>ARCHIVE FRAGMENTS</h2>'+
-      sources.map(item=>'<div class="museum-row"><span>'+esc(item.title||item.id)+'</span><small>'+esc(item.date||"UNDATED")+' / '+esc(item.id)+'</small></div>').join("")+
-      (fieldPass?'<p>This is a record of fragments encountered in the archive, not evidence of a physical visit.</p>':'<p>These records are connected by the archive’s curated Satyam 1 relationships.</p>')+'</section>':
-      '<button type="button" data-object-source="'+esc(object.archiveId)+'">OPEN SOURCE MEMORY ↗</button>';
-    openSystemPanel(memoryTrace?"MEMORY TRACE":fieldPass?"FIELD IMPRESSION":"COLLECTIBLE MEMORY OBJECT",window.JIHANKI_COLLECTION.objectMarkup(object.archiveId,object.receiptCode)+
-      '<div class="exploration-return">'+provenance+'<button type="button" data-return-museum>RETURN TO MY MUSEUM</button></div>',"collection","museum");
+  function showCollection() { openMuseum("overview"); }
+  function openCollectibleObject(object) {
+    if (!object) return;
+    const fieldPass = object.kind === "field-impression", memoryTrace = object.kind === "memory-trace";
+    const curatedRecord = fieldPass || memoryTrace;
+    const sources = curatedRecord ? (object.sourceIds || []).map(id => byId(id)).filter(Boolean) : [];
+    const provenance = curatedRecord ? '<section class="museum-care-section"><h2>ARCHIVE FRAGMENTS</h2>' +
+      sources.map(item => '<div class="museum-row"><span>' + esc(item.title || item.id) + '</span><small>' + esc(item.date || "UNDATED") + ' / ' + esc(item.id) + '</small></div>').join("") +
+      (fieldPass ? '<p>This is a record of fragments encountered in the archive, not evidence of a physical visit.</p>' : '<p>These records are connected by the archive’s curated Satyam 1 relationships.</p>') + '</section>' :
+      '<button type="button" data-object-source="' + esc(object.archiveId) + '">OPEN SOURCE MEMORY ↗</button>';
+    openSystemPanel(memoryTrace ? "MEMORY TRACE" : fieldPass ? "FIELD IMPRESSION" : "COLLECTIBLE MEMORY OBJECT", window.JIHANKI_COLLECTION.objectMarkup(object.archiveId, object.receiptCode) +
+      '<div class="exploration-return">' + provenance + '<button type="button" data-return-museum>RETURN TO MY MUSEUM</button></div>', "collection", "museum");
   }
-  function handleMuseumCare(action){
-    const museum=window.JIHANKI_MUSEUM;
-    if(action==="export"){museum.exportFile();announce("Personal museum backup exported.");return;}
-    if(action==="import"){artifactContent.querySelector("#museum-import-file")?.click();return;}
-    if(action==="export-collection"){window.JIHANKI_COLLECTION.exportFile();return;}
-    if(action==="import-collection"){artifactContent.querySelector("#collection-import-file")?.click();return;}
-    if(action==="reset-preferences"){
-      if(window.confirm("Reset museum view preference only?")){
-        museum.resetPreferences();openMuseum("overview");announce("Museum view preference reset.");
+  function handleMuseumCare(action) {
+    const museum = window.JIHANKI_MUSEUM;
+    if (action === "export") { museum.exportFile(); announce("Personal museum backup exported."); return; }
+    if (action === "import") { artifactContent.querySelector("#museum-import-file")?.click(); return; }
+    if (action === "export-collection") { window.JIHANKI_COLLECTION.exportFile(); return; }
+    if (action === "import-collection") { artifactContent.querySelector("#collection-import-file")?.click(); return; }
+    if (action === "reset-preferences") {
+      if (window.confirm("Reset museum view preference only?")) {
+        museum.resetPreferences(); openMuseum("overview"); announce("Museum view preference reset.");
       }
       return;
     }
-    const actions={
-      "clear-kept":["Clear saved works from this browser's museum?",()=>museum.clearKept()],
-      "clear-shelves":["Delete all personal shelves? Works and souvenirs remain.",()=>museum.clearShelves()],
-      "clear-trail":["Clear the local visit trail? Saved works and shelves remain.",()=>museum.clearTrail()],
-      "clear-collection":["Clear collected works and souvenir objects? Receipts, shelves, saved works and visit trail remain.",()=>window.JIHANKI_COLLECTION.clear()],
-      "reset-personality":["Reset machine personality only? Museum, collection and receipts remain.",()=>window.JIHANKI_PERSONALITY.reset()]
+    const actions = {
+      "clear-kept": ["Clear saved works from this browser's museum?", () => museum.clearKept()],
+      "clear-shelves": ["Delete all personal shelves? Works and souvenirs remain.", () => museum.clearShelves()],
+      "clear-trail": ["Clear the local visit trail? Saved works and shelves remain.", () => museum.clearTrail()],
+      "clear-collection": ["Clear collected works and souvenir objects? Receipts, shelves, saved works and visit trail remain.", () => window.JIHANKI_COLLECTION.clear()],
+      "reset-personality": ["Reset machine personality only? Museum, collection and receipts remain.", () => window.JIHANKI_PERSONALITY.reset()]
     };
-    const selected=actions[action];if(!selected)return;
-    if(window.confirm(selected[0])){selected[1]();openMuseum(museumTab);announce("Selected local data cleared.");}
+    const selected = actions[action]; if (!selected) return;
+    if (window.confirm(selected[0])) { selected[1](); openMuseum(museumTab); announce("Selected local data cleared."); }
   }
 
   function recordSequence(key) {
@@ -924,7 +924,7 @@
     }
     const temporalScroll = event.target.closest("[data-temporal-scroll]");
     if (temporalScroll) {
-      artifactContent.querySelector("#temporal-timeline")?.scrollIntoView({behavior:window.matchMedia?.("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+      artifactContent.querySelector("#temporal-timeline")?.scrollIntoView({ behavior: window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
       return;
     }
     const temporalOpen = event.target.closest("[data-temporal-open]");
@@ -1227,9 +1227,13 @@
   window.JIHANKI_MACHINE = {
     openItem, purchase, dispense, showCategory, showLocation, showRotation, showCollection,
     openSearch, openMap, openArchaeology, openSoundscape, openMuseum, openTemporalArchive,
-    getState() { return { credits, selectedId, activeCategory, currentView, overlay: interactionState.overlay,
-      transaction: { ...interactionState.transaction }, purchasePending: interactionState.purchasePending,
-      interactionRevision: interactionState.revision, maintenanceActive, ambient: window.JIHANKI_AUDIO.getState() }; }
+    getState() {
+      return {
+        credits, selectedId, activeCategory, currentView, overlay: interactionState.overlay,
+        transaction: { ...interactionState.transaction }, purchasePending: interactionState.purchasePending,
+        interactionRevision: interactionState.revision, maintenanceActive, ambient: window.JIHANKI_AUDIO.getState()
+      };
+    }
   };
   window.JIHANKI_EVENTS.record("machine-booted", { items: allItems().length });
   updateCreditDisplay();
