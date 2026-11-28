@@ -9,6 +9,7 @@ Only deliberately curated memories should be added to the public catalogue in `d
 ## Editorial and source registers
 
 - [Daily Japan expedition archive](notes/daily/README.md) — chronological source-derived travel chapters.
+- [Takismana — Katori](notes/takismana-katori.md) and [Takismana — Fujisan](notes/takismana-fujisan.md) — complete first-person travel accounts, preserved in their original wording and connected to the visitor archive.
 - [Cross-collection photo identification register](notes/photo-identification-register.md) — 251 unique Japan photographs, confidence levels, corrections and relationships.
 - [Addition 3 photo intake](notes/photo-intake-2026-11-27.md) — filename-level register for photos 141–172.
 - [Addition 4 photo intake](notes/photo-intake-2026-11-27-addition-4.md) — filename-level register for photos 173–202.
