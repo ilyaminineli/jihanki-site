@@ -529,7 +529,7 @@ try{
       device.name+": Memory Network still uses the green phosphor grid: "+JSON.stringify(mapStyleAudit));
     assert(mapStyleAudit.pin.radius==="0px"&&mapStyleAudit.pin.background==="rgba(5, 5, 5, 0.94)",
       device.name+": Memory Network pin cards do not use the shared square CRT surface: "+JSON.stringify(mapStyleAudit));
-    const edgeRGB=mapStyleAudit.edge.stroke.match(/\\d+/g)?.slice(0,3).map(Number)||[];
+    const edgeRGB=mapStyleAudit.edge.stroke.match(/\d+/g)?.slice(0,3).map(Number)||[];
     assert(edgeRGB.length===3&&Math.max(...edgeRGB)-Math.min(...edgeRGB)<=2&&mapStyleAudit.edge.filter==="none",
       device.name+": Memory Network relation lines are not monochrome: "+JSON.stringify(mapStyleAudit));
     await page.waitForFunction(()=>{
