@@ -46,7 +46,7 @@ node scripts/build-media-manifest.mjs --check
 node scripts/validate-archive.mjs
 ```
 
-GitHub Actions runs these checks and JavaScript syntax validation on relevant pushes and pull requests. The older standalone `scripts/test-*.mjs` fixtures are no longer present in the repository; milestone descriptions should not imply they are still executed.
+GitHub Actions runs these checks and JavaScript syntax validation on relevant pushes and pull requests. The former standalone regression fixtures were removed during the November 2026 cleanup. The maintained checks are the media-manifest command, integrated repository validator and CI JavaScript syntax check.
 
 ## Documentation policy
 
