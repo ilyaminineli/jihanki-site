@@ -130,7 +130,7 @@ try{
     assert(await page.evaluate(()=>window.JIHANKI_AUDIO.isMuted())===initialMuted,
       device.name+": sound switch could not restore its previous state");
     const wordmarkAudit=await page.evaluate(()=>{
-      const selectors=[".boot-japanese",".boot-title",".boot-subtitle"];
+      const selectors=[".home-wordmark-stack .boot-japanese",".home-wordmark-stack .boot-title",".home-wordmark-stack .boot-subtitle"];
       const screen=document.querySelector("#screen").getBoundingClientRect();
       const credit=document.querySelector("#credit-display").getBoundingClientRect();
       const wordmarks=selectors.map(selector=>{
@@ -139,8 +139,11 @@ try{
         range.selectNodeContents(element);
         const glyph=range.getBoundingClientRect();
         const box=element.getBoundingClientRect();
+        const style=getComputedStyle(element);
         return {selector,left:glyph.left,right:glyph.right,top:glyph.top,bottom:glyph.bottom,
-          center:(glyph.left+glyph.right)/2,boxLeft:box.left,boxRight:box.right};
+          center:(glyph.left+glyph.right)/2,boxLeft:box.left,boxRight:box.right,
+          transform:style.transform,marginLeft:style.marginLeft,marginRight:style.marginRight,
+          textAlign:style.textAlign};
       });
       return {wordmarks,credit:{left:credit.left,right:credit.right,top:credit.top,bottom:credit.bottom},
         screen:{left:screen.left,right:screen.right,top:screen.top,bottom:screen.bottom},
@@ -152,6 +155,9 @@ try{
       device.name+": a home wordmark extends outside the CRT: "+JSON.stringify(wordmarkAudit));
     assert(wordmarkAudit.wordmarks.every(word=>Math.abs(word.center-screenCenter)<=2*geometry.scale+1),
       device.name+": Japanese, JIHANKI and MEMORY ARCHIVE are not visually centered: "+JSON.stringify(wordmarkAudit));
+    assert(wordmarkAudit.wordmarks.every(word=>word.transform==="none"&&word.marginLeft==="0px"&&
+      word.marginRight==="0px"&&word.textAlign==="center"),
+      device.name+": a legacy offset is still applied to the home wordmarks: "+JSON.stringify(wordmarkAudit));
     const japanese=wordmarkAudit.wordmarks[0];
     assert(japanese.top>=wordmarkAudit.screen.top+25*geometry.scale,
       device.name+": Japanese wordmark is too close to the CRT ceiling: "+JSON.stringify(wordmarkAudit));
