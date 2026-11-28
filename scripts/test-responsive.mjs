@@ -336,6 +336,22 @@ try{
         window.JIHANKI_MACHINE.openItem(window.JIHANKI_ARCHIVE.find(item=>item.id===newId));
       },markdownRace);
       await page.waitForFunction(title=>document.querySelector(".artifact-title")?.textContent.trim()===title,markdownRace.newTitle);
+      const recordLayout=await page.evaluate(()=>{
+        const modal=document.querySelector(".artifact-window"),actions=document.querySelector(".artifact-actions"),
+          tools=document.querySelector(".museum-artifact-tools"),picker=tools?.querySelector("select");
+        const bounds=el=>{const r=el.getBoundingClientRect();return{left:r.left,right:r.right,top:r.top,bottom:r.bottom};};
+        return {modal:{...bounds(modal),clientWidth:modal.clientWidth,scrollWidth:modal.scrollWidth},
+          actions:actions&&{...bounds(actions),clientWidth:actions.clientWidth,scrollWidth:actions.scrollWidth,
+            children:[...actions.children].map(el=>({label:el.textContent.trim().slice(0,55),...bounds(el)}))},
+          tools:tools&&{...bounds(tools),clientWidth:tools.clientWidth,scrollWidth:tools.scrollWidth},
+          picker:picker&&{...bounds(picker),width:picker.getBoundingClientRect().width,scrollWidth:picker.scrollWidth}};
+      });
+      assert(recordLayout.modal.scrollWidth<=recordLayout.modal.clientWidth+1,
+        device.name+": record viewer has horizontal overflow: "+JSON.stringify(recordLayout));
+      assert(!recordLayout.actions||recordLayout.actions.scrollWidth<=recordLayout.actions.clientWidth+1,
+        device.name+": record action row has horizontal overflow: "+JSON.stringify(recordLayout));
+      assert(!recordLayout.tools||recordLayout.tools.scrollWidth<=recordLayout.tools.clientWidth+1,
+        device.name+": Museum controls extend beyond the record action area: "+JSON.stringify(recordLayout));
       await page.waitForTimeout(180);
       const stillCurrent=await page.evaluate(()=>({
         title:document.querySelector(".artifact-title")?.textContent.trim(),
@@ -521,6 +537,20 @@ try{
 
     await page.locator('[data-home-action="map"]').click();
     await page.locator(".memory-map-panel").waitFor();
+    const artifactBounds=await page.evaluate(()=>{
+      const overlay=document.querySelector("#artifact"),windowNode=overlay.querySelector(".artifact-window");
+      const o=overlay.getBoundingClientRect(),w=windowNode.getBoundingClientRect();
+      return {overlay:{left:o.left,top:o.top,right:o.right,bottom:o.bottom,width:o.width,height:o.height},
+        panel:{left:w.left,top:w.top,right:w.right,bottom:w.bottom,width:w.width,height:w.height,
+          clientWidth:windowNode.clientWidth,scrollWidth:windowNode.scrollWidth}};
+    });
+    assert(artifactBounds.overlay.left>=-1&&artifactBounds.overlay.top>=-1&&
+      artifactBounds.overlay.right<=device.width+1&&artifactBounds.overlay.bottom<=device.height+1,
+      device.name+": archive overlay extends beyond the visual viewport: "+JSON.stringify(artifactBounds));
+    assert(artifactBounds.panel.left>=-1&&artifactBounds.panel.right<=device.width+1&&
+      artifactBounds.panel.top>=-1&&artifactBounds.panel.bottom<=device.height+1&&
+      artifactBounds.panel.scrollWidth<=artifactBounds.panel.clientWidth+1,
+      device.name+": archive panel is outside the viewport or has horizontal overflow: "+JSON.stringify(artifactBounds));
     assert(await page.locator(".map-memory-mode").count()===1,device.name+": homepage map should open in Memory Network mode");
     assert(await page.locator(".map-pin").count()>=70,device.name+": homepage Memory Network did not load the full place set");
     const mapStyleAudit=await page.evaluate(()=>{
@@ -639,6 +669,31 @@ try{
       pin.dispatchEvent(new MouseEvent("click",{bubbles:true,cancelable:true}));
     });
     await page.locator("#screen-content [data-return-map]").waitFor();
+    const locationLayout=await page.evaluate(()=>{
+      const screen=document.querySelector("#screen"),content=document.querySelector("#screen-content"),
+        archive=document.querySelector("#screen-content .location-archive"),
+        header=archive?.querySelector(".archive-header"),status=archive?.querySelector(".archive-status"),
+        button=archive?.querySelector(".map-expedition-return button"),credit=document.querySelector("#credit-display");
+      const rect=el=>{const r=el.getBoundingClientRect();return{left:r.left,right:r.right,top:r.top,bottom:r.bottom};};
+      const bstyle=button&&getComputedStyle(button);
+      return {screen:rect(screen),content:{clientWidth:content.clientWidth,scrollWidth:content.scrollWidth,
+        clientHeight:content.clientHeight,scrollHeight:content.scrollHeight},
+        archive:archive&&rect(archive),header:header&&rect(header),status:status&&rect(status),
+        button:button&&rect(button),credit:rect(credit),
+        buttonStyle:bstyle&&{color:bstyle.color,background:bstyle.backgroundColor,border:bstyle.borderTopColor}};
+    });
+    assert(locationLayout.archive&&locationLayout.content.scrollWidth<=locationLayout.content.clientWidth+1&&
+      locationLayout.archive.left>=locationLayout.screen.left-1&&locationLayout.archive.right<=locationLayout.screen.right+1,
+      device.name+": map location archive exceeds the CRT bounds: "+JSON.stringify(locationLayout));
+    assert(locationLayout.button&&locationLayout.button.left>=locationLayout.screen.left-1&&
+      locationLayout.button.right<=locationLayout.screen.right+1&&locationLayout.button.bottom<=locationLayout.screen.bottom+1,
+      device.name+": BACK TO MAP control extends outside the CRT: "+JSON.stringify(locationLayout));
+    const statusOverCredit=locationLayout.status&&locationLayout.credit&&
+      locationLayout.status.right>locationLayout.credit.left&&locationLayout.status.left<locationLayout.credit.right&&
+      locationLayout.status.bottom>locationLayout.credit.top&&locationLayout.status.top<locationLayout.credit.bottom;
+    assert(!statusOverCredit,device.name+": location record count overlaps the physical credit display: "+JSON.stringify(locationLayout));
+    assert(locationLayout.buttonStyle&&!/0, ?(1[2-9][0-9]|[2-9][0-9]{2}), ?(1[2-9][0-9]|[2-9][0-9]{2})/.test(locationLayout.buttonStyle.background),
+      device.name+": BACK TO MAP still has a green accent: "+JSON.stringify(locationLayout.buttonStyle));
     await page.locator("#screen-content [data-return-map]").click();
     await page.locator(".map-memory-mode").waitFor();
     const mapAfterReturn=await page.evaluate(()=>window.JIHANKI_MAP.snapshot(document.querySelector("#artifact-content")));
@@ -773,10 +828,18 @@ try{
     await page.locator('[data-museum-tab="kept"]').click();
     assert(await page.locator("[data-museum-open]").count()===1,device.name+": kept work not visible in museum");
     await page.locator('[data-museum-tab="shelves"]').click();
+    const shelfGuide=await page.locator(".museum-shelf-guide").textContent();
+    assert(shelfGuide.includes("NAMED GROUPS")&&shelfGuide.includes("does not purchase")&&shelfGuide.includes("EXPORT EXHIBITION CARD"),
+      device.name+": Museum Shelves does not explain their purpose and non-purchase behavior: "+shelfGuide);
     await page.locator("#museum-shelf-name").fill("Night journeys");
     await page.locator("[data-museum-create-shelf]").click();
     await page.locator('[data-museum-tab="works"]').click();
     await page.locator("[data-museum-open]").first().click();
+    const shelfActionCopy=await page.locator(".museum-shelf-help").textContent();
+    assert(shelfActionCopy.includes("DOES NOT SPEND CREDITS")&&
+      (await page.locator("[data-museum-keep]").textContent()).includes("KEPT WORKS")&&
+      (await page.locator("[data-museum-add-shelf]").textContent()).includes("ADD TO SHELF"),
+      device.name+": record page does not distinguish bookmarks from shelves: "+shelfActionCopy);
     await page.locator("[data-museum-shelf]").selectOption({label:"Night journeys"});
     await page.locator("[data-museum-add-shelf]").click();
     await page.keyboard.press("Escape");
